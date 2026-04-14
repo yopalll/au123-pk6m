@@ -23,8 +23,8 @@ return new class extends Migration
         // Kolom Data
         $table->tinyInteger('rating'); // tinyint sesuai gambar
         $table->text('komentar');      // text sesuai gambar
-        $table->boolean('is_visible')->default(true); // bool sesuai gambar
-
+        $table->boolean('is_visible')->default(true); // bool sesuai 
+        
         $table->timestamps(); // Opsional: untuk record waktu
         });
     }
