@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('salon_images', function (Blueprint $table) {
              // Primary Key
         $table->id('id_salon_image');
-        $table->foreignId('id_salon')->constrained('salon', 'id_salon')->cascadeOnDelete();
+        $table->foreignId('id_salon')
+        ->constrained('salon', 'id_salon')
+        ->cascadeOnDelete();
         // Foreign Key ke tabel salon
 
         // Kolom Data

@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pembayaran', function (Blueprint $table) {
-            $table->id('id_pembayaran');
-        $table->foreignId('id_order')->constrained('order', 'id_order')->cascadeOnDelete();
+        $table->id('id_pembayaran');
+        $table->foreignId('id_order')
+        ->constrained('order', 'id_order')
+        ->cascadeOnDelete();
+        $table->foreignId('id_user')
+        ->constrained('users', 'id_user')
+        ->cascadeOnDelete();
         $table->string('metode_pembayaran'); // misal: Transfer, Cash, E-wallet
         $table->decimal('jumlah_bayar', 12, 2);
         $table->enum('status_pembayaran', ['pending', 'completed', 'failed'])->default('pending');

@@ -16,9 +16,15 @@ return new class extends Migration
         $table->id('id_review'); 
 
         // Foreign Keys (Tipe BigInt)
-        $table->foreignId('id_user')->constrained('users', 'id_user')->cascadeOnDelete();
-        $table->foreignId('id_salon')->constrained('salon', 'id_salon')->cascadeOnDelete();
-        $table->foreignId('id_order')->constrained('order', 'id_order')->cascadeOnDelete();
+        $table->foreignId('id_user')
+        ->constrained('users', 'id_user')
+        ->cascadeOnDelete();
+        $table->foreignId('id_salon')
+        ->constrained('salon', 'id_salon')
+        ->cascadeOnDelete();
+        $table->foreignId('id_order')
+        ->constrained('order', 'id_order')
+        ->cascadeOnDelete();
 
         // Kolom Data
         $table->tinyInteger('rating'); // tinyint sesuai gambar

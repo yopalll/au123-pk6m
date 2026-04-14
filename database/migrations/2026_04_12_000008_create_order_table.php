@@ -16,9 +16,13 @@ return new class extends Migration
             $table->id('id_order'); 
 
             // Foreign Keys (BigInt sesuai gambar)
-            $table->foreignId('id_user')->constrained('users', 'id_user')->cascadeOnDelete();
-            $table->foreignId('id_salon')->constrained('salon', 'id_salon')->cascadeOnDelete();
-            $table->foreignId('id_promo')->nullable()->constrained('promo', 'id_promo')->nullonDelete(); // Dibuat nullable jika promo opsional
+            $table->foreignId('id_user')
+            ->constrained('users', 'id_user')->cascadeOnDelete();
+            $table->foreignId('id_salon')
+            ->constrained('salon', 'id_salon')->cascadeOnDelete();
+            $table->foreignId('id_promo')
+            ->nullable()
+            ->constrained('promo', 'id_promo')->nullonDelete(); // Dibuat nullable jika promo opsional
 
             // Kolom Lainnya
             $table->string('kode_order', 50)->unique(); // Sesuai gambar, dengan panjang 50 karakter

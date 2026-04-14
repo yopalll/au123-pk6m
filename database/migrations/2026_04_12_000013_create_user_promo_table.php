@@ -13,14 +13,17 @@ return new class extends Migration
     {
         Schema::create('user_promo', function (Blueprint $table) {
             $table->id();
-        $table->foreignId('id_user')->constrained('users', 'id_user')->cascadeOnDelete();
-        $table->foreignId('id_promo')->constrained('promo', 'id_promo')->cascadeOnDelete();
+        $table->foreignId('id_user')
+        ->constrained('users', 'id_user')
+        ->cascadeOnDelete();
+        $table->foreignId('id_promo')
+        ->constrained('promo', 'id_promo')
+        ->cascadeOnDelete();
         $table->boolean('is_used')->default(false);
         $table->timestamp('claimed_at')->nullable();
         $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

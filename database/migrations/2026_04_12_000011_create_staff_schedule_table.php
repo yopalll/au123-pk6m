@@ -19,9 +19,9 @@ return new class extends Migration
         $table->foreignId('id_staff')->constrained('staff', 'id_staff')->cascadeOnDelete();
 
         // Kolom Data
-        $table->enum('hari', ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu']);
-        $table->time('jam_mulai');
-        $table->time('jam_selesai');
+        $table->enum('hari', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']);
+        $table->time('start_time');
+        $table->time('end_time');
         $table->boolean('is_available')->default(true);
 
         $table->timestamps();

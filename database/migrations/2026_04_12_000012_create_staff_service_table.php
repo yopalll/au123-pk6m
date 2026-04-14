@@ -16,10 +16,14 @@ return new class extends Migration
         $table->id(); // Sesuai gambar menggunakan nama 'id' bertipe bigint
 
         // Foreign Keys
-       $table->foreignId('id_staff')->constrained('staff', 'id_staff')->cascadeOnDelete();
-    $table->foreignId('id_service')->constrained('service', 'id_service')->cascadeOnDelete();
+        $table->foreignId('id_staff')
+        ->constrained('staff', 'id_staff')
+        ->cascadeOnDelete();
+        $table->foreignId('id_service')
+        ->constrained('service', 'id_service')
+        ->cascadeOnDelete();
         $table->timestamps();
-
+        $table->unique(['id_staff', 'id_service']);
         });
     }
 
