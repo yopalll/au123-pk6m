@@ -433,5 +433,625 @@
     "id_kota": 87,
     "nama_kota": "West midlands",
     "provinsi": "England"
+  },
+  {
+    "id_kota": 88,
+    "nama_kota": "Whitstable",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 89,
+    "nama_kota": "Trafford",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 90,
+    "nama_kota": "London",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 91,
+    "nama_kota": "Hertfordshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 92,
+    "nama_kota": "Manchester",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 93,
+    "nama_kota": "Essex",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 94,
+    "nama_kota": "Oxfordshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 95,
+    "nama_kota": "Salford",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 96,
+    "nama_kota": "Pembrokeshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 97,
+    "nama_kota": "Berkshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 98,
+    "nama_kota": "West Midlands County",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 99,
+    "nama_kota": "Derbyshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 100,
+    "nama_kota": "Liverpool",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 101,
+    "nama_kota": "Stockport",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 102,
+    "nama_kota": "Brighton and Hove",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 103,
+    "nama_kota": "Bedfordshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 104,
+    "nama_kota": "Bolton",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 105,
+    "nama_kota": "Glasgow Area",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 106,
+    "nama_kota": "Middlesbrough",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 107,
+    "nama_kota": "Lothians",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 108,
+    "nama_kota": "Bury",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 109,
+    "nama_kota": "Southampton",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 110,
+    "nama_kota": "Edinburgh",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 111,
+    "nama_kota": "Gloucestershire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 112,
+    "nama_kota": "Nottingham",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 113,
+    "nama_kota": "Aberdeen",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 114,
+    "nama_kota": "Glasgow",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 115,
+    "nama_kota": "Leeds",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 116,
+    "nama_kota": "Worcestershire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 117,
+    "nama_kota": "Northamptonshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 118,
+    "nama_kota": "Wolverhampton",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 119,
+    "nama_kota": "Norfolk",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 120,
+    "nama_kota": "The Cotswolds",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 121,
+    "nama_kota": "Sheffield",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 122,
+    "nama_kota": "Cheshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 123,
+    "nama_kota": "Rochdale",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 124,
+    "nama_kota": "Surrey",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 125,
+    "nama_kota": "Derby",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 126,
+    "nama_kota": "Reading",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 127,
+    "nama_kota": "Dorset",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 128,
+    "nama_kota": "Peterborough",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 129,
+    "nama_kota": "Bristol",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 130,
+    "nama_kota": "Lanarkshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 131,
+    "nama_kota": "Lancashire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 132,
+    "nama_kota": "Coventry",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 133,
+    "nama_kota": "Newcastle-upon-Tyne",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 134,
+    "nama_kota": "Oxford",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 135,
+    "nama_kota": "Northumberland",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 136,
+    "nama_kota": "Kent",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 137,
+    "nama_kota": "Cambridge",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 138,
+    "nama_kota": "Midlothian",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 139,
+    "nama_kota": "Lincolnshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 140,
+    "nama_kota": "Hampshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 141,
+    "nama_kota": "Sunderland",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 142,
+    "nama_kota": "North Yorkshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 143,
+    "nama_kota": "West Sussex",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 144,
+    "nama_kota": "Suffolk",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 145,
+    "nama_kota": "Rhondda Cynon Taff",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 146,
+    "nama_kota": "Buckinghamshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 147,
+    "nama_kota": "Wakefield",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 148,
+    "nama_kota": "West Yorkshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 149,
+    "nama_kota": "Chichester",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 150,
+    "nama_kota": "Tameside",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 151,
+    "nama_kota": "Wigan",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 152,
+    "nama_kota": "Renfrewshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 153,
+    "nama_kota": "Nottinghamshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 154,
+    "nama_kota": "Winchester",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 155,
+    "nama_kota": "Jersey",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 156,
+    "nama_kota": "Wiltshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 157,
+    "nama_kota": "Tyneside",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 158,
+    "nama_kota": "Norwich",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 159,
+    "nama_kota": "Leicestershire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 160,
+    "nama_kota": "Cardiff",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 161,
+    "nama_kota": "Wirral",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 162,
+    "nama_kota": "Tyne and Wear",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 163,
+    "nama_kota": "East Renfrewshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 164,
+    "nama_kota": "Greater London",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 165,
+    "nama_kota": "Somerset",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 166,
+    "nama_kota": "County Durham",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 167,
+    "nama_kota": "Oldham",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 168,
+    "nama_kota": "South Yorkshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 169,
+    "nama_kota": "Lisburn",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 170,
+    "nama_kota": "East Sussex",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 171,
+    "nama_kota": "Great Yarmouth",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 172,
+    "nama_kota": "Stirling",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 173,
+    "nama_kota": "Leicester",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 174,
+    "nama_kota": "Gloucester",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 175,
+    "nama_kota": "York",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 176,
+    "nama_kota": "Rotherham",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 177,
+    "nama_kota": "Kirklees",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 178,
+    "nama_kota": "Cornwall",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 179,
+    "nama_kota": "Lake District",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 180,
+    "nama_kota": "East Riding",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 181,
+    "nama_kota": "Belfast",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 182,
+    "nama_kota": "East Dunbartonshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 183,
+    "nama_kota": "Greater Manchester",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 184,
+    "nama_kota": "West Dunbartonshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 185,
+    "nama_kota": "Warwickshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 186,
+    "nama_kota": "Caerphilly",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 187,
+    "nama_kota": "Bridgend County Borough",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 188,
+    "nama_kota": "Shropshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 189,
+    "nama_kota": "Chippenham",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 190,
+    "nama_kota": "Peterlee",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 191,
+    "nama_kota": "Aberdeenshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 192,
+    "nama_kota": "Merseyside",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 193,
+    "nama_kota": "St Andrews",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 194,
+    "nama_kota": "Bradford",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 195,
+    "nama_kota": "County Armagh",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 196,
+    "nama_kota": "Fife",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 197,
+    "nama_kota": "Monmouthshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 198,
+    "nama_kota": "Cambridgeshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 199,
+    "nama_kota": "Anglesey",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 200,
+    "nama_kota": "Durham",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 201,
+    "nama_kota": "Torfaen",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 202,
+    "nama_kota": "West Glamorgan",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 203,
+    "nama_kota": "Inverclyde",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 204,
+    "nama_kota": "Highlands",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 205,
+    "nama_kota": "Torquay",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 206,
+    "nama_kota": "Ayrshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 207,
+    "nama_kota": "Vale of Glamorgan",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 208,
+    "nama_kota": "Swansea",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 209,
+    "nama_kota": "Carmarthenshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 210,
+    "nama_kota": "Powys",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 211,
+    "nama_kota": "West Lothian",
+    "provinsi": "England"
   }
 ]

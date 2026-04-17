@@ -9,16 +9,16 @@
   },
   {
     "id_kategori": 2,
-    "name": "Counselling & Holistic",
-    "deskripsi": "Services related to Counselling & Holistic",
+    "name": "Counselling \u0026 Holistic",
+    "deskripsi": "Services related to Counselling \u0026 Holistic",
     "slug": "counselling-holistic",
     "icon_url": null,
     "is_active": true
   },
   {
     "id_kategori": 3,
-    "name": "Eyebrows & Lashes",
-    "deskripsi": "Services related to Eyebrows & Lashes",
+    "name": "Eyebrows \u0026 Lashes",
+    "deskripsi": "Services related to Eyebrows \u0026 Lashes",
     "slug": "eyebrows-lashes",
     "icon_url": null,
     "is_active": true
