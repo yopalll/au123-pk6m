@@ -1053,5 +1053,65 @@
     "id_kota": 211,
     "nama_kota": "West Lothian",
     "provinsi": "England"
+  },
+  {
+    "id_kota": 212,
+    "nama_kota": "Rudgwick",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 213,
+    "nama_kota": "Strathclyde",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 214,
+    "nama_kota": "Worcester",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 215,
+    "nama_kota": "Isle of Man",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 216,
+    "nama_kota": "Dartmoor",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 217,
+    "nama_kota": "Salisbury",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 218,
+    "nama_kota": "East Lothian",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 219,
+    "nama_kota": "Lincoln",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 220,
+    "nama_kota": "Newry",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 221,
+    "nama_kota": "Devon",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 222,
+    "nama_kota": "Plymouth",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 223,
+    "nama_kota": "Flintshire",
+    "provinsi": "England"
   }
 ]
