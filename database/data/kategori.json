@@ -1,0 +1,82 @@
+[
+  {
+    "id_kategori": 1,
+    "name": "Body",
+    "deskripsi": "Services related to Body",
+    "slug": "body",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 2,
+    "name": "Counselling & Holistic",
+    "deskripsi": "Services related to Counselling & Holistic",
+    "slug": "counselling-holistic",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 3,
+    "name": "Eyebrows & Lashes",
+    "deskripsi": "Services related to Eyebrows & Lashes",
+    "slug": "eyebrows-lashes",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 4,
+    "name": "Face",
+    "deskripsi": "Services related to Face",
+    "slug": "face",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 5,
+    "name": "Hair",
+    "deskripsi": "Services related to Hair",
+    "slug": "hair",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 6,
+    "name": "Hair Removal",
+    "deskripsi": "Services related to Hair Removal",
+    "slug": "hair-removal",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 7,
+    "name": "Massage",
+    "deskripsi": "Services related to Massage",
+    "slug": "massage",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 8,
+    "name": "Medical Aesthetics",
+    "deskripsi": "Services related to Medical Aesthetics",
+    "slug": "medical-aesthetics",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 9,
+    "name": "Nails",
+    "deskripsi": "Services related to Nails",
+    "slug": "nails",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 10,
+    "name": "Other",
+    "deskripsi": "Services related to Other",
+    "slug": "other",
+    "icon_url": null,
+    "is_active": true
+  }
+]

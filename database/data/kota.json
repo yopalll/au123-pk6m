@@ -1,0 +1,437 @@
+[
+  {
+    "id_kota": 1,
+    "nama_kota": "126 New Street",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 2,
+    "nama_kota": "70 Hurst Street",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 3,
+    "nama_kota": "Air conditioning",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 4,
+    "nama_kota": "Arabic",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 5,
+    "nama_kota": "B13 0BT",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 6,
+    "nama_kota": "B15 1EN",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 7,
+    "nama_kota": "B15 3TQ",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 8,
+    "nama_kota": "B16 9NX -",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 9,
+    "nama_kota": "B18 5AA",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 10,
+    "nama_kota": "B18 6BS",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 11,
+    "nama_kota": "B18 6LJ",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 12,
+    "nama_kota": "B18 7QD",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 13,
+    "nama_kota": "B19 3UA",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 14,
+    "nama_kota": "B2 4TX",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 15,
+    "nama_kota": "B21 0AR",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 16,
+    "nama_kota": "B26 3AL",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 17,
+    "nama_kota": "B27 7XU",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 18,
+    "nama_kota": "B28 0TB",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 19,
+    "nama_kota": "B28 8AE",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 20,
+    "nama_kota": "B28 8LD",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 21,
+    "nama_kota": "B28 9HA",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 22,
+    "nama_kota": "B29 5DX",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 23,
+    "nama_kota": "B30 3BG",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 24,
+    "nama_kota": "B32 1JX -",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 25,
+    "nama_kota": "B36 8AP",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 26,
+    "nama_kota": "B4 6WR",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 27,
+    "nama_kota": "B43 5NB",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 28,
+    "nama_kota": "B43 7JW",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 29,
+    "nama_kota": "B5 4EN",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 30,
+    "nama_kota": "B5 5JE",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 31,
+    "nama_kota": "B5 6LB",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 32,
+    "nama_kota": "B63 3AW",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 33,
+    "nama_kota": "B63 4QQ",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 34,
+    "nama_kota": "B64 6AG",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 35,
+    "nama_kota": "B66 4DF",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 36,
+    "nama_kota": "B66 4SJ",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 37,
+    "nama_kota": "B68 0JA",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 38,
+    "nama_kota": "B68 0LH",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 39,
+    "nama_kota": "B69 4DZ",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 40,
+    "nama_kota": "B70 8ND",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 41,
+    "nama_kota": "B73 5BA",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 42,
+    "nama_kota": "B8 2LL",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 43,
+    "nama_kota": "B9 5EA",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 44,
+    "nama_kota": "B9 5LG",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 45,
+    "nama_kota": "B90 3AL",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 46,
+    "nama_kota": "B91 3BB",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 47,
+    "nama_kota": "B92 9AG",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 48,
+    "nama_kota": "Birmingham",
+    "provinsi": "West Midlands"
+  },
+  {
+    "id_kota": 49,
+    "nama_kota": "Birmingham B26 3DY",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 50,
+    "nama_kota": "Birmingham B27 6RG",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 51,
+    "nama_kota": "Birmingham United Kingdom",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 52,
+    "nama_kota": "Birmingham, B5 6PA",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 53,
+    "nama_kota": "Brierley Hill",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 54,
+    "nama_kota": "Brindly Place",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 55,
+    "nama_kota": "Castle Vale",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 56,
+    "nama_kota": "Cofton Hackett",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 57,
+    "nama_kota": "Cradley Heath",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 58,
+    "nama_kota": "DY5 2RG",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 59,
+    "nama_kota": "Digbeth",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 60,
+    "nama_kota": "Dudley",
+    "provinsi": "West Midlands"
+  },
+  {
+    "id_kota": 61,
+    "nama_kota": "Edgbaston",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 62,
+    "nama_kota": "Free parking available",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 63,
+    "nama_kota": "GB",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 64,
+    "nama_kota": "Handsworth",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 65,
+    "nama_kota": "Harborne",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 66,
+    "nama_kota": "Harborne Road",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 67,
+    "nama_kota": "Jewellery Quarter",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 68,
+    "nama_kota": "Kings Heath",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 69,
+    "nama_kota": "LGBTQIA+ friendly",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 70,
+    "nama_kota": "Locally-made products",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 71,
+    "nama_kota": "Oldbury",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 72,
+    "nama_kota": "Organic products",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 73,
+    "nama_kota": "Paid parking available",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 74,
+    "nama_kota": "Punjabi",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 75,
+    "nama_kota": "Rowley Regis",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 76,
+    "nama_kota": "Shirley",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 77,
+    "nama_kota": "Snow Hill Queensway",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 78,
+    "nama_kota": "Solihull United Kingdom",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 79,
+    "nama_kota": "Sparkhill",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 80,
+    "nama_kota": "Staffordshire",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 81,
+    "nama_kota": "Stourbridge",
+    "provinsi": "West Midlands"
+  },
+  {
+    "id_kota": 82,
+    "nama_kota": "Sutton Coldfield",
+    "provinsi": "West Midlands"
+  },
+  {
+    "id_kota": 83,
+    "nama_kota": "Tipton",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 84,
+    "nama_kota": "United Kingdom",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 85,
+    "nama_kota": "West Bromwich",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 86,
+    "nama_kota": "West Midlands",
+    "provinsi": "England"
+  },
+  {
+    "id_kota": 87,
+    "nama_kota": "West midlands",
+    "provinsi": "England"
+  }
+]
