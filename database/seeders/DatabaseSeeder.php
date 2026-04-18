@@ -30,6 +30,16 @@ class DatabaseSeeder extends Seeder
         $this->command->info('=== Starting VIYGO Database Seeding ===');
         $this->command->newLine();
 
+        // Truncate in reverse dependency order (safe to re-run)
+        $this->command->info('[TRUNCATE] Clearing existing data...');
+        DB::table('salon_images')->truncate();
+        DB::table('staff')->truncate();
+        DB::table('service')->truncate();
+        DB::table('salon')->truncate();
+        DB::table('users')->truncate();
+        DB::table('kategori')->truncate();
+        DB::table('kota')->truncate();
+
         $this->call([
             KotaSeeder::class,
             KategoriSeeder::class,
