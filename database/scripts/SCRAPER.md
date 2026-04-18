@@ -1,221 +1,345 @@
-# 🚀 Treatwell Scraper — Panduan Penggunaan
+# 🚀 Treatwell Scraper — Panduan Lengkap
 
-> **High-performance web scraper** untuk mengumpulkan data salon dari [Treatwell.co.uk](https://www.treatwell.co.uk)  
-> Ditulis dalam **Go** — menggantikan versi JavaScript yang lambat.
-
----
-
-## 📊 Perbandingan: JS vs Go
-
-| Aspek | JS (Browser Console) | Go (CLI) |
-|---|---|---|
-| **Execution** | Sequential, 1 salon/waktu | **10 goroutine paralel** |
-| **Speed per salon** | ~3 detik | **~0.3 detik** |
-| **Environment** | Harus buka Chrome DevTools | **Standalone executable** |
-| **Dependency** | Browser harus terbuka | **Tidak ada dependency** |
-| **Error handling** | Basic try/catch | **Retry + rate limit handling** |
-| **Output** | Download file manual | **Langsung merge ke database** |
-| **Estimasi 500 salon** | ~25 menit | **~2-3 menit** |
+> Scraper performa tinggi untuk mengumpulkan data salon dari [Treatwell.co.uk](https://www.treatwell.co.uk)  
+> Ditulis dalam **Go** — 15x lebih cepat dari versi JavaScript
 
 ---
 
-## ⚡ Quick Start
-
-### 1. Build
-
-```powershell
-cd database\scripts
-go build -o treatwell_scraper.exe treatwell_scraper.go
-```
-
-### 2. Jalankan
-
-```powershell
-.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/hair-salons-in-london/"
-```
-
-### 3. Seed ke Database
-
-```powershell
-cd ..\..
-php artisan db:seed
-```
-
----
-
-## 📁 File yang Dihasilkan
-
-Scraper ini **langsung merge** ke file JSON di `database/data/`:
-
-| File | Isi |
-|---|---|
-| `salon.json` | Data salon (nama, alamat, rating, dll) |
-| `service.json` | Layanan per salon (nama, harga, durasi) |
-| `staff.json` | Staff/team member per salon |
-| `salon_images.json` | URL gambar per salon |
-| `kota.json` | Daftar kota (auto-detect dari data) |
-| `kategori.json` | Kategori layanan (auto-detect dari nama service) |
-
-> **PENTING:** Data baru akan **di-append** ke JSON yang sudah ada — **tidak menimpa** data lama. Duplikat otomatis di-skip berdasarkan URL.
-
----
-
-## 🌍 Contoh URL Listing
-
-```powershell
-# Hair salons
-.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/hair-salons-in-london/"
-.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/hair-salons-in-manchester/"
-
-# Beauty salons
-.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/beauty-salons-in-birmingham/"
-
-# Barbershops
-.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/barbers-in-leeds/"
-
-# Nail salons
-.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/nail-salons-in-edinburgh/"
-
-# Massage
-.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/massage-in-bristol/"
-```
-
-Cara mendapatkan URL:
-1. Buka [treatwell.co.uk](https://www.treatwell.co.uk)
-2. Search kategori + kota
-3. Copy URL dari address bar
-
----
-
-## 🔧 Konfigurasi
-
-Edit constants di bagian atas `treatwell_scraper.go`:
-
-```go
-const (
-    maxPages       = 50            // Maks halaman listing yang di-scrape
-    maxWorkers     = 10            // Jumlah goroutine paralel
-    requestDelay   = 500ms         // Delay antar halaman listing
-    maxRetries     = 3             // Retry jika gagal
-    requestTimeout = 15s           // Timeout per request
-)
-```
-
-> **TIP:** Jika sering kena **rate limit (429)**, turunkan `maxWorkers` ke `5` dan naikkan `requestDelay`.
-
-Setelah edit, rebuild:
-```powershell
-go build -o treatwell_scraper.exe treatwell_scraper.go
-```
-
----
-
-## 🔄 Scrape Banyak Kota Sekaligus
-
-Buat file `scrape_all.bat` di folder `database/scripts/`:
-
-```batch
-@echo off
-echo === Starting batch scrape ===
-
-echo [1/5] London...
-.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/hair-salons-in-london/"
-
-echo [2/5] Manchester...
-.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/hair-salons-in-manchester/"
-
-echo [3/5] Birmingham...
-.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/hair-salons-in-birmingham/"
-
-echo [4/5] Edinburgh...
-.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/hair-salons-in-edinburgh/"
-
-echo [5/5] Leeds...
-.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/hair-salons-in-leeds/"
-
-echo === Done! ===
-pause
-```
-
-> Setiap eksekusi akan **auto-merge** ke JSON yang sama. Duplikat otomatis di-skip.
-
----
-
-## 📋 Workflow Lengkap
-
-```
-┌──────────────────────────┐
-│  1. Build scraper         │  go build -o treatwell_scraper.exe treatwell_scraper.go
-└──────────┬───────────────┘
-           ▼
-┌──────────────────────────┐
-│  2. Jalankan scraper      │  .\treatwell_scraper.exe <url>
-│     (bisa berulang kali)  │  → Output: database/data/*.json
-└──────────┬───────────────┘
-           ▼
-┌──────────────────────────┐
-│  3. Seed database         │  php artisan db:seed
-│                           │  → JSON → MySQL
-└──────────┬───────────────┘
-           ▼
-┌──────────────────────────┐
-│  4. Selesai! ✅            │  Data siap dipakai di app
-└──────────────────────────┘
-```
-
----
-
-## 📂 Struktur File
+## 📁 Struktur File
 
 ```
 database/
 ├── scripts/
-│   ├── treatwell_scraper.go       ← Scraper utama (Go)
-│   ├── parse_face_category.go     ← Parser Excel: Face
-│   ├── parse_body_category.go     ← Parser Excel: Body
-│   ├── parse_nail_category.go     ← Parser Excel: Nails
+│   ├── treatwell_scraper.go    ← Source code scraper
+│   ├── treatwell_scraper.exe   ← Executable (di-build dari .go)
 │   ├── go.mod
 │   └── go.sum
-├── data/
-│   ├── salon.json                 ← Output scraper
+├── data/                       ← Output scraper (auto-merge)
+│   ├── salon.json
 │   ├── service.json
 │   ├── staff.json
 │   ├── salon_images.json
 │   ├── kota.json
 │   └── kategori.json
-├── migrations/                    ← Laravel migrations
-└── seeders/                       ← Laravel seeders (baca JSON)
+└── seeders/                    ← Laravel seeders (baca JSON → MySQL)
 ```
 
 ---
 
-## 🏷️ Data yang Di-Scrape per Salon
+## ⚙️ Setup Awal (Sekali Saja)
 
-| Field | Source | Deskripsi |
-|---|---|---|
-| `nama_salon` | JSON-LD / `<h1>` | Nama salon |
-| `alamat` | JSON-LD `address` | Alamat lengkap |
-| `kota` | JSON-LD `addressLocality` | Kota |
-| `rating` | JSON-LD `aggregateRating` | Rating (0-5) |
-| `total_review` | JSON-LD `reviewCount` | Jumlah review |
-| `opening_time` | JSON-LD `openingHours` | Jam buka |
-| `closing_time` | JSON-LD `openingHours` | Jam tutup |
-| `deskripsi` | JSON-LD `description` | Deskripsi salon |
-| `phone_number` | JSON-LD `telephone` | Nomor telepon |
-| `latitude` | JSON-LD `geo` | Koordinat |
-| `longitude` | JSON-LD `geo` | Koordinat |
-| `services[]` | DOM elements | Nama, harga, durasi, kategori |
-| `staff[]` | DOM elements | Nama team member |
-| `images[]` | JSON-LD + DOM gallery | URL gambar |
+### Prasyarat
+- **Go** versi 1.21+ → [Download](https://go.dev/dl/)
+- **MySQL** sudah jalan (XAMPP/Laragon/dll)
+- **Laravel** sudah dikonfigurasi (`.env` sudah benar)
+
+### Install dependensi Go
+```powershell
+cd database\scripts
+go mod tidy
+```
+
+### Build executable
+```powershell
+go build -o treatwell_scraper.exe treatwell_scraper.go
+```
+
+> ✅ File `treatwell_scraper.exe` akan muncul di folder `scripts/`  
+> ⚠️ Harus di-build ulang setiap kali `treatwell_scraper.go` diubah
 
 ---
 
-## ⚠️ Troubleshooting
+## 🎯 Cara Mendapatkan URL
 
-| Problem | Solusi |
+1. Buka [treatwell.co.uk](https://www.treatwell.co.uk)
+2. Pilih **kategori** (Hair, Nails, Massage, dll) + **kota**
+3. Copy URL dari address bar browser
+
+### Format URL yang didukung
+
+| Tipe | Contoh URL |
 |---|---|
-| `HTTP 429` (rate limited) | Scraper otomatis tunggu 10 detik. Jika terus, kurangi `maxWorkers` |
-| `HTTP 403` (forbidden) | Treatwell block IP. Tunggu beberapa menit |
-| Tidak ada listing ditemukan | Pastikan URL valid — cek di browser dulu |
-| `max retries reached` | Koneksi internet bermasalah |
-| Data tidak muncul di app | Jalankan `php artisan db:seed` setelah scraping |
+| **Category + Kota** (rekomen) | `https://www.treatwell.co.uk/places/treatment-group-hair/offer-type-local/in-london-uk/` |
+| **Keyword + Kota** | `https://www.treatwell.co.uk/places/hair-salons-in-london/` |
+| **Spesifik treatment** | `https://www.treatwell.co.uk/places/treatment-haircut/in-manchester-uk/` |
+
+> 💡 **Tips:** URL dengan format `treatment-group-XXX` biasanya memberikan lebih banyak hasil daripada keyword biasa
+
+---
+
+## ▶️ Cara Menjalankan
+
+### Sintaks dasar
+```powershell
+cd database\scripts
+.\treatwell_scraper.exe "<URL>"
+```
+
+### Contoh lengkap per kategori
+
+```powershell
+# ── HAIR ──────────────────────────────────────────────────────
+.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/treatment-group-hair/offer-type-local/in-london-uk/"
+.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/treatment-group-hair/offer-type-local/in-manchester-uk/"
+.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/treatment-group-hair/offer-type-local/in-birmingham-uk/"
+
+# ── NAILS ─────────────────────────────────────────────────────
+.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/treatment-group-nails/offer-type-local/in-london-uk/"
+.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/treatment-group-nails/offer-type-local/in-manchester-uk/"
+
+# ── MASSAGE ───────────────────────────────────────────────────
+.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/treatment-group-massage/offer-type-local/in-london-uk/"
+
+# ── FACE / BEAUTY ─────────────────────────────────────────────
+.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/treatment-group-face-beauty/offer-type-local/in-london-uk/"
+
+# ── HAIR REMOVAL ──────────────────────────────────────────────
+.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/treatment-group-hair-removal/offer-type-local/in-london-uk/"
+
+# ── EYEBROWS & LASHES ─────────────────────────────────────────
+.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/treatment-group-eyebrows-lashes/offer-type-local/in-london-uk/"
+
+# ── MEN'S GROOMING ────────────────────────────────────────────
+.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/treatment-group-mens-grooming/offer-type-local/in-london-uk/"
+```
+
+---
+
+## 🔄 Alur Kerja Lengkap
+
+```
+┌─────────────────────┐
+│  1. Buka Treatwell  │  → Cari kategori + kota
+│     di browser      │  → Copy URL listing
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  2. Jalankan        │  .\treatwell_scraper.exe "<URL>"
+│     scraper         │
+│                     │  Phase 1: Kumpulkan URL salon (listing pages)
+│                     │  Phase 2: Scrape detail tiap salon (paralel)
+│                     │  Phase 3: Merge ke database/data/*.json
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  3. Ulangi untuk    │  Jalankan lagi dengan URL berbeda
+│     URL lain        │  → Data otomatis di-append (duplikat di-skip)
+│     (opsional)      │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  4. Seed database   │  php artisan db:seed
+│                     │  → JSON → MySQL (auto truncate + insert)
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│  5. Selesai! ✅     │  Data siap dipakai di aplikasi
+└─────────────────────┘
+```
+
+---
+
+## 📊 Output yang Dihasilkan
+
+Setiap scrape otomatis **merge** ke file JSON berikut:
+
+| File | Isi | Field utama |
+|---|---|---|
+| `salon.json` | Data salon | nama, alamat, kota, rating, jam buka |
+| `service.json` | Layanan per salon | nama, harga, durasi, kategori |
+| `staff.json` | Staff per salon | nama |
+| `salon_images.json` | Foto per salon | url gambar |
+| `kota.json` | Daftar kota unik | nama kota, provinsi |
+| `kategori.json` | Kategori layanan unik | nama, slug |
+
+> **Auto-merge:** Salon yang sudah ada (berdasarkan URL) akan **di-skip**, tidak duplikat
+
+---
+
+## ⚡ Performa
+
+| Metric | Nilai |
+|---|---|
+| Speed per salon | ~200ms |
+| Concurrency | 10 goroutine paralel |
+| 1.000 salon | ~3-4 menit |
+| vs JavaScript | **15x lebih cepat** |
+
+---
+
+## ⚙️ Konfigurasi (Opsional)
+
+Edit konstanta di bagian atas `treatwell_scraper.go`:
+
+```go
+const (
+    maxPages       = 50            // Maks halaman listing (20 salon/halaman = max 1000 salon)
+    maxWorkers     = 10            // Goroutine paralel — turunkan jika kena rate limit
+    requestDelay   = 500ms         // Jeda antar halaman listing
+    maxRetries     = 3             // Retry jika request gagal
+    requestTimeout = 15s           // Timeout per request
+)
+```
+
+Setelah edit, **build ulang**:
+```powershell
+go build -o treatwell_scraper.exe treatwell_scraper.go
+```
+
+---
+
+## 🗂️ Scrape Banyak Kategori Sekaligus
+
+Buat file `scrape_all.bat` di folder `database/scripts/`:
+
+```batch
+@echo off
+echo ============================================
+echo   VIYGO - Full Treatwell Scrape
+echo ============================================
+
+echo.
+echo [1/4] Hair - London...
+.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/treatment-group-hair/offer-type-local/in-london-uk/"
+
+echo.
+echo [2/4] Nails - London...
+.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/treatment-group-nails/offer-type-local/in-london-uk/"
+
+echo.
+echo [3/4] Massage - London...
+.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/treatment-group-massage/offer-type-local/in-london-uk/"
+
+echo.
+echo [4/4] Face - London...
+.\treatwell_scraper.exe "https://www.treatwell.co.uk/places/treatment-group-face-beauty/offer-type-local/in-london-uk/"
+
+echo.
+echo ============================================
+echo   Scraping selesai! Jalankan db:seed
+echo ============================================
+pause
+```
+
+Jalankan:
+```powershell
+.\scrape_all.bat
+```
+
+---
+
+## 🌱 Seed ke Database
+
+Setelah scraping selesai, masukkan data ke MySQL:
+
+```powershell
+# Dari root folder viygo-app
+cd d:\VIYGO\viygo-app
+
+php artisan db:seed
+```
+
+> ⚠️ **Peringatan:** `db:seed` akan **TRUNCATE** semua tabel terkait sebelum insert ulang.  
+> Pastikan kamu tidak punya data custom yang ingin dipertahankan.
+
+### Hasil seed (estimasi dari 1 run London Hair):
+```
+✅ kota         →    399 records
+✅ kategori     →  2,130 records
+✅ users        →  1,013 records  (1 admin + 1 customer + 1011 owners)
+✅ salon        →  1,011 records
+✅ service      → 42,961 records
+✅ staff        →  1,434 records
+✅ salon_images →  9,225 records
+```
+
+---
+
+## 🔁 Workflow Reset Data
+
+Kalau mau scrape ulang dari nol:
+
+```powershell
+# 1. Reset semua JSON ke array kosong
+cd database\data
+'[]' | Out-File salon.json -Encoding utf8
+'[]' | Out-File service.json -Encoding utf8
+'[]' | Out-File staff.json -Encoding utf8
+'[]' | Out-File salon_images.json -Encoding utf8
+'[]' | Out-File kota.json -Encoding utf8
+'[]' | Out-File kategori.json -Encoding utf8
+
+# 2. Scrape ulang
+cd ..\scripts
+.\treatwell_scraper.exe "<URL>"
+
+# 3. Seed ulang
+cd d:\VIYGO\viygo-app
+php artisan db:seed
+```
+
+---
+
+## 🔍 Membaca Output Scraper
+
+```
+╔══════════════════════════════════╗
+║  🚀 Treatwell Scraper - Starting ║
+╚══════════════════════════════════╝
+
+📋 Base URL  : https://www.treatwell.co.uk/places/...
+📁 Data dir  : D:\VIYGO\viygo-app\database\data
+⚡ Workers   : 10 concurrent
+📄 Max pages : 50
+
+═══ Phase 1: Collecting salon listings ═══
+
+📄 Page 1: https://...             ← URL halaman listing
+   ✅ Found 20 salons (20 new, 20 total)   ← 20 salon ditemukan per halaman
+
+═══ Phase 2: Scraping detail pages ═══
+
+   [1/997] ✅ Salon Name (25 services)    ← [index/total] nama (jumlah service)
+   [2/997] ❌ Error Salon: HTTP 429       ← Rate limited, scraper otomatis retry
+
+═══ Phase 3: Merging into JSON database ═══
+
+   [OK] salon.json     1011 records       ← Total record di file JSON
+
+╔══════════════════════════════════╗
+║  🎉 SCRAPING COMPLETE            ║
+║  ⏱️  Duration : 3m16s            ║
+║  🏪 New salons : 991             ║
+║  💇 New services : 42463         ║
+╚══════════════════════════════════╝
+
+⚡ Average: 197ms per salon
+```
+
+---
+
+## ❌ Troubleshooting
+
+| Error | Penyebab | Solusi |
+|---|---|---|
+| `HTTP 429` | Rate limited oleh Treatwell | Scraper otomatis tunggu 10 detik. Jika terus, turunkan `maxWorkers` ke `5` |
+| `HTTP 403` | IP di-block sementara | Tunggu 5-10 menit lalu coba lagi |
+| `No listings found` | Format URL tidak dikenali | Pastikan URL valid — cek di browser dulu |
+| `max retries reached` | Koneksi internet gagal | Cek koneksi, coba lagi |
+| `0 services` | Salon tidak punya listing service | Normal — beberapa salon memang tidak tampilkan service |
+| Seeder error: duplicate slug | Kategori duplikat di JSON | Sudah handled otomatis oleh `KategoriSeeder` |
+| Seeder error: duplicate entry | Data sudah ada di DB | `db:seed` sudah auto-truncate, coba jalankan lagi |
+
+---
+
+## 💡 Tips
+
+1. **Mulai dari kategori spesifik** — URL `treatment-group-XXX` lebih efisien dari keyword umum
+2. **Scrape kota besar dulu** — London, Manchester, Birmingham punya paling banyak data
+3. **Jangan interrupt di tengah** — Biarkan sampai `SCRAPING COMPLETE` muncul
+4. **Data append otomatis** — Aman dijalankan berkali-kali, duplikat di-skip
+5. **Build sekali, pakai berkali-kali** — `.exe` tidak perlu di-build ulang kecuali kode diubah
