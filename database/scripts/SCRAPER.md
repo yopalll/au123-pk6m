@@ -44,8 +44,16 @@ go mod tidy
 go build -o treatwell_scraper.exe treatwell_scraper.go
 ```
 
-> ✅ File `treatwell_scraper.exe` akan muncul di folder `scripts/`  
-> ⚠️ Harus di-build ulang setiap kali `treatwell_scraper.go` diubah
+Atau pakai script yang sudah disediakan (double-click / jalankan di terminal):
+```powershell
+.\build.bat
+```
+
+> ⚠️ **PENTING — Setelah `git pull`:**  
+> Kalau ada perubahan di `treatwell_scraper.go`, kamu **WAJIB build ulang** sebelum pakai!  
+> Cukup jalankan `.\build.bat` atau perintah `go build` di atas.  
+> Kalau tidak di-build ulang → scraper pakai versi lama → bisa error / no listings found.
+
 
 ---
 
