@@ -1,1 +1,57 @@
-[]
+[
+  {
+    "id_kota": 1,
+    "nama_kota": "London",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2,
+    "nama_kota": "Richmond",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 3,
+    "nama_kota": "Brentford ",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 4,
+    "nama_kota": "First Floor",
+    "provinsi": "Richmond"
+  },
+  {
+    "id_kota": 5,
+    "nama_kota": "Limeharbour \u0026 Skylines Village",
+    "provinsi": "London"
+  },
+  {
+    "id_kota": 6,
+    "nama_kota": "Unknown",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 7,
+    "nama_kota": "Harrow",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 8,
+    "nama_kota": "Isleworth",
+    "provinsi": "United Kingdom"
+  },
+  {
+    "id_kota": 9,
+    "nama_kota": "Edgware,Mill hill",
+    "provinsi": "London"
+  },
+  {
+    "id_kota": 10,
+    "nama_kota": "Brentford",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 11,
+    "nama_kota": "Ground Floor",
+    "provinsi": "Pimlico, Victoria"
+  }
+]

@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 	"sync"
@@ -300,26 +301,50 @@ func findItemList(jsonlds []map[string]any) []ListingEntry {
 
 // ─── Listing page parser ────────────────────────────────────────────────────
 
-func scrapeListingPage(htmlStr string, baseOrigin string) []ListingEntry {
+// placeURLRe matches Treatwell salon detail page URLs
+var placeURLRe = regexp.MustCompile(`https?://www\.treatwell\.co\.uk/place/([^/?#"'\s]+)`)
+
+// paginationRe matches Treatwell pagination links like /places/.../page-N/
+var paginationRe = regexp.MustCompile(`https?://www\.treatwell\.co\.uk/places/[^"'\s]*page-(\d+)[^"'\s]*`)
+
+// pageNumRe extracts page number from URL
+var pageNumRe = regexp.MustCompile(`page-(\d+)`)
+
+func extractPageNum(url string) int {
+	if m := pageNumRe.FindStringSubmatch(url); m != nil {
+		n, _ := strconv.Atoi(m[1])
+		return n
+	}
+	return 0
+}
+
+type ListingResult struct {
+	Entries       []ListingEntry
+	NextPageURLs  []string // Actual pagination URLs found on the page
+}
+
+func scrapeListingPage(htmlStr string, baseOrigin string) ListingResult {
+	result := ListingResult{}
+
 	doc, err := html.Parse(strings.NewReader(htmlStr))
 	if err != nil {
-		return nil
+		return result
 	}
 
 	// Try JSON-LD first (most reliable)
 	jsonlds := extractJSONLD(doc)
 	entries := findItemList(jsonlds)
 	if len(entries) > 0 {
-		// Resolve relative URLs
 		for i := range entries {
 			if !strings.HasPrefix(entries[i].URL, "http") {
 				entries[i].URL = baseOrigin + entries[i].URL
 			}
 		}
-		return entries
+		result.Entries = entries
+		return result
 	}
 
-	// Fallback: DOM-based scraping
+	// Fallback 1: DOM-based venue cards
 	venueCards := findNodes(doc, func(n *html.Node) bool {
 		if n.Type != html.ElementNode {
 			return false
@@ -333,7 +358,6 @@ func scrapeListingPage(htmlStr string, baseOrigin string) []ListingEntry {
 	})
 
 	for _, card := range venueCards {
-		// Find <a> link to venue
 		links := findNodes(card, func(n *html.Node) bool {
 			return n.Type == html.ElementNode && n.Data == "a" && strings.Contains(getAttr(n, "href"), "/place/")
 		})
@@ -345,7 +369,6 @@ func scrapeListingPage(htmlStr string, baseOrigin string) []ListingEntry {
 			href = baseOrigin + href
 		}
 
-		// Find name
 		var name string
 		nameNodes := findNodes(card, func(n *html.Node) bool {
 			return n.Type == html.ElementNode && (n.Data == "h2" || n.Data == "h3" || hasClass(n, "name"))
@@ -359,7 +382,87 @@ func scrapeListingPage(htmlStr string, baseOrigin string) []ListingEntry {
 		}
 	}
 
-	return entries
+	if len(entries) > 0 {
+		result.Entries = entries
+		return result
+	}
+
+	// Fallback 2: Extract ALL /place/ links from the entire page
+	// This works because Treatwell renders salon cards as plain <a> tags
+	seen := make(map[string]bool)
+	allLinks := findNodes(doc, func(n *html.Node) bool {
+		return n.Type == html.ElementNode && n.Data == "a"
+	})
+
+	for _, link := range allLinks {
+		href := getAttr(link, "href")
+		if href == "" {
+			continue
+		}
+		if !strings.HasPrefix(href, "http") {
+			href = baseOrigin + href
+		}
+
+		// Match /place/ URLs
+		matches := placeURLRe.FindStringSubmatch(href)
+		if matches == nil {
+			continue
+		}
+
+		// Strip query params for dedup key
+		slug := matches[1]
+		cleanURL := fmt.Sprintf("https://www.treatwell.co.uk/place/%s/", strings.TrimSuffix(slug, "/"))
+
+		if seen[cleanURL] {
+			continue
+		}
+		seen[cleanURL] = true
+
+		// Try to get link text as name
+		name := getTextContent(link)
+		// Clean up "Go to venue" type texts
+		if name == "Go to venue" || name == "" || len(name) > 200 {
+			// Try to extract name from slug
+			name = strings.ReplaceAll(slug, "-", " ")
+			name = strings.Title(strings.TrimSuffix(name, "/"))
+		}
+
+		entries = append(entries, ListingEntry{Name: name, URL: cleanURL})
+	}
+
+	result.Entries = entries
+
+	// Also extract pagination URLs
+	pageURLsSeen := make(map[string]bool)
+	for _, link := range allLinks {
+		href := getAttr(link, "href")
+		if href == "" {
+			continue
+		}
+		if !strings.HasPrefix(href, "http") {
+			href = baseOrigin + href
+		}
+		if paginationRe.MatchString(href) {
+			// Clean URL
+			cleanPageURL := strings.Split(href, "?")[0]
+			if !strings.HasSuffix(cleanPageURL, "/") {
+				cleanPageURL += "/"
+			}
+			if !pageURLsSeen[cleanPageURL] {
+				pageURLsSeen[cleanPageURL] = true
+				result.NextPageURLs = append(result.NextPageURLs, cleanPageURL)
+			}
+		}
+	}
+
+	// Sort pagination URLs by page number (ascending) to avoid zigzag
+	sort.Slice(result.NextPageURLs, func(i, j int) bool {
+		numI := extractPageNum(result.NextPageURLs[i])
+		numJ := extractPageNum(result.NextPageURLs[j])
+		return numI < numJ
+	})
+
+	return result
 }
 
 // ─── Detail page parser ─────────────────────────────────────────────────────
@@ -477,118 +580,145 @@ func scrapeDetailPage(url string) (*ScrapedSalon, error) {
 		}
 	}
 
-	// === DOM-based service extraction ===
-	serviceNodes := findNodes(doc, func(n *html.Node) bool {
-		if n.Type != html.ElementNode {
-			return false
+	// === JSON-LD service extraction from hasOfferCatalog ===
+	if biz != nil {
+		if catalog, ok := biz["hasOfferCatalog"].(map[string]any); ok {
+			extractServicesFromCatalog(catalog, "", salon)
 		}
-		cls := getAttr(n, "class")
-		testID := getAttr(n, "data-testid")
-		return strings.Contains(cls, "treatment-item") ||
-			strings.Contains(cls, "service-item") ||
-			strings.Contains(testID, "treatment")
-	})
+	}
 
-	for _, sNode := range serviceNodes {
-		nameNodes := findNodes(sNode, func(n *html.Node) bool {
-			if n.Type != html.ElementNode {
-				return false
+	// === Staff extraction from JSON-LD reviews (employeeDescription) ===
+	if biz != nil {
+		if reviews, ok := biz["review"].([]any); ok {
+			staffSeen := make(map[string]bool)
+			staffRe := regexp.MustCompile(`(?i)(?:treatment by|service by|styled by|treated by)\s+(.+)`)
+			for _, r := range reviews {
+				if rm, ok := r.(map[string]any); ok {
+					// Check reviewBody for staff mentions
+					if body, ok := rm["reviewBody"].(string); ok {
+						_ = body // not used directly for staff
+					}
+				}
 			}
-			return n.Data == "h3" || n.Data == "h4" ||
-				hasClass(n, "name") || hasClass(n, "title")
-		})
-		priceNodes := findNodes(sNode, func(n *html.Node) bool {
-			return n.Type == html.ElementNode && hasClass(n, "price")
-		})
-		durationNodes := findNodes(sNode, func(n *html.Node) bool {
-			return n.Type == html.ElementNode && hasClass(n, "duration")
-		})
+			// Also look in raw HTML for employeeDescription patterns
+			empDescRe := regexp.MustCompile(`"employeeDescription"\s*:\s*"([^"]+)"`)
+			empMatches := empDescRe.FindAllStringSubmatch(htmlStr, -1)
+			for _, m := range empMatches {
+				desc := m[1]
+				if staffMatch := staffRe.FindStringSubmatch(desc); staffMatch != nil {
+					name := strings.TrimSpace(staffMatch[1])
+					if name != "" && !staffSeen[name] && len(name) < 60 {
+						staffSeen[name] = true
+						salon.StaffNames = append(salon.StaffNames, name)
+					}
+				}
+			}
+		}
+	}
 
-		var svcName, priceText, durationText string
-		if len(nameNodes) > 0 {
-			svcName = getTextContent(nameNodes[0])
-		}
-		if len(priceNodes) > 0 {
-			priceText = getTextContent(priceNodes[0])
-		}
-		if len(durationNodes) > 0 {
-			durationText = getTextContent(durationNodes[0])
+	// Images already extracted from JSON-LD biz["image"] above
+	// No need for DOM gallery extraction since JSON-LD has full image list
+
+	return salon, nil
+}
+
+// extractServicesFromCatalog recursively extracts services from JSON-LD OfferCatalog
+func extractServicesFromCatalog(catalog map[string]any, parentCategory string, salon *ScrapedSalon) {
+	// The catalog has a "name" which is the category name
+	categoryName, _ := catalog["name"].(string)
+	if categoryName == "Available Services" {
+		categoryName = "" // top-level, not a real category
+	}
+
+	items, ok := catalog["itemListElement"].([]any)
+	if !ok {
+		return
+	}
+
+	for _, item := range items {
+		m, ok := item.(map[string]any)
+		if !ok {
+			continue
 		}
 
-		if svcName != "" {
+		itemType, _ := m["@type"].(string)
+
+		// If this is a nested OfferCatalog (category grouping), recurse
+		if itemType == "OfferCatalog" {
+			extractServicesFromCatalog(m, categoryName, salon)
+			continue
+		}
+
+		// This is an Offer or AggregateOffer — extract service
+		if itemType == "Offer" || itemType == "AggregateOffer" {
+			offered, ok := m["itemOffered"].(map[string]any)
+			if !ok {
+				continue
+			}
+
+			svcName, _ := offered["name"].(string)
+			if svcName == "" {
+				continue
+			}
+
+			// Parse price (use "price" for Offer, "lowPrice" for AggregateOffer)
+			var price float64
+			if p, ok := m["price"]; ok {
+				price = toFloat(p)
+			} else if p, ok := m["lowPrice"]; ok {
+				price = toFloat(p)
+			}
+
+			// Parse duration from additionalProperty
+			var durasi int = 60 // default
+			if prop, ok := offered["additionalProperty"].(map[string]any); ok {
+				if propName, _ := prop["name"].(string); propName == "Duration" {
+					if val, ok := prop["value"].(string); ok {
+						durasi = parseISODuration(val)
+					}
+				}
+			}
+
+			// Determine category: use parent catalog name, fallback to guessCategory
+			cat := categoryName
+			if cat == "" {
+				cat = parentCategory
+			}
+			if cat == "" {
+				cat = guessCategory(svcName)
+			}
+
 			salon.Services = append(salon.Services, ScrapedSvc{
 				Nama:     svcName,
-				Harga:    parsePrice(priceText),
-				Durasi:   parseDuration(durationText),
-				Kategori: guessCategory(svcName),
+				Harga:    price,
+				Durasi:   durasi,
+				Kategori: cat,
 			})
 		}
 	}
+}
 
-	// === DOM-based staff extraction ===
-	staffNodes := findNodes(doc, func(n *html.Node) bool {
-		if n.Type != html.ElementNode {
-			return false
-		}
-		cls := getAttr(n, "class")
-		testID := getAttr(n, "data-testid")
-		return strings.Contains(cls, "team-member") ||
-			strings.Contains(cls, "staff") ||
-			strings.Contains(testID, "team")
-	})
-
-	for _, sn := range staffNodes {
-		nameNodes := findNodes(sn, func(n *html.Node) bool {
-			if n.Type != html.ElementNode {
-				return false
-			}
-			return n.Data == "h3" || n.Data == "h4" || n.Data == "span" || hasClass(n, "name")
-		})
-		if len(nameNodes) > 0 {
-			name := getTextContent(nameNodes[0])
-			if len(name) > 1 && len(name) < 50 {
-				salon.StaffNames = append(salon.StaffNames, name)
-			}
-		}
+// parseISODuration parses ISO 8601 duration like "PT30M", "PT1H", "PT1H30M", "PT15M - PT20M"
+func parseISODuration(s string) int {
+	// Handle range format "PT15M - PT20M" → take first value
+	if idx := strings.Index(s, " - "); idx > 0 {
+		s = s[:idx]
 	}
+	s = strings.TrimSpace(s)
 
-	// Gallery images from DOM
-	imgNodes := findNodes(doc, func(n *html.Node) bool {
-		if n.Type != html.ElementNode || n.Data != "img" {
-			return false
-		}
-		// Look for gallery/carousel/photo images
-		parent := n.Parent
-		for p := parent; p != nil; p = p.Parent {
-			cls := getAttr(p, "class")
-			if strings.Contains(cls, "gallery") || strings.Contains(cls, "carousel") || strings.Contains(cls, "photo") {
-				return true
-			}
-		}
-		return false
-	})
-
-	for _, img := range imgNodes {
-		src := getAttr(img, "src")
-		if src == "" {
-			src = getAttr(img, "data-src")
-		}
-		if src != "" && strings.HasPrefix(src, "http") {
-			// Deduplicate
-			found := false
-			for _, existing := range salon.ImageURLs {
-				if existing == src {
-					found = true
-					break
-				}
-			}
-			if !found {
-				salon.ImageURLs = append(salon.ImageURLs, src)
-			}
-		}
+	total := 0
+	if m := regexp.MustCompile(`(\d+)H`).FindStringSubmatch(s); m != nil {
+		v, _ := strconv.Atoi(m[1])
+		total += v * 60
 	}
-
-	return salon, nil
+	if m := regexp.MustCompile(`(\d+)M`).FindStringSubmatch(s); m != nil {
+		v, _ := strconv.Atoi(m[1])
+		total += v
+	}
+	if total == 0 {
+		return 60
+	}
+	return total
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -792,13 +922,23 @@ func main() {
 	fmt.Println("═══ Phase 1: Collecting salon listings ═══")
 
 	var allListings []ListingEntry
+	seenSalonURLs := make(map[string]bool) // dedup across pages
 
-	for page := 1; page <= maxPages; page++ {
-		pageURL := baseURL
-		if page > 1 {
-			pageURL = fmt.Sprintf("%spage-%d/", baseURL, page)
+	// Build initial page queue: page 1 is the base URL
+	pageQueue := []string{baseURL}
+	visitedPages := make(map[string]bool)
+
+	for len(pageQueue) > 0 && len(visitedPages) < maxPages {
+		pageURL := pageQueue[0]
+		pageQueue = pageQueue[1:]
+
+		if visitedPages[pageURL] {
+			continue
 		}
-		fmt.Printf("\n📄 Page %d: %s\n", page, pageURL)
+		visitedPages[pageURL] = true
+
+		pageNum := len(visitedPages)
+		fmt.Printf("\n📄 Page %d: %s\n", pageNum, pageURL)
 
 		htmlStr, err := fetchHTML(pageURL)
 		if err != nil {
@@ -806,14 +946,30 @@ func main() {
 			break
 		}
 
-		listings := scrapeListingPage(htmlStr, origin)
-		if len(listings) == 0 {
-			fmt.Println("   ❌ No listings found. Stopping pagination.")
+		result := scrapeListingPage(htmlStr, origin)
+		if len(result.Entries) == 0 {
+			fmt.Println("   ❌ No listings found on this page. Stopping.")
 			break
 		}
 
-		fmt.Printf("   ✅ Found %d salons\n", len(listings))
-		allListings = append(allListings, listings...)
+		// Deduplicate listings across pages
+		newCount := 0
+		for _, entry := range result.Entries {
+			if !seenSalonURLs[entry.URL] {
+				seenSalonURLs[entry.URL] = true
+				allListings = append(allListings, entry)
+				newCount++
+			}
+		}
+
+		fmt.Printf("   ✅ Found %d salons (%d new, %d total)\n", len(result.Entries), newCount, len(allListings))
+
+		// Add discovered pagination URLs to queue
+		for _, nextURL := range result.NextPageURLs {
+			if !visitedPages[nextURL] {
+				pageQueue = append(pageQueue, nextURL)
+			}
+		}
 
 		time.Sleep(requestDelay + time.Duration(rand.Intn(500))*time.Millisecond)
 	}

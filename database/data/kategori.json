@@ -1,1 +1,378 @@
-[]
+[
+  {
+    "id_kategori": 1,
+    "name": "Manicures \u0026 Pedicures",
+    "deskripsi": "Services related to Manicures \u0026 Pedicures",
+    "slug": "manicures-pedicures",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 2,
+    "name": "Dipping Powder Nails",
+    "deskripsi": "Services related to Dipping Powder Nails",
+    "slug": "dipping-powder-nails",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 3,
+    "name": "Nail Extensions \u0026 Enhancements",
+    "deskripsi": "Services related to Nail Extensions \u0026 Enhancements",
+    "slug": "nail-extensions-enhancements",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 4,
+    "name": "Nail Extras",
+    "deskripsi": "Services related to Nail Extras",
+    "slug": "nail-extras",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 5,
+    "name": "Ladies' Waxing",
+    "deskripsi": "Services related to Ladies' Waxing",
+    "slug": "ladies-waxing",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 6,
+    "name": "Facials",
+    "deskripsi": "Services related to Facials",
+    "slug": "facials",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 7,
+    "name": "Classic Massages",
+    "deskripsi": "Services related to Classic Massages",
+    "slug": "classic-massages",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 8,
+    "name": "Body Treatments",
+    "deskripsi": "Services related to Body Treatments",
+    "slug": "body-treatments",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 9,
+    "name": "Lash \u0026 Brow Treatments",
+    "deskripsi": "Services related to Lash \u0026 Brow Treatments",
+    "slug": "lash-brow-treatments",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 10,
+    "name": "FACIAL HAIR REMOVAL",
+    "deskripsi": "Services related to FACIAL HAIR REMOVAL",
+    "slug": "facial-hair-removal",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 11,
+    "name": "MAIN MANU",
+    "deskripsi": "Services related to MAIN MANU",
+    "slug": "main-manu",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 12,
+    "name": "MANICURE \u0026 PEDICURE",
+    "deskripsi": "Services related to MANICURE \u0026 PEDICURE",
+    "slug": "manicure-pedicure",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 13,
+    "name": "TAKE OFF",
+    "deskripsi": "Services related to TAKE OFF",
+    "slug": "take-off",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 14,
+    "name": "ADD ONS",
+    "deskripsi": "Services related to ADD ONS",
+    "slug": "add-ons",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 15,
+    "name": "Semi-Permanent Makeup",
+    "deskripsi": "Services related to Semi-Permanent Makeup",
+    "slug": "semi-permanent-makeup",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 16,
+    "name": "Eyebrows \u0026 Eyelashes",
+    "deskripsi": "Services related to Eyebrows \u0026 Eyelashes",
+    "slug": "eyebrows-eyelashes",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 17,
+    "name": "Ladies' Waxing Packages",
+    "deskripsi": "Services related to Ladies' Waxing Packages",
+    "slug": "ladies-waxing-packages",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 18,
+    "name": "Men's Waxing",
+    "deskripsi": "Services related to Men's Waxing",
+    "slug": "men-s-waxing",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 19,
+    "name": "Reflexology \u0026 Lymphatic Massages",
+    "deskripsi": "Services related to Reflexology \u0026 Lymphatic Massages",
+    "slug": "reflexology-lymphatic-massages",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 20,
+    "name": "Facial Threading",
+    "deskripsi": "Services related to Facial Threading",
+    "slug": "facial-threading",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 21,
+    "name": "Body Spa Treatments",
+    "deskripsi": "Services related to Body Spa Treatments",
+    "slug": "body-spa-treatments",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 22,
+    "name": "Therapeutic Massages",
+    "deskripsi": "Services related to Therapeutic Massages",
+    "slug": "therapeutic-massages",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 23,
+    "name": "Cosmetic Injectables \u0026 Treatments",
+    "deskripsi": "Services related to Cosmetic Injectables \u0026 Treatments",
+    "slug": "cosmetic-injectables-treatments",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 24,
+    "name": "Weight Loss \u0026 Cellulite Treatments",
+    "deskripsi": "Services related to Weight Loss \u0026 Cellulite Treatments",
+    "slug": "weight-loss-cellulite-treatments",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 25,
+    "name": "Permanent Hair Removal",
+    "deskripsi": "Services related to Permanent Hair Removal",
+    "slug": "permanent-hair-removal",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 26,
+    "name": "Eyelash Extensions",
+    "deskripsi": "Services related to Eyelash Extensions",
+    "slug": "eyelash-extensions",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 27,
+    "name": "Ladies' - Haircuts \u0026 Hairdressing",
+    "deskripsi": "Services related to Ladies' - Haircuts \u0026 Hairdressing",
+    "slug": "ladies-haircuts-hairdressing",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 28,
+    "name": "Ladies' - Hair Treatments",
+    "deskripsi": "Services related to Ladies' - Hair Treatments",
+    "slug": "ladies-hair-treatments",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 29,
+    "name": "Ladies' - Weaves \u0026 Wigs",
+    "deskripsi": "Services related to Ladies' - Weaves \u0026 Wigs",
+    "slug": "ladies-weaves-wigs",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 30,
+    "name": "Ladies' - Braids, Cornrows \u0026 Twists",
+    "deskripsi": "Services related to Ladies' - Braids, Cornrows \u0026 Twists",
+    "slug": "ladies-braids-cornrows-twists",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 31,
+    "name": "Patch Test",
+    "deskripsi": "Services related to Patch Test",
+    "slug": "patch-test",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 32,
+    "name": "Ladies - Highlights \u0026 Balayage",
+    "deskripsi": "Services related to Ladies - Highlights \u0026 Balayage",
+    "slug": "ladies-highlights-balayage",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 33,
+    "name": "Ladies' - Hair Colouring",
+    "deskripsi": "Services related to Ladies' - Hair Colouring",
+    "slug": "ladies-hair-colouring",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 34,
+    "name": "Children - Haircuts \u0026 Hairdressing",
+    "deskripsi": "Services related to Children - Haircuts \u0026 Hairdressing",
+    "slug": "children-haircuts-hairdressing",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 35,
+    "name": "Men - Braids, Cornrows \u0026 Twists",
+    "deskripsi": "Services related to Men - Braids, Cornrows \u0026 Twists",
+    "slug": "men-braids-cornrows-twists",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 36,
+    "name": "Japanese Head Spa",
+    "deskripsi": "Services related to Japanese Head Spa",
+    "slug": "japanese-head-spa",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 37,
+    "name": "Highlighting Services",
+    "deskripsi": "Services related to Highlighting Services",
+    "slug": "highlighting-services",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 38,
+    "name": "Balayaging Services",
+    "deskripsi": "Services related to Balayaging Services",
+    "slug": "balayaging-services",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 39,
+    "name": "Tinting Services",
+    "deskripsi": "Services related to Tinting Services",
+    "slug": "tinting-services",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 40,
+    "name": "Bleaching Services Incl Toner|Treatment",
+    "deskripsi": "Services related to Bleaching Services Incl Toner|Treatment",
+    "slug": "bleaching-services-incl-toner-treatment",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 41,
+    "name": "Hair Extensions (CONSULTATION NEEDED)",
+    "deskripsi": "Services related to Hair Extensions (CONSULTATION NEEDED)",
+    "slug": "hair-extensions-consultation-needed",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 42,
+    "name": "Haircut \u0026 Blowdry, Styling",
+    "deskripsi": "Services related to Haircut \u0026 Blowdry, Styling",
+    "slug": "haircut-blowdry-styling",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 43,
+    "name": "Ladies - Hair Coloring",
+    "deskripsi": "Services related to Ladies - Hair Coloring",
+    "slug": "ladies-hair-coloring",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 44,
+    "name": "Smoothing \u0026 Keratin Treatment",
+    "deskripsi": "Services related to Smoothing \u0026 Keratin Treatment",
+    "slug": "smoothing-keratin-treatment",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 45,
+    "name": "Treatment",
+    "deskripsi": "Services related to Treatment",
+    "slug": "treatment",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 46,
+    "name": "Anti-Wrinkles Tox Treatments",
+    "deskripsi": "Services related to Anti-Wrinkles Tox Treatments",
+    "slug": "anti-wrinkles-tox-treatments",
+    "icon_url": null,
+    "is_active": true
+  },
+  {
+    "id_kategori": 47,
+    "name": "Tanning",
+    "deskripsi": "Services related to Tanning",
+    "slug": "tanning",
+    "icon_url": null,
+    "is_active": true
+  }
+]

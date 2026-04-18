@@ -1,1 +1,135 @@
-[]
+[
+  {
+    "id_staff": 1,
+    "id_salon": 1,
+    "name": "Nail Technician",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 2,
+    "id_salon": 2,
+    "name": "Helen",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 3,
+    "id_salon": 4,
+    "name": "Nail Boutique",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 4,
+    "id_salon": 4,
+    "name": "Ann",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 5,
+    "id_salon": 4,
+    "name": "Luka",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 6,
+    "id_salon": 5,
+    "name": "Mariana Macovei",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 7,
+    "id_salon": 6,
+    "name": "Aalia Tabasam",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 8,
+    "id_salon": 7,
+    "name": "KK",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 9,
+    "id_salon": 8,
+    "name": "Iulia",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 10,
+    "id_salon": 9,
+    "name": "Anchal",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 11,
+    "id_salon": 10,
+    "name": "Teff",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 12,
+    "id_salon": 11,
+    "name": "Tarana Medical Aesthetics",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 13,
+    "id_salon": 12,
+    "name": "Shelley Geraghty",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 14,
+    "id_salon": 13,
+    "name": "Mila Hasanaj",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 15,
+    "id_salon": 15,
+    "name": "Ellie Souleiman",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 16,
+    "id_salon": 16,
+    "name": "Gosha Malgorzata",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 17,
+    "id_salon": 17,
+    "name": "Rhea",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 18,
+    "id_salon": 17,
+    "name": "Azin",
+    "profile_url": null,
+    "status": "active"
+  },
+  {
+    "id_staff": 19,
+    "id_salon": 18,
+    "name": "Ali",
+    "profile_url": null,
+    "status": "active"
+  }
+]

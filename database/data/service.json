@@ -1,1 +1,4982 @@
-[]
+[
+  {
+    "id_service": 1,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "Shellac Manicure \u0026 Pedicure",
+    "deskripsi": null,
+    "durasi": 105,
+    "harga": 94.5,
+    "status": "active"
+  },
+  {
+    "id_service": 2,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "Shellac Manicure",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 38.5,
+    "status": "active"
+  },
+  {
+    "id_service": 3,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "Shellac Pedicure",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 45.5,
+    "status": "active"
+  },
+  {
+    "id_service": 4,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "Shellac Manicure incl. Removal",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 42,
+    "status": "active"
+  },
+  {
+    "id_service": 5,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "Luxury Gel Manicure",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 45.5,
+    "status": "active"
+  },
+  {
+    "id_service": 6,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "Luxury Gel Pedicure",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 52.5,
+    "status": "active"
+  },
+  {
+    "id_service": 7,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "Luxury Gel Manicure \u0026 Pedicure",
+    "deskripsi": null,
+    "durasi": 105,
+    "harga": 98,
+    "status": "active"
+  },
+  {
+    "id_service": 8,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "Shellac Removal",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 10.5,
+    "status": "active"
+  },
+  {
+    "id_service": 9,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "Gel Removal",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 17.5,
+    "status": "active"
+  },
+  {
+    "id_service": 10,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "File \u0026 Polish - Hands",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 17.5,
+    "status": "active"
+  },
+  {
+    "id_service": 11,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "File \u0026 Polish - Toes",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 24.5,
+    "status": "active"
+  },
+  {
+    "id_service": 12,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "Classic Manicure",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 24.5,
+    "status": "active"
+  },
+  {
+    "id_service": 13,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "Classic Pedicure",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 14,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "Classic Manicure \u0026 Pedicure",
+    "deskripsi": null,
+    "durasi": 75,
+    "harga": 63,
+    "status": "active"
+  },
+  {
+    "id_service": 15,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "Polish Only",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 10.5,
+    "status": "active"
+  },
+  {
+    "id_service": 16,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "Russian Gel  Manicure",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 49,
+    "status": "active"
+  },
+  {
+    "id_service": 17,
+    "id_salon": 1,
+    "id_kategori": 1,
+    "nama": "BIAB",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 52.5,
+    "status": "active"
+  },
+  {
+    "id_service": 18,
+    "id_salon": 2,
+    "id_kategori": 1,
+    "nama": "Spa Manicure",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 20.7,
+    "status": "active"
+  },
+  {
+    "id_service": 19,
+    "id_salon": 2,
+    "id_kategori": 1,
+    "nama": "Spa Pedicure",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 33.3,
+    "status": "active"
+  },
+  {
+    "id_service": 20,
+    "id_salon": 2,
+    "id_kategori": 1,
+    "nama": "Gel Manicure",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 33.3,
+    "status": "active"
+  },
+  {
+    "id_service": 21,
+    "id_salon": 2,
+    "id_kategori": 1,
+    "nama": "Gel Pedicure",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 42.3,
+    "status": "active"
+  },
+  {
+    "id_service": 22,
+    "id_salon": 2,
+    "id_kategori": 1,
+    "nama": "Shellac Manicure \u0026 Pedicure",
+    "deskripsi": null,
+    "durasi": 105,
+    "harga": 70.2,
+    "status": "active"
+  },
+  {
+    "id_service": 23,
+    "id_salon": 2,
+    "id_kategori": 1,
+    "nama": "Spa Manicure \u0026 Pedicure",
+    "deskripsi": null,
+    "durasi": 110,
+    "harga": 49.5,
+    "status": "active"
+  },
+  {
+    "id_service": 24,
+    "id_salon": 2,
+    "id_kategori": 1,
+    "nama": "Deluxe Manicure",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 31.5,
+    "status": "active"
+  },
+  {
+    "id_service": 25,
+    "id_salon": 2,
+    "id_kategori": 1,
+    "nama": "Deluxe Pedicure",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 43.2,
+    "status": "active"
+  },
+  {
+    "id_service": 26,
+    "id_salon": 2,
+    "id_kategori": 1,
+    "nama": "Shellac Manicure incl. Removal",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 37.8,
+    "status": "active"
+  },
+  {
+    "id_service": 27,
+    "id_salon": 2,
+    "id_kategori": 1,
+    "nama": "Gel Polish - Hands",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 25.2,
+    "status": "active"
+  },
+  {
+    "id_service": 28,
+    "id_salon": 2,
+    "id_kategori": 1,
+    "nama": "Shellac Polish - Toes",
+    "deskripsi": null,
+    "durasi": 35,
+    "harga": 28.8,
+    "status": "active"
+  },
+  {
+    "id_service": 29,
+    "id_salon": 2,
+    "id_kategori": 1,
+    "nama": "File \u0026 Polish - Hands",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 15.3,
+    "status": "active"
+  },
+  {
+    "id_service": 30,
+    "id_salon": 2,
+    "id_kategori": 1,
+    "nama": "File \u0026 Polish - Toes",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 19.8,
+    "status": "active"
+  },
+  {
+    "id_service": 31,
+    "id_salon": 2,
+    "id_kategori": 1,
+    "nama": "Gel Removal",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 13.5,
+    "status": "active"
+  },
+  {
+    "id_service": 32,
+    "id_salon": 2,
+    "id_kategori": 1,
+    "nama": "Men's Manicure \u0026 Pedicure",
+    "deskripsi": null,
+    "durasi": 80,
+    "harga": 47.7,
+    "status": "active"
+  },
+  {
+    "id_service": 33,
+    "id_salon": 2,
+    "id_kategori": 1,
+    "nama": "BIAB",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 45,
+    "status": "active"
+  },
+  {
+    "id_service": 34,
+    "id_salon": 2,
+    "id_kategori": 2,
+    "nama": "Dipping Powder on Natural Nails",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 33.3,
+    "status": "active"
+  },
+  {
+    "id_service": 35,
+    "id_salon": 2,
+    "id_kategori": 2,
+    "nama": "Dipping Powder Extensions",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 37.8,
+    "status": "active"
+  },
+  {
+    "id_service": 36,
+    "id_salon": 2,
+    "id_kategori": 3,
+    "nama": "Nail Extensions - Full Set Acrylic",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 45,
+    "status": "active"
+  },
+  {
+    "id_service": 37,
+    "id_salon": 2,
+    "id_kategori": 3,
+    "nama": "Nail Extensions - Acrylic Infills",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 37,
+    "status": "active"
+  },
+  {
+    "id_service": 38,
+    "id_salon": 2,
+    "id_kategori": 3,
+    "nama": "Nail Extensions - Full Set Gel",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 47,
+    "status": "active"
+  },
+  {
+    "id_service": 39,
+    "id_salon": 2,
+    "id_kategori": 3,
+    "nama": "Nail Extensions - Gel Infills",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 42,
+    "status": "active"
+  },
+  {
+    "id_service": 40,
+    "id_salon": 2,
+    "id_kategori": 4,
+    "nama": "Nail Art",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 10,
+    "status": "active"
+  },
+  {
+    "id_service": 41,
+    "id_salon": 2,
+    "id_kategori": 4,
+    "nama": "Add On - French Polish",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 10,
+    "status": "active"
+  },
+  {
+    "id_service": 42,
+    "id_salon": 2,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Arm",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 43,
+    "id_salon": 2,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Arm",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 25,
+    "status": "active"
+  },
+  {
+    "id_service": 44,
+    "id_salon": 2,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Leg",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 30,
+    "status": "active"
+  },
+  {
+    "id_service": 45,
+    "id_salon": 2,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Leg",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 60,
+    "status": "active"
+  },
+  {
+    "id_service": 46,
+    "id_salon": 2,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Underarm",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 25,
+    "status": "active"
+  },
+  {
+    "id_service": 47,
+    "id_salon": 2,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Bikini (Hot Wax)",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 48,
+    "id_salon": 3,
+    "id_kategori": 6,
+    "nama": "Hydrafacial - Classic",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 47.5,
+    "status": "active"
+  },
+  {
+    "id_service": 49,
+    "id_salon": 3,
+    "id_kategori": 6,
+    "nama": "Micro-Needling Facial By Dermapen",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 60,
+    "status": "active"
+  },
+  {
+    "id_service": 50,
+    "id_salon": 3,
+    "id_kategori": 6,
+    "nama": "Hydrafacial - Deluxe",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 60,
+    "status": "active"
+  },
+  {
+    "id_service": 51,
+    "id_salon": 3,
+    "id_kategori": 6,
+    "nama": "Hydrafacial - Platinium",
+    "deskripsi": null,
+    "durasi": 80,
+    "harga": 77.5,
+    "status": "active"
+  },
+  {
+    "id_service": 52,
+    "id_salon": 3,
+    "id_kategori": 6,
+    "nama": "Skinceuticals Hands-On Facial",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 65,
+    "status": "active"
+  },
+  {
+    "id_service": 53,
+    "id_salon": 3,
+    "id_kategori": 7,
+    "nama": "Relaxing Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 55,
+    "status": "active"
+  },
+  {
+    "id_service": 54,
+    "id_salon": 3,
+    "id_kategori": 8,
+    "nama": "EMS Body Sculpt Session",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 65,
+    "status": "active"
+  },
+  {
+    "id_service": 55,
+    "id_salon": 4,
+    "id_kategori": 9,
+    "nama": "Eyelash Tint",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 19,
+    "status": "active"
+  },
+  {
+    "id_service": 56,
+    "id_salon": 4,
+    "id_kategori": 9,
+    "nama": "Eyebrow Tint",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 9,
+    "status": "active"
+  },
+  {
+    "id_service": 57,
+    "id_salon": 4,
+    "id_kategori": 10,
+    "nama": "Facial Threading",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 5,
+    "status": "active"
+  },
+  {
+    "id_service": 58,
+    "id_salon": 4,
+    "id_kategori": 10,
+    "nama": "Ladies' Waxing - Face",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 5,
+    "status": "active"
+  },
+  {
+    "id_service": 59,
+    "id_salon": 4,
+    "id_kategori": 10,
+    "nama": "Full Face Wax/Threading (inc.eyebrows)",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 29,
+    "status": "active"
+  },
+  {
+    "id_service": 60,
+    "id_salon": 4,
+    "id_kategori": 11,
+    "nama": "Acrylic Powder (Normal Polish)",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 30,
+    "status": "active"
+  },
+  {
+    "id_service": 61,
+    "id_salon": 4,
+    "id_kategori": 11,
+    "nama": "Gel Powder (Normal Polish)",
+    "deskripsi": null,
+    "durasi": 75,
+    "harga": 24,
+    "status": "active"
+  },
+  {
+    "id_service": 62,
+    "id_salon": 4,
+    "id_kategori": 11,
+    "nama": "Acrylic Powder (Shellac-Gel Polish)",
+    "deskripsi": null,
+    "durasi": 75,
+    "harga": 30,
+    "status": "active"
+  },
+  {
+    "id_service": 63,
+    "id_salon": 4,
+    "id_kategori": 11,
+    "nama": "Gel Powder (Shellac-Gel Polish)",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 33,
+    "status": "active"
+  },
+  {
+    "id_service": 64,
+    "id_salon": 4,
+    "id_kategori": 11,
+    "nama": "Ombre Powder",
+    "deskripsi": null,
+    "durasi": 75,
+    "harga": 30,
+    "status": "active"
+  },
+  {
+    "id_service": 65,
+    "id_salon": 4,
+    "id_kategori": 11,
+    "nama": "SNS Powder",
+    "deskripsi": null,
+    "durasi": 75,
+    "harga": 28,
+    "status": "active"
+  },
+  {
+    "id_service": 66,
+    "id_salon": 4,
+    "id_kategori": 11,
+    "nama": "BIAB",
+    "deskripsi": null,
+    "durasi": 80,
+    "harga": 33,
+    "status": "active"
+  },
+  {
+    "id_service": 67,
+    "id_salon": 4,
+    "id_kategori": 11,
+    "nama": "Acrylic on Toes",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 30,
+    "status": "active"
+  },
+  {
+    "id_service": 68,
+    "id_salon": 4,
+    "id_kategori": 12,
+    "nama": "Manicure",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 17,
+    "status": "active"
+  },
+  {
+    "id_service": 69,
+    "id_salon": 4,
+    "id_kategori": 12,
+    "nama": "Pedicure",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 27,
+    "status": "active"
+  },
+  {
+    "id_service": 70,
+    "id_salon": 4,
+    "id_kategori": 12,
+    "nama": "Manicure \u0026 Pedicure",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 42,
+    "status": "active"
+  },
+  {
+    "id_service": 71,
+    "id_salon": 4,
+    "id_kategori": 12,
+    "nama": "Shellac Manicure",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 32,
+    "status": "active"
+  },
+  {
+    "id_service": 72,
+    "id_salon": 4,
+    "id_kategori": 12,
+    "nama": "Shellac/Gel on Toes Only",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 27,
+    "status": "active"
+  },
+  {
+    "id_service": 73,
+    "id_salon": 4,
+    "id_kategori": 12,
+    "nama": "Shellac Pedicure",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 38,
+    "status": "active"
+  },
+  {
+    "id_service": 74,
+    "id_salon": 4,
+    "id_kategori": 12,
+    "nama": "Hand Polish",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 11,
+    "status": "active"
+  },
+  {
+    "id_service": 75,
+    "id_salon": 4,
+    "id_kategori": 12,
+    "nama": "Toes Polish",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 13,
+    "status": "active"
+  },
+  {
+    "id_service": 76,
+    "id_salon": 4,
+    "id_kategori": 12,
+    "nama": "Nails Cut",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 6,
+    "status": "active"
+  },
+  {
+    "id_service": 77,
+    "id_salon": 4,
+    "id_kategori": 12,
+    "nama": "Toe Nails Cut",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 7,
+    "status": "active"
+  },
+  {
+    "id_service": 78,
+    "id_salon": 4,
+    "id_kategori": 13,
+    "nama": "Powder",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 20,
+    "status": "active"
+  },
+  {
+    "id_service": 79,
+    "id_salon": 4,
+    "id_kategori": 13,
+    "nama": "Shellac",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 10,
+    "status": "active"
+  },
+  {
+    "id_service": 80,
+    "id_salon": 4,
+    "id_kategori": 14,
+    "nama": "1 Nail Extension",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 3,
+    "status": "active"
+  },
+  {
+    "id_service": 81,
+    "id_salon": 4,
+    "id_kategori": 14,
+    "nama": "1 Toe Extension",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 5,
+    "status": "active"
+  },
+  {
+    "id_service": 82,
+    "id_salon": 5,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Hollywood",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 30,
+    "status": "active"
+  },
+  {
+    "id_service": 83,
+    "id_salon": 5,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Brazilian",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 30,
+    "status": "active"
+  },
+  {
+    "id_service": 84,
+    "id_salon": 5,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Bikini (Strip Wax)",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 20,
+    "status": "active"
+  },
+  {
+    "id_service": 85,
+    "id_salon": 5,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Leg",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 25,
+    "status": "active"
+  },
+  {
+    "id_service": 86,
+    "id_salon": 5,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Upper Body",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 15,
+    "status": "active"
+  },
+  {
+    "id_service": 87,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 60,
+    "status": "active"
+  },
+  {
+    "id_service": 88,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - Microdermabrasion",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 55,
+    "status": "active"
+  },
+  {
+    "id_service": 89,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - Face Peel",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 70,
+    "status": "active"
+  },
+  {
+    "id_service": 90,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - Skin Peel",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 50,
+    "status": "active"
+  },
+  {
+    "id_service": 91,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - Dermaplaning",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 70,
+    "status": "active"
+  },
+  {
+    "id_service": 92,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - Chemical Peel",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 70,
+    "status": "active"
+  },
+  {
+    "id_service": 93,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - Express",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 40,
+    "status": "active"
+  },
+  {
+    "id_service": 94,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - Herbal",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 55,
+    "status": "active"
+  },
+  {
+    "id_service": 95,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - Hydrating",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 75,
+    "status": "active"
+  },
+  {
+    "id_service": 96,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - Oxygen",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 72.25,
+    "status": "active"
+  },
+  {
+    "id_service": 97,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - Nonsurgical Face Lift",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 55,
+    "status": "active"
+  },
+  {
+    "id_service": 98,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - Microcurrent Skin Lifting",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 60,
+    "status": "active"
+  },
+  {
+    "id_service": 99,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - CACI Non-Surgical Face Lift",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 55,
+    "status": "active"
+  },
+  {
+    "id_service": 100,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - CACI Jowl Lift",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 101,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - CACI Eye Revive",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 45,
+    "status": "active"
+  },
+  {
+    "id_service": 102,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - CACI Hydratone",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 45,
+    "status": "active"
+  },
+  {
+    "id_service": 103,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - CACI Skin Rejuvenation",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 40,
+    "status": "active"
+  },
+  {
+    "id_service": 104,
+    "id_salon": 5,
+    "id_kategori": 6,
+    "nama": "Facial - Micro-Needling",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 85,
+    "status": "active"
+  },
+  {
+    "id_service": 105,
+    "id_salon": 5,
+    "id_kategori": 15,
+    "nama": "Semi-Permanent Makeup - Lip Colour",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 153,
+    "status": "active"
+  },
+  {
+    "id_service": 106,
+    "id_salon": 5,
+    "id_kategori": 15,
+    "nama": "Semi-Permanent Makeup - Eyebrows",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 220,
+    "status": "active"
+  },
+  {
+    "id_service": 107,
+    "id_salon": 5,
+    "id_kategori": 8,
+    "nama": "Hand Microdermabrasion",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 108,
+    "id_salon": 5,
+    "id_kategori": 16,
+    "nama": "Eyebrow \u0026 Eyelash Tinting",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 10,
+    "status": "active"
+  },
+  {
+    "id_service": 109,
+    "id_salon": 6,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Hollywood",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 34,
+    "status": "active"
+  },
+  {
+    "id_service": 110,
+    "id_salon": 6,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Brazilian",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 38.25,
+    "status": "active"
+  },
+  {
+    "id_service": 111,
+    "id_salon": 6,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Bikini",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 17,
+    "status": "active"
+  },
+  {
+    "id_service": 112,
+    "id_salon": 6,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Hollywood (Hot Wax)",
+    "deskripsi": null,
+    "durasi": 25,
+    "harga": 38.25,
+    "status": "active"
+  },
+  {
+    "id_service": 113,
+    "id_salon": 6,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Brazilian (Hot Wax)",
+    "deskripsi": null,
+    "durasi": 25,
+    "harga": 42.5,
+    "status": "active"
+  },
+  {
+    "id_service": 114,
+    "id_salon": 6,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Bikini (Hot Wax)",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 21.25,
+    "status": "active"
+  },
+  {
+    "id_service": 115,
+    "id_salon": 6,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Hollywood (Strip Wax)",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 34,
+    "status": "active"
+  },
+  {
+    "id_service": 116,
+    "id_salon": 6,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Brazilian (Strip Wax)",
+    "deskripsi": null,
+    "durasi": 25,
+    "harga": 38.25,
+    "status": "active"
+  },
+  {
+    "id_service": 117,
+    "id_salon": 6,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Bikini (Strip Wax)",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 17,
+    "status": "active"
+  },
+  {
+    "id_service": 118,
+    "id_salon": 6,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Leg",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 25.5,
+    "status": "active"
+  },
+  {
+    "id_service": 119,
+    "id_salon": 6,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Arm",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 21.25,
+    "status": "active"
+  },
+  {
+    "id_service": 120,
+    "id_salon": 6,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Face",
+    "deskripsi": null,
+    "durasi": 5,
+    "harga": 3.4,
+    "status": "active"
+  },
+  {
+    "id_service": 121,
+    "id_salon": 6,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Upper Body",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 21.25,
+    "status": "active"
+  },
+  {
+    "id_service": 122,
+    "id_salon": 6,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Full Body",
+    "deskripsi": null,
+    "durasi": 80,
+    "harga": 114.75,
+    "status": "active"
+  },
+  {
+    "id_service": 123,
+    "id_salon": 6,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Buttocks",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 17,
+    "status": "active"
+  },
+  {
+    "id_service": 124,
+    "id_salon": 6,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Underarm",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 10.2,
+    "status": "active"
+  },
+  {
+    "id_service": 125,
+    "id_salon": 6,
+    "id_kategori": 17,
+    "nama": "Ladies' Waxing - Hollywood \u0026 Leg",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 65,
+    "status": "active"
+  },
+  {
+    "id_service": 126,
+    "id_salon": 6,
+    "id_kategori": 17,
+    "nama": "Ladies' Waxing - Brazilian \u0026 Leg",
+    "deskripsi": null,
+    "durasi": 40,
+    "harga": 59.5,
+    "status": "active"
+  },
+  {
+    "id_service": 127,
+    "id_salon": 6,
+    "id_kategori": 17,
+    "nama": "Ladies' Waxing - Extended Bikini \u0026 Leg",
+    "deskripsi": null,
+    "durasi": 25,
+    "harga": 46.75,
+    "status": "active"
+  },
+  {
+    "id_service": 128,
+    "id_salon": 6,
+    "id_kategori": 17,
+    "nama": "Ladies' Waxing - Bikini \u0026 Leg",
+    "deskripsi": null,
+    "durasi": 25,
+    "harga": 38.25,
+    "status": "active"
+  },
+  {
+    "id_service": 129,
+    "id_salon": 6,
+    "id_kategori": 17,
+    "nama": "Ladies' Waxing - Hollywood, Leg \u0026 Underarm",
+    "deskripsi": null,
+    "durasi": 35,
+    "harga": 63.75,
+    "status": "active"
+  },
+  {
+    "id_service": 130,
+    "id_salon": 6,
+    "id_kategori": 17,
+    "nama": "Ladies' Waxing - Brazilian, Leg \u0026 Underarm",
+    "deskripsi": null,
+    "durasi": 35,
+    "harga": 68,
+    "status": "active"
+  },
+  {
+    "id_service": 131,
+    "id_salon": 6,
+    "id_kategori": 17,
+    "nama": "Ladies' Waxing - Extended Bikini, Leg \u0026 Underarm",
+    "deskripsi": null,
+    "durasi": 35,
+    "harga": 55.25,
+    "status": "active"
+  },
+  {
+    "id_service": 132,
+    "id_salon": 6,
+    "id_kategori": 17,
+    "nama": "Ladies' Waxing - Bikini, Leg \u0026 Underarm",
+    "deskripsi": null,
+    "durasi": 35,
+    "harga": 46.75,
+    "status": "active"
+  },
+  {
+    "id_service": 133,
+    "id_salon": 6,
+    "id_kategori": 17,
+    "nama": "Ladies' Waxing - Leg \u0026 Underarm",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 29.75,
+    "status": "active"
+  },
+  {
+    "id_service": 134,
+    "id_salon": 6,
+    "id_kategori": 17,
+    "nama": "Ladies' Waxing - Underarm \u0026 Hollywood",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 20,
+    "status": "active"
+  },
+  {
+    "id_service": 135,
+    "id_salon": 6,
+    "id_kategori": 17,
+    "nama": "Ladies' Waxing - Underarm \u0026 Brazilian",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 42.5,
+    "status": "active"
+  },
+  {
+    "id_service": 136,
+    "id_salon": 6,
+    "id_kategori": 17,
+    "nama": "Ladies' Waxing - Underarm \u0026 Bikini",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 25.5,
+    "status": "active"
+  },
+  {
+    "id_service": 137,
+    "id_salon": 6,
+    "id_kategori": 18,
+    "nama": "Men's Waxing",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 21.25,
+    "status": "active"
+  },
+  {
+    "id_service": 138,
+    "id_salon": 6,
+    "id_kategori": 18,
+    "nama": "Men's Waxing - Back \u0026 Shoulders",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 55.25,
+    "status": "active"
+  },
+  {
+    "id_service": 139,
+    "id_salon": 6,
+    "id_kategori": 18,
+    "nama": "Men's Waxing - Abdomen",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 34,
+    "status": "active"
+  },
+  {
+    "id_service": 140,
+    "id_salon": 6,
+    "id_kategori": 18,
+    "nama": "Men's Waxing - Back",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 42.5,
+    "status": "active"
+  },
+  {
+    "id_service": 141,
+    "id_salon": 6,
+    "id_kategori": 18,
+    "nama": "Men's Waxing - Shoulders",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 21.25,
+    "status": "active"
+  },
+  {
+    "id_service": 142,
+    "id_salon": 6,
+    "id_kategori": 18,
+    "nama": "Men's Waxing - Chest",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 29.75,
+    "status": "active"
+  },
+  {
+    "id_service": 143,
+    "id_salon": 6,
+    "id_kategori": 18,
+    "nama": "Men's Waxing - Leg",
+    "deskripsi": null,
+    "durasi": 25,
+    "harga": 46.75,
+    "status": "active"
+  },
+  {
+    "id_service": 144,
+    "id_salon": 6,
+    "id_kategori": 18,
+    "nama": "Men's waxing Arms",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 20,
+    "status": "active"
+  },
+  {
+    "id_service": 145,
+    "id_salon": 6,
+    "id_kategori": 16,
+    "nama": "Eyebrow Waxing",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 9.35,
+    "status": "active"
+  },
+  {
+    "id_service": 146,
+    "id_salon": 6,
+    "id_kategori": 16,
+    "nama": "Eyebrow \u0026 Eyelash Tinting",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 8.5,
+    "status": "active"
+  },
+  {
+    "id_service": 147,
+    "id_salon": 6,
+    "id_kategori": 16,
+    "nama": "Eyelash Tint",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 10.2,
+    "status": "active"
+  },
+  {
+    "id_service": 148,
+    "id_salon": 6,
+    "id_kategori": 16,
+    "nama": "Eyebrow Tint",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 8.5,
+    "status": "active"
+  },
+  {
+    "id_service": 149,
+    "id_salon": 6,
+    "id_kategori": 16,
+    "nama": "Lash Lift",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 38.25,
+    "status": "active"
+  },
+  {
+    "id_service": 150,
+    "id_salon": 6,
+    "id_kategori": 16,
+    "nama": "Lash Lift \u0026 Tint",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 46.75,
+    "status": "active"
+  },
+  {
+    "id_service": 151,
+    "id_salon": 6,
+    "id_kategori": 16,
+    "nama": "Eyebrow Wax \u0026 Tint",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 17,
+    "status": "active"
+  },
+  {
+    "id_service": 152,
+    "id_salon": 6,
+    "id_kategori": 16,
+    "nama": "Eyebrow Shape \u0026 Tint",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 15.3,
+    "status": "active"
+  },
+  {
+    "id_service": 153,
+    "id_salon": 6,
+    "id_kategori": 16,
+    "nama": "Eyebrow Thread \u0026 Tint",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 15.3,
+    "status": "active"
+  },
+  {
+    "id_service": 154,
+    "id_salon": 6,
+    "id_kategori": 16,
+    "nama": "Eye Trio - Eyebrow \u0026 Eyelash Tint with Eyebrow Shape",
+    "deskripsi": null,
+    "durasi": 25,
+    "harga": 27.2,
+    "status": "active"
+  },
+  {
+    "id_service": 155,
+    "id_salon": 6,
+    "id_kategori": 16,
+    "nama": "Brow Lamination \u0026 Tint",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 42.5,
+    "status": "active"
+  },
+  {
+    "id_service": 156,
+    "id_salon": 6,
+    "id_kategori": 7,
+    "nama": "Deep Tissue Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 38.25,
+    "status": "active"
+  },
+  {
+    "id_service": 157,
+    "id_salon": 6,
+    "id_kategori": 7,
+    "nama": "Swedish Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 38.25,
+    "status": "active"
+  },
+  {
+    "id_service": 158,
+    "id_salon": 6,
+    "id_kategori": 7,
+    "nama": "Back, Neck \u0026 Shoulders Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 34,
+    "status": "active"
+  },
+  {
+    "id_service": 159,
+    "id_salon": 6,
+    "id_kategori": 7,
+    "nama": "Back Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 29.75,
+    "status": "active"
+  },
+  {
+    "id_service": 160,
+    "id_salon": 6,
+    "id_kategori": 7,
+    "nama": "Relaxing Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 29.75,
+    "status": "active"
+  },
+  {
+    "id_service": 161,
+    "id_salon": 6,
+    "id_kategori": 7,
+    "nama": "Indian Head Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 29.75,
+    "status": "active"
+  },
+  {
+    "id_service": 162,
+    "id_salon": 6,
+    "id_kategori": 7,
+    "nama": "Head Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 29.75,
+    "status": "active"
+  },
+  {
+    "id_service": 163,
+    "id_salon": 6,
+    "id_kategori": 7,
+    "nama": "Full Body Massage",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 59.5,
+    "status": "active"
+  },
+  {
+    "id_service": 164,
+    "id_salon": 6,
+    "id_kategori": 7,
+    "nama": "Foot Massage",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 17,
+    "status": "active"
+  },
+  {
+    "id_service": 165,
+    "id_salon": 6,
+    "id_kategori": 7,
+    "nama": "Hand Massage",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 12.75,
+    "status": "active"
+  },
+  {
+    "id_service": 166,
+    "id_salon": 6,
+    "id_kategori": 7,
+    "nama": "Foot \u0026 Leg Massage",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 17,
+    "status": "active"
+  },
+  {
+    "id_service": 167,
+    "id_salon": 6,
+    "id_kategori": 7,
+    "nama": "Hand \u0026 Arm Massage",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 17,
+    "status": "active"
+  },
+  {
+    "id_service": 168,
+    "id_salon": 6,
+    "id_kategori": 19,
+    "nama": "Lymphatic Drainage Massage",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 42.5,
+    "status": "active"
+  },
+  {
+    "id_service": 169,
+    "id_salon": 6,
+    "id_kategori": 6,
+    "nama": "Facial - Classic",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 34,
+    "status": "active"
+  },
+  {
+    "id_service": 170,
+    "id_salon": 6,
+    "id_kategori": 6,
+    "nama": "Facial - Men's",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 46.75,
+    "status": "active"
+  },
+  {
+    "id_service": 171,
+    "id_salon": 6,
+    "id_kategori": 6,
+    "nama": "Facial - Deep Cleansing",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 46.75,
+    "status": "active"
+  },
+  {
+    "id_service": 172,
+    "id_salon": 6,
+    "id_kategori": 6,
+    "nama": "Facial - Gold",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 42.5,
+    "status": "active"
+  },
+  {
+    "id_service": 173,
+    "id_salon": 6,
+    "id_kategori": 6,
+    "nama": "Facial - Hydrating",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 51,
+    "status": "active"
+  },
+  {
+    "id_service": 174,
+    "id_salon": 6,
+    "id_kategori": 6,
+    "nama": "Facial - Herbal",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 42.5,
+    "status": "active"
+  },
+  {
+    "id_service": 175,
+    "id_salon": 6,
+    "id_kategori": 6,
+    "nama": "Facial - Teens",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 34,
+    "status": "active"
+  },
+  {
+    "id_service": 176,
+    "id_salon": 6,
+    "id_kategori": 20,
+    "nama": "Facial Threading",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 3.4,
+    "status": "active"
+  },
+  {
+    "id_service": 177,
+    "id_salon": 6,
+    "id_kategori": 21,
+    "nama": "Back Facial",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 42.5,
+    "status": "active"
+  },
+  {
+    "id_service": 178,
+    "id_salon": 7,
+    "id_kategori": 7,
+    "nama": "Deep Tissue Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 179,
+    "id_salon": 7,
+    "id_kategori": 7,
+    "nama": "Aromatherapy Massage",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 65,
+    "status": "active"
+  },
+  {
+    "id_service": 180,
+    "id_salon": 7,
+    "id_kategori": 7,
+    "nama": "Hot Stone Massage",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 65,
+    "status": "active"
+  },
+  {
+    "id_service": 181,
+    "id_salon": 7,
+    "id_kategori": 7,
+    "nama": "Herbal Compress Massage",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 65,
+    "status": "active"
+  },
+  {
+    "id_service": 182,
+    "id_salon": 7,
+    "id_kategori": 7,
+    "nama": "Thai Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 183,
+    "id_salon": 7,
+    "id_kategori": 7,
+    "nama": "Foot \u0026 Leg Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 184,
+    "id_salon": 7,
+    "id_kategori": 7,
+    "nama": "Kiritara Signature Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 185,
+    "id_salon": 7,
+    "id_kategori": 22,
+    "nama": "Pregnancy Massage",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 65,
+    "status": "active"
+  },
+  {
+    "id_service": 186,
+    "id_salon": 7,
+    "id_kategori": 22,
+    "nama": "Sports Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 187,
+    "id_salon": 7,
+    "id_kategori": 19,
+    "nama": "Reflexology",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 188,
+    "id_salon": 7,
+    "id_kategori": 19,
+    "nama": "Lymphatic Drainage Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 189,
+    "id_salon": 8,
+    "id_kategori": 16,
+    "nama": "Brow Lamination",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 45,
+    "status": "active"
+  },
+  {
+    "id_service": 190,
+    "id_salon": 8,
+    "id_kategori": 16,
+    "nama": "Brow Lamination \u0026 Tint",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 50,
+    "status": "active"
+  },
+  {
+    "id_service": 191,
+    "id_salon": 8,
+    "id_kategori": 16,
+    "nama": "Lash Lift",
+    "deskripsi": null,
+    "durasi": 55,
+    "harga": 50,
+    "status": "active"
+  },
+  {
+    "id_service": 192,
+    "id_salon": 8,
+    "id_kategori": 16,
+    "nama": "Lash Lift \u0026 Tint",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 55,
+    "status": "active"
+  },
+  {
+    "id_service": 193,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Micro-Needling Face with boosters for skin concerns",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 130,
+    "status": "active"
+  },
+  {
+    "id_service": 194,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Micro-Needling Face+neck+decollete",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 200,
+    "status": "active"
+  },
+  {
+    "id_service": 195,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Micro-Needling+PRX T33 Peel Face",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 150,
+    "status": "active"
+  },
+  {
+    "id_service": 196,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Micro-Needling+PRX T33 Pell Face+Neck+Decollete",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 220,
+    "status": "active"
+  },
+  {
+    "id_service": 197,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Exosomes Micro-Needling Face",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 150,
+    "status": "active"
+  },
+  {
+    "id_service": 198,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Exosomes Micro-Needling Face+Neck+Decollete",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 200,
+    "status": "active"
+  },
+  {
+    "id_service": 199,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Facial - Skin Peel Glycolic 1 session",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 70,
+    "status": "active"
+  },
+  {
+    "id_service": 200,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Facial - Skin Peel Glycolic/ 3 sessions",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 195,
+    "status": "active"
+  },
+  {
+    "id_service": 201,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Facial - Skin Peel Salicylic 1 session",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 70,
+    "status": "active"
+  },
+  {
+    "id_service": 202,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Facial - Skin Peel Salicylic /3 sessions",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 195,
+    "status": "active"
+  },
+  {
+    "id_service": 203,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Facial - Skin Peel Azelaic 1 session",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 70,
+    "status": "active"
+  },
+  {
+    "id_service": 204,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Facial - Skin Peel Azelaic /3 sessions",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 195,
+    "status": "active"
+  },
+  {
+    "id_service": 205,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Facial - Skin Peel PRX-T33 1 session",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 110,
+    "status": "active"
+  },
+  {
+    "id_service": 206,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Facial - Skin Peel PRX T-33/ 3 sessions",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 310,
+    "status": "active"
+  },
+  {
+    "id_service": 207,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Facial - Dermaplaning",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 90,
+    "status": "active"
+  },
+  {
+    "id_service": 208,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Facial -  Bespoke Deep Cleansing",
+    "deskripsi": null,
+    "durasi": 80,
+    "harga": 100,
+    "status": "active"
+  },
+  {
+    "id_service": 209,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Facial - Microdermabrasion",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 70,
+    "status": "active"
+  },
+  {
+    "id_service": 210,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Facial Fire\u0026Ice by IS CLINICAL",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 90,
+    "status": "active"
+  },
+  {
+    "id_service": 211,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Dermapen with boosters for skin concerns- Face",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 130,
+    "status": "active"
+  },
+  {
+    "id_service": 212,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Dermapen Face+Neck+Décolleté",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 200,
+    "status": "active"
+  },
+  {
+    "id_service": 213,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Dermapen + PRX T33 Peel Face",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 150,
+    "status": "active"
+  },
+  {
+    "id_service": 214,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Dermapen + PRX T33 Peel (Face+Neck+ Décolleté)",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 220,
+    "status": "active"
+  },
+  {
+    "id_service": 215,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Skinfill Bacio Lips booster/ 1 sessions",
+    "deskripsi": null,
+    "durasi": 40,
+    "harga": 220,
+    "status": "active"
+  },
+  {
+    "id_service": 216,
+    "id_salon": 8,
+    "id_kategori": 6,
+    "nama": "Skinfill Bacio Lips booster/ 3 sessions",
+    "deskripsi": null,
+    "durasi": 40,
+    "harga": 600,
+    "status": "active"
+  },
+  {
+    "id_service": 217,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "Profhilo  skin booster/1 session",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 265,
+    "status": "active"
+  },
+  {
+    "id_service": 218,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "Profhilo skin booster/2 sessions",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 490,
+    "status": "active"
+  },
+  {
+    "id_service": 219,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "Polynucleotides Eyes/1 session",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 220,
+    "status": "active"
+  },
+  {
+    "id_service": 220,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "Polynucleotides Eyes/ 3 sessions",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 600,
+    "status": "active"
+  },
+  {
+    "id_service": 221,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "Polynucleotides Face/Neck 1 session",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 230,
+    "status": "active"
+  },
+  {
+    "id_service": 222,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "Polynucleotides Face/Neck -3 sessions",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 620,
+    "status": "active"
+  },
+  {
+    "id_service": 223,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "Mesotherapy Eyes 1 session",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 80,
+    "status": "active"
+  },
+  {
+    "id_service": 224,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "Mesotherapy Eyes/3 sessions",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 225,
+    "status": "active"
+  },
+  {
+    "id_service": 225,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "Mesotherapy Face/Neck/ Décolleté 1 session",
+    "deskripsi": null,
+    "durasi": 35,
+    "harga": 150,
+    "status": "active"
+  },
+  {
+    "id_service": 226,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "Mesotherapy Face/Neck/ Décolleté- 3 sessions",
+    "deskripsi": null,
+    "durasi": 35,
+    "harga": 390,
+    "status": "active"
+  },
+  {
+    "id_service": 227,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "PRP (platelet rich plasma)1 session",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 240,
+    "status": "active"
+  },
+  {
+    "id_service": 228,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "PRP(platelet rich plasma)/3 sessions",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 650,
+    "status": "active"
+  },
+  {
+    "id_service": 229,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "PRP (platelet rich plasma)/ 5 sessions",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 950,
+    "status": "active"
+  },
+  {
+    "id_service": 230,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "Hair Mesotherapy ( for hair loss) 1 session",
+    "deskripsi": null,
+    "durasi": 35,
+    "harga": 140,
+    "status": "active"
+  },
+  {
+    "id_service": 231,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "Hair Mesotherapy (for hair loss)/3 sessions",
+    "deskripsi": null,
+    "durasi": 35,
+    "harga": 390,
+    "status": "active"
+  },
+  {
+    "id_service": 232,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "PRP (for hair loss) /1 session",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 240,
+    "status": "active"
+  },
+  {
+    "id_service": 233,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "PRP (for hair loss)/ 3 sessions",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 650,
+    "status": "active"
+  },
+  {
+    "id_service": 234,
+    "id_salon": 8,
+    "id_kategori": 23,
+    "nama": "PRP (for hair loss) / 5 sessions",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 950,
+    "status": "active"
+  },
+  {
+    "id_service": 235,
+    "id_salon": 8,
+    "id_kategori": 24,
+    "nama": "Endospheres Trial Session",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 50,
+    "status": "active"
+  },
+  {
+    "id_service": 236,
+    "id_salon": 8,
+    "id_kategori": 24,
+    "nama": "Endospheres Face/ 1 session",
+    "deskripsi": null,
+    "durasi": 25,
+    "harga": 55,
+    "status": "active"
+  },
+  {
+    "id_service": 237,
+    "id_salon": 8,
+    "id_kategori": 24,
+    "nama": "Endospheres Face/ 6 sessions",
+    "deskripsi": null,
+    "durasi": 25,
+    "harga": 300,
+    "status": "active"
+  },
+  {
+    "id_service": 238,
+    "id_salon": 8,
+    "id_kategori": 24,
+    "nama": "Endospheres Face/ 12 sessions",
+    "deskripsi": null,
+    "durasi": 25,
+    "harga": 540,
+    "status": "active"
+  },
+  {
+    "id_service": 239,
+    "id_salon": 8,
+    "id_kategori": 24,
+    "nama": "Endospheres Half Body/1 session",
+    "deskripsi": null,
+    "durasi": 40,
+    "harga": 80,
+    "status": "active"
+  },
+  {
+    "id_service": 240,
+    "id_salon": 8,
+    "id_kategori": 24,
+    "nama": "Endospheres Half Body/ 6 sessions",
+    "deskripsi": null,
+    "durasi": 40,
+    "harga": 450,
+    "status": "active"
+  },
+  {
+    "id_service": 241,
+    "id_salon": 8,
+    "id_kategori": 24,
+    "nama": "Endospheres Half Body/12 sesssions",
+    "deskripsi": null,
+    "durasi": 40,
+    "harga": 800,
+    "status": "active"
+  },
+  {
+    "id_service": 242,
+    "id_salon": 8,
+    "id_kategori": 24,
+    "nama": "Endospheres Full Body/ 1 session",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 105,
+    "status": "active"
+  },
+  {
+    "id_service": 243,
+    "id_salon": 8,
+    "id_kategori": 24,
+    "nama": "Endospheres Full Body/ 6 sessions",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 600,
+    "status": "active"
+  },
+  {
+    "id_service": 244,
+    "id_salon": 8,
+    "id_kategori": 24,
+    "nama": "Endospheres Full Body/12 sessions",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 1080,
+    "status": "active"
+  },
+  {
+    "id_service": 245,
+    "id_salon": 8,
+    "id_kategori": 24,
+    "nama": "Endospheres Full Body+Face / 1 session",
+    "deskripsi": null,
+    "durasi": 80,
+    "harga": 120,
+    "status": "active"
+  },
+  {
+    "id_service": 246,
+    "id_salon": 8,
+    "id_kategori": 24,
+    "nama": "Endospheres Full Body+Face/ 6 sessions",
+    "deskripsi": null,
+    "durasi": 80,
+    "harga": 690,
+    "status": "active"
+  },
+  {
+    "id_service": 247,
+    "id_salon": 8,
+    "id_kategori": 24,
+    "nama": "Endospheres Full Body+Face/ 12 sessions",
+    "deskripsi": null,
+    "durasi": 80,
+    "harga": 1260,
+    "status": "active"
+  },
+  {
+    "id_service": 248,
+    "id_salon": 8,
+    "id_kategori": 25,
+    "nama": "Electrolysis Permanent Hair Removal",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 100,
+    "status": "active"
+  },
+  {
+    "id_service": 249,
+    "id_salon": 8,
+    "id_kategori": 25,
+    "nama": "Electrolysis Permanent Hair Removal",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 30,
+    "status": "active"
+  },
+  {
+    "id_service": 250,
+    "id_salon": 8,
+    "id_kategori": 25,
+    "nama": "Electrolysis Permanent Hair Removal",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 50,
+    "status": "active"
+  },
+  {
+    "id_service": 251,
+    "id_salon": 8,
+    "id_kategori": 25,
+    "nama": "Electrolysis Permanent Hair Removal",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 70,
+    "status": "active"
+  },
+  {
+    "id_service": 252,
+    "id_salon": 9,
+    "id_kategori": 16,
+    "nama": "Eyelash Tint",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 15,
+    "status": "active"
+  },
+  {
+    "id_service": 253,
+    "id_salon": 9,
+    "id_kategori": 16,
+    "nama": "Eyelash Tint",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 20,
+    "status": "active"
+  },
+  {
+    "id_service": 254,
+    "id_salon": 9,
+    "id_kategori": 16,
+    "nama": "Eyebrow Tint",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 15,
+    "status": "active"
+  },
+  {
+    "id_service": 255,
+    "id_salon": 9,
+    "id_kategori": 16,
+    "nama": "Eyebrow Threading",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 10,
+    "status": "active"
+  },
+  {
+    "id_service": 256,
+    "id_salon": 9,
+    "id_kategori": 16,
+    "nama": "Eyebrow Waxing",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 12,
+    "status": "active"
+  },
+  {
+    "id_service": 257,
+    "id_salon": 9,
+    "id_kategori": 16,
+    "nama": "Eyebrow \u0026 Eyelash Tinting",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 15,
+    "status": "active"
+  },
+  {
+    "id_service": 258,
+    "id_salon": 9,
+    "id_kategori": 16,
+    "nama": "Lash Lift",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 42,
+    "status": "active"
+  },
+  {
+    "id_service": 259,
+    "id_salon": 9,
+    "id_kategori": 16,
+    "nama": "Lash Lift \u0026 Tint",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 45,
+    "status": "active"
+  },
+  {
+    "id_service": 260,
+    "id_salon": 9,
+    "id_kategori": 16,
+    "nama": "Eyelash Perming",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 48,
+    "status": "active"
+  },
+  {
+    "id_service": 261,
+    "id_salon": 9,
+    "id_kategori": 16,
+    "nama": "Henna Brows",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 30,
+    "status": "active"
+  },
+  {
+    "id_service": 262,
+    "id_salon": 9,
+    "id_kategori": 16,
+    "nama": "Eye Trio - Eyebrow \u0026 Eyelash Tint with Eyebrow Shape",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 263,
+    "id_salon": 9,
+    "id_kategori": 16,
+    "nama": "Brow Lamination",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 45,
+    "status": "active"
+  },
+  {
+    "id_service": 264,
+    "id_salon": 9,
+    "id_kategori": 16,
+    "nama": "Brow Lamination \u0026 Tint",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 48,
+    "status": "active"
+  },
+  {
+    "id_service": 265,
+    "id_salon": 9,
+    "id_kategori": 20,
+    "nama": "Facial Threading",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 2,
+    "status": "active"
+  },
+  {
+    "id_service": 266,
+    "id_salon": 9,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Face",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 3,
+    "status": "active"
+  },
+  {
+    "id_service": 267,
+    "id_salon": 9,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Hollywood",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 32,
+    "status": "active"
+  },
+  {
+    "id_service": 268,
+    "id_salon": 9,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Brazilian",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 30,
+    "status": "active"
+  },
+  {
+    "id_service": 269,
+    "id_salon": 9,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Bikini",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 20,
+    "status": "active"
+  },
+  {
+    "id_service": 270,
+    "id_salon": 9,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Leg",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 18,
+    "status": "active"
+  },
+  {
+    "id_service": 271,
+    "id_salon": 9,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Arm",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 15,
+    "status": "active"
+  },
+  {
+    "id_service": 272,
+    "id_salon": 9,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Upper Body",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 12,
+    "status": "active"
+  },
+  {
+    "id_service": 273,
+    "id_salon": 9,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Full Body",
+    "deskripsi": null,
+    "durasi": 80,
+    "harga": 99,
+    "status": "active"
+  },
+  {
+    "id_service": 274,
+    "id_salon": 9,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Buttocks",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 15,
+    "status": "active"
+  },
+  {
+    "id_service": 275,
+    "id_salon": 9,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Underarm",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 15,
+    "status": "active"
+  },
+  {
+    "id_service": 276,
+    "id_salon": 9,
+    "id_kategori": 26,
+    "nama": "Eyelash Extensions - Hybrid",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 85,
+    "status": "active"
+  },
+  {
+    "id_service": 277,
+    "id_salon": 9,
+    "id_kategori": 26,
+    "nama": "Eyelash Extensions - Hybrid Infills",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 50,
+    "status": "active"
+  },
+  {
+    "id_service": 278,
+    "id_salon": 9,
+    "id_kategori": 26,
+    "nama": "Eyelash Extensions - Classic",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 65,
+    "status": "active"
+  },
+  {
+    "id_service": 279,
+    "id_salon": 9,
+    "id_kategori": 26,
+    "nama": "Eyelash Extensions - Classic  Infills",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 45,
+    "status": "active"
+  },
+  {
+    "id_service": 280,
+    "id_salon": 9,
+    "id_kategori": 26,
+    "nama": "Eyelash Extensions - Removal",
+    "deskripsi": null,
+    "durasi": 25,
+    "harga": 20,
+    "status": "active"
+  },
+  {
+    "id_service": 281,
+    "id_salon": 9,
+    "id_kategori": 6,
+    "nama": "Facial",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 45,
+    "status": "active"
+  },
+  {
+    "id_service": 282,
+    "id_salon": 9,
+    "id_kategori": 6,
+    "nama": "Facial - Dermalogica",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 65,
+    "status": "active"
+  },
+  {
+    "id_service": 283,
+    "id_salon": 9,
+    "id_kategori": 6,
+    "nama": "Facial - Pigmentation Treatment",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 65,
+    "status": "active"
+  },
+  {
+    "id_service": 284,
+    "id_salon": 9,
+    "id_kategori": 6,
+    "nama": "Facial - Deep Cleansing with Extractions",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 60,
+    "status": "active"
+  },
+  {
+    "id_service": 285,
+    "id_salon": 9,
+    "id_kategori": 6,
+    "nama": "Facial - Gold",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 50,
+    "status": "active"
+  },
+  {
+    "id_service": 286,
+    "id_salon": 9,
+    "id_kategori": 7,
+    "nama": "Deep Tissue Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 45,
+    "status": "active"
+  },
+  {
+    "id_service": 287,
+    "id_salon": 9,
+    "id_kategori": 7,
+    "nama": "Swedish Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 40,
+    "status": "active"
+  },
+  {
+    "id_service": 288,
+    "id_salon": 9,
+    "id_kategori": 7,
+    "nama": "Back, Neck \u0026 Shoulders Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 40,
+    "status": "active"
+  },
+  {
+    "id_service": 289,
+    "id_salon": 9,
+    "id_kategori": 7,
+    "nama": "Relaxing Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 290,
+    "id_salon": 9,
+    "id_kategori": 7,
+    "nama": "Indian Head Massage",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 40,
+    "status": "active"
+  },
+  {
+    "id_service": 291,
+    "id_salon": 9,
+    "id_kategori": 8,
+    "nama": "Body Hair Bleaching",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 90,
+    "status": "active"
+  },
+  {
+    "id_service": 292,
+    "id_salon": 10,
+    "id_kategori": 27,
+    "nama": "Ladies' - Wash, Haircut \u0026 Blow Dry (Afro Hair)",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 31.5,
+    "status": "active"
+  },
+  {
+    "id_service": 293,
+    "id_salon": 10,
+    "id_kategori": 27,
+    "nama": "Ladies' - Wash \u0026 Blow Dry (Afro Hair)",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 28,
+    "status": "active"
+  },
+  {
+    "id_service": 294,
+    "id_salon": 10,
+    "id_kategori": 27,
+    "nama": "Ladies' - Hair Straightening or curls with Iron",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 25,
+    "status": "active"
+  },
+  {
+    "id_service": 295,
+    "id_salon": 10,
+    "id_kategori": 27,
+    "nama": "Ladies' - Wash, Haircut \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 31.5,
+    "status": "active"
+  },
+  {
+    "id_service": 296,
+    "id_salon": 10,
+    "id_kategori": 27,
+    "nama": "Ladies' - Restyle wash,Haircut \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 42,
+    "status": "active"
+  },
+  {
+    "id_service": 297,
+    "id_salon": 10,
+    "id_kategori": 27,
+    "nama": "Ladies' - Wash \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 21,
+    "status": "active"
+  },
+  {
+    "id_service": 298,
+    "id_salon": 10,
+    "id_kategori": 27,
+    "nama": "Ladies' - Hair Up",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 49,
+    "status": "active"
+  },
+  {
+    "id_service": 299,
+    "id_salon": 10,
+    "id_kategori": 27,
+    "nama": "Ladies' - Dry Haircut",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 25,
+    "status": "active"
+  },
+  {
+    "id_service": 300,
+    "id_salon": 10,
+    "id_kategori": 28,
+    "nama": "Ladies' - Hair hot oil Treatment",
+    "deskripsi": null,
+    "durasi": 55,
+    "harga": 42,
+    "status": "active"
+  },
+  {
+    "id_service": 301,
+    "id_salon": 10,
+    "id_kategori": 28,
+    "nama": "Ladies' - Hair  Scalp Treatment",
+    "deskripsi": null,
+    "durasi": 55,
+    "harga": 49,
+    "status": "active"
+  },
+  {
+    "id_service": 302,
+    "id_salon": 10,
+    "id_kategori": 28,
+    "nama": "Ladies' - Hair Moisturising Treatment",
+    "deskripsi": null,
+    "durasi": 35,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 303,
+    "id_salon": 10,
+    "id_kategori": 28,
+    "nama": "Ladies' - protein Treatment",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 45.5,
+    "status": "active"
+  },
+  {
+    "id_service": 304,
+    "id_salon": 10,
+    "id_kategori": 28,
+    "nama": "Ladies' - Silk Press",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 65,
+    "status": "active"
+  },
+  {
+    "id_service": 305,
+    "id_salon": 10,
+    "id_kategori": 29,
+    "nama": "Ladies' - Closure Weave",
+    "deskripsi": null,
+    "durasi": 180,
+    "harga": 78,
+    "status": "active"
+  },
+  {
+    "id_service": 306,
+    "id_salon": 10,
+    "id_kategori": 29,
+    "nama": "Ladies' - Weave Leave out",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 70,
+    "status": "active"
+  },
+  {
+    "id_service": 307,
+    "id_salon": 10,
+    "id_kategori": 29,
+    "nama": "Ladies' - Wig",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 160,
+    "status": "active"
+  },
+  {
+    "id_service": 308,
+    "id_salon": 10,
+    "id_kategori": 29,
+    "nama": "Ladies' - Weave ponytail",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 66.5,
+    "status": "active"
+  },
+  {
+    "id_service": 309,
+    "id_salon": 10,
+    "id_kategori": 29,
+    "nama": "Ladies' - Weave half up",
+    "deskripsi": null,
+    "durasi": 180,
+    "harga": 60,
+    "status": "active"
+  },
+  {
+    "id_service": 310,
+    "id_salon": 10,
+    "id_kategori": 30,
+    "nama": "Ladies' -Wig Cornrows",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 30,
+    "status": "active"
+  },
+  {
+    "id_service": 311,
+    "id_salon": 10,
+    "id_kategori": 31,
+    "nama": "Patch Test",
+    "deskripsi": null,
+    "durasi": 5,
+    "harga": 0,
+    "status": "active"
+  },
+  {
+    "id_service": 312,
+    "id_salon": 10,
+    "id_kategori": 32,
+    "nama": "Ladies - Half Head Balayage + Toner",
+    "deskripsi": null,
+    "durasi": 115,
+    "harga": 84.5,
+    "status": "active"
+  },
+  {
+    "id_service": 313,
+    "id_salon": 10,
+    "id_kategori": 32,
+    "nama": "Ladies - Full Head Balayage + Toner",
+    "deskripsi": null,
+    "durasi": 135,
+    "harga": 97.5,
+    "status": "active"
+  },
+  {
+    "id_service": 314,
+    "id_salon": 10,
+    "id_kategori": 32,
+    "nama": "Ladies - Full Head Highlights + Toner",
+    "deskripsi": null,
+    "durasi": 135,
+    "harga": 104,
+    "status": "active"
+  },
+  {
+    "id_service": 315,
+    "id_salon": 10,
+    "id_kategori": 32,
+    "nama": "Ladies - Half Head Highlights + Toner",
+    "deskripsi": null,
+    "durasi": 115,
+    "harga": 91,
+    "status": "active"
+  },
+  {
+    "id_service": 316,
+    "id_salon": 10,
+    "id_kategori": 32,
+    "nama": "Ladies - T-Section Highlights + Toner",
+    "deskripsi": null,
+    "durasi": 100,
+    "harga": 74.75,
+    "status": "active"
+  },
+  {
+    "id_service": 317,
+    "id_salon": 10,
+    "id_kategori": 33,
+    "nama": "Ladies - Root Tint",
+    "deskripsi": null,
+    "durasi": 75,
+    "harga": 56.25,
+    "status": "active"
+  },
+  {
+    "id_service": 318,
+    "id_salon": 10,
+    "id_kategori": 33,
+    "nama": "Ladies' - Full Head Tint",
+    "deskripsi": null,
+    "durasi": 100,
+    "harga": 67.5,
+    "status": "active"
+  },
+  {
+    "id_service": 319,
+    "id_salon": 10,
+    "id_kategori": 33,
+    "nama": "Ladies - Rough Dry",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 15,
+    "status": "active"
+  },
+  {
+    "id_service": 320,
+    "id_salon": 10,
+    "id_kategori": 33,
+    "nama": "Ladies' - Toner",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 28.5,
+    "status": "active"
+  },
+  {
+    "id_service": 321,
+    "id_salon": 10,
+    "id_kategori": 33,
+    "nama": "Ladies - Root Bleach \u0026 Tone",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 67.5,
+    "status": "active"
+  },
+  {
+    "id_service": 322,
+    "id_salon": 11,
+    "id_kategori": 23,
+    "nama": "Dermal Fillers",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 75,
+    "status": "active"
+  },
+  {
+    "id_service": 323,
+    "id_salon": 11,
+    "id_kategori": 23,
+    "nama": "Cosmetic Injectables",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 150,
+    "status": "active"
+  },
+  {
+    "id_service": 324,
+    "id_salon": 11,
+    "id_kategori": 23,
+    "nama": "Anti-Wrinkle Injections",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 50,
+    "status": "active"
+  },
+  {
+    "id_service": 325,
+    "id_salon": 11,
+    "id_kategori": 23,
+    "nama": "Vitamin Injections",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 20,
+    "status": "active"
+  },
+  {
+    "id_service": 326,
+    "id_salon": 11,
+    "id_kategori": 23,
+    "nama": "Fat dissolving",
+    "deskripsi": null,
+    "durasi": 25,
+    "harga": 70,
+    "status": "active"
+  },
+  {
+    "id_service": 327,
+    "id_salon": 11,
+    "id_kategori": 6,
+    "nama": "Micro-Needling",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 80,
+    "status": "active"
+  },
+  {
+    "id_service": 328,
+    "id_salon": 11,
+    "id_kategori": 6,
+    "nama": "Prophilo",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 110,
+    "status": "active"
+  },
+  {
+    "id_service": 329,
+    "id_salon": 12,
+    "id_kategori": 6,
+    "nama": "Holistic Healing Facial",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 195,
+    "status": "active"
+  },
+  {
+    "id_service": 330,
+    "id_salon": 12,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Brazilian (Lycon Hot Wax)",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 45,
+    "status": "active"
+  },
+  {
+    "id_service": 331,
+    "id_salon": 12,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Hollywood (Lycon Hot Wax)",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 45,
+    "status": "active"
+  },
+  {
+    "id_service": 332,
+    "id_salon": 12,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Bikini",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 27,
+    "status": "active"
+  },
+  {
+    "id_service": 333,
+    "id_salon": 12,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Leg",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 27,
+    "status": "active"
+  },
+  {
+    "id_service": 334,
+    "id_salon": 12,
+    "id_kategori": 16,
+    "nama": "Eye Trio - Eyebrow \u0026 Eyelash Tint with Eyebrow Shape",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 52,
+    "status": "active"
+  },
+  {
+    "id_service": 335,
+    "id_salon": 13,
+    "id_kategori": 27,
+    "nama": "Ladies' - Wash, Haircut \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 60,
+    "status": "active"
+  },
+  {
+    "id_service": 336,
+    "id_salon": 13,
+    "id_kategori": 27,
+    "nama": "Ladies' - Wash, Haircut \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 35,
+    "harga": 45,
+    "status": "active"
+  },
+  {
+    "id_service": 337,
+    "id_salon": 13,
+    "id_kategori": 27,
+    "nama": "Ladies' - Wash \u0026 Haircut",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 25,
+    "status": "active"
+  },
+  {
+    "id_service": 338,
+    "id_salon": 13,
+    "id_kategori": 27,
+    "nama": "Ladies' - Dry Haircut",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 18,
+    "status": "active"
+  },
+  {
+    "id_service": 339,
+    "id_salon": 13,
+    "id_kategori": 27,
+    "nama": "Ladies' - Fringe Trim",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 12,
+    "status": "active"
+  },
+  {
+    "id_service": 340,
+    "id_salon": 13,
+    "id_kategori": 27,
+    "nama": "Ladies' - Wash \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 20,
+    "status": "active"
+  },
+  {
+    "id_service": 341,
+    "id_salon": 13,
+    "id_kategori": 27,
+    "nama": "Ladies' - GHD Straightening",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 5,
+    "status": "active"
+  },
+  {
+    "id_service": 342,
+    "id_salon": 13,
+    "id_kategori": 27,
+    "nama": "Ladies' - GHD Curls",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 8,
+    "status": "active"
+  },
+  {
+    "id_service": 343,
+    "id_salon": 13,
+    "id_kategori": 28,
+    "nama": "Ladies' - Keratin Treatment",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 90,
+    "status": "active"
+  },
+  {
+    "id_service": 344,
+    "id_salon": 13,
+    "id_kategori": 33,
+    "nama": "Ladies' - Full head Colour with Haircut \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 155,
+    "harga": 120,
+    "status": "active"
+  },
+  {
+    "id_service": 345,
+    "id_salon": 13,
+    "id_kategori": 33,
+    "nama": "Ladies' - Full Head  Colour with Blow Dry",
+    "deskripsi": null,
+    "durasi": 135,
+    "harga": 95,
+    "status": "active"
+  },
+  {
+    "id_service": 346,
+    "id_salon": 13,
+    "id_kategori": 33,
+    "nama": "Ladies' - Toner",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 30,
+    "status": "active"
+  },
+  {
+    "id_service": 347,
+    "id_salon": 13,
+    "id_kategori": 33,
+    "nama": "Ladies' - Toner with Blow Dry",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 45,
+    "status": "active"
+  },
+  {
+    "id_service": 348,
+    "id_salon": 13,
+    "id_kategori": 33,
+    "nama": "Ladies' - Toner with Haircut \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 55,
+    "status": "active"
+  },
+  {
+    "id_service": 349,
+    "id_salon": 13,
+    "id_kategori": 33,
+    "nama": "Ladies - Root Colour with Blow Dry",
+    "deskripsi": null,
+    "durasi": 105,
+    "harga": 55,
+    "status": "active"
+  },
+  {
+    "id_service": 350,
+    "id_salon": 13,
+    "id_kategori": 32,
+    "nama": "Ladies - Full Head Highlights with Finish",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 140,
+    "status": "active"
+  },
+  {
+    "id_service": 351,
+    "id_salon": 13,
+    "id_kategori": 32,
+    "nama": "Ladies - Full Head Highlights with Haircut \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 150,
+    "harga": 150,
+    "status": "active"
+  },
+  {
+    "id_service": 352,
+    "id_salon": 13,
+    "id_kategori": 32,
+    "nama": "Ladies - Half Head Highlights with Finish",
+    "deskripsi": null,
+    "durasi": 105,
+    "harga": 100,
+    "status": "active"
+  },
+  {
+    "id_service": 353,
+    "id_salon": 13,
+    "id_kategori": 32,
+    "nama": "Ladies - Balayage with Finish",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 130,
+    "status": "active"
+  },
+  {
+    "id_service": 354,
+    "id_salon": 13,
+    "id_kategori": 34,
+    "nama": "Girls - Wash, Haircut \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 20,
+    "status": "active"
+  },
+  {
+    "id_service": 355,
+    "id_salon": 13,
+    "id_kategori": 34,
+    "nama": "Girls - Dry Haircut",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 20,
+    "status": "active"
+  },
+  {
+    "id_service": 356,
+    "id_salon": 13,
+    "id_kategori": 34,
+    "nama": "Girls - Wash \u0026 Haircut",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 25,
+    "status": "active"
+  },
+  {
+    "id_service": 357,
+    "id_salon": 14,
+    "id_kategori": 28,
+    "nama": "Ladies' - Hair Conditioning Treatment",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 15,
+    "status": "active"
+  },
+  {
+    "id_service": 358,
+    "id_salon": 14,
+    "id_kategori": 28,
+    "nama": "Ladies' - Hair Conditioning \u0026 Scalp Treatment",
+    "deskripsi": null,
+    "durasi": 35,
+    "harga": 30,
+    "status": "active"
+  },
+  {
+    "id_service": 359,
+    "id_salon": 14,
+    "id_kategori": 28,
+    "nama": "Ladies' - Hair Mask",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 15,
+    "status": "active"
+  },
+  {
+    "id_service": 360,
+    "id_salon": 14,
+    "id_kategori": 30,
+    "nama": "Ladies' - Cornrows",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 60,
+    "status": "active"
+  },
+  {
+    "id_service": 361,
+    "id_salon": 14,
+    "id_kategori": 30,
+    "nama": "Fulani Braids",
+    "deskripsi": null,
+    "durasi": 150,
+    "harga": 110,
+    "status": "active"
+  },
+  {
+    "id_service": 362,
+    "id_salon": 14,
+    "id_kategori": 30,
+    "nama": "Knotless braids",
+    "deskripsi": null,
+    "durasi": 105,
+    "harga": 120,
+    "status": "active"
+  },
+  {
+    "id_service": 363,
+    "id_salon": 14,
+    "id_kategori": 30,
+    "nama": "Goddess braids",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 140,
+    "status": "active"
+  },
+  {
+    "id_service": 364,
+    "id_salon": 14,
+    "id_kategori": 30,
+    "nama": "French curls",
+    "deskripsi": null,
+    "durasi": 165,
+    "harga": 150,
+    "status": "active"
+  },
+  {
+    "id_service": 365,
+    "id_salon": 14,
+    "id_kategori": 30,
+    "nama": "Boho braids",
+    "deskripsi": null,
+    "durasi": 240,
+    "harga": 260,
+    "status": "active"
+  },
+  {
+    "id_service": 366,
+    "id_salon": 14,
+    "id_kategori": 30,
+    "nama": "Island twists",
+    "deskripsi": null,
+    "durasi": 165,
+    "harga": 115,
+    "status": "active"
+  },
+  {
+    "id_service": 367,
+    "id_salon": 14,
+    "id_kategori": 30,
+    "nama": "Passion twists",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 125,
+    "status": "active"
+  },
+  {
+    "id_service": 368,
+    "id_salon": 14,
+    "id_kategori": 30,
+    "nama": "Mini twists",
+    "deskripsi": null,
+    "durasi": 225,
+    "harga": 200,
+    "status": "active"
+  },
+  {
+    "id_service": 369,
+    "id_salon": 14,
+    "id_kategori": 30,
+    "nama": "Ladies' - Twists",
+    "deskripsi": null,
+    "durasi": 195,
+    "harga": 120,
+    "status": "active"
+  },
+  {
+    "id_service": 370,
+    "id_salon": 14,
+    "id_kategori": 30,
+    "nama": "Soft Locs",
+    "deskripsi": null,
+    "durasi": 210,
+    "harga": 150,
+    "status": "active"
+  },
+  {
+    "id_service": 371,
+    "id_salon": 14,
+    "id_kategori": 30,
+    "nama": "Butterfly Locs",
+    "deskripsi": null,
+    "durasi": 180,
+    "harga": 135,
+    "status": "active"
+  },
+  {
+    "id_service": 372,
+    "id_salon": 14,
+    "id_kategori": 30,
+    "nama": "Dreadlocks",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 45,
+    "status": "active"
+  },
+  {
+    "id_service": 373,
+    "id_salon": 14,
+    "id_kategori": 33,
+    "nama": "Ladies - Afro Hair Colouring",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 70,
+    "status": "active"
+  },
+  {
+    "id_service": 374,
+    "id_salon": 14,
+    "id_kategori": 35,
+    "nama": "Men - Afro Braids",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 60,
+    "status": "active"
+  },
+  {
+    "id_service": 375,
+    "id_salon": 14,
+    "id_kategori": 35,
+    "nama": "Men - Cornrows",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 60,
+    "status": "active"
+  },
+  {
+    "id_service": 376,
+    "id_salon": 14,
+    "id_kategori": 35,
+    "nama": "Men - Twists",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 60,
+    "status": "active"
+  },
+  {
+    "id_service": 377,
+    "id_salon": 14,
+    "id_kategori": 34,
+    "nama": "Girls - Wash \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 30,
+    "status": "active"
+  },
+  {
+    "id_service": 378,
+    "id_salon": 15,
+    "id_kategori": 6,
+    "nama": "Skin Retreat Deluxe",
+    "deskripsi": null,
+    "durasi": 70,
+    "harga": 110,
+    "status": "active"
+  },
+  {
+    "id_service": 379,
+    "id_salon": 15,
+    "id_kategori": 6,
+    "nama": "BioRe Peel",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 120,
+    "status": "active"
+  },
+  {
+    "id_service": 380,
+    "id_salon": 15,
+    "id_kategori": 6,
+    "nama": "Microneedling",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 140,
+    "status": "active"
+  },
+  {
+    "id_service": 381,
+    "id_salon": 15,
+    "id_kategori": 6,
+    "nama": "Relax \u0026 Retreat",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 75,
+    "status": "active"
+  },
+  {
+    "id_service": 382,
+    "id_salon": 15,
+    "id_kategori": 6,
+    "nama": "Dècaar Algae Peel",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 130,
+    "status": "active"
+  },
+  {
+    "id_service": 383,
+    "id_salon": 15,
+    "id_kategori": 6,
+    "nama": "Mens Deluxe",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 80,
+    "status": "active"
+  },
+  {
+    "id_service": 384,
+    "id_salon": 15,
+    "id_kategori": 6,
+    "nama": "Glow \u0026 Glo - Dermaplaning",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 55,
+    "status": "active"
+  },
+  {
+    "id_service": 385,
+    "id_salon": 15,
+    "id_kategori": 6,
+    "nama": "Dermalux - LED Light Therapy",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 386,
+    "id_salon": 15,
+    "id_kategori": 6,
+    "nama": "Face Sculpt",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 70,
+    "status": "active"
+  },
+  {
+    "id_service": 387,
+    "id_salon": 15,
+    "id_kategori": 36,
+    "nama": "Japanese Head Spa Ritual",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 80,
+    "status": "active"
+  },
+  {
+    "id_service": 388,
+    "id_salon": 15,
+    "id_kategori": 36,
+    "nama": "Japanese Head Spa Signature Ritual",
+    "deskripsi": null,
+    "durasi": 80,
+    "harga": 100,
+    "status": "active"
+  },
+  {
+    "id_service": 389,
+    "id_salon": 16,
+    "id_kategori": 6,
+    "nama": "Facial - micro needling with salmon DNA and LED therapy",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 150,
+    "status": "active"
+  },
+  {
+    "id_service": 390,
+    "id_salon": 16,
+    "id_kategori": 6,
+    "nama": "Facial - Hydra glow infusion facial cleans boost radiance",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 99,
+    "status": "active"
+  },
+  {
+    "id_service": 391,
+    "id_salon": 16,
+    "id_kategori": 6,
+    "nama": "Facial pure detox clarifying facial",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 99,
+    "status": "active"
+  },
+  {
+    "id_service": 392,
+    "id_salon": 16,
+    "id_kategori": 6,
+    "nama": "Facial - Men's express hydrating",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 50,
+    "status": "active"
+  },
+  {
+    "id_service": 393,
+    "id_salon": 16,
+    "id_kategori": 6,
+    "nama": "Facial - exosome micro needling with LED ",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 99,
+    "status": "active"
+  },
+  {
+    "id_service": 394,
+    "id_salon": 16,
+    "id_kategori": 6,
+    "nama": "Hydrofecia glow infusion facial, hydrate cleans ,boost and radiance",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 99,
+    "status": "active"
+  },
+  {
+    "id_service": 395,
+    "id_salon": 16,
+    "id_kategori": 6,
+    "nama": "Facial pure detox clarifying facial purifies congested skin and radiance facial ",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 99,
+    "status": "active"
+  },
+  {
+    "id_service": 396,
+    "id_salon": 16,
+    "id_kategori": 6,
+    "nama": "Skin tithing collagen facial - firms the skin stimulate collagen",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 99,
+    "status": "active"
+  },
+  {
+    "id_service": 397,
+    "id_salon": 16,
+    "id_kategori": 6,
+    "nama": "Micronnedling face and neck -smoths texture ,reduces scares boost collagen face and neck ",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 150,
+    "status": "active"
+  },
+  {
+    "id_service": 398,
+    "id_salon": 16,
+    "id_kategori": 23,
+    "nama": "Mesotherapy",
+    "deskripsi": null,
+    "durasi": 40,
+    "harga": 84,
+    "status": "active"
+  },
+  {
+    "id_service": 399,
+    "id_salon": 16,
+    "id_kategori": 23,
+    "nama": "Fat Dissolving Injections",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 70,
+    "status": "active"
+  },
+  {
+    "id_service": 400,
+    "id_salon": 16,
+    "id_kategori": 23,
+    "nama": "Profhilo1 treatment",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 140,
+    "status": "active"
+  },
+  {
+    "id_service": 401,
+    "id_salon": 16,
+    "id_kategori": 23,
+    "nama": "Profilo 2 treatments ",
+    "deskripsi": null,
+    "durasi": 50,
+    "harga": 280,
+    "status": "active"
+  },
+  {
+    "id_service": 402,
+    "id_salon": 17,
+    "id_kategori": 27,
+    "nama": "Ladies' - Wash, Haircut \u0026 Finish",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 60,
+    "status": "active"
+  },
+  {
+    "id_service": 403,
+    "id_salon": 17,
+    "id_kategori": 27,
+    "nama": "Ladies' - Restyle Haircut \u0026 Finish",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 68,
+    "status": "active"
+  },
+  {
+    "id_service": 404,
+    "id_salon": 17,
+    "id_kategori": 27,
+    "nama": "Ladies' - Wash Blowdry/Style",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 17.5,
+    "status": "active"
+  },
+  {
+    "id_service": 405,
+    "id_salon": 17,
+    "id_kategori": 27,
+    "nama": "Ladies' - Hair up from",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 36,
+    "status": "active"
+  },
+  {
+    "id_service": 406,
+    "id_salon": 17,
+    "id_kategori": 27,
+    "nama": "Ladies' - Blowdry with Waves ",
+    "deskripsi": null,
+    "durasi": 75,
+    "harga": 44,
+    "status": "active"
+  },
+  {
+    "id_service": 407,
+    "id_salon": 17,
+    "id_kategori": 37,
+    "nama": "Ladies - Full Head Highlights",
+    "deskripsi": null,
+    "durasi": 240,
+    "harga": 184,
+    "status": "active"
+  },
+  {
+    "id_service": 408,
+    "id_salon": 17,
+    "id_kategori": 37,
+    "nama": "Ladies - Half Head Highlights",
+    "deskripsi": null,
+    "durasi": 180,
+    "harga": 160,
+    "status": "active"
+  },
+  {
+    "id_service": 409,
+    "id_salon": 17,
+    "id_kategori": 37,
+    "nama": "Ladies - Partial Highlights with Finish",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 128,
+    "status": "active"
+  },
+  {
+    "id_service": 410,
+    "id_salon": 17,
+    "id_kategori": 37,
+    "nama": "Add On - Toner",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 16,
+    "status": "active"
+  },
+  {
+    "id_service": 411,
+    "id_salon": 17,
+    "id_kategori": 37,
+    "nama": "Add On - Treatment",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 32,
+    "status": "active"
+  },
+  {
+    "id_service": 412,
+    "id_salon": 17,
+    "id_kategori": 37,
+    "nama": "Ladies Cut and Finish Add On",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 24,
+    "status": "active"
+  },
+  {
+    "id_service": 413,
+    "id_salon": 17,
+    "id_kategori": 38,
+    "nama": "Ladies - Full Head Balayage with Finish",
+    "deskripsi": null,
+    "durasi": 240,
+    "harga": 184,
+    "status": "active"
+  },
+  {
+    "id_service": 414,
+    "id_salon": 17,
+    "id_kategori": 38,
+    "nama": "Ladies - Balayage with Finish Half Head",
+    "deskripsi": null,
+    "durasi": 210,
+    "harga": 160,
+    "status": "active"
+  },
+  {
+    "id_service": 415,
+    "id_salon": 17,
+    "id_kategori": 38,
+    "nama": "Ladies - Partial Balyage with Finish",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 112,
+    "status": "active"
+  },
+  {
+    "id_service": 416,
+    "id_salon": 17,
+    "id_kategori": 38,
+    "nama": "Ladies Cut and Finish Add on",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 24,
+    "status": "active"
+  },
+  {
+    "id_service": 417,
+    "id_salon": 17,
+    "id_kategori": 39,
+    "nama": "Patch Test",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 0,
+    "status": "active"
+  },
+  {
+    "id_service": 418,
+    "id_salon": 17,
+    "id_kategori": 39,
+    "nama": "Ladies' -Full Head Permanent Colour with Finish",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 72,
+    "status": "active"
+  },
+  {
+    "id_service": 419,
+    "id_salon": 17,
+    "id_kategori": 39,
+    "nama": "Ladies -Permanent Root Colour with Haircut and Finish",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 96,
+    "status": "active"
+  },
+  {
+    "id_service": 420,
+    "id_salon": 17,
+    "id_kategori": 39,
+    "nama": "Ladies' - Toner with Finish short hair",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 44,
+    "status": "active"
+  },
+  {
+    "id_service": 421,
+    "id_salon": 17,
+    "id_kategori": 39,
+    "nama": "Ladies' - Semi-Permanent Colour with Finish",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 72,
+    "status": "active"
+  },
+  {
+    "id_service": 422,
+    "id_salon": 17,
+    "id_kategori": 39,
+    "nama": "Ladies' - Toner with Haircut \u0026 Finish",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 88,
+    "status": "active"
+  },
+  {
+    "id_service": 423,
+    "id_salon": 17,
+    "id_kategori": 39,
+    "nama": "Strand Test",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 0,
+    "status": "active"
+  },
+  {
+    "id_service": 424,
+    "id_salon": 17,
+    "id_kategori": 40,
+    "nama": "Full Head Bleach Incl Tone|Treat and Finish",
+    "deskripsi": null,
+    "durasi": 150,
+    "harga": 160,
+    "status": "active"
+  },
+  {
+    "id_service": 425,
+    "id_salon": 17,
+    "id_kategori": 40,
+    "nama": "Ladies' - Root Bleach Incl Tone|Treat with Finish",
+    "deskripsi": null,
+    "durasi": 150,
+    "harga": 144,
+    "status": "active"
+  },
+  {
+    "id_service": 426,
+    "id_salon": 17,
+    "id_kategori": 41,
+    "nama": "Hair Extension Consultation",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 8,
+    "status": "active"
+  },
+  {
+    "id_service": 427,
+    "id_salon": 17,
+    "id_kategori": 41,
+    "nama": "Hair Extensions - Tape",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 128,
+    "status": "active"
+  },
+  {
+    "id_service": 428,
+    "id_salon": 17,
+    "id_kategori": 28,
+    "nama": "Ladies' - Silk Press",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 60,
+    "status": "active"
+  },
+  {
+    "id_service": 429,
+    "id_salon": 17,
+    "id_kategori": 28,
+    "nama": "Add On Treatment",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 16,
+    "status": "active"
+  },
+  {
+    "id_service": 430,
+    "id_salon": 17,
+    "id_kategori": 28,
+    "nama": "Ladies Cut and Finish Add on",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 16,
+    "status": "active"
+  },
+  {
+    "id_service": 431,
+    "id_salon": 18,
+    "id_kategori": 42,
+    "nama": "Ladies' - Wash \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 40,
+    "status": "active"
+  },
+  {
+    "id_service": 432,
+    "id_salon": 18,
+    "id_kategori": 42,
+    "nama": "Ladies' - Wash, Haircut \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 65,
+    "status": "active"
+  },
+  {
+    "id_service": 433,
+    "id_salon": 18,
+    "id_kategori": 42,
+    "nama": "Ladies' - Hair Up/ Special Styling",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 70,
+    "status": "active"
+  },
+  {
+    "id_service": 434,
+    "id_salon": 18,
+    "id_kategori": 43,
+    "nama": "Ladies' - Glossing/ Toner",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 435,
+    "id_salon": 18,
+    "id_kategori": 43,
+    "nama": "Ladies - Root Colour with Blow Dry",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 105,
+    "status": "active"
+  },
+  {
+    "id_service": 436,
+    "id_salon": 18,
+    "id_kategori": 43,
+    "nama": "Ladies - Root Colour with Haircut \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 110,
+    "harga": 135,
+    "status": "active"
+  },
+  {
+    "id_service": 437,
+    "id_salon": 18,
+    "id_kategori": 43,
+    "nama": "Ladies' - Full Head Colour with Blow Dry",
+    "deskripsi": null,
+    "durasi": 135,
+    "harga": 120,
+    "status": "active"
+  },
+  {
+    "id_service": 438,
+    "id_salon": 18,
+    "id_kategori": 43,
+    "nama": "Ladies' - Full Head Colour with Haircut \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 150,
+    "harga": 150,
+    "status": "active"
+  },
+  {
+    "id_service": 439,
+    "id_salon": 18,
+    "id_kategori": 43,
+    "nama": "Ladies - Root Bleach incl. Toner with Blow Dry",
+    "deskripsi": null,
+    "durasi": 120,
+    "harga": 165,
+    "status": "active"
+  },
+  {
+    "id_service": 440,
+    "id_salon": 18,
+    "id_kategori": 43,
+    "nama": "Ladies - Full Head Bleach incl. Toner with Blow Dry",
+    "deskripsi": null,
+    "durasi": 150,
+    "harga": 190,
+    "status": "active"
+  },
+  {
+    "id_service": 441,
+    "id_salon": 18,
+    "id_kategori": 32,
+    "nama": "Ladies - Face Frame Refresh (incl. Toner \u0026k18)",
+    "deskripsi": null,
+    "durasi": 105,
+    "harga": 145,
+    "status": "active"
+  },
+  {
+    "id_service": 442,
+    "id_salon": 18,
+    "id_kategori": 32,
+    "nama": "Ladies - Half Head Balayage incl. \nk18 \u0026 Toner with Haircut \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 150,
+    "harga": 170,
+    "status": "active"
+  },
+  {
+    "id_service": 443,
+    "id_salon": 18,
+    "id_kategori": 32,
+    "nama": "Ladies - Balayage incl. k18 \u0026 Toner with Blow Dry",
+    "deskripsi": null,
+    "durasi": 150,
+    "harga": 170,
+    "status": "active"
+  },
+  {
+    "id_service": 444,
+    "id_salon": 18,
+    "id_kategori": 32,
+    "nama": "Ladies - Balayage incl. k18 \u0026 Toner with Haircut \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 195,
+    "harga": 210,
+    "status": "active"
+  },
+  {
+    "id_service": 445,
+    "id_salon": 18,
+    "id_kategori": 32,
+    "nama": "Ladies - Half Head Highlights incl. k18 \u0026 Toner with Blow Dry",
+    "deskripsi": null,
+    "durasi": 140,
+    "harga": 160,
+    "status": "active"
+  },
+  {
+    "id_service": 446,
+    "id_salon": 18,
+    "id_kategori": 32,
+    "nama": "Ladies - Half Head Highlights incl. k18\u0026Toner with Haircut \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 140,
+    "harga": 199,
+    "status": "active"
+  },
+  {
+    "id_service": 447,
+    "id_salon": 18,
+    "id_kategori": 32,
+    "nama": "Ladies - Full Head Highlights incl. k18 \u0026Toner with Blow Dry",
+    "deskripsi": null,
+    "durasi": 180,
+    "harga": 199,
+    "status": "active"
+  },
+  {
+    "id_service": 448,
+    "id_salon": 18,
+    "id_kategori": 32,
+    "nama": "Ladies - Full Head Highlights incl. k18\u0026Toner with Haircut \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 180,
+    "harga": 210,
+    "status": "active"
+  },
+  {
+    "id_service": 449,
+    "id_salon": 18,
+    "id_kategori": 32,
+    "nama": "Ladies - Half Head Babylights incl. k18\u0026Toner with Haircut \u0026 Blowdry",
+    "deskripsi": null,
+    "durasi": 135,
+    "harga": 200,
+    "status": "active"
+  },
+  {
+    "id_service": 450,
+    "id_salon": 18,
+    "id_kategori": 32,
+    "nama": "Ladies - Full Head Babylights incl. k18\u0026Toner with Haircut \u0026 Blowdry",
+    "deskripsi": null,
+    "durasi": 150,
+    "harga": 230,
+    "status": "active"
+  },
+  {
+    "id_service": 451,
+    "id_salon": 18,
+    "id_kategori": 32,
+    "nama": "Ladies - Ombré Glow incl. Toner with Haircut \u0026 Blow Dry",
+    "deskripsi": null,
+    "durasi": 155,
+    "harga": 240,
+    "status": "active"
+  },
+  {
+    "id_service": 452,
+    "id_salon": 18,
+    "id_kategori": 44,
+    "nama": "Ladies' - Hair Botox Treatment",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 120,
+    "status": "active"
+  },
+  {
+    "id_service": 453,
+    "id_salon": 18,
+    "id_kategori": 44,
+    "nama": "Ladies' - Brazilian Blowdry/ Keratin Treatment",
+    "deskripsi": null,
+    "durasi": 75,
+    "harga": 170,
+    "status": "active"
+  },
+  {
+    "id_service": 454,
+    "id_salon": 18,
+    "id_kategori": 45,
+    "nama": "Ladies' - Hair Repair Mask",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 15,
+    "status": "active"
+  },
+  {
+    "id_service": 455,
+    "id_salon": 18,
+    "id_kategori": 45,
+    "nama": "Ladies' - K18 Repair Shot",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 25,
+    "status": "active"
+  },
+  {
+    "id_service": 456,
+    "id_salon": 18,
+    "id_kategori": 45,
+    "nama": "Ladies' - Scalp Massage",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 25,
+    "status": "active"
+  },
+  {
+    "id_service": 457,
+    "id_salon": 19,
+    "id_kategori": 6,
+    "nama": "Facial - Classic",
+    "deskripsi": null,
+    "durasi": 40,
+    "harga": 60,
+    "status": "active"
+  },
+  {
+    "id_service": 458,
+    "id_salon": 19,
+    "id_kategori": 6,
+    "nama": "Facial - Dermalogica",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 64,
+    "status": "active"
+  },
+  {
+    "id_service": 459,
+    "id_salon": 19,
+    "id_kategori": 6,
+    "nama": "Facial - Face Peel",
+    "deskripsi": null,
+    "durasi": 40,
+    "harga": 60,
+    "status": "active"
+  },
+  {
+    "id_service": 460,
+    "id_salon": 19,
+    "id_kategori": 6,
+    "nama": "Facial - Green  Peel",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 250,
+    "status": "active"
+  },
+  {
+    "id_service": 461,
+    "id_salon": 19,
+    "id_kategori": 6,
+    "nama": "Facial - Dermaplaning + Microneedling",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 120,
+    "status": "active"
+  },
+  {
+    "id_service": 462,
+    "id_salon": 19,
+    "id_kategori": 6,
+    "nama": "Facial - LED Light Therapy",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 100,
+    "status": "active"
+  },
+  {
+    "id_service": 463,
+    "id_salon": 19,
+    "id_kategori": 6,
+    "nama": "Facial - Pigmentation Treatment",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 250,
+    "status": "active"
+  },
+  {
+    "id_service": 464,
+    "id_salon": 19,
+    "id_kategori": 6,
+    "nama": "Facial - Dermapen",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 120,
+    "status": "active"
+  },
+  {
+    "id_service": 465,
+    "id_salon": 19,
+    "id_kategori": 6,
+    "nama": "Facial - Micro-Needling",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 120,
+    "status": "active"
+  },
+  {
+    "id_service": 466,
+    "id_salon": 19,
+    "id_kategori": 6,
+    "nama": "Facial - Deep Cleansing",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 80,
+    "status": "active"
+  },
+  {
+    "id_service": 467,
+    "id_salon": 19,
+    "id_kategori": 6,
+    "nama": "Facial - Gold",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 100,
+    "status": "active"
+  },
+  {
+    "id_service": 468,
+    "id_salon": 19,
+    "id_kategori": 6,
+    "nama": "Facial - Mini",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 50,
+    "status": "active"
+  },
+  {
+    "id_service": 469,
+    "id_salon": 19,
+    "id_kategori": 6,
+    "nama": "Facial - Hydrating",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 56,
+    "status": "active"
+  },
+  {
+    "id_service": 470,
+    "id_salon": 19,
+    "id_kategori": 6,
+    "nama": "Facial - Herbal",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 160,
+    "status": "active"
+  },
+  {
+    "id_service": 471,
+    "id_salon": 19,
+    "id_kategori": 6,
+    "nama": "Facial - Acne Treatment",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 120,
+    "status": "active"
+  },
+  {
+    "id_service": 472,
+    "id_salon": 19,
+    "id_kategori": 6,
+    "nama": "Facial - Chemical Peel",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 200,
+    "status": "active"
+  },
+  {
+    "id_service": 473,
+    "id_salon": 19,
+    "id_kategori": 23,
+    "nama": "Vitamin Injections",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 40,
+    "status": "active"
+  },
+  {
+    "id_service": 474,
+    "id_salon": 19,
+    "id_kategori": 23,
+    "nama": "Lemon Bottle Treatment",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 80,
+    "status": "active"
+  },
+  {
+    "id_service": 475,
+    "id_salon": 19,
+    "id_kategori": 23,
+    "nama": "Aqualyx Treatment",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 100,
+    "status": "active"
+  },
+  {
+    "id_service": 476,
+    "id_salon": 19,
+    "id_kategori": 23,
+    "nama": "Mesotherapy under eyes",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 100,
+    "status": "active"
+  },
+  {
+    "id_service": 477,
+    "id_salon": 19,
+    "id_kategori": 23,
+    "nama": "Face Mesotherapy including Neck",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 150,
+    "status": "active"
+  },
+  {
+    "id_service": 478,
+    "id_salon": 19,
+    "id_kategori": 23,
+    "nama": "Facial Booster",
+    "deskripsi": null,
+    "durasi": 40,
+    "harga": 120,
+    "status": "active"
+  },
+  {
+    "id_service": 479,
+    "id_salon": 19,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Leg",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 15,
+    "status": "active"
+  },
+  {
+    "id_service": 480,
+    "id_salon": 19,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Arm",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 12,
+    "status": "active"
+  },
+  {
+    "id_service": 481,
+    "id_salon": 19,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Face",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 5,
+    "status": "active"
+  },
+  {
+    "id_service": 482,
+    "id_salon": 19,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Upper Body",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 15,
+    "status": "active"
+  },
+  {
+    "id_service": 483,
+    "id_salon": 19,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Full Body",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 130,
+    "status": "active"
+  },
+  {
+    "id_service": 484,
+    "id_salon": 19,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Buttocks",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 15,
+    "status": "active"
+  },
+  {
+    "id_service": 485,
+    "id_salon": 19,
+    "id_kategori": 5,
+    "nama": "Ladies' Waxing - Underarm",
+    "deskripsi": null,
+    "durasi": 15,
+    "harga": 15,
+    "status": "active"
+  },
+  {
+    "id_service": 486,
+    "id_salon": 19,
+    "id_kategori": 17,
+    "nama": "Ladies' Waxing - Leg \u0026 Underarm",
+    "deskripsi": null,
+    "durasi": 35,
+    "harga": 35,
+    "status": "active"
+  },
+  {
+    "id_service": 487,
+    "id_salon": 20,
+    "id_kategori": 46,
+    "nama": "Anti-Wrinkle Injections",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 0.1,
+    "status": "active"
+  },
+  {
+    "id_service": 488,
+    "id_salon": 20,
+    "id_kategori": 23,
+    "nama": "Dermal Fillers",
+    "deskripsi": null,
+    "durasi": 10,
+    "harga": 0.1,
+    "status": "active"
+  },
+  {
+    "id_service": 489,
+    "id_salon": 20,
+    "id_kategori": 23,
+    "nama": "Filler Dissolve",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 45.5,
+    "status": "active"
+  },
+  {
+    "id_service": 490,
+    "id_salon": 20,
+    "id_kategori": 23,
+    "nama": "Fat Dissolving Injections",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 48.75,
+    "status": "active"
+  },
+  {
+    "id_service": 491,
+    "id_salon": 20,
+    "id_kategori": 23,
+    "nama": "Skin Boosters  ( Face / Hands/ Neck / Décolletage)",
+    "deskripsi": null,
+    "durasi": 20,
+    "harga": 110.5,
+    "status": "active"
+  },
+  {
+    "id_service": 492,
+    "id_salon": 20,
+    "id_kategori": 23,
+    "nama": "Eye Skin Boosters (Dark circles/ Bags)",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 104,
+    "status": "active"
+  },
+  {
+    "id_service": 493,
+    "id_salon": 20,
+    "id_kategori": 23,
+    "nama": "Vitamin Drip NAD +",
+    "deskripsi": null,
+    "durasi": 90,
+    "harga": 200,
+    "status": "active"
+  },
+  {
+    "id_service": 494,
+    "id_salon": 20,
+    "id_kategori": 6,
+    "nama": "Facial - PRP- Biogel-Ezeegel",
+    "deskripsi": null,
+    "durasi": 45,
+    "harga": 104,
+    "status": "active"
+  },
+  {
+    "id_service": 495,
+    "id_salon": 20,
+    "id_kategori": 6,
+    "nama": "Mesotherapy",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 91,
+    "status": "active"
+  },
+  {
+    "id_service": 496,
+    "id_salon": 20,
+    "id_kategori": 6,
+    "nama": "Facial - Dermaplaning",
+    "deskripsi": null,
+    "durasi": 60,
+    "harga": 55.25,
+    "status": "active"
+  },
+  {
+    "id_service": 497,
+    "id_salon": 20,
+    "id_kategori": 16,
+    "nama": "Brow \u0026 Lash perm",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 65,
+    "status": "active"
+  },
+  {
+    "id_service": 498,
+    "id_salon": 20,
+    "id_kategori": 47,
+    "nama": "Express  Spray Tan - Sienna X  (1hr)",
+    "deskripsi": null,
+    "durasi": 30,
+    "harga": 110,
+    "status": "active"
+  }
+]
