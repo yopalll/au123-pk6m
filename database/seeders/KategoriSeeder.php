@@ -14,7 +14,12 @@ class KategoriSeeder extends Seeder
     public function run(): void
     {
         $json = file_get_contents(database_path('data/kategori.json'));
-        $kategoriList = json_decode($json, true);
+        $kategoriList = json_decode($json, true) ?? [];
+
+        if (empty($kategoriList)) {
+            $this->command->warn('kategori.json is empty, skipping KategoriSeeder.');
+            return;
+        }
 
         // Deduplicate by slug (keep first occurrence)
         $seen = [];

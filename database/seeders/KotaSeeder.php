@@ -13,7 +13,12 @@ class KotaSeeder extends Seeder
     public function run(): void
     {
         $json = file_get_contents(database_path('data/kota.json'));
-        $kotaList = json_decode($json, true);
+        $kotaList = json_decode($json, true) ?? [];
+
+        if (empty($kotaList)) {
+            $this->command->warn('kota.json is empty, skipping KotaSeeder.');
+            return;
+        }
 
         // Chunk insert for efficiency (avoid memory issues on large datasets)
         $chunks = array_chunk($kotaList, 100);

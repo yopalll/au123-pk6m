@@ -14,7 +14,12 @@ class SalonSeeder extends Seeder
     public function run(): void
     {
         $json = file_get_contents(database_path('data/salon.json'));
-        $salons = json_decode($json, true);
+        $salons = json_decode($json, true) ?? [];
+
+        if (empty($salons)) {
+            $this->command->warn('salon.json is empty, skipping SalonSeeder.');
+            return;
+        }
 
         $chunks = array_chunk($salons, 50);
 

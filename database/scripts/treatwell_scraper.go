@@ -21,8 +21,8 @@ import (
 // ─── Configuration ───────────────────────────────────────────────────────────
 
 const (
-	maxPages       = 50           // Maximum listing pages to scrape
-	maxWorkers     = 10           // Concurrent detail-page scrapers
+	maxPages       = 100          // Maximum listing pages to scrape
+	maxWorkers     = 20           // Concurrent detail-page scrapers
 	requestDelay   = 500 * time.Millisecond // Delay between listing page fetches
 	maxRetries     = 3
 	requestTimeout = 15 * time.Second
