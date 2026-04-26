@@ -10028,5 +10028,3475 @@
     "id_kota": 2006,
     "nama_kota": "5-7 Wembley Hill Road",
     "provinsi": "Wembley"
+  },
+  {
+    "id_kota": 2007,
+    "nama_kota": "Guildhall Building",
+    "provinsi": "Navigation Street"
+  },
+  {
+    "id_kota": 2008,
+    "nama_kota": "Bilston",
+    "provinsi": "Wolverhampton"
+  },
+  {
+    "id_kota": 2009,
+    "nama_kota": "10 Minories, Birmingham",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2010,
+    "nama_kota": "11 Hadzor Road",
+    "provinsi": "Oldbury"
+  },
+  {
+    "id_kota": 2011,
+    "nama_kota": "Harborne",
+    "provinsi": "Birmingham"
+  },
+  {
+    "id_kota": 2012,
+    "nama_kota": "248 Lyndon Road",
+    "provinsi": "Solihull"
+  },
+  {
+    "id_kota": 2013,
+    "nama_kota": "1 Moreton Avenue",
+    "provinsi": "Great Barr"
+  },
+  {
+    "id_kota": 2014,
+    "nama_kota": "Ciba Building, ",
+    "provinsi": "Birmingham"
+  },
+  {
+    "id_kota": 2015,
+    "nama_kota": "(on site parking )",
+    "provinsi": "Solihull"
+  },
+  {
+    "id_kota": 2016,
+    "nama_kota": "Great Barr",
+    "provinsi": "Birmingham"
+  },
+  {
+    "id_kota": 2017,
+    "nama_kota": "123-131 Bradford Street",
+    "provinsi": "Birmingham"
+  },
+  {
+    "id_kota": 2018,
+    "nama_kota": "Yardley Wood",
+    "provinsi": "Birmingham"
+  },
+  {
+    "id_kota": 2019,
+    "nama_kota": "Imperial Road",
+    "provinsi": "Birmingham"
+  },
+  {
+    "id_kota": 2020,
+    "nama_kota": "New Road",
+    "provinsi": "Solihull"
+  },
+  {
+    "id_kota": 2021,
+    "nama_kota": "Brierley Hill,",
+    "provinsi": "DY5 3EH"
+  },
+  {
+    "id_kota": 2022,
+    "nama_kota": "Wednesbury",
+    "provinsi": "Sandwell"
+  },
+  {
+    "id_kota": 2023,
+    "nama_kota": "Marlbrook ",
+    "provinsi": "Bromsgrove"
+  },
+  {
+    "id_kota": 2024,
+    "nama_kota": "Snow Hill Queensway",
+    "provinsi": "Birmingham"
+  },
+  {
+    "id_kota": 2025,
+    "nama_kota": "Erdington",
+    "provinsi": "Birmingham"
+  },
+  {
+    "id_kota": 2026,
+    "nama_kota": "502c Lickey Road",
+    "provinsi": "Rednal"
+  },
+  {
+    "id_kota": 2027,
+    "nama_kota": "Quinton",
+    "provinsi": "Birmingham"
+  },
+  {
+    "id_kota": 2028,
+    "nama_kota": "Shirley, Solihull",
+    "provinsi": "United Kingdom"
+  },
+  {
+    "id_kota": 2029,
+    "nama_kota": "20 Station Road ",
+    "provinsi": "Touchwood Shopping Centre "
+  },
+  {
+    "id_kota": 2030,
+    "nama_kota": "Bullring Shopping Centre",
+    "provinsi": "51 Edgbaston Street"
+  },
+  {
+    "id_kota": 2031,
+    "nama_kota": "Solihill",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2032,
+    "nama_kota": "1st \u0026 2nd Floor",
+    "provinsi": "Solihull"
+  },
+  {
+    "id_kota": 2033,
+    "nama_kota": " Hair Styling Alina",
+    "provinsi": "Smethwick "
+  },
+  {
+    "id_kota": 2034,
+    "nama_kota": "4 th Floor Park Regis Hotel ",
+    "provinsi": "Birmingham"
+  },
+  {
+    "id_kota": 2035,
+    "nama_kota": "Sutton, Coldfield ",
+    "provinsi": "Birmingham "
+  },
+  {
+    "id_kota": 2036,
+    "nama_kota": "24 BEGLRAVE MIDWAY",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2037,
+    "nama_kota": "Hall Green, ",
+    "provinsi": "Birmingham"
+  },
+  {
+    "id_kota": 2038,
+    "nama_kota": "707 Warwick road",
+    "provinsi": "Solihull"
+  },
+  {
+    "id_kota": 2039,
+    "nama_kota": "Stirchley ",
+    "provinsi": "Birmingham"
+  },
+  {
+    "id_kota": 2040,
+    "nama_kota": "176 Lower High Street",
+    "provinsi": "Stourbridge"
+  },
+  {
+    "id_kota": 2041,
+    "nama_kota": "Monkspath",
+    "provinsi": "Solihull"
+  },
+  {
+    "id_kota": 2042,
+    "nama_kota": "Chester Road ",
+    "provinsi": "Birmingham"
+  },
+  {
+    "id_kota": 2043,
+    "nama_kota": "89 Institute Road",
+    "provinsi": "Kings Heath"
+  },
+  {
+    "id_kota": 2044,
+    "nama_kota": "Clarence Mews",
+    "provinsi": "Harborne"
+  },
+  {
+    "id_kota": 2045,
+    "nama_kota": "Off Goodison Gardens ",
+    "provinsi": "Erdington"
+  },
+  {
+    "id_kota": 2046,
+    "nama_kota": "Tyseley",
+    "provinsi": "Birmingham"
+  },
+  {
+    "id_kota": 2047,
+    "nama_kota": "Kingstanding Road, ",
+    "provinsi": "Kingstanding"
+  },
+  {
+    "id_kota": 2048,
+    "nama_kota": "51-52 Calthorpe Road",
+    "provinsi": "Birmingham"
+  },
+  {
+    "id_kota": 2049,
+    "nama_kota": "Coseley",
+    "provinsi": "Bilston"
+  },
+  {
+    "id_kota": 2050,
+    "nama_kota": "Alcester Road",
+    "provinsi": "Wythall "
+  },
+  {
+    "id_kota": 2051,
+    "nama_kota": "Unit 4, Two Snow Hill",
+    "provinsi": "Snow Hill Queensway"
+  },
+  {
+    "id_kota": 2052,
+    "nama_kota": "122 Main Street",
+    "provinsi": "Dickens Heath"
+  },
+  {
+    "id_kota": 2053,
+    "nama_kota": "Shirley ",
+    "provinsi": "Solihull"
+  },
+  {
+    "id_kota": 2054,
+    "nama_kota": "52 Blucher St,",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2055,
+    "nama_kota": "65 Peter Street ",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2056,
+    "nama_kota": "7 Charlotte St",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2057,
+    "nama_kota": "Hulme",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2058,
+    "nama_kota": "12-16 Mosley Street",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2059,
+    "nama_kota": "65 Peter street",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2060,
+    "nama_kota": "John Dalton Street",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2061,
+    "nama_kota": "Manchester Picadilly",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2062,
+    "nama_kota": "737 Wilmslow Road ",
+    "provinsi": "Didsbury"
+  },
+  {
+    "id_kota": 2063,
+    "nama_kota": "1 Deansgate ",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2064,
+    "nama_kota": "7 Charlotte Street",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2065,
+    "nama_kota": "Third floor, Room 8 ",
+    "provinsi": "Deansgate, Manchester"
+  },
+  {
+    "id_kota": 2066,
+    "nama_kota": "22 Swan Street",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2067,
+    "nama_kota": "942 Stockport Road",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2068,
+    "nama_kota": "Abbey Hey",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2069,
+    "nama_kota": "2 Hellidon Close",
+    "provinsi": "Ardwick"
+  },
+  {
+    "id_kota": 2070,
+    "nama_kota": "67-71 Rochdale Road,",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2071,
+    "nama_kota": "69- 71 Lever Street",
+    "provinsi": " Manchester"
+  },
+  {
+    "id_kota": 2072,
+    "nama_kota": "521a Barlow Moor Road ",
+    "provinsi": "Chorlton "
+  },
+  {
+    "id_kota": 2073,
+    "nama_kota": "St James Tower, Level 1, Room 121",
+    "provinsi": "Manchester City Centre"
+  },
+  {
+    "id_kota": 2074,
+    "nama_kota": "93-101 Bridge Street",
+    "provinsi": "(2nd Floor, Desk) "
+  },
+  {
+    "id_kota": 2075,
+    "nama_kota": "529 wilbraham road,",
+    "provinsi": "Chorlton-Cum-Hardy"
+  },
+  {
+    "id_kota": 2076,
+    "nama_kota": "18 Lloyd Street",
+    "provinsi": "Left hand side of the elevator "
+  },
+  {
+    "id_kota": 2077,
+    "nama_kota": "Blackfriars Rd",
+    "provinsi": "Salford"
+  },
+  {
+    "id_kota": 2078,
+    "nama_kota": "Royal Exchange Buildings ",
+    "provinsi": "St Anne’s Square "
+  },
+  {
+    "id_kota": 2079,
+    "nama_kota": "4th Floor The Royal Exchange ",
+    "provinsi": "Old Bank Street "
+  },
+  {
+    "id_kota": 2080,
+    "nama_kota": "West Didsbury ",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2081,
+    "nama_kota": "North Manchester",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2082,
+    "nama_kota": "Deansgate",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2083,
+    "nama_kota": "Suite 3C",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2084,
+    "nama_kota": "The Mission",
+    "provinsi": "50 Bridge Street"
+  },
+  {
+    "id_kota": 2085,
+    "nama_kota": "Chorlton ",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2086,
+    "nama_kota": " 7 Charlotte St, Manchester ",
+    "provinsi": "Manchester, UK"
+  },
+  {
+    "id_kota": 2087,
+    "nama_kota": "30-32 Charlotte Street",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2088,
+    "nama_kota": "Harpurhey",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2089,
+    "nama_kota": "559 Barlow Moor Road",
+    "provinsi": "Chorlton-cum-Hardy"
+  },
+  {
+    "id_kota": 2090,
+    "nama_kota": "Didsbury Business Centre",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2091,
+    "nama_kota": "IFace Aesthetics",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2092,
+    "nama_kota": "Manchester Hall",
+    "provinsi": "36 Bridge street"
+  },
+  {
+    "id_kota": 2093,
+    "nama_kota": "255a Monton road",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2094,
+    "nama_kota": "64 Bridge Street, ",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2095,
+    "nama_kota": "New Moston",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2096,
+    "nama_kota": "Worsley Street",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2097,
+    "nama_kota": "Wythenshawe,",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2098,
+    "nama_kota": "Wythenshawe Manchester",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2099,
+    "nama_kota": "1 Trinity Way,",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2100,
+    "nama_kota": "60 Oldham Street",
+    "provinsi": " Manchester"
+  },
+  {
+    "id_kota": 2101,
+    "nama_kota": "56 Port Street ",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2102,
+    "nama_kota": "Ancoats",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2103,
+    "nama_kota": "109 corporation street",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2104,
+    "nama_kota": "113 Pollard Street",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2105,
+    "nama_kota": "1 Percy Street ",
+    "provinsi": "Manchester"
+  },
+  {
+    "id_kota": 2106,
+    "nama_kota": "1st Floor,",
+    "provinsi": "64 Bridge Street,"
+  },
+  {
+    "id_kota": 2107,
+    "nama_kota": "Brighton and Hove",
+    "provinsi": "Hove"
+  },
+  {
+    "id_kota": 2108,
+    "nama_kota": "Hove",
+    "provinsi": "Brighton and Hove"
+  },
+  {
+    "id_kota": 2109,
+    "nama_kota": "Hove Street",
+    "provinsi": "Hove"
+  },
+  {
+    "id_kota": 2110,
+    "nama_kota": "Kingsway House",
+    "provinsi": "134-140 Church Road"
+  },
+  {
+    "id_kota": 2111,
+    "nama_kota": "Brighton",
+    "provinsi": "East Sussex"
+  },
+  {
+    "id_kota": 2112,
+    "nama_kota": "Brighton and Hove,",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2113,
+    "nama_kota": "Brighton Marina ",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2114,
+    "nama_kota": "59 Argyle Road",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2115,
+    "nama_kota": "BRIGHTON",
+    "provinsi": "BN1 2HA"
+  },
+  {
+    "id_kota": 2116,
+    "nama_kota": "St George's Road",
+    "provinsi": "Kemptown"
+  },
+  {
+    "id_kota": 2117,
+    "nama_kota": "5 Bartholomews ",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2118,
+    "nama_kota": "David Lloyd Fitness Centre",
+    "provinsi": "Brighton Marina"
+  },
+  {
+    "id_kota": 2119,
+    "nama_kota": "Portslade",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2120,
+    "nama_kota": "East Street",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2121,
+    "nama_kota": "Kemptown ",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2122,
+    "nama_kota": "20-21 New Steine",
+    "provinsi": "Kemptown"
+  },
+  {
+    "id_kota": 2123,
+    "nama_kota": "Patcham",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2124,
+    "nama_kota": "Central Hove",
+    "provinsi": "Hove"
+  },
+  {
+    "id_kota": 2125,
+    "nama_kota": "Withdene",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2126,
+    "nama_kota": "Shoreham-by-Sea",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2127,
+    "nama_kota": "Flat 4",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2128,
+    "nama_kota": "Southwick ",
+    "provinsi": "Brighton and Hove"
+  },
+  {
+    "id_kota": 2129,
+    "nama_kota": "Inside Buddha Nails,",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2130,
+    "nama_kota": "Cornelius house",
+    "provinsi": "Brighton and Hove"
+  },
+  {
+    "id_kota": 2131,
+    "nama_kota": "36a Duke Street",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2132,
+    "nama_kota": "Brighton and Hove ",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2133,
+    "nama_kota": "The Pink Pamper Lodge",
+    "provinsi": "89 Church Rd, Brighton and Hove, Hove"
+  },
+  {
+    "id_kota": 2134,
+    "nama_kota": "Ingram Crescent East ",
+    "provinsi": "Brighton and Hove"
+  },
+  {
+    "id_kota": 2135,
+    "nama_kota": "1, The Offices",
+    "provinsi": "10 Fleet Street"
+  },
+  {
+    "id_kota": 2136,
+    "nama_kota": "Brighton ",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2137,
+    "nama_kota": "Kemptown",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2138,
+    "nama_kota": "36 Bond Street",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2139,
+    "nama_kota": "78-81 Queens Road",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2140,
+    "nama_kota": "59 Preston Street",
+    "provinsi": "Brighton and Hove"
+  },
+  {
+    "id_kota": 2141,
+    "nama_kota": "19 Powis Road",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2142,
+    "nama_kota": "First floor",
+    "provinsi": "HOVE"
+  },
+  {
+    "id_kota": 2143,
+    "nama_kota": "Portslade, East Sussex",
+    "provinsi": "United Kingdom"
+  },
+  {
+    "id_kota": 2144,
+    "nama_kota": "36A Duke St",
+    "provinsi": "Brighton and Hove"
+  },
+  {
+    "id_kota": 2145,
+    "nama_kota": "40 St James's Street",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2146,
+    "nama_kota": "New Steine, Kemptown",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2147,
+    "nama_kota": "2 Saint Heliers Avenue",
+    "provinsi": "Brighton and Hove"
+  },
+  {
+    "id_kota": 2148,
+    "nama_kota": "Stanford Avenue",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2149,
+    "nama_kota": "Brighton and Hove Brighton",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2150,
+    "nama_kota": "123A Western Rd, ",
+    "provinsi": "Brighton "
+  },
+  {
+    "id_kota": 2151,
+    "nama_kota": "10 Fleet Street",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2152,
+    "nama_kota": "Southwick",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2153,
+    "nama_kota": "Portslade Brighton",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2154,
+    "nama_kota": "Brighton and Hove, ",
+    "provinsi": "Brighton, "
+  },
+  {
+    "id_kota": 2155,
+    "nama_kota": "Brighton and Hove Hove",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2156,
+    "nama_kota": "30 Grand Parade ",
+    "provinsi": "Brighton"
+  },
+  {
+    "id_kota": 2157,
+    "nama_kota": "Dyke Road",
+    "provinsi": "Hove"
+  },
+  {
+    "id_kota": 2158,
+    "nama_kota": "Bristol",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2159,
+    "nama_kota": "22 Merton Road.",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2160,
+    "nama_kota": "Redland",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2161,
+    "nama_kota": " Cliffton",
+    "provinsi": " Bristol"
+  },
+  {
+    "id_kota": 2162,
+    "nama_kota": "Clifton Down",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2163,
+    "nama_kota": "Downend",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2164,
+    "nama_kota": "22 Merton Road",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2165,
+    "nama_kota": "Clifton",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2166,
+    "nama_kota": "Patchway",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2167,
+    "nama_kota": "Whitchurch ",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2168,
+    "nama_kota": "1E Overnhill Road",
+    "provinsi": "Downend,"
+  },
+  {
+    "id_kota": 2169,
+    "nama_kota": "Bath",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2170,
+    "nama_kota": "6 Perry Rd, Bristol",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2171,
+    "nama_kota": "Bedminster",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2172,
+    "nama_kota": "Staple Hill",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2173,
+    "nama_kota": "Coniston Road",
+    "provinsi": "Patchway"
+  },
+  {
+    "id_kota": 2174,
+    "nama_kota": "17-19 Portland Street",
+    "provinsi": "Clifton"
+  },
+  {
+    "id_kota": 2175,
+    "nama_kota": "St George",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2176,
+    "nama_kota": "Thornbury",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2177,
+    "nama_kota": "153 St Michael's Hill",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2178,
+    "nama_kota": "Brislington",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2179,
+    "nama_kota": "Kingswood",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2180,
+    "nama_kota": "bs32 0ew",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2181,
+    "nama_kota": "Southmead",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2182,
+    "nama_kota": "Wotton Road",
+    "provinsi": "Iron Acton"
+  },
+  {
+    "id_kota": 2183,
+    "nama_kota": "Bradley Stoke",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2184,
+    "nama_kota": "BRISTOL",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2185,
+    "nama_kota": "St Paul's",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2186,
+    "nama_kota": "Southville",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2187,
+    "nama_kota": "Whitchurch",
+    "provinsi": "Bristol, BS14 0NL"
+  },
+  {
+    "id_kota": 2188,
+    "nama_kota": "Little Stoke",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2189,
+    "nama_kota": "Redfield",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2190,
+    "nama_kota": "Westbury on Trym",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2191,
+    "nama_kota": "Nailsea",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2192,
+    "nama_kota": "30 Pursey Drive",
+    "provinsi": "Bradley Stoke"
+  },
+  {
+    "id_kota": 2193,
+    "nama_kota": "Trajectus Way ",
+    "provinsi": "Keynsham"
+  },
+  {
+    "id_kota": 2194,
+    "nama_kota": "16 Alma Vale Road",
+    "provinsi": "Clifton"
+  },
+  {
+    "id_kota": 2195,
+    "nama_kota": "Hanham",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2196,
+    "nama_kota": "Yatton ",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2197,
+    "nama_kota": "97 The Horsefair, Broadmead, BS1 3JR",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2198,
+    "nama_kota": "Knowle ",
+    "provinsi": "Tell 07979373687"
+  },
+  {
+    "id_kota": 2199,
+    "nama_kota": " Bristol",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2200,
+    "nama_kota": "2 Whiteladies Road ",
+    "provinsi": "Clifton, Bristol"
+  },
+  {
+    "id_kota": 2201,
+    "nama_kota": "Keynsham",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2202,
+    "nama_kota": "Bishopston",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2203,
+    "nama_kota": "168 Nelson Street",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2204,
+    "nama_kota": "St Andrew's",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2205,
+    "nama_kota": "Arno's Vale",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2206,
+    "nama_kota": "2c Moravian Road ",
+    "provinsi": "Kingswood "
+  },
+  {
+    "id_kota": 2207,
+    "nama_kota": "Frampton Cotterell",
+    "provinsi": "Bristol BS36 2FR"
+  },
+  {
+    "id_kota": 2208,
+    "nama_kota": "1 Bath Hill, High Street ",
+    "provinsi": "Keynsham"
+  },
+  {
+    "id_kota": 2209,
+    "nama_kota": "1 Lansdown Road,",
+    "provinsi": "Bath"
+  },
+  {
+    "id_kota": 2210,
+    "nama_kota": "13, MARSH STREET",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2211,
+    "nama_kota": "Southmead ",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2212,
+    "nama_kota": "The Galleries Shopping Centre",
+    "provinsi": "Greyhound Walk"
+  },
+  {
+    "id_kota": 2213,
+    "nama_kota": "14 St Paul's Road, Clifton",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2214,
+    "nama_kota": "198 Cheltenham Rd",
+    "provinsi": "Montpelier"
+  },
+  {
+    "id_kota": 2215,
+    "nama_kota": "Bristol ",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2216,
+    "nama_kota": "Milton",
+    "provinsi": "Weston-super-Mare"
+  },
+  {
+    "id_kota": 2217,
+    "nama_kota": "10 Chandos Road",
+    "provinsi": "Redland"
+  },
+  {
+    "id_kota": 2218,
+    "nama_kota": "Stoke Gifford",
+    "provinsi": "Bristol"
+  },
+  {
+    "id_kota": 2219,
+    "nama_kota": "Albany Road",
+    "provinsi": "Cardiff"
+  },
+  {
+    "id_kota": 2220,
+    "nama_kota": "Cardiff",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2221,
+    "nama_kota": "Castle Arcade",
+    "provinsi": "Cardiff"
+  },
+  {
+    "id_kota": 2222,
+    "nama_kota": "Saint Mellons",
+    "provinsi": "Cardiff"
+  },
+  {
+    "id_kota": 2223,
+    "nama_kota": "Wellfield Road",
+    "provinsi": "Cardiff"
+  },
+  {
+    "id_kota": 2224,
+    "nama_kota": "Rumney ",
+    "provinsi": "Cardiff"
+  },
+  {
+    "id_kota": 2225,
+    "nama_kota": "128 Newport Road",
+    "provinsi": "Cardiff"
+  },
+  {
+    "id_kota": 2226,
+    "nama_kota": "Mount Stuart Square",
+    "provinsi": "West Bute Street"
+  },
+  {
+    "id_kota": 2227,
+    "nama_kota": "Hollybush Estate",
+    "provinsi": "Cardiff"
+  },
+  {
+    "id_kota": 2228,
+    "nama_kota": "Leith",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2229,
+    "nama_kota": "Edinburgh",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2230,
+    "nama_kota": "Bruntsfield",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2231,
+    "nama_kota": "73b Ocean Drive",
+    "provinsi": "Leith"
+  },
+  {
+    "id_kota": 2232,
+    "nama_kota": "40 Bridge Street",
+    "provinsi": "Musselburgh"
+  },
+  {
+    "id_kota": 2233,
+    "nama_kota": "Haymarket",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2234,
+    "nama_kota": "William Street",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2235,
+    "nama_kota": "4/6 Anderson Place",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2236,
+    "nama_kota": "3 Lochside Place",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2237,
+    "nama_kota": "54 constitution street",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2238,
+    "nama_kota": "Morningside",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2239,
+    "nama_kota": "Newhaven",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2240,
+    "nama_kota": "Corstorphine",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2241,
+    "nama_kota": "Mountcastle",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2242,
+    "nama_kota": "38 Howe Street",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2243,
+    "nama_kota": "Blackhall",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2244,
+    "nama_kota": "Roseburn",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2245,
+    "nama_kota": "Stockbridge",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2246,
+    "nama_kota": "Murrayfield",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2247,
+    "nama_kota": "8 South Clerk Street",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2248,
+    "nama_kota": "40 Broughton Street",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2249,
+    "nama_kota": "65-67 Commercial Street",
+    "provinsi": "Leith"
+  },
+  {
+    "id_kota": 2250,
+    "nama_kota": "Edinburgh ",
+    "provinsi": "EH15 1EU"
+  },
+  {
+    "id_kota": 2251,
+    "nama_kota": "16 Howe Street ",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2252,
+    "nama_kota": "210a Newhaven Road",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2253,
+    "nama_kota": "16 Howe Street",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2254,
+    "nama_kota": "Juniper Green",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2255,
+    "nama_kota": "19 Torphichen Place",
+    "provinsi": "Haymarket"
+  },
+  {
+    "id_kota": 2256,
+    "nama_kota": "1 Bruntsfield Pl, Edinburgh",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2257,
+    "nama_kota": "Musselburgh",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2258,
+    "nama_kota": "X Creative Collaboration",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2259,
+    "nama_kota": "28 Lady Lawson Street",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2260,
+    "nama_kota": "25A Dundas Street",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2261,
+    "nama_kota": "Within Marriot Hotel ( free parking ) ",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2262,
+    "nama_kota": "Duddingston",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2263,
+    "nama_kota": "48 Great Junction Street",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2264,
+    "nama_kota": "94 Comiston Road",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2265,
+    "nama_kota": "South Queensferry",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2266,
+    "nama_kota": "295 St Johns Road",
+    "provinsi": "Corstorphine"
+  },
+  {
+    "id_kota": 2267,
+    "nama_kota": "23 Broughton Street",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2268,
+    "nama_kota": "5 Dundonald St",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2269,
+    "nama_kota": "Gorgie",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2270,
+    "nama_kota": "102 KINGSKNOWE ROAD NORTH",
+    "provinsi": "EDINBURGH"
+  },
+  {
+    "id_kota": 2271,
+    "nama_kota": "Canonmills",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2272,
+    "nama_kota": "77 Dalry Road",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2273,
+    "nama_kota": "246 Leith Walk",
+    "provinsi": "Leith"
+  },
+  {
+    "id_kota": 2274,
+    "nama_kota": "The Biscuit Factory ",
+    "provinsi": "Unit 15"
+  },
+  {
+    "id_kota": 2275,
+    "nama_kota": "Dalry",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2276,
+    "nama_kota": "Meadowbank ",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2277,
+    "nama_kota": "248 Portobello High St",
+    "provinsi": "Portobello"
+  },
+  {
+    "id_kota": 2278,
+    "nama_kota": "22 Montrose Terrace",
+    "provinsi": "Meadowbank"
+  },
+  {
+    "id_kota": 2279,
+    "nama_kota": "25a Dundas Street",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2280,
+    "nama_kota": "3 Mountcastle Drive North",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2281,
+    "nama_kota": "7 Clermiston Road",
+    "provinsi": "Corstorphine"
+  },
+  {
+    "id_kota": 2282,
+    "nama_kota": "Meadowbank",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2283,
+    "nama_kota": "New town ",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2284,
+    "nama_kota": "Clermiston",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2285,
+    "nama_kota": "134 Duke street",
+    "provinsi": "EH6 8HR"
+  },
+  {
+    "id_kota": 2286,
+    "nama_kota": "242 Queensferry Road ",
+    "provinsi": "Blackhall"
+  },
+  {
+    "id_kota": 2287,
+    "nama_kota": "Pure Offices, Room 69",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2288,
+    "nama_kota": "207 St John’s Road",
+    "provinsi": "Corstorphine"
+  },
+  {
+    "id_kota": 2289,
+    "nama_kota": "Portobello",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2290,
+    "nama_kota": "111 Leith Walk",
+    "provinsi": "Leith"
+  },
+  {
+    "id_kota": 2291,
+    "nama_kota": "Gilmore Place",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2292,
+    "nama_kota": "Haymarket ",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2293,
+    "nama_kota": "Davidson's Mains",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2294,
+    "nama_kota": "100 Eastfield Road",
+    "provinsi": "Ingliston"
+  },
+  {
+    "id_kota": 2295,
+    "nama_kota": "45 Dundas Street",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2296,
+    "nama_kota": "5 Beaufort Road ",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2297,
+    "nama_kota": "Wester Hailes Road ",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2298,
+    "nama_kota": "125 Gilmour Place",
+    "provinsi": "Tollcross"
+  },
+  {
+    "id_kota": 2299,
+    "nama_kota": "16 Rodney Street",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2300,
+    "nama_kota": "151 London Road, studio 218",
+    "provinsi": "Meadowbank"
+  },
+  {
+    "id_kota": 2301,
+    "nama_kota": "2nd floor, then Buzzer 2.1",
+    "provinsi": "45 Frederick Street"
+  },
+  {
+    "id_kota": 2302,
+    "nama_kota": "21 Stevenson Road",
+    "provinsi": "Balgreen"
+  },
+  {
+    "id_kota": 2303,
+    "nama_kota": "Willowbrae-Duddingston,",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2304,
+    "nama_kota": "Liberton Golf Club",
+    "provinsi": "297 Gilmerton Road"
+  },
+  {
+    "id_kota": 2305,
+    "nama_kota": "7 Marischal Place",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2306,
+    "nama_kota": "15 London Road",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2307,
+    "nama_kota": "The Biscuit Factory",
+    "provinsi": "Unit 15"
+  },
+  {
+    "id_kota": 2308,
+    "nama_kota": "Inch",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2309,
+    "nama_kota": "Ratho",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2310,
+    "nama_kota": "76 George Street",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2311,
+    "nama_kota": "14-16 Church Hill Place",
+    "provinsi": "Edinburgh"
+  },
+  {
+    "id_kota": 2312,
+    "nama_kota": "Partick",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2313,
+    "nama_kota": "Kelvin Bridge",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2314,
+    "nama_kota": "Glasgow",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2315,
+    "nama_kota": "Partick, ",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2316,
+    "nama_kota": "Shawlands",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2317,
+    "nama_kota": "1954  Dumbarton Rd",
+    "provinsi": "Yoker "
+  },
+  {
+    "id_kota": 2318,
+    "nama_kota": "Broomhill",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2319,
+    "nama_kota": "Kelvinside",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2320,
+    "nama_kota": "1221 Gallowgate ",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2321,
+    "nama_kota": "145 Bath Street",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2322,
+    "nama_kota": "Bearsden",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2323,
+    "nama_kota": "Forge Shopping Centre",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2324,
+    "nama_kota": "Govanhill",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2325,
+    "nama_kota": "Dennistoun",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2326,
+    "nama_kota": "52 Clyde Place",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2327,
+    "nama_kota": "St. Enoch Square",
+    "provinsi": "Lanarkshire"
+  },
+  {
+    "id_kota": 2328,
+    "nama_kota": "6 Hayburn Street",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2329,
+    "nama_kota": "NEXT TO DENTIST",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2330,
+    "nama_kota": "160 Hope St",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2331,
+    "nama_kota": "Mount Florida",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2332,
+    "nama_kota": "Cathcart",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2333,
+    "nama_kota": "37a Bath Street",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2334,
+    "nama_kota": "Springburn",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2335,
+    "nama_kota": "Anniesland",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2336,
+    "nama_kota": "Parkhead",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2337,
+    "nama_kota": "1042 Pollokshaws Road",
+    "provinsi": "Shawlands"
+  },
+  {
+    "id_kota": 2338,
+    "nama_kota": "Pollokshields",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2339,
+    "nama_kota": "Plantation",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2340,
+    "nama_kota": "680 Dumbarton road",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2341,
+    "nama_kota": "Hyndland",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2342,
+    "nama_kota": "Giffnock",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2343,
+    "nama_kota": "Glasgow ",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2344,
+    "nama_kota": "Craigton",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2345,
+    "nama_kota": "Gorbals ",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2346,
+    "nama_kota": "Merchant city ",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2347,
+    "nama_kota": "Within Salon 466",
+    "provinsi": "466 Ballater Street"
+  },
+  {
+    "id_kota": 2348,
+    "nama_kota": "Finnieston",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2349,
+    "nama_kota": "Savoy Centre",
+    "provinsi": "Sauchiehall Street"
+  },
+  {
+    "id_kota": 2350,
+    "nama_kota": "Merchant City",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2351,
+    "nama_kota": "Kinning Park ",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2352,
+    "nama_kota": "48 Buchanan Street ",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2353,
+    "nama_kota": "Muirend",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2354,
+    "nama_kota": "Garnethill",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2355,
+    "nama_kota": "19 Marine Crescent ",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2356,
+    "nama_kota": "City centre High Street ",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2357,
+    "nama_kota": "Baillieston",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2358,
+    "nama_kota": "193-195 Crow road ",
+    "provinsi": "Broomhill "
+  },
+  {
+    "id_kota": 2359,
+    "nama_kota": "Yoker",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2360,
+    "nama_kota": "1/3 Lochleven Road ",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2361,
+    "nama_kota": "Central Chambers",
+    "provinsi": "93 Hope Street"
+  },
+  {
+    "id_kota": 2362,
+    "nama_kota": "25 Auchinarn Road",
+    "provinsi": "Bishopbriggs"
+  },
+  {
+    "id_kota": 2363,
+    "nama_kota": "The Savoy Centre",
+    "provinsi": "140 Sauchiehall Street"
+  },
+  {
+    "id_kota": 2364,
+    "nama_kota": "Whiteinch",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2365,
+    "nama_kota": "260 Kilmarnock Road",
+    "provinsi": "Shawlands"
+  },
+  {
+    "id_kota": 2366,
+    "nama_kota": "41 St Vincent Place",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2367,
+    "nama_kota": "Govan",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2368,
+    "nama_kota": "4th Floor room 324",
+    "provinsi": "Glasgow City Centre"
+  },
+  {
+    "id_kota": 2369,
+    "nama_kota": "Jordanhill",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2370,
+    "nama_kota": "1518 Maryhill Road",
+    "provinsi": "Wyndford"
+  },
+  {
+    "id_kota": 2371,
+    "nama_kota": "West End ",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2372,
+    "nama_kota": "Bishopbriggs",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2373,
+    "nama_kota": "1609 Great Western Rd, ",
+    "provinsi": "Anniesland, "
+  },
+  {
+    "id_kota": 2374,
+    "nama_kota": "560 Dumbarton road ",
+    "provinsi": "Partick"
+  },
+  {
+    "id_kota": 2375,
+    "nama_kota": "Toryglen",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2376,
+    "nama_kota": "220 Buchanan Street",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2377,
+    "nama_kota": "40a High Street",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2378,
+    "nama_kota": "Cobden Road ",
+    "provinsi": "St. Rollox"
+  },
+  {
+    "id_kota": 2379,
+    "nama_kota": "15 Mamore Place",
+    "provinsi": "Mansewood"
+  },
+  {
+    "id_kota": 2380,
+    "nama_kota": "283 St. Georges Road",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2381,
+    "nama_kota": "500 Argyle Street",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2382,
+    "nama_kota": "Sauchiehall Street",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2383,
+    "nama_kota": "120 Holmlea Rd",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2384,
+    "nama_kota": "Anniseland",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2385,
+    "nama_kota": "172 Hope Street",
+    "provinsi": "Lion Chambers Building"
+  },
+  {
+    "id_kota": 2386,
+    "nama_kota": "Congress Road",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2387,
+    "nama_kota": "Lower Ground,",
+    "provinsi": "Suite 17 "
+  },
+  {
+    "id_kota": 2388,
+    "nama_kota": "St.Enoch Square",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2389,
+    "nama_kota": "93 Hope Street",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2390,
+    "nama_kota": "Central Chambers Building /Glasgow central station ",
+    "provinsi": "suits 15"
+  },
+  {
+    "id_kota": 2391,
+    "nama_kota": "1008Tollcross Road",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2392,
+    "nama_kota": "Priesthill \u0026 Darnley,",
+    "provinsi": "Glasgow,"
+  },
+  {
+    "id_kota": 2393,
+    "nama_kota": "Croftfoot ",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2394,
+    "nama_kota": "Broad Street ",
+    "provinsi": "Bridgeton"
+  },
+  {
+    "id_kota": 2395,
+    "nama_kota": "unit 15    ",
+    "provinsi": "204 Bath Street"
+  },
+  {
+    "id_kota": 2396,
+    "nama_kota": "101 St George's Road",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2397,
+    "nama_kota": "204 Bath Street",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2398,
+    "nama_kota": "Bridgeton , East End",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2399,
+    "nama_kota": "70 Kilmarnock Road",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2400,
+    "nama_kota": "Kinning Park",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2401,
+    "nama_kota": "Woodlands",
+    "provinsi": "Glasgow West End "
+  },
+  {
+    "id_kota": 2402,
+    "nama_kota": "459 Dumbarton rd",
+    "provinsi": "Partick"
+  },
+  {
+    "id_kota": 2403,
+    "nama_kota": "5 Newton Terrace Lane",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2404,
+    "nama_kota": "1987 MaryHill Road",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2405,
+    "nama_kota": "37 Otago St",
+    "provinsi": "GLASGOW"
+  },
+  {
+    "id_kota": 2406,
+    "nama_kota": " Glasgow",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2407,
+    "nama_kota": "204 bath street ",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2408,
+    "nama_kota": "12 Waterloo Street (after 5pm please use door 93 Hope Street)",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2409,
+    "nama_kota": "1-3 Lochleven Road",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2410,
+    "nama_kota": "Room 403, fifth floor",
+    "provinsi": "Glasgow "
+  },
+  {
+    "id_kota": 2411,
+    "nama_kota": "Tollcross",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2412,
+    "nama_kota": "Central Chambers,93 Hope Street",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2413,
+    "nama_kota": "Partick ",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2414,
+    "nama_kota": "6/2",
+    "provinsi": "41 St Vincent Place"
+  },
+  {
+    "id_kota": 2415,
+    "nama_kota": "659 Great Western Rd",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2416,
+    "nama_kota": "1066 Barrhead Road ",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2417,
+    "nama_kota": "90 Mitchell. Street",
+    "provinsi": "Glasgow"
+  },
+  {
+    "id_kota": 2418,
+    "nama_kota": "17 Admiral Street",
+    "provinsi": "Kinning Park"
+  },
+  {
+    "id_kota": 2419,
+    "nama_kota": "988 Govan Road ",
+    "provinsi": "Govan "
+  },
+  {
+    "id_kota": 2420,
+    "nama_kota": "410 Sauchiehall Street ",
+    "provinsi": "Glasgow City "
+  },
+  {
+    "id_kota": 2421,
+    "nama_kota": "Moortown",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2422,
+    "nama_kota": "Leeds City Centre",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2423,
+    "nama_kota": "Roundhay",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2424,
+    "nama_kota": "Leeds",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2425,
+    "nama_kota": "Horsforth",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2426,
+    "nama_kota": "Horsforth ",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2427,
+    "nama_kota": "Kirkstall",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2428,
+    "nama_kota": "Bramley",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2429,
+    "nama_kota": "56 wellington street ",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2430,
+    "nama_kota": "Victoria gate",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2431,
+    "nama_kota": "Stanningley,",
+    "provinsi": "Pudsey"
+  },
+  {
+    "id_kota": 2432,
+    "nama_kota": "1, Cross York st",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2433,
+    "nama_kota": "Pudsey",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2434,
+    "nama_kota": "Bramhope",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2435,
+    "nama_kota": "Malmarc House",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2436,
+    "nama_kota": "Cross Gates",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2437,
+    "nama_kota": "Broad Lane",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2438,
+    "nama_kota": "Gipton",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2439,
+    "nama_kota": "Hosforth",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2440,
+    "nama_kota": "8 Roman View",
+    "provinsi": "Roundhay, Leeds"
+  },
+  {
+    "id_kota": 2441,
+    "nama_kota": "Moortown ",
+    "provinsi": "North Leeds"
+  },
+  {
+    "id_kota": 2442,
+    "nama_kota": "Hyde Park Corner",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2443,
+    "nama_kota": "Springfield Mills",
+    "provinsi": "Bagley Lane"
+  },
+  {
+    "id_kota": 2444,
+    "nama_kota": "Morley",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2445,
+    "nama_kota": "Otley Road",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2446,
+    "nama_kota": "Calverley Pudsey",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2447,
+    "nama_kota": "Unit 13 Central Arcade",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2448,
+    "nama_kota": "Morley Leeds",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2449,
+    "nama_kota": "Sunny Bank Mills",
+    "provinsi": "Farsley"
+  },
+  {
+    "id_kota": 2450,
+    "nama_kota": "Chapeltown Road",
+    "provinsi": "Potternewton"
+  },
+  {
+    "id_kota": 2451,
+    "nama_kota": "73a Pendas way",
+    "provinsi": "Manston"
+  },
+  {
+    "id_kota": 2452,
+    "nama_kota": "Seacroft",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2453,
+    "nama_kota": "Harewood Street, ",
+    "provinsi": "Leeds,"
+  },
+  {
+    "id_kota": 2454,
+    "nama_kota": "2-3 The Green ",
+    "provinsi": "Horsforth "
+  },
+  {
+    "id_kota": 2455,
+    "nama_kota": "Cookridge Lane",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2456,
+    "nama_kota": "Oakwood",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2457,
+    "nama_kota": "Horsforth Leeds",
+    "provinsi": "United Kingdom"
+  },
+  {
+    "id_kota": 2458,
+    "nama_kota": "10 High Street ",
+    "provinsi": "Wetherby"
+  },
+  {
+    "id_kota": 2459,
+    "nama_kota": "Burley",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2460,
+    "nama_kota": "14 Towngate ",
+    "provinsi": "Guiseley"
+  },
+  {
+    "id_kota": 2461,
+    "nama_kota": "Menston",
+    "provinsi": "Ilkley"
+  },
+  {
+    "id_kota": 2462,
+    "nama_kota": "84 Town Street",
+    "provinsi": "Armley, Leeds"
+  },
+  {
+    "id_kota": 2463,
+    "nama_kota": "839 York Road",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2464,
+    "nama_kota": "Victoria Gate",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2465,
+    "nama_kota": "Morley ",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2466,
+    "nama_kota": "Wakefield road",
+    "provinsi": "Oulton"
+  },
+  {
+    "id_kota": 2467,
+    "nama_kota": "Headingley",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2468,
+    "nama_kota": "Sheepscar",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2469,
+    "nama_kota": "Stangly",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2470,
+    "nama_kota": "Chapel Allerton",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2471,
+    "nama_kota": "Leeds Country Way",
+    "provinsi": "Dewsbury"
+  },
+  {
+    "id_kota": 2472,
+    "nama_kota": "Yeadon",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2473,
+    "nama_kota": "Stanningley",
+    "provinsi": "Pudsey"
+  },
+  {
+    "id_kota": 2474,
+    "nama_kota": "84 Otley Road, ",
+    "provinsi": "Headingley, "
+  },
+  {
+    "id_kota": 2475,
+    "nama_kota": "Yeadon ",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2476,
+    "nama_kota": "Garforth",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2477,
+    "nama_kota": "152 Stanningley Road",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2478,
+    "nama_kota": "45 Queen Street",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2479,
+    "nama_kota": "85D Town Street ",
+    "provinsi": "Horsforth"
+  },
+  {
+    "id_kota": 2480,
+    "nama_kota": "Lee Lane East",
+    "provinsi": "Horsforth"
+  },
+  {
+    "id_kota": 2481,
+    "nama_kota": "Call House Business Centre",
+    "provinsi": "Enfield Street"
+  },
+  {
+    "id_kota": 2482,
+    "nama_kota": "1 Cross Green Ln, Halton, ",
+    "provinsi": "Leeds, LS15 7SR."
+  },
+  {
+    "id_kota": 2483,
+    "nama_kota": "502 Stonegate Road",
+    "provinsi": "Moortown"
+  },
+  {
+    "id_kota": 2484,
+    "nama_kota": "96 Long Row",
+    "provinsi": "Horsforth"
+  },
+  {
+    "id_kota": 2485,
+    "nama_kota": "477, Otley Road, Adel,",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2486,
+    "nama_kota": "Adel, Leeds",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2487,
+    "nama_kota": "Home Salon",
+    "provinsi": "107 Victoria Mount"
+  },
+  {
+    "id_kota": 2488,
+    "nama_kota": "Calverley",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2489,
+    "nama_kota": "Churwell Morley Leeds",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2490,
+    "nama_kota": "6 Chandos Gardens",
+    "provinsi": "Roundhay"
+  },
+  {
+    "id_kota": 2491,
+    "nama_kota": "Collingham ",
+    "provinsi": "Wetherby"
+  },
+  {
+    "id_kota": 2492,
+    "nama_kota": "78 Greenlea Road",
+    "provinsi": "Yeadon"
+  },
+  {
+    "id_kota": 2493,
+    "nama_kota": "Burley-in-Wharfedale",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2494,
+    "nama_kota": "Rodley",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2495,
+    "nama_kota": "Stanningley Road",
+    "provinsi": "Pudsey"
+  },
+  {
+    "id_kota": 2496,
+    "nama_kota": "Gildersome",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2497,
+    "nama_kota": "Rawdon",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2498,
+    "nama_kota": "Burley Road",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2499,
+    "nama_kota": "Yeadon, ",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2500,
+    "nama_kota": "Henshaw Lane",
+    "provinsi": "Yeadon"
+  },
+  {
+    "id_kota": 2501,
+    "nama_kota": "Weetwood",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2502,
+    "nama_kota": "Kippax",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2503,
+    "nama_kota": "89 Queen St",
+    "provinsi": "Morley"
+  },
+  {
+    "id_kota": 2504,
+    "nama_kota": "31 Park Square West",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2505,
+    "nama_kota": "Wetherby",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2506,
+    "nama_kota": "98 Bradford Road",
+    "provinsi": "East Ardsley "
+  },
+  {
+    "id_kota": 2507,
+    "nama_kota": "Bradford",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2508,
+    "nama_kota": "Woodhouse",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2509,
+    "nama_kota": "Ashby Crescent",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2510,
+    "nama_kota": "3 Lower Briggate ",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2511,
+    "nama_kota": "Alwoodley ",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2512,
+    "nama_kota": "Residential Address",
+    "provinsi": "Roundhay"
+  },
+  {
+    "id_kota": 2513,
+    "nama_kota": "Bennett Road",
+    "provinsi": "Headingley"
+  },
+  {
+    "id_kota": 2514,
+    "nama_kota": "Alwoodley",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2515,
+    "nama_kota": "The Annexe",
+    "provinsi": "5 Burton Crescent"
+  },
+  {
+    "id_kota": 2516,
+    "nama_kota": "Clyde Works",
+    "provinsi": "Ingram Road"
+  },
+  {
+    "id_kota": 2517,
+    "nama_kota": "South Street,",
+    "provinsi": "Morley, "
+  },
+  {
+    "id_kota": 2518,
+    "nama_kota": "Victoria Road",
+    "provinsi": "Kirkstall"
+  },
+  {
+    "id_kota": 2519,
+    "nama_kota": "Headingley ",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2520,
+    "nama_kota": "Flexspace",
+    "provinsi": "Burley Rd"
+  },
+  {
+    "id_kota": 2521,
+    "nama_kota": "249A Otley Rd,",
+    "provinsi": "Westwood,"
+  },
+  {
+    "id_kota": 2522,
+    "nama_kota": "5 Rodley Lane",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2523,
+    "nama_kota": "Boston Spa",
+    "provinsi": "Wetherby"
+  },
+  {
+    "id_kota": 2524,
+    "nama_kota": "Mabgate mills",
+    "provinsi": "Macaulay Street"
+  },
+  {
+    "id_kota": 2525,
+    "nama_kota": "Albion Street",
+    "provinsi": "Morley"
+  },
+  {
+    "id_kota": 2526,
+    "nama_kota": "96 Long Row ",
+    "provinsi": "Horsforth"
+  },
+  {
+    "id_kota": 2527,
+    "nama_kota": "8 Tinshill Lane",
+    "provinsi": "Cookridge"
+  },
+  {
+    "id_kota": 2528,
+    "nama_kota": "13 Queen Street ",
+    "provinsi": "Morley "
+  },
+  {
+    "id_kota": 2529,
+    "nama_kota": "Oulton Leeds",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2530,
+    "nama_kota": "Cockerhill Farm",
+    "provinsi": "Adel"
+  },
+  {
+    "id_kota": 2531,
+    "nama_kota": "Morley, Leeds",
+    "provinsi": "United Kingdom"
+  },
+  {
+    "id_kota": 2532,
+    "nama_kota": "8 Stainbeck Avenue",
+    "provinsi": "Meanwood"
+  },
+  {
+    "id_kota": 2533,
+    "nama_kota": "Wortley",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2534,
+    "nama_kota": "Oakhurst Ave , Dewsbury road, Beeston,",
+    "provinsi": "Leeds L:s11 7HL"
+  },
+  {
+    "id_kota": 2535,
+    "nama_kota": "Sherburn in Elmet",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2536,
+    "nama_kota": "Grangefield Road",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2537,
+    "nama_kota": "Tingley",
+    "provinsi": "Wakefield"
+  },
+  {
+    "id_kota": 2538,
+    "nama_kota": "112 long row ",
+    "provinsi": "Horsforth"
+  },
+  {
+    "id_kota": 2539,
+    "nama_kota": "Bagley Ln",
+    "provinsi": "Farsley"
+  },
+  {
+    "id_kota": 2540,
+    "nama_kota": "Garforth ",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2541,
+    "nama_kota": "Leeds ",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2542,
+    "nama_kota": "203 Broadgate Lane",
+    "provinsi": "Horsforth"
+  },
+  {
+    "id_kota": 2543,
+    "nama_kota": "Allerton Bywater",
+    "provinsi": "Castleford"
+  },
+  {
+    "id_kota": 2544,
+    "nama_kota": "Enfield Street",
+    "provinsi": "Leeds"
+  },
+  {
+    "id_kota": 2545,
+    "nama_kota": "11-13 Victoria Street",
+    "provinsi": "Wetherby"
+  },
+  {
+    "id_kota": 2546,
+    "nama_kota": "128 St George's Way",
+    "provinsi": "St Johns Shopping Centre"
+  },
+  {
+    "id_kota": 2547,
+    "nama_kota": "Liverpool",
+    "provinsi": "United Kingdom"
+  },
+  {
+    "id_kota": 2548,
+    "nama_kota": "179 Rose Lane",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2549,
+    "nama_kota": "119 Picton Road",
+    "provinsi": "Wavertree"
+  },
+  {
+    "id_kota": 2550,
+    "nama_kota": "Aintree",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2551,
+    "nama_kota": "25 Stanley Street",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2552,
+    "nama_kota": "Aigburth",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2553,
+    "nama_kota": "Wavertree",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2554,
+    "nama_kota": "Childwall",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2555,
+    "nama_kota": "Rose Lane",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2556,
+    "nama_kota": "1st Floor, The Wedding House",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2557,
+    "nama_kota": "Garston",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2558,
+    "nama_kota": "Old Swan",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2559,
+    "nama_kota": "We are upstairs in Micks Barbers",
+    "provinsi": "From 24th Feb"
+  },
+  {
+    "id_kota": 2560,
+    "nama_kota": "The Corn Exchange",
+    "provinsi": "Fenwick St"
+  },
+  {
+    "id_kota": 2561,
+    "nama_kota": "Toxteth",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2562,
+    "nama_kota": "33a Strand Street",
+    "provinsi": "Liverpool One Shopping District"
+  },
+  {
+    "id_kota": 2563,
+    "nama_kota": "Tuebrook",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2564,
+    "nama_kota": "Hunt's Cross",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2565,
+    "nama_kota": "141 Hillfoot Road",
+    "provinsi": "Huntscross"
+  },
+  {
+    "id_kota": 2566,
+    "nama_kota": "Belle Vale",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2567,
+    "nama_kota": "72 Rodney Street",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2568,
+    "nama_kota": "Unite Kingdom",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2569,
+    "nama_kota": "39 Dunes Way, Liverpool",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2570,
+    "nama_kota": "Kirkby",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2571,
+    "nama_kota": "Crosby",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2572,
+    "nama_kota": "150 Aigburth Road",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2573,
+    "nama_kota": "79 Liverpool Road",
+    "provinsi": "Crosby"
+  },
+  {
+    "id_kota": 2574,
+    "nama_kota": "Bootle",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2575,
+    "nama_kota": "Walton",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2576,
+    "nama_kota": "Calderstones",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2577,
+    "nama_kota": "63A Picton Road",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2578,
+    "nama_kota": "Clubmoor",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2579,
+    "nama_kota": "Fairfield",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2580,
+    "nama_kota": "Stanley Meat Market, Prescot Road",
+    "provinsi": "Old Swan, Liverpool"
+  },
+  {
+    "id_kota": 2581,
+    "nama_kota": "Huyton",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2582,
+    "nama_kota": "Fazakerley",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2583,
+    "nama_kota": "114 Rainhill Rd",
+    "provinsi": "Rainhill"
+  },
+  {
+    "id_kota": 2584,
+    "nama_kota": "18, 8 Rumford St, Rumford PL",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2585,
+    "nama_kota": "Thornton",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2586,
+    "nama_kota": "Formby",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2587,
+    "nama_kota": "Maghull",
+    "provinsi": "(Inside The Pamper Lounge)"
+  },
+  {
+    "id_kota": 2588,
+    "nama_kota": "Mossley Hill",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2589,
+    "nama_kota": "2 The Parade",
+    "provinsi": "Wood Road"
+  },
+  {
+    "id_kota": 2590,
+    "nama_kota": "Grassendale",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2591,
+    "nama_kota": "Whiston",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2592,
+    "nama_kota": "64 St Mary's Road",
+    "provinsi": "Garston"
+  },
+  {
+    "id_kota": 2593,
+    "nama_kota": "Cornhill",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2594,
+    "nama_kota": "L146TX",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2595,
+    "nama_kota": "14 Dale Street",
+    "provinsi": "JD Gyms"
+  },
+  {
+    "id_kota": 2596,
+    "nama_kota": "434 Queens Drive",
+    "provinsi": "West Derby"
+  },
+  {
+    "id_kota": 2597,
+    "nama_kota": "Hunts Cross",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2598,
+    "nama_kota": "15 Argyle Street",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2599,
+    "nama_kota": "Old Swan, Liverpool",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2600,
+    "nama_kota": "Prescot",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2601,
+    "nama_kota": "Netherton",
+    "provinsi": "Bootle"
+  },
+  {
+    "id_kota": 2602,
+    "nama_kota": "76 Hornby Boulevard",
+    "provinsi": "Bootle"
+  },
+  {
+    "id_kota": 2603,
+    "nama_kota": "40 Marian Square",
+    "provinsi": "Bootle,"
+  },
+  {
+    "id_kota": 2604,
+    "nama_kota": "L8 5TP",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2605,
+    "nama_kota": "Shop 2 \u0026 4",
+    "provinsi": "Ground Floor"
+  },
+  {
+    "id_kota": 2606,
+    "nama_kota": "Woolton",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2607,
+    "nama_kota": "142 Speke Road",
+    "provinsi": "Garston"
+  },
+  {
+    "id_kota": 2608,
+    "nama_kota": "56 Brows Lane",
+    "provinsi": "Formby"
+  },
+  {
+    "id_kota": 2609,
+    "nama_kota": "47D Wellington Street ",
+    "provinsi": "Liverpool "
+  },
+  {
+    "id_kota": 2610,
+    "nama_kota": "Commercial District",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2611,
+    "nama_kota": "Sefton Grove, Liverpool",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2612,
+    "nama_kota": "205 Eaton Road",
+    "provinsi": "West Derby"
+  },
+  {
+    "id_kota": 2613,
+    "nama_kota": "57 Crosby Road North",
+    "provinsi": "Waterloo"
+  },
+  {
+    "id_kota": 2614,
+    "nama_kota": "Unit 261",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2615,
+    "nama_kota": "Grassendale Lane",
+    "provinsi": "Aigburth"
+  },
+  {
+    "id_kota": 2616,
+    "nama_kota": "83 Seaforth Road",
+    "provinsi": "Litherland"
+  },
+  {
+    "id_kota": 2617,
+    "nama_kota": "34 Castle St",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2618,
+    "nama_kota": "Edge Hill",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2619,
+    "nama_kota": "Georgian Quarter",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2620,
+    "nama_kota": "17a, 21 Liverpool Road North",
+    "provinsi": "Maghull, "
+  },
+  {
+    "id_kota": 2621,
+    "nama_kota": "Woodward Road ",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2622,
+    "nama_kota": "Danielle Parker The Salon ",
+    "provinsi": "103 Eaton Road "
+  },
+  {
+    "id_kota": 2623,
+    "nama_kota": "125a Ullet Road",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2624,
+    "nama_kota": "103 Eaton Road",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2625,
+    "nama_kota": "19 Williamson Street",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2626,
+    "nama_kota": "Gateacre",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2627,
+    "nama_kota": "The Mall",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2628,
+    "nama_kota": "Speke",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2629,
+    "nama_kota": "3 - 4 Great George Place",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2630,
+    "nama_kota": "Wavertree, ",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2631,
+    "nama_kota": "Southport road ",
+    "provinsi": "Bootle "
+  },
+  {
+    "id_kota": 2632,
+    "nama_kota": "Stoneycroft",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2633,
+    "nama_kota": "Liverpool ",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2634,
+    "nama_kota": "Fenwick street, L27RB",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2635,
+    "nama_kota": "Eldonian Way",
+    "provinsi": "Village"
+  },
+  {
+    "id_kota": 2636,
+    "nama_kota": "Sefton Street, Litherland",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2637,
+    "nama_kota": "Seaforth Road ",
+    "provinsi": "Seaforth"
+  },
+  {
+    "id_kota": 2638,
+    "nama_kota": "NJS Aesthetics",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2639,
+    "nama_kota": "Furness Street",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2640,
+    "nama_kota": "100 Liverpool Road",
+    "provinsi": "Liverpool"
+  },
+  {
+    "id_kota": 2641,
+    "nama_kota": "91 Station Rd",
+    "provinsi": "Forest Hall"
+  },
+  {
+    "id_kota": 2642,
+    "nama_kota": "South Gosforth",
+    "provinsi": "Newcastle upon Tyne"
+  },
+  {
+    "id_kota": 2643,
+    "nama_kota": "Newcastle upon Tyne",
+    "provinsi": "United Kingdom"
+  },
+  {
+    "id_kota": 2644,
+    "nama_kota": "4 Old Eldon Square,",
+    "provinsi": "Newcastle upon Tyne"
+  },
+  {
+    "id_kota": 2645,
+    "nama_kota": "Northumberland",
+    "provinsi": "Newcastle"
+  },
+  {
+    "id_kota": 2646,
+    "nama_kota": "Newcastle Upon Tyne",
+    "provinsi": "Tyne and Wear"
+  },
+  {
+    "id_kota": 2647,
+    "nama_kota": "23 Percy street Eldon Gardens ",
+    "provinsi": "Newcastle-upon-Tyne"
+  },
+  {
+    "id_kota": 2648,
+    "nama_kota": "Newcastle upon tyne",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2649,
+    "nama_kota": "Eldon Square Shopping Centre",
+    "provinsi": "Newcastle Upon Tyne"
+  },
+  {
+    "id_kota": 2650,
+    "nama_kota": "Gosforth",
+    "provinsi": "Newcastle upon Tyne"
+  },
+  {
+    "id_kota": 2651,
+    "nama_kota": "Fenham",
+    "provinsi": "Newcastle upon Tyne"
+  },
+  {
+    "id_kota": 2652,
+    "nama_kota": "West Moor",
+    "provinsi": "Newcastle upon Tyne"
+  },
+  {
+    "id_kota": 2653,
+    "nama_kota": "4 Old Eldon Square",
+    "provinsi": "Newcastle"
+  },
+  {
+    "id_kota": 2654,
+    "nama_kota": "Walkergate",
+    "provinsi": "Newcastle upon Tyne"
+  },
+  {
+    "id_kota": 2655,
+    "nama_kota": "Lemington",
+    "provinsi": "Newcastle"
+  },
+  {
+    "id_kota": 2656,
+    "nama_kota": "West Farm Avenue",
+    "provinsi": "Longbenton"
+  },
+  {
+    "id_kota": 2657,
+    "nama_kota": "4 Waterloo Road",
+    "provinsi": "Newcastle upon Tyne"
+  },
+  {
+    "id_kota": 2658,
+    "nama_kota": "Killingworth",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2659,
+    "nama_kota": "200A Heaton Road",
+    "provinsi": "Newcastle Upon Tyne"
+  },
+  {
+    "id_kota": 2660,
+    "nama_kota": "Jesmond",
+    "provinsi": "Newcastle"
+  },
+  {
+    "id_kota": 2661,
+    "nama_kota": "26-30 Starbeck Avenue",
+    "provinsi": "Sandyford"
+  },
+  {
+    "id_kota": 2662,
+    "nama_kota": "1 Osborne Road ",
+    "provinsi": "Jesmond"
+  },
+  {
+    "id_kota": 2663,
+    "nama_kota": "15 Princes Road",
+    "provinsi": "Newcastle"
+  },
+  {
+    "id_kota": 2664,
+    "nama_kota": "40 - 46 Acanthus Avenue",
+    "provinsi": "Newcastle upon Tyne"
+  },
+  {
+    "id_kota": 2665,
+    "nama_kota": "Carliol Square",
+    "provinsi": "Newcastle upon Tyne"
+  },
+  {
+    "id_kota": 2666,
+    "nama_kota": "Carliol Studios",
+    "provinsi": "Sunco House"
+  },
+  {
+    "id_kota": 2667,
+    "nama_kota": "Newcastle Business Park",
+    "provinsi": "William Armstrong Drive"
+  },
+  {
+    "id_kota": 2668,
+    "nama_kota": "15 Princes Ave, Brunton Park",
+    "provinsi": "Gosforth"
+  },
+  {
+    "id_kota": 2669,
+    "nama_kota": "Benton Newcastle upon Tyne",
+    "provinsi": "GB"
+  },
+  {
+    "id_kota": 2670,
+    "nama_kota": "19-20 Lansdowne Court",
+    "provinsi": "Newcastle upon Tyne"
+  },
+  {
+    "id_kota": 2671,
+    "nama_kota": "20 Shibdon Road",
+    "provinsi": "Blaydon"
+  },
+  {
+    "id_kota": 2672,
+    "nama_kota": "Suite 109",
+    "provinsi": "7 Flying Horse Walk "
+  },
+  {
+    "id_kota": 2673,
+    "nama_kota": "Nottingham",
+    "provinsi": "Nottingham"
+  },
+  {
+    "id_kota": 2674,
+    "nama_kota": "1A Plumptre Street",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2675,
+    "nama_kota": "Royal Zone",
+    "provinsi": "Nottingham"
+  },
+  {
+    "id_kota": 2676,
+    "nama_kota": "1 Middle Pavement",
+    "provinsi": "Nottingham"
+  },
+  {
+    "id_kota": 2677,
+    "nama_kota": "Suite 114",
+    "provinsi": "7 Flying Horse Walk"
+  },
+  {
+    "id_kota": 2678,
+    "nama_kota": "1 Middle pavement",
+    "provinsi": "Nottingham."
+  },
+  {
+    "id_kota": 2679,
+    "nama_kota": "108 Derby Road",
+    "provinsi": "Nottingham"
+  },
+  {
+    "id_kota": 2680,
+    "nama_kota": "Cinderhill",
+    "provinsi": "Nottingham"
+  },
+  {
+    "id_kota": 2681,
+    "nama_kota": "109 Milton Street",
+    "provinsi": "Nottingham"
+  },
+  {
+    "id_kota": 2682,
+    "nama_kota": "Sherwood",
+    "provinsi": "Nottingham"
+  },
+  {
+    "id_kota": 2683,
+    "nama_kota": "The Meadows",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2684,
+    "nama_kota": "Hilton Hotel ",
+    "provinsi": "Milton Street"
+  },
+  {
+    "id_kota": 2685,
+    "nama_kota": "Bakersfield ",
+    "provinsi": "Nottingham"
+  },
+  {
+    "id_kota": 2686,
+    "nama_kota": "Strelley ",
+    "provinsi": "Nottinghamshire"
+  },
+  {
+    "id_kota": 2687,
+    "nama_kota": "Ilkeston Road",
+    "provinsi": "Radford"
+  },
+  {
+    "id_kota": 2688,
+    "nama_kota": "Arnold",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2689,
+    "nama_kota": "Ranmoor,",
+    "provinsi": "Sheffield,"
+  },
+  {
+    "id_kota": 2690,
+    "nama_kota": "8 Fitzwilliam Street",
+    "provinsi": "Sheffield"
+  },
+  {
+    "id_kota": 2691,
+    "nama_kota": "Sheffield",
+    "provinsi": ""
+  },
+  {
+    "id_kota": 2692,
+    "nama_kota": "Chapeltown",
+    "provinsi": "Sheffield"
+  },
+  {
+    "id_kota": 2693,
+    "nama_kota": "Blenhiem Reach",
+    "provinsi": "861 Ecclesall Road"
+  },
+  {
+    "id_kota": 2694,
+    "nama_kota": "Highfield",
+    "provinsi": "Sheffield"
+  },
+  {
+    "id_kota": 2695,
+    "nama_kota": "Totley",
+    "provinsi": "Sheffield"
+  },
+  {
+    "id_kota": 2696,
+    "nama_kota": "11 West One Plaza",
+    "provinsi": "Fitzwilliam Street"
+  },
+  {
+    "id_kota": 2697,
+    "nama_kota": "The Avenue",
+    "provinsi": "Meadowhall"
+  },
+  {
+    "id_kota": 2698,
+    "nama_kota": "Dyson Place",
+    "provinsi": "Sharrow"
+  },
+  {
+    "id_kota": 2699,
+    "nama_kota": "Pat Midgley Lane",
+    "provinsi": "Sheffield"
+  },
+  {
+    "id_kota": 2700,
+    "nama_kota": "Cloughfield road ",
+    "provinsi": "BARNSLEY"
   }
 ]
