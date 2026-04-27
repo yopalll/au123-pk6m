@@ -1,7 +1,7 @@
 # VIYGO — Progress Tracker: Duplikasi Treatwell.co.uk
 
-> **Update terakhir:** 27 April 2026  
-> **Status branch aktif:** `go-fresh` (up-to-date dengan remote)  
+> **Update terakhir:** 27 April 2026 — 22:00 WIB
+> **Status branch aktif:** `go-fresh` (up-to-date dengan remote)
 > **Referensi:** [treatwell.co.uk](https://www.treatwell.co.uk)
 
 ---
@@ -13,19 +13,20 @@
 | ✅ | Infrastruktur & Setup | **SELESAI** | 100% |
 | ✅ | Database Schema | **SELESAI** | 100% |
 | ✅ | Data Scraping & Seeding | **SELESAI** | 95% |
-| 🔴 | Backend / API / Controllers | **BELUM** | 5% |
-| 🔴 | Frontend — Halaman Utama | **BELUM** | 10% |
+| ✅ | Model Eloquent (13 model) | **SELESAI** | 100% |
+| 🔴 | Backend / Controllers | **BELUM** | 0% |
+| 🔴 | Frontend — Landing Page | **DEFAULT LARAVEL** | 5% |
 | 🔴 | Frontend — Search & Filter | **BELUM** | 0% |
 | 🔴 | Frontend — Halaman Salon | **BELUM** | 0% |
 | 🔴 | Frontend — Booking Flow | **BELUM** | 0% |
-| 🔴 | Auth — Login/Register | **SCAFFOLD ADA** | 30% |
-| 🔴 | Dashboard User | **BELUM** | 5% |
+| 🟡 | Auth — Login/Register | **SCAFFOLD ADA** | 30% |
+| 🔴 | Dashboard User | **BELUM** | 0% |
 | 🔴 | Dashboard Salon Owner | **BELUM** | 0% |
 | 🔴 | Admin Panel | **BELUM** | 0% |
 | 🔴 | Review & Rating | **BELUM** | 0% |
 | 🔴 | Payment Flow | **BELUM** | 0% |
 
-**Estimasi progress total: ~20%**
+**Estimasi progress total: ~27%**
 
 ---
 
@@ -41,7 +42,7 @@
 ### 2. Database Schema (Migrasi)
 - [x] `kota` — master data kota
 - [x] `kategori` — kategori layanan
-- [x] `users` — customer, salon owner, admin (+ 2FA columns)
+- [x] `users` — customer, salon owner, admin (+ 2FA columns, softDelete)
 - [x] `salon` — profil salon (koordinat, jam buka, rating, soft delete)
 - [x] `promo` — promo & diskon
 - [x] `service` — layanan salon (harga, durasi, kategori)
@@ -70,7 +71,35 @@
   - `StaffSeeder`, `SalonImagesSeeder`
 - [x] `DatabaseSeeder` dengan urutan FK yang benar + truncate aman
 
-### 4. Auth Scaffold (Livewire Fortify)
+**Data aktual di database (verified):**
+| Tabel | Records |
+|-------|---------|
+| users | 5.769 |
+| kota | 1.709 |
+| kategori | 7.183 |
+| salon | 5.767 |
+| service | 190.594 |
+| staff | 7.568 |
+| salon_images | 50.492 |
+
+### 4. Model Eloquent ✅ BARU SELESAI (27 Apr 2026)
+- [x] `User.php` — diupdate: custom PK, relasi lengkap, SoftDeletes, accessor `fullName`
+- [x] `Kota.php` — hasMany salons
+- [x] `Kategori.php` — hasMany services, scope active
+- [x] `Salon.php` — relasi lengkap (owner, kota, services, staff, images, orders, reviews, primaryImage), SoftDeletes, scope active/byKota
+- [x] `Promo.php` — belongsToMany users (pivot), hasMany orders, scope active, SoftDeletes
+- [x] `Service.php` — belongsTo salon & kategori, belongsToMany staff (pivot), SoftDeletes
+- [x] `Staff.php` — belongsTo salon, hasMany schedules & orderDetails, belongsToMany services, SoftDeletes
+- [x] `Order.php` — belongsTo user/salon/promo, hasMany details, hasOne review & pembayaran
+- [x] `Review.php` — belongsTo user, salon, order; scope visible
+- [x] `SalonImage.php` — belongsTo salon
+- [x] `StaffSchedule.php` — belongsTo staff
+- [x] `OrderDetail.php` — belongsTo order, service, staff (nullable)
+- [x] `Pembayaran.php` — belongsTo order & user; scope completed/pending
+
+**Verifikasi:** 13/13 model load OK ✅ | 40/40 relasi OK ✅ | 13/13 query count OK ✅
+
+### 5. Auth Scaffold (Livewire Fortify)
 - [x] Halaman login tersedia (`/login`)
 - [x] Halaman register tersedia (`/register`)
 - [x] Halaman settings tersedia (`/settings`)
@@ -83,49 +112,9 @@
 
 ---
 
-### 🔴 PRIORITAS 1 — Model Eloquent (Blokir semua fitur lain)
+### 🔴 PRIORITAS 1 — Landing Page (welcome.blade.php)
 
-Semua model harus dibuat sebelum controller dan view bisa bekerja.
-
-**File yang perlu dibuat:** `app/Models/`
-
-| Model | Tabel | Relasi yang Diperlukan |
-|-------|-------|----------------------|
-| `Salon.php` | `salon` | belongsTo(User), belongsTo(Kota), hasMany(Service), hasMany(Staff), hasMany(SalonImage), hasMany(Order) |
-| `Service.php` | `service` | belongsTo(Salon), belongsTo(Kategori), belongsToMany(Staff) |
-| `Kategori.php` | `kategori` | hasMany(Service) |
-| `Kota.php` | `kota` | hasMany(Salon) |
-| `Staff.php` | `staff` | belongsTo(Salon), belongsToMany(Service), hasMany(StaffSchedule) |
-| `StaffSchedule.php` | `staff_schedule` | belongsTo(Staff) |
-| `SalonImage.php` | `salon_images` | belongsTo(Salon) |
-| `Order.php` | `order` | belongsTo(User), belongsTo(Salon), hasMany(OrderDetail), hasOne(Pembayaran), hasOne(Review) |
-| `OrderDetail.php` | `order_detail` | belongsTo(Order), belongsTo(Service), belongsTo(Staff) |
-| `Review.php` | `review` | belongsTo(User), belongsTo(Salon), belongsTo(Order) |
-| `Promo.php` | `promo` | belongsToMany(User) |
-| `Pembayaran.php` | `pembayaran` | belongsTo(Order) |
-
-**Cara cepat:**
-```bash
-# Generate semua model sekaligus
-php artisan make:model Salon
-php artisan make:model Service
-php artisan make:model Kategori
-php artisan make:model Kota
-php artisan make:model Staff
-php artisan make:model StaffSchedule
-php artisan make:model SalonImage
-php artisan make:model Order
-php artisan make:model OrderDetail
-php artisan make:model Review
-php artisan make:model Promo
-php artisan make:model Pembayaran
-```
-
-> ⚠️ **Penting:** Tiap model harus set `$primaryKey` sesuai nama kolom custom (e.g. `$primaryKey = 'id_salon'`), dan `$table` eksplisit karena nama tabel tidak mengikuti konvensi Laravel standar.
-
----
-
-### 🔴 PRIORITAS 2 — Halaman Utama / Landing Page
+**Status saat ini:** Masih halaman **default Laravel** — SVG logo Laravel, tidak ada konten VIYGO sama sekali.
 
 **Referensi Treatwell:** https://www.treatwell.co.uk/
 
@@ -147,19 +136,18 @@ Treatwell homepage terdiri dari:
 - [ ] Klik → redirect ke halaman hasil pencarian
 
 #### D. Salon Unggulan / Nearby
-- [ ] Card salon: foto, nama, kota, rating, harga mulai dari Rp/£
-- [ ] Carousel atau grid
+- [ ] Card salon: foto, nama, kota, rating, harga mulai dari
+- [ ] Carousel atau grid (data dari DB sudah ada — 5.767 salon!)
 
 #### E. Cara Kerja (How It Works)
 - [ ] 3 langkah: Cari → Pilih → Booking
 
 #### F. Footer
-- [ ] Link navigasi
-- [ ] Copyright, sosmed
+- [ ] Link navigasi, copyright, sosmed
 
 **File yang perlu dibuat/diubah:**
 ```
-resources/views/welcome.blade.php    ← UBAH TOTAL (saat ini default Laravel)
+resources/views/welcome.blade.php    ← UBAH TOTAL
 resources/views/layouts/app.blade.php ← Tambahkan navbar + footer
 resources/views/components/navbar.blade.php
 resources/views/components/footer.blade.php
@@ -167,63 +155,61 @@ resources/views/components/salon-card.blade.php
 resources/views/components/category-card.blade.php
 ```
 
-**Controller/Livewire:**
+**Controller:**
 ```bash
 php artisan make:livewire HomePage
-# atau
-php artisan make:controller HomeController
 ```
 
 ---
 
-### 🔴 PRIORITAS 3 — Search & Filter Salon
+### 🔴 PRIORITAS 2 — Search & Filter Salon
 
 **Referensi Treatwell:** https://www.treatwell.co.uk/place/london/
 
 #### Fitur yang diperlukan:
 - [ ] URL struktur: `/search?q=haircut&city=london`
-- [ ] Filter sidebar:
-  - Kategori (checkbox)
-  - Harga range (slider)
-  - Rating minimum
-  - Jam buka (waktu)
+- [ ] Filter sidebar: Kategori (checkbox), Harga range, Rating minimum, Jam buka
 - [ ] Sort by: Relevansi, Rating, Harga
 - [ ] Pagination (infinite scroll atau numbered)
-- [ ] Map view (Google Maps embed, opsional)
 - [ ] Jumlah hasil: "123 salon ditemukan"
 
 **File yang perlu dibuat:**
 ```
-app/Livewire/SalonSearch.php         ← Livewire component dengan filter reaktif
+app/Livewire/SalonSearch.php
 resources/views/livewire/salon-search.blade.php
-routes/web.php                       ← Tambah route /search
+routes/web.php  ← Tambah route /search
 ```
 
-**Query yang diperlukan di `SalonSearch.php`:**
+**Query (Model sudah siap):**
 ```php
-Salon::query()
-    ->when($this->category, fn($q) => $q->whereHas('services.kategori', fn($q) => $q->where('slug', $this->category)))
-    ->when($this->city, fn($q) => $q->whereHas('kota', fn($q) => $q->where('nama_kota', 'like', "%{$this->city}%")))
-    ->when($this->minRating, fn($q) => $q->where('rating', '>=', $this->minRating))
-    ->where('status', 'active')
+Salon::with(['kota', 'primaryImage'])
+    ->when($this->category, fn($q) =>
+        $q->whereHas('services.kategori', fn($q) =>
+            $q->where('slug', $this->category)))
+    ->when($this->city, fn($q) =>
+        $q->whereHas('kota', fn($q) =>
+            $q->where('nama_kota', 'like', "%{$this->city}%")))
+    ->when($this->minRating, fn($q) =>
+        $q->where('rating', '>=', $this->minRating))
+    ->active()   // scope sudah ada di Salon model!
     ->paginate(12);
 ```
 
 ---
 
-### 🔴 PRIORITAS 4 — Halaman Detail Salon
+### 🔴 PRIORITAS 3 — Halaman Detail Salon
 
 **Referensi Treatwell:** https://www.treatwell.co.uk/place/[salon-name]/
 
 #### Konten yang diperlukan:
-- [ ] Galeri foto salon (carousel)
+- [ ] Galeri foto salon (carousel) — data `salon_images` sudah ada (50k+)
 - [ ] Nama salon, alamat, jam buka, rating
 - [ ] Tab: Layanan | Staf | Review | Info
 - [ ] Daftar layanan dengan harga & durasi (grouped by kategori)
 - [ ] Profil staf dengan foto dan spesialisasi
-- [ ] Peta lokasi salon
+- [ ] Peta lokasi salon (koordinat sudah ada di DB)
 - [ ] Tombol "Pesan Sekarang" → redirect ke booking flow
-- [ ] Review card (nama user, rating bintang, komentar, tanggal)
+- [ ] Review card (belum ada data review)
 
 **File yang perlu dibuat:**
 ```
@@ -237,35 +223,32 @@ resources/views/components/image-gallery.blade.php
 
 **Route:**
 ```php
-// routes/web.php
 Route::get('/salon/{id_salon}', SalonDetail::class)->name('salon.detail');
 ```
 
 ---
 
-### 🔴 PRIORITAS 5 — Booking Flow
+### 🔴 PRIORITAS 4 — Booking Flow
 
 **Referensi Treatwell:** https://www.treatwell.co.uk/book/[salon]/
 
-#### Langkah booking (wizard / multi-step):
+#### Langkah booking (multi-step wizard):
 
 **Step 1: Pilih Layanan**
-- [ ] Daftar layanan salon yang bisa dipilih (multi-select)
-- [ ] Tampilkan durasi + harga per layanan
-- [ ] Hitung total durasi & total harga
+- [ ] Daftar layanan salon (multi-select)
+- [ ] Tampilkan durasi + harga, hitung total
 
 **Step 2: Pilih Staf**
 - [ ] List staf yang tersedia untuk layanan terpilih
-- [ ] Opsi "Staf Mana Saja" (tidak pilih spesifik)
+- [ ] Opsi "Staf Mana Saja"
 
 **Step 3: Pilih Tanggal & Waktu**
 - [ ] Kalender pilih tanggal
-- [ ] Slot waktu tersedia berdasarkan jadwal staf
-- [ ] Validasi: jangan tampilkan slot yang sudah dipesan
+- [ ] Slot waktu berdasarkan jadwal staf + cek double-booking
 
 **Step 4: Konfirmasi & Bayar**
-- [ ] Ringkasan pesanan (layanan, staf, waktu, total)
-- [ ] Input kode promo
+- [ ] Ringkasan pesanan
+- [ ] Input kode promo (cek `user_promo`)
 - [ ] Pilih metode pembayaran
 - [ ] Tombol "Konfirmasi Booking"
 
@@ -279,85 +262,98 @@ resources/views/livewire/booking/*.blade.php
 app/Http/Controllers/OrderController.php
 ```
 
-**Logic yang perlu diimplementasi:**
+**Logic slot availability:**
 ```php
-// Cek ketersediaan slot — logika kritis!
-// Staf tidak double-booked pada waktu yang sama
-Order::whereHas('orderDetail', fn($q) => 
-    $q->where('id_staff', $staffId)
-      ->where('date_order', $date)
-      ->where('time_start', '<', $timeEnd)
-      ->where('time_end', '>', $timeStart)
-)->doesntExist();
+// Cek staff tidak double-booked
+OrderDetail::whereHas('order', fn($q) => $q->where('date_order', $date))
+    ->where('id_staff', $staffId)
+    ->where('start_time', '<', $timeEnd)
+    ->where('end_time', '>', $timeStart)
+    ->doesntExist();
 ```
 
 ---
 
-### 🔴 PRIORITAS 6 — Dashboard User (Customer)
+### 🔴 PRIORITAS 5 — Dashboard User (Customer)
 
-**Referensi Treatwell:** https://www.treatwell.co.uk/account/
-
-- [ ] Riwayat booking (upcoming & past)
-- [ ] Tombol batalkan booking (jika belum dilayani)
-- [ ] Tombol tulis review (jika sudah selesai)
-- [ ] Profil user (edit nama, email, foto, nomor HP)
-- [ ] Promo / voucher yang dimiliki
+- [ ] Riwayat booking (upcoming & past) — query `Order` by `id_user`
+- [ ] Tombol batalkan booking (jika status = pending)
+- [ ] Tombol tulis review (jika status = success, belum ada review)
+- [ ] Profil user (edit `first_name`, `last_name`, `phone_number`, `profile_url`)
+- [ ] Promo / voucher yang dimiliki (via pivot `user_promo`)
 
 ---
 
-### 🔴 PRIORITAS 7 — Dashboard Salon Owner
+### 🔴 PRIORITAS 6 — Dashboard Salon Owner
 
 - [ ] Statistik salon (total booking hari ini/bulan ini)
-- [ ] Manajemen layanan (CRUD service)
-- [ ] Manajemen staf (CRUD staff + jadwal)
-- [ ] Daftar order masuk
-- [ ] Manajemen galeri foto salon
+- [ ] Manajemen layanan (CRUD `service`)
+- [ ] Manajemen staf (CRUD `staff` + `staff_schedule`)
+- [ ] Daftar order masuk (update status)
+- [ ] Manajemen galeri foto (`salon_images`)
 - [ ] Edit profil salon
 
 ---
 
-### 🔴 PRIORITAS 8 — Admin Panel
+### 🔴 PRIORITAS 7 — Admin Panel
 
-- [ ] Manajemen semua salon (approve/reject pendaftaran)
+- [ ] Manajemen semua salon (approve/reject `status = active`)
 - [ ] Manajemen kategori & kota
 - [ ] Manajemen promo global
 - [ ] Laporan & statistik platform
-- [ ] Moderasi review
+- [ ] Moderasi review (`is_visible`)
+
+---
+
+### 🔴 PRIORITAS 8 — Middleware & Role-Based Access
+
+- [ ] Middleware `CheckRole` untuk `salon_owner` dan `admin`
+- [ ] Daftarkan di `bootstrap/app.php`
+
+```bash
+php artisan make:middleware CheckRole
+```
 
 ---
 
 ### 🔴 PRIORITAS 9 — Fitur Tambahan (Nice to Have)
 
 - [ ] Notifikasi email (booking konfirmasi, reminder H-1)
-- [ ] SMS/WhatsApp reminder
-- [ ] Google Maps integration (peta interaktif)
+- [ ] Google Maps integration (peta interaktif berdasarkan `latitude`/`longitude`)
 - [ ] Wishlist / Favorit salon
 - [ ] Sistem referral
 - [ ] Multi-bahasa (EN/ID)
-- [ ] PWA (Progressive Web App)
-- [ ] Dark mode
 
 ---
 
-## 🗂️ File yang Perlu Dibuat / Diubah (Checklist Teknis)
+## 🗂️ Checklist File (Status Terkini)
 
-### Models (app/Models/)
+### Models `app/Models/`
 ```
-[ ] Salon.php
-[ ] Service.php
-[ ] Kategori.php
-[ ] Kota.php
-[ ] Staff.php
-[ ] StaffSchedule.php
-[ ] SalonImage.php
-[ ] Order.php
-[ ] OrderDetail.php
-[ ] Review.php
-[ ] Promo.php
-[ ] Pembayaran.php
+[x] User.php          ← Updated: PK, relasi, SoftDeletes, accessor
+[x] Kota.php          ← BARU
+[x] Kategori.php      ← BARU
+[x] Salon.php         ← BARU
+[x] Promo.php         ← BARU
+[x] Service.php       ← BARU
+[x] Staff.php         ← BARU
+[x] Order.php         ← BARU
+[x] Review.php        ← BARU
+[x] SalonImage.php    ← BARU
+[x] StaffSchedule.php ← BARU
+[x] OrderDetail.php   ← BARU
+[x] Pembayaran.php    ← BARU
 ```
 
-### Livewire Components (app/Livewire/)
+### Controllers `app/Http/Controllers/`
+```
+[ ] HomeController.php
+[ ] OrderController.php
+[ ] ReviewController.php
+[x] Controller.php (base, ada tapi kosong)
+```
+
+### Livewire Components `app/Livewire/`
 ```
 [ ] HomePage.php + view
 [ ] SalonSearch.php + view
@@ -375,44 +371,34 @@ Order::whereHas('orderDetail', fn($q) =>
 [ ] Admin/Panel.php + view
 ```
 
-### Routes (routes/web.php)
+### Routes `routes/web.php`
 ```php
-// Tambahkan semua route berikut:
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/search', SalonSearch::class)->name('search');
-Route::get('/salon/{id}', SalonDetail::class)->name('salon.detail');
+// Saat ini hanya ada:
+Route::view('/', 'welcome')->name('home');       // ← welcome masih default Laravel
+Route::view('dashboard', 'dashboard')->name('dashboard');
 
+// Yang perlu ditambahkan:
+Route::get('/search', SalonSearch::class)->name('search');
+Route::get('/salon/{id_salon}', SalonDetail::class)->name('salon.detail');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/booking/{salonId}', BookingWizard::class)->name('booking');
-    Route::get('/dashboard', UserDashboard::class)->name('dashboard');
-    Route::get('/profile', UserProfile::class)->name('profile');
     Route::get('/orders', OrderHistory::class)->name('orders');
 });
-
-Route::middleware(['auth', 'role:salon_owner'])->prefix('owner')->group(function () {
-    Route::get('/dashboard', OwnerDashboard::class)->name('owner.dashboard');
-    Route::resource('/services', OwnerServiceController::class);
-    Route::resource('/staff', OwnerStaffController::class);
-});
-
-Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
-    Route::get('/dashboard', AdminPanel::class)->name('admin.dashboard');
-    Route::resource('/salons', AdminSalonController::class);
-    Route::resource('/categories', AdminCategoryController::class);
-});
+Route::middleware(['auth', 'role:salon_owner'])->prefix('owner')->group(...);
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(...);
 ```
 
-### Blade Views (resources/views/)
+### Blade Views `resources/views/`
 ```
-[x] layouts/app.blade.php (ada tapi perlu redesign)
-[ ] welcome.blade.php (perlu TOTAL redesign — saat ini default Laravel)
+[~] welcome.blade.php        ← ADA tapi masih default Laravel (perlu total redesign)
+[~] dashboard.blade.php      ← ADA (boilerplate Flux)
+[x] layouts/app.blade.php    ← ADA (Flux layout)
 [ ] components/navbar.blade.php
 [ ] components/footer.blade.php
 [ ] components/salon-card.blade.php
 [ ] components/service-item.blade.php
 [ ] components/review-card.blade.php
 [ ] components/staff-card.blade.php
-[ ] components/booking-wizard.blade.php
 [ ] livewire/home-page.blade.php
 [ ] livewire/salon-search.blade.php
 [ ] livewire/salon-detail.blade.php
@@ -422,79 +408,64 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 [ ] pages/admin/dashboard.blade.php
 ```
 
-### Middleware
-```bash
-# Perlu middleware role-based:
-php artisan make:middleware CheckRole
-# Daftarkan di app/Http/Kernel.php atau bootstrap/app.php
-```
-
 ---
 
 ## 🧪 Testing Checklist
 
-- [ ] Unit test: Model relasi (Salon hasMany Service, dll)
+- [ ] Unit test: Model relasi (sudah manual-verified via tinker ✅)
 - [ ] Feature test: Booking flow end-to-end
 - [ ] Feature test: Search & filter salon
 - [ ] Feature test: Auth (login, register, 2FA)
 - [ ] Feature test: Role permission (customer ≠ owner ≠ admin)
 
-```bash
-# Jalankan semua test
-php artisan test
-```
-
 ---
 
 ## ⚡ Urutan Pengerjaan yang Disarankan
 
-Karena **tenggat sudah dekat**, berikut urutan prioritas yang paling efisien:
-
-### Minggu ini (urgent):
+### Langkah selanjutnya (urgent):
 
 ```
-[ ] Hari 1-2: Buat semua 12 Model Eloquent
-    → Tanpa ini, TIDAK ADA yang bisa jalan
+[x] DONE — Buat semua 13 Model Eloquent ✅
 
-[ ] Hari 2-3: Redesign welcome.blade.php (Landing Page)
+[ ] NEXT 1: Redesign welcome.blade.php (Landing Page)
     → Ini yang dilihat pertama kali oleh penilai
-    → Gunakan data statis dulu, belum perlu controller
+    → Gunakan data dari DB (Salon::active()->with(['kota','primaryImage'])->take(6)->get())
+    → Target: Navbar + Hero + Kategori + Card Salon + Footer
 
-[ ] Hari 3-4: SalonSearch Livewire component
-    → Search + filter paling penting untuk demo
+[ ] NEXT 2: Route web.php + SalonSearch Livewire
+    → Tambah route /search dan /salon/{id}
+    → Search + filter adalah fitur terpenting untuk demo
 
-[ ] Hari 4-5: SalonDetail page
-    → Tampilkan layanan, staf, review
+[ ] NEXT 3: SalonDetail page
+    → Tampilkan layanan, staf, galeri foto
+    → Data sudah ada di DB!
 
-[ ] Hari 5-6: Booking flow (minimal Step 1 + Step 3)
+[ ] NEXT 4: Booking flow (minimal Step 1 + Step 3)
     → Pilih layanan → pilih waktu → konfirmasi
-```
 
-### Setelah itu (jika ada waktu):
-```
-[ ] Dashboard user (riwayat booking)
-[ ] Auth fine-tuning (pastikan role berfungsi)
-[ ] Dashboard salon owner (manajemen layanan)
+[ ] NEXT 5: Dashboard user (riwayat booking)
 ```
 
 ---
 
 ## 🐛 Known Issues / Catatan Teknis
 
-1. **`welcome.blade.php`** — Saat ini masih halaman **default Laravel**, bukan halaman VIYGO. Perlu ditulis ulang total.
-2. **Tidak ada Model** — Folder `app/Models/` hanya berisi `User.php`. Semua 12 model lain belum ada.
-3. **Tidak ada Controller** — Folder `app/Http/Controllers/` kosong. Semua logic belum diimplementasi.
-4. **Tidak ada Livewire Component** — `app/Livewire/` hanya berisi folder `Actions/` dari boilerplate.
-5. **Route masih minimal** — `routes/web.php` hanya punya `/` (welcome) dan `/dashboard`.
-6. **`sessions` migration** belum di-commit — file ada di lokal tapi belum di-track git.
-7. **Booking slot logic** — Perlu implementasi yang cermat agar tidak ada double-booking.
+1. **`welcome.blade.php`** — Masih halaman **default Laravel**. Perlu ditulis ulang total.
+2. **Tidak ada Controller** — `app/Http/Controllers/` hanya ada `Controller.php` (base class kosong).
+3. **Tidak ada Livewire Component** — `app/Livewire/` hanya berisi folder `Actions/` dari boilerplate.
+4. **Route masih minimal** — `routes/web.php` hanya punya `/` (welcome) dan `/dashboard`.
+5. **Booking slot logic** — Perlu implementasi cermat agar tidak ada double-booking.
+6. **Middleware role** belum ada — `CheckRole` middleware belum dibuat.
+7. **`staff_schedule`** — Data kosong (0 record). Perlu diisi sebelum fitur booking bisa berjalan sempurna.
+8. **`order`, `review`, `pembayaran`** — Semua 0 record. Data transaksi belum ada (wajar, fitur belum jadi).
+9. **User model** — `#[Fillable]` attribute lama sudah dihapus, diganti `$fillable` array yang benar.
 
 ---
 
 ## 📌 Referensi Halaman Treatwell yang Perlu Diduplikat
 
 | Halaman Treatwell | URL Contoh | Prioritas |
-|-------------------|-----------|-----------|
+|-------------------|-----------|-----------| 
 | Landing Page | treatwell.co.uk | 🔴 Tinggi |
 | Search Results | treatwell.co.uk/place/london/ | 🔴 Tinggi |
 | Salon Detail | treatwell.co.uk/place/[salon]/ | 🔴 Tinggi |
