@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "id_staff": 1,
     "id_salon": 1,
@@ -639,7 +639,7 @@
   {
     "id_staff": 92,
     "id_salon": 42,
-    "name": "Sama( Snr Hair Stylist \u0026 Beauty Therapist)",
+    "name": "Sama( Snr Hair Stylist & Beauty Therapist)",
     "profile_url": null,
     "status": "active"
   },
@@ -1213,14 +1213,14 @@
   {
     "id_staff": 174,
     "id_salon": 79,
-    "name": "Hina_ Hairdresser\\u002FBeautician\\u002FAesthetician",
+    "name": "Hina_ Hairdresser\/Beautician\/Aesthetician",
     "profile_url": null,
     "status": "active"
   },
   {
     "id_staff": 175,
     "id_salon": 79,
-    "name": "Asma -  Hairdresser\\u002FBeautician\\u002FAesthetician",
+    "name": "Asma -  Hairdresser\/Beautician\/Aesthetician",
     "profile_url": null,
     "status": "active"
   },
@@ -1458,14 +1458,14 @@
   {
     "id_staff": 209,
     "id_salon": 100,
-    "name": "Rose- Hair \u0026 beautician",
+    "name": "Rose- Hair & beautician",
     "profile_url": null,
     "status": "active"
   },
   {
     "id_staff": 210,
     "id_salon": 100,
-    "name": "Daisy- Senior Beauty \u0026 Hair",
+    "name": "Daisy- Senior Beauty & Hair",
     "profile_url": null,
     "status": "active"
   },
@@ -2438,7 +2438,7 @@
   {
     "id_staff": 349,
     "id_salon": 199,
-    "name": "Anjana \u0026 Mina",
+    "name": "Anjana & Mina",
     "profile_url": null,
     "status": "active"
   },
@@ -3026,7 +3026,7 @@
   {
     "id_staff": 433,
     "id_salon": 269,
-    "name": "Beautician\u0026Hair ,Nail",
+    "name": "Beautician&Hair ,Nail",
     "profile_url": null,
     "status": "active"
   },
@@ -3040,7 +3040,7 @@
   {
     "id_staff": 435,
     "id_salon": 269,
-    "name": "Beauty \u0026 Nail",
+    "name": "Beauty & Nail",
     "profile_url": null,
     "status": "active"
   },
@@ -3432,7 +3432,7 @@
   {
     "id_staff": 491,
     "id_salon": 307,
-    "name": "Chelsea SPA\u0026Beauty",
+    "name": "Chelsea SPA&Beauty",
     "profile_url": null,
     "status": "active"
   },
@@ -5518,7 +5518,7 @@
   {
     "id_staff": 789,
     "id_salon": 517,
-    "name": "Nail Technician 1 \u0026 2",
+    "name": "Nail Technician 1 & 2",
     "profile_url": null,
     "status": "active"
   },
@@ -7156,21 +7156,21 @@
   {
     "id_staff": 1023,
     "id_salon": 706,
-    "name": "Lead Stylist \\u002F Nicolae",
+    "name": "Lead Stylist \/ Nicolae",
     "profile_url": null,
     "status": "active"
   },
   {
     "id_staff": 1024,
     "id_salon": 706,
-    "name": "Emerging Stylist \\u002F Hair Colorist",
+    "name": "Emerging Stylist \/ Hair Colorist",
     "profile_url": null,
     "status": "active"
   },
   {
     "id_staff": 1025,
     "id_salon": 706,
-    "name": "Creative Director \\u002F Nino",
+    "name": "Creative Director \/ Nino",
     "profile_url": null,
     "status": "active"
   },
@@ -8409,7 +8409,7 @@
   {
     "id_staff": 1202,
     "id_salon": 844,
-    "name": "Anna ( Art\u0026Beauty)",
+    "name": "Anna ( Art&Beauty)",
     "profile_url": null,
     "status": "active"
   },
@@ -9200,14 +9200,14 @@
   {
     "id_staff": 1315,
     "id_salon": 917,
-    "name": "Indie\\u002F Master Cutter \u0026 Colour Specialist",
+    "name": "Indie\/ Master Cutter & Colour Specialist",
     "profile_url": null,
     "status": "active"
   },
   {
     "id_staff": 1316,
     "id_salon": 917,
-    "name": "Mo\\u002Fjunior Barber",
+    "name": "Mo\/junior Barber",
     "profile_url": null,
     "status": "active"
   },
@@ -9431,7 +9431,7 @@
   {
     "id_staff": 1348,
     "id_salon": 948,
-    "name": "KAUR \\u002F MANU",
+    "name": "KAUR \/ MANU",
     "profile_url": null,
     "status": "active"
   },
@@ -10789,7 +10789,7 @@
   {
     "id_staff": 1542,
     "id_salon": 1055,
-    "name": "Ash Hair \u0026 Beauty Salon",
+    "name": "Ash Hair & Beauty Salon",
     "profile_url": null,
     "status": "active"
   },
@@ -11608,7 +11608,7 @@
   {
     "id_staff": 1659,
     "id_salon": 1152,
-    "name": "Tia \\u002F Junior Stylist",
+    "name": "Tia \/ Junior Stylist",
     "profile_url": null,
     "status": "active"
   },
@@ -11916,7 +11916,7 @@
   {
     "id_staff": 1703,
     "id_salon": 1178,
-    "name": "Eshees Arsthetics \\u002F Ladies Only🙏",
+    "name": "Eshees Arsthetics \/ Ladies Only🙏",
     "profile_url": null,
     "status": "active"
   },
@@ -14107,21 +14107,21 @@
   {
     "id_staff": 2016,
     "id_salon": 1432,
-    "name": "Beauty Therapist 2 \u0026 Laser Hair Removal",
+    "name": "Beauty Therapist 2 & Laser Hair Removal",
     "profile_url": null,
     "status": "active"
   },
   {
     "id_staff": 2017,
     "id_salon": 1432,
-    "name": "SunBed 1 \u0026 2 - Fast Sunbed 250W High Power St Topaz1",
+    "name": "SunBed 1 & 2 - Fast Sunbed 250W High Power St Topaz1",
     "profile_url": null,
     "status": "active"
   },
   {
     "id_staff": 2018,
     "id_salon": 1432,
-    "name": "Beauty Therapist 1 \u0026 Laser Hair Removal",
+    "name": "Beauty Therapist 1 & Laser Hair Removal",
     "profile_url": null,
     "status": "active"
   },
@@ -14219,7 +14219,7 @@
   {
     "id_staff": 2032,
     "id_salon": 1442,
-    "name": "Simin Skin Specialist \u0026 Aesthetic",
+    "name": "Simin Skin Specialist & Aesthetic",
     "profile_url": null,
     "status": "active"
   },
@@ -14737,7 +14737,7 @@
   {
     "id_staff": 2106,
     "id_salon": 1520,
-    "name": "Aransha - Senior Beautician\\u002FWaxpert",
+    "name": "Aransha - Senior Beautician\/Waxpert",
     "profile_url": null,
     "status": "active"
   },
@@ -16179,7 +16179,7 @@
   {
     "id_staff": 2312,
     "id_salon": 1682,
-    "name": "Nails \u0026 Beauty",
+    "name": "Nails & Beauty",
     "profile_url": null,
     "status": "active"
   },
@@ -16305,7 +16305,7 @@
   {
     "id_staff": 2330,
     "id_salon": 1698,
-    "name": "Nail Tech\\u002FBeautician",
+    "name": "Nail Tech\/Beautician",
     "profile_url": null,
     "status": "active"
   },
@@ -16375,7 +16375,7 @@
   {
     "id_staff": 2340,
     "id_salon": 1704,
-    "name": "Kiran's Beauty \u0026 Threading",
+    "name": "Kiran's Beauty & Threading",
     "profile_url": null,
     "status": "active"
   },
@@ -16900,7 +16900,7 @@
   {
     "id_staff": 2415,
     "id_salon": 1772,
-    "name": "Look A Million Dollars \\u002FBeauty",
+    "name": "Look A Million Dollars \/Beauty",
     "profile_url": null,
     "status": "active"
   },
@@ -17369,7 +17369,7 @@
   {
     "id_staff": 2482,
     "id_salon": 1826,
-    "name": "Nail \u0026 Beauty Therapist  02",
+    "name": "Nail & Beauty Therapist  02",
     "profile_url": null,
     "status": "active"
   },
@@ -17992,7 +17992,7 @@
   {
     "id_staff": 2571,
     "id_salon": 1891,
-    "name": "J\\u002FN",
+    "name": "J\/N",
     "profile_url": null,
     "status": "active"
   },
@@ -18776,28 +18776,28 @@
   {
     "id_staff": 2683,
     "id_salon": 1974,
-    "name": "Tracy She\\u002FHer",
+    "name": "Tracy She\/Her",
     "profile_url": null,
     "status": "active"
   },
   {
     "id_staff": 2684,
     "id_salon": 1974,
-    "name": "Gabby She\\u002FHer",
+    "name": "Gabby She\/Her",
     "profile_url": null,
     "status": "active"
   },
   {
     "id_staff": 2685,
     "id_salon": 1974,
-    "name": "Sean He\\u002FHim",
+    "name": "Sean He\/Him",
     "profile_url": null,
     "status": "active"
   },
   {
     "id_staff": 2686,
     "id_salon": 1974,
-    "name": "Aedie He\\u002FHim",
+    "name": "Aedie He\/Him",
     "profile_url": null,
     "status": "active"
   },
@@ -19021,7 +19021,7 @@
   {
     "id_staff": 2718,
     "id_salon": 2004,
-    "name": "Nail \u0026 Beauty Therapist 03",
+    "name": "Nail & Beauty Therapist 03",
     "profile_url": null,
     "status": "active"
   },
@@ -20232,7 +20232,7 @@
   {
     "id_staff": 2891,
     "id_salon": 2136,
-    "name": "Healthland Massage \u0026 Spa",
+    "name": "Healthland Massage & Spa",
     "profile_url": null,
     "status": "active"
   },
@@ -20267,7 +20267,7 @@
   {
     "id_staff": 2896,
     "id_salon": 2140,
-    "name": "Yurii (he\\u002Fhim)",
+    "name": "Yurii (he\/him)",
     "profile_url": null,
     "status": "active"
   },
@@ -21030,7 +21030,7 @@
   {
     "id_staff": 3005,
     "id_salon": 2249,
-    "name": "Susan Practitioner \u0026 Proprietor",
+    "name": "Susan Practitioner & Proprietor",
     "profile_url": null,
     "status": "active"
   },
@@ -21450,7 +21450,7 @@
   {
     "id_staff": 3065,
     "id_salon": 2309,
-    "name": "Sawasdee Thaispa\u0026massage",
+    "name": "Sawasdee Thaispa&massage",
     "profile_url": null,
     "status": "active"
   },
@@ -21590,7 +21590,7 @@
   {
     "id_staff": 3085,
     "id_salon": 2324,
-    "name": "Edita Senior Stylist \u0026 Colourist",
+    "name": "Edita Senior Stylist & Colourist",
     "profile_url": null,
     "status": "active"
   },
@@ -24348,7 +24348,7 @@
   {
     "id_staff": 3479,
     "id_salon": 2633,
-    "name": "nail \u0026 beauty therapist",
+    "name": "nail & beauty therapist",
     "profile_url": null,
     "status": "active"
   },
@@ -25041,7 +25041,7 @@
   {
     "id_staff": 3578,
     "id_salon": 2689,
-    "name": "T\u0026K Nail Tech",
+    "name": "T&K Nail Tech",
     "profile_url": null,
     "status": "active"
   },
@@ -25069,7 +25069,7 @@
   {
     "id_staff": 3582,
     "id_salon": 2691,
-    "name": "T\u0026G",
+    "name": "T&G",
     "profile_url": null,
     "status": "active"
   },
@@ -27785,7 +27785,7 @@
   {
     "id_staff": 3970,
     "id_salon": 2954,
-    "name": "Hema ( Senior Beauty \u0026 Makeup Expert )",
+    "name": "Hema ( Senior Beauty & Makeup Expert )",
     "profile_url": null,
     "status": "active"
   },
@@ -28352,7 +28352,7 @@
   {
     "id_staff": 4051,
     "id_salon": 2996,
-    "name": "J \u0026 T",
+    "name": "J & T",
     "profile_url": null,
     "status": "active"
   },
@@ -29766,7 +29766,7 @@
   {
     "id_staff": 4253,
     "id_salon": 3114,
-    "name": "N\\u002FA",
+    "name": "N\/A",
     "profile_url": null,
     "status": "active"
   },
@@ -32293,7 +32293,7 @@
   {
     "id_staff": 4614,
     "id_salon": 3509,
-    "name": "Nidhi\\u002F Twinkle",
+    "name": "Nidhi\/ Twinkle",
     "profile_url": null,
     "status": "active"
   },
@@ -32979,7 +32979,7 @@
   {
     "id_staff": 4712,
     "id_salon": 3627,
-    "name": "Cutting Bar \u0026 Braids",
+    "name": "Cutting Bar & Braids",
     "profile_url": null,
     "status": "active"
   },
@@ -33567,7 +33567,7 @@
   {
     "id_staff": 4796,
     "id_salon": 3696,
-    "name": "Ana\\u002F Dallen",
+    "name": "Ana\/ Dallen",
     "profile_url": null,
     "status": "active"
   },
@@ -33595,7 +33595,7 @@
   {
     "id_staff": 4800,
     "id_salon": 3697,
-    "name": "Gee - Brow, LVL \u0026 Semi Permanent Lash Specialist",
+    "name": "Gee - Brow, LVL & Semi Permanent Lash Specialist",
     "profile_url": null,
     "status": "active"
   },
@@ -35884,7 +35884,7 @@
   {
     "id_staff": 5127,
     "id_salon": 3924,
-    "name": "Elena\\u002FJas",
+    "name": "Elena\/Jas",
     "profile_url": null,
     "status": "active"
   },
@@ -36213,7 +36213,7 @@
   {
     "id_staff": 5174,
     "id_salon": 3956,
-    "name": "Wax\\u002F Facial",
+    "name": "Wax\/ Facial",
     "profile_url": null,
     "status": "active"
   },
@@ -38299,7 +38299,7 @@
   {
     "id_staff": 5472,
     "id_salon": 4166,
-    "name": "Polish \u0026 Pamper",
+    "name": "Polish & Pamper",
     "profile_url": null,
     "status": "active"
   },
@@ -38537,7 +38537,7 @@
   {
     "id_staff": 5506,
     "id_salon": 4195,
-    "name": "Leia\\u002Fzany",
+    "name": "Leia\/zany",
     "profile_url": null,
     "status": "active"
   },
@@ -39517,7 +39517,7 @@
   {
     "id_staff": 5646,
     "id_salon": 4288,
-    "name": "Toni\u0026Tiger",
+    "name": "Toni&Tiger",
     "profile_url": null,
     "status": "active"
   },
@@ -40175,7 +40175,7 @@
   {
     "id_staff": 5740,
     "id_salon": 4349,
-    "name": "Senior Stylist \u0026 Colourist",
+    "name": "Senior Stylist & Colourist",
     "profile_url": null,
     "status": "active"
   },
@@ -40315,7 +40315,7 @@
   {
     "id_staff": 5760,
     "id_salon": 4364,
-    "name": "Rose Beauty \u0026 Aesthetics",
+    "name": "Rose Beauty & Aesthetics",
     "profile_url": null,
     "status": "active"
   },
@@ -42695,7 +42695,7 @@
   {
     "id_staff": 6100,
     "id_salon": 4585,
-    "name": "Acrylic \\u002F Apres \\u002F UV Gel",
+    "name": "Acrylic \/ Apres \/ UV Gel",
     "profile_url": null,
     "status": "active"
   },
@@ -43297,7 +43297,7 @@
   {
     "id_staff": 6186,
     "id_salon": 4639,
-    "name": "Room1\\u002F Massage",
+    "name": "Room1\/ Massage",
     "profile_url": null,
     "status": "active"
   },
@@ -44046,7 +44046,7 @@
   {
     "id_staff": 6293,
     "id_salon": 4704,
-    "name": "Le Nails \u0026 Spa",
+    "name": "Le Nails & Spa",
     "profile_url": null,
     "status": "active"
   },
@@ -45145,14 +45145,14 @@
   {
     "id_staff": 6450,
     "id_salon": 4797,
-    "name": "Gel \\u002F Manicure \\u002F Pedicure",
+    "name": "Gel \/ Manicure \/ Pedicure",
     "profile_url": null,
     "status": "active"
   },
   {
     "id_staff": 6451,
     "id_salon": 4797,
-    "name": "BIAB \\u002F Gel \\u002F Manicure \\u002F Pedicure",
+    "name": "BIAB \/ Gel \/ Manicure \/ Pedicure",
     "profile_url": null,
     "status": "active"
   },
@@ -47441,7 +47441,7 @@
   {
     "id_staff": 6778,
     "id_salon": 5008,
-    "name": "RBrows\u0026Beyond",
+    "name": "RBrows&Beyond",
     "profile_url": null,
     "status": "active"
   },
@@ -48603,7 +48603,7 @@
   {
     "id_staff": 6944,
     "id_salon": 5148,
-    "name": "Sara\\u002FThai",
+    "name": "Sara\/Thai",
     "profile_url": null,
     "status": "active"
   },
@@ -48624,7 +48624,7 @@
   {
     "id_staff": 6947,
     "id_salon": 5148,
-    "name": "Peary\\u002Fthai",
+    "name": "Peary\/thai",
     "profile_url": null,
     "status": "active"
   },
@@ -49457,7 +49457,7 @@
   {
     "id_staff": 7066,
     "id_salon": 5247,
-    "name": "LVS UK LADIES HEALTH \u0026 BEAUTY SALON",
+    "name": "LVS UK LADIES HEALTH & BEAUTY SALON",
     "profile_url": null,
     "status": "active"
   },
@@ -49765,7 +49765,7 @@
   {
     "id_staff": 7110,
     "id_salon": 5284,
-    "name": "N\u0026N",
+    "name": "N&N",
     "profile_url": null,
     "status": "active"
   },
@@ -49779,7 +49779,7 @@
   {
     "id_staff": 7112,
     "id_salon": 5286,
-    "name": "The Restore \u0026 Renew Team",
+    "name": "The Restore & Renew Team",
     "profile_url": null,
     "status": "active"
   },
@@ -51018,7 +51018,7 @@
   {
     "id_staff": 7289,
     "id_salon": 5440,
-    "name": "N \u0026 N",
+    "name": "N & N",
     "profile_url": null,
     "status": "active"
   },
@@ -51354,14 +51354,14 @@
   {
     "id_staff": 7337,
     "id_salon": 5477,
-    "name": "beauty \u0026 Therapy1",
+    "name": "beauty & Therapy1",
     "profile_url": null,
     "status": "active"
   },
   {
     "id_staff": 7338,
     "id_salon": 5477,
-    "name": "beauty \u0026 Therapy2",
+    "name": "beauty & Therapy2",
     "profile_url": null,
     "status": "active"
   },
@@ -53538,7 +53538,7 @@
   {
     "id_staff": 7649,
     "id_salon": 5858,
-    "name": "Nazan Garcia (he\\u002Fhim)",
+    "name": "Nazan Garcia (he\/him)",
     "profile_url": null,
     "status": "active"
   },
@@ -54420,7 +54420,7 @@
   {
     "id_staff": 7775,
     "id_salon": 6002,
-    "name": "Glow \u0026 Essence by Marsida Basha",
+    "name": "Glow & Essence by Marsida Basha",
     "profile_url": null,
     "status": "active"
   },
@@ -55379,7 +55379,7 @@
   {
     "id_staff": 7912,
     "id_salon": 6112,
-    "name": "Southgate SG Tattoo \u0026 Piercing Studio",
+    "name": "Southgate SG Tattoo & Piercing Studio",
     "profile_url": null,
     "status": "active"
   },
@@ -57339,7 +57339,7 @@
   {
     "id_staff": 8192,
     "id_salon": 6333,
-    "name": "Mebina Hair \u0026 Beauty",
+    "name": "Mebina Hair & Beauty",
     "profile_url": null,
     "status": "active"
   },
@@ -58606,7 +58606,7 @@
   {
     "id_staff": 8373,
     "id_salon": 6512,
-    "name": "Lash \u0026 Luxe Skin London",
+    "name": "Lash & Luxe Skin London",
     "profile_url": null,
     "status": "active"
   },
@@ -60132,7 +60132,7 @@
   {
     "id_staff": 8591,
     "id_salon": 6736,
-    "name": "Alice Aesthetics Academy \u0026 Clinic",
+    "name": "Alice Aesthetics Academy & Clinic",
     "profile_url": null,
     "status": "active"
   },
@@ -62554,7 +62554,7 @@
   {
     "id_staff": 8937,
     "id_salon": 7115,
-    "name": "Sonia \u0026 Rabia",
+    "name": "Sonia & Rabia",
     "profile_url": null,
     "status": "active"
   },
@@ -62603,7 +62603,7 @@
   {
     "id_staff": 8944,
     "id_salon": 7122,
-    "name": "Saba for Massage \u0026 Beauty",
+    "name": "Saba for Massage & Beauty",
     "profile_url": null,
     "status": "active"
   },
@@ -63261,7 +63261,7 @@
   {
     "id_staff": 9038,
     "id_salon": 7224,
-    "name": "Art Nails \u0026 Hair lounge",
+    "name": "Art Nails & Hair lounge",
     "profile_url": null,
     "status": "active"
   },
@@ -63856,7 +63856,7 @@
   {
     "id_staff": 9123,
     "id_salon": 7276,
-    "name": "Daisy's Nail Company \u0026 SPA",
+    "name": "Daisy's Nail Company & SPA",
     "profile_url": null,
     "status": "active"
   },
@@ -64024,14 +64024,14 @@
   {
     "id_staff": 9147,
     "id_salon": 7287,
-    "name": "Ruta Aesthetician \u0026 Holistic Therapist",
+    "name": "Ruta Aesthetician & Holistic Therapist",
     "profile_url": null,
     "status": "active"
   },
   {
     "id_staff": 9148,
     "id_salon": 7287,
-    "name": "Maryam Eyebrows \u0026 Beauty Expert",
+    "name": "Maryam Eyebrows & Beauty Expert",
     "profile_url": null,
     "status": "active"
   },
@@ -65137,7 +65137,7 @@
   {
     "id_staff": 9306,
     "id_salon": 7426,
-    "name": "Health \u0026 Wellbeing Therapist",
+    "name": "Health & Wellbeing Therapist",
     "profile_url": null,
     "status": "active"
   },
@@ -67881,7 +67881,7 @@
   {
     "id_staff": 9698,
     "id_salon": 7764,
-    "name": "London Nails \u0026 Spa",
+    "name": "London Nails & Spa",
     "profile_url": null,
     "status": "active"
   },
@@ -68021,7 +68021,7 @@
   {
     "id_staff": 9718,
     "id_salon": 7784,
-    "name": "Taylor’s Lashes \u0026 Brows - Edinburgh",
+    "name": "Taylor’s Lashes & Brows - Edinburgh",
     "profile_url": null,
     "status": "active"
   },
@@ -68763,7 +68763,7 @@
   {
     "id_staff": 9824,
     "id_salon": 7849,
-    "name": "Robyn Ashley Hair \u0026 Beauty",
+    "name": "Robyn Ashley Hair & Beauty",
     "profile_url": null,
     "status": "active"
   },
@@ -70583,7 +70583,7 @@
   {
     "id_staff": 10084,
     "id_salon": 8056,
-    "name": "Viann \\u002F Viano",
+    "name": "Viann \/ Viano",
     "profile_url": null,
     "status": "active"
   },
@@ -74853,7 +74853,7 @@
   {
     "id_staff": 10694,
     "id_salon": 8548,
-    "name": "Abbie Hair \u0026 Makeup",
+    "name": "Abbie Hair & Makeup",
     "profile_url": null,
     "status": "active"
   },
@@ -75497,7 +75497,7 @@
   {
     "id_staff": 10786,
     "id_salon": 8647,
-    "name": "Sara Lash\u0026browbar",
+    "name": "Sara Lash&browbar",
     "profile_url": null,
     "status": "active"
   },
@@ -76120,7 +76120,7 @@
   {
     "id_staff": 10875,
     "id_salon": 8723,
-    "name": "Racha Saleha (beauty therapist \u0026 massuer)",
+    "name": "Racha Saleha (beauty therapist & massuer)",
     "profile_url": null,
     "status": "active"
   },
