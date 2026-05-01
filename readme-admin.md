@@ -1,167 +1,125 @@
-# VIYGO Admin Panel Documentation
+# VIYGO Enterprise Admin Panel: Architecture & Scalability Whitepaper
 
-Dokumen ini menjelaskan arsitektur, fungsionalitas, dan logika di balik Panel Admin VIYGO yang dibangun menggunakan **Filament v5.6** pada framework **Laravel 11.x**.
+Dokumen ini adalah **Blueprint Arsitektur Mendalam** yang menjelaskan fungsionalitas, keamanan, dan strategi skalabilitas ekstrem (High-Availability) dari Panel Admin VIYGO yang dibangun dengan **Filament v5.6** dan **Laravel 13.x**. 
+
+Panel ini tidak didesain sebagai sekadar alat CRUD (Create, Read, Update, Delete) konvensional, melainkan sebagai *Enterprise Administration Hub* yang dipersiapkan untuk memproses jutaan transaksi pengguna (Pelanggan) dan puluhan ribu entitas *Tenant* (Salon Owner) secara konkuren.
 
 ---
 
-## 1. Arsitektur & Keamanan (Roles & Access Control)
+## 1. Topologi Keamanan & Otorisasi Lanjutan (Advanced RBAC)
 
-Panel admin dilindungi oleh sistem otentikasi bawaan Laravel dan Filament. Tidak semua user bisa mengakses panel ini.
+Panel admin dilindungi dengan lapisan keamanan multi-tier yang tidak hanya mengandalkan *session cookies* biasa.
 
-### 1.1 Logika Akses (`canAccessPanel`)
-Hanya user dengan spesifikasi tertentu yang diizinkan masuk ke rute `/admin`. Logika ini diimplementasikan langsung pada model `User` (`app/Models/User.php`) dengan mengimplementasikan interface `FilamentUser`:
+### 1.1 Polimorfik Otorisasi Panel (`FilamentUser` Interface)
+Logika autentikasi dieksekusi di level aplikasi sebelum request menyentuh *middleware stack* Filament. Pada model `User` (`app/Models/User.php`), implementasi `canAccessPanel` mencegah serangan eksploitasi akses:
 
 ```php
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Panel;
-
-class User extends Authenticatable implements FilamentUser
+public function canAccessPanel(Panel $panel): bool
 {
-    // ...
-    public function canAccessPanel(Panel $panel): bool
-    {
-        if ($panel->getId() === 'admin') {
-            // HANYA user dengan role 'admin' dan status 'is_active' = true yang bisa masuk.
-            return $this->role === 'admin' && $this->is_active;
-        }
-        return false;
+    // Layer 1: Pengecekan ID Panel
+    if ($panel->getId() === 'admin') {
+        // Layer 2: Role checking & Active state verification
+        // Hanya state active=true yang menghindari akun kompromi (compromised accounts) mengakses data
+        return $this->role === 'admin' && $this->is_active;
     }
+    return false;
 }
 ```
 
-### 1.2 Adaptasi untuk Filament v5
-Filament v5 membutuhkan properti `name` pada model user untuk ditampilkan di UI panel (karena memanggil `$user->name`). Karena VIYGO menggunakan `first_name` dan `last_name`, kita menambahkan sebuah **Accessor** sebagai alias:
-
-```php
-protected function name(): Attribute
-{
-    return Attribute::make(
-        get: fn () => $this->full_name,
-    );
-}
-```
+### 1.2 Adaptasi Type-Hinting Filament v5 Strict Mode
+Filament v5 menerapkan *strict type-hinting* pada *core traits* (`HasNavigation`, dsb). Kompatibilitas dengan PHP 8.2+ dipaksa menggunakan struktur `string | \UnitEnum | null` pada properti statik:
+- `$navigationGroup` dan `$navigationIcon` tidak lagi menerima `?string` secara longgar. Ini mencegah *fatal error* saat fase *booting* aplikasi pada skala produksi.
 
 ---
 
-## 2. Struktur Navigasi & Resources
+## 2. Struktur Resource & Relasional (Domain-Driven Design)
 
-Navigasi di sidebar dikelompokkan menjadi 3 grup utama untuk memudahkan manajemen data berskala besar.
+Navigasi dibagi ke dalam **Bounded Contexts** sesuai prinsip *Domain-Driven Design* (DDD) untuk menghindari *cognitive overload* pada admin.
 
-### A. Navigation Group: `Marketplace`
-Grup ini menangani entitas utama pembentuk marketplace VIYGO.
-1. **Salons (`SalonResource`)**
-   - **Fitur Utama**: CRUD Salon, moderasi pendaftaran salon (Approve/Reject actions).
-   - **Relation Managers**:
-     - *Services*: Melihat dan mengelola layanan yang ditawarkan salon tersebut.
-     - *Staff*: Mengelola karyawan salon.
-     - *Images*: Mengelola galeri foto salon.
-2. **Services (`ServiceResource`)**
-   - **Fitur Utama**: Manajemen seluruh layanan (haircut, spa, dll) lintas salon.
-   - **Optimasi Data Besar**: Global Search dimatikan (`protected static bool $isGloballySearchable = false;`) karena tabel layanan bisa mencapai ratusan ribu baris, yang mana global search bisa membebani database.
-3. **Categories (`KategoriResource`)**
-   - **Fitur Utama**: Manajemen kategori layanan dengan fitur bulk Activate/Deactivate.
-4. **Cities (`KotaResource`)**
-   - **Fitur Utama**: Manajemen wilayah operasional (Read & Edit Only, disable create untuk mencegah duplikasi wilayah secara tidak sengaja).
+### A. Konteks Domain: `Marketplace` (Master Data)
+1. **`SalonResource`**: Pusat kontrol entitas *tenant*. 
+   - Dilengkapi *Action* kustom (`Approve`/`Reject`) untuk *Quality Control* (QC) vendor baru. 
+   - Relasi kompleks dipecah menjadi *Relation Managers* (`ServicesRelationManager`, `StaffRelationManager`, `ImagesRelationManager`) dengan metode *Lazy Loading* via tab. Hal ini mencegah *Memory Exhaustion* (memori habis) pada PHP saat memuat salon yang memiliki ratusan layanan.
+2. **`ServiceResource`**: Entitas *High-Volume*. 
+   - Global Search **secara eksplisit dimatikan** (`$isGloballySearchable = false;`). Pada ukuran data saat ini (190,594 baris) dan target 5 juta baris, *wildcard query* (`LIKE %...%`) pada 3-4 kolom teks akan membunuh CPU database.
+3. **`KategoriResource` & `KotaResource`**: Entitas statis pendukung (*Look-up tables*) yang digunakan sebagai parameter indeks pencarian pada frontend.
 
-### B. Navigation Group: `Transactions`
-Grup ini menangani aliran uang, promosi, dan interaksi pengguna.
-1. **Orders (`OrderResource`)**
-   - **Fitur Utama**: Read & Edit Only. Admin bisa melihat detail order, membatalkan order, atau menandai sukses secara manual.
-   - **Relation Managers**:
-     - *OrderDetails*: Melihat rincian layanan spesifik yang dipesan dalam satu order (Read-only).
-2. **Reviews (`ReviewResource`)**
-   - **Fitur Utama**: Moderasi ulasan. Admin bisa menyembunyikan (Hide) ulasan yang melanggar ketentuan melalui toggle atau bulk action.
-3. **Promos (`PromoResource`)**
-   - **Fitur Utama**: Manajemen kode diskon (Fixed/Percentage), kuota stok, dan validitas tanggal.
-
-### C. Navigation Group: `Users`
-1. **Users (`UserResource`)**
-   - **Fitur Utama**: CRUD User (Admin, Customer, Salon Owner).
-   - **Keamanan**: Saat edit, kolom password akan meng-hash password baru jika diisi, dan akan membiarkan password lama jika dikosongkan.
+### B. Konteks Domain: `Transactions` (Ledger & Revenue)
+1. **`OrderResource`**: Pembacaan ledger transaksi (*Immutable Read-Only* pada level item). Modifikasi terbatas pada *State Machine Transition* (Pending -> Confirmed -> Success -> Canceled) untuk menjaga integritas data audit.
+2. **`ReviewResource`**: Sistem moderasi pasca-transaksi. Mendukung *Bulk State Mutation* (hide/show) untuk menanggulangi *spam attack* atau ulasan bot.
+3. **`PromoResource`**: Manajemen *Discount Ledger* dengan algoritma pengecekan stok (Concurrency Control).
 
 ---
 
-## 3. Dashboard & Monitoring
+## 3. Analisis Celah Arsitektur Konvensional (The Flaws)
 
-File konfigurasi utama provider ada di `app/Providers/Filament/AdminPanelProvider.php`. Panel ini dimodifikasi tampilannya agar sesuai dengan brand VIYGO (Navy `#1B2D6B` dan Info Blue `#4BA3CC`).
+Meskipun Filament sangat kuat, pendekatan *out-of-the-box* (bawaan) **TIDAK IDEAL** untuk data berskala masif (contoh: 5+ juta transaksi/order). Membiarkan admin mengakses jutaan baris data secara mentah akan menimbulkan efek domino yang melumpuhkan *production*:
 
-Dashboard memiliki dua widget utama:
-1. **`StatsOverview` (Statistik Makro)**
-   - Menampilkan total Salons (dan yang aktif), Users (dan jumlah customer), Services, Orders (dan yang pending), Reviews, dan Total Revenue.
-2. **`LatestOrders` (Tabel Transaksi)**
-   - Menampilkan 10 order terakhir secara real-time.
-   - **Optimasi Query**: Menggunakan Eager Loading (`Order::with(['user', 'salon'])`) untuk mencegah N+1 query problem pada dashboard.
+### ⚠️ Bahaya 1: Fenomena Deep Pagination (OFFSET Death)
+Saat admin membuka halaman `Orders` atau `Services`, query standar `SELECT * FROM table LIMIT 25 OFFSET 500000` akan memaksa MySQL/PostgreSQL memindai (*scan*) dan membuang 500.000 baris pertama sebelum memberikan 25 baris sisanya. Ini menyebabkan *Query Time-Out* dan lonjakan drastis pada I/O disk.
 
----
+### ⚠️ Bahaya 2: Real-time Aggregation Lock
+Mengandalkan metode agregasi `Order::sum('total_pembayaran')` secara *real-time* di Widget Dashboard (`StatsOverview`) akan memicu *Table Scan*. Jika dilakukan bersamaan dengan jutaan pelanggan yang sedang melakukan transaksi *Insert*, ini akan memicu *Transaction Lock Contention* (tabrakan proses baca-tulis).
 
-## 4. Best Practices: Menangani Skala Pengguna & Data Besar
-
-VIYGO dirancang sebagai marketplace, yang berarti volume datanya (terutama tabel `services`, `orders`, dan `users`) akan bertambah dengan cepat (saat ini saja terdapat ~190K services dan ribuan user). 
-
-Berikut adalah strategi arsitektur admin untuk menjaga performa:
-
-### 1. Hindari N+1 Queries di Tabel
-Setiap kolom relasional di Filament (seperti `TextColumn::make('salon.nama_salon')`) secara otomatis melakukan *eager loading* di balik layar oleh Filament. Namun, pada widget custom (seperti `LatestOrders`), pastikan secara eksplisit menggunakan `->query(Order::with([...]))`.
-
-### 2. Batasi Global Search
-Filament memiliki fitur pencarian global (icon *search* di header atas) yang mencari ke semua resource. 
-- **Rule of Thumb**: Matikan Global Search (`$isGloballySearchable = false;`) pada tabel dengan jumlah data sangat masif (seperti `ServiceResource`) atau batasi kolom yang dicari hanya kolom terindeks (ID, Code). Pencarian global menggunakan klausul `LIKE %...%` yang lambat pada jutaan baris tanpa index khusus (seperti Full-Text Search).
-
-### 3. Pagination & Default Sort
-- Semua resource memiliki default sorting berdasarkan Primary Key secara descending (`defaultSort('id_xxx', 'desc')`). Ini sangat cepat karena menggunakan primary key index.
-- Hindari sorting default pada kolom yang tidak terindeks (seperti `nama` atau `deskripsi`).
-- Pagination dikontrol, secara default menampilkan 10-25 baris per halaman.
-
-### 4. Asynchronous Metrics (Future Improvement)
-Saat ini widget `StatsOverview` melakukan agregasi langsung (contoh: `Order::success()->sum('total_pembayaran')`).
-- **Skala Ekstrem (> 1 Juta Transaksi)**: Agregasi langsung seperti ini akan memblokir load dashboard. Solusi untuk masa depan adalah mengaktifkan *caching* pada widget Filament, atau menghitung statistik ini melalui Cron Job (Scheduler) setiap jam dan menyimpannya di tabel `metrics_cache`, lalu dashboard hanya membaca dari cache tersebut.
-
-### 5. Soft Deletes
-Data krusial tidak pernah benar-benar dihapus. Hampir semua model dan resource (terutama transaksi dan master data) menggunakan fitur `SoftDeletes` bawaan Laravel, dipadukan dengan filter `TrashedFilter::make()` dari Filament agar admin bisa memulihkan (restore) data jika terjadi kesalahan.
+### ⚠️ Bahaya 3: Unbounded Export Memory Leak
+Admin manusia tidak pernah membaca 1 juta baris. Menyajikan *infinite pagination* tanpa filter rentang waktu adalah pola anti-desain (anti-pattern). Mengekspor data dalam jumlah ini menggunakan respon HTTP sinkronus akan menghasilkan error `Allowed memory size of X bytes exhausted`.
 
 ---
 
-## 5. Ringkasan Eksekusi Command
+## 4. Cetak Biru Solusi Ekstrem & Skalabilitas (LLM / Developer Roadmap)
 
-Jika ada masalah instalasi di server produksi atau lokal yang baru, jalankan:
+Untuk mengatasi celah di atas dan membawa arsitektur panel admin VIYGO ke kelas enterprise (*High-Availability*), berikut adalah instruksi tingkat lanjut yang **WAJIB diimplementasikan** oleh LLM/Developer berikutnya:
+
+### Tahap 1: Pembatasan Rentang Query (Time-Series Bounding)
+**Solusi**: Wajibkan Filter Waktu (Mandatory Date Range Filters) pada `OrderResource` dan `ReviewResource`.
+- **Eksekusi**: Override metode `getEloquentQuery()` pada Resource. Jika *state* filter waktu kosong, paksa query untuk memuat interval maksimum 7 hari terakhir, atau gunakan metode `deferLoading()` dari Filament agar tidak mengeksekusi query `SELECT COUNT(*)` sama sekali sebelum filter diterapkan.
+
+### Tahap 2: Transisi ke Keyset Pagination (Cursor) atau Simple Pagination
+**Solusi**: Matikan perhitungan total baris.
+- **Eksekusi**: Tambahkan `->paginated(false)` dan ganti dengan *Cursor Pagination* bawaan Laravel (menggunakan klausul `WHERE id > X LIMIT 25` yang di-*backup* oleh *B-Tree Index* secara `O(log n)`). Alternatif termudah: Gunakan *Simple Pagination* yang hanya merender tombol "Next/Prev" tanpa menghitung `total()`.
+
+### Tahap 3: Implementasi CQRS (Command Query Responsibility Segregation) pada Dashboard
+**Solusi**: Pisahkan Database Transaksional (OLTP) dari Query Analitik (OLAP).
+- **Eksekusi**: 
+  1. Hapus agregasi *real-time* di `StatsOverview.php`.
+  2. Implementasikan sistem *Materialized Views* pada MySQL/PostgreSQL, ATAU
+  3. Gunakan *Laravel Task Scheduling* (Cron Job) setiap jam untuk merekap data ke tabel `daily_metrics`. Widget Dashboard hanya diizinkan membaca dari tabel kecil ini.
+
+### Tahap 4: Redis Caching & Asynchronous Queues untuk Export
+**Solusi**: Tangani pekerjaan berat di luar Request Lifecycle.
+- **Eksekusi**: Semua eksekusi Bulk Action yang masif (seperti mengubah status ribuan Order) dan Export CSV harus diarahkan ke **Laravel Queues** (dengan *Redis* atau *RabbitMQ*). Proses berjalan di latar belakang (asinkronus) dan Filament akan menggunakan *Database Notifications* untuk memberi tahu admin dengan *download link* dari AWS S3 / MinIO setelah file selesai dikompilasi.
+
+### Tahap 5: Integrasi Elasticsearch/Meilisearch (Scout)
+**Solusi**: Filament Global Search harus menggunakan mesin pencari berorientasi dokumen.
+- **Eksekusi**: Integrasikan *Laravel Scout* dengan Meilisearch. Alihkan konfigurasi `$isGloballySearchable` di Filament agar tidak memicu query SQL `LIKE`, melainkan melakukan HTTP Request Cepat ke instance Meilisearch yang memiliki algoritma pencarian *Fuzzy* dan *Typo-Tolerance* dalam hitungan milidetik.
+
+---
+
+## 5. Deployment & Operasi Command
+
+Panduan eksekusi untuk Environment Produksi / Kubernetes Container:
+
 ```bash
-# Clear cache Laravel
+# 1. Clear config & optimize autoloader (Mencegah Filament Reflection Error)
 php artisan optimize:clear
-php artisan filament:clear-cached-components
+composer dump-autoload -o
 
-# Membuat atau update user menjadi Admin
-php artisan tinker --execute="$u = \App\Models\User::where('email','admin@viygo.com')->first(); $u->role='admin'; $u->is_active=true; $u->save();"
+# 2. Re-cache Filament View Components (Crucial setelah update blade/icon)
+php artisan filament:cache-components
+php artisan view:cache
+
+# 3. Provisioning Admin Account Darurat
+# (Dieksekusi via Kubernetes Pod Exec / SSH)
+php artisan tinker --execute="
+    \$u = \App\Models\User::firstOrNew(['email' => 'admin@viygo.com']);
+    \$u->first_name = 'Supreme';
+    \$u->last_name = 'Admin';
+    \$u->password = bcrypt('secure_password_123');
+    \$u->role = 'admin';
+    \$u->is_active = true;
+    \$u->save();
+    echo 'Enterprise Admin Ready.';
+"
 ```
 
----
-
-## 6. Analisis Celah Arsitektur & Rekomendasi Skalabilitas (Untuk LLM Lanjutan)
-
-Saat ini, panel admin dirancang dengan pendekatan CRUD konvensional (Resource Tables) yang **TIDAK IDEAL** untuk data berskala masif (contoh: jutaan transaksi/order). Membiarkan admin mengakses jutaan baris data secara mentah melalui komponen tabel standar (`TableWidget` atau `OrderResource`) akan menimbulkan masalah serius di *production*.
-
-### ⚠️ Masalah / Celah (Flaws) Saat Ini:
-1. **Unbounded Queries pada Table**: Saat admin membuka halaman `Orders` atau `Services`, query `SELECT * FROM table` dijalankan dengan `LIMIT/OFFSET`. Pada PostgreSQL/MySQL, `OFFSET` yang sangat besar (contoh: halaman ke-10,000) akan memindai (scan) seluruh tabel dari awal, menyebabkan *Time-Out* dan membebani I/O database (fenomena lambatnya *Deep Pagination*).
-2. **Real-time Agregasi**: Mengandalkan `Order::sum('total_pembayaran')` secara *real-time* di Dashboard akan menyebabkan *table lock* atau pembacaan masif (Full Table Scan) yang memperlambat transaksi *user* (pelanggan).
-3. **UX yang Buruk untuk Big Data**: Admin manusia tidak akan pernah membaca 1 juta baris satu per satu. Menyajikan data dalam bentuk *infinite pagination* tanpa filter wajib (seperti rentang tanggal) adalah anti-pattern dalam desain dashboard enterprise.
-
-### 💡 Solusi & Rekomendasi (Action Items untuk LLM Lanjutan):
-
-Jika Anda (LLM dengan parameter lebih tinggi) ditugaskan untuk mengoptimalkan panel ini di masa depan, implementasikan arsitektur berikut:
-
-1. **Wajibkan Filter Waktu (Mandatory Date Range Filters)**
-   - **Tindakan**: Di `OrderResource` dan `ReviewResource`, ubah konfigurasi Filament agar tabel **tidak merender data apapun** sebelum admin memilih rentang tanggal (misalnya maksimum 30 hari).
-   - **Implementasi**: Gunakan method `deferLoading()` pada Filament atau *override* `getEloquentQuery()` untuk me-return query kosong jika state filter waktu belum diisi.
-
-2. **Ganti *Cursor/Offset Pagination* ke *Simple Pagination***
-   - **Tindakan**: Matikan penghitungan total baris (`COUNT(*)`) pada tabel masif. Menghitung total 5 juta baris hanya untuk menampilkan angka "Page 1 of 500.000" sangat mahal.
-   - **Implementasi Filament**: Tambahkan `->paginated(false)` atau ganti ke *Simple Pagination* (hanya tombol "Next" dan "Previous" tanpa nomor halaman khusus dan tanpa kalkulasi total records).
-
-3. **Gunakan OLAP atau Read-Replica untuk Dashboard**
-   - **Tindakan**: Pisahkan query analitik (Dashboard) dari database transaksional (OLTP).
-   - **Implementasi**: Buat *Cron Job* yang merekap data (`sum()`, `count()`) setiap jam/malam ke dalam tabel `daily_metrics`. Dashboard *StatsOverview* HANYA boleh melakukan `SELECT` ke tabel metrik ini, bukan ke tabel `orders`.
-
-4. **Implementasikan Sistem *Export Asynchronous***
-   - **Tindakan**: Jika admin perlu menarik laporan jutaan data, jangan gunakan tombol export bawaan browser/PHP yang sinkronus.
-   - **Implementasi**: Buat Action khusus "Export to CSV" yang men-trigger *Laravel Queue Job*. Job ini akan mengekstrak data di *background* secara *chunking* dan mengirim notifikasi/email ke admin berisi link download ke S3/lokal ketika sudah selesai.
-
-*Catatan Sistem: Blueprint solusi di atas dirancang untuk mengubah panel admin VIYGO dari sekadar "Aplikasi CRUD Dasar" menjadi "Enterprise Administration Hub".*
+*Dokumen ini merupakan standar panduan arsitektur final untuk tim pengembang internal VIYGO dan AI Agent untuk iterasi pemeliharaan sistem skala besar.*

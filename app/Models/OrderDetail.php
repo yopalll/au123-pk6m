@@ -18,6 +18,7 @@ class OrderDetail extends Model
         'end_time',
         'harga_at_order',
         'subtotal',
+        'catatan',
         'status',
     ];
 
