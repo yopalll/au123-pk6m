@@ -120,7 +120,7 @@
 </section>
 
 {{-- ───── CTA ───────────────────────────────────────────────────────────── --}}
-<section class="bg-[#1B2D6B] py-20 text-center">
+<section class="bg-[#1B2D6B] pt-20 pb-24 text-center">
     <h2 class="text-4xl text-white mb-4">Ready to Look Your Best?</h2>
     <p class="text-white/60 text-lg mb-8">Join thousands of customers booking treatments on VIYGO every day</p>
     <div class="flex gap-3 justify-center flex-wrap">

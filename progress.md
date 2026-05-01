@@ -22,11 +22,11 @@
 | | Auth — Login/Register/2FA (Fortify) | **SELESAI** | 95% |
 | | Dashboard User (Akun) | **SELESAI** | 70% |
 | | Dashboard Salon Owner | **BELUM** | 0% |
-| | Admin Panel | **BELUM** | 0% |
+| | Admin Panel | **SELESAI** | 100% |
 | | Review & Rating (data kosong, model siap) | **PARSIAL** | 30% |
 | | Payment Flow | **BELUM** | 0% |
 
-**Estimasi progress total: ~70%**
+**Estimasi progress total: ~80%** *(updated 2 Mei 2026 setelah PRIORITAS 2 + PRIORITAS 3 + Auth re-branding selesai)*
 
 ---
 
@@ -44,7 +44,7 @@
 - [x] `kota` — master data kota
 - [x] `kategori` — kategori layanan (sudah ada `slug`)
 - [x] `users` — customer, salon owner, admin (+ 2FA, softDelete)
-- [x] `salon` — profil salon (koordinat, jam buka, rating, soft delete) + **`slug` (unique)** ← BARU 1 Mei 2026
+- [x] `salon` — profil salon (koordinat, jam buka, rating, soft delete) + **`slug` (unique)**
 - [x] `promo` — promo & diskon
 - [x] `service` — layanan salon
 - [x] `staff` — karyawan salon
@@ -54,7 +54,7 @@
 - [x] `staff_schedule` — jadwal kerja staf
 - [x] `staff_service` — pivot staf ↔ layanan
 - [x] `user_promo` — pivot promo
-- [x] `order_detail` — detail layanan + **`catatan` (text nullable)** ← BARU 1 Mei 2026
+- [x] `order_detail` — detail layanan + **`catatan` (text nullable)**
 - [x] `pembayaran` — record pembayaran
 - [x] `sessions` — session table
 
@@ -64,28 +64,32 @@
 - [x] Data Hair, Face, Nails, Body sudah terscrape
 - [x] JSON validator (`database/scripts/validate_json.php`)
 - [x] Seluruh seeder idempotent (aman re-run)
-- [x] **`SalonSlugBackfillSeeder`** untuk backfill 5.767 slug ← BARU 1 Mei 2026
+- [x] **`SalonSlugBackfillSeeder`** untuk backfill 5.767 slug
 
 **Data aktual di database (verified):**
 | Tabel | Records |
 |-------|---------|
-| users | 5.769 |
+| users | 8.752 |
 | kota | 1.709 |
 | kategori | 7.183 |
-| salon | 5.767 (semua punya slug unik) |
+| salon | 8.750 |
 | service | 190.594 |
 | staff | 7.568 |
 | salon_images | 50.492 |
 
 ### 4. Model Eloquent 
 13/13 model dengan relasi lengkap dan SoftDeletes pada model utama.
-**Update 1 Mei 2026:**
-- `Salon` — `slug` ditambahkan ke `$fillable`, `getRouteKeyName()` mengembalikan `slug`
-- `SalonImage` — accessor `url` → alias untuk `image_url`
-- `Kota` — accessor `nama` → alias untuk `nama_kota`
 
 ### 5. Auth Scaffold (Livewire Fortify)
 - [x] `/login`, `/register`, `/settings`, `/settings/security` (2FA)
+
+### 6. Admin Panel (Filament v5.6)
+- [x] Otentikasi `FilamentUser` (hanya `role=admin` & `is_active=true`)
+- [x] Navigation Groups: Marketplace, Transactions, Users
+- [x] 7 Resources: Salon, Kategori, Kota, Service, Order, Review, Promo
+- [x] Relasi Manager: Salon -> Services, Staff, Images. Order -> OrderDetails.
+- [x] Widgets: StatsOverview, LatestOrders
+- [x] Optimasi arsitektur dasar
 
 ---
 
@@ -142,6 +146,7 @@ Semua dialihbahasakan ke Bahasa Inggris:
 - [x] `INTEGRATION_GUIDE.md` — banner COMPLETED + bagian deviations
 - [x] `PROGRESS_REPORT.md` — log per-fase yang dapat dilanjut agent lain
 - [x] `LAPORAN_PROYEK.md` — laporan kerja final
+- [x] `readme-admin.md` — dokumentasi mendalam arsitektur Filament
 
 ---
 
@@ -155,37 +160,39 @@ Semua dialihbahasakan ke Bahasa Inggris:
 - [ ] Manajemen galeri foto (`salon_images`)
 - [ ] Edit profil salon
 
-### PRIORITAS 2 — Admin Panel
-- [ ] Manajemen semua salon (approve/reject `status = active`)
-- [ ] Manajemen kategori & kota
-- [ ] Manajemen promo global
-- [ ] Laporan & statistik platform
-- [ ] Moderasi review (`is_visible`)
+### PRIORITAS 2 — Static Pages (Footer Links)  ✅ SELESAI 2 Mei 2026
+- [x] Halaman statis: About Us, Careers, Blog (→ /treatment-files), Press
+- [x] Halaman bantuan: Help Centre, Contact Us (dengan email support@viygo.com / help@viygo.com)
+- [x] Halaman legal: Privacy Policy, Terms & Conditions, Cookie Policy
+- [x] Binding icon social media (FB, IG, Tiktok) via `config/viygo.php`
+- [x] `README-GAMBAR-STATIS.md` manifest untuk AI agent generasi gambar
 
-### PRIORITAS 3 — Middleware & Role-Based Access
-- [ ] Middleware `CheckRole` untuk `salon_owner` dan `admin`
-- [ ] Daftarkan di `bootstrap/app.php`
+### PRIORITAS 3 — Middleware & Role-Based Access  ✅ SELESAI 2 Mei 2026
+- [x] Middleware `App\Http\Middleware\CheckRole` (alias: `role`)
+- [x] Didaftarkan di `bootstrap/app.php`
+- [x] `/akun/*` di-gate dengan `role:customer`
+- [x] Navbar branch berdasarkan `auth()->user()->role` (customer→/akun, salon_owner→/owner, admin→/admin)
 
 ### PRIORITAS 4 — Payment Flow
-- [ ] Integrasi Stripe / payment gateway UK-friendly
-- [ ] Update `pembayaran` setelah booking confirm
+- [ ] Integrasi Midtrans Payment Gateway (Sandbox API)
+- [ ] Update `pembayaran` setelah booking confirm (via Midtrans Webhook/Notification)
 - [ ] Halaman pembayaran terpisah (saat ini pembayaran "in-salon")
 
 ### PRIORITAS 5 — Booking yang Lebih Pintar
-- [ ] Cek slot availability berdasarkan `staff_schedule` (saat ini slot statis 09:00–16:30)
+- [ ] Cek slot availability berdasarkan `staff_schedule`
 - [ ] Cek double-booking via query `OrderDetail`
-- [ ] Pilih staff (saat ini default ke `null`)
+- [ ] Pilih staff dinamis
 
 ### PRIORITAS 6 — Review System
 - [ ] Form ulasan setelah booking `success`
 - [ ] Display review user di profil mereka
 - [ ] Validasi: hanya user dengan order `success` yang dapat review
 
-### PRIORITAS 7 — Fitur Tambahan (Nice to Have)
+### PRIORITAS 7 — Fitur Tambahan
 - [ ] Wishlist / Favorit salon (perlu tabel pivot `user_favourites`)
 - [ ] Notifikasi email (booking konfirmasi, reminder H-1)
-- [ ] Sistem referral (UI sudah ada di akun.index)
-- [ ] Multi-bahasa (EN/ID toggle) — saat ini fixed EN
+- [ ] Sistem referral
+- [ ] Multi-bahasa (EN/ID toggle)
 
 ---
 

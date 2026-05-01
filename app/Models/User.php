@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,7 +15,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable, TwoFactorAuthenticatable, SoftDeletes;
@@ -67,6 +69,17 @@ class User extends Authenticatable
     }
 
     /**
+     * Filament v5 calls getUserName() which reads $user->name.
+     * Alias to full_name for compatibility.
+     */
+    protected function name(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->full_name,
+        );
+    }
+
+    /**
      * Get the user's initials
      */
     public function initials(): string
@@ -108,5 +121,33 @@ class User extends Authenticatable
         return $this->belongsToMany(Promo::class, 'user_promo', 'id_user', 'id_promo')
                     ->withPivot('is_used', 'used_at')
                     ->withTimestamps();
+    }
+
+    /**
+     * Many-to-Many: Salon yang difavoritkan user (wishlist).
+     */
+    public function favourites()
+    {
+        return $this->belongsToMany(Salon::class, 'user_favourites', 'id_user', 'id_salon')
+                    ->withTimestamps();
+    }
+
+    /**
+     * Convenience helper used by the salon-card heart icon.
+     */
+    public function hasFavourited(int $idSalon): bool
+    {
+        return $this->favourites()->where('salon.id_salon', $idSalon)->exists();
+    }
+
+    // ──── Filament ──────────────────────────────────────────
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        if ($panel->getId() === 'admin') {
+            return $this->role === 'admin' && $this->is_active;
+        }
+
+        return false;
     }
 }

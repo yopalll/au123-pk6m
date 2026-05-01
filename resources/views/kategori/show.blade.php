@@ -28,7 +28,7 @@
 </div>
 
 {{-- ───── FILTER BAR ──────────────────────────────────────────────────── --}}
-<div class="sticky top-[105px] z-40 bg-white border-b border-gray-100 shadow-sm">
+<div class="sticky z-40 bg-white border-b border-gray-100 shadow-sm" style="top: var(--navbar-h, 96px);">
     <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 overflow-x-auto scrollbar-hide">
 
         <div class="relative" x-data="{ open: false }">
@@ -96,7 +96,7 @@
         </div>
 
         <div class="hidden lg:block w-[420px] flex-shrink-0">
-            <div class="sticky top-[160px]">
+            <div class="sticky" style="top: calc(var(--navbar-h, 96px) + 55px);">
                 <x-leaflet-map
                     id="map-kategori"
                     height="calc(100vh - 200px)"

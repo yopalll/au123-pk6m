@@ -9,6 +9,7 @@ use App\Http\Controllers\LookbookController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\SalonController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\StaticController;
 use App\Http\Controllers\TreatmentFilesController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,30 +27,47 @@ Route::get('/lookbook', [LookbookController::class, 'index'])->name('lookbook');
 Route::get('/treatment-files', [TreatmentFilesController::class, 'index'])->name('treatment-files');
 Route::get('/mitra', [MitraController::class, 'index'])->name('mitra');
 
+// ── Static / informational pages (footer links) ───────────────────────────
+Route::get('/about',   [StaticController::class, 'about'])->name('static.about');
+Route::get('/careers', [StaticController::class, 'careers'])->name('static.careers');
+Route::get('/press',   [StaticController::class, 'press'])->name('static.press');
+Route::get('/help',    [StaticController::class, 'help'])->name('static.help');
+Route::get('/contact', [StaticController::class, 'contact'])->name('static.contact');
+Route::get('/privacy', [StaticController::class, 'privacy'])->name('static.privacy');
+Route::get('/terms',   [StaticController::class, 'terms'])->name('static.terms');
+Route::get('/cookies', [StaticController::class, 'cookies'])->name('static.cookies');
+
 /*
 |--------------------------------------------------------------------------
-| Auth-Protected Routes — Booking & Account
+| Auth-Protected Routes
 |--------------------------------------------------------------------------
+| Booking is open to any authenticated, verified user (customers and admins
+| who want to test bookings). The `/akun` panel is restricted to customers.
+| Salon owners use the Filament `/owner` panel; admins use `/admin`.
 */
 Route::middleware(['auth', 'verified'])->group(function () {
 
-    // Booking flow
+    // Booking flow — any authenticated user
     Route::get('/salon/{slug}/booking', [BookingController::class, 'create'])->name('booking.create');
     Route::post('/salon/{slug}/booking', [BookingController::class, 'store'])->name('booking.store');
     Route::get('/booking/{kode}/konfirmasi', [BookingController::class, 'konfirmasi'])->name('booking.konfirmasi');
     Route::post('/booking/{kode}/batal', [BookingController::class, 'batal'])->name('booking.batal');
 
-    // Account
-    Route::prefix('akun')->name('akun.')->group(function () {
-        Route::get('/', [AkunController::class, 'index'])->name('index');
-        Route::get('/bookings', [AkunController::class, 'bookings'])->name('bookings');
-        Route::get('/favorit', [AkunController::class, 'favorit'])->name('favorit');
-        Route::get('/pengaturan', [AkunController::class, 'pengaturan'])->name('pengaturan');
-        Route::put('/pengaturan', [AkunController::class, 'updatePengaturan'])->name('pengaturan.update');
-        Route::get('/reward', [AkunController::class, 'reward'])->name('reward');
-    });
+    // Customer-only account panel
+    Route::middleware('role:customer')
+        ->prefix('akun')
+        ->name('akun.')
+        ->group(function () {
+            Route::get('/', [AkunController::class, 'index'])->name('index');
+            Route::get('/bookings', [AkunController::class, 'bookings'])->name('bookings');
+            Route::get('/favorit', [AkunController::class, 'favorit'])->name('favorit');
+            Route::post('/favorit/{salon:slug}', [AkunController::class, 'toggleFavorit'])->name('favorit.toggle');
+            Route::get('/pengaturan', [AkunController::class, 'pengaturan'])->name('pengaturan');
+            Route::put('/pengaturan', [AkunController::class, 'updatePengaturan'])->name('pengaturan.update');
+            Route::get('/reward', [AkunController::class, 'reward'])->name('reward');
+        });
 
-    // Existing dashboard (Livewire Flux scaffold)
+    // Existing Livewire Flux dashboard (any role)
     Route::view('dashboard', 'dashboard')->name('dashboard');
 });
 

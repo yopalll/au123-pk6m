@@ -57,19 +57,32 @@
                     Sign up
                 </a>
             @else
-                <a href="{{ route('akun.index') }}"
+                @php
+                    $role = auth()->user()->role ?? 'customer';
+                    $accountTarget = match ($role) {
+                        'admin'       => '/admin',
+                        'salon_owner' => '/owner',
+                        default       => route('akun.index'),
+                    };
+                    $accountLabel = match ($role) {
+                        'admin'       => 'Admin Panel',
+                        'salon_owner' => 'Salon Dashboard',
+                        default       => 'My Account',
+                    };
+                @endphp
+                <a href="{{ $accountTarget }}"
                    class="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-[#1B2D6B] transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/>
                     </svg>
-                    <span class="hidden lg:inline">My Account</span>
+                    <span class="hidden lg:inline">{{ $accountLabel }}</span>
                 </a>
             @endguest
         </div>
     </div>
 
     {{-- Row 2: top category nav --}}
-    <div class="px-6 flex items-center gap-1 overflow-x-auto scrollbar-hide border-b border-gray-100">
+    <div class="px-6 flex items-center gap-1 overflow-x-auto scrollbar-hide">
         @foreach ($topCategories as $cat)
             <a href="{{ route('cari', ['q' => $cat['q']]) }}"
                class="cat-nav-link flex-shrink-0 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500

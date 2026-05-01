@@ -18,6 +18,7 @@
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
           crossorigin="" />
 
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
@@ -66,6 +67,20 @@
 <body class="bg-white text-gray-900 antialiased">
 
     <x-viygo-navbar />
+
+    {{-- Measure actual navbar height and expose as --navbar-h CSS variable --}}
+    <script>
+        (function () {
+            function setNavbarHeight() {
+                const h = document.querySelector('header');
+                if (h) {
+                    document.documentElement.style.setProperty('--navbar-h', h.offsetHeight + 'px');
+                }
+            }
+            setNavbarHeight();
+            window.addEventListener('resize', setNavbarHeight);
+        })();
+    </script>
 
     <main>
         {{ $slot }}

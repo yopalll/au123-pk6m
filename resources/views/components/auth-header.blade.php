@@ -4,6 +4,8 @@
 ])
 
 <div class="flex w-full flex-col text-center">
-    <flux:heading size="xl">{{ $title }}</flux:heading>
-    <flux:subheading>{{ $description }}</flux:subheading>
+    <h1 class="viygo-serif text-2xl font-semibold" style="color: var(--viygo-navy);">{{ $title }}</h1>
+    @if (!empty($description))
+        <p class="text-sm text-zinc-500 mt-1">{{ $description }}</p>
+    @endif
 </div>
