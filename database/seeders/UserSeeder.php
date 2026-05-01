@@ -42,16 +42,19 @@ class UserSeeder extends Seeder
         ]);
 
         // 3. Salon owners (one per salon)
-        $ownerChunks = array_chunk($salons, 100);
+        // Pre-hash once and reuse — bcrypt is intentionally slow, calling it
+        // 3000+ times would take minutes. All owners share the same default password.
+        $hashedPassword = Hash::make('password');
+
+        $ownerChunks = array_chunk($salons, 500);
         foreach ($ownerChunks as $chunk) {
             $ownerRows = [];
             foreach ($chunk as $salon) {
-                $slug = strtolower(preg_replace('/[^a-z0-9]+/i', '', $salon['nama_salon']));
                 $ownerRows[] = [
                     'first_name' => 'Owner',
-                    'last_name'  => $salon['nama_salon'],
+                    'last_name'  => mb_substr($salon['nama_salon'], 0, 100),
                     'email'      => "owner_{$salon['id_salon']}@viygo.com",
-                    'password'   => Hash::make('password'),
+                    'password'   => $hashedPassword,
                     'role'       => 'salon_owner',
                     'is_active'  => true,
                     'created_at' => now(),
