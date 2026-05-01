@@ -14,7 +14,12 @@ class ServiceSeeder extends Seeder
     public function run(): void
     {
         $json = file_get_contents(database_path('data/service.json'));
-        $services = json_decode($json, true);
+        $services = json_decode($json, true) ?? [];
+
+        if (empty($services)) {
+            $this->command->warn('service.json is empty, skipping ServiceSeeder.');
+            return;
+        }
 
         $chunks = array_chunk($services, 100);
 

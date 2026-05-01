@@ -13,7 +13,12 @@ class SalonImagesSeeder extends Seeder
     public function run(): void
     {
         $json = file_get_contents(database_path('data/salon_images.json'));
-        $imagesList = json_decode($json, true);
+        $imagesList = json_decode($json, true) ?? [];
+
+        if (empty($imagesList)) {
+            $this->command->warn('salon_images.json is empty, skipping SalonImagesSeeder.');
+            return;
+        }
 
         $chunks = array_chunk($imagesList, 100);
 

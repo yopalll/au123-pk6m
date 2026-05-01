@@ -13,7 +13,12 @@ class StaffSeeder extends Seeder
     public function run(): void
     {
         $json = file_get_contents(database_path('data/staff.json'));
-        $staffList = json_decode($json, true);
+        $staffList = json_decode($json, true) ?? [];
+
+        if (empty($staffList)) {
+            $this->command->warn('staff.json is empty, skipping StaffSeeder.');
+            return;
+        }
 
         $chunks = array_chunk($staffList, 100);
 
