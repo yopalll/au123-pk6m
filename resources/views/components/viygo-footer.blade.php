@@ -8,11 +8,7 @@
             {{-- Brand --}}
             <div class="col-span-2 md:col-span-1">
                 <div class="flex items-center gap-2 mb-4">
-                    <img src="{{ asset('icon.png') }}?v=2"
-                         alt="VIYGO"
-                         class="h-8 w-8 object-contain"
-                         onerror="this.style.display='none'" />
-                    <span class="text-xl font-bold text-white" style="font-family:'DM Serif Display',serif">VIYGO</span>
+                    <x-viygo-logo :dark="true" />
                 </div>
                 <p class="text-sm text-white/50 leading-relaxed max-w-xs">
                     The trusted beauty marketplace.
