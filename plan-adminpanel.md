@@ -1,4 +1,4 @@
-# 🛡️ VIYGO Admin Panel — Implementation Plan (Filament v5)
+# VIYGO Admin Panel — Implementation Plan (Filament v5)
 
 > **Dibuat:** 1 Mei 2026
 > **Status:** PLAN — belum dieksekusi
@@ -7,21 +7,21 @@
 
 ---
 
-## 📋 Daftar Isi
+## Daftar Isi
 
 1. [Overview](#1-overview)
 2. [Instalasi & Setup](#2-instalasi--setup)
 3. [Auth Guard — Admin Only](#3-auth-guard--admin-only)
 4. [Dashboard Widgets](#4-dashboard-widgets)
 5. [Resources (CRUD)](#5-resources-crud)
-   - 5.1 SalonResource
-   - 5.2 UserResource
-   - 5.3 KategoriResource
-   - 5.4 KotaResource
-   - 5.5 ServiceResource
-   - 5.6 OrderResource
-   - 5.7 ReviewResource
-   - 5.8 PromoResource
+- 5.1 SalonResource
+- 5.2 UserResource
+- 5.3 KategoriResource
+- 5.4 KotaResource
+- 5.5 ServiceResource
+- 5.6 OrderResource
+- 5.7 ReviewResource
+- 5.8 PromoResource
 6. [Relation Managers](#6-relation-managers)
 7. [Custom Actions & Bulk Actions](#7-custom-actions--bulk-actions)
 8. [File Map](#8-file-map)
@@ -76,34 +76,34 @@ use Filament\PanelProvider;
 
 class AdminPanelProvider extends PanelProvider
 {
-    public function panel(Panel $panel): Panel
-    {
-        return $panel
-            ->default()
-            ->id('admin')
-            ->path('admin')                     // URL: /admin
-            ->login()                           // Filament login page
-            ->brandName('VIYGO Admin')
-            ->favicon(asset('favicon.ico'))
-            ->colors([
-                'primary' => '#1B2D6B',         // VIYGO navy
-                'info'    => '#4BA3CC',          // VIYGO blue
-            ])
-            ->discoverResources(
-                in: app_path('Filament/Resources'),
-                for: 'App\\Filament\\Resources'
-            )
-            ->discoverWidgets(
-                in: app_path('Filament/Widgets'),
-                for: 'App\\Filament\\Widgets'
-            )
-            ->middleware([
-                // default middleware
-            ])
-            ->authMiddleware([
-                // Filament default auth
-            ]);
-    }
+public function panel(Panel $panel): Panel
+{
+return $panel
+->default()
+->id('admin')
+->path('admin') // URL: /admin
+->login() // Filament login page
+->brandName('VIYGO Admin')
+->favicon(asset('favicon.ico'))
+->colors([
+'primary' => '#1B2D6B', // VIYGO navy
+'info' => '#4BA3CC', // VIYGO blue
+])
+->discoverResources(
+in: app_path('Filament/Resources'),
+for: 'App\\Filament\\Resources'
+)
+->discoverWidgets(
+in: app_path('Filament/Widgets'),
+for: 'App\\Filament\\Widgets'
+)
+->middleware([
+// default middleware
+])
+->authMiddleware([
+// Filament default auth
+]);
+}
 }
 ```
 
@@ -113,8 +113,8 @@ Tambahkan di `bootstrap/providers.php`:
 
 ```php
 return [
-    // ...existing providers
-    App\Providers\Filament\AdminPanelProvider::class,
+// ...existing providers
+App\Providers\Filament\AdminPanelProvider::class,
 ];
 ```
 
@@ -122,7 +122,7 @@ return [
 
 ```bash
 php artisan make:filament-user
-# ATAU pakai tinker:
+# ATAU menggunakan tinker:
 # User::where('email', 'admin@viygo.com')->update(['role' => 'admin'])
 ```
 
@@ -130,7 +130,7 @@ php artisan make:filament-user
 
 ## 3. Auth Guard — Admin Only
 
-Panel hanya bisa diakses user dengan `role = 'admin'`.
+Panel hanya dapat diakses user dengan `role = 'admin'`.
 
 ### Implementasi di User model
 
@@ -144,25 +144,25 @@ use Filament\Panel;
 
 class User extends Authenticatable implements FilamentUser
 {
-    // ...existing code...
+// ...existing code...
 
-    public function canAccessPanel(Panel $panel): bool
-    {
-        // Hanya admin yang bisa akses panel
-        if ($panel->getId() === 'admin') {
-            return $this->role === 'admin' && $this->is_active;
-        }
+public function canAccessPanel(Panel $panel): bool
+{
+// Hanya admin yang dapat akses panel
+if ($panel->getId() === 'admin') {
+return $this->role === 'admin' && $this->is_active;
+}
 
-        return false;
-    }
+return false;
+}
 }
 ```
 
 ### Catatan penting
 
-- User model pakai **custom PK** `id_user` — Filament v5 akan detect ini dari `$primaryKey`
+- User model menggunakan **custom PK** `id_user` — Filament v5 akan detect ini dari `$primaryKey`
 - `$this->role` adalah string column: `'customer' | 'salon_owner' | 'admin'`
-- `$this->is_active` adalah boolean — user non-aktif tidak bisa login ke panel
+- `$this->is_active` adalah boolean — user non-aktif tidak dapat login ke panel
 
 ---
 
@@ -178,30 +178,30 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class StatsOverview extends StatsOverviewWidget
 {
-    protected function getStats(): array
-    {
-        return [
-            Stat::make('Total Salons', Salon::count())
-                ->description(Salon::active()->count() . ' active')
-                ->color('primary'),
+protected function getStats(): array
+{
+return [
+Stat::make('Total Salons', Salon::count())
+->description(Salon::active()->count() . ' active')
+->color('primary'),
 
-            Stat::make('Total Users', User::count())
-                ->description(User::where('role', 'customer')->count() . ' customers'),
+Stat::make('Total Users', User::count())
+->description(User::where('role', 'customer')->count() . ' customers'),
 
-            Stat::make('Total Services', Service::count())
-                ->description(number_format(Service::active()->count()) . ' active'),
+Stat::make('Total Services', Service::count())
+->description(number_format(Service::active()->count()) . ' active'),
 
-            Stat::make('Total Orders', Order::count())
-                ->description(Order::pending()->count() . ' pending')
-                ->color('warning'),
+Stat::make('Total Orders', Order::count())
+->description(Order::pending()->count() . ' pending')
+->color('warning'),
 
-            Stat::make('Total Reviews', Review::count())
-                ->description(Review::visible()->count() . ' visible'),
+Stat::make('Total Reviews', Review::count())
+->description(Review::visible()->count() . ' visible'),
 
-            Stat::make('Revenue', '£' . number_format(Order::success()->sum('total_pembayaran'), 2))
-                ->color('success'),
-        ];
-    }
+Stat::make('Revenue', '£' . number_format(Order::success()->sum('total_pembayaran'), 2))
+->color('success'),
+];
+}
 }
 ```
 
@@ -215,28 +215,28 @@ use Filament\Widgets\TableWidget;
 
 class LatestOrders extends TableWidget
 {
-    protected int|string|array $columnSpan = 'full';
+protected int|string|array $columnSpan = 'full';
 
-    public function table(Tables\Table $table): Tables\Table
-    {
-        return $table
-            ->query(Order::with(['user', 'salon'])->latest()->limit(10))
-            ->columns([
-                Tables\Columns\TextColumn::make('kode_order')->label('Order Code'),
-                Tables\Columns\TextColumn::make('user.full_name')->label('Customer'),
-                Tables\Columns\TextColumn::make('salon.nama_salon')->label('Salon')->limit(30),
-                Tables\Columns\TextColumn::make('total_pembayaran')
-                    ->label('Total')
-                    ->money('GBP'),
-                Tables\Columns\BadgeColumn::make('status')
-                    ->colors([
-                        'warning' => 'pending',
-                        'success' => 'success',
-                        'danger'  => 'canceled',
-                    ]),
-                Tables\Columns\TextColumn::make('date_order')->date('d M Y'),
-            ]);
-    }
+public function table(Tables\Table $table): Tables\Table
+{
+return $table
+->query(Order::with(['user', 'salon'])->latest()->limit(10))
+->columns([
+Tables\Columns\TextColumn::make('kode_order')->label('Order Code'),
+Tables\Columns\TextColumn::make('user.full_name')->label('Customer'),
+Tables\Columns\TextColumn::make('salon.nama_salon')->label('Salon')->limit(30),
+Tables\Columns\TextColumn::make('total_pembayaran')
+->label('Total')
+->money('GBP'),
+Tables\Columns\BadgeColumn::make('status')
+->colors([
+'warning' => 'pending',
+'success' => 'success',
+'danger' => 'canceled',
+]),
+Tables\Columns\TextColumn::make('date_order')->date('d M Y'),
+]);
+}
 }
 ```
 
@@ -269,14 +269,14 @@ Pie chart: active vs inactive vs pending salons.
 
 | Column | Type | Sortable | Searchable |
 |--------|------|----------|------------|
-| `id_salon` | TextColumn | ✅ | ❌ |
-| `nama_salon` | TextColumn | ✅ | ✅ |
-| `slug` | TextColumn | ❌ | ✅ |
-| `kota.nama_kota` | TextColumn | ✅ | ✅ |
-| `rating` | TextColumn | ✅ | ❌ |
-| `total_review` | TextColumn | ✅ | ❌ |
-| `status` | BadgeColumn | ✅ | ❌ |
-| `created_at` | TextColumn (date) | ✅ | ❌ |
+| `id_salon` | TextColumn | | |
+| `nama_salon` | TextColumn | | |
+| `slug` | TextColumn | | |
+| `kota.nama_kota` | TextColumn | | |
+| `rating` | TextColumn | | |
+| `total_review` | TextColumn | | |
+| `status` | BadgeColumn | | |
+| `created_at` | TextColumn (date) | | |
 
 **Filters:**
 - `status` — SelectFilter: `active`, `inactive`, `pending`
@@ -288,25 +288,25 @@ Pie chart: active vs inactive vs pending salons.
 
 ```
 Section "Basic Info":
-  - nama_salon (TextInput, required, maxLength 255)
-  - slug (TextInput, disabled — auto-generated)
-  - deskripsi (Textarea)
-  - status (Select: active/inactive/pending)
+- nama_salon (TextInput, required, maxLength 255)
+- slug (TextInput, disabled — auto-generated)
+- deskripsi (Textarea)
+- status (Select: active/inactive/pending)
 
 Section "Location":
-  - id_kota (Select, searchable, relationship 'kota', titleColumn 'nama_kota')
-  - alamat (TextInput)
-  - latitude (TextInput, numeric)
-  - longitude (TextInput, numeric)
+- id_kota (Select, searchable, relationship 'kota', titleColumn 'nama_kota')
+- alamat (TextInput)
+- latitude (TextInput, numeric)
+- longitude (TextInput, numeric)
 
 Section "Contact & Hours":
-  - phone_number (TextInput)
-  - opening_time (TimePicker)
-  - closing_time (TimePicker)
+- phone_number (TextInput)
+- opening_time (TimePicker)
+- closing_time (TimePicker)
 
 Section "Metrics" (disabled — read-only):
-  - rating (TextInput, disabled)
-  - total_review (TextInput, disabled)
+- rating (TextInput, disabled)
+- total_review (TextInput, disabled)
 ```
 
 **Relation Managers:**
@@ -407,7 +407,7 @@ Section "Metrics" (disabled — read-only):
 > **Perhatian:** 190.594 rows! Resource ini HARUS:
 > - Tidak eager-load semua data
 > - Pagination 25 per page
-> - Global search disabled (terlalu banyak data)
+> - Global search disabled (terlalu berbagai data)
 > - Sebaiknya diakses via Relation Manager di SalonResource
 
 **Tabel columns:**
@@ -444,7 +444,7 @@ Section "Metrics" (disabled — read-only):
 
 **File:** `app/Filament/Resources/OrderResource.php`
 
-> **Mode:** View & Edit only (no Create dari admin). Admin bisa update status.
+> **Mode:** View & Edit only (no Create dari admin). Admin dapat update status.
 
 **Tabel columns:**
 
@@ -477,7 +477,7 @@ Section "Metrics" (disabled — read-only):
 
 **File:** `app/Filament/Resources/ReviewResource.php`
 
-> **Mode:** List + Edit (moderasi). Admin bisa toggle `is_visible`.
+> **Mode:** List + Edit (moderasi). Admin dapat toggle `is_visible`.
 
 **Tabel columns:**
 
@@ -486,7 +486,7 @@ Section "Metrics" (disabled — read-only):
 | `id_review` | TextColumn |
 | `user.full_name` | TextColumn |
 | `salon.nama_salon` | TextColumn, searchable |
-| `rating` | TextColumn (★ icon) |
+| `rating` | TextColumn ( icon) |
 | `komentar` | TextColumn, limit 50 |
 | `is_visible` | ToggleColumn |
 | `created_at` | TextColumn (date) |
@@ -528,24 +528,24 @@ Section "Metrics" (disabled — read-only):
 **Form fields:**
 ```
 Section "Promo Info":
-  - nama_promo (TextInput, required)
-  - deskripsi_promo (Textarea)
-  - kode_promo (TextInput, required, unique)
-  - tipe_promo (Select: percentage/fixed)
+- nama_promo (TextInput, required)
+- deskripsi_promo (Textarea)
+- kode_promo (TextInput, required, unique)
+- tipe_promo (Select: percentage/fixed)
 
 Section "Discount":
-  - diskon (TextInput, numeric — persentase atau nominal)
-  - diskon_max (TextInput, numeric, prefix '£')
-  - min_transaksi (TextInput, numeric, prefix '£')
+- diskon (TextInput, numeric — persentase atau nominal)
+- diskon_max (TextInput, numeric, prefix '£')
+- min_transaksi (TextInput, numeric, prefix '£')
 
 Section "Availability":
-  - time_start (DateTimePicker)
-  - time_expired (DateTimePicker)
-  - stock (TextInput, numeric)
-  - status (Select: active/inactive)
+- time_start (DateTimePicker)
+- time_expired (DateTimePicker)
+- stock (TextInput, numeric)
+- status (Select: active/inactive)
 
 Section "Usage" (disabled — read-only):
-  - used_counter (TextInput, disabled)
+- used_counter (TextInput, disabled)
 ```
 
 ---
@@ -625,46 +625,46 @@ Setelah implementasi selesai, file structure akan menjadi:
 ```
 app/Filament/
 ├── Resources/
-│   ├── SalonResource.php
-│   ├── SalonResource/
-│   │   ├── Pages/
-│   │   │   ├── ListSalons.php
-│   │   │   ├── CreateSalon.php
-│   │   │   ├── EditSalon.php
-│   │   │   └── ViewSalon.php
-│   │   └── RelationManagers/
-│   │       ├── ServicesRelationManager.php
-│   │       ├── StaffRelationManager.php
-│   │       └── ImagesRelationManager.php
-│   │
-│   ├── UserResource.php
-│   ├── UserResource/Pages/...
-│   │
-│   ├── KategoriResource.php
-│   ├── KategoriResource/Pages/...
-│   │
-│   ├── KotaResource.php
-│   ├── KotaResource/Pages/...
-│   │
-│   ├── ServiceResource.php
-│   ├── ServiceResource/Pages/...
-│   │
-│   ├── OrderResource.php
-│   ├── OrderResource/
-│   │   ├── Pages/...
-│   │   └── RelationManagers/
-│   │       └── OrderDetailsRelationManager.php
-│   │
-│   ├── ReviewResource.php
-│   ├── ReviewResource/Pages/...
-│   │
-│   └── PromoResource.php
-│       └── PromoResource/Pages/...
+│ ├── SalonResource.php
+│ ├── SalonResource/
+│ │ ├── Pages/
+│ │ │ ├── ListSalons.php
+│ │ │ ├── CreateSalon.php
+│ │ │ ├── EditSalon.php
+│ │ │ └── ViewSalon.php
+│ │ └── RelationManagers/
+│ │ ├── ServicesRelationManager.php
+│ │ ├── StaffRelationManager.php
+│ │ └── ImagesRelationManager.php
+│ │
+│ ├── UserResource.php
+│ ├── UserResource/Pages/...
+│ │
+│ ├── KategoriResource.php
+│ ├── KategoriResource/Pages/...
+│ │
+│ ├── KotaResource.php
+│ ├── KotaResource/Pages/...
+│ │
+│ ├── ServiceResource.php
+│ ├── ServiceResource/Pages/...
+│ │
+│ ├── OrderResource.php
+│ ├── OrderResource/
+│ │ ├── Pages/...
+│ │ └── RelationManagers/
+│ │ └── OrderDetailsRelationManager.php
+│ │
+│ ├── ReviewResource.php
+│ ├── ReviewResource/Pages/...
+│ │
+│ └── PromoResource.php
+│ └── PromoResource/Pages/...
 │
 ├── Widgets/
-│   ├── StatsOverview.php
-│   ├── LatestOrders.php
-│   └── SalonsByStatusChart.php
+│ ├── StatsOverview.php
+│ ├── LatestOrders.php
+│ └── SalonsByStatusChart.php
 │
 └── (auto-generated pages per resource)
 
@@ -680,11 +680,11 @@ app/Providers/Filament/
 
 ### 9.1 Custom Primary Keys
 
-Semua model VIYGO pakai PK non-default. Filament v5 akan membaca `$primaryKey` dari model.
+Semua model VIYGO menggunakan PK non-default. Filament v5 akan membaca `$primaryKey` dari model.
 
 **Yang perlu diperhatikan:**
 - Jangan hardcode `->id` di resource — gunakan `->getKey()` atau column name langsung
-- Route model binding sudah pakai slug untuk Salon — di Filament, pakai `id_salon` langsung (Filament punya routing sendiri)
+- Route model binding sudah menggunakan slug untuk Salon — di Filament, menggunakan `id_salon` langsung (Filament punya routing sendiri)
 
 ### 9.2 Performa dengan Data Besar
 
@@ -716,19 +716,19 @@ use Filament\Tables\Filters\TrashedFilter;
 
 ### 9.5 Accessor — Kota.nama & SalonImage.url
 
-- Di Filament columns, pakai `nama_kota` (real column), BUKAN `nama` (accessor)
-- Di Filament columns, pakai `image_url` (real column), BUKAN `url` (accessor)
-- Accessor tidak bisa dipakai di SQL-level sorting/filtering
+- Di Filament columns, menggunakan `nama_kota` (real column), BUKAN `nama` (accessor)
+- Di Filament columns, menggunakan `image_url` (real column), BUKAN `url` (accessor)
+- Accessor tidak dapat dipakai di SQL-level sorting/filtering
 
 ### 9.6 Konflik Route
 
 Filament panel di `/admin` — tidak akan konflik dengan existing routes (`/`, `/cari`, `/salon/{slug}`, dll).
-Public layout pakai `layouts.public`, Filament pakai layout sendiri.
+Public layout menggunakan `layouts.public`, Filament menggunakan layout sendiri.
 
 ### 9.7 Livewire v4 Compatibility
 
 Filament v5 dibangun khusus untuk Livewire v4 (yang sudah terinstall).
-Livewire Flux v2 (frontend) dan Filament v5 (admin) bisa coexist tanpa konflik.
+Livewire Flux v2 (frontend) dan Filament v5 (admin) dapat coexist tanpa konflik.
 
 ---
 
@@ -741,12 +741,12 @@ Jalankan dalam urutan ini:
 2. `php artisan filament:install --panels`
 3. Konfigurasi `AdminPanelProvider.php` (branding, colors, path)
 4. Tambahkan `FilamentUser` interface + `canAccessPanel()` di `User.php`
-5. Buat admin user: `php artisan make:filament-user` atau update via tinker
+5. untuk admin user: `php artisan make:filament-user` atau update via tinker
 6. Verifikasi: buka `/admin` di browser — login page muncul
 
 ### Tahap B — Dashboard Widgets (10 menit)
-1. Buat `StatsOverview.php`
-2. Buat `LatestOrders.php`
+1. untuk `StatsOverview.php`
+2. untuk `LatestOrders.php`
 3. Verifikasi: dashboard menampilkan stats + tabel order
 
 ### Tahap C — Core Resources (40 menit)
@@ -777,21 +777,21 @@ Jalankan dalam urutan ini:
 ## Navigasi Sidebar (Rencana)
 
 ```
-📊 Dashboard
+Dashboard
 ─────────────
-🏪 Marketplace
-   ├── Salons (8,750)
-   ├── Services (190K)
-   ├── Categories (7,183)
-   └── Cities (1,709)
+Marketplace
+├── Salons (8,750)
+├── Services (190K)
+├── Categories (7,183)
+└── Cities (1,709)
 ─────────────
-📦 Transactions
-   ├── Orders
-   ├── Reviews
-   └── Promos
+Transactions
+├── Orders
+├── Reviews
+└── Promos
 ─────────────
-👥 Users
-   └── Users (5,769)
+Users
+└── Users (5,769)
 ```
 
 ---

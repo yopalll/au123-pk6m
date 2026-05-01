@@ -23,36 +23,36 @@ VIYGO is a **full-stack web application** that replicates the core functionality
 
 ### 2.1 Stack Overview
 
-| Layer              | Technology                          |
+| Layer | Technology |
 |--------------------|-------------------------------------|
-| **Backend**        | Laravel 13 (PHP ^8.3)               |
-| **Frontend / UI**  | Livewire Flux v2 + TailwindCSS v4   |
-| **Auth**           | Laravel Fortify (2FA-ready)         |
-| **Database**       | MySQL (`viygo-go`)                  |
-| **Scraper**        | Go (Golang) — separate repo         |
-| **Testing**        | PestPHP v4                          |
-| **Build Tool**     | Vite + npm                          |
+| **Backend** | Laravel 13 (PHP ^8.3) |
+| **Frontend / UI** | Livewire Flux v2 + TailwindCSS v4 |
+| **Auth** | Laravel Fortify (2FA-ready) |
+| **Database** | MySQL (`viygo-go`) |
+| **Scraper** | Go (Golang) — separate repo |
+| **Testing** | PestPHP v4 |
+| **Build Tool** | Vite + npm |
 
 ### 2.2 Database Schema (Canonical Table List)
 
 All tables and their relationships are **finalized and migrated**. Do not alter schema unless explicitly instructed.
 
 ```
-kota          → id_kota (PK), nama_kota, slug
-kategori      → id_kategori (PK), nama, slug, is_active
-users         → id_user (PK), role [customer|salon_owner|admin], SoftDeletes
-salon         → id_salon (PK), id_user (FK), id_kota (FK), status, lat, long, SoftDeletes
-service       → id_service (PK), id_salon (FK), id_kategori (FK), harga, durasi, SoftDeletes
-staff         → id_staff (PK), id_salon (FK), SoftDeletes
+kota → id_kota (PK), nama_kota, slug
+kategori → id_kategori (PK), nama, slug, is_active
+users → id_user (PK), role [customer|salon_owner|admin], SoftDeletes
+salon → id_salon (PK), id_user (FK), id_kota (FK), status, lat, long, SoftDeletes
+service → id_service (PK), id_salon (FK), id_kategori (FK), harga, durasi, SoftDeletes
+staff → id_staff (PK), id_salon (FK), SoftDeletes
 staff_service → pivot (id_staff, id_service)
 staff_schedule→ id_schedule (PK), id_staff (FK), hari, jam_mulai, jam_selesai
-salon_images  → id_image (PK), id_salon (FK), image_url, is_primary
-promo         → id_promo (PK), SoftDeletes
-order         → id_order (PK), id_user (FK), id_salon (FK), id_promo (FK nullable)
-order_detail  → id_detail (PK), id_order (FK), id_service (FK), id_staff (FK nullable)
-pembayaran    → id_pembayaran (PK), id_order (FK), id_user (FK), status
-review        → id_review (PK), id_user (FK), id_salon (FK), id_order (FK), is_visible
-user_promo    → pivot (id_user, id_promo)
+salon_images → id_image (PK), id_salon (FK), image_url, is_primary
+promo → id_promo (PK), SoftDeletes
+order → id_order (PK), id_user (FK), id_salon (FK), id_promo (FK nullable)
+order_detail → id_detail (PK), id_order (FK), id_service (FK), id_staff (FK nullable)
+pembayaran → id_pembayaran (PK), id_order (FK), id_user (FK), status
+review → id_review (PK), id_user (FK), id_salon (FK), id_order (FK), is_visible
+user_promo → pivot (id_user, id_promo)
 ```
 
 ### 2.3 Eloquent Models (All Complete — Do Not Recreate)
@@ -86,23 +86,23 @@ All new routes must be added to `routes/web.php`. Follow Livewire full-page comp
 
 Work in strict priority order. Do not skip to a lower priority unless the higher one is complete.
 
-| Priority | Feature                  | Status     |
+| Priority | Feature | Status |
 |----------|--------------------------|------------|
-| 🔴 P1    | Landing Page             | NOT STARTED |
-| 🔴 P2    | Search & Filter          | NOT STARTED |
-| 🔴 P3    | Salon Detail Page        | NOT STARTED |
-| 🔴 P4    | Booking Flow (wizard)    | NOT STARTED |
-| 🔴 P5    | User Dashboard           | NOT STARTED |
-| 🔴 P6    | Salon Owner Dashboard    | NOT STARTED |
-| 🔴 P7    | Admin Panel              | NOT STARTED |
-| 🔴 P8    | Role Middleware          | NOT STARTED |
-| 🟡 P9    | Auth (login/register)    | 30% Done    |
+| P1 | Landing Page | NOT STARTED |
+| P2 | Search & Filter | NOT STARTED |
+| P3 | Salon Detail Page | NOT STARTED |
+| P4 | Booking Flow (wizard) | NOT STARTED |
+| P5 | User Dashboard | NOT STARTED |
+| P6 | Salon Owner Dashboard | NOT STARTED |
+| P7 | Admin Panel | NOT STARTED |
+| P8 | Role Middleware | NOT STARTED |
+| P9 | Auth (login/register) | 30% Done |
 
 ### Key Files To Create (by priority)
 
 **P1 — Landing Page:**
 ```
-resources/views/welcome.blade.php          ← REPLACE DEFAULT LARAVEL PAGE
+resources/views/welcome.blade.php ← REPLACE DEFAULT LARAVEL PAGE
 resources/views/components/navbar.blade.php
 resources/views/components/footer.blade.php
 resources/views/components/salon-card.blade.php
@@ -154,13 +154,13 @@ app/Http/Controllers/OrderController.php
 - **Livewire components** are preferred over traditional controllers for UI-heavy pages.
 - Always use **Eloquent relationships** instead of raw DB queries.
 - Always apply **eager loading** (`with()`) to prevent N+1 issues:
-  ```php
-  // Correct:
-  Salon::with(['kota', 'primaryImage', 'services'])->active()->paginate(12);
+```php
+// Correct:
+Salon::with(['kota', 'primaryImage', 'services'])->active()->paginate(12);
 
-  // Wrong:
-  Salon::all(); // then $salon->kota in a loop
-  ```
+// Wrong:
+Salon::all(); // then $salon->kota in a loop
+```
 - Use **Query Scopes** from the models rather than rewriting `where()` chains.
 - **Pagination**: Use `paginate(12)` or `paginate(24)` for all list views.
 - **Form validation**: Use Laravel Form Request classes for any POST/PUT endpoints.
@@ -194,9 +194,9 @@ Before creating an `order_detail`, always verify no double-booking:
 
 ```php
 $isAvailable = !OrderDetail::whereHas(
-    'order',
-    fn($q) => $q->where('date_order', $date)
-                 ->whereNotIn('status', ['cancelled'])
+'order',
+fn($q) => $q->where('date_order', $date)
+->whereNotIn('status', ['cancelled'])
 )
 ->where('id_staff', $staffId)
 ->where('start_time', '<', $endTime)
@@ -208,27 +208,27 @@ $isAvailable = !OrderDetail::whereHas(
 
 ```php
 Salon::with(['kota', 'primaryImage'])
-    ->when($category, fn($q) =>
-        $q->whereHas('services.kategori', fn($q) =>
-            $q->where('slug', $category)))
-    ->when($city, fn($q) =>
-        $q->whereHas('kota', fn($q) =>
-            $q->where('nama_kota', 'like', "%{$city}%")))
-    ->when($minRating, fn($q) =>
-        $q->where('rating', '>=', $minRating))
-    ->active()
-    ->paginate(12);
+->when($category, fn($q) =>
+$q->whereHas('services.kategori', fn($q) =>
+$q->where('slug', $category)))
+->when($city, fn($q) =>
+$q->whereHas('kota', fn($q) =>
+$q->where('nama_kota', 'like', "%{$city}%")))
+->when($minRating, fn($q) =>
+$q->where('rating', '>=', $minRating))
+->active()
+->paginate(12);
 ```
 
 ### 5.3 Role Enforcement
 
 Users have a `role` column with 3 possible values:
 
-| Role          | Access                                       |
+| Role | Access |
 |---------------|----------------------------------------------|
-| `customer`    | Browse, book, review, own profile            |
-| `salon_owner` | + Manage own salon, staff, services          |
-| `admin`       | + Full platform control                      |
+| `customer` | Browse, book, review, own profile |
+| `salon_owner` | + Manage own salon, staff, services |
+| `admin` | + Full platform control |
 
 Use `CheckRole` middleware (to be created at `app/Http/Middleware/CheckRole.php`) and register in `bootstrap/app.php`.
 
@@ -287,9 +287,9 @@ When reporting progress, discoveries, or errors, follow this format:
 ```
 TASK: Implement SalonSearch Livewire component.
 ACTION: Created `app/Livewire/SalonSearch.php` + `salon-search.blade.php`.
-        Added route `/search` to `routes/web.php`.
+Added route `/search` to `routes/web.php`.
 QUERY: Uses Salon::active()->with(['kota','primaryImage'])->paginate(12).
-       Supports filters: category (slug), city (LIKE), min_rating.
+Supports filters: category (slug), city (LIKE), min_rating.
 RESULT: Component renders correctly. Pagination works. N+1 eliminated.
 NEXT: [P3] SalonDetail page — route `/salon/{id_salon}`.
 ```
@@ -301,33 +301,33 @@ NEXT: [P3] SalonDetail page — route `/salon/{id_salon}`.
 ```
 VIYGO/
 ├── app/
-│   ├── Http/
-│   │   ├── Controllers/         # HomeController, OrderController (to create)
-│   │   ├── Middleware/          # CheckRole (to create)
-│   │   └── Requests/            # Form Request classes (to create)
-│   ├── Livewire/
-│   │   ├── HomePage.php         # P1 — to create
-│   │   ├── SalonSearch.php      # P2 — to create
-│   │   ├── SalonDetail.php      # P3 — to create
-│   │   └── Booking/             # P4 — to create (4 step classes)
-│   └── Models/                  # ✅ All 13 models complete — DO NOT RECREATE
+│ ├── Http/
+│ │ ├── Controllers/ # HomeController, OrderController (to create)
+│ │ ├── Middleware/ # CheckRole (to create)
+│ │ └── Requests/ # Form Request classes (to create)
+│ ├── Livewire/
+│ │ ├── HomePage.php # P1 — to create
+│ │ ├── SalonSearch.php # P2 — to create
+│ │ ├── SalonDetail.php # P3 — to create
+│ │ └── Booking/ # P4 — to create (4 step classes)
+│ └── Models/ # All 13 models complete — DO NOT RECREATE
 │
 ├── database/
-│   ├── data/                    # JSON source files (read-only)
-│   ├── migrations/              # ✅ Complete — DO NOT MODIFY
-│   └── seeders/                 # ✅ Complete — idempotent
+│ ├── data/ # JSON source files (read-only)
+│ ├── migrations/ # Complete — DO NOT MODIFY
+│ └── seeders/ # Complete — idempotent
 │
 ├── resources/views/
-│   ├── welcome.blade.php        # ⚠ Replace entirely (P1)
-│   ├── components/              # Blade components (to create)
-│   └── livewire/                # Livewire views (to create)
+│ ├── welcome.blade.php # Replace entirely (P1)
+│ ├── components/ # Blade components (to create)
+│ └── livewire/ # Livewire views (to create)
 │
 ├── routes/
-│   └── web.php                  # ⚠ Add all new routes here
+│ └── web.php # Add all new routes here
 │
-├── progress.md                  # Human-readable task tracker — update after each session
-├── README.md                    # Project overview
-└── AGENT_GUIDE.md               # ← THIS FILE
+├── progress.md # Human-readable task tracker — update after each session
+├── README.md # Project overview
+└── AGENT_GUIDE.md # ← THIS FILE
 ```
 
 ---
@@ -336,7 +336,7 @@ VIYGO/
 
 After completing any task, update `progress.md`:
 
-1. Move the completed item from `🔴 YANG PERLU DIKERJAKAN` to `✅ SUDAH SELESAI`.
+1. Move the completed item from ` YANG PERLU DIKERJAKAN` to ` SUDAH SELESAI`.
 2. Update the percentage estimate in the summary table.
 3. Add a timestamped entry at the top: `> **Update terakhir:** DD Month YYYY — HH:MM WIB`.
 4. Document any new known issues discovered during implementation.

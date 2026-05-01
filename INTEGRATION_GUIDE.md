@@ -1,44 +1,44 @@
-# 🔗 VIYGO Frontend Integration Guide
+# VIYGO Frontend Integration Guide
 
 **Tanggal**: May 1, 2026
-**Status**: ✅ **COMPLETED — May 1, 2026**
+**Status**: **COMPLETED — May 1, 2026**
 **Sumber**: `/update/` folder (sekarang archived)
 **Target**: Integrasi ke project Laravel VIYGO ← SUDAH DIINTEGRASIKAN
 
 ---
 
-## ✅ Ringkasan Eksekusi (May 1, 2026)
+## Ringkasan Eksekusi (May 1, 2026)
 
 Semua langkah di guide ini sudah dijalankan. Lihat [PROGRESS_REPORT.md](PROGRESS_REPORT.md) untuk log per-fase, [LAPORAN_PROYEK.md](LAPORAN_PROYEK.md) untuk laporan akhir, dan [progress.md](progress.md) untuk progress tracker keseluruhan.
 
 **Hasil ringkas:**
-- ✅ 3 migrasi baru (`add_slug_to_salon_table`, `add_catatan_to_order_detail_table`, `add_unique_index_to_salon_slug`)
-- ✅ 1 seeder backfill (`SalonSlugBackfillSeeder`) — 5.767 salon punya slug unik
-- ✅ 3 model di-update (`Salon`, `SalonImage`, `Kota`)
-- ✅ 10 controllers dibuat di `app/Http/Controllers/` dengan patch
-- ✅ 18 named routes di `routes/web.php`
-- ✅ 1 layout publik + 5 components (1 baru: `<x-leaflet-map>`)
-- ✅ 14 page views — UI sudah dialihbahasakan ke Bahasa Inggris
-- ✅ Mata uang dialihkan dari Rp ke £ GBP (data UK)
-- ✅ Leaflet 1.9.4 (OpenStreetMap, CDN) menggantikan placeholder peta statis di 3 halaman
-- ✅ README.md, progress.md, dan dokumen ini disinkronkan
+- 3 migrasi baru (`add_slug_to_salon_table`, `add_catatan_to_order_detail_table`, `add_unique_index_to_salon_slug`)
+- 1 seeder backfill (`SalonSlugBackfillSeeder`) — 5.767 salon punya slug unik
+- 3 model di-update (`Salon`, `SalonImage`, `Kota`)
+- 10 controllers dibuat di `app/Http/Controllers/` dengan patch
+- 18 named routes di `routes/web.php`
+- 1 layout publik + 5 components (1 baru: `<x-leaflet-map>`)
+- 14 page views — UI sudah dialihbahasakan ke Bahasa Inggris
+- Mata uang dialihkan dari Rp ke £ GBP (data UK)
+- Leaflet 1.9.4 (OpenStreetMap, CDN) menggantikan placeholder peta statis di 3 halaman
+- README.md, progress.md, dan dokumen ini disinkronkan
 
 ---
 
-## ⚠️ Deviations from Original Guide
+## Deviations from Original Guide
 
 Bagian-bagian guide di bawah ini **diadaptasi** saat eksekusi karena ketidakcocokan dengan skema database / model yang sudah ada:
 
 | Topik | Guide bilang | Yang sebenarnya dijalankan | Alasan |
 |-------|--------------|----------------------------|--------|
-| `salon.slug` | 1 migrasi (langsung unique) | 3-step: nullable → backfill → unique index | 5.767 baris harus dibackfill **sebelum** unique constraint bisa diterapkan dengan aman |
-| `OrderDetail` field | `harga`, `qty`, `catatan` | Tetap pakai schema existing: `harga_at_order`, `subtotal`, `start_time`, `end_time`, `id_staff`, + `catatan` (baru) | Kolom `harga`/`qty` tidak ada di migrasi `2026_04_12_000014_create_order_detail_table.php`. `BookingController::store` di-rewrite untuk map ke field existing |
-| `Kota.nama` | Field DB | Accessor (alias ke `nama_kota`) | Migrasi existing pakai `nama_kota`. Accessor cukup untuk Blade; query SQL tetap pakai `nama_kota` (perhatikan di `SearchController`) |
-| `SalonImage.url` | Field DB | Accessor (alias ke `image_url`) | Migrasi existing pakai `image_url`. Views existing yang merefer `$image->url` tetap jalan via accessor |
-| `User.name` | Validasi `name` di `AkunController` | `first_name + last_name + email` | User model pakai `first_name`/`last_name` (custom PK `id_user`). Form dan controller di-rewrite |
-| Kategori navbar | Pakai slug Indonesia (`rambut`, `facial`, `pijat`, dll) di `kategori.show` | Pakai search-based navigation (`/cari?q=hair`, dll) | DB punya 7.183 kategori granular Treatwell UK seperti `ladies-haircuts-hairdressing`. Tidak ada slug "rambut" yang match |
+| `salon.slug` | 1 migrasi (langsung unique) | 3-step: nullable → backfill → unique index | 5.767 baris harus dibackfill **sebelum** unique constraint dapat diterapkan dengan aman |
+| `OrderDetail` field | `harga`, `qty`, `catatan` | Tetap menggunakan schema existing: `harga_at_order`, `subtotal`, `start_time`, `end_time`, `id_staff`, + `catatan` (baru) | Kolom `harga`/`qty` tidak ada di migrasi `2026_04_12_000014_create_order_detail_table.php`. `BookingController::store` di-rewrite untuk map ke field existing |
+| `Kota.nama` | Field DB | Accessor (alias ke `nama_kota`) | Migrasi existing menggunakan `nama_kota`. Accessor cukup untuk Blade; query SQL tetap menggunakan `nama_kota` (perhatikan di `SearchController`) |
+| `SalonImage.url` | Field DB | Accessor (alias ke `image_url`) | Migrasi existing menggunakan `image_url`. Views existing yang merefer `$image->url` tetap jalan via accessor |
+| `User.name` | Validasi `name` di `AkunController` | `first_name + last_name + email` | User model menggunakan `first_name`/`last_name` (custom PK `id_user`). Form dan controller di-rewrite |
+| Kategori navbar | menggunakan slug Indonesia (`rambut`, `facial`, `pijat`, dll) di `kategori.show` | menggunakan search-based navigation (`/cari?q=hair`, dll) | DB punya 7.183 kategori granular Treatwell UK seperti `ladies-haircuts-hairdressing`. Tidak ada slug "rambut" yang match |
 | Map placeholder | Static placeholder div | **Leaflet** (OpenStreetMap, CDN) di 3 halaman: `cari/index`, `kategori/show`, `salon/show` | User minta minimap interaktif |
-| Bahasa UI | Bahasa Indonesia | Penuh Bahasa Inggris (single-locale) | Data UK + permintaan user; tidak pakai Laravel i18n |
+| Bahasa UI | Bahasa Indonesia | Penuh Bahasa Inggris (single-locale) | Data UK + permintaan user; tidak menggunakan Laravel i18n |
 | Currency | Rp (IDR) | £ GBP, format `en-GB` | Data dari Treatwell UK |
 | Title layout | "Library Salon Indonesia" | "VIYGO — Beauty & Wellness Marketplace" | Sama alasan dengan currency |
 | `welcome.blade.php` | (tidak dibahas) | Tetap di disk, route `/` dialihkan ke `HomeController@index` | Konfirmasi user — file dibiarkan |
@@ -49,7 +49,7 @@ Bagian-bagian guide di bawah ini **diadaptasi** saat eksekusi karena ketidakcoco
 
 
 
-## 📋 Daftar Isi
+## Daftar Isi
 
 1. [Ringkasan](#ringkasan)
 2. [Struktur Folder Update](#struktur-folder-update)
@@ -64,100 +64,100 @@ Bagian-bagian guide di bawah ini **diadaptasi** saat eksekusi karena ketidakcoco
 
 ---
 
-## 📖 Ringkasan
+## Ringkasan
 
 Folder `/update/` berisi **frontend lengkap untuk platform marketplace salon VIYGO** dengan konsep mirip Treatwell. Fitur utama:
 
-✅ **Homepage** — Hero dengan search salon/layanan + featured salons  
-✅ **Search** — Cari salon berdasarkan nama, layanan, atau lokasi  
-✅ **Kategori/Library** — Browse salon per kategori layanan (rambut, facial, dll)  
-✅ **Detail Salon** — Profil lengkap salon dengan rating, review, staff, jam operasional  
-✅ **Booking** — 3-step booking form (pilih layanan → pilih waktu → konfirmasi)  
-✅ **Akun User** — Dashboard dengan booking history, favorit, rewards  
-✅ **Components Reusable** — Navbar, footer, salon cards, logo  
+**Homepage** — Hero dengan search salon/layanan + featured salons 
+**Search** — Cari salon berdasarkan nama, layanan, atau lokasi 
+**Kategori/Library** — Browse salon per kategori layanan (rambut, facial, dll) 
+**Detail Salon** — Profil lengkap salon dengan rating, review, staff, jam operasional 
+**Booking** — 3-step booking form (pilih layanan → pilih waktu → konfirmasi) 
+**Akun User** — Dashboard dengan booking history, favorit, rewards 
+**Components Reusable** — Navbar, footer, salon cards, logo 
 
 **Data Source**: 2.400+ salon dari Treatwell UK (JSON di `/database/data/`)
 
 ---
 
-## 📂 Struktur Folder Update
+## Struktur Folder Update
 
 ```
 update/
-├── README.md                                    ← Installation guide awal
-├── app/Http/Controllers/                        
-│   ├── HomeController.php                       ← Homepage (featured salons)
-│   ├── SearchController.php                     ← Search salon + layanan
-│   ├── KategoriController.php                   ← Browse per kategori
-│   ├── SalonController.php                      ← Detail salon
-│   ├── BookingController.php                    ← Form & simpan booking
-│   ├── AkunController.php                       ← Dashboard akun, bookings, profil
-│   ├── GiftCardController.php                   ← Gift card (stub)
-│   ├── LookbookController.php                   ← Lookbook gallery (stub)
-│   ├── TreatmentFilesController.php             ← Treatment files (stub)
-│   └── MitraController.php                      ← Partner program (stub)
+├── README.md ← Installation guide awal
+├── app/Http/Controllers/ 
+│ ├── HomeController.php ← Homepage (featured salons)
+│ ├── SearchController.php ← Search salon + layanan
+│ ├── KategoriController.php ← Browse per kategori
+│ ├── SalonController.php ← Detail salon
+│ ├── BookingController.php ← Form & simpan booking
+│ ├── AkunController.php ← Dashboard akun, bookings, profil
+│ ├── GiftCardController.php ← Gift card (stub)
+│ ├── LookbookController.php ← Lookbook gallery (stub)
+│ ├── TreatmentFilesController.php ← Treatment files (stub)
+│ └── MitraController.php ← Partner program (stub)
 ├── routes/
-│   └── web.php                                  ← Semua public & auth routes
+│ └── web.php ← Semua public & auth routes
 └── resources/views/
-    ├── layouts/
-    │   └── public.blade.php                     ← Layout wrapper utama
-    ├── components/
-    │   ├── viygo-logo.blade.php                 ← Logo dengan cross-fade Alpine.js
-    │   ├── viygo-navbar.blade.php               ← Navbar 2-baris (Treatwell-style)
-    │   ├── viygo-footer.blade.php               ← Footer
-    │   └── salon-card.blade.php                 ← Reusable salon card (list/grid)
-    ├── home.blade.php                           ← Homepage
-    ├── cari/
-    │   └── index.blade.php                      ← Search results page
-    ├── kategori/
-    │   └── show.blade.php                       ← Category library view
-    ├── salon/
-    │   └── show.blade.php                       ← Salon detail page
-    ├── booking/
-    │   ├── create.blade.php                     ← 3-step booking form
-    │   └── konfirmasi.blade.php                 ← Confirmation message
-    ├── akun/
-    │   ├── index.blade.php                      ← Account dashboard
-    │   ├── bookings.blade.php                   ← Booking history (3 tabs)
-    │   ├── favorit.blade.php                    ← Favorite salons/services
-    │   ├── pengaturan.blade.php                 ← Edit profile
-    │   └── reward.blade.php                     ← VIYGO Rewards program
-    ├── gift-card/
-    │   └── index.blade.php
-    ├── lookbook/
-    │   └── index.blade.php
-    ├── treatment-files/
-    │   └── index.blade.php
-    └── mitra/
-        └── index.blade.php
+├── layouts/
+│ └── public.blade.php ← Layout wrapper utama
+├── components/
+│ ├── viygo-logo.blade.php ← Logo dengan cross-fade Alpine.js
+│ ├── viygo-navbar.blade.php ← Navbar 2-baris (Treatwell-style)
+│ ├── viygo-footer.blade.php ← Footer
+│ └── salon-card.blade.php ← Reusable salon card (list/grid)
+├── home.blade.php ← Homepage
+├── cari/
+│ └── index.blade.php ← Search results page
+├── kategori/
+│ └── show.blade.php ← Category library view
+├── salon/
+│ └── show.blade.php ← Salon detail page
+├── booking/
+│ ├── create.blade.php ← 3-step booking form
+│ └── konfirmasi.blade.php ← Confirmation message
+├── akun/
+│ ├── index.blade.php ← Account dashboard
+│ ├── bookings.blade.php ← Booking history (3 tabs)
+│ ├── favorit.blade.php ← Favorite salons/services
+│ ├── pengaturan.blade.php ← Edit profile
+│ └── reward.blade.php ← VIYGO Rewards program
+├── gift-card/
+│ └── index.blade.php
+├── lookbook/
+│ └── index.blade.php
+├── treatment-files/
+│ └── index.blade.php
+└── mitra/
+└── index.blade.php
 ```
 
 ---
 
-## 📊 Analisis Data & Model
+## Analisis Data & Model
 
 ### Data JSON di `/database/data/`
 
 **1. salon.json** (343 MB, ~2.400 salons)
 ```json
 {
-  "id_salon": 1,
-  "id_user": 1,
-  "id_kota": 1,
-  "nama_salon": "Novoblanc London",
-  "alamat": "Unit 3, Brentford Lock, High Street, Brentford, TW8 8AQ",
-  "deskripsi": "Professional beauty salon",
-  "phone_number": null,
-  "opening_time": "09:00",
-  "closing_time": "18:00",
-  "image_url": "https://cdn1.treatwell.net/images/...",
-  "maps_url": "https://www.google.com/maps?q=...",
-  "latitude": 51.4828532,
-  "longitude": -0.309824,
-  "rating": 5.0,
-  "total_review": 7,
-  "status": "active",
-  "source_url": "https://www.treatwell.co.uk/place/..."
+"id_salon": 1,
+"id_user": 1,
+"id_kota": 1,
+"nama_salon": "Novoblanc London",
+"alamat": "Unit 3, Brentford Lock, High Street, Brentford, TW8 8AQ",
+"deskripsi": "Professional beauty salon",
+"phone_number": null,
+"opening_time": "09:00",
+"closing_time": "18:00",
+"image_url": "https://cdn1.treatwell.net/images/...",
+"maps_url": "https://www.google.com/maps?q=...",
+"latitude": 51.4828532,
+"longitude": -0.309824,
+"rating": 5.0,
+"total_review": 7,
+"status": "active",
+"source_url": "https://www.treatwell.co.uk/place/..."
 }
 ```
 
@@ -173,14 +173,14 @@ update/
 **2. service.json** (>50 MB, structured query)
 ```json
 {
-  "id_service": 1,
-  "id_salon": 1,
-  "id_kategori": 1,
-  "nama": "Haircut",
-  "deskripsi": "Professional haircut",
-  "harga": 5000,
-  "durasi": 30,
-  "status": "active"
+"id_service": 1,
+"id_salon": 1,
+"id_kategori": 1,
+"nama": "Haircut",
+"deskripsi": "Professional haircut",
+"harga": 5000,
+"durasi": 30,
+"status": "active"
 }
 ```
 
@@ -192,12 +192,12 @@ update/
 **3. kategori.json** (90 KB, ~450 categories)
 ```json
 {
-  "id_kategori": 1,
-  "name": "Ladies' - Haircuts & Hairdressing",
-  "deskripsi": "Services related to...",
-  "slug": "ladies-haircuts-hairdressing",
-  "icon_url": null,
-  "is_active": true
+"id_kategori": 1,
+"name": "Ladies' - Haircuts & Hairdressing",
+"deskripsi": "Services related to...",
+"slug": "ladies-haircuts-hairdressing",
+"icon_url": null,
+"is_active": true
 }
 ```
 
@@ -208,54 +208,54 @@ update/
 **4. kota.json** (7.8 KB, cities/areas)
 ```json
 {
-  "id_kota": 1,
-  "nama": "London",
-  "negara": "United Kingdom",
-  "latitude": 51.5074,
-  "longitude": -0.1278
+"id_kota": 1,
+"nama": "London",
+"negara": "United Kingdom",
+"latitude": 51.5074,
+"longitude": -0.1278
 }
 ```
 
 **5. staff.json** (75 KB, stylists/therapists)
 ```json
 {
-  "id_staff": 1,
-  "id_salon": 1,
-  "nama": "John Doe",
-  "spesialisasi": "Hair Styling",
-  "rating": 4.8,
-  "total_review": 45,
-  "photo_url": "...",
-  "status": "active"
+"id_staff": 1,
+"id_salon": 1,
+"nama": "John Doe",
+"spesialisasi": "Hair Styling",
+"rating": 4.8,
+"total_review": 45,
+"photo_url": "...",
+"status": "active"
 }
 ```
 
 **6. salon_images.json** (515 MB, gallery images)
 ```json
 {
-  "id_image": 1,
-  "id_salon": 1,
-  "url": "https://cdn1.treatwell.net/images/...",
-  "is_primary": true,
-  "kategori": "interior/staff/result"
+"id_image": 1,
+"id_salon": 1,
+"url": "https://cdn1.treatwell.net/images/...",
+"is_primary": true,
+"kategori": "interior/staff/result"
 }
 ```
 
 ---
 
-## 🔗 Relasi Antar Tabel
+## Relasi Antar Tabel
 
 ```
 User (id_user)
 ├── 1:N Salon (id_user → owner)
-│   ├── 1:N Service (id_salon)
-│   │   └── N:1 Kategori (id_kategori)
-│   ├── 1:N Staff (id_salon)
-│   ├── 1:N SalonImage (id_salon)
-│   └── 1:N Review (id_salon)
+│ ├── 1:N Service (id_salon)
+│ │ └── N:1 Kategori (id_kategori)
+│ ├── 1:N Staff (id_salon)
+│ ├── 1:N SalonImage (id_salon)
+│ └── 1:N Review (id_salon)
 └── 1:N Order (id_user → customer)
-    └── 1:N OrderDetail (id_order)
-        └── N:1 Service (id_service)
+└── 1:N OrderDetail (id_order)
+└── N:1 Service (id_service)
 
 Kategori (id_kategori)
 └── 1:N Service (id_kategori)
@@ -266,7 +266,7 @@ Kota (id_kota)
 
 ---
 
-## 🎨 Frontend Components
+## Frontend Components
 
 ### 1. **viygo-navbar.blade.php** 
 **Navbar 2-baris style Treatwell:**
@@ -289,7 +289,7 @@ Kota (id_kota)
 - Responsive sizing
 - Alpine.js untuk animasi
 
-**Props**: None  
+**Props**: None 
 **Dependencies**: Alpine.js, Tailwind CSS
 
 ### 3. **salon-card.blade.php**
@@ -302,12 +302,12 @@ Kota (id_kota)
 
 **Data Requirement:**
 ```php
-$salon->slug              // URL routing
-$salon->nama_salon        // Salon name
-$salon->rating            // Float 1-5
-$salon->total_review      // Integer
-$salon->kota->nama        // Location
-$salon->services          // Collection of Services
+$salon->slug // URL routing
+$salon->nama_salon // Salon name
+$salon->rating // Float 1-5
+$salon->total_review // Integer
+$salon->kota->nama // Location
+$salon->services // Collection of Services
 $salon->primaryImage->url // Main image
 ```
 
@@ -321,30 +321,30 @@ $salon->primaryImage->url // Main image
 
 ---
 
-## 🛣️ Routes & Controllers
+## Routes & Controllers
 
 ### Routes yang Ditambahkan (di `/update/routes/web.php`)
 
 ```
-GET  /                        → HomeController@index
-GET  /cari                    → SearchController@index
-GET  /kategori/{slug}         → KategoriController@show
-GET  /salon/{slug}            → SalonController@show
-GET  /gift-card               → GiftCardController@index
-GET  /lookbook                → LookbookController@index
-GET  /treatment-files         → TreatmentFilesController@index
-GET  /mitra                   → MitraController@index
+GET / → HomeController@index
+GET /cari → SearchController@index
+GET /kategori/{slug} → KategoriController@show
+GET /salon/{slug} → SalonController@show
+GET /gift-card → GiftCardController@index
+GET /lookbook → LookbookController@index
+GET /treatment-files → TreatmentFilesController@index
+GET /mitra → MitraController@index
 
 [AUTH PROTECTED]
-GET  /booking/{salon_slug}    → BookingController@create
-POST /booking/{salon_slug}    → BookingController@store
-GET  /akun                    → AkunController@index
-GET  /akun/bookings           → AkunController@bookings
-GET  /akun/favorit            → AkunController@favorit
-GET  /akun/pengaturan         → AkunController@pengaturan
-PUT  /akun/pengaturan         → AkunController@updatePengaturan
-GET  /akun/reward             → AkunController@reward
-POST /logout                  → LogoutController@logout
+GET /booking/{salon_slug} → BookingController@create
+POST /booking/{salon_slug} → BookingController@store
+GET /akun → AkunController@index
+GET /akun/bookings → AkunController@bookings
+GET /akun/favorit → AkunController@favorit
+GET /akun/pengaturan → AkunController@pengaturan
+PUT /akun/pengaturan → AkunController@updatePengaturan
+GET /akun/reward → AkunController@reward
+POST /logout → LogoutController@logout
 ```
 
 ### Controller Analysis
@@ -355,17 +355,17 @@ POST /logout                  → LogoutController@logout
 // Eager load: kota, services.kategori, primaryImage, images, reviews count
 
 public function index() {
-    $salons = Salon::active()
-        ->with(['kota', 'services.kategori', 'primaryImage', 'images'])
-        ->withCount('reviews')
-        ->orderByDesc('rating')
-        ->take(8)
-        ->get();
-    return view('home', compact('salons'));
+$salons = Salon::active()
+->with(['kota', 'services.kategori', 'primaryImage', 'images'])
+->withCount('reviews')
+->orderByDesc('rating')
+->take(8)
+->get();
+return view('home', compact('salons'));
 }
 ```
 
-**Queries**: 1 query + N+1 prevention via eager load  
+**Queries**: 1 query + N+1 prevention via eager load 
 **Response**: View dengan `$salons`
 
 #### **SearchController**
@@ -375,44 +375,44 @@ public function index() {
 // Sort by: rating, harga, atau terbaru
 
 public function index(Request $request) {
-    $q      = $request->input('q', '');
-    $lokasi = $request->input('lokasi', '');
+$q = $request->input('q', '');
+$lokasi = $request->input('lokasi', '');
 
-    $salons = Salon::active()
-        ->with(['kota', 'services.kategori', 'primaryImage'])
-        ->when($q, fn ($q) => $q->where('nama_salon', 'like', "%{$q}%")
-                               ->orWhereHas('services', fn ($s) => $s->where('nama', 'like', "%{$q}%")))
-        ->when($lokasi, fn ($q) => $q->whereHas('kota', fn ($k) => $k->where('nama', 'like', "%{$lokasi}%")))
-        ->when(request('sort') === 'rating-tertinggi', fn ($q) => $q->orderByDesc('rating'))
-        ->paginate(10)
-        ->withQueryString();
+$salons = Salon::active()
+->with(['kota', 'services.kategori', 'primaryImage'])
+->when($q, fn ($q) => $q->where('nama_salon', 'like', "%{$q}%")
+->orWhereHas('services', fn ($s) => $s->where('nama', 'like', "%{$q}%")))
+->when($lokasi, fn ($q) => $q->whereHas('kota', fn ($k) => $k->where('nama', 'like', "%{$lokasi}%")))
+->when(request('sort') === 'rating-tertinggi', fn ($q) => $q->orderByDesc('rating'))
+->paginate(10)
+->withQueryString();
 
-    return view('cari.index', compact('salons'));
+return view('cari.index', compact('salons'));
 }
 ```
 
-**Query Optimization**: Gunakan `select()` untuk limit columns  
-**Performance Note**: `orWhereHas` bisa slow di dataset besar, pertimbangkan full-text index
+**Query Optimization**: Gunakan `select()` untuk limit columns 
+**Performance Note**: `orWhereHas` dapat slow di dataset besar, pertimbangkan full-text index
 
 #### **KategoriController**
 ```php
 // Browse salon per kategori dengan sorting/filtering
 
 public function show(string $slug) {
-    $kategori = Kategori::active()->where('slug', $slug)->firstOrFail();
+$kategori = Kategori::active()->where('slug', $slug)->firstOrFail();
 
-    $salons = Salon::active()
-        ->whereHas('services', fn ($q) => $q->where('id_kategori', $kategori->id_kategori))
-        ->with(['kota', 'services' => fn ($q) => $q->where('id_kategori', $kategori->id_kategori), 'primaryImage'])
-        ->when(request('sort') === 'rating-tertinggi', fn ($q) => $q->orderByDesc('rating'))
-        ->paginate(10)
-        ->withQueryString();
+$salons = Salon::active()
+->whereHas('services', fn ($q) => $q->where('id_kategori', $kategori->id_kategori))
+->with(['kota', 'services' => fn ($q) => $q->where('id_kategori', $kategori->id_kategori), 'primaryImage'])
+->when(request('sort') === 'rating-tertinggi', fn ($q) => $q->orderByDesc('rating'))
+->paginate(10)
+->withQueryString();
 
-    return view('kategori.show', compact('kategori', 'salons'));
+return view('kategori.show', compact('kategori', 'salons'));
 }
 ```
 
-**Key Feature**: Filter services hanya yang sesuai kategori  
+**Key Feature**: Filter services hanya yang sesuai kategori 
 **Performance**: Selective eager load (only services in category)
 
 #### **SalonController**
@@ -420,25 +420,25 @@ public function show(string $slug) {
 // Detail salon dengan support slug + id fallback
 
 public function show(string $slug) {
-    $salon = Salon::active()
-        ->where(function ($q) use ($slug) {
-            $q->where('slug', $slug)->orWhere('id_salon', $slug);
-        })
-        ->with([
-            'kota',
-            'images',
-            'primaryImage',
-            'services' => fn ($q) => $q->active()->with('kategori'),
-            'reviews'  => fn ($q) => $q->with('user')->latest()->take(10),
-            'staff',
-        ])
-        ->firstOrFail();
+$salon = Salon::active()
+->where(function ($q) use ($slug) {
+$q->where('slug', $slug)->orWhere('id_salon', $slug);
+})
+->with([
+'kota',
+'images',
+'primaryImage',
+'services' => fn ($q) => $q->active()->with('kategori'),
+'reviews' => fn ($q) => $q->with('user')->latest()->take(10),
+'staff',
+])
+->firstOrFail();
 
-    return view('salon.show', compact('salon'));
+return view('salon.show', compact('salon'));
 }
 ```
 
-**Note**: Support both `slug` dan `id_salon` untuk backward compatibility  
+**Note**: Support both `slug` dan `id_salon` untuk backward compatibility 
 **Load**: Reviews terbaru 10, sorted DESC
 
 #### **BookingController**
@@ -450,13 +450,13 @@ public function create(string $slug) { ... }
 
 // Step 2: Validate & create order + order details
 public function store(Request $request, string $slug) {
-    // Buat Order record dengan status 'pending'
-    // Buat OrderDetail record dengan id_service + qty + harga
-    // Generate kode_order unik: VYG-{8 random chars}
+// untuk Order record dengan status 'pending'
+// untuk OrderDetail record dengan id_service + qty + harga
+// Generate kode_order unik: VYG-{8 random chars}
 }
 ```
 
-**Important**: Perlu field `catatan` di OrderDetail model  
+**Important**: Perlu field `catatan` di OrderDetail model 
 **Transaction**: Gunakan DB::transaction() untuk consistency
 
 #### **AkunController**
@@ -464,22 +464,22 @@ public function store(Request $request, string $slug) {
 // Dashboard akun, booking history, profil
 
 public function index() {
-    // Hitung pending orders untuk badge
-    $upcomingCount = Order::where('id_user', auth()->id())
-        ->where('status', 'pending')
-        ->count();
-    return view('akun.index', compact('upcomingCount'));
+// Hitung pending orders untuk badge
+$upcomingCount = Order::where('id_user', auth()->id())
+->where('status', 'pending')
+->count();
+return view('akun.index', compact('upcomingCount'));
 }
 
 public function bookings(Request $request) {
-    // 3 tabs: mendatang (pending), selesai (success), dibatalkan (canceled)
-    $statusMap = ['mendatang' => 'pending', 'selesai' => 'success', 'dibatalkan' => 'canceled'];
-    $orders = Order::where('id_user', auth()->id())
-        ->when($tab, fn ($q) => $q->where('status', $statusMap[$tab]))
-        ->with(['salon.kota', 'details.service'])
-        ->latest()
-        ->paginate(10);
-    return view('akun.bookings', compact('orders', 'tab'));
+// 3 tabs: mendatang (pending), selesai (success), dibatalkan (canceled)
+$statusMap = ['mendatang' => 'pending', 'selesai' => 'success', 'dibatalkan' => 'canceled'];
+$orders = Order::where('id_user', auth()->id())
+->when($tab, fn ($q) => $q->where('status', $statusMap[$tab]))
+->with(['salon.kota', 'details.service'])
+->latest()
+->paginate(10);
+return view('akun.bookings', compact('orders', 'tab'));
 }
 
 public function favorit() { ... }
@@ -489,7 +489,7 @@ public function updatePengaturan(Request $request) { ... }
 
 ---
 
-## ✅ Prasyarat Integrasi
+## Prasyarat Integrasi
 
 Pastikan semua kondisi terpenuhi sebelum mulai integrasi:
 
@@ -541,7 +541,7 @@ DB_DATABASE=viygo
 
 ---
 
-## 🔧 Langkah-Langkah Integrasi (Lengkap)
+## Langkah-Langkah Integrasi (Lengkap)
 
 ### **FASE 1: Database Preparation**
 
@@ -553,7 +553,7 @@ php artisan tinker
 >>> // Jika slug belum ada, lanjut ke 1.2
 ```
 
-#### Step 1.2 - Buat Migration untuk `slug` (jika belum ada)
+#### Step 1.2 - untuk Migration untuk `slug` (jika belum ada)
 ```bash
 php artisan make:migration add_slug_to_salon_table --table=salon
 ```
@@ -562,16 +562,16 @@ Edit file migration (cari di `/database/migrations/`):
 ```php
 public function up(): void
 {
-    Schema::table('salon', function (Blueprint $table) {
-        $table->string('slug')->unique()->nullable()->after('nama_salon');
-    });
+Schema::table('salon', function (Blueprint $table) {
+$table->string('slug')->unique()->nullable()->after('nama_salon');
+});
 }
 
 public function down(): void
 {
-    Schema::table('salon', function (Blueprint $table) {
-        $table->dropColumn('slug');
-    });
+Schema::table('salon', function (Blueprint $table) {
+$table->dropColumn('slug');
+});
 }
 ```
 
@@ -595,7 +595,7 @@ php artisan tinker
 ```bash
 php artisan tinker
 >>> Schema::getColumnListing('order_detail')
->>> // Jika belum ada, buat migration baru
+>>> // Jika belum ada, untuk migration baru
 ```
 
 Jika tidak ada:
@@ -607,9 +607,9 @@ Edit migration:
 ```php
 public function up(): void
 {
-    Schema::table('order_detail', function (Blueprint $table) {
-        $table->text('catatan')->nullable()->after('harga');
-    });
+Schema::table('order_detail', function (Blueprint $table) {
+$table->text('catatan')->nullable()->after('harga');
+});
 }
 ```
 
@@ -636,79 +636,79 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Salon extends Model
 {
-    use SoftDeletes;
+use SoftDeletes;
 
-    protected $table = 'salon';
-    protected $primaryKey = 'id_salon';
+protected $table = 'salon';
+protected $primaryKey = 'id_salon';
 
-    protected $fillable = [
-        'id_user',
-        'id_kota',
-        'nama_salon',
-        'slug',              // ← ADD JIKA BELUM ADA
-        'alamat',
-        'deskripsi',
-        'phone_number',
-        'opening_time',
-        'closing_time',
-        'image_url',
-        'maps_url',
-        'latitude',
-        'longitude',
-        'rating',
-        'total_review',
-        'status',
-        'source_url',
-    ];
+protected $fillable = [
+'id_user',
+'id_kota',
+'nama_salon',
+'slug', // ← ADD JIKA BELUM ADA
+'alamat',
+'deskripsi',
+'phone_number',
+'opening_time',
+'closing_time',
+'image_url',
+'maps_url',
+'latitude',
+'longitude',
+'rating',
+'total_review',
+'status',
+'source_url',
+];
 
-    // ── Scopes ────────────────────────────────────────────────────────────
-    public function scopeActive($query)
-    {
-        return $query->where('status', 'active');
-    }
+// ── Scopes ────────────────────────────────────────────────────────────
+public function scopeActive($query)
+{
+return $query->where('status', 'active');
+}
 
-    // ── Relations ─────────────────────────────────────────────────────────
-    public function kota()
-    {
-        return $this->belongsTo(Kota::class, 'id_kota', 'id_kota');
-    }
+// ── Relations ─────────────────────────────────────────────────────────
+public function kota()
+{
+return $this->belongsTo(Kota::class, 'id_kota', 'id_kota');
+}
 
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'id_user', 'id_user');
-    }
+public function user()
+{
+return $this->belongsTo(User::class, 'id_user', 'id_user');
+}
 
-    public function services()
-    {
-        return $this->hasMany(Service::class, 'id_salon', 'id_salon');
-    }
+public function services()
+{
+return $this->hasMany(Service::class, 'id_salon', 'id_salon');
+}
 
-    public function staff()
-    {
-        return $this->hasMany(Staff::class, 'id_salon', 'id_salon');
-    }
+public function staff()
+{
+return $this->hasMany(Staff::class, 'id_salon', 'id_salon');
+}
 
-    public function images()
-    {
-        return $this->hasMany(SalonImage::class, 'id_salon', 'id_salon');
-    }
+public function images()
+{
+return $this->hasMany(SalonImage::class, 'id_salon', 'id_salon');
+}
 
-    public function primaryImage()
-    {
-        return $this->hasOne(SalonImage::class, 'id_salon', 'id_salon')
-                    ->where('is_primary', true)
-                    ->latest();
-    }
+public function primaryImage()
+{
+return $this->hasOne(SalonImage::class, 'id_salon', 'id_salon')
+->where('is_primary', true)
+->latest();
+}
 
-    public function reviews()
-    {
-        return $this->hasMany(Review::class, 'id_salon', 'id_salon');
-    }
+public function reviews()
+{
+return $this->hasMany(Review::class, 'id_salon', 'id_salon');
+}
 
-    public function orders()
-    {
-        return $this->hasMany(Order::class, 'id_salon', 'id_salon');
-    }
+public function orders()
+{
+return $this->hasMany(Order::class, 'id_salon', 'id_salon');
+}
 }
 ```
 
@@ -720,26 +720,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kategori extends Model
 {
-    protected $table = 'kategori';
-    protected $primaryKey = 'id_kategori';
+protected $table = 'kategori';
+protected $primaryKey = 'id_kategori';
 
-    protected $fillable = [
-        'name',
-        'deskripsi',
-        'slug',
-        'icon_url',
-        'is_active',
-    ];
+protected $fillable = [
+'name',
+'deskripsi',
+'slug',
+'icon_url',
+'is_active',
+];
 
-    public function scopeActive($query)
-    {
-        return $query->where('is_active', true);
-    }
+public function scopeActive($query)
+{
+return $query->where('is_active', true);
+}
 
-    public function services()
-    {
-        return $this->hasMany(Service::class, 'id_kategori', 'id_kategori');
-    }
+public function services()
+{
+return $this->hasMany(Service::class, 'id_kategori', 'id_kategori');
+}
 }
 ```
 
@@ -751,33 +751,33 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    protected $table = 'service';
-    protected $primaryKey = 'id_service';
+protected $table = 'service';
+protected $primaryKey = 'id_service';
 
-    protected $fillable = [
-        'id_salon',
-        'id_kategori',
-        'nama',
-        'deskripsi',
-        'harga',
-        'durasi',
-        'status',
-    ];
+protected $fillable = [
+'id_salon',
+'id_kategori',
+'nama',
+'deskripsi',
+'harga',
+'durasi',
+'status',
+];
 
-    public function scopeActive($query)
-    {
-        return $query->where('status', 'active');
-    }
+public function scopeActive($query)
+{
+return $query->where('status', 'active');
+}
 
-    public function salon()
-    {
-        return $this->belongsTo(Salon::class, 'id_salon', 'id_salon');
-    }
+public function salon()
+{
+return $this->belongsTo(Salon::class, 'id_salon', 'id_salon');
+}
 
-    public function kategori()
-    {
-        return $this->belongsTo(Kategori::class, 'id_kategori', 'id_kategori');
-    }
+public function kategori()
+{
+return $this->belongsTo(Kategori::class, 'id_kategori', 'id_kategori');
+}
 }
 ```
 
@@ -786,23 +786,23 @@ class Service extends Model
 // Order model
 public function orderDetails()
 {
-    return $this->hasMany(OrderDetail::class, 'id_order', 'id_order');
+return $this->hasMany(OrderDetail::class, 'id_order', 'id_order');
 }
 
 public function salon()
 {
-    return $this->belongsTo(Salon::class, 'id_salon', 'id_salon');
+return $this->belongsTo(Salon::class, 'id_salon', 'id_salon');
 }
 
 // OrderDetail model
 public function order()
 {
-    return $this->belongsTo(Order::class, 'id_order', 'id_order');
+return $this->belongsTo(Order::class, 'id_order', 'id_order');
 }
 
 public function service()
 {
-    return $this->belongsTo(Service::class, 'id_service', 'id_service');
+return $this->belongsTo(Service::class, 'id_service', 'id_service');
 }
 ```
 
@@ -814,20 +814,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class SalonImage extends Model
 {
-    protected $table = 'salon_image';
-    protected $primaryKey = 'id_image';
+protected $table = 'salon_image';
+protected $primaryKey = 'id_image';
 
-    protected $fillable = [
-        'id_salon',
-        'url',
-        'is_primary',
-        'kategori',
-    ];
+protected $fillable = [
+'id_salon',
+'url',
+'is_primary',
+'kategori',
+];
 
-    public function salon()
-    {
-        return $this->belongsTo(Salon::class, 'id_salon', 'id_salon');
-    }
+public function salon()
+{
+return $this->belongsTo(Salon::class, 'id_salon', 'id_salon');
+}
 }
 ```
 
@@ -887,17 +887,17 @@ Route::get('/mitra', [MitraController::class, 'index'])->name('mitra');
 
 // Auth protected routes
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/booking/{slug}', [BookingController::class, 'create'])->name('booking.create');
-    Route::post('/booking/{slug}', [BookingController::class, 'store'])->name('booking.store');
-    
-    Route::prefix('akun')->group(function () {
-        Route::get('', [AkunController::class, 'index'])->name('akun.index');
-        Route::get('/bookings', [AkunController::class, 'bookings'])->name('akun.bookings');
-        Route::get('/favorit', [AkunController::class, 'favorit'])->name('akun.favorit');
-        Route::get('/pengaturan', [AkunController::class, 'pengaturan'])->name('akun.pengaturan');
-        Route::put('/pengaturan', [AkunController::class, 'updatePengaturan'])->name('akun.pengaturan.update');
-        Route::get('/reward', [AkunController::class, 'reward'])->name('akun.reward');
-    });
+Route::get('/booking/{slug}', [BookingController::class, 'create'])->name('booking.create');
+Route::post('/booking/{slug}', [BookingController::class, 'store'])->name('booking.store');
+
+Route::prefix('akun')->group(function () {
+Route::get('', [AkunController::class, 'index'])->name('akun.index');
+Route::get('/bookings', [AkunController::class, 'bookings'])->name('akun.bookings');
+Route::get('/favorit', [AkunController::class, 'favorit'])->name('akun.favorit');
+Route::get('/pengaturan', [AkunController::class, 'pengaturan'])->name('akun.pengaturan');
+Route::put('/pengaturan', [AkunController::class, 'updatePengaturan'])->name('akun.pengaturan.update');
+Route::get('/reward', [AkunController::class, 'reward'])->name('akun.reward');
+});
 });
 ```
 
@@ -967,21 +967,21 @@ Copy-Item "update/resources/views/mitra" "resources/views/" -Recurse -Force
 Harus punya:
 ```javascript
 module.exports = {
-  content: [
-    "./resources/views/**/*.blade.php",
-    "./resources/js/**/*.js",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        // Warna VIYGO brand
-        'viygo-dark': '#1B2D6B',
-        'viygo-blue': '#4BA3CC',
-        'viygo-light': '#E8F4FB',
-      },
-    },
-  },
-  plugins: [],
+content: [
+"./resources/views/**/*.blade.php",
+"./resources/js/**/*.js",
+],
+theme: {
+extend: {
+colors: {
+// Warna VIYGO brand
+'viygo-dark': '#1B2D6B',
+'viygo-blue': '#4BA3CC',
+'viygo-light': '#E8F4FB',
+},
+},
+},
+plugins: [],
 }
 ```
 
@@ -1007,12 +1007,12 @@ npm run dev
 
 #### Step 5.3 - Test Routes
 ```
-✓ http://localhost:8000/                        → Homepage
-✓ http://localhost:8000/cari?q=potong&lokasi=jakarta
-✓ http://localhost:8000/kategori/ladies-haircuts-hairdressing
-✓ http://localhost:8000/salon/novoblanc-london  (jika slug ada di data)
-✓ http://localhost:8000/booking/novoblanc-london (harus login)
-✓ http://localhost:8000/akun (harus login)
+http://localhost:8000/ → Homepage
+http://localhost:8000/cari?q=potong&lokasi=jakarta
+http://localhost:8000/kategori/ladies-haircuts-hairdressing
+http://localhost:8000/salon/novoblanc-london (jika slug ada di data)
+http://localhost:8000/booking/novoblanc-london (harus login)
+http://localhost:8000/akun (harus login)
 ```
 
 #### Step 5.4 - Database Seeding (opsional tapi recommended)
@@ -1023,7 +1023,7 @@ php artisan db:seed SalonSeeder
 
 ---
 
-## ✔️ Validasi Setelah Integrasi
+## Validasi Setelah Integrasi
 
 Setelah integrasi selesai, pastikan:
 
@@ -1068,7 +1068,7 @@ Setelah integrasi selesai, pastikan:
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### **Error 1: `Class HomeController not found`**
 ```
@@ -1156,7 +1156,7 @@ Solusi:
 
 ---
 
-## 📌 Summary Integration Checklist
+## Summary Integration Checklist
 
 ```
 [ ] Database migrations (slug, catatan fields)
@@ -1184,7 +1184,7 @@ Solusi:
 
 ---
 
-## 🚀 Setelah Integration Complete
+## Setelah Integration Complete
 
 1. **Monitoring**: Setup Laravel Telescope untuk debug
 2. **Caching**: Implement Redis caching untuk search results
@@ -1195,8 +1195,8 @@ Solusi:
 
 ---
 
-**Document Version**: 1.0  
-**Last Updated**: May 1, 2026  
-**Status**: ✅ Ready for LLM Integration  
+**Document Version**: 1.0 
+**Last Updated**: May 1, 2026 
+**Status**: Ready for LLM Integration 
 
 ---

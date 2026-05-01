@@ -2,11 +2,11 @@
 
 > A Treatwell-style salon discovery and booking platform built on **Laravel 13 + Livewire Flux**, seeded with 5,700+ real UK salons scraped from Treatwell UK.
 >
-> **Status (May 1, 2026):** ✅ Public frontend integrated — homepage, search, category, salon detail (with Leaflet minimap), 3-step booking, account dashboard. UI fully in English, prices in £ GBP.
+> **Status (May 1, 2026):** Public frontend integrated — homepage, search, category, salon detail (with Leaflet minimap), 3-step booking, account dashboard. UI fully in English, prices in £ GBP.
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Tech Stack](#tech-stack)
@@ -21,22 +21,22 @@
 
 ---
 
-## 🎯 Overview
+## Overview
 
 VIYGO is a fully functional Treatwell.co.uk clone that lets users:
 
-- 🔍 **Search** salons by treatment, location and rating
-- 📅 **Book** treatments through a 3-step booking flow (Pick Service → Pick Date & Time → Confirm)
-- 🗺️ **Find** salons on an interactive Leaflet map (search, category and salon-detail pages)
+- **Search** salons by treatment, location and rating
+- **Book** treatments through a 3-step booking flow (Pick Service → Pick Date & Time → Confirm)
+- **Find** salons on an interactive Leaflet map (search, category and salon-detail pages)
 - ⭐ **Review** treatments they've enjoyed (model + DB ready)
-- 🏪 **Salon owners** can list their salon (public sign-up form on `/mitra`)
-- 🛡️ **Admin panel** is on the roadmap
+- **Salon owners** can list their salon (public sign-up form on `/mitra`)
+- **Admin panel** is on the roadmap
 
 The catalogue is sourced from a Go-based scraper of Treatwell UK (1,000+ salons in initial drop, 5,700+ after later scrapes; ~190K services).
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |-------|------------|
@@ -51,7 +51,7 @@ The catalogue is sourced from a Go-based scraper of Treatwell UK (1,000+ salons 
 
 ---
 
-## 🛣️ Public Frontend Routes
+## Public Frontend Routes
 
 After integration on May 1, 2026, the following named routes are live:
 
@@ -88,33 +88,33 @@ The `routes/settings.php` file (Fortify-driven settings/security/profile pages) 
 
 ---
 
-## 🗄️ Database Architecture
+## Database Architecture
 
 ### Entity Relationships
 
 ```
 kota ──────────────────────────────────────────────────────┐
-                                                            │
-kategori ──────────────────────────────────────────────┐   │
-                                                        │   │
-users ─────────────────────────────────────────────┐   │   │
-                                                   │   │   │
-                                              salon ←──┘   │
-                                               │  └─────────┘
-                                    ┌──────────┤
-                                    │          │
-                              service        staff
-                            (FK: salon,    (FK: salon)
-                             kategori)
-                                    │
-                              staff_service
-                            (pivot: staff ↔ service)
+│
+kategori ──────────────────────────────────────────────┐ │
+│ │
+users ─────────────────────────────────────────────┐ │ │
+│ │ │
+salon ←──┘ │
+│ └─────────┘
+┌──────────┤
+│ │
+service staff
+(FK: salon, (FK: salon)
+kategori)
+│
+staff_service
+(pivot: staff ↔ service)
 
 order ← order_detail ← service
-  │
-  └→ review
-  └→ pembayaran
-  └→ user_promo ← promo
+│
+└→ review
+└→ pembayaran
+└→ user_promo ← promo
 ```
 
 ### Tables
@@ -143,69 +143,69 @@ order ← order_detail ← service
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 
 ```
 VIYGO/
 ├── app/
-│   ├── Http/Controllers/        # Public + Account controllers (added May 2026)
-│   ├── Livewire/                # Flux scaffolding
-│   ├── Models/                  # 13 Eloquent models
-│   └── Providers/
+│ ├── Http/Controllers/ # Public + Account controllers (added May 2026)
+│ ├── Livewire/ # Flux scaffolding
+│ ├── Models/ # 13 Eloquent models
+│ └── Providers/
 │
 ├── database/
-│   ├── data/                    # Scraped JSON source data
-│   │   ├── salon.json
-│   │   ├── service.json
-│   │   ├── staff.json
-│   │   ├── salon_images.json
-│   │   ├── kategori.json
-│   │   └── kota.json
-│   ├── migrations/              # 22 migrations (incl. 3 added May 2026)
-│   ├── scripts/                 # PHP utilities (validate_json.php, etc.)
-│   └── seeders/                 # 8 seeders + SalonSlugBackfillSeeder
+│ ├── data/ # Scraped JSON source data
+│ │ ├── salon.json
+│ │ ├── service.json
+│ │ ├── staff.json
+│ │ ├── salon_images.json
+│ │ ├── kategori.json
+│ │ └── kota.json
+│ ├── migrations/ # 22 migrations (incl. 3 added May 2026)
+│ ├── scripts/ # PHP utilities (validate_json.php, etc.)
+│ └── seeders/ # 8 seeders + SalonSlugBackfillSeeder
 │
 ├── resources/
-│   ├── css/                     # app.css (Tailwind v4 + Flux)
-│   ├── js/                      # app.js
-│   └── views/
-│       ├── layouts/
-│       │   ├── public.blade.php # Public layout w/ Leaflet CDN
-│       │   ├── app.blade.php    # Flux dashboard layout
-│       │   └── auth/
-│       ├── components/
-│       │   ├── viygo-logo.blade.php
-│       │   ├── viygo-navbar.blade.php
-│       │   ├── viygo-footer.blade.php
-│       │   ├── salon-card.blade.php
-│       │   └── leaflet-map.blade.php   # NEW reusable Leaflet component
-│       ├── home.blade.php
-│       ├── cari/index.blade.php        # search results + Leaflet multi-marker map
-│       ├── kategori/show.blade.php     # category page + Leaflet multi-marker map
-│       ├── salon/show.blade.php        # detail page + Leaflet single-marker map
-│       ├── booking/
-│       │   ├── create.blade.php        # 3-step Alpine.js wizard
-│       │   └── konfirmasi.blade.php
-│       ├── akun/                       # account dashboard, bookings, favourites, settings, rewards
-│       ├── gift-card/index.blade.php
-│       ├── lookbook/index.blade.php
-│       ├── treatment-files/index.blade.php
-│       ├── mitra/index.blade.php       # Salon partner sign-up
-│       ├── pages/auth/                 # Fortify auth pages
-│       └── partials/
+│ ├── css/ # app.css (Tailwind v4 + Flux)
+│ ├── js/ # app.js
+│ └── views/
+│ ├── layouts/
+│ │ ├── public.blade.php # Public layout w/ Leaflet CDN
+│ │ ├── app.blade.php # Flux dashboard layout
+│ │ └── auth/
+│ ├── components/
+│ │ ├── viygo-logo.blade.php
+│ │ ├── viygo-navbar.blade.php
+│ │ ├── viygo-footer.blade.php
+│ │ ├── salon-card.blade.php
+│ │ └── leaflet-map.blade.php # NEW reusable Leaflet component
+│ ├── home.blade.php
+│ ├── cari/index.blade.php # search results + Leaflet multi-marker map
+│ ├── kategori/show.blade.php # category page + Leaflet multi-marker map
+│ ├── salon/show.blade.php # detail page + Leaflet single-marker map
+│ ├── booking/
+│ │ ├── create.blade.php # 3-step Alpine.js wizard
+│ │ └── konfirmasi.blade.php
+│ ├── akun/ # account dashboard, bookings, favourites, settings, rewards
+│ ├── gift-card/index.blade.php
+│ ├── lookbook/index.blade.php
+│ ├── treatment-files/index.blade.php
+│ ├── mitra/index.blade.php # Salon partner sign-up
+│ ├── pages/auth/ # Fortify auth pages
+│ └── partials/
 │
 ├── routes/
-│   ├── web.php                  # Public + auth-protected routes (May 2026)
-│   └── settings.php
+│ ├── web.php # Public + auth-protected routes (May 2026)
+│ └── settings.php
 │
-├── update/                      # ARCHIVED — original Indonesian-language frontend drop
-│                                # (kept for traceability, no longer authoritative)
+├── update/ # ARCHIVED — original Indonesian-language frontend drop
+│ # (kept for traceability, no longer authoritative)
 │
-├── INTEGRATION_GUIDE.md         # Original integration guide (✅ COMPLETED)
-├── PROGRESS_REPORT.md           # Phase-by-phase status of the May 2026 integration
-├── LAPORAN_PROYEK.md            # Work report (Indonesian + English)
-├── progress.md                  # Long-form progress tracker
-├── README.md                    # You are here
+├── INTEGRATION_GUIDE.md # Original integration guide ( COMPLETED)
+├── PROGRESS_REPORT.md # Phase-by-phase status of the May 2026 integration
+├── LAPORAN_PROYEK.md # Work report (Indonesian + English)
+├── progress.md # Long-form progress tracker
+├── README.md # You are here
 ├── composer.json
 ├── package.json
 └── vite.config.js
@@ -213,7 +213,7 @@ VIYGO/
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 ### Prerequisites
 
@@ -257,36 +257,36 @@ php artisan migrate
 
 # 9. Frontend assets
 npm install
-npm run dev          # or `npm run build` for production
+npm run dev # or `npm run build` for production
 ```
 
 Then visit `http://localhost:8000/` — the homepage should load with featured salons.
 
 ---
 
-## 🤖 Running the Scraper
+## Running the Scraper
 
 The scraper is a separate Go project. From the repo root:
 
 ```bash
 cd viygo-scraper
-build.bat                                  # Windows
-./scraper.exe --category hair --pages 50   # outputs JSON to ../database/data/
+build.bat # Windows
+./scraper.exe --category hair --pages 50 # outputs JSON to ../database/data/
 ```
 
 See `SCRAPER.md` for the full guide.
 
 ---
 
-## 🌱 Database Seeding
+## Database Seeding
 
 Seeders are idempotent — safe to re-run.
 
 ```bash
-php artisan db:seed                                       # everything
-php artisan db:seed --class=KotaSeeder                    # individual seeder
-php artisan db:seed --class=SalonSlugBackfillSeeder       # slug backfill (5,767 rows)
-php database/scripts/validate_json.php                    # JSON sanity-check
+php artisan db:seed # everything
+php artisan db:seed --class=KotaSeeder # individual seeder
+php artisan db:seed --class=SalonSlugBackfillSeeder # slug backfill (5,767 rows)
+php database/scripts/validate_json.php # JSON sanity-check
 ```
 
 **Seeder run order:**
@@ -301,7 +301,7 @@ php database/scripts/validate_json.php                    # JSON sanity-check
 
 ---
 
-## 🌿 Branching Strategy
+## Branching Strategy
 
 | Branch | Description |
 |--------|-------------|
@@ -312,11 +312,11 @@ php database/scripts/validate_json.php                    # JSON sanity-check
 
 ---
 
-## 📄 Documentation Files
+## Documentation Files
 
 | File | Purpose |
 |------|---------|
-| [INTEGRATION_GUIDE.md](INTEGRATION_GUIDE.md) | Original integration guide (✅ completed May 1, 2026) |
+| [INTEGRATION_GUIDE.md](INTEGRATION_GUIDE.md) | Original integration guide ( completed May 1, 2026) |
 | [PROGRESS_REPORT.md](PROGRESS_REPORT.md) | Phase-by-phase status of the public-frontend integration |
 | [LAPORAN_PROYEK.md](LAPORAN_PROYEK.md) | Final work report (mixed Indonesian/English) |
 | [progress.md](progress.md) | Long-form progress tracker |
@@ -324,10 +324,10 @@ php database/scripts/validate_json.php                    # JSON sanity-check
 
 ---
 
-## 👥 Team
+## Team
 
 VIYGO is developed as an academic project replicating Treatwell.co.uk.
 
-## 📄 License
+## License
 
 MIT License — see `LICENSE`.
