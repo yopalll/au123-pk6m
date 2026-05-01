@@ -19,6 +19,7 @@ class Salon extends Model
         'id_user',
         'id_kota',
         'nama_salon',
+        'slug',
         'alamat',
         'deskripsi',
         'phone_number',
@@ -93,6 +94,15 @@ class Salon extends Model
     public function scopeActive($query)
     {
         return $query->where('status', 'active');
+    }
+
+    /**
+     * Use slug for implicit route-model binding when present;
+     * controllers still allow id_salon as fallback.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
     }
 
     public function scopeByKota($query, int $idKota)

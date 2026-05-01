@@ -1,55 +1,96 @@
-# VIYGO — Beauty & Wellness Booking Platform
+# VIYGO — Beauty & Wellness Marketplace
 
-> Platform pemesanan layanan salon & kecantikan berbasis web, terinspirasi dari **Treatwell.co.uk**.  
-> Dibangun di atas **Laravel 13 + Livewire Flux** dengan data scraping otomatis dari Treatwell UK.
+> A Treatwell-style salon discovery and booking platform built on **Laravel 13 + Livewire Flux**, seeded with 5,700+ real UK salons scraped from Treatwell UK.
+>
+> **Status (May 1, 2026):** ✅ Public frontend integrated — homepage, search, category, salon detail (with Leaflet minimap), 3-step booking, account dashboard. UI fully in English, prices in £ GBP.
 
 ---
 
-## 📋 Daftar Isi
+## 📋 Table of Contents
 
-- [Gambaran Proyek](#gambaran-proyek)
+- [Overview](#overview)
 - [Tech Stack](#tech-stack)
-- [Arsitektur Database](#arsitektur-database)
-- [Struktur Folder](#struktur-folder)
-- [Cara Instalasi](#cara-instalasi)
-- [Menjalankan Scraper](#menjalankan-scraper)
-- [Seeding Database](#seeding-database)
+- [Public Frontend Routes](#public-frontend-routes)
+- [Database Architecture](#database-architecture)
+- [Folder Structure](#folder-structure)
+- [Installation](#installation)
+- [Running the Scraper](#running-the-scraper)
+- [Database Seeding](#database-seeding)
 - [Branching Strategy](#branching-strategy)
-- [Tim Pengembang](#tim-pengembang)
+- [Documentation Files](#documentation-files)
 
 ---
 
-## 🎯 Gambaran Proyek
+## 🎯 Overview
 
-VIYGO adalah klon fungsional dari Treatwell.co.uk yang memungkinkan pengguna untuk:
+VIYGO is a fully functional Treatwell.co.uk clone that lets users:
 
-- 🔍 **Mencari** salon & studio kecantikan berdasarkan lokasi, kategori, dan layanan
-- 📅 **Memesan** layanan dengan sistem booking slot waktu
-- ⭐ **Mengulas** layanan yang telah dinikmati
-- 🏪 **Mengelola** profil salon bagi pemilik bisnis (salon owner)
-- 🛡️ **Administrasi** seluruh platform via panel admin
+- 🔍 **Search** salons by treatment, location and rating
+- 📅 **Book** treatments through a 3-step booking flow (Pick Service → Pick Date & Time → Confirm)
+- 🗺️ **Find** salons on an interactive Leaflet map (search, category and salon-detail pages)
+- ⭐ **Review** treatments they've enjoyed (model + DB ready)
+- 🏪 **Salon owners** can list their salon (public sign-up form on `/mitra`)
+- 🛡️ **Admin panel** is on the roadmap
 
-Data katalog salon & layanan bersumber dari hasil scraping Treatwell UK (1.000+ salon, 40.000+ layanan).
+The catalogue is sourced from a Go-based scraper of Treatwell UK (1,000+ salons in initial drop, 5,700+ after later scrapes; ~190K services).
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer | Teknologi |
-|-------|-----------|
+| Layer | Technology |
+|-------|------------|
 | **Backend Framework** | Laravel 13 (PHP ^8.3) |
-| **Frontend / UI** | Livewire Flux v2 + TailwindCSS v4 |
+| **Frontend / UI** | Livewire Flux v2 + TailwindCSS v4 (Vite) |
+| **Maps** | Leaflet 1.9.4 (OpenStreetMap tiles, loaded via CDN) |
 | **Auth** | Laravel Fortify (2FA support) |
 | **Database** | MySQL |
-| **Scraper** | Go (Golang) — high-performance concurrent scraper |
+| **Scraper** | Go (Golang) — concurrent Treatwell scraper |
 | **Package Manager** | Composer (PHP) + npm (JS) |
 | **Testing** | PestPHP v4 |
 
 ---
 
-## 🗄️ Arsitektur Database
+## 🛣️ Public Frontend Routes
 
-### Entity Relationship (Ringkasan)
+After integration on May 1, 2026, the following named routes are live:
+
+### Public
+
+| Method | URI | Name | Controller |
+|--------|-----|------|------------|
+| GET | `/` | `home` | `HomeController@index` |
+| GET | `/cari` | `cari` | `SearchController@index` |
+| GET | `/kategori/{slug}` | `kategori.show` | `KategoriController@show` |
+| GET | `/salon/{slug}` | `salon.show` | `SalonController@show` |
+| GET | `/gift-card` | `gift-card` | `GiftCardController@index` |
+| GET | `/lookbook` | `lookbook` | `LookbookController@index` |
+| GET | `/treatment-files` | `treatment-files` | `TreatmentFilesController@index` |
+| GET | `/mitra` | `mitra` | `MitraController@index` |
+
+### Auth-protected
+
+| Method | URI | Name |
+|--------|-----|------|
+| GET | `/salon/{slug}/booking` | `booking.create` |
+| POST | `/salon/{slug}/booking` | `booking.store` |
+| GET | `/booking/{kode}/konfirmasi` | `booking.konfirmasi` |
+| POST | `/booking/{kode}/batal` | `booking.batal` |
+| GET | `/akun` | `akun.index` |
+| GET | `/akun/bookings` | `akun.bookings` |
+| GET | `/akun/favorit` | `akun.favorit` |
+| GET | `/akun/pengaturan` | `akun.pengaturan` |
+| PUT | `/akun/pengaturan` | `akun.pengaturan.update` |
+| GET | `/akun/reward` | `akun.reward` |
+| GET | `/dashboard` | `dashboard` |
+
+The `routes/settings.php` file (Fortify-driven settings/security/profile pages) is required at the bottom of `routes/web.php`.
+
+---
+
+## 🗄️ Database Architecture
+
+### Entity Relationships
 
 ```
 kota ──────────────────────────────────────────────────────┐
@@ -68,7 +109,7 @@ users ────────────────────────�
                                     │
                               staff_service
                             (pivot: staff ↔ service)
-                                    
+
 order ← order_detail ← service
   │
   └→ review
@@ -76,181 +117,217 @@ order ← order_detail ← service
   └→ user_promo ← promo
 ```
 
-### Tabel Utama
+### Tables
 
-| Tabel | Deskripsi |
-|-------|-----------|
-| `users` | Customer, salon owner, dan admin. Role: `customer / salon_owner / admin` |
-| `kota` | Master data kota (UK cities dari Treatwell) |
-| `kategori` | Master kategori layanan (Hair, Face, Nails, Body, dll) |
-| `salon` | Data salon: nama, alamat, koordinat GPS, jam buka, rating |
-| `service` | Layanan per salon: nama, harga, durasi, kategori |
-| `staff` | Karyawan tiap salon |
-| `staff_service` | Pivot: staf mana yang bisa melayani layanan apa |
-| `staff_schedule` | Jadwal kerja tiap staf |
-| `salon_images` | Galeri foto salon |
-| `promo` | Data promo/diskon |
-| `order` | Transaksi pemesanan |
-| `order_detail` | Detail layanan per order |
-| `pembayaran` | Record pembayaran |
-| `review` | Ulasan pelanggan (rating + komentar) |
-| `user_promo` | Pivot pemakaian promo per user |
+| Table | Description |
+|-------|-------------|
+| `users` | Customers, salon owners, admins. Roles: `customer / salon_owner / admin` |
+| `kota` | Master data of cities (UK cities scraped from Treatwell) |
+| `kategori` | Master treatment categories (Hair, Face, Nails, Body, Massage, etc.) |
+| `salon` | Salon profile: name, address, GPS coords, opening hours, rating + **`slug`** for friendly URLs |
+| `service` | Treatments per salon: name, price (£), duration, category |
+| `staff` | Stylists per salon |
+| `staff_service` | Pivot — which staff can deliver which service |
+| `staff_schedule` | Working hours per staff member |
+| `salon_images` | Salon gallery photos (`image_url`, with `url` accessor) |
+| `promo` | Promotions and discounts |
+| `order` | Booking transactions |
+| `order_detail` | Per-service line items on a booking + **`catatan`** (note) field |
+| `pembayaran` | Payment records |
+| `review` | Customer ratings + comments |
+| `user_promo` | Pivot — promo redemption per user |
+
+**Schema additions on May 1, 2026:**
+- `salon.slug` (string 200, unique) — backfilled for all 5,767 rows
+- `order_detail.catatan` (text, nullable) — free-text customer note on a booking line
 
 ---
 
-## 📁 Struktur Folder
+## 📁 Folder Structure
 
 ```
 VIYGO/
 ├── app/
-│   ├── Http/
-│   │   └── Controllers/         # Laravel controllers
-│   ├── Livewire/
-│   │   └── Actions/             # Livewire action classes
-│   ├── Models/
-│   │   └── User.php             # Eloquent models
-│   └── Providers/               # Service providers
+│   ├── Http/Controllers/        # Public + Account controllers (added May 2026)
+│   ├── Livewire/                # Flux scaffolding
+│   ├── Models/                  # 13 Eloquent models
+│   └── Providers/
 │
 ├── database/
-│   ├── data/                    # JSON source data (hasil scraping)
-│   │   ├── salon.json           # ~3.7 MB — 1.000+ salon
-│   │   ├── service.json         # ~39 MB  — 40.000+ layanan
-│   │   ├── staff.json           # ~0.9 MB — data staf
-│   │   ├── salon_images.json    # ~9.7 MB — URL foto salon
-│   │   ├── kategori.json        # ~1.9 MB — kategori layanan
-│   │   └── kota.json            # ~0.15 MB — data kota
-│   ├── migrations/              # 19 file migrasi database
-│   ├── scripts/                 # PHP utility (validate_json.php, dll)
-│   └── seeders/                 # 8 seeder class
+│   ├── data/                    # Scraped JSON source data
+│   │   ├── salon.json
+│   │   ├── service.json
+│   │   ├── staff.json
+│   │   ├── salon_images.json
+│   │   ├── kategori.json
+│   │   └── kota.json
+│   ├── migrations/              # 22 migrations (incl. 3 added May 2026)
+│   ├── scripts/                 # PHP utilities (validate_json.php, etc.)
+│   └── seeders/                 # 8 seeders + SalonSlugBackfillSeeder
 │
 ├── resources/
-│   ├── css/                     # Stylesheet sumber
-│   ├── js/                      # JavaScript sumber
+│   ├── css/                     # app.css (Tailwind v4 + Flux)
+│   ├── js/                      # app.js
 │   └── views/
-│       ├── welcome.blade.php    # Halaman landing (in progress)
-│       ├── dashboard.blade.php  # Dashboard (in progress)
-│       ├── layouts/             # Layout utama
-│       ├── components/          # Blade components
-│       ├── pages/
-│       │   ├── auth/            # Login, register, dll
-│       │   └── settings/        # User settings
+│       ├── layouts/
+│       │   ├── public.blade.php # Public layout w/ Leaflet CDN
+│       │   ├── app.blade.php    # Flux dashboard layout
+│       │   └── auth/
+│       ├── components/
+│       │   ├── viygo-logo.blade.php
+│       │   ├── viygo-navbar.blade.php
+│       │   ├── viygo-footer.blade.php
+│       │   ├── salon-card.blade.php
+│       │   └── leaflet-map.blade.php   # NEW reusable Leaflet component
+│       ├── home.blade.php
+│       ├── cari/index.blade.php        # search results + Leaflet multi-marker map
+│       ├── kategori/show.blade.php     # category page + Leaflet multi-marker map
+│       ├── salon/show.blade.php        # detail page + Leaflet single-marker map
+│       ├── booking/
+│       │   ├── create.blade.php        # 3-step Alpine.js wizard
+│       │   └── konfirmasi.blade.php
+│       ├── akun/                       # account dashboard, bookings, favourites, settings, rewards
+│       ├── gift-card/index.blade.php
+│       ├── lookbook/index.blade.php
+│       ├── treatment-files/index.blade.php
+│       ├── mitra/index.blade.php       # Salon partner sign-up
+│       ├── pages/auth/                 # Fortify auth pages
 │       └── partials/
 │
 ├── routes/
-│   ├── web.php                  # Route web utama
-│   └── settings.php             # Route settings
+│   ├── web.php                  # Public + auth-protected routes (May 2026)
+│   └── settings.php
 │
-├── .env.example                 # Template konfigurasi environment
-├── composer.json                # Dependensi PHP
-├── package.json                 # Dependensi JavaScript
-└── vite.config.js               # Konfigurasi Vite bundler
+├── update/                      # ARCHIVED — original Indonesian-language frontend drop
+│                                # (kept for traceability, no longer authoritative)
+│
+├── INTEGRATION_GUIDE.md         # Original integration guide (✅ COMPLETED)
+├── PROGRESS_REPORT.md           # Phase-by-phase status of the May 2026 integration
+├── LAPORAN_PROYEK.md            # Work report (Indonesian + English)
+├── progress.md                  # Long-form progress tracker
+├── README.md                    # You are here
+├── composer.json
+├── package.json
+└── vite.config.js
 ```
 
 ---
 
-## ⚙️ Cara Instalasi
+## ⚙️ Installation
 
-### Prasyarat
+### Prerequisites
 
 - PHP 8.3+
 - Composer
 - Node.js 18+
 - MySQL 8+
-- Go 1.22+ *(untuk scraper)*
+- Go 1.22+ *(only needed if you want to re-run the scraper)*
 
-### Langkah Instalasi
+### Steps
 
 ```bash
-# 1. Clone repository
+# 1. Clone
 git clone https://github.com/yopalll/VIYGO.git
 cd VIYGO
 
-# 2. Install dependensi PHP
+# 2. PHP dependencies
 composer install
 
-# 3. Buat file .env
+# 3. .env
 cp .env.example .env
 php artisan key:generate
 
-# 4. Konfigurasi database di .env
+# 4. Set DB in .env
+# DB_CONNECTION=mysql
 # DB_DATABASE=viygo-go
 # DB_USERNAME=root
 # DB_PASSWORD=your_password
 
-# 5. Jalankan migrasi
+# 5. Run migrations (incl. May 2026 additions)
 php artisan migrate
 
-# 6. Seed database
+# 6. Seed the database
 php artisan db:seed
 
-# 7. Install dependensi JS & build assets
+# 7. Backfill slugs for existing salons (only needed once)
+php artisan db:seed --class=SalonSlugBackfillSeeder
+
+# 8. Apply unique index on slug (final migration step)
+php artisan migrate
+
+# 9. Frontend assets
 npm install
-npm run dev
+npm run dev          # or `npm run build` for production
 ```
+
+Then visit `http://localhost:8000/` — the homepage should load with featured salons.
 
 ---
 
-## 🤖 Menjalankan Scraper
+## 🤖 Running the Scraper
 
-Scraper dibangun dengan Go dan berlokasi terpisah dari project Laravel.
+The scraper is a separate Go project. From the repo root:
 
 ```bash
-# Masuk ke direktori scraper
 cd viygo-scraper
-
-# Build scraper (Windows)
-build.bat
-
-# Jalankan scraper untuk kategori tertentu
-./scraper.exe --category hair --pages 50
-
-# Output: file JSON di database/data/
+build.bat                                  # Windows
+./scraper.exe --category hair --pages 50   # outputs JSON to ../database/data/
 ```
 
-> Lihat `SCRAPER.md` untuk panduan lengkap scraper.
+See `SCRAPER.md` for the full guide.
 
 ---
 
-## 🌱 Seeding Database
+## 🌱 Database Seeding
 
-Setelah JSON data tersedia di `database/data/`, jalankan seeder:
+Seeders are idempotent — safe to re-run.
 
 ```bash
-# Seed semua tabel (idempotent — aman dijalankan ulang)
-php artisan db:seed
-
-# Validasi JSON sebelum seeding
-php database/scripts/validate_json.php
+php artisan db:seed                                       # everything
+php artisan db:seed --class=KotaSeeder                    # individual seeder
+php artisan db:seed --class=SalonSlugBackfillSeeder       # slug backfill (5,767 rows)
+php database/scripts/validate_json.php                    # JSON sanity-check
 ```
 
-**Urutan Seeder:**
-1. `KotaSeeder` → master kota
-2. `KategoriSeeder` → master kategori (upsert by slug)
-3. `UserSeeder` → akun demo (admin + salon owner)
-4. `SalonSeeder` → data salon
-5. `ServiceSeeder` → layanan per salon
-6. `StaffSeeder` → data karyawan
-7. `SalonImagesSeeder` → foto salon
+**Seeder run order:**
+1. `KotaSeeder` — cities
+2. `KategoriSeeder` — treatment categories (upsert by slug)
+3. `UserSeeder` — demo accounts (admin + salon owner + customer)
+4. `SalonSeeder` — salons
+5. `ServiceSeeder` — treatments per salon
+6. `StaffSeeder` — stylists
+7. `SalonImagesSeeder` — gallery photos
+8. `SalonSlugBackfillSeeder` — slugs (run once after the slug column exists)
 
 ---
 
 ## 🌿 Branching Strategy
 
-| Branch | Keterangan |
-|--------|-----------|
+| Branch | Description |
+|--------|-------------|
 | `main` | Production-ready (stable) |
-| `go-fresh` | Branch aktif pengembangan (current) |
-| `branch-viter` | Eksperimen UI Vite |
-| `seeder-hair` | Pengembangan seeder data hair |
+| `go-fresh` | Active development |
+| `branch-viter` | Vite UI experiments |
+| `seeder-hair` | Hair-data seeder development |
 
 ---
 
-## 👥 Tim Pengembang
+## 📄 Documentation Files
 
-Proyek ini dikembangkan sebagai proyek akademik untuk mereplikasi platform **Treatwell.co.uk**.
+| File | Purpose |
+|------|---------|
+| [INTEGRATION_GUIDE.md](INTEGRATION_GUIDE.md) | Original integration guide (✅ completed May 1, 2026) |
+| [PROGRESS_REPORT.md](PROGRESS_REPORT.md) | Phase-by-phase status of the public-frontend integration |
+| [LAPORAN_PROYEK.md](LAPORAN_PROYEK.md) | Final work report (mixed Indonesian/English) |
+| [progress.md](progress.md) | Long-form progress tracker |
+| [docs/](docs/) | Additional internal docs |
 
 ---
 
-## 📄 Lisensi
+## 👥 Team
 
-MIT License — lihat file `LICENSE` untuk detail.
+VIYGO is developed as an academic project replicating Treatwell.co.uk.
+
+## 📄 License
+
+MIT License — see `LICENSE`.

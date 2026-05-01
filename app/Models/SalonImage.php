@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -23,6 +24,15 @@ class SalonImage extends Model
             'is_primary' => 'boolean',
             'urutan'     => 'integer',
         ];
+    }
+
+    // ──── Accessors ────────────────────────────────────────
+    // Views reference $image->url; this aliases to the real column.
+    protected function url(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->image_url,
+        );
     }
 
     // ──── Relasi ────────────────────────────────────────────
