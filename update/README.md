@@ -21,7 +21,7 @@ viygo-laravel/
     ├── layouts/
     │   └── public.blade.php             ← Layout utama halaman publik
     ├── components/
-    │   ├── viygo-logo.blade.php         ← Logo cross-fade Alpine.js ⭐
+    │   ├── viygo-logo.blade.php         ← Logo cross-fade Alpine.js 
     │   ├── viygo-navbar.blade.php       ← Navbar 2 baris (Treatwell-style)
     │   ├── viygo-footer.blade.php       ← Footer
     │   └── salon-card.blade.php         ← Kartu salon (list & grid)
