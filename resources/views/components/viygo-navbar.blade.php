@@ -69,7 +69,7 @@
     </div>
 
     {{-- Row 2: top category nav --}}
-    <div class="px-6 flex items-center gap-1 overflow-x-auto scrollbar-hide border-b border-gray-100">
+    <div class="px-6 flex items-center gap-1 overflow-x-auto scrollbar-hide">
         @foreach ($topCategories as $cat)
             <a href="{{ route('cari', ['q' => $cat['q']]) }}"
                class="cat-nav-link flex-shrink-0 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500

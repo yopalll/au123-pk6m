@@ -1,5 +1,5 @@
 {{-- Component: VIYGO footer --}}
-<footer class="bg-[#0F1D4A] text-white mt-16">
+<footer class="bg-[#0F1D4A] text-white">
 
     <div class="max-w-7xl mx-auto px-6 py-12">
 
@@ -8,7 +8,14 @@
             {{-- Brand --}}
             <div class="col-span-2 md:col-span-1">
                 <div class="flex items-center gap-2 mb-4">
-                    <x-viygo-logo :dark="true" />
+                    <img src="{{ asset('icon.png') }}?v=3"
+                         alt="VIYGO icon"
+                         class="h-8 w-8 object-contain flex-shrink-0"
+                         onerror="this.style.display='none'" />
+                    <img src="{{ asset('white.png') }}?v=3"
+                         alt="VIYGO"
+                         class="h-7 object-contain"
+                         onerror="this.style.display='none'" />
                 </div>
                 <p class="text-sm text-white/50 leading-relaxed max-w-xs">
                     The trusted beauty marketplace.
