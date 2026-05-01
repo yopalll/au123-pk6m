@@ -68,6 +68,20 @@
 
     <x-viygo-navbar />
 
+    {{-- Measure actual navbar height and expose as --navbar-h CSS variable --}}
+    <script>
+        (function () {
+            function setNavbarHeight() {
+                const h = document.querySelector('header');
+                if (h) {
+                    document.documentElement.style.setProperty('--navbar-h', h.offsetHeight + 'px');
+                }
+            }
+            setNavbarHeight();
+            window.addEventListener('resize', setNavbarHeight);
+        })();
+    </script>
+
     <main>
         {{ $slot }}
     </main>
