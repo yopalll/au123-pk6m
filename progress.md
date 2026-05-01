@@ -6,31 +6,31 @@
 
 ---
 
-## 📊 Ringkasan Progress Keseluruhan
+## Ringkasan Progress Keseluruhan
 
 | Fase | Area | Status | Estimasi % |
 |------|------|--------|-----------|
-| ✅ | Infrastruktur & Setup | **SELESAI** | 100% |
-| ✅ | Database Schema | **SELESAI** | 100% |
-| ✅ | Data Scraping & Seeding | **SELESAI** | 95% |
-| ✅ | Model Eloquent (13 model) | **SELESAI** | 100% |
-| ✅ | Backend / Controllers (10 controllers) | **SELESAI** | 100% |
-| ✅ | Frontend — Landing Page | **SELESAI** | 90% |
-| ✅ | Frontend — Search & Filter | **SELESAI** | 85% |
-| ✅ | Frontend — Halaman Salon (+ Leaflet minimap) | **SELESAI** | 90% |
-| ✅ | Frontend — Booking Flow (3-step wizard) | **SELESAI** | 75% |
-| ✅ | Auth — Login/Register/2FA (Fortify) | **SELESAI** | 95% |
-| ✅ | Dashboard User (Akun) | **SELESAI** | 70% |
-| 🟡 | Dashboard Salon Owner | **BELUM** | 0% |
-| 🟡 | Admin Panel | **BELUM** | 0% |
-| 🟡 | Review & Rating (data kosong, model siap) | **PARSIAL** | 30% |
-| 🟡 | Payment Flow | **BELUM** | 0% |
+| | Infrastruktur & Setup | **SELESAI** | 100% |
+| | Database Schema | **SELESAI** | 100% |
+| | Data Scraping & Seeding | **SELESAI** | 95% |
+| | Model Eloquent (13 model) | **SELESAI** | 100% |
+| | Backend / Controllers (10 controllers) | **SELESAI** | 100% |
+| | Frontend — Landing Page | **SELESAI** | 90% |
+| | Frontend — Search & Filter | **SELESAI** | 85% |
+| | Frontend — Halaman Salon (+ Leaflet minimap) | **SELESAI** | 90% |
+| | Frontend — Booking Flow (3-step wizard) | **SELESAI** | 75% |
+| | Auth — Login/Register/2FA (Fortify) | **SELESAI** | 95% |
+| | Dashboard User (Akun) | **SELESAI** | 70% |
+| | Dashboard Salon Owner | **BELUM** | 0% |
+| | Admin Panel | **BELUM** | 0% |
+| | Review & Rating (data kosong, model siap) | **PARSIAL** | 30% |
+| | Payment Flow | **BELUM** | 0% |
 
 **Estimasi progress total: ~70%**
 
 ---
 
-## ✅ SUDAH SELESAI
+## SUDAH SELESAI
 
 ### 1. Infrastruktur Proyek
 - [x] Laravel 13 + Livewire Flux starter kit terinstal
@@ -77,7 +77,7 @@
 | staff | 7.568 |
 | salon_images | 50.492 |
 
-### 4. Model Eloquent ✅
+### 4. Model Eloquent 
 13/13 model dengan relasi lengkap dan SoftDeletes pada model utama.
 **Update 1 Mei 2026:**
 - `Salon` — `slug` ditambahkan ke `$fillable`, `getRouteKeyName()` mengembalikan `slug`
@@ -139,15 +139,15 @@ Semua dialihbahasakan ke Bahasa Inggris:
 ### F. Dokumentasi
 - [x] `README.md` — refresh, English-friendly, daftar route publik
 - [x] `progress.md` — file ini
-- [x] `INTEGRATION_GUIDE.md` — banner ✅ COMPLETED + bagian deviations
-- [x] `PROGRESS_REPORT.md` — log per-fase yang bisa dilanjut agent lain
+- [x] `INTEGRATION_GUIDE.md` — banner COMPLETED + bagian deviations
+- [x] `PROGRESS_REPORT.md` — log per-fase yang dapat dilanjut agent lain
 - [x] `LAPORAN_PROYEK.md` — laporan kerja final
 
 ---
 
-## 🔴 YANG MASIH PERLU DIKERJAKAN
+## YANG MASIH PERLU DIKERJAKAN
 
-### 🟡 PRIORITAS 1 — Dashboard Salon Owner
+### PRIORITAS 1 — Dashboard Salon Owner
 - [ ] Statistik salon (total booking hari ini/bulan ini)
 - [ ] Manajemen layanan (CRUD `service`)
 - [ ] Manajemen staf (CRUD `staff` + `staff_schedule`)
@@ -155,33 +155,33 @@ Semua dialihbahasakan ke Bahasa Inggris:
 - [ ] Manajemen galeri foto (`salon_images`)
 - [ ] Edit profil salon
 
-### 🟡 PRIORITAS 2 — Admin Panel
+### PRIORITAS 2 — Admin Panel
 - [ ] Manajemen semua salon (approve/reject `status = active`)
 - [ ] Manajemen kategori & kota
 - [ ] Manajemen promo global
 - [ ] Laporan & statistik platform
 - [ ] Moderasi review (`is_visible`)
 
-### 🟡 PRIORITAS 3 — Middleware & Role-Based Access
+### PRIORITAS 3 — Middleware & Role-Based Access
 - [ ] Middleware `CheckRole` untuk `salon_owner` dan `admin`
 - [ ] Daftarkan di `bootstrap/app.php`
 
-### 🟡 PRIORITAS 4 — Payment Flow
+### PRIORITAS 4 — Payment Flow
 - [ ] Integrasi Stripe / payment gateway UK-friendly
 - [ ] Update `pembayaran` setelah booking confirm
 - [ ] Halaman pembayaran terpisah (saat ini pembayaran "in-salon")
 
-### 🟡 PRIORITAS 5 — Booking yang Lebih Pintar
+### PRIORITAS 5 — Booking yang Lebih Pintar
 - [ ] Cek slot availability berdasarkan `staff_schedule` (saat ini slot statis 09:00–16:30)
 - [ ] Cek double-booking via query `OrderDetail`
 - [ ] Pilih staff (saat ini default ke `null`)
 
-### 🟡 PRIORITAS 6 — Review System
+### PRIORITAS 6 — Review System
 - [ ] Form ulasan setelah booking `success`
 - [ ] Display review user di profil mereka
-- [ ] Validasi: hanya user dengan order `success` yang bisa review
+- [ ] Validasi: hanya user dengan order `success` yang dapat review
 
-### 🟢 PRIORITAS 7 — Fitur Tambahan (Nice to Have)
+### PRIORITAS 7 — Fitur Tambahan (Nice to Have)
 - [ ] Wishlist / Favorit salon (perlu tabel pivot `user_favourites`)
 - [ ] Notifikasi email (booking konfirmasi, reminder H-1)
 - [ ] Sistem referral (UI sudah ada di akun.index)
@@ -189,20 +189,20 @@ Semua dialihbahasakan ke Bahasa Inggris:
 
 ---
 
-## 🗂️ Checklist File (Status 1 Mei 2026)
+## Checklist File (Status 1 Mei 2026)
 
 ### Models `app/Models/`
 ```
-[x] User.php          ← Updated: PK, relasi, SoftDeletes, accessor
-[x] Kota.php          ← Updated: accessor `nama`
-[x] Kategori.php      ← Aktif
-[x] Salon.php         ← Updated: `slug` fillable + getRouteKeyName
+[x] User.php ← Updated: PK, relasi, SoftDeletes, accessor
+[x] Kota.php ← Updated: accessor `nama`
+[x] Kategori.php ← Aktif
+[x] Salon.php ← Updated: `slug` fillable + getRouteKeyName
 [x] Promo.php
 [x] Service.php
 [x] Staff.php
 [x] Order.php
 [x] Review.php
-[x] SalonImage.php    ← Updated: accessor `url`
+[x] SalonImage.php ← Updated: accessor `url`
 [x] StaffSchedule.php
 [x] OrderDetail.php
 [x] Pembayaran.php
@@ -221,19 +221,19 @@ Semua dialihbahasakan ke Bahasa Inggris:
 [x] LookbookController.php
 [x] TreatmentFilesController.php
 [x] MitraController.php
-[ ] OrderController.php    (PENDING — payment integration)
-[ ] ReviewController.php   (PENDING — review submission)
+[ ] OrderController.php (PENDING — payment integration)
+[ ] ReviewController.php (PENDING — review submission)
 ```
 
 ### Routes `routes/web.php`
 ```
-[x] /                              → HomeController@index
-[x] /cari                          → SearchController@index
-[x] /kategori/{slug}               → KategoriController@show
-[x] /salon/{slug}                  → SalonController@show
-[x] /salon/{slug}/booking          → BookingController@create / store (auth)
-[x] /booking/{kode}/konfirmasi     → BookingController@konfirmasi (auth)
-[x] /booking/{kode}/batal          → BookingController@batal (auth)
+[x] / → HomeController@index
+[x] /cari → SearchController@index
+[x] /kategori/{slug} → KategoriController@show
+[x] /salon/{slug} → SalonController@show
+[x] /salon/{slug}/booking → BookingController@create / store (auth)
+[x] /booking/{kode}/konfirmasi → BookingController@konfirmasi (auth)
+[x] /booking/{kode}/batal → BookingController@batal (auth)
 [x] /akun, /akun/bookings, /akun/favorit, /akun/pengaturan, /akun/reward (auth)
 [x] /gift-card, /lookbook, /treatment-files, /mitra
 [x] /dashboard (Flux)
@@ -241,21 +241,21 @@ Semua dialihbahasakan ke Bahasa Inggris:
 
 ### Views `resources/views/`
 ```
-[x] layouts/public.blade.php          ← BARU + Leaflet CDN
-[x] layouts/app.blade.php             ← Flux layout (untouched)
-[x] welcome.blade.php                 ← Tetap ada (tidak di-route)
+[x] layouts/public.blade.php ← BARU + Leaflet CDN
+[x] layouts/app.blade.php ← Flux layout (untouched)
+[x] welcome.blade.php ← Tetap ada (tidak di-route)
 [x] components/viygo-logo
 [x] components/viygo-navbar
 [x] components/viygo-footer
 [x] components/salon-card
-[x] components/leaflet-map            ← BARU
+[x] components/leaflet-map ← BARU
 [x] home, cari, kategori, salon, booking, akun (×5), gift-card, lookbook, treatment-files, mitra
 [x] pages/auth/* (Fortify)
 ```
 
 ---
 
-## 🧪 Testing Checklist
+## Testing Checklist
 - [x] Manual relation test via tinker (sebelum integrasi)
 - [ ] Unit test: model relasi
 - [ ] Feature test: Booking flow end-to-end
@@ -265,34 +265,34 @@ Semua dialihbahasakan ke Bahasa Inggris:
 
 ---
 
-## 🐛 Known Issues / Catatan Teknis
+## Known Issues / Catatan Teknis
 
-1. **Welcome page lama (`welcome.blade.php`)** — tidak dihapus, hanya tidak di-route. `/` sekarang dilayani `HomeController@index`.
+1. **Welcome page lambat (`welcome.blade.php`)** — tidak dihapus, hanya tidak di-route. `/` sekarang dilayani `HomeController@index`.
 2. **`/update/` folder** — sengaja TIDAK dihapus untuk traceability. Kontennya sudah usang setelah 1 Mei 2026.
 3. **Booking slot statis** — saat ini grid 14 slot waktu (09:00–16:30) tanpa cek availability. Perlu integrasi `staff_schedule` + cek `OrderDetail` overlap.
-4. **Middleware `role`** belum ada — owner & admin pages belum bisa dibatasi.
+4. **Middleware `role`** belum ada — owner & admin pages belum dapat dibatasi.
 5. **`staff_schedule`** masih kosong (0 record) — perlu seeder.
 6. **`order`, `review`, `pembayaran`** masih 0 record — wajar karena fitur baru terintegrasi.
 7. **Mata uang £ GBP** dipakai di seluruh UI karena data berasal dari Treatwell UK (5.767 salon UK). Konversi ke IDR dilakukan jika kelak perlu pasar Indonesia.
-8. **Leaflet CDN dependency** — saat ini Leaflet 1.9.4 di-load dari `unpkg.com`. Jika offline atau CDN down, peta tidak muncul (graceful: komponen menampilkan "No map available"). Bisa di-vendor via npm jika perlu.
+8. **Leaflet CDN dependency** — saat ini Leaflet 1.9.4 di-load dari `unpkg.com`. Jika offline atau CDN down, peta tidak muncul (graceful: komponen menampilkan "No map available"). dapat di-vendor via npm jika perlu.
 9. **OrderDetail field mapping** — `BookingController` menggunakan `harga_at_order` & `subtotal` (skema existing) bukan `harga`/`qty` yang ada di `INTEGRATION_GUIDE.md`. Lihat bagian "Deviations" di guide.
-10. **`SalonImage.url` & `Kota.nama`** adalah accessor, bukan kolom database — query SQL harus pakai `image_url` dan `nama_kota`.
+10. **`SalonImage.url` & `Kota.nama`** adalah accessor, bukan kolom database — query SQL harus menggunakan `image_url` dan `nama_kota`.
 
 ---
 
-## 📌 Referensi Halaman Treatwell yang Sudah Diduplikat
+## Referensi Halaman Treatwell yang Sudah Diduplikat
 
 | Halaman Treatwell | URL Contoh | Status |
 |-------------------|-----------|--------|
-| Landing Page | treatwell.co.uk | ✅ `/` |
-| Search Results | treatwell.co.uk/place/london/ | ✅ `/cari` |
-| Salon Detail | treatwell.co.uk/place/[salon]/ | ✅ `/salon/{slug}` |
-| Booking Wizard | treatwell.co.uk/book/[salon]/ | ✅ `/salon/{slug}/booking` |
-| User Account | treatwell.co.uk/account/ | ✅ `/akun` |
-| Login/Register | treatwell.co.uk/account/login/ | ✅ `/login` (Fortify) |
-| Gift Card | treatwell.co.uk/gift-card/ | ✅ `/gift-card` |
-| Lookbook / Inspiration | treatwell.co.uk/lookbook/ | ✅ `/lookbook` |
-| Treatment Files / Blog | treatwell.co.uk/treatment-files/ | ✅ `/treatment-files` |
-| Partner Sign-up | treatwell.co.uk/work-with-us/ | ✅ `/mitra` |
+| Landing Page | treatwell.co.uk | `/` |
+| Search Results | treatwell.co.uk/place/london/ | `/cari` |
+| Salon Detail | treatwell.co.uk/place/[salon]/ | `/salon/{slug}` |
+| Booking Wizard | treatwell.co.uk/book/[salon]/ | `/salon/{slug}/booking` |
+| User Account | treatwell.co.uk/account/ | `/akun` |
+| Login/Register | treatwell.co.uk/account/login/ | `/login` (Fortify) |
+| Gift Card | treatwell.co.uk/gift-card/ | `/gift-card` |
+| Lookbook / Inspiration | treatwell.co.uk/lookbook/ | `/lookbook` |
+| Treatment Files / Blog | treatwell.co.uk/treatment-files/ | `/treatment-files` |
+| Partner Sign-up | treatwell.co.uk/work-with-us/ | `/mitra` |
 | Salon Dashboard | (owner portal) | ⬜ TBD |
 | Admin Panel | (admin) | ⬜ TBD |

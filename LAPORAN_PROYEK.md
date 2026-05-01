@@ -102,7 +102,7 @@ Data discrape menggunakan **Go scraper** concurrent dari Treatwell UK, kemudian 
 ### Phase 6 — Documentation (Completed)
 - `README.md` — refreshed, English/UK-friendly, 18 routes documented
 - `progress.md` — updated to ~70%, all Phase 6 items checked
-- `INTEGRATION_GUIDE.md` — ✅ COMPLETED banner + Deviations section
+- `INTEGRATION_GUIDE.md` — COMPLETED banner + Deviations section
 - `PROGRESS_REPORT.md` — per-phase log for agent hand-off
 - `LAPORAN_PROYEK.md` — file ini
 
@@ -160,7 +160,7 @@ Data discrape menggunakan **Go scraper** concurrent dari Treatwell UK, kemudian 
 | `routes/web.php` | Ditulis ulang: 18 named routes |
 | `README.md` | Refreshed to English, routes table, Leaflet in stack |
 | `progress.md` | Updated to ~70%, Phase 6 section added |
-| `INTEGRATION_GUIDE.md` | ✅ banner + Deviations table |
+| `INTEGRATION_GUIDE.md` | banner + Deviations table |
 
 ---
 
@@ -168,13 +168,13 @@ Data discrape menggunakan **Go scraper** concurrent dari Treatwell UK, kemudian 
 
 | Keputusan | Alasan |
 |-----------|--------|
-| **3-step slug migration** (nullable → backfill → unique) | 8.750 baris harus di-backfill sebelum unique constraint bisa diterapkan tanpa crash |
-| **Accessor `Kota.nama` dan `SalonImage.url`** (bukan rename kolom) | Migrasi existing pakai `nama_kota` dan `image_url`; accessor menjembatani tanpa alter schema |
+| **3-step slug migration** (nullable → backfill → unique) | 8.750 baris harus di-backfill sebelum unique constraint dapat diterapkan tanpa crash |
+| **Accessor `Kota.nama` dan `SalonImage.url`** (bukan rename kolom) | Migrasi existing menggunakan `nama_kota` dan `image_url`; accessor menjembatani tanpa alter schema |
 | **Leaflet via CDN** (bukan npm package) | Lebih cepat setup, tidak perlu build step tambahan; graceful fallback jika CDN down |
 | **UI full English** (bukan bilingual) | Data berasal dari Treatwell UK (salon UK, harga £), bilingual akan membingungkan |
 | **Currency £ GBP** (bukan Rp IDR) | Konsisten dengan sumber data UK |
 | **Search-based navigation** (`/cari?q=hair`) bukan kategori slug | DB punya 7.183 kategori granular Treatwell; tidak ada slug "rambut" yang match |
-| **`BookingController` pakai `harga_at_order/subtotal`** | Field `harga/qty` dari guide tidak ada di migration existing; adaptasi ke schema real |
+| **`BookingController` menggunakan `harga_at_order/subtotal`** | Field `harga/qty` dari guide tidak ada di migration existing; adaptasi ke schema real |
 | **`welcome.blade.php` tetap di disk** | Route `/` sudah dialihkan ke `HomeController@index`; file dibiarkan untuk reference |
 | **`/update/` folder tetap ada** | Untuk traceability — konten sudah usang setelah integrasi |
 
@@ -214,7 +214,7 @@ Data discrape menggunakan **Go scraper** concurrent dari Treatwell UK, kemudian 
 1. `staff_schedule` tabel kosong (0 record) — booking time-slot logic return semua slot available
 2. `order`, `review`, `pembayaran` tabel kosong — normal karena fitur baru
 3. Leaflet CDN dependency — jika offline, peta tidak muncul (ada fallback "No map available")
-4. `SalonImage.url` dan `Kota.nama` adalah accessor — SQL query harus tetap pakai `image_url` dan `nama_kota`
+4. `SalonImage.url` dan `Kota.nama` adalah accessor — SQL query harus tetap menggunakan `image_url` dan `nama_kota`
 5. Logo images (`logo1.jpeg`, `logo2.jpeg`) mungkin belum ada di `public/images/` — `viygo-logo` component memiliki text fallback
 
 ### Test Coverage
@@ -229,27 +229,27 @@ Data discrape menggunakan **Go scraper** concurrent dari Treatwell UK, kemudian 
 
 ```
 Public:
-  GET  /                        → home
-  GET  /cari                    → cari
-  GET  /kategori/{slug}         → kategori.show
-  GET  /salon/{slug}            → salon.show
-  GET  /gift-card               → gift-card
-  GET  /lookbook                → lookbook
-  GET  /treatment-files         → treatment-files
-  GET  /mitra                   → mitra
+GET / → home
+GET /cari → cari
+GET /kategori/{slug} → kategori.show
+GET /salon/{slug} → salon.show
+GET /gift-card → gift-card
+GET /lookbook → lookbook
+GET /treatment-files → treatment-files
+GET /mitra → mitra
 
 Auth-protected:
-  GET  /salon/{slug}/booking    → booking.create
-  POST /salon/{slug}/booking    → booking.store
-  GET  /booking/{kode}/konfirmasi → booking.konfirmasi
-  POST /booking/{kode}/batal    → booking.batal
-  GET  /akun                    → akun.index
-  GET  /akun/bookings           → akun.bookings
-  GET  /akun/favorit            → akun.favorit
-  GET  /akun/pengaturan         → akun.pengaturan
-  PUT  /akun/pengaturan         → akun.pengaturan.update
-  GET  /akun/reward             → akun.reward
-  GET  /dashboard               → dashboard
+GET /salon/{slug}/booking → booking.create
+POST /salon/{slug}/booking → booking.store
+GET /booking/{kode}/konfirmasi → booking.konfirmasi
+POST /booking/{kode}/batal → booking.batal
+GET /akun → akun.index
+GET /akun/bookings → akun.bookings
+GET /akun/favorit → akun.favorit
+GET /akun/pengaturan → akun.pengaturan
+PUT /akun/pengaturan → akun.pengaturan.update
+GET /akun/reward → akun.reward
+GET /dashboard → dashboard
 ```
 
 ### B. Komponen Baru
@@ -267,25 +267,25 @@ Auth-protected:
 **Multi-marker (search/category page):**
 ```blade
 <x-leaflet-map
-    height="100%"
-    :markers="$mapMarkers"
+height="100%"
+:markers="$mapMarkers"
 />
 ```
 
 **Single marker (salon detail):**
 ```blade
 <x-leaflet-map
-    id="map-salon-{{ $salon->id_salon }}"
-    height="280px"
-    :center="[(float) $salon->latitude, (float) $salon->longitude]"
-    :zoom="15"
-    :markers="[[
-        'lat'   => (float) $salon->latitude,
-        'lng'   => (float) $salon->longitude,
-        'title' => $salon->nama_salon,
-        'url'   => '',
-    ]]"
-    single
+id="map-salon-{{ $salon->id_salon }}"
+height="280px"
+:center="[(float) $salon->latitude, (float) $salon->longitude]"
+:zoom="15"
+:markers="[[
+'lat' => (float) $salon->latitude,
+'lng' => (float) $salon->longitude,
+'title' => $salon->nama_salon,
+'url' => '',
+]]"
+single
 />
 ```
 
