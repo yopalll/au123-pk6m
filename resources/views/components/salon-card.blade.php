@@ -14,6 +14,9 @@
     $services     = $salon->services->where('status', 'active')->take(3);
     $location     = $salon->kota?->nama;
     $minPrice     = $services->min('harga');
+    $isFavourite  = auth()->check()
+        && (auth()->user()->role === 'customer')
+        && auth()->user()->hasFavourited($salon->id_salon);
 @endphp
 
 @if ($layout === 'list')
@@ -38,11 +41,24 @@
                style="font-family:'DM Serif Display',serif">
                 {{ $salon->nama_salon }}
             </a>
-            <button class="flex-shrink-0 text-gray-300 hover:text-red-400 transition-colors mt-0.5" aria-label="Save to favourites">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                </svg>
-            </button>
+            @if (auth()->check() && auth()->user()->role === 'customer')
+                <form action="{{ route('akun.favorit.toggle', $salon->slug ?? $salon->id_salon) }}" method="POST" class="flex-shrink-0">
+                    @csrf
+                    <button type="submit"
+                            class="text-{{ $isFavourite ? 'red-500' : 'gray-300' }} hover:text-red-500 transition-colors mt-0.5"
+                            aria-label="{{ $isFavourite ? 'Remove from favourites' : 'Save to favourites' }}">
+                        <svg class="w-5 h-5" fill="{{ $isFavourite ? 'currentColor' : 'none' }}" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </button>
+                </form>
+            @else
+                <a href="{{ route('login') }}" class="flex-shrink-0 text-gray-300 hover:text-red-400 transition-colors mt-0.5" aria-label="Sign in to save favourites">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </a>
+            @endif
         </div>
 
         <div class="flex items-center gap-2 mb-1">

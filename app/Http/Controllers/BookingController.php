@@ -96,6 +96,13 @@ class BookingController extends Controller
             ->where('status', 'pending')
             ->firstOrFail();
 
+        // Enforce that the appointment hasn't started yet.
+        if ($order->date_order && $order->date_order->isPast()) {
+            return back()->withErrors([
+                'cancel' => 'This appointment has already passed and cannot be cancelled.',
+            ]);
+        }
+
         $order->update(['status' => 'canceled']);
 
         return back()->with('success', 'Booking cancelled successfully.');

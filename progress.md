@@ -26,7 +26,7 @@
 | | Review & Rating (data kosong, model siap) | **PARSIAL** | 30% |
 | | Payment Flow | **BELUM** | 0% |
 
-**Estimasi progress total: ~75%**
+**Estimasi progress total: ~80%** *(updated 2 Mei 2026 setelah PRIORITAS 2 + PRIORITAS 3 + Auth re-branding selesai)*
 
 ---
 
@@ -160,15 +160,18 @@ Semua dialihbahasakan ke Bahasa Inggris:
 - [ ] Manajemen galeri foto (`salon_images`)
 - [ ] Edit profil salon
 
-### PRIORITAS 2 — Static Pages (Footer Links)
-- [ ] Halaman statis: About Us, Careers, Blog, Press
-- [ ] Halaman bantuan: Help Centre, Contact Us
-- [ ] Halaman legal: Privacy Policy, Terms & Conditions, Cookie Policy
-- [ ] Binding icon social media (FB, IG, Tiktok) ke target kosong
+### PRIORITAS 2 — Static Pages (Footer Links)  ✅ SELESAI 2 Mei 2026
+- [x] Halaman statis: About Us, Careers, Blog (→ /treatment-files), Press
+- [x] Halaman bantuan: Help Centre, Contact Us (dengan email support@viygo.com / help@viygo.com)
+- [x] Halaman legal: Privacy Policy, Terms & Conditions, Cookie Policy
+- [x] Binding icon social media (FB, IG, Tiktok) via `config/viygo.php`
+- [x] `README-GAMBAR-STATIS.md` manifest untuk AI agent generasi gambar
 
-### PRIORITAS 3 — Middleware & Role-Based Access
-- [ ] Middleware `CheckRole` untuk membedakan akses `/akun` vs `/owner`
-- [ ] Daftarkan di `bootstrap/app.php`
+### PRIORITAS 3 — Middleware & Role-Based Access  ✅ SELESAI 2 Mei 2026
+- [x] Middleware `App\Http\Middleware\CheckRole` (alias: `role`)
+- [x] Didaftarkan di `bootstrap/app.php`
+- [x] `/akun/*` di-gate dengan `role:customer`
+- [x] Navbar branch berdasarkan `auth()->user()->role` (customer→/akun, salon_owner→/owner, admin→/admin)
 
 ### PRIORITAS 4 — Payment Flow
 - [ ] Integrasi Midtrans Payment Gateway (Sandbox API)

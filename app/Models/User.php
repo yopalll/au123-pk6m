@@ -123,6 +123,23 @@ class User extends Authenticatable implements FilamentUser
                     ->withTimestamps();
     }
 
+    /**
+     * Many-to-Many: Salon yang difavoritkan user (wishlist).
+     */
+    public function favourites()
+    {
+        return $this->belongsToMany(Salon::class, 'user_favourites', 'id_user', 'id_salon')
+                    ->withTimestamps();
+    }
+
+    /**
+     * Convenience helper used by the salon-card heart icon.
+     */
+    public function hasFavourited(int $idSalon): bool
+    {
+        return $this->favourites()->where('salon.id_salon', $idSalon)->exists();
+    }
+
     // ──── Filament ──────────────────────────────────────────
 
     public function canAccessPanel(Panel $panel): bool
