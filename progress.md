@@ -26,7 +26,7 @@
 | | Review & Rating (form + observer aggregate) | **SELESAI** | 90% |
 | | Payment Flow (Midtrans Snap Sandbox) | **SELESAI** | 90% |
 
-**Estimasi progress total: ~93%** *(updated 2 Mei 2026 setelah PRIORITAS 4 (Smart Booking + Midtrans Snap) selesai)*
+**Estimasi progress total: ~96%** *(updated 3 Mei 2026 setelah Bug Audit fix + TUGAS 7 (Dummy Pages Polish) selesai)*
 
 ---
 
@@ -199,10 +199,24 @@ Semua dialihbahasakan ke Bahasa Inggris:
 - [x] `SalonController` filter `is_visible = true` saat eager-load reviews ke halaman publik salon
 
 ### PRIORITAS 7 — Fitur Tambahan
-- [ ] Wishlist / Favorit salon (perlu tabel pivot `user_favourites`)
+- [x] Wishlist / Favorit salon (`user_favourites` pivot terbuat di TUGAS 8)
 - [ ] Notifikasi email (booking konfirmasi, reminder H-1)
 - [ ] Sistem referral
 - [ ] Multi-bahasa (EN/ID toggle)
+- [x] Dummy header pages (Gift Card / Lookbook / Treatment Files / Mitra) — polished 3 Mei 2026
+
+### TUGAS 7 — Header Dummy Pages Polish  ✅ SELESAI 3 Mei 2026
+- [x] `/gift-card` — hero gradient, 3-step flow, value picker (custom amount), 6 USPs, 6-item FAQ accordion, CTA footer
+- [x] `/lookbook` — sticky category filter, editorial featured, 12-item masonry grid (per-look salon + price + duration), featured stylists block, CTA
+- [x] `/treatment-files` — search bar, category tags, hero feature + 3 secondary, 9-article grid, topics index (8 topics with article counts), newsletter signup
+- [x] `/mitra` — multi-stat hero, 3-step "live in 10 min", 9-benefit grid, 3-tier pricing card (free/7%/2.9%), 3 testimonials with growth stats, 6-item FAQ, full application form
+
+### Bug Audit Fixes (3 Mei 2026)  ✅
+- [x] BUG-01: `order.status` enum extended → `('pending','confirmed','success','canceled')` so Midtrans webhook can transition properly
+- [x] BUG-03: `AkunController::bookings` Upcoming tab now matches both `pending` & `confirmed`; "Pay now" link added for unpaid
+- [x] BUG-04: Owner monthly revenue widget includes `confirmed` (paid) orders, not just `success`
+- [x] BUG-05: `order_detail.status` standardised on `canceled` (was `cancelled`)
+- [x] BUG-06: Owner schedule form uses canonical capitalized day keys (`Monday` not `monday`)
 
 ---
 
