@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LookbookController;
 use App\Http\Controllers\MitraController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SalonController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StaticController;
@@ -65,6 +66,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/pengaturan', [AkunController::class, 'pengaturan'])->name('pengaturan');
             Route::put('/pengaturan', [AkunController::class, 'updatePengaturan'])->name('pengaturan.update');
             Route::get('/reward', [AkunController::class, 'reward'])->name('reward');
+
+            // Review submission for completed orders
+            Route::get('/bookings/{kode}/review', [ReviewController::class, 'create'])->name('review.create');
+            Route::post('/bookings/{kode}/review', [ReviewController::class, 'store'])->name('review.store');
         });
 
     // Existing Livewire Flux dashboard (any role)

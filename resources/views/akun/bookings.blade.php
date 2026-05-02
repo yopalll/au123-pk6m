@@ -61,6 +61,17 @@
                             </form>
                         @endif
                         @if ($order->status === 'success')
+                            @if ($order->review)
+                                <span class="text-xs text-gray-400 inline-flex items-center gap-1"
+                                      title="You rated {{ $order->review->rating }} / 5">
+                                    ★ {{ $order->review->rating }}/5 reviewed
+                                </span>
+                            @else
+                                <a href="{{ route('akun.review.create', $order->kode_order) }}"
+                                   class="text-xs px-3 py-1 rounded-full bg-[#1B2D6B] text-white hover:bg-[#4BA3CC] transition-colors">
+                                    Leave a review
+                                </a>
+                            @endif
                             <a href="{{ route('salon.show', $order->salon->slug ?? $order->salon->id_salon) }}"
                                class="text-xs text-[#4BA3CC] hover:underline">Book again</a>
                         @endif

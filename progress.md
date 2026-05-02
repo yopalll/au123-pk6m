@@ -23,10 +23,10 @@
 | | Dashboard User (Akun) | **SELESAI** | 70% |
 | | Dashboard Salon Owner | **SELESAI** | 90% |
 | | Admin Panel | **SELESAI** | 100% |
-| | Review & Rating (data kosong, model siap) | **PARSIAL** | 30% |
+| | Review & Rating (form + observer aggregate) | **SELESAI** | 90% |
 | | Payment Flow | **BELUM** | 0% |
 
-**Estimasi progress total: ~85%** *(updated 2 Mei 2026 setelah PRIORITAS 1 (Owner Panel) selesai)*
+**Estimasi progress total: ~88%** *(updated 2 Mei 2026 setelah PRIORITAS 1 + PRIORITAS 6 (Review System) selesai)*
 
 ---
 
@@ -184,10 +184,12 @@ Semua dialihbahasakan ke Bahasa Inggris:
 - [ ] Cek double-booking via query `OrderDetail`
 - [ ] Pilih staff dinamis
 
-### PRIORITAS 6 — Review System
-- [ ] Form ulasan setelah booking `success`
-- [ ] Display review user di profil mereka
-- [ ] Validasi: hanya user dengan order `success` yang dapat review
+### PRIORITAS 6 — Review System  ✅ SELESAI 2 Mei 2026
+- [x] Form ulasan setelah booking `success` (`/akun/bookings/{kode}/review`)
+- [x] Display review badge ("★ x/5 reviewed") di tab Completed `/akun/bookings`
+- [x] Validasi: `whereDoesntHave('review')` + `status = success` + `id_user = auth()->id()` (404 di luar itu)
+- [x] `ReviewObserver` recompute `salon.rating` + `salon.total_review` (`saveQuietly`) saat review create/update/delete (termasuk admin moderation toggle `is_visible`)
+- [x] `SalonController` filter `is_visible = true` saat eager-load reviews ke halaman publik salon
 
 ### PRIORITAS 7 — Fitur Tambahan
 - [ ] Wishlist / Favorit salon (perlu tabel pivot `user_favourites`)
@@ -229,8 +231,8 @@ Semua dialihbahasakan ke Bahasa Inggris:
 [x] LookbookController.php
 [x] TreatmentFilesController.php
 [x] MitraController.php
+[x] ReviewController.php ← Updated: create + store, recomputes salon aggregates via Observer
 [ ] OrderController.php (PENDING — payment integration)
-[ ] ReviewController.php (PENDING — review submission)
 ```
 
 ### Routes `routes/web.php`
@@ -243,6 +245,7 @@ Semua dialihbahasakan ke Bahasa Inggris:
 [x] /booking/{kode}/konfirmasi → BookingController@konfirmasi (auth)
 [x] /booking/{kode}/batal → BookingController@batal (auth)
 [x] /akun, /akun/bookings, /akun/favorit, /akun/pengaturan, /akun/reward (auth)
+[x] /akun/bookings/{kode}/review (GET form + POST submit, role:customer)
 [x] /gift-card, /lookbook, /treatment-files, /mitra
 [x] /dashboard (Flux)
 ```

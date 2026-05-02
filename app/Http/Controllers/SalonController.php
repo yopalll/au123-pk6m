@@ -17,7 +17,7 @@ class SalonController extends Controller
                 'images',
                 'primaryImage',
                 'services' => fn ($q) => $q->where('status', 'active')->with('kategori'),
-                'reviews'  => fn ($q) => $q->with('user')->latest()->take(10),
+                'reviews'  => fn ($q) => $q->where('is_visible', true)->with('user')->latest()->take(10),
                 'staff',
             ])
             ->firstOrFail();
