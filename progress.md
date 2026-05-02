@@ -18,15 +18,15 @@
 | | Frontend — Landing Page | **SELESAI** | 90% |
 | | Frontend — Search & Filter | **SELESAI** | 85% |
 | | Frontend — Halaman Salon (+ Leaflet minimap) | **SELESAI** | 90% |
-| | Frontend — Booking Flow (3-step wizard) | **SELESAI** | 75% |
+| | Frontend — Booking Flow (3-step wizard, dynamic slots) | **SELESAI** | 95% |
 | | Auth — Login/Register/2FA (Fortify) | **SELESAI** | 95% |
 | | Dashboard User (Akun) | **SELESAI** | 70% |
 | | Dashboard Salon Owner | **SELESAI** | 90% |
 | | Admin Panel | **SELESAI** | 100% |
 | | Review & Rating (form + observer aggregate) | **SELESAI** | 90% |
-| | Payment Flow | **BELUM** | 0% |
+| | Payment Flow (Midtrans Snap Sandbox) | **SELESAI** | 90% |
 
-**Estimasi progress total: ~88%** *(updated 2 Mei 2026 setelah PRIORITAS 1 + PRIORITAS 6 (Review System) selesai)*
+**Estimasi progress total: ~93%** *(updated 2 Mei 2026 setelah PRIORITAS 4 (Smart Booking + Midtrans Snap) selesai)*
 
 ---
 
@@ -174,15 +174,22 @@ Semua dialihbahasakan ke Bahasa Inggris:
 - [x] `/akun/*` di-gate dengan `role:customer`
 - [x] Navbar branch berdasarkan `auth()->user()->role` (customer→/akun, salon_owner→/owner, admin→/admin)
 
-### PRIORITAS 4 — Payment Flow
-- [ ] Integrasi Midtrans Payment Gateway (Sandbox API)
-- [ ] Update `pembayaran` setelah booking confirm (via Midtrans Webhook/Notification)
-- [ ] Halaman pembayaran terpisah (saat ini pembayaran "in-salon")
+### PRIORITAS 4 — Payment Flow  ✅ SELESAI 2 Mei 2026
+- [x] Integrasi Midtrans Payment Gateway Snap (Sandbox API) via `midtrans/midtrans-php` ^2.6
+- [x] Halaman pembayaran terpisah `/booking/{kode}/payment` dengan Snap.pay() pop-up
+- [x] Webhook Midtrans di `/midtrans/webhook` (CSRF di-bypass, signature SHA512 diverifikasi)
+- [x] Update `pembayaran` setelah notif: `id_transaksi`, `snap_token`, `raw_response`, status (`completed`/`pending`/`failed`)
+- [x] Order transition `pending → confirmed` saat status `capture` / `settlement`
+- [x] `PaymentController::createSnapToken` idempotent (re-issue token jika user reload)
 
-### PRIORITAS 5 — Booking yang Lebih Pintar
-- [ ] Cek slot availability berdasarkan `staff_schedule`
-- [ ] Cek double-booking via query `OrderDetail`
-- [ ] Pilih staff dinamis
+### PRIORITAS 5 — Booking yang Lebih Pintar  ✅ SELESAI 2 Mei 2026
+- [x] `App\Services\BookingSlotService` — server-side slot generator
+- [x] Cek slot availability berdasarkan `staff_schedule` (per `hari` weekday)
+- [x] Cek double-booking via overlap query `OrderDetail.start_time/end_time` (status ≠ canceled)
+- [x] Pilih staff dinamis (dropdown "Any staff" + per-staff option)
+- [x] Endpoint JSON `/salon/{slug}/booking/slots` untuk dynamic fetch saat user pilih tanggal/staff
+- [x] Re-verify availability di `BookingController::store` (anti-race condition)
+- [x] Auto-pick staff jika user pilih "Any staff" (`pickStaffForSlot`)
 
 ### PRIORITAS 6 — Review System  ✅ SELESAI 2 Mei 2026
 - [x] Form ulasan setelah booking `success` (`/akun/bookings/{kode}/review`)
@@ -232,7 +239,7 @@ Semua dialihbahasakan ke Bahasa Inggris:
 [x] TreatmentFilesController.php
 [x] MitraController.php
 [x] ReviewController.php ← Updated: create + store, recomputes salon aggregates via Observer
-[ ] OrderController.php (PENDING — payment integration)
+[x] PaymentController.php ← BARU: Midtrans Snap (createSnapToken, show, webhook)
 ```
 
 ### Routes `routes/web.php`
@@ -246,6 +253,9 @@ Semua dialihbahasakan ke Bahasa Inggris:
 [x] /booking/{kode}/batal → BookingController@batal (auth)
 [x] /akun, /akun/bookings, /akun/favorit, /akun/pengaturan, /akun/reward (auth)
 [x] /akun/bookings/{kode}/review (GET form + POST submit, role:customer)
+[x] /salon/{slug}/booking/slots (GET JSON, dynamic slot generator)
+[x] /booking/{kode}/payment (GET Snap host page) + /payment/token (POST)
+[x] /midtrans/webhook (POST, CSRF-exempted, SHA512 signature-verified)
 [x] /gift-card, /lookbook, /treatment-files, /mitra
 [x] /dashboard (Flux)
 ```
@@ -280,9 +290,9 @@ Semua dialihbahasakan ke Bahasa Inggris:
 
 1. **Welcome page lambat (`welcome.blade.php`)** — tidak dihapus, hanya tidak di-route. `/` sekarang dilayani `HomeController@index`.
 2. **`/update/` folder** — sengaja TIDAK dihapus untuk traceability. Kontennya sudah usang setelah 1 Mei 2026.
-3. **Booking slot statis** — saat ini grid 14 slot waktu (09:00–16:30) tanpa cek availability. Perlu integrasi `staff_schedule` + cek `OrderDetail` overlap.
+3. ~~**Booking slot statis** — saat ini grid 14 slot waktu (09:00–16:30) tanpa cek availability.~~ → ✅ Selesai (2 Mei 2026): `BookingSlotService` menghasilkan slot dinamis berdasarkan `salon.opening_time/closing_time`, `staff_schedule`, dan overlap `OrderDetail`. Step default 30 menit.
 4. ~~**Middleware `role`** belum ada — owner & admin pages belum dapat dibatasi.~~ → ✅ Selesai (2 Mei 2026): `App\Http\Middleware\CheckRole` terdaftar sebagai alias `role`. Owner dan admin sekarang dilindungi via `canAccessPanel()` di User model (Filament).
-5. **`staff_schedule`** masih kosong (0 record) — perlu seeder.
+5. **`staff_schedule`** masih kosong (0 record) — perlu seeder. (Catatan: `BookingSlotService` punya fallback "ikut jam buka salon" kalau staff belum punya schedule, jadi booking tetap jalan tanpa seeder.)
 6. **`order`, `review`, `pembayaran`** masih 0 record — wajar karena fitur baru terintegrasi.
 7. **Mata uang £ GBP** dipakai di seluruh UI karena data berasal dari Treatwell UK (5.767 salon UK). Konversi ke IDR dilakukan jika kelak perlu pasar Indonesia.
 8. **Leaflet CDN dependency** — saat ini Leaflet 1.9.4 di-load dari `unpkg.com`. Jika offline atau CDN down, peta tidak muncul (graceful: komponen menampilkan "No map available"). dapat di-vendor via npm jika perlu.

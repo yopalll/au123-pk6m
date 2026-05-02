@@ -9,10 +9,16 @@
         <span class="text-gray-600">Booking</span>
     </nav>
 
+    @if ($errors->any())
+        <div class="mb-4 p-3 rounded-lg bg-red-50 border border-red-100 text-sm text-red-700">
+            {{ $errors->first() }}
+        </div>
+    @endif
+
     <div class="flex gap-8">
 
         {{-- ── Left: Booking Steps ─────────────────────────────────────── --}}
-        <div class="flex-1 min-w-0" x-data="bookingForm()">
+        <div class="flex-1 min-w-0" x-data="bookingForm()" x-init="init()">
 
             {{-- Step indicator --}}
             <div class="flex items-center gap-0 mb-8">
@@ -69,6 +75,18 @@
             <div x-show="step === 2" x-transition>
                 <h2 class="text-xl font-semibold text-gray-900 mb-4">Pick Date &amp; Time</h2>
 
+                {{-- Staff picker --}}
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Staff</label>
+                    <select x-model.number="selectedStaffId" @change="loadSlots()"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] transition-colors">
+                        <option value="0">Any staff (we'll pick the first available)</option>
+                        @foreach ($staff as $s)
+                            <option value="{{ $s->id_staff }}">{{ $s->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <div class="mb-6">
                     <div class="flex items-center justify-between mb-4">
                         <button @click="prevMonth()" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-[#E8F4FB] flex items-center justify-center transition-colors">‹</button>
@@ -102,17 +120,25 @@
 
                 <div x-show="selectedDay">
                     <h3 class="text-sm font-semibold text-gray-700 mb-3">Pick a Time</h3>
-                    <div class="grid grid-cols-4 gap-2">
-                        @php $times = ['09:00','09:30','10:00','10:30','11:00','11:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30']; @endphp
-                        @foreach ($times as $time)
-                            <button @click="selectTime('{{ $time }}')"
-                                    :class="selectedTime === '{{ $time }}'
+
+                    <div x-show="loadingSlots" class="text-sm text-gray-400 py-4">
+                        Checking availability…
+                    </div>
+
+                    <div x-show="!loadingSlots && slots.length === 0" class="text-sm text-gray-400 py-4">
+                        No slots available for this date. Try another day or a different staff member.
+                    </div>
+
+                    <div x-show="!loadingSlots && slots.length > 0" class="grid grid-cols-4 gap-2">
+                        <template x-for="slot in slots" :key="slot.time">
+                            <button @click="selectTime(slot.time, slot.staff)"
+                                    :class="selectedTime === slot.time
                                             ? 'bg-[#1B2D6B] text-white border-[#1B2D6B]'
                                             : 'border-gray-200 text-gray-700 hover:border-[#4BA3CC]'"
-                                    class="py-2.5 rounded-xl border text-sm font-medium transition-all">
-                                {{ $time }}
+                                    class="py-2.5 rounded-xl border text-sm font-medium transition-all"
+                                    x-text="slot.time">
                             </button>
-                        @endforeach
+                        </template>
                     </div>
                 </div>
             </div>
@@ -134,6 +160,10 @@
                         <span class="text-gray-500">Time</span>
                         <span class="font-medium" x-text="selectedTime"></span>
                     </div>
+                    <div class="flex justify-between text-sm border-t border-[#C5E1F0] pt-3">
+                        <span class="text-gray-500">Staff</span>
+                        <span class="font-medium" x-text="selectedStaffName"></span>
+                    </div>
                     <div class="flex justify-between font-semibold text-base border-t border-[#C5E1F0] pt-3">
                         <span>Total</span>
                         <span class="text-[#1B2D6B]" x-text="'£' + selectedServicePrice.toLocaleString('en-GB', {minimumFractionDigits: 2, maximumFractionDigits: 2})"></span>
@@ -145,6 +175,7 @@
                     <input type="hidden" name="id_service" :value="selectedServiceId" />
                     <input type="hidden" name="tanggal"   :value="bookingDate" />
                     <input type="hidden" name="waktu"     :value="selectedTime" />
+                    <input type="hidden" name="id_staff"  :value="selectedStaffId" />
 
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Note (optional)</label>
@@ -153,11 +184,13 @@
                                   class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] transition-colors resize-none"></textarea>
                     </div>
                     <p class="text-xs text-gray-400 mb-4">
-                        By confirming, you agree to VIYGO's <u>Terms &amp; Conditions</u>. Payment is taken in salon.
+                        By confirming, you agree to VIYGO's
+                        <a href="{{ route('static.terms') }}" class="underline">Terms &amp; Conditions</a>.
+                        You'll be redirected to a secure payment screen next.
                     </p>
                     <button type="submit"
                             class="w-full py-3.5 bg-[#1B2D6B] text-white font-semibold rounded-full hover:bg-[#4BA3CC] transition-colors">
-                        ✓ Confirm Booking
+                        Continue to Payment →
                     </button>
                 </form>
             </div>
@@ -206,6 +239,8 @@
 <script>
 function bookingForm() {
     const today = new Date();
+    const slotsUrl = @json(route('booking.slots', $salon->slug ?? $salon->id_salon));
+
     return {
         step: 1,
         selectedServiceId: null,
@@ -214,8 +249,14 @@ function bookingForm() {
         selectedServiceDuration: 0,
         selectedDay: null,
         selectedTime: null,
+        selectedStaffId: 0,
+        selectedStaffName: 'Any staff',
+        slots: [],
+        loadingSlots: false,
         calMonth: today.getMonth(),
         calYear: today.getFullYear(),
+
+        init() {},
 
         get monthLabel() {
             const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -240,17 +281,78 @@ function bookingForm() {
             return cells;
         },
 
-        selectService(id, name, price, dur) { this.selectedServiceId = id; this.selectedServiceName = name; this.selectedServicePrice = price; this.selectedServiceDuration = dur; },
-        selectDate(day) { this.selectedDay = day; this.selectedTime = null; },
-        selectTime(t) { this.selectedTime = t; },
+        selectService(id, name, price, dur) {
+            this.selectedServiceId = id;
+            this.selectedServiceName = name;
+            this.selectedServicePrice = price;
+            this.selectedServiceDuration = dur;
+            // Reset time/slots — slots depend on service duration.
+            this.slots = [];
+            this.selectedTime = null;
+        },
+
+        selectDate(day) {
+            this.selectedDay = day;
+            this.selectedTime = null;
+            this.loadSlots();
+        },
+
+        selectTime(time, staffOptions) {
+            this.selectedTime = time;
+            // If user picked "Any staff", show the first staff returned for the slot.
+            if (this.selectedStaffId === 0 && staffOptions && staffOptions.length) {
+                this.selectedStaffName = staffOptions[0].id === 0 ? 'Any staff' : staffOptions[0].name;
+            } else if (this.selectedStaffId !== 0) {
+                const match = staffOptions?.find(s => s.id === this.selectedStaffId);
+                this.selectedStaffName = match ? match.name : 'Selected staff';
+            } else {
+                this.selectedStaffName = 'Any staff';
+            }
+        },
+
         prevMonth() { if (this.calMonth === 0) { this.calMonth = 11; this.calYear--; } else this.calMonth--; },
         nextMonth() { if (this.calMonth === 11) { this.calMonth = 0; this.calYear++; } else this.calMonth++; },
+
+        async loadSlots() {
+            if (!this.selectedServiceId || !this.selectedDay) {
+                this.slots = [];
+                return;
+            }
+            this.loadingSlots = true;
+            this.slots = [];
+            this.selectedTime = null;
+
+            try {
+                const url = new URL(slotsUrl, window.location.origin);
+                url.searchParams.set('service_id', this.selectedServiceId);
+                url.searchParams.set('date', this.bookingDate);
+                url.searchParams.set('staff_id', this.selectedStaffId || 0);
+
+                const res = await fetch(url, {
+                    headers: { 'Accept': 'application/json' },
+                });
+
+                if (!res.ok) {
+                    this.slots = [];
+                    return;
+                }
+
+                const body = await res.json();
+                this.slots = body.slots || [];
+            } catch (e) {
+                console.error('slot fetch failed', e);
+                this.slots = [];
+            } finally {
+                this.loadingSlots = false;
+            }
+        },
 
         canNext() {
             if (this.step === 1) return !!this.selectedServiceId;
             if (this.step === 2) return !!this.selectedDay && !!this.selectedTime;
             return true;
         },
+
         nextStep() { if (this.canNext()) this.step++; },
     };
 }

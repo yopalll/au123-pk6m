@@ -15,6 +15,12 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'role' => CheckRole::class,
         ]);
+
+        // Midtrans posts to /midtrans/webhook — verified via signature_key,
+        // not via Laravel CSRF.
+        $middleware->validateCsrfTokens(except: [
+            'midtrans/webhook',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LookbookController;
 use App\Http\Controllers\MitraController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SalonController;
 use App\Http\Controllers\SearchController;
@@ -50,9 +51,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Booking flow — any authenticated user
     Route::get('/salon/{slug}/booking', [BookingController::class, 'create'])->name('booking.create');
+    Route::get('/salon/{slug}/booking/slots', [BookingController::class, 'getSlots'])->name('booking.slots');
     Route::post('/salon/{slug}/booking', [BookingController::class, 'store'])->name('booking.store');
     Route::get('/booking/{kode}/konfirmasi', [BookingController::class, 'konfirmasi'])->name('booking.konfirmasi');
     Route::post('/booking/{kode}/batal', [BookingController::class, 'batal'])->name('booking.batal');
+
+    // Payment (Midtrans Snap)
+    Route::get('/booking/{kode}/payment', [PaymentController::class, 'show'])->name('booking.payment');
+    Route::post('/booking/{kode}/payment/token', [PaymentController::class, 'createSnapToken'])->name('booking.payment.token');
 
     // Customer-only account panel
     Route::middleware('role:customer')
@@ -75,5 +81,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Existing Livewire Flux dashboard (any role)
     Route::view('dashboard', 'dashboard')->name('dashboard');
 });
+
+// Midtrans webhook (no auth — Midtrans posts here, signature-verified instead).
+// CSRF exception lives in bootstrap/app.php.
+Route::post('/midtrans/webhook', [PaymentController::class, 'webhook'])
+    ->name('midtrans.webhook');
 
 require __DIR__.'/settings.php';
