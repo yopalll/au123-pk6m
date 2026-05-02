@@ -148,6 +148,19 @@ class User extends Authenticatable implements FilamentUser
             return $this->role === 'admin' && $this->is_active;
         }
 
+        if ($panel->getId() === 'owner') {
+            return $this->role === 'salon_owner' && $this->is_active;
+        }
+
         return false;
+    }
+
+    /**
+     * Convenience: collection of salon ids belonging to this owner.
+     * Used by Owner panel resources to scope queries.
+     */
+    public function ownedSalonIds(): array
+    {
+        return $this->salons()->pluck('salon.id_salon')->all();
     }
 }

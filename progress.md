@@ -21,12 +21,12 @@
 | | Frontend — Booking Flow (3-step wizard) | **SELESAI** | 75% |
 | | Auth — Login/Register/2FA (Fortify) | **SELESAI** | 95% |
 | | Dashboard User (Akun) | **SELESAI** | 70% |
-| | Dashboard Salon Owner | **BELUM** | 0% |
+| | Dashboard Salon Owner | **SELESAI** | 90% |
 | | Admin Panel | **SELESAI** | 100% |
 | | Review & Rating (data kosong, model siap) | **PARSIAL** | 30% |
 | | Payment Flow | **BELUM** | 0% |
 
-**Estimasi progress total: ~80%** *(updated 2 Mei 2026 setelah PRIORITAS 2 + PRIORITAS 3 + Auth re-branding selesai)*
+**Estimasi progress total: ~85%** *(updated 2 Mei 2026 setelah PRIORITAS 1 (Owner Panel) selesai)*
 
 ---
 
@@ -152,13 +152,14 @@ Semua dialihbahasakan ke Bahasa Inggris:
 
 ## YANG MASIH PERLU DIKERJAKAN
 
-### PRIORITAS 1 — Dashboard Salon Owner
-- [ ] Statistik salon (total booking hari ini/bulan ini)
-- [ ] Manajemen layanan (CRUD `service`)
-- [ ] Manajemen staf (CRUD `staff` + `staff_schedule`)
-- [ ] Daftar order masuk (update status)
-- [ ] Manajemen galeri foto (`salon_images`)
-- [ ] Edit profil salon
+### PRIORITAS 1 — Dashboard Salon Owner  ✅ SELESAI 2 Mei 2026
+- [x] Statistik salon (total booking hari ini/bulan ini, pending, revenue, average rating)
+- [x] Manajemen layanan (CRUD `service` — top-level + relation manager)
+- [x] Manajemen staf (CRUD `staff` + `staff_schedule` relation manager)
+- [x] Daftar order masuk (status update: confirm / mark success / cancel)
+- [x] Manajemen galeri foto (`salon_images` — top-level resource + relation manager, "Make Primary")
+- [x] Edit profil salon (terbatas — fields safety-locked: status, slug, rating)
+- [x] Filament Panel kedua (`OwnerPanelProvider`) di `/owner`, scoped per `id_user`
 
 ### PRIORITAS 2 — Static Pages (Footer Links)  ✅ SELESAI 2 Mei 2026
 - [x] Halaman statis: About Us, Careers, Blog (→ /treatment-files), Press
@@ -277,7 +278,7 @@ Semua dialihbahasakan ke Bahasa Inggris:
 1. **Welcome page lambat (`welcome.blade.php`)** — tidak dihapus, hanya tidak di-route. `/` sekarang dilayani `HomeController@index`.
 2. **`/update/` folder** — sengaja TIDAK dihapus untuk traceability. Kontennya sudah usang setelah 1 Mei 2026.
 3. **Booking slot statis** — saat ini grid 14 slot waktu (09:00–16:30) tanpa cek availability. Perlu integrasi `staff_schedule` + cek `OrderDetail` overlap.
-4. **Middleware `role`** belum ada — owner & admin pages belum dapat dibatasi.
+4. ~~**Middleware `role`** belum ada — owner & admin pages belum dapat dibatasi.~~ → ✅ Selesai (2 Mei 2026): `App\Http\Middleware\CheckRole` terdaftar sebagai alias `role`. Owner dan admin sekarang dilindungi via `canAccessPanel()` di User model (Filament).
 5. **`staff_schedule`** masih kosong (0 record) — perlu seeder.
 6. **`order`, `review`, `pembayaran`** masih 0 record — wajar karena fitur baru terintegrasi.
 7. **Mata uang £ GBP** dipakai di seluruh UI karena data berasal dari Treatwell UK (5.767 salon UK). Konversi ke IDR dilakukan jika kelak perlu pasar Indonesia.
@@ -301,5 +302,5 @@ Semua dialihbahasakan ke Bahasa Inggris:
 | Lookbook / Inspiration | treatwell.co.uk/lookbook/ | `/lookbook` |
 | Treatment Files / Blog | treatwell.co.uk/treatment-files/ | `/treatment-files` |
 | Partner Sign-up | treatwell.co.uk/work-with-us/ | `/mitra` |
-| Salon Dashboard | (owner portal) | ⬜ TBD |
-| Admin Panel | (admin) | ⬜ TBD |
+| Salon Dashboard | (owner portal) | `/owner` (Filament) |
+| Admin Panel | (admin) | `/admin` (Filament) |
