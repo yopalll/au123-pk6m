@@ -24,14 +24,17 @@ class AkunController extends Controller
     {
         $tab = $request->get('tab', 'mendatang');
 
+        // Upcoming covers both unpaid (`pending`) and paid-but-unattended
+        // (`confirmed`) bookings, since to the customer they're both
+        // "I have an appointment coming up".
         $statusMap = [
-            'mendatang'  => 'pending',
-            'selesai'    => 'success',
-            'dibatalkan' => 'canceled',
+            'mendatang'  => ['pending', 'confirmed'],
+            'selesai'    => ['success'],
+            'dibatalkan' => ['canceled'],
         ];
 
         $orders = Order::where('id_user', auth()->id())
-            ->when(isset($statusMap[$tab]), fn ($q) => $q->where('status', $statusMap[$tab]))
+            ->when(isset($statusMap[$tab]), fn ($q) => $q->whereIn('status', $statusMap[$tab]))
             ->with(['salon.kota', 'details.service', 'review'])
             ->latest()
             ->paginate(10)

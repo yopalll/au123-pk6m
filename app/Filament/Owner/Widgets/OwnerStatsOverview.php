@@ -32,8 +32,11 @@ class OwnerStatsOverview extends StatsOverviewWidget
             ->whereNotIn('status', ['canceled'])
             ->count();
 
+        // Revenue covers both `confirmed` (paid via Midtrans, appointment not
+        // yet completed) and `success` (appointment delivered). Excludes
+        // `pending` (booking exists, payment not collected yet) and `canceled`.
         $thisMonthRevenue = Order::whereIn('id_salon', $salonIds)
-            ->where('status', 'success')
+            ->whereIn('status', ['confirmed', 'success'])
             ->whereYear('date_order', now()->year)
             ->whereMonth('date_order', now()->month)
             ->sum('total_pembayaran');
