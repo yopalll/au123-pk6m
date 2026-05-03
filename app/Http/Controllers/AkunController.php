@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants\OrderStatus;
 use App\Models\Order;
 use App\Models\Salon;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ class AkunController extends Controller
     public function index()
     {
         $upcomingCount = Order::where('id_user', auth()->id())
-            ->where('status', 'pending')
+            ->whereIn('status', [OrderStatus::PENDING, OrderStatus::CONFIRMED])
             ->count();
 
         $favouriteCount = auth()->user()->favourites()->count();
@@ -28,9 +29,9 @@ class AkunController extends Controller
         // (`confirmed`) bookings, since to the customer they're both
         // "I have an appointment coming up".
         $statusMap = [
-            'mendatang'  => ['pending', 'confirmed'],
-            'selesai'    => ['success'],
-            'dibatalkan' => ['canceled'],
+            'mendatang'  => [OrderStatus::PENDING, OrderStatus::CONFIRMED],
+            'selesai'    => [OrderStatus::SUCCESS],
+            'dibatalkan' => [OrderStatus::CANCELED],
         ];
 
         $orders = Order::where('id_user', auth()->id())

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Owner\Resources;
 
+use App\Constants\OrderStatus;
 use App\Filament\Owner\Resources\OrderResource\Pages;
 use App\Filament\Owner\Resources\OrderResource\RelationManagers;
 use App\Models\Order;
@@ -29,10 +30,10 @@ class OrderResource extends Resource
         return $form->schema([
             Forms\Components\Select::make('status')
                 ->options([
-                    'pending'   => 'Pending',
-                    'confirmed' => 'Confirmed',
-                    'success'   => 'Success',
-                    'canceled'  => 'Canceled',
+                    OrderStatus::PENDING   => 'Pending',
+                    OrderStatus::CONFIRMED => 'Confirmed',
+                    OrderStatus::SUCCESS   => 'Success',
+                    OrderStatus::CANCELED  => 'Canceled',
                 ])->required(),
         ]);
     }
@@ -50,11 +51,11 @@ class OrderResource extends Resource
                 Tables\Columns\TextColumn::make('total_pembayaran')->money('GBP')->label('Total'),
                 Tables\Columns\TextColumn::make('status')->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'pending'   => 'warning',
-                        'confirmed' => 'info',
-                        'success'   => 'success',
-                        'canceled'  => 'danger',
-                        default     => 'gray',
+                        OrderStatus::PENDING   => 'warning',
+                        OrderStatus::CONFIRMED => 'info',
+                        OrderStatus::SUCCESS   => 'success',
+                        OrderStatus::CANCELED  => 'danger',
+                        default                => 'gray',
                     })
                     ->sortable(),
             ])
@@ -62,10 +63,10 @@ class OrderResource extends Resource
             ->filters([
                 Tables\Filters\SelectFilter::make('status')
                     ->options([
-                        'pending'   => 'Pending',
-                        'confirmed' => 'Confirmed',
-                        'success'   => 'Success',
-                        'canceled'  => 'Canceled',
+                        OrderStatus::PENDING   => 'Pending',
+                        OrderStatus::CONFIRMED => 'Confirmed',
+                        OrderStatus::SUCCESS   => 'Success',
+                        OrderStatus::CANCELED  => 'Canceled',
                     ]),
                 Tables\Filters\Filter::make('date_order')
                     ->form([
@@ -85,22 +86,22 @@ class OrderResource extends Resource
                     ->icon('heroicon-o-check-badge')
                     ->color('info')
                     ->requiresConfirmation()
-                    ->action(fn (Order $r) => $r->update(['status' => 'confirmed']))
-                    ->visible(fn (Order $r) => $r->status === 'pending'),
+                    ->action(fn (Order $r) => $r->update(['status' => OrderStatus::CONFIRMED]))
+                    ->visible(fn (Order $r) => $r->status === OrderStatus::PENDING),
                 Tables\Actions\Action::make('mark_success')
                     ->label('Mark Success')
                     ->icon('heroicon-o-check-circle')
                     ->color('success')
                     ->requiresConfirmation()
-                    ->action(fn (Order $r) => $r->update(['status' => 'success']))
-                    ->visible(fn (Order $r) => in_array($r->status, ['pending', 'confirmed'])),
+                    ->action(fn (Order $r) => $r->update(['status' => OrderStatus::SUCCESS]))
+                    ->visible(fn (Order $r) => in_array($r->status, [OrderStatus::PENDING, OrderStatus::CONFIRMED])),
                 Tables\Actions\Action::make('cancel')
                     ->label('Cancel')
                     ->icon('heroicon-o-x-circle')
                     ->color('danger')
                     ->requiresConfirmation()
-                    ->action(fn (Order $r) => $r->update(['status' => 'canceled']))
-                    ->visible(fn (Order $r) => ! in_array($r->status, ['canceled', 'success'])),
+                    ->action(fn (Order $r) => $r->update(['status' => OrderStatus::CANCELED]))
+                    ->visible(fn (Order $r) => ! in_array($r->status, [OrderStatus::CANCELED, OrderStatus::SUCCESS])),
             ]);
     }
 

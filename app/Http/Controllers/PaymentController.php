@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants\OrderStatus;
 use App\Models\Order;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
@@ -172,14 +173,14 @@ class PaymentController extends Controller
                     } else {
                         $payment->status_pembayaran = 'completed';
                         $payment->tanggal_bayar     = now();
-                        $order->status              = 'confirmed';
+                        $order->status              = OrderStatus::CONFIRMED;
                     }
                     break;
 
                 case 'settlement':
                     $payment->status_pembayaran = 'completed';
                     $payment->tanggal_bayar     = now();
-                    $order->status              = 'confirmed';
+                    $order->status              = OrderStatus::CONFIRMED;
                     break;
 
                 case 'pending':
@@ -210,7 +211,7 @@ class PaymentController extends Controller
         return Order::query()
             ->where('id_user', auth()->id())
             ->where('kode_order', $kode)
-            ->where('status', 'pending')
+            ->where('status', OrderStatus::PENDING)
             ->with(['user', 'salon', 'details.service'])
             ->firstOrFail();
     }

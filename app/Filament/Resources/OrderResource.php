@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Constants\OrderStatus;
 use App\Filament\Resources\OrderResource\Pages;
 use App\Filament\Resources\OrderResource\RelationManagers;
 use App\Models\Order;
@@ -23,10 +24,10 @@ class OrderResource extends Resource
         return $form->schema([
             Forms\Components\Select::make('status')
                 ->options([
-                    'pending' => 'Pending',
-                    'confirmed' => 'Confirmed',
-                    'success' => 'Success',
-                    'canceled' => 'Canceled',
+                    OrderStatus::PENDING   => 'Pending',
+                    OrderStatus::CONFIRMED => 'Confirmed',
+                    OrderStatus::SUCCESS   => 'Success',
+                    OrderStatus::CANCELED  => 'Canceled',
                 ])->required(),
             Forms\Components\TextInput::make('total_diskon')
                 ->numeric()->prefix('£')->label('Discount'),
@@ -47,26 +48,26 @@ class OrderResource extends Resource
                 Tables\Columns\TextColumn::make('total_diskon')->money('GBP')->label('Discount'),
                 Tables\Columns\TextColumn::make('status')->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'pending' => 'warning', 'confirmed' => 'info',
-                        'success' => 'success', 'canceled' => 'danger', default => 'gray',
+                        OrderStatus::PENDING => 'warning', OrderStatus::CONFIRMED => 'info',
+                        OrderStatus::SUCCESS => 'success', OrderStatus::CANCELED => 'danger', default => 'gray',
                     })->sortable(),
             ])
             ->defaultSort('id_order', 'desc')
             ->filters([
                 Tables\Filters\SelectFilter::make('status')
-                    ->options(['pending'=>'Pending','confirmed'=>'Confirmed','success'=>'Success','canceled'=>'Canceled']),
+                    ->options([OrderStatus::PENDING=>'Pending',OrderStatus::CONFIRMED=>'Confirmed',OrderStatus::SUCCESS=>'Success',OrderStatus::CANCELED=>'Canceled']),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\Action::make('mark_success')->label('Mark Success')
                     ->icon('heroicon-o-check-circle')->color('success')->requiresConfirmation()
-                    ->action(fn (Order $r) => $r->update(['status' => 'success']))
-                    ->visible(fn (Order $r) => $r->status !== 'success'),
+                    ->action(fn (Order $r) => $r->update(['status' => OrderStatus::SUCCESS]))
+                    ->visible(fn (Order $r) => $r->status !== OrderStatus::SUCCESS),
                 Tables\Actions\Action::make('cancel')->label('Cancel')
                     ->icon('heroicon-o-x-circle')->color('danger')->requiresConfirmation()
-                    ->action(fn (Order $r) => $r->update(['status' => 'canceled']))
-                    ->visible(fn (Order $r) => !in_array($r->status, ['canceled','success'])),
+                    ->action(fn (Order $r) => $r->update(['status' => OrderStatus::CANCELED]))
+                    ->visible(fn (Order $r) => !in_array($r->status, [OrderStatus::CANCELED, OrderStatus::SUCCESS])),
             ]);
     }
 

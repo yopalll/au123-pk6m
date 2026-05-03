@@ -2,6 +2,7 @@
 
 namespace App\Filament\Owner\Widgets;
 
+use App\Constants\OrderStatus;
 use App\Models\Order;
 use App\Models\Review;
 use App\Models\Service;
@@ -29,20 +30,20 @@ class OwnerStatsOverview extends StatsOverviewWidget
 
         $todayCount = Order::whereIn('id_salon', $salonIds)
             ->whereDate('date_order', today())
-            ->whereNotIn('status', ['canceled'])
+            ->whereNotIn('status', [OrderStatus::CANCELED])
             ->count();
 
         // Revenue covers both `confirmed` (paid via Midtrans, appointment not
         // yet completed) and `success` (appointment delivered). Excludes
         // `pending` (booking exists, payment not collected yet) and `canceled`.
         $thisMonthRevenue = Order::whereIn('id_salon', $salonIds)
-            ->whereIn('status', ['confirmed', 'success'])
+            ->whereIn('status', [OrderStatus::CONFIRMED, OrderStatus::SUCCESS])
             ->whereYear('date_order', now()->year)
             ->whereMonth('date_order', now()->month)
             ->sum('total_pembayaran');
 
         $pendingCount = Order::whereIn('id_salon', $salonIds)
-            ->where('status', 'pending')
+            ->where('status', OrderStatus::PENDING)
             ->count();
 
         $serviceCount = Service::whereIn('id_salon', $salonIds)->count();

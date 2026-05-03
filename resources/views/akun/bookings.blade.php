@@ -18,17 +18,19 @@
     </div>
 
     @php
+        use App\Constants\OrderStatus;
+
         $statusLabels = [
-            'pending'   => 'Awaiting payment',
-            'confirmed' => 'Paid',
-            'success'   => 'Completed',
-            'canceled'  => 'Cancelled',
+            OrderStatus::PENDING   => 'Awaiting payment',
+            OrderStatus::CONFIRMED => 'Paid',
+            OrderStatus::SUCCESS   => 'Completed',
+            OrderStatus::CANCELED  => 'Cancelled',
         ];
         $statusBadgeClass = [
-            'pending'   => 'bg-amber-100 text-amber-700',
-            'confirmed' => 'bg-blue-100 text-blue-700',
-            'success'   => 'bg-green-100 text-green-700',
-            'canceled'  => 'bg-red-100 text-red-600',
+            OrderStatus::PENDING   => 'bg-amber-100 text-amber-700',
+            OrderStatus::CONFIRMED => 'bg-blue-100 text-blue-700',
+            OrderStatus::SUCCESS   => 'bg-green-100 text-green-700',
+            OrderStatus::CANCELED  => 'bg-red-100 text-red-600',
         ];
     @endphp
 
