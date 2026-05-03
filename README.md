@@ -28,7 +28,7 @@ VIYGO is a fully functional Treatwell.co.uk clone that lets users:
 - **Search** salons by treatment, location and rating
 - **Book** treatments through a 3-step booking flow (Pick Service → Pick Date & Time → Confirm)
 - **Find** salons on an interactive Leaflet map (search, category and salon-detail pages)
-- ⭐ **Review** treatments they've enjoyed (model + DB ready)
+- **Review** treatments they've enjoyed (model + DB ready)
 - **Salon owners** can list their salon (public sign-up form on `/mitra`)
 - **Admin panel** is on the roadmap
 
