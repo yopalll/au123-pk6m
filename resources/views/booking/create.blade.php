@@ -105,7 +105,7 @@
                                         @click="!cell.past && selectDate(cell.day)"
                                         :disabled="cell.past"
                                         :class="{
-                                            'bg-[#1B2D6B] text-white': selectedDay === cell.day && !cell.past,
+                                            'bg-[#1B2D6B] text-white': selectedDay === cell.day && bookingDate === cell.date && !cell.past,
                                             'text-[#4BA3CC] font-bold': cell.today && selectedDay !== cell.day,
                                             'text-gray-300 cursor-not-allowed': cell.past,
                                             'hover:bg-[#E8F4FB] hover:text-[#1B2D6B]': !cell.past && selectedDay !== cell.day
@@ -276,7 +276,8 @@ function bookingForm() {
             for (let d = 1; d <= daysInMonth; d++) {
                 const date = new Date(this.calYear, this.calMonth, d);
                 const todayMid = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-                cells.push({ key: d, day: d, past: date < todayMid, today: date.toDateString() === today.toDateString() });
+                const dateStr = this.calYear + '-' + String(this.calMonth+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+                cells.push({ key: d, day: d, date: dateStr, past: date < todayMid, today: date.toDateString() === today.toDateString() });
             }
             return cells;
         },
@@ -310,8 +311,8 @@ function bookingForm() {
             }
         },
 
-        prevMonth() { if (this.calMonth === 0) { this.calMonth = 11; this.calYear--; } else this.calMonth--; },
-        nextMonth() { if (this.calMonth === 11) { this.calMonth = 0; this.calYear++; } else this.calMonth++; },
+        prevMonth() { this.selectedDay = null; this.selectedTime = null; this.slots = []; if (this.calMonth === 0) { this.calMonth = 11; this.calYear--; } else this.calMonth--; },
+        nextMonth() { this.selectedDay = null; this.selectedTime = null; this.slots = []; if (this.calMonth === 11) { this.calMonth = 0; this.calYear++; } else this.calMonth++; },
 
         async loadSlots() {
             if (!this.selectedServiceId || !this.selectedDay) {

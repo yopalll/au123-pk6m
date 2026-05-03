@@ -2,12 +2,14 @@
 
 namespace App\Services;
 
+use App\Constants\OrderStatus;
 use App\Models\OrderDetail;
 use App\Models\Salon;
 use App\Models\Service;
 use App\Models\Staff;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Computes available booking slots for a given (salon, service, date, staff?) tuple.
@@ -59,11 +61,22 @@ class BookingSlotService
                 ->where('is_available', true),
             ]);
 
+        // BUG-10: Only show staff capable of delivering this service when
+        // the salon has configured the staff_service pivot for it.
+        if (DB::table('staff_service')->where('id_service', $service->id_service)->exists()) {
+            $staffQuery->whereHas('services', fn ($q) => $q->where('service.id_service', $service->id_service));
+        }
+
         if ($preferredStaffId) {
             $staffQuery->where('id_staff', $preferredStaffId);
         }
 
         $staffList = $staffQuery->get();
+
+        // BUG-09: Deterministically handle empty staff roster.
+        if ($staffList->isEmpty()) {
+            return collect();
+        }
 
         // Pull all OrderDetail rows for those staff on the target date in one query.
         $busyByStaff = $this->busyByStaff(
@@ -189,7 +202,7 @@ class BookingSlotService
             ->whereIn('id_staff', $staffIds)
             ->whereHas('order', fn ($q) => $q
                 ->whereDate('date_order', $date->toDateString())
-                ->whereNotIn('status', ['canceled']),
+                ->whereNotIn('status', [OrderStatus::CANCELED]),
             )
             ->get(['id_staff', 'start_time', 'end_time']);
 
