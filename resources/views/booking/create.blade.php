@@ -105,10 +105,10 @@
                                         @click="!cell.past && selectDate(cell.day)"
                                         :disabled="cell.past"
                                         :class="{
-                                            'bg-[#1B2D6B] text-white': selectedDay === cell.day && !cell.past,
-                                            'text-[#4BA3CC] font-bold': cell.today && selectedDay !== cell.day,
+                                            'bg-[#1B2D6B] text-white': isSelectedCell(cell.day) && !cell.past,
+                                            'text-[#4BA3CC] font-bold': cell.today && !isSelectedCell(cell.day),
                                             'text-gray-300 cursor-not-allowed': cell.past,
-                                            'hover:bg-[#E8F4FB] hover:text-[#1B2D6B]': !cell.past && selectedDay !== cell.day
+                                            'hover:bg-[#E8F4FB] hover:text-[#1B2D6B]': !cell.past && !isSelectedCell(cell.day)
                                         }"
                                         class="w-9 h-9 rounded-full flex items-center justify-center text-sm mx-auto transition-all">
                                     <span x-text="cell.day"></span>
@@ -248,6 +248,10 @@ function bookingForm() {
         selectedServicePrice: 0,
         selectedServiceDuration: 0,
         selectedDay: null,
+        // Year/month the user picked the day in. Without this, day-15
+        // stays highlighted when you scroll past it to a new month.
+        selectedYear: null,
+        selectedMonth: null,
         selectedTime: null,
         selectedStaffId: 0,
         selectedStaffName: 'Any staff',
@@ -258,14 +262,24 @@ function bookingForm() {
 
         init() {},
 
+        // True only when the cell's day is the one the user actually chose,
+        // AND the calendar is still showing the month they chose it in.
+        isSelectedCell(day) {
+            return this.selectedDay === day
+                && this.selectedYear === this.calYear
+                && this.selectedMonth === this.calMonth;
+        },
+
         get monthLabel() {
             const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
             return months[this.calMonth] + ' ' + this.calYear;
         },
 
         get bookingDate() {
-            if (!this.selectedDay) return '';
-            return this.calYear + '-' + String(this.calMonth+1).padStart(2,'0') + '-' + String(this.selectedDay).padStart(2,'0');
+            if (!this.selectedDay || this.selectedYear === null) return '';
+            return this.selectedYear
+                + '-' + String(this.selectedMonth + 1).padStart(2,'0')
+                + '-' + String(this.selectedDay).padStart(2,'0');
         },
 
         get calendarCells() {
@@ -293,6 +307,8 @@ function bookingForm() {
 
         selectDate(day) {
             this.selectedDay = day;
+            this.selectedYear = this.calYear;
+            this.selectedMonth = this.calMonth;
             this.selectedTime = null;
             this.loadSlots();
         },

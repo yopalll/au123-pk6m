@@ -176,15 +176,28 @@
         <p class="text-white/70 text-sm mb-6 max-w-lg mx-auto">
             New treatment guides, salon profiles, and trend reports — once a fortnight, no fluff.
         </p>
-        <form action="#" method="POST" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+
+        @if (session('success'))
+            <div class="max-w-md mx-auto mb-4 p-3 rounded-full bg-white/10 border border-white/20 text-sm text-white">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <form action="{{ route('newsletter.subscribe') }}" method="POST" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             @csrf
             <input type="email" name="email" required placeholder="you@example.com"
+                   value="{{ old('email') }}"
                    class="flex-1 px-4 py-3 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/50 outline-none focus:bg-white/15" />
             <button type="submit"
                     class="px-6 py-3 bg-white text-[#1B2D6B] font-bold rounded-full hover:bg-[#E8F4FB] transition-colors">
                 Subscribe
             </button>
         </form>
+
+        @error('email')
+            <p class="text-xs text-red-300 mt-2">{{ $message }}</p>
+        @enderror
+
         <p class="text-xs text-white/50 mt-3">
             We'll never share your email. Unsubscribe any time.
         </p>

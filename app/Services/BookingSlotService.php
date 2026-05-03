@@ -7,7 +7,9 @@ use App\Models\Salon;
 use App\Models\Service;
 use App\Models\Staff;
 use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Computes available booking slots for a given (salon, service, date, staff?) tuple.
@@ -46,9 +48,7 @@ class BookingSlotService
             : CarbonImmutable::createFromTime(20, 0);
 
         // Schedules for active staff working at this salon on this weekday.
-        // We accept staff that are bookable for any service (no staff_service
-        // constraint here — most salons don't pivot specific services to staff
-        // in this dataset). preferredStaffId narrows further.
+        // preferredStaffId narrows to a specific staff member.
         $weekday = ucfirst(strtolower($date->englishDayOfWeek));
 
         $staffQuery = Staff::query()
@@ -59,11 +59,29 @@ class BookingSlotService
                 ->where('is_available', true),
             ]);
 
+        // Honour the staff_service pivot when at least one row exists for
+        // this service. If no rows are seeded (most of the live data),
+        // every active staff is treated as bookable for every service —
+        // so the system stays usable in dev / before pivots are populated.
+        if ($this->serviceHasStaffPivot($service->id_service)) {
+            $staffQuery->whereHas('services', fn (Builder $q) => $q
+                ->where('service.id_service', $service->id_service)
+            );
+        }
+
         if ($preferredStaffId) {
             $staffQuery->where('id_staff', $preferredStaffId);
         }
 
         $staffList = $staffQuery->get();
+
+        // Salon hasn't onboarded any staff (or none qualified for this
+        // service via staff_service). Returning an empty collection lets
+        // the wizard show a clean "no slots" empty-state instead of
+        // booking against id_staff = null in a confusing way.
+        if ($staffList->isEmpty()) {
+            return collect();
+        }
 
         // Pull all OrderDetail rows for those staff on the target date in one query.
         $busyByStaff = $this->busyByStaff(
@@ -98,13 +116,6 @@ class BookingSlotService
                     'id'   => (int) $staff->id_staff,
                     'name' => $staff->name,
                 ];
-            }
-
-            // No staff = closed slot, but a salon without staff-records seeded yet
-            // should still be usable — fall back to "any staff" if no schedules
-            // exist for the entire roster on this day.
-            if (empty($availableStaff) && $staffList->every(fn ($s) => $s->schedules->isEmpty())) {
-                $availableStaff = [['id' => 0, 'name' => 'Any staff']];
             }
 
             if (! empty($availableStaff)) {
@@ -173,6 +184,24 @@ class BookingSlotService
         $first = $slot['staff'][0] ?? null;
 
         return $first && $first['id'] !== 0 ? (int) $first['id'] : null;
+    }
+
+    /**
+     * Cheap check (cached per request) for whether this service has any
+     * staff_service rows. If it does, we narrow the staff list; otherwise
+     * we treat every active staff as bookable.
+     */
+    protected function serviceHasStaffPivot(int $idService): bool
+    {
+        static $cache = [];
+
+        if (! array_key_exists($idService, $cache)) {
+            $cache[$idService] = DB::table('staff_service')
+                ->where('id_service', $idService)
+                ->exists();
+        }
+
+        return $cache[$idService];
     }
 
     /**

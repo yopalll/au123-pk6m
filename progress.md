@@ -26,7 +26,7 @@
 | | Review & Rating (form + observer aggregate) | **SELESAI** | 90% |
 | | Payment Flow (Midtrans Snap Sandbox) | **SELESAI** | 90% |
 
-**Estimasi progress total: ~96%** *(updated 3 Mei 2026 setelah Bug Audit fix + TUGAS 7 (Dummy Pages Polish) selesai)*
+**Estimasi progress total: ~98%** *(updated 3 Mei 2026 setelah Polish Round (BUG-08/09/10 + form backends) selesai)*
 
 ---
 
@@ -217,6 +217,17 @@ Semua dialihbahasakan ke Bahasa Inggris:
 - [x] BUG-04: Owner monthly revenue widget includes `confirmed` (paid) orders, not just `success`
 - [x] BUG-05: `order_detail.status` standardised on `canceled` (was `cancelled`)
 - [x] BUG-06: Owner schedule form uses canonical capitalized day keys (`Monday` not `monday`)
+- [x] BUG-08: Calendar `selectedDay` highlight no longer carries across month navigation (track `selectedYear/Month` alongside)
+- [x] BUG-09: `BookingSlotService` dead-code "Any staff" fallback removed; service returns empty collection when salon has no qualifying staff
+- [x] BUG-10: `BookingSlotService` honours `staff_service` pivot when populated (cached per-request); falls back to "all active staff" when pivot is empty (dev / unseeded data)
+
+### Form Backends (3 Mei 2026)  ✅
+- [x] `MitraApplication` model + `mitra_applications` table (status: new/contacted/approved/rejected)
+- [x] `MitraController::apply` — validates, persists, emails partnerships team via `Mail::raw` (best-effort; never blocks the user)
+- [x] `StaticController::submitContact` — emails support inbox with reply-to set to the customer
+- [x] `StaticController::subscribeNewsletter` — logs the email (placeholder for real list provider integration)
+- [x] All three forms (`/mitra`, `/contact`, `/treatment-files` newsletter) now show success / validation feedback in-page
+- [x] `/mitra` form switches to a "Application received" success card after submit (post-redirect-get pattern)
 
 ---
 

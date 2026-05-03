@@ -28,6 +28,7 @@ Route::get('/gift-card', [GiftCardController::class, 'index'])->name('gift-card'
 Route::get('/lookbook', [LookbookController::class, 'index'])->name('lookbook');
 Route::get('/treatment-files', [TreatmentFilesController::class, 'index'])->name('treatment-files');
 Route::get('/mitra', [MitraController::class, 'index'])->name('mitra');
+Route::post('/mitra/apply', [MitraController::class, 'apply'])->name('mitra.apply');
 
 // ── Static / informational pages (footer links) ───────────────────────────
 Route::get('/about',   [StaticController::class, 'about'])->name('static.about');
@@ -38,6 +39,8 @@ Route::get('/contact', [StaticController::class, 'contact'])->name('static.conta
 Route::get('/privacy', [StaticController::class, 'privacy'])->name('static.privacy');
 Route::get('/terms',   [StaticController::class, 'terms'])->name('static.terms');
 Route::get('/cookies', [StaticController::class, 'cookies'])->name('static.cookies');
+Route::post('/contact', [StaticController::class, 'submitContact'])->name('static.contact.submit');
+Route::post('/newsletter', [StaticController::class, 'subscribeNewsletter'])->name('newsletter.subscribe');
 
 /*
 |--------------------------------------------------------------------------

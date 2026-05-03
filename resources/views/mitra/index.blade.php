@@ -208,60 +208,90 @@
             </p>
         </div>
 
-        <form action="#" method="POST" class="bg-white rounded-2xl p-8 shadow-2xl space-y-4">
-            @csrf
-            <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Salon name *</label>
-                    <input type="text" name="nama_salon" required placeholder="e.g. The Beauty Lounge"
-                           class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] transition-colors" />
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Owner name *</label>
-                    <input type="text" name="nama_pemilik" required
-                           class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] transition-colors" />
-                </div>
+        @if (session('mitra_applied'))
+            <div class="bg-white rounded-2xl p-8 shadow-2xl text-center">
+                <div class="text-5xl mb-4">✓</div>
+                <h3 class="text-2xl text-[#1B2D6B] mb-2" style="font-family:'DM Serif Display',serif">
+                    Application received
+                </h3>
+                <p class="text-sm text-gray-600 max-w-md mx-auto">
+                    {{ session('success') }}
+                </p>
+                <a href="{{ route('home') }}" class="inline-block mt-6 text-sm text-[#4BA3CC] hover:underline">
+                    Back to homepage
+                </a>
             </div>
+        @else
+            <form action="{{ route('mitra.apply') }}" method="POST" class="bg-white rounded-2xl p-8 shadow-2xl space-y-4">
+                @csrf
 
-            <div class="grid md:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
-                    <input type="email" name="email" required
-                           class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] transition-colors" />
+                @if ($errors->any())
+                    <div class="p-3 rounded-lg bg-red-50 border border-red-100 text-sm text-red-700">
+                        <ul class="list-disc list-inside">
+                            @foreach ($errors->all() as $err)
+                                <li>{{ $err }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Salon name *</label>
+                        <input type="text" name="nama_salon" required placeholder="e.g. The Beauty Lounge"
+                               value="{{ old('nama_salon') }}"
+                               class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] transition-colors" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Owner name *</label>
+                        <input type="text" name="nama_pemilik" required
+                               value="{{ old('nama_pemilik') }}"
+                               class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] transition-colors" />
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
-                    <input type="tel" name="phone" required placeholder="07xxx xxx xxx"
-                           class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] transition-colors" />
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                        <input type="email" name="email" required
+                               value="{{ old('email') }}"
+                               class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] transition-colors" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
+                        <input type="tel" name="phone" required placeholder="07xxx xxx xxx"
+                               value="{{ old('phone') }}"
+                               class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] transition-colors" />
+                    </div>
                 </div>
-            </div>
 
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">City *</label>
-                <select name="kota" class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] transition-colors bg-white">
-                    <option value="">Choose a city…</option>
-                    @foreach ($kotas ?? [] as $kota)
-                        <option value="{{ $kota->id_kota }}">{{ $kota->nama_kota }}</option>
-                    @endforeach
-                </select>
-            </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                    <select name="kota" class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] transition-colors bg-white">
+                        <option value="">Choose a city…</option>
+                        @foreach ($kotas ?? [] as $kota)
+                            <option value="{{ $kota->id_kota }}" @selected(old('kota') == $kota->id_kota)>{{ $kota->nama_kota }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Tell us about your salon</label>
-                <textarea name="catatan" rows="4" placeholder="What treatments do you offer? How many staff? Anything we should know?"
-                          class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] transition-colors resize-none"></textarea>
-            </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Tell us about your salon</label>
+                    <textarea name="catatan" rows="4" placeholder="What treatments do you offer? How many staff? Anything we should know?"
+                              class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] transition-colors resize-none">{{ old('catatan') }}</textarea>
+                </div>
 
-            <button type="submit"
-                    class="w-full py-3.5 bg-[#1B2D6B] text-white font-semibold rounded-full hover:bg-[#4BA3CC] transition-colors mt-2">
-                Apply now — it's free →
-            </button>
+                <button type="submit"
+                        class="w-full py-3.5 bg-[#1B2D6B] text-white font-semibold rounded-full hover:bg-[#4BA3CC] transition-colors mt-2">
+                    Apply now — it's free →
+                </button>
 
-            <p class="text-xs text-gray-400 text-center">
-                By applying, you agree to VIYGO's <a href="{{ route('static.terms') }}" class="underline">Terms</a>
-                and <a href="{{ route('static.privacy') }}" class="underline">Privacy Policy</a>.
-            </p>
-        </form>
+                <p class="text-xs text-gray-400 text-center">
+                    By applying, you agree to VIYGO's <a href="{{ route('static.terms') }}" class="underline">Terms</a>
+                    and <a href="{{ route('static.privacy') }}" class="underline">Privacy Policy</a>.
+                </p>
+            </form>
+        @endif
     </div>
 </div>
 
