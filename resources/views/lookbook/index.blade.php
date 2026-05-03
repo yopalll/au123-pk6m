@@ -40,7 +40,7 @@
 {{-- Featured editorial --}}
 <div class="max-w-6xl mx-auto px-6 py-12">
     <div class="grid md:grid-cols-2 gap-6">
-        <div class="relative aspect-[4/5] md:aspect-auto md:row-span-2 rounded-2xl overflow-hidden bg-gradient-to-br from-[#1B2D6B] to-[#4BA3CC] flex items-end p-6">
+        <div class="relative aspect-[4/5] md:aspect-auto md:row-span-2 rounded-2xl overflow-hidden bg-linear-to-br from-[#1B2D6B] to-[#4BA3CC] flex items-end p-6">
             <div class="text-white">
                 <span class="text-xs font-bold text-white/70 uppercase tracking-wider">Editor's Pick</span>
                 <h2 class="text-3xl mt-2 mb-2" style="font-family:'DM Serif Display',serif">
@@ -99,7 +99,7 @@
             <div class="break-inside-avoid mb-4 rounded-2xl overflow-hidden bg-white border border-gray-100 hover:border-[#C5E1F0] hover:shadow-lg transition-all group cursor-pointer">
                 {{-- Aspect varies for visual rhythm --}}
                 <div class="{{ ['aspect-square','aspect-[3/4]','aspect-[4/5]','aspect-[5/6]'][$i % 4] }}
-                            bg-gradient-to-br from-[#E8F4FB] to-[#C5E1F0] flex items-center justify-center text-5xl
+                            bg-linear-to-br from-[#E8F4FB] to-[#C5E1F0] flex items-center justify-center text-5xl
                             group-hover:scale-105 transition-transform">
                     {{ $emoji }}
                 </div>
@@ -141,7 +141,7 @@
                 ['Jordan Okafor','Brow specialist','Birmingham','🤨'],
             ] as [$name, $role, $city, $emoji])
                 <div class="bg-white rounded-2xl p-6 text-center border border-gray-100 hover:border-[#C5E1F0] transition-all cursor-pointer">
-                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-[#E8F4FB] to-[#C5E1F0] mx-auto mb-3 flex items-center justify-center text-3xl">
+                    <div class="w-20 h-20 rounded-full bg-linear-to-br from-[#E8F4FB] to-[#C5E1F0] mx-auto mb-3 flex items-center justify-center text-3xl">
                         {{ $emoji }}
                     </div>
                     <div class="font-semibold text-gray-900">{{ $name }}</div>

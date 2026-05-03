@@ -11,7 +11,7 @@ class AkunController extends Controller
     public function index()
     {
         $upcomingCount = Order::where('id_user', auth()->id())
-            ->where('status', 'pending')
+            ->whereIn('status', ['pending', 'confirmed'])
             ->count();
 
         $favouriteCount = auth()->user()->favourites()->count();
@@ -64,7 +64,7 @@ class AkunController extends Controller
     {
         $user = auth()->user();
 
-        if ($user->favourites()->where('salon.id_salon', $salon->id_salon)->exists()) {
+        if ($user->favourites()->whereKey($salon->id_salon)->exists()) {
             $user->favourites()->detach($salon->id_salon);
             $favourited = false;
         } else {
@@ -90,12 +90,13 @@ class AkunController extends Controller
     public function updatePengaturan(Request $request)
     {
         $request->validate([
-            'first_name' => 'required|string|max:100',
-            'last_name'  => 'nullable|string|max:100',
-            'email'      => 'required|email|unique:users,email,' . auth()->id() . ',id_user',
+            'first_name'   => 'required|string|max:100',
+            'last_name'    => 'nullable|string|max:100',
+            'email'        => 'required|email|unique:users,email,' . auth()->id() . ',id_user',
+            'phone_number' => 'nullable|string|max:30|regex:/^[+\d\s\-()]+$/',
         ]);
 
-        auth()->user()->update($request->only('first_name', 'last_name', 'email'));
+        auth()->user()->update($request->only('first_name', 'last_name', 'email', 'phone_number'));
 
         return back()->with('success', 'Profile updated successfully.');
     }

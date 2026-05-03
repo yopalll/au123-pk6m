@@ -225,6 +225,9 @@ class BookingSlotService
         $by = [];
 
         foreach ($rows as $row) {
+            if (! $row->start_time || ! $row->end_time) {
+                continue;
+            }
             $by[$row->id_staff][] = [
                 'start' => CarbonImmutable::parse($row->start_time),
                 'end'   => CarbonImmutable::parse($row->end_time),

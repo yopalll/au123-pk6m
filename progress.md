@@ -1,7 +1,7 @@
 # VIYGO — Progress Tracker: Treatwell.co.uk Clone
 
-> **Update terakhir:** 1 Mei 2026 — 23:00 WIB
-> **Status branch aktif:** `go-fresh` (sync dengan remote)
+> **Update terakhir:** 3 Mei 2026 — Cleanup Round
+> **Status branch aktif:** `feature/polish-round`
 > **Referensi:** [treatwell.co.uk](https://www.treatwell.co.uk)
 
 ---
@@ -20,13 +20,15 @@
 | | Frontend — Halaman Salon (+ Leaflet minimap) | **SELESAI** | 90% |
 | | Frontend — Booking Flow (3-step wizard, dynamic slots) | **SELESAI** | 95% |
 | | Auth — Login/Register/2FA (Fortify) | **SELESAI** | 95% |
-| | Dashboard User (Akun) | **SELESAI** | 70% |
+| | Dashboard User (Akun) | **SELESAI** | 85% |
 | | Dashboard Salon Owner | **SELESAI** | 90% |
 | | Admin Panel | **SELESAI** | 100% |
-| | Review & Rating (form + observer aggregate) | **SELESAI** | 90% |
-| | Payment Flow (Midtrans Snap Sandbox) | **SELESAI** | 90% |
+| | Review & Rating (form + observer aggregate) | **SELESAI** | 95% |
+| | Payment Flow (Midtrans Snap Sandbox) | **SELESAI** | 95% |
+| | Security & Anti-Spam | **SELESAI** | 80% |
+| | Partnerships Admin UI (MitraApplicationResource) | **SELESAI** | 100% |
 
-**Estimasi progress total: ~98%** *(updated 3 Mei 2026 setelah Polish Round (BUG-08/09/10 + form backends) selesai)*
+**Estimasi progress total: ~99%** *(updated 3 Mei 2026 setelah Cleanup Round: MitraApplicationResource + throttle + TW4 sweep + 4 bug fixes + bookings:complete command)*
 
 ---
 

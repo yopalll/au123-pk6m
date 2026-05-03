@@ -35,7 +35,7 @@
                     ['They redeem','Recipient enters the code at checkout — discount applies automatically. Unused balance rolls over.'],
                 ] as $i => [$title, $desc])
                     <div class="flex gap-4">
-                        <div class="w-9 h-9 rounded-full bg-[#1B2D6B] text-white flex items-center justify-center text-sm font-bold flex-shrink-0">
+                        <div class="w-9 h-9 rounded-full bg-[#1B2D6B] text-white flex items-center justify-center text-sm font-bold shrink-0">
                             {{ $i + 1 }}
                         </div>
                         <div>
@@ -50,7 +50,7 @@
         {{-- Sample gift-card visual --}}
         <div class="relative">
             <div class="absolute inset-0 bg-[#4BA3CC]/20 blur-3xl rounded-full"></div>
-            <div class="relative bg-gradient-to-br from-[#1B2D6B] via-[#2C4189] to-[#4BA3CC] rounded-2xl p-8 text-white shadow-2xl rotate-1 hover:rotate-0 transition-transform">
+            <div class="relative bg-linear-to-br from-[#1B2D6B] via-[#2C4189] to-[#4BA3CC] rounded-2xl p-8 text-white shadow-2xl rotate-1 hover:rotate-0 transition-transform">
                 <div class="flex items-start justify-between mb-12">
                     <div class="text-3xl font-bold tracking-wide" style="font-family:'DM Serif Display',serif">VIYGO</div>
                     <span class="text-2xl">🎁</span>

@@ -10,7 +10,7 @@
                 <div class="flex items-center gap-2 mb-4">
                     <img src="{{ asset('icon.png') }}?v=3"
                          alt="VIYGO icon"
-                         class="h-8 w-8 object-contain flex-shrink-0"
+                         class="h-8 w-8 object-contain shrink-0"
                          onerror="this.style.display='none'" />
                     <img src="{{ asset('white.png') }}?v=3"
                          alt="VIYGO"

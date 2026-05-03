@@ -79,9 +79,16 @@ class BookingController extends Controller
             ->findOrFail($data['id_service']);
 
         $date = CarbonImmutable::parse($data['tanggal']);
-        $staffId = $data['id_staff'] ?? null;
-        if ($staffId === 0) {
-            $staffId = null;
+        $staffId = isset($data['id_staff']) && (int) $data['id_staff'] !== 0
+            ? (int) $data['id_staff']
+            : null;
+
+        // Ensure the requested staff belongs to this salon and is active.
+        if ($staffId) {
+            Staff::where('id_staff', $staffId)
+                ->where('id_salon', $salon->id_salon)
+                ->where('status', 'active')
+                ->firstOrFail();
         }
 
         // Re-verify the slot is still bookable. Two customers racing for the

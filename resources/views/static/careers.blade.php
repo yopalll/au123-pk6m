@@ -11,7 +11,7 @@
 <div class="max-w-5xl mx-auto px-6 py-16 space-y-12">
 
     {{-- See README-GAMBAR-STATIS.md → img-careers-team --}}
-    <div class="aspect-[16/7] rounded-2xl bg-gradient-to-br from-[#E8F4FB] to-[#C5E1F0] flex items-center justify-center text-6xl">
+    <div class="aspect-[16/7] rounded-2xl bg-linear-to-br from-[#E8F4FB] to-[#C5E1F0] flex items-center justify-center text-6xl">
         🤝
     </div>
 

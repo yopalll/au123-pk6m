@@ -50,7 +50,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="text-right flex-shrink-0">
+                        <div class="text-right shrink-0">
                             <div class="text-2xl font-bold text-[#1B2D6B]">
                                 @if ($promo->tipe_promo === 'percent')
                                     {{ rtrim(rtrim(number_format($promo->diskon, 2, '.', ''), '0'), '.') }}%

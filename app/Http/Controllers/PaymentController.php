@@ -146,16 +146,19 @@ class PaymentController extends Controller
             return response()->json(['message' => 'invalid signature'], 403);
         }
 
-        $order = Order::where('kode_order', $orderCode)->first();
-
-        if (! $order) {
+        // Quick existence check — no lock yet (lock is inside the transaction).
+        if (! Order::where('kode_order', $orderCode)->exists()) {
             return response()->json(['message' => 'order not found'], 404);
         }
 
         $transactionStatus = $notification->transaction_status;
         $fraudStatus       = $notification->fraud_status ?? null;
 
-        DB::transaction(function () use ($order, $notification, $transactionStatus, $fraudStatus) {
+        DB::transaction(function () use ($orderCode, $notification, $transactionStatus, $fraudStatus) {
+            // Re-fetch with pessimistic lock so concurrent webhook deliveries
+            // for the same order are serialised — only one thread proceeds.
+            $order = Order::where('kode_order', $orderCode)->lockForUpdate()->firstOrFail();
+
             $payment = Pembayaran::firstOrNew(['id_order' => $order->id_order]);
 
             $payment->id_user           = $order->id_user;

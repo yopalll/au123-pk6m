@@ -46,7 +46,7 @@
     <div class="grid md:grid-cols-3 gap-8">
         {{-- Big feature --}}
         <div class="md:col-span-2 group cursor-pointer">
-            <div class="aspect-[16/9] rounded-2xl overflow-hidden bg-gradient-to-br from-[#1B2D6B] via-[#2C4189] to-[#4BA3CC] mb-5 flex items-center justify-center text-7xl">
+            <div class="aspect-video rounded-2xl overflow-hidden bg-linear-to-br from-[#1B2D6B] via-[#2C4189] to-[#4BA3CC] mb-5 flex items-center justify-center text-7xl">
                 💇
             </div>
             <span class="text-xs font-bold text-[#4BA3CC] uppercase tracking-wider">Featured · Hair</span>
@@ -74,7 +74,7 @@
                 ['💆','Massage','The mental health benefits of regular massage','6 min'],
             ] as [$emoji, $cat, $title, $read])
                 <div class="group cursor-pointer flex gap-4">
-                    <div class="w-24 h-24 rounded-xl bg-gradient-to-br from-[#E8F4FB] to-[#C5E1F0] flex items-center justify-center text-3xl flex-shrink-0">
+                    <div class="w-24 h-24 rounded-xl bg-linear-to-br from-[#E8F4FB] to-[#C5E1F0] flex items-center justify-center text-3xl shrink-0">
                         {{ $emoji }}
                     </div>
                     <div>
@@ -113,7 +113,7 @@
                 ['What to ask your colourist before you sit down','Hair','💇','Hide Salon','5 min'],
             ] as [$title, $cat, $emoji, $author, $read])
                 <article class="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#C5E1F0] hover:shadow-lg transition-all group cursor-pointer">
-                    <div class="aspect-[16/10] bg-gradient-to-br from-[#E8F4FB] to-[#C5E1F0] flex items-center justify-center text-5xl">
+                    <div class="aspect-[16/10] bg-linear-to-br from-[#E8F4FB] to-[#C5E1F0] flex items-center justify-center text-5xl">
                         {{ $emoji }}
                     </div>
                     <div class="p-5">

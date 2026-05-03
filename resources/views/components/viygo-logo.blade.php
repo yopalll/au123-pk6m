@@ -5,7 +5,7 @@
 --}}
 
 <a href="{{ route('home') }}"
-   class="flex-shrink-0 flex items-center"
+   class="shrink-0 flex items-center"
    aria-label="VIYGO — Home"
    x-data="{
        show: 0,

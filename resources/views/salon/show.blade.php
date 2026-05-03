@@ -82,20 +82,20 @@
             {{-- Info --}}
             <div class="flex flex-col gap-2 mb-6 text-sm text-gray-600" id="about">
                 <div class="flex items-center gap-2">
-                    <svg class="w-4 h-4 text-[#4BA3CC] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4 text-[#4BA3CC] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>
                     </svg>
                     <span>{{ $salon->alamat }}@if($salon->kota?->nama), {{ $salon->kota->nama }}@endif</span>
                 </div>
                 <div class="flex items-center gap-2">
-                    <svg class="w-4 h-4 text-[#4BA3CC] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4 text-[#4BA3CC] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                     </svg>
                     <span>Open: {{ \Carbon\Carbon::parse($salon->opening_time)->format('H:i') }} – {{ \Carbon\Carbon::parse($salon->closing_time)->format('H:i') }}</span>
                 </div>
                 @if ($salon->phone_number)
                     <div class="flex items-center gap-2">
-                        <svg class="w-4 h-4 text-[#4BA3CC] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 text-[#4BA3CC] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.5a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.72 6.72l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
                         </svg>
                         <a href="tel:{{ $salon->phone_number }}" class="text-[#4BA3CC] hover:underline">{{ $salon->phone_number }}</a>
@@ -149,7 +149,7 @@
                                         @endif
                                         <div class="text-xs text-gray-400 mt-0.5">{{ $svc->durasi }} min</div>
                                     </div>
-                                    <div class="flex items-center gap-4 flex-shrink-0">
+                                    <div class="flex items-center gap-4 shrink-0">
                                         <div class="text-right">
                                             <div class="text-sm font-semibold text-gray-900">£{{ number_format($svc->harga, 2, '.', ',') }}</div>
                                         </div>
@@ -250,7 +250,7 @@
         </div>
 
         {{-- Right: Sticky Booking Widget --}}
-        <div class="hidden lg:block w-72 flex-shrink-0">
+        <div class="hidden lg:block w-72 shrink-0">
             <div class="sticky top-[160px] border border-gray-200 rounded-2xl p-6 shadow-md">
                 <h3 class="font-semibold text-gray-900 mb-4">Pick a Service</h3>
                 <div class="space-y-2 mb-4 max-h-64 overflow-y-auto">

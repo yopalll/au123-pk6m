@@ -28,7 +28,7 @@
                                 'bg-[#1B2D6B] text-white': step >= {{ $i+1 }},
                                 'bg-gray-100 text-gray-400': step < {{ $i+1 }}
                              }"
-                             class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 transition-colors">
+                             class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 transition-colors">
                             <span x-show="step > {{ $i+1 }}">✓</span>
                             <span x-show="step <= {{ $i+1 }}">{{ $i+1 }}</span>
                         </div>
@@ -59,7 +59,7 @@
                                 @endif
                                 <div class="text-xs text-gray-400 mt-1">⏱ {{ $svc->durasi }} min</div>
                             </div>
-                            <div class="text-right flex-shrink-0 ml-4">
+                            <div class="text-right shrink-0 ml-4">
                                 <div class="font-bold text-[#1B2D6B]">£{{ number_format($svc->harga, 2, '.', ',') }}</div>
                                 <div x-show="selectedServiceId === {{ $svc->id_service }}"
                                      class="text-xs text-[#4BA3CC] font-semibold mt-1">✓ Selected</div>
@@ -211,10 +211,10 @@
         </div>
 
         {{-- ── Right: Summary ─────────────────────────────────────────── --}}
-        <div class="hidden lg:block w-64 flex-shrink-0">
+        <div class="hidden lg:block w-64 shrink-0">
             <div class="sticky top-[160px] border border-gray-200 rounded-2xl p-5">
                 <div class="flex items-center gap-3 mb-4">
-                    <div class="w-12 h-12 rounded-xl bg-[#E8F4FB] flex items-center justify-center text-xl flex-shrink-0">✂️</div>
+                    <div class="w-12 h-12 rounded-xl bg-[#E8F4FB] flex items-center justify-center text-xl shrink-0">✂️</div>
                     <div>
                         <div class="font-semibold text-sm text-gray-900">{{ $salon->nama_salon }}</div>
                         <div class="text-xs text-gray-400">{{ $salon->kota?->nama }}</div>
