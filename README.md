@@ -1,6 +1,6 @@
 # VIYGO — Beauty & Wellness Marketplace
 
-> A Treatwell-style salon discovery and booking platform built on **Laravel 13 + Livewire Flux**, seeded with 5,700+ real UK salons scraped from Treatwell UK.
+> A Treatwell-style salon discovery and booking platform built on **Laravel 13 + Livewire Flux**, seeded with 8,750+ real UK salons scraped from Treatwell UK.
 >
 > **Status (May 1, 2026):** Public frontend integrated — homepage, search, category, salon detail (with Leaflet minimap), 3-step booking, account dashboard. UI fully in English, prices in £ GBP.
 
@@ -32,7 +32,7 @@ VIYGO is a fully functional Treatwell.co.uk clone that lets users:
 - **Salon owners** can list their salon (public sign-up form on `/mitra`)
 - **Admin panel** is on the roadmap
 
-The catalogue is sourced from a Go-based scraper of Treatwell UK (1,000+ salons in initial drop, 5,700+ after later scrapes; ~190K services).
+The catalogue is sourced from a Go-based scraper of Treatwell UK (1,000+ salons in initial drop, 8,750+ after later scrapes; ~190K services).
 
 ---
 
@@ -255,9 +255,10 @@ php artisan db:seed --class=SalonSlugBackfillSeeder
 # 8. Apply unique index on slug (final migration step)
 php artisan migrate
 
-# 9. Frontend assets
+# 9. Frontend assets (REQUIRED — without this step, the app returns a 500 error)
 npm install
-npm run dev # or `npm run build` for production
+npm run build          # compiles Vite manifest into public/build/
+# For development with hot-reload, run `npm run dev` instead.
 ```
 
 Then visit `http://localhost:8000/` — the homepage should load with featured salons.

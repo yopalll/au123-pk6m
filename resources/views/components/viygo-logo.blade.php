@@ -1,38 +1,37 @@
 {{--
-    Component: VIYGO logo
-    Props:
-      - $dark (bool, default false) — set true when logo is on a dark background.
-        dark=false → icon.png + dark.png  (for light navbar)
-        dark=true  → icon.png + white.png (for dark footer / dark sections)
-    Usage:
-      <x-viygo-logo />               ← light background (navbar)
-      <x-viygo-logo :dark="true" />  ← dark background (footer)
+    Component: VIYGO navbar logo — alternates between light.png and dark.png every 20 s.
+    Alpine.js handles the crossfade transition.
+    Usage: <x-viygo-logo />
 --}}
 
-@props(['dark' => false])
-
 <a href="{{ route('home') }}"
-   class="flex-shrink-0 flex items-center gap-2"
-   aria-label="VIYGO — Home">
+   class="flex-shrink-0 flex items-center"
+   aria-label="VIYGO — Home"
+   x-data="{
+       show: 0,
+       start() {
+           setInterval(() => { this.show = this.show === 0 ? 1 : 0; }, 20000);
+       }
+   }"
+   x-init="start()">
 
-    {{-- Square icon mark (used in both variants) --}}
-    <img src="{{ asset('icon.png') }}?v=2"
-         alt=""
-         class="h-8 w-8 object-contain flex-shrink-0"
-         onerror="this.style.display='none'" />
+    {{-- Crossfade wrapper — fixed size so layout never jumps --}}
+    <div class="relative h-8" style="width:130px;">
 
-    {{-- Wordmark: dark on light background --}}
-    @if (!$dark)
-        <img src="{{ asset('dark.png') }}?v=2"
+        {{-- light.png (logo variant 1) --}}
+        <img src="{{ asset('light.png') }}?v=3"
              alt="VIYGO"
-             class="h-6 object-contain"
+             class="absolute inset-0 h-8 w-auto max-w-full object-contain object-left transition-opacity duration-700"
+             :class="show === 0 ? 'opacity-100' : 'opacity-0'"
              onerror="this.style.display='none'" />
-    @else
-        {{-- Wordmark: white on dark background --}}
-        <img src="{{ asset('white.png') }}?v=2"
+
+        {{-- dark.png (logo variant 2) --}}
+        <img src="{{ asset('dark.png') }}?v=3"
              alt="VIYGO"
-             class="h-6 object-contain"
+             class="absolute inset-0 h-8 w-auto max-w-full object-contain object-left transition-opacity duration-700"
+             :class="show === 1 ? 'opacity-100' : 'opacity-0'"
              onerror="this.style.display='none'" />
-    @endif
+
+    </div>
 
 </a>

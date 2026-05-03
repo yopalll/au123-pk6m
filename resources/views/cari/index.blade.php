@@ -54,7 +54,7 @@
 </div>
 
 {{-- ───── SORT CHIPS ───────────────────────────────────────────────────── --}}
-<div class="bg-white border-b border-gray-100 sticky top-[105px] z-40 shadow-sm">
+<div id="sort-bar" class="bg-white border-b border-gray-100 sticky z-40 shadow-sm" style="top: var(--navbar-h, 96px);">
     <div class="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 overflow-x-auto scrollbar-hide">
         @php $currentSort = request('sort'); @endphp
         @foreach([
@@ -96,7 +96,7 @@
 
         {{-- Map --}}
         <div class="hidden lg:block w-[420px] flex-shrink-0">
-            <div class="sticky top-[160px]">
+            <div class="sticky" style="top: calc(var(--navbar-h, 96px) + 55px);">
                 <x-leaflet-map
                     id="map-search"
                     height="calc(100vh - 200px)"

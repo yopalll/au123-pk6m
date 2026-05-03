@@ -14,6 +14,9 @@ class Pembayaran extends Model
         'id_order',
         'id_user',
         'metode_pembayaran',
+        'id_transaksi',
+        'snap_token',
+        'raw_response',
         'jumlah_bayar',
         'status_pembayaran',
         'tanggal_bayar',
@@ -24,6 +27,7 @@ class Pembayaran extends Model
         return [
             'jumlah_bayar'  => 'decimal:2',
             'tanggal_bayar' => 'datetime',
+            'raw_response'  => 'array',
         ];
     }
 

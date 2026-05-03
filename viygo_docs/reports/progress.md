@@ -18,15 +18,15 @@
 | | Frontend — Landing Page | **SELESAI** | 90% |
 | | Frontend — Search & Filter | **SELESAI** | 85% |
 | | Frontend — Halaman Salon (+ Leaflet minimap) | **SELESAI** | 90% |
-| | Frontend — Booking Flow (3-step wizard) | **SELESAI** | 75% |
+| | Frontend — Booking Flow (3-step wizard, dynamic slots) | **SELESAI** | 95% |
 | | Auth — Login/Register/2FA (Fortify) | **SELESAI** | 95% |
 | | Dashboard User (Akun) | **SELESAI** | 70% |
-| | Dashboard Salon Owner | **BELUM** | 0% |
-| | Admin Panel | **BELUM** | 0% |
-| | Review & Rating (data kosong, model siap) | **PARSIAL** | 30% |
-| | Payment Flow | **BELUM** | 0% |
+| | Dashboard Salon Owner | **SELESAI** | 90% |
+| | Admin Panel | **SELESAI** | 100% |
+| | Review & Rating (form + observer aggregate) | **SELESAI** | 90% |
+| | Payment Flow (Midtrans Snap Sandbox) | **SELESAI** | 90% |
 
-**Estimasi progress total: ~70%**
+**Estimasi progress total: ~93%** *(updated 2 Mei 2026 setelah PRIORITAS 4 (Smart Booking + Midtrans Snap) selesai)*
 
 ---
 
@@ -44,7 +44,7 @@
 - [x] `kota` — master data kota
 - [x] `kategori` — kategori layanan (sudah ada `slug`)
 - [x] `users` — customer, salon owner, admin (+ 2FA, softDelete)
-- [x] `salon` — profil salon (koordinat, jam buka, rating, soft delete) + **`slug` (unique)** ← BARU 1 Mei 2026
+- [x] `salon` — profil salon (koordinat, jam buka, rating, soft delete) + **`slug` (unique)**
 - [x] `promo` — promo & diskon
 - [x] `service` — layanan salon
 - [x] `staff` — karyawan salon
@@ -54,7 +54,7 @@
 - [x] `staff_schedule` — jadwal kerja staf
 - [x] `staff_service` — pivot staf ↔ layanan
 - [x] `user_promo` — pivot promo
-- [x] `order_detail` — detail layanan + **`catatan` (text nullable)** ← BARU 1 Mei 2026
+- [x] `order_detail` — detail layanan + **`catatan` (text nullable)**
 - [x] `pembayaran` — record pembayaran
 - [x] `sessions` — session table
 
@@ -64,28 +64,32 @@
 - [x] Data Hair, Face, Nails, Body sudah terscrape
 - [x] JSON validator (`database/scripts/validate_json.php`)
 - [x] Seluruh seeder idempotent (aman re-run)
-- [x] **`SalonSlugBackfillSeeder`** untuk backfill 5.767 slug ← BARU 1 Mei 2026
+- [x] **`SalonSlugBackfillSeeder`** untuk backfill 5.767 slug
 
 **Data aktual di database (verified):**
 | Tabel | Records |
 |-------|---------|
-| users | 5.769 |
+| users | 8.752 |
 | kota | 1.709 |
 | kategori | 7.183 |
-| salon | 5.767 (semua punya slug unik) |
+| salon | 8.750 |
 | service | 190.594 |
 | staff | 7.568 |
 | salon_images | 50.492 |
 
 ### 4. Model Eloquent 
 13/13 model dengan relasi lengkap dan SoftDeletes pada model utama.
-**Update 1 Mei 2026:**
-- `Salon` — `slug` ditambahkan ke `$fillable`, `getRouteKeyName()` mengembalikan `slug`
-- `SalonImage` — accessor `url` → alias untuk `image_url`
-- `Kota` — accessor `nama` → alias untuk `nama_kota`
 
 ### 5. Auth Scaffold (Livewire Fortify)
 - [x] `/login`, `/register`, `/settings`, `/settings/security` (2FA)
+
+### 6. Admin Panel (Filament v5.6)
+- [x] Otentikasi `FilamentUser` (hanya `role=admin` & `is_active=true`)
+- [x] Navigation Groups: Marketplace, Transactions, Users
+- [x] 7 Resources: Salon, Kategori, Kota, Service, Order, Review, Promo
+- [x] Relasi Manager: Salon -> Services, Staff, Images. Order -> OrderDetails.
+- [x] Widgets: StatsOverview, LatestOrders
+- [x] Optimasi arsitektur dasar
 
 ---
 
@@ -142,50 +146,63 @@ Semua dialihbahasakan ke Bahasa Inggris:
 - [x] `INTEGRATION_GUIDE.md` — banner COMPLETED + bagian deviations
 - [x] `PROGRESS_REPORT.md` — log per-fase yang dapat dilanjut agent lain
 - [x] `LAPORAN_PROYEK.md` — laporan kerja final
+- [x] `readme-admin.md` — dokumentasi mendalam arsitektur Filament
 
 ---
 
 ## YANG MASIH PERLU DIKERJAKAN
 
-### PRIORITAS 1 — Dashboard Salon Owner
-- [ ] Statistik salon (total booking hari ini/bulan ini)
-- [ ] Manajemen layanan (CRUD `service`)
-- [ ] Manajemen staf (CRUD `staff` + `staff_schedule`)
-- [ ] Daftar order masuk (update status)
-- [ ] Manajemen galeri foto (`salon_images`)
-- [ ] Edit profil salon
+### PRIORITAS 1 — Dashboard Salon Owner  ✅ SELESAI 2 Mei 2026
+- [x] Statistik salon (total booking hari ini/bulan ini, pending, revenue, average rating)
+- [x] Manajemen layanan (CRUD `service` — top-level + relation manager)
+- [x] Manajemen staf (CRUD `staff` + `staff_schedule` relation manager)
+- [x] Daftar order masuk (status update: confirm / mark success / cancel)
+- [x] Manajemen galeri foto (`salon_images` — top-level resource + relation manager, "Make Primary")
+- [x] Edit profil salon (terbatas — fields safety-locked: status, slug, rating)
+- [x] Filament Panel kedua (`OwnerPanelProvider`) di `/owner`, scoped per `id_user`
 
-### PRIORITAS 2 — Admin Panel
-- [ ] Manajemen semua salon (approve/reject `status = active`)
-- [ ] Manajemen kategori & kota
-- [ ] Manajemen promo global
-- [ ] Laporan & statistik platform
-- [ ] Moderasi review (`is_visible`)
+### PRIORITAS 2 — Static Pages (Footer Links)  ✅ SELESAI 2 Mei 2026
+- [x] Halaman statis: About Us, Careers, Blog (→ /treatment-files), Press
+- [x] Halaman bantuan: Help Centre, Contact Us (dengan email support@viygo.com / help@viygo.com)
+- [x] Halaman legal: Privacy Policy, Terms & Conditions, Cookie Policy
+- [x] Binding icon social media (FB, IG, Tiktok) via `config/viygo.php`
+- [x] `README-GAMBAR-STATIS.md` manifest untuk AI agent generasi gambar
 
-### PRIORITAS 3 — Middleware & Role-Based Access
-- [ ] Middleware `CheckRole` untuk `salon_owner` dan `admin`
-- [ ] Daftarkan di `bootstrap/app.php`
+### PRIORITAS 3 — Middleware & Role-Based Access  ✅ SELESAI 2 Mei 2026
+- [x] Middleware `App\Http\Middleware\CheckRole` (alias: `role`)
+- [x] Didaftarkan di `bootstrap/app.php`
+- [x] `/akun/*` di-gate dengan `role:customer`
+- [x] Navbar branch berdasarkan `auth()->user()->role` (customer→/akun, salon_owner→/owner, admin→/admin)
 
-### PRIORITAS 4 — Payment Flow
-- [ ] Integrasi Stripe / payment gateway UK-friendly
-- [ ] Update `pembayaran` setelah booking confirm
-- [ ] Halaman pembayaran terpisah (saat ini pembayaran "in-salon")
+### PRIORITAS 4 — Payment Flow  ✅ SELESAI 2 Mei 2026
+- [x] Integrasi Midtrans Payment Gateway Snap (Sandbox API) via `midtrans/midtrans-php` ^2.6
+- [x] Halaman pembayaran terpisah `/booking/{kode}/payment` dengan Snap.pay() pop-up
+- [x] Webhook Midtrans di `/midtrans/webhook` (CSRF di-bypass, signature SHA512 diverifikasi)
+- [x] Update `pembayaran` setelah notif: `id_transaksi`, `snap_token`, `raw_response`, status (`completed`/`pending`/`failed`)
+- [x] Order transition `pending → confirmed` saat status `capture` / `settlement`
+- [x] `PaymentController::createSnapToken` idempotent (re-issue token jika user reload)
 
-### PRIORITAS 5 — Booking yang Lebih Pintar
-- [ ] Cek slot availability berdasarkan `staff_schedule` (saat ini slot statis 09:00–16:30)
-- [ ] Cek double-booking via query `OrderDetail`
-- [ ] Pilih staff (saat ini default ke `null`)
+### PRIORITAS 5 — Booking yang Lebih Pintar  ✅ SELESAI 2 Mei 2026
+- [x] `App\Services\BookingSlotService` — server-side slot generator
+- [x] Cek slot availability berdasarkan `staff_schedule` (per `hari` weekday)
+- [x] Cek double-booking via overlap query `OrderDetail.start_time/end_time` (status ≠ canceled)
+- [x] Pilih staff dinamis (dropdown "Any staff" + per-staff option)
+- [x] Endpoint JSON `/salon/{slug}/booking/slots` untuk dynamic fetch saat user pilih tanggal/staff
+- [x] Re-verify availability di `BookingController::store` (anti-race condition)
+- [x] Auto-pick staff jika user pilih "Any staff" (`pickStaffForSlot`)
 
-### PRIORITAS 6 — Review System
-- [ ] Form ulasan setelah booking `success`
-- [ ] Display review user di profil mereka
-- [ ] Validasi: hanya user dengan order `success` yang dapat review
+### PRIORITAS 6 — Review System  ✅ SELESAI 2 Mei 2026
+- [x] Form ulasan setelah booking `success` (`/akun/bookings/{kode}/review`)
+- [x] Display review badge ("★ x/5 reviewed") di tab Completed `/akun/bookings`
+- [x] Validasi: `whereDoesntHave('review')` + `status = success` + `id_user = auth()->id()` (404 di luar itu)
+- [x] `ReviewObserver` recompute `salon.rating` + `salon.total_review` (`saveQuietly`) saat review create/update/delete (termasuk admin moderation toggle `is_visible`)
+- [x] `SalonController` filter `is_visible = true` saat eager-load reviews ke halaman publik salon
 
-### PRIORITAS 7 — Fitur Tambahan (Nice to Have)
+### PRIORITAS 7 — Fitur Tambahan
 - [ ] Wishlist / Favorit salon (perlu tabel pivot `user_favourites`)
 - [ ] Notifikasi email (booking konfirmasi, reminder H-1)
-- [ ] Sistem referral (UI sudah ada di akun.index)
-- [ ] Multi-bahasa (EN/ID toggle) — saat ini fixed EN
+- [ ] Sistem referral
+- [ ] Multi-bahasa (EN/ID toggle)
 
 ---
 
@@ -221,8 +238,8 @@ Semua dialihbahasakan ke Bahasa Inggris:
 [x] LookbookController.php
 [x] TreatmentFilesController.php
 [x] MitraController.php
-[ ] OrderController.php (PENDING — payment integration)
-[ ] ReviewController.php (PENDING — review submission)
+[x] ReviewController.php ← Updated: create + store, recomputes salon aggregates via Observer
+[x] PaymentController.php ← BARU: Midtrans Snap (createSnapToken, show, webhook)
 ```
 
 ### Routes `routes/web.php`
@@ -235,6 +252,10 @@ Semua dialihbahasakan ke Bahasa Inggris:
 [x] /booking/{kode}/konfirmasi → BookingController@konfirmasi (auth)
 [x] /booking/{kode}/batal → BookingController@batal (auth)
 [x] /akun, /akun/bookings, /akun/favorit, /akun/pengaturan, /akun/reward (auth)
+[x] /akun/bookings/{kode}/review (GET form + POST submit, role:customer)
+[x] /salon/{slug}/booking/slots (GET JSON, dynamic slot generator)
+[x] /booking/{kode}/payment (GET Snap host page) + /payment/token (POST)
+[x] /midtrans/webhook (POST, CSRF-exempted, SHA512 signature-verified)
 [x] /gift-card, /lookbook, /treatment-files, /mitra
 [x] /dashboard (Flux)
 ```
@@ -269,9 +290,9 @@ Semua dialihbahasakan ke Bahasa Inggris:
 
 1. **Welcome page lambat (`welcome.blade.php`)** — tidak dihapus, hanya tidak di-route. `/` sekarang dilayani `HomeController@index`.
 2. **`/update/` folder** — sengaja TIDAK dihapus untuk traceability. Kontennya sudah usang setelah 1 Mei 2026.
-3. **Booking slot statis** — saat ini grid 14 slot waktu (09:00–16:30) tanpa cek availability. Perlu integrasi `staff_schedule` + cek `OrderDetail` overlap.
-4. **Middleware `role`** belum ada — owner & admin pages belum dapat dibatasi.
-5. **`staff_schedule`** masih kosong (0 record) — perlu seeder.
+3. ~~**Booking slot statis** — saat ini grid 14 slot waktu (09:00–16:30) tanpa cek availability.~~ → ✅ Selesai (2 Mei 2026): `BookingSlotService` menghasilkan slot dinamis berdasarkan `salon.opening_time/closing_time`, `staff_schedule`, dan overlap `OrderDetail`. Step default 30 menit.
+4. ~~**Middleware `role`** belum ada — owner & admin pages belum dapat dibatasi.~~ → ✅ Selesai (2 Mei 2026): `App\Http\Middleware\CheckRole` terdaftar sebagai alias `role`. Owner dan admin sekarang dilindungi via `canAccessPanel()` di User model (Filament).
+5. **`staff_schedule`** masih kosong (0 record) — perlu seeder. (Catatan: `BookingSlotService` punya fallback "ikut jam buka salon" kalau staff belum punya schedule, jadi booking tetap jalan tanpa seeder.)
 6. **`order`, `review`, `pembayaran`** masih 0 record — wajar karena fitur baru terintegrasi.
 7. **Mata uang £ GBP** dipakai di seluruh UI karena data berasal dari Treatwell UK (5.767 salon UK). Konversi ke IDR dilakukan jika kelak perlu pasar Indonesia.
 8. **Leaflet CDN dependency** — saat ini Leaflet 1.9.4 di-load dari `unpkg.com`. Jika offline atau CDN down, peta tidak muncul (graceful: komponen menampilkan "No map available"). dapat di-vendor via npm jika perlu.
@@ -294,5 +315,5 @@ Semua dialihbahasakan ke Bahasa Inggris:
 | Lookbook / Inspiration | treatwell.co.uk/lookbook/ | `/lookbook` |
 | Treatment Files / Blog | treatwell.co.uk/treatment-files/ | `/treatment-files` |
 | Partner Sign-up | treatwell.co.uk/work-with-us/ | `/mitra` |
-| Salon Dashboard | (owner portal) | ⬜ TBD |
-| Admin Panel | (admin) | ⬜ TBD |
+| Salon Dashboard | (owner portal) | `/owner` (Filament) |
+| Admin Panel | (admin) | `/admin` (Filament) |
