@@ -255,9 +255,10 @@ php artisan db:seed --class=SalonSlugBackfillSeeder
 # 8. Apply unique index on slug (final migration step)
 php artisan migrate
 
-# 9. Frontend assets
+# 9. Frontend assets (REQUIRED — without this step, the app returns a 500 error)
 npm install
-npm run dev # or `npm run build` for production
+npm run build          # compiles Vite manifest into public/build/
+# For development with hot-reload, run `npm run dev` instead.
 ```
 
 Then visit `http://localhost:8000/` — the homepage should load with featured salons.

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants\OrderStatus;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Salon;
@@ -13,6 +14,7 @@ use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Midtrans\Transaction;
 
 class BookingController extends Controller
 {
@@ -108,7 +110,7 @@ class BookingController extends Controller
                 'date_order'       => $data['tanggal'],
                 'total_pembayaran' => $service->harga,
                 'total_diskon'     => 0,
-                'status'           => 'pending',
+                'status'           => OrderStatus::PENDING,
             ]);
 
             $start = $data['waktu'];
@@ -150,7 +152,7 @@ class BookingController extends Controller
     {
         $order = Order::where('kode_order', $kode)
             ->where('id_user', auth()->id())
-            ->where('status', 'pending')
+            ->whereIn('status', [OrderStatus::PENDING, OrderStatus::CONFIRMED])
             ->firstOrFail();
 
         // Enforce that the appointment hasn't started yet.
@@ -160,7 +162,31 @@ class BookingController extends Controller
             ]);
         }
 
-        $order->update(['status' => 'canceled']);
+        // Trigger Midtrans refund if the order was already paid.
+        if ($order->status === OrderStatus::CONFIRMED) {
+            $payment = $order->pembayaran()->first();
+            if ($payment && $payment->id_transaksi) {
+                try {
+                    Transaction::refund($payment->id_transaksi, [
+                        'refund_key' => 'refund_' . $order->kode_order,
+                        'amount'     => (int) round((float) $order->total_pembayaran),
+                        'reason'     => 'Customer requested cancellation',
+                    ]);
+                    $payment->update(['status_pembayaran' => 'refunded']);
+                } catch (\Throwable $e) {
+                    \Log::error('Midtrans refund failed', [
+                        'order' => $order->kode_order,
+                        'error' => $e->getMessage(),
+                    ]);
+
+                    return back()->withErrors([
+                        'cancel' => 'Refund failed. Please contact support to cancel this paid booking.',
+                    ]);
+                }
+            }
+        }
+
+        $order->update(['status' => OrderStatus::CANCELED]);
 
         return back()->with('success', 'Booking cancelled successfully.');
     }
