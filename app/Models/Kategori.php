@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Kategori extends Model
@@ -12,9 +13,11 @@ class Kategori extends Model
 
     protected $fillable = [
         'name',
-        'deskripsi',
         'slug',
+        'deskripsi',
         'icon_url',
+        'treatwell_slug',
+        'urutan',
         'is_active',
     ];
 
@@ -22,20 +25,52 @@ class Kategori extends Model
     {
         return [
             'is_active' => 'boolean',
+            'urutan'    => 'integer',
         ];
     }
 
-    // ──── Relasi ────────────────────────────────────────────
+    /**
+     * M:N: kategori (mis. Hair) → 6 sub_kategori dropdown navbar
+     * Pivot punya `urutan` agar dropdown sorted sesuai navbar Treatwell.
+     */
+    public function subKategori(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            SubKategori::class,
+            'kategori_sub_kategori',
+            'id_kategori',
+            'id_sub_kategori'
+        )
+        ->withPivot('urutan')
+        ->withTimestamps()
+        ->orderByPivot('urutan');
+    }
+
+    /**
+     * M:N: salon yang menyediakan kategori ini (derived dari service).
+     */
+    public function salons(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Salon::class,
+            'salon_kategori',
+            'id_kategori',
+            'id_salon'
+        )->withTimestamps();
+    }
 
     public function services(): HasMany
     {
         return $this->hasMany(Service::class, 'id_kategori');
     }
 
-    // ──── Scope ─────────────────────────────────────────────
-
     public function scopeActive($query)
     {
         return $query->where('is_active', true);
+    }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
     }
 }

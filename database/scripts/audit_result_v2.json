@@ -1,0 +1,784 @@
+{
+    "HAIR": [
+        {
+            "label": "Ladies' Haircuts",
+            "tw_slug": "ladies-haircuts-1",
+            "matched_kats": 127,
+            "sample_names": [
+                "Ladies' - Haircuts & Hairdressing",
+                "Ladies - Haircuts & Hairdressing",
+                "Ladies' Haircut, Hairdressing, Colouring & Highlights"
+            ],
+            "canonical_kid": 1,
+            "canonical_name": "Ladies' - Haircuts & Hairdressing",
+            "canonical_slug": "ladies-haircuts-hairdressing",
+            "canonical_salons": 848,
+            "salon_count": 1732,
+            "status": "\u2705"
+        },
+        {
+            "label": "Blow Dry",
+            "tw_slug": "blow-dry",
+            "matched_kats": 218,
+            "sample_names": [
+                "Blow Dry",
+                "Haircut & Blowdry, Styling",
+                "Hair Colouring & Highlights With Blow Dry"
+            ],
+            "canonical_kid": 15,
+            "canonical_name": "Blow Dry",
+            "canonical_slug": "blow-dry",
+            "canonical_salons": 104,
+            "salon_count": 363,
+            "status": "\u2705"
+        },
+        {
+            "label": "Hair Colouring",
+            "tw_slug": "hair-colouring",
+            "matched_kats": 506,
+            "sample_names": [
+                "Highlighting Services",
+                "Ladies' - Hair Colouring",
+                "Ladies - Highlights & Balayage"
+            ],
+            "canonical_kid": 9,
+            "canonical_name": "Ladies - Highlights & Balayage",
+            "canonical_slug": "ladies-highlights-balayage",
+            "canonical_salons": 725,
+            "salon_count": 1809,
+            "status": "\u2705"
+        },
+        {
+            "label": "Ladies' Brazilian Blow Dry",
+            "tw_slug": "ladies-brazilian-blow-dry",
+            "matched_kats": 64,
+            "sample_names": [
+                "Smoothing & Keratin Treatment",
+                "Ladies - Keratin Treatment",
+                "Brazilian Blow Dry"
+            ],
+            "canonical_kid": 66,
+            "canonical_name": "Brazilian Blow Dry",
+            "canonical_slug": "brazilian-blow-dry",
+            "canonical_salons": 8,
+            "salon_count": 76,
+            "status": "\u2705"
+        },
+        {
+            "label": "Balayage",
+            "tw_slug": "balayage",
+            "matched_kats": 131,
+            "sample_names": [
+                "Balayaging Services",
+                "Ladies - Highlights & Balayage",
+                "Highlights & Balayage"
+            ],
+            "canonical_kid": 9,
+            "canonical_name": "Ladies - Highlights & Balayage",
+            "canonical_slug": "ladies-highlights-balayage",
+            "canonical_salons": 725,
+            "salon_count": 930,
+            "status": "\u2705"
+        },
+        {
+            "label": "Hair Extensions",
+            "tw_slug": "hair-extensions",
+            "matched_kats": 75,
+            "sample_names": [
+                "Hair Extensions (CONSULTATION NEEDED)",
+                "Hair Extensions",
+                "Hair Extensions -  Anita +447950692128 @anitaatcowlick -"
+            ],
+            "canonical_kid": 87,
+            "canonical_name": "Hair Extensions",
+            "canonical_slug": "hair-extensions",
+            "canonical_salons": 425,
+            "salon_count": 498,
+            "status": "\u2705"
+        },
+        {
+            "label": "Men's Haircut",
+            "tw_slug": "men-s-haircut",
+            "matched_kats": 84,
+            "sample_names": [
+                "Men's Haircuts",
+                "Men - Haircuts & Grooming",
+                "Men - Haircuts & Hairdressing"
+            ],
+            "canonical_kid": 28,
+            "canonical_name": "Men - Haircuts & Grooming",
+            "canonical_slug": "men-haircuts-grooming",
+            "canonical_salons": 654,
+            "salon_count": 1030,
+            "status": "\u2705"
+        }
+    ],
+    "HAIR REMOVAL": [
+        {
+            "label": "Ladies' Waxing",
+            "tw_slug": "ladies-waxing",
+            "matched_kats": 375,
+            "sample_names": [
+                "Ladies' Intimate Waxing",
+                "Ladies' Body Waxing",
+                "Ladies' Waxing"
+            ],
+            "canonical_kid": 77,
+            "canonical_name": "Ladies' Waxing",
+            "canonical_slug": "ladies-waxing",
+            "canonical_salons": 1844,
+            "salon_count": 2301,
+            "status": "\u2705"
+        },
+        {
+            "label": "Hollywood Waxing",
+            "tw_slug": "hollywood-waxing",
+            "matched_kats": 19,
+            "sample_names": [
+                "Ladies' Waxing-Hollywood(Hot Wax)",
+                "Ladies' Waxing-Hollywood(Strip Wax)",
+                "Ladies' Waxing - Hollywood Packages"
+            ],
+            "canonical_kid": 1047,
+            "canonical_name": "Ladies' Waxing-Hollywood(Hot Wax)",
+            "canonical_slug": "ladies-waxing-hollywood-hot-wax",
+            "canonical_salons": 1,
+            "salon_count": 18,
+            "status": "\u26a0\ufe0f"
+        },
+        {
+            "label": "Brazilian Waxing",
+            "tw_slug": "brazilian-waxing",
+            "matched_kats": 10,
+            "sample_names": [
+                "Ladies' Waxing-Brazilian(Hot Wax)",
+                "Ladies' Waxing-Brazilian(Strip Wax)",
+                "Ladies' Waxing - Brazilian Packages"
+            ],
+            "canonical_kid": 1045,
+            "canonical_name": "Ladies' Waxing-Brazilian(Hot Wax)",
+            "canonical_slug": "ladies-waxing-brazilian-hot-wax",
+            "canonical_salons": 1,
+            "salon_count": 9,
+            "status": "\u26a0\ufe0f"
+        },
+        {
+            "label": "Facial Threading",
+            "tw_slug": "facial-threading",
+            "matched_kats": 114,
+            "sample_names": [
+                "Threading OR Strip Waxing",
+                "Facial Threading",
+                "Threading"
+            ],
+            "canonical_kid": 78,
+            "canonical_name": "Facial Threading",
+            "canonical_slug": "facial-threading",
+            "canonical_salons": 855,
+            "salon_count": 1201,
+            "status": "\u2705"
+        },
+        {
+            "label": "Men's Waxing",
+            "tw_slug": "men-s-waxing",
+            "matched_kats": 114,
+            "sample_names": [
+                "Men's Waxing",
+                "MENS WAXING FACE",
+                "Men's Full Body Waxing"
+            ],
+            "canonical_kid": 49,
+            "canonical_name": "Men's Waxing",
+            "canonical_slug": "men-s-waxing",
+            "canonical_salons": 923,
+            "salon_count": 1104,
+            "status": "\u2705"
+        },
+        {
+            "label": "Ladies' Leg Waxing",
+            "tw_slug": "ladies-leg-waxing",
+            "matched_kats": 8,
+            "sample_names": [
+                "Ladies' Waxing-Leg",
+                "Ladies' Leg Waxing",
+                "Ladies Waxing - Leg"
+            ],
+            "canonical_kid": 1041,
+            "canonical_name": "Ladies' Waxing-Leg",
+            "canonical_slug": "ladies-waxing-leg",
+            "canonical_salons": 1,
+            "salon_count": 8,
+            "status": "\u26a0\ufe0f"
+        },
+        {
+            "label": "Sugaring",
+            "tw_slug": "sugaring",
+            "matched_kats": 32,
+            "sample_names": [
+                "Sugar Threads",
+                "Ladies' Sugaring",
+                "Ladies' Sugaring Full Body"
+            ],
+            "canonical_kid": 1479,
+            "canonical_name": "Ladies' Sugaring",
+            "canonical_slug": "ladies-sugaring",
+            "canonical_salons": 49,
+            "salon_count": 68,
+            "status": "\u2705"
+        }
+    ],
+    "MASSAGE": [
+        {
+            "label": "Deep Tissue Massage",
+            "tw_slug": "deep-tissue-massage",
+            "matched_kats": 26,
+            "sample_names": [
+                "Deep Tissue Massage With Hot Towel Steam ( Women Only )",
+                "Deep Tissue Sports Massage",
+                "Deep Tissue Massage"
+            ],
+            "canonical_kid": 4253,
+            "canonical_name": "Deep Tissue Massage",
+            "canonical_slug": "deep-tissue-massage",
+            "canonical_salons": 12,
+            "salon_count": 40,
+            "status": "\u26a0\ufe0f"
+        },
+        {
+            "label": "Swedish Massage",
+            "tw_slug": "swedish-massage",
+            "matched_kats": 10,
+            "sample_names": [
+                "Therapeutic/Swedish  Massages",
+                "Swedish Massage",
+                "Classic/ Swedish/ Deep Tissue/ Holistic Massages"
+            ],
+            "canonical_kid": 4011,
+            "canonical_name": "Swedish Massage",
+            "canonical_slug": "swedish-massage",
+            "canonical_salons": 16,
+            "salon_count": 24,
+            "status": "\u26a0\ufe0f"
+        },
+        {
+            "label": "Therapeutic Massage",
+            "tw_slug": "therapeutic-massage",
+            "matched_kats": 70,
+            "sample_names": [
+                "Therapeutic Massages",
+                "Therapeutic Massage",
+                "Hydrotherapeutic Treatments"
+            ],
+            "canonical_kid": 193,
+            "canonical_name": "Therapeutic Massages",
+            "canonical_slug": "therapeutic-massages",
+            "canonical_salons": 728,
+            "salon_count": 819,
+            "status": "\u2705"
+        },
+        {
+            "label": "Thai Massage",
+            "tw_slug": "thai-massage",
+            "matched_kats": 29,
+            "sample_names": [
+                "Thai Massages",
+                "THAI MASSAGE",
+                "Thai Manee Massages"
+            ],
+            "canonical_kid": 3274,
+            "canonical_name": "Thai Massages",
+            "canonical_slug": "thai-massages",
+            "canonical_salons": 4,
+            "salon_count": 29,
+            "status": "\u26a0\ufe0f"
+        },
+        {
+            "label": "Aromatherapy Massage",
+            "tw_slug": "aromatherapy-massage",
+            "matched_kats": 14,
+            "sample_names": [
+                "Facials -Aromatherapy Associates",
+                "Aromatherapy",
+                "AROMATHERAPY & MASSAGE"
+            ],
+            "canonical_kid": 4199,
+            "canonical_name": "Aromatherapy",
+            "canonical_slug": "aromatherapy",
+            "canonical_salons": 3,
+            "salon_count": 16,
+            "status": "\u26a0\ufe0f"
+        },
+        {
+            "label": "Sports Massage",
+            "tw_slug": "sports-massage",
+            "matched_kats": 24,
+            "sample_names": [
+                "Sports Massages",
+                "Clinical Sports Massage",
+                "Birmingham Sports Massage"
+            ],
+            "canonical_kid": 2945,
+            "canonical_name": "Sports Massage",
+            "canonical_slug": "sports-massage",
+            "canonical_salons": 17,
+            "salon_count": 43,
+            "status": "\u26a0\ufe0f"
+        },
+        {
+            "label": "Hot Stone Massage",
+            "tw_slug": "hot-stone-massage",
+            "matched_kats": 9,
+            "sample_names": [
+                "Massage & Hot-Stone Treatments",
+                "Therapeutic Massage With Hot Stone Massage 115 Mins",
+                "HOT STONES - BAMBOO & HIMALAYAN  MASSAGES"
+            ],
+            "canonical_kid": 9486,
+            "canonical_name": "Hot Stone Massages",
+            "canonical_slug": "hot-stone-massages",
+            "canonical_salons": 2,
+            "salon_count": 10,
+            "status": "\u26a0\ufe0f"
+        }
+    ],
+    "NAILS": [
+        {
+            "label": "Pedicure",
+            "tw_slug": "pedicure",
+            "matched_kats": 268,
+            "sample_names": [
+                "Manicures & Pedicures",
+                "Classic Manicure & Pedicure",
+                "Men's Manicures & Pedicures"
+            ],
+            "canonical_kid": 12,
+            "canonical_name": "Manicures & Pedicures",
+            "canonical_slug": "manicures-pedicures",
+            "canonical_salons": 1582,
+            "salon_count": 2183,
+            "status": "\u2705"
+        },
+        {
+            "label": "Manicure",
+            "tw_slug": "manicure",
+            "matched_kats": 276,
+            "sample_names": [
+                "Manicures & Pedicures",
+                "Classic Manicure & Pedicure",
+                "Men's Manicures & Pedicures"
+            ],
+            "canonical_kid": 12,
+            "canonical_name": "Manicures & Pedicures",
+            "canonical_slug": "manicures-pedicures",
+            "canonical_salons": 1582,
+            "salon_count": 2066,
+            "status": "\u2705"
+        },
+        {
+            "label": "Gel Nails Manicure",
+            "tw_slug": "gel-nails-manicure",
+            "matched_kats": 125,
+            "sample_names": [
+                "Gel/Shellac Manicures & Pedicures",
+                "Gel Manicure & Pedicure Express With Full Cuticle Work ( Its Not Russian Manicure Cuticle Work )",
+                "Signature Rush&Ry  Russian Gel Manicures & Gel Pedicures ( Removals Are Chargeable )"
+            ],
+            "canonical_kid": 643,
+            "canonical_name": "Gel Manicures & Pedicures",
+            "canonical_slug": "gel-manicures-pedicures",
+            "canonical_salons": 111,
+            "salon_count": 293,
+            "status": "\u2705"
+        },
+        {
+            "label": "Hard Gel Extensions & Overlays",
+            "tw_slug": "hard-gel-extensions-overlays",
+            "matched_kats": 268,
+            "sample_names": [
+                "Nail Extensions & Enhancements",
+                "Nail Extensions",
+                "Nail Extensions / Infills / Overlays + Russian Mani With Detailed Cuticle Work With Drill And Remova"
+            ],
+            "canonical_kid": 11,
+            "canonical_name": "Nail Extensions & Enhancements",
+            "canonical_slug": "nail-extensions-enhancements",
+            "canonical_salons": 776,
+            "salon_count": 1191,
+            "status": "\u2705"
+        },
+        {
+            "label": "Gel Nails Pedicure",
+            "tw_slug": "gel-nails-pedicure",
+            "matched_kats": 98,
+            "sample_names": [
+                "Gel/Shellac Manicures & Pedicures",
+                "Gel Manicure & Pedicure Express With Full Cuticle Work ( Its Not Russian Manicure Cuticle Work )",
+                "Signature Rush&Ry  Russian Gel Manicures & Gel Pedicures ( Removals Are Chargeable )"
+            ],
+            "canonical_kid": 643,
+            "canonical_name": "Gel Manicures & Pedicures",
+            "canonical_slug": "gel-manicures-pedicures",
+            "canonical_salons": 111,
+            "salon_count": 254,
+            "status": "\u2705"
+        },
+        {
+            "label": "Nail or Gel Polish Removal",
+            "tw_slug": "nail-or-gel-polish-removal",
+            "matched_kats": 34,
+            "sample_names": [
+                "Signature Rush&Ry  Russian Gel Manicures & Gel Pedicures ( Removals Are Chargeable )",
+                "Express Gel Manicure & Pedicure ( Quick Cuticle Work & No Drill + Callous Removal And Foot Soak )",
+                "Express Gel Manicure & Pedicure With Full Cuticle Work & Under Feet Callous Removal"
+            ],
+            "canonical_kid": 1216,
+            "canonical_name": "Gel Removal",
+            "canonical_slug": "gel-removal",
+            "canonical_salons": 5,
+            "salon_count": 35,
+            "status": "\u26a0\ufe0f"
+        },
+        {
+            "label": "Nail Art",
+            "tw_slug": "nail-art",
+            "matched_kats": 45,
+            "sample_names": [
+                "Nail Art & Add-Ons",
+                "Nail Art & Extras",
+                "Nail Art"
+            ],
+            "canonical_kid": 684,
+            "canonical_name": "Nail Art & Extras",
+            "canonical_slug": "nail-art-extras",
+            "canonical_salons": 62,
+            "salon_count": 173,
+            "status": "\u2705"
+        }
+    ],
+    "FACE": [
+        {
+            "label": "Classic Facials",
+            "tw_slug": "classic-facials",
+            "matched_kats": 61,
+            "sample_names": [
+                "Classic Facial",
+                "Classic Facials",
+                "Rush&Ry London Classic & Advanced Facials (for He, She, They)"
+            ],
+            "canonical_kid": 142,
+            "canonical_name": "Classic Facials",
+            "canonical_slug": "classic-facials",
+            "canonical_salons": 103,
+            "salon_count": 211,
+            "status": "\u2705"
+        },
+        {
+            "label": "Eyelash Extensions",
+            "tw_slug": "eyelash-extensions",
+            "matched_kats": 155,
+            "sample_names": [
+                "Eyelash Extensions",
+                "Eyelash Extensions & Lifts",
+                "Eyelash Extensions(Patch Test Required)"
+            ],
+            "canonical_kid": 27,
+            "canonical_name": "Eyelash Extensions",
+            "canonical_slug": "eyelash-extensions",
+            "canonical_salons": 1134,
+            "salon_count": 1383,
+            "status": "\u2705"
+        },
+        {
+            "label": "Eyebrow & Eyelash Tinting",
+            "tw_slug": "eyebrow",
+            "matched_kats": 86,
+            "sample_names": [
+                "Eyebrow & Eyelash Tinting And Shape",
+                "Eyebrow & Eyelash Tinting",
+                "Eyebrows/ Eyelashes/ Tint"
+            ],
+            "canonical_kid": 126,
+            "canonical_name": "Eyebrow & Eyelash Tinting",
+            "canonical_slug": "eyebrow-eyelash-tinting",
+            "canonical_salons": 144,
+            "salon_count": 252,
+            "status": "\u2705"
+        },
+        {
+            "label": "Eyebrow Threading",
+            "tw_slug": "eyebrow-threading",
+            "matched_kats": 20,
+            "sample_names": [
+                "Threading Eyebrows & Eyelashes Tint",
+                "Eyebrows & Eyelashes Threading & Tinting :",
+                "Eyebrow Threading"
+            ],
+            "canonical_kid": 2458,
+            "canonical_name": "Eyebrow Threading",
+            "canonical_slug": "eyebrow-threading",
+            "canonical_salons": 2,
+            "salon_count": 23,
+            "status": "\u26a0\ufe0f"
+        },
+        {
+            "label": "Eyebrow Waxing",
+            "tw_slug": "eyebrow-waxing",
+            "matched_kats": 33,
+            "sample_names": [
+                "Eyebrow - Tweeze Or Wax",
+                "BROWS, LASHES & WAXING",
+                "Eyebrow Waxing"
+            ],
+            "canonical_kid": 3004,
+            "canonical_name": "Eyebrow Waxing",
+            "canonical_slug": "eyebrow-waxing",
+            "canonical_salons": 2,
+            "salon_count": 35,
+            "status": "\u26a0\ufe0f"
+        },
+        {
+            "label": "Brow Definition",
+            "tw_slug": "brow-definition",
+            "matched_kats": 78,
+            "sample_names": [
+                "Eyebrow & Eyelash Tinting And Shape",
+                "Eyebrow Design & Definition",
+                "Lash Lift & Brow Lamination"
+            ],
+            "canonical_kid": 122,
+            "canonical_name": "Eyebrow Design & Definition",
+            "canonical_slug": "eyebrow-design-definition",
+            "canonical_salons": 176,
+            "salon_count": 283,
+            "status": "\u2705"
+        },
+        {
+            "label": "Lash Lift",
+            "tw_slug": "lash-lift",
+            "matched_kats": 116,
+            "sample_names": [
+                "Eyelash Extensions & Lifts",
+                "Lash Lift & Brow Lamination",
+                "Eyebrows & Eyelashes Lifting (LVL)"
+            ],
+            "canonical_kid": 125,
+            "canonical_name": "Eyelash Extensions & Lifts",
+            "canonical_slug": "eyelash-extensions-lifts",
+            "canonical_salons": 116,
+            "salon_count": 295,
+            "status": "\u2705"
+        }
+    ],
+    "BODY": [
+        {
+            "label": "Spray Tanning and Sunless Tanning",
+            "tw_slug": "spray-tanning-and-sunless-tanning",
+            "matched_kats": 41,
+            "sample_names": [
+                "TANNING",
+                "Tanning",
+                "Tanning  (MOBILE SERVICE)"
+            ],
+            "canonical_kid": 343,
+            "canonical_name": "Tanning",
+            "canonical_slug": "tanning",
+            "canonical_salons": 240,
+            "salon_count": 321,
+            "status": "\u2705"
+        },
+        {
+            "label": "Colonic Hydrotherapy",
+            "tw_slug": "colonic-hydrotherapy",
+            "matched_kats": 5,
+            "sample_names": [
+                "Colon Hydrotherapy & Enemas",
+                "Colon Hydrotherapy",
+                "Colon Hydrotherapy Treatments"
+            ],
+            "canonical_kid": 7574,
+            "canonical_name": "Colon Hydrotherapy",
+            "canonical_slug": "colon-hydrotherapy",
+            "canonical_salons": 3,
+            "salon_count": 7,
+            "status": "\u26a0\ufe0f"
+        },
+        {
+            "label": "Body Wraps",
+            "tw_slug": "body-wraps",
+            "matched_kats": 6,
+            "sample_names": [
+                "Body Wrap",
+                "Slimming Body Wrap",
+                "Arosha Body Wraps"
+            ],
+            "canonical_kid": 3181,
+            "canonical_name": "Body Wrap",
+            "canonical_slug": "body-wrap",
+            "canonical_salons": 1,
+            "salon_count": 6,
+            "status": "\u26a0\ufe0f"
+        },
+        {
+            "label": "Cryolipolysis",
+            "tw_slug": "cryolipolysis",
+            "matched_kats": 19,
+            "sample_names": [
+                "Cryolipolysis",
+                "CRYOLIPOLYSIS-FAT FREEZING 3D LIPO ULTIMATE TECHNOLOGY",
+                "Cryolipo Fat Freezing"
+            ],
+            "canonical_kid": 3649,
+            "canonical_name": "Fat Freezing",
+            "canonical_slug": "fat-freezing",
+            "canonical_salons": 3,
+            "salon_count": 22,
+            "status": "\u26a0\ufe0f"
+        },
+        {
+            "label": "Body Exfoliation Treatments",
+            "tw_slug": "body-exfoliation-treatments",
+            "matched_kats": 27,
+            "sample_names": [
+                "Body Exfoliations",
+                "Ladies Body Exfoliations Services",
+                "Body Exfoliation"
+            ],
+            "canonical_kid": 730,
+            "canonical_name": "Body Exfoliation",
+            "canonical_slug": "body-exfoliation",
+            "canonical_salons": 53,
+            "salon_count": 85,
+            "status": "\u2705"
+        },
+        {
+            "label": "Cellulite Treatments",
+            "tw_slug": "cellulite-treatments",
+            "matched_kats": 86,
+            "sample_names": [
+                "Weight Loss & Cellulite Treatments",
+                "ENDERMALOGIE (Cellulite, Weight Loss Or Firm And Tone)",
+                "LIPO FIRM (ultrasound Cavitation Body Contouring For Weight Loss , Fat Reduction , Cellulite )"
+            ],
+            "canonical_kid": 80,
+            "canonical_name": "Weight Loss & Cellulite Treatments",
+            "canonical_slug": "weight-loss-cellulite-treatments",
+            "canonical_salons": 557,
+            "salon_count": 639,
+            "status": "\u2705"
+        },
+        {
+            "label": "Weight Loss Treatments",
+            "tw_slug": "weight-loss-treatments",
+            "matched_kats": 85,
+            "sample_names": [
+                "Weight Loss & Cellulite Treatments",
+                "Body Muscle Slimming/Body Skin Treatment",
+                "Weight Loss Treatments"
+            ],
+            "canonical_kid": 80,
+            "canonical_name": "Weight Loss & Cellulite Treatments",
+            "canonical_slug": "weight-loss-cellulite-treatments",
+            "canonical_salons": 557,
+            "salon_count": 645,
+            "status": "\u2705"
+        }
+    ],
+    "MEN'S": [
+        {
+            "label": "Men's Haircut",
+            "tw_slug": "men-s-haircut",
+            "matched_kats": 84,
+            "sample_names": [
+                "Men's Haircuts",
+                "Men - Haircuts & Grooming",
+                "Men - Haircuts & Hairdressing"
+            ],
+            "canonical_kid": 28,
+            "canonical_name": "Men - Haircuts & Grooming",
+            "canonical_slug": "men-haircuts-grooming",
+            "canonical_salons": 654,
+            "salon_count": 1030,
+            "status": "\u2705"
+        },
+        {
+            "label": "Beard Trimming & Shaving",
+            "tw_slug": "beard-trimming",
+            "matched_kats": 21,
+            "sample_names": [
+                "Beard",
+                "Beard Treatments",
+                "Beard Care"
+            ],
+            "canonical_kid": 555,
+            "canonical_name": "Beard Care",
+            "canonical_slug": "beard-care",
+            "canonical_salons": 27,
+            "salon_count": 46,
+            "status": "\u26a0\ufe0f"
+        },
+        {
+            "label": "Men's Hair Colouring",
+            "tw_slug": "men-s-hair-colouring",
+            "matched_kats": 23,
+            "sample_names": [
+                "Men's Haircuts, Hairdressing, Colouring & Highlights",
+                "Mens Hair Colouring & Highlights",
+                "Men's Colouring & Highlights"
+            ],
+            "canonical_kid": 86,
+            "canonical_name": "Men's Haircuts, Hairdressing, Colouring & Highlights",
+            "canonical_slug": "men-s-haircuts-hairdressing-colouring-highlights",
+            "canonical_salons": 3,
+            "salon_count": 25,
+            "status": "\u26a0\ufe0f"
+        },
+        {
+            "label": "Men's Facials",
+            "tw_slug": "men-s-facials",
+            "matched_kats": 196,
+            "sample_names": [
+                "Facials (Men & Women)",
+                "Men's Facial Threading",
+                "Men - Facials"
+            ],
+            "canonical_kid": 882,
+            "canonical_name": "Facial Treatments",
+            "canonical_slug": "facial-treatments",
+            "canonical_salons": 41,
+            "salon_count": 272,
+            "status": "\u2705"
+        },
+        {
+            "label": "Men's Waxing",
+            "tw_slug": "men-s-waxing",
+            "matched_kats": 114,
+            "sample_names": [
+                "Men's Waxing",
+                "MENS WAXING FACE",
+                "Men's Full Body Waxing"
+            ],
+            "canonical_kid": 49,
+            "canonical_name": "Men's Waxing",
+            "canonical_slug": "men-s-waxing",
+            "canonical_salons": 923,
+            "salon_count": 1104,
+            "status": "\u2705"
+        },
+        {
+            "label": "Barbers",
+            "tw_slug": "barbers",
+            "matched_kats": 17,
+            "sample_names": [
+                "Mens Grooming Room / Barbers",
+                "Mark - Senior Bespoke Barber Services",
+                "Bespoke Barber Services"
+            ],
+            "canonical_kid": 156,
+            "canonical_name": "Bespoke Barber Services",
+            "canonical_slug": "bespoke-barber-services",
+            "canonical_salons": 5,
+            "salon_count": 23,
+            "status": "\u26a0\ufe0f"
+        }
+    ]
+}

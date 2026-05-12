@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/cari', [SearchController::class, 'index'])->name('cari');
 Route::get('/kategori/{slug}', [KategoriController::class, 'show'])->name('kategori.show');
+Route::get('/sub-kategori/{slug}', [KategoriController::class, 'showSub'])->name('sub-kategori.show');
 Route::get('/salon/{slug}', [SalonController::class, 'show'])->name('salon.show');
 Route::get('/gift-card', [GiftCardController::class, 'index'])->name('gift-card');
 Route::get('/lookbook', [LookbookController::class, 'index'])->name('lookbook');
