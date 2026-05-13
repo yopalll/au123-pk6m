@@ -11,19 +11,45 @@
     <p class="text-gray-500 mb-8">Your booking reference: <strong class="text-[#1B2D6B] font-mono text-lg">{{ $order->kode_order }}</strong></p>
 
     <div class="bg-[#E8F4FB] border border-[#C5E1F0] rounded-2xl p-6 text-left space-y-3 mb-8">
-        @foreach([
-            ['Salon',    $order->salon->nama_salon],
-            ['Service',  $order->details->first()?->service?->nama ?? '-'],
-            ['Date',     \Carbon\Carbon::parse($order->date_order)->isoFormat('dddd, D MMMM Y')],
-            ['Time',     $order->details->first()?->start_time ?? '-'],
-            ['Address',  $order->salon->alamat],
-            ['Total',    '£'.number_format($order->total_pembayaran, 2, '.', ',')],
-        ] as [$label, $value])
-            <div class="flex justify-between text-sm {{ !$loop->last ? 'border-b border-[#C5E1F0] pb-3' : 'font-semibold text-base pt-1' }}">
-                <span class="text-gray-500">{{ $label }}</span>
-                <span class="text-gray-900 text-right max-w-[60%]">{{ $value }}</span>
-            </div>
-        @endforeach
+        <div class="flex justify-between text-sm border-b border-[#C5E1F0] pb-3">
+            <span class="text-gray-500">Salon</span>
+            <span class="text-gray-900 text-right max-w-[60%]">{{ $order->salon->nama_salon }}</span>
+        </div>
+
+        <div class="border-b border-[#C5E1F0] pb-3">
+            <div class="text-sm text-gray-500 mb-2">Services ({{ $order->details->count() }})</div>
+            <ul class="space-y-1.5">
+                @foreach ($order->details as $detail)
+                    <li class="flex justify-between text-sm">
+                        <span class="text-gray-700">
+                            {{ $detail->service?->nama ?? '—' }}
+                            <span class="text-xs text-gray-400">({{ $detail->start_time }}–{{ $detail->end_time }})</span>
+                        </span>
+                        <span class="font-medium text-gray-900">£{{ number_format($detail->subtotal, 2, '.', ',') }}</span>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+
+        <div class="flex justify-between text-sm border-b border-[#C5E1F0] pb-3">
+            <span class="text-gray-500">Date</span>
+            <span class="text-gray-900 text-right max-w-[60%]">{{ \Carbon\Carbon::parse($order->date_order)->isoFormat('dddd, D MMMM Y') }}</span>
+        </div>
+
+        <div class="flex justify-between text-sm border-b border-[#C5E1F0] pb-3">
+            <span class="text-gray-500">Start time</span>
+            <span class="text-gray-900 text-right max-w-[60%]">{{ $order->details->first()?->start_time ?? '-' }}</span>
+        </div>
+
+        <div class="flex justify-between text-sm border-b border-[#C5E1F0] pb-3">
+            <span class="text-gray-500">Address</span>
+            <span class="text-gray-900 text-right max-w-[60%]">{{ $order->salon->alamat }}</span>
+        </div>
+
+        <div class="flex justify-between font-semibold text-base pt-1">
+            <span class="text-gray-500">Total</span>
+            <span class="text-gray-900">£{{ number_format($order->total_pembayaran, 2, '.', ',') }}</span>
+        </div>
     </div>
 
     <p class="text-xs text-gray-400 mb-8">A confirmation email is on its way. Payment is taken directly at the salon.</p>

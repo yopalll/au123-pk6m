@@ -88,8 +88,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/bookings/{kode}/review', [ReviewController::class, 'store'])->name('review.store');
         });
 
-    // Existing Livewire Flux dashboard (any role)
-    Route::view('dashboard', 'dashboard')->name('dashboard');
+    // Post-login landing — redirect berdasarkan role
+    Route::get('dashboard', function () {
+        $user = auth()->user();
+        return match ($user->role) {
+            'admin'       => redirect('/admin'),
+            'salon_owner' => redirect('/owner'),
+            default       => redirect()->route('akun.bookings'),
+        };
+    })->name('dashboard');
 });
 
 // Midtrans webhook (no auth — Midtrans posts here, signature-verified instead).

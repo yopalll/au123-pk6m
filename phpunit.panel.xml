@@ -8,6 +8,7 @@
         <testsuite name="Panel">
             <file>tests/Feature/AdminPanelTest.php</file>
             <file>tests/Feature/OwnerPanelTest.php</file>
+            <file>tests/Feature/AuthFlowTest.php</file>
         </testsuite>
     </testsuites>
     <source>

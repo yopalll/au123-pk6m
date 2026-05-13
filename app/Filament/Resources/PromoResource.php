@@ -22,26 +22,26 @@ class PromoResource extends Resource
     public static function form(Schema $form): Schema
     {
         return $form->schema([
-            Forms\Components\Section::make('Promo Info')->schema([
+            \Filament\Schemas\Components\Section::make('Promo Info')->schema([
                 Forms\Components\TextInput::make('nama_promo')->required()->label('Promo Name'),
                 Forms\Components\Textarea::make('deskripsi_promo')->label('Description'),
                 Forms\Components\TextInput::make('kode_promo')->required()->unique(ignoreRecord: true)->label('Code'),
                 Forms\Components\Select::make('tipe_promo')
                     ->options(['percentage' => 'Percentage', 'fixed' => 'Fixed Amount'])->required()->label('Type'),
             ])->columns(2),
-            Forms\Components\Section::make('Discount')->schema([
+            \Filament\Schemas\Components\Section::make('Discount')->schema([
                 Forms\Components\TextInput::make('diskon')->numeric()->required()->label('Discount'),
                 Forms\Components\TextInput::make('diskon_max')->numeric()->prefix('£')->label('Max Discount'),
                 Forms\Components\TextInput::make('min_transaksi')->numeric()->prefix('£')->label('Min Transaction'),
             ])->columns(3),
-            Forms\Components\Section::make('Availability')->schema([
+            \Filament\Schemas\Components\Section::make('Availability')->schema([
                 Forms\Components\DateTimePicker::make('time_start')->label('Start'),
                 Forms\Components\DateTimePicker::make('time_expired')->label('Expires'),
                 Forms\Components\TextInput::make('stock')->numeric()->label('Stock'),
                 Forms\Components\Select::make('status')
                     ->options(['active' => 'Active', 'inactive' => 'Inactive'])->required(),
             ])->columns(2),
-            Forms\Components\Section::make('Usage')->schema([
+            \Filament\Schemas\Components\Section::make('Usage')->schema([
                 Forms\Components\TextInput::make('used_counter')->disabled()->numeric()->label('Used'),
             ]),
         ]);

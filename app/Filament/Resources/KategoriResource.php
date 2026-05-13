@@ -38,7 +38,20 @@ class KategoriResource extends Resource
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('slug')->searchable()->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\IconColumn::make('is_active')->boolean()->label('Active'),
-                Tables\Columns\TextColumn::make('services_count')->counts('services')->label('Services')->sortable(),
+                Tables\Columns\TextColumn::make('salons_count')
+                    ->counts('salons')
+                    ->label('Salons')
+                    ->sortable()
+                    ->numeric(),
+                Tables\Columns\TextColumn::make('sub_kategori_count')
+                    ->counts('subKategori')
+                    ->label('Sub-categories')
+                    ->sortable()
+                    ->numeric(),
+                Tables\Columns\TextColumn::make('services_via_pivot')
+                    ->label('Services')
+                    ->numeric()
+                    ->getStateUsing(fn (Kategori $record) => $record->servicesViaPivotCount()),
             ])
             ->filters([
                 Tables\Filters\TernaryFilter::make('is_active')->label('Active'),

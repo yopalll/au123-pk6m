@@ -23,14 +23,14 @@ class MitraApplicationResource extends Resource
     public static function form(Schema $form): Schema
     {
         return $form->schema([
-            Forms\Components\Section::make('Salon Details')->schema([
+            \Filament\Schemas\Components\Section::make('Salon Details')->schema([
                 Forms\Components\TextInput::make('nama_salon')
                     ->label('Salon Name')->disabled(),
                 Forms\Components\TextInput::make('nama_pemilik')
                     ->label('Owner Name')->disabled(),
             ])->columns(2),
 
-            Forms\Components\Section::make('Contact')->schema([
+            \Filament\Schemas\Components\Section::make('Contact')->schema([
                 Forms\Components\TextInput::make('email')
                     ->label('Email')->disabled(),
                 Forms\Components\TextInput::make('phone')
@@ -39,7 +39,7 @@ class MitraApplicationResource extends Resource
                     ->label('City')->disabled(),
             ])->columns(3),
 
-            Forms\Components\Section::make('Notes & Status')->schema([
+            \Filament\Schemas\Components\Section::make('Notes & Status')->schema([
                 Forms\Components\Textarea::make('catatan')
                     ->label('Notes from Applicant')->disabled()->rows(4),
                 Forms\Components\Select::make('status')

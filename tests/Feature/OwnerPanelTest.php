@@ -54,3 +54,21 @@ test('admin cannot access owner panel', function () {
     $response = $this->actingAs($admin)->get('/owner');
     $response->assertForbidden();
 });
+
+test('owner can view own salon detail (View page)', function () {
+    $owner = User::where('role', 'salon_owner')->where('is_active', true)->first();
+    $salon = $owner->salons()->first();
+    expect($salon)->not->toBeNull();
+
+    $response = $this->actingAs($owner)->get("/owner/salons/{$salon->slug}");
+    $response->assertOk();
+});
+
+test('owner can edit own salon (Edit page renders)', function () {
+    $owner = User::where('role', 'salon_owner')->where('is_active', true)->first();
+    $salon = $owner->salons()->first();
+    expect($salon)->not->toBeNull();
+
+    $response = $this->actingAs($owner)->get("/owner/salons/{$salon->slug}/edit");
+    $response->assertOk();
+});
