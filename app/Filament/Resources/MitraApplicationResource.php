@@ -105,7 +105,7 @@ class MitraApplicationResource extends Resource
             ])
             ->actions([
                 // Quick status-flip without leaving the list page.
-                Tables\Actions\Action::make('updateStatus')
+                \Filament\Actions\Action::make('updateStatus')
                     ->label('Update Status')
                     ->icon('heroicon-o-arrow-path')
                     ->color('warning')
@@ -126,18 +126,18 @@ class MitraApplicationResource extends Resource
                     ->modalHeading(fn ($record) => 'Update: ' . $record->nama_salon)
                     ->modalSubmitActionLabel('Save Status'),
 
-                Tables\Actions\ViewAction::make(),
+                \Filament\Actions\ViewAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\BulkAction::make('markContacted')
+                \Filament\Actions\BulkActionGroup::make([
+                    \Filament\Actions\BulkAction::make('markContacted')
                         ->label('Mark as Contacted')
                         ->icon('heroicon-o-phone')
                         ->color('info')
                         ->action(fn ($records) => $records->each->update(['status' => 'contacted']))
                         ->requiresConfirmation(),
 
-                    Tables\Actions\BulkAction::make('markRejected')
+                    \Filament\Actions\BulkAction::make('markRejected')
                         ->label('Mark as Rejected')
                         ->icon('heroicon-o-x-circle')
                         ->color('danger')

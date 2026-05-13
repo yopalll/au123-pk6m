@@ -120,12 +120,12 @@
     </h2>
     <div class="grid md:grid-cols-3 gap-6">
         @foreach([
-            ['🌍','Works at 8,750+ salons','Recipients aren''t locked into a single venue — they pick from the whole VIYGO network.'],
+            ['🌍','Works at 8,750+ salons',"Recipients aren't locked into a single venue — they pick from the whole VIYGO network."],
             ['📱','Email or print','Send it digitally for an instant gift, or print at home for a tangible card.'],
             ['🕒','Two-year validity','Plenty of time to plan that pamper day. Unused balance rolls over.'],
             ['💼','Corporate options','Bulk orders for clients or staff — get in touch for pricing.'],
             ['🎯','No hidden fees','The full amount goes to the salon. No service fees deducted.'],
-            ['↩️','Easy refunds','Lost the code? Contact support and we''ll re-issue it.'],
+            ['↩️','Easy refunds',"Lost the code? Contact support and we'll re-issue it."],
         ] as [$icon, $title, $desc])
             <div class="p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:border-[#C5E1F0] hover:bg-[#E8F4FB]/40 transition-all">
                 <div class="text-3xl mb-3">{{ $icon }}</div>
@@ -146,9 +146,9 @@
             @foreach([
                 ['How long is a VIYGO Gift Card valid?','Two years from the purchase date. The unused balance rolls over after redemption.'],
                 ['Can I use it at any salon?','Yes — every business listed on VIYGO accepts gift cards. No need to check first.'],
-                ['Can the recipient pay extra if their booking costs more?','Absolutely. The gift card covers part of the bill; they''ll pay the difference at checkout.'],
-                ['What if I lose my gift card code?','Email support@viygo.com — we''ll look up your purchase and re-send the code.'],
-                ['Is the gift card refundable?','We can refund within 14 days of purchase if the code hasn''t been used yet.'],
+                ['Can the recipient pay extra if their booking costs more?',"Absolutely. The gift card covers part of the bill; they'll pay the difference at checkout."],
+                ['What if I lose my gift card code?',"Email support@viygo.com — we'll look up your purchase and re-send the code."],
+                ['Is the gift card refundable?',"We can refund within 14 days of purchase if the code hasn't been used yet."],
                 ['Do you offer corporate / bulk pricing?','We do — write to <a href="mailto:partners@viygo.com" class="text-[#1B2D6B] underline">partners@viygo.com</a> with the volume you need.'],
             ] as [$q, $a])
                 <details class="group bg-white rounded-xl border border-gray-100 overflow-hidden">

@@ -12,13 +12,13 @@ class KategoriController extends Controller
     /**
      * /kategori/{slug} — halaman kategori utama (Hair, Hair Removal, ...).
      *
-     * Juga handle "See all hair treatments" link dari navbar — yg arah-nya
-     * ke /kategori/hair (dst). Listing semua salon yg punya minimal 1
-     * service ber-id_kategori = ini.
+     * Filter pakai pivot table `salon_kategori` LANGSUNG — bukan via
+     * `services.id_kategori`. Pivot diisi oleh scraper saat visit URL
+     * /treatment-group-{slug}/, jadi lebih akurat & cepat (pakai index)
+     * dibanding scan tabel service.
      *
-     * Special filter: ?filter=barbers di kategori 'mens' akan menampilkan
-     * salon yg "Barbers-style" (nama salon / service mengandung "barber").
-     * Filter ini tidak butuh row sub_kategori — query saja.
+     * Special filter: ?filter=barbers di kategori 'mens' menampilkan
+     * salon barber-style (nama salon mengandung "barber").
      */
     public function show(string $slug, Request $request)
     {
@@ -32,17 +32,10 @@ class KategoriController extends Controller
         $isBarbersKey = $kategori->slug === 'mens' && $filter === 'barbers';
 
         $query = Salon::active()
-            ->where(function ($q) use ($kategori) {
-                $q->whereHas('kategoris', fn ($k) => $k->where(
-                    'kategori.id_kategori',
-                    $kategori->id_kategori
-                ));
-                $q->orWhereHas('services', fn ($s) => $s
-                    ->where('id_kategori', $kategori->id_kategori)
-                    ->where('status', 'active'));
-            })
+            // Pure pivot filter — tabel salon_kategori (M:N salon ↔ kategori)
+            ->whereHas('kategoris', fn ($k) => $k
+                ->where('kategori.id_kategori', $kategori->id_kategori))
             ->when($isBarbersKey, function ($q) {
-                // Special: "Barbers" — hanya salon yg jelas barber-style.
                 $q->where(function ($w) {
                     $w->where('nama_salon', 'like', '%barber%')
                       ->orWhereHas('services', fn ($s) => $s->where('nama', 'like', '%barber%'));
@@ -51,10 +44,15 @@ class KategoriController extends Controller
             ->with([
                 'kota',
                 'primaryImage',
+                // Service preview di card — hanya yg match kategori ini
                 'services' => fn ($q) => $q
                     ->where('id_kategori', $kategori->id_kategori)
                     ->active()
                     ->with(['kategori', 'subKategori']),
+                // Chip pivot di card — semua sub_kategori salon ini
+                'subKategoris' => fn ($q) => $q
+                    ->where('is_active', true)
+                    ->orderBy('id_sub_kategori'),
             ])
             ->withMin([
                 'services as min_harga' => fn ($q) => $q
@@ -74,7 +72,9 @@ class KategoriController extends Controller
     /**
      * /sub-kategori/{slug} — halaman sub_kategori (Pedicure, Blow Dry, dll).
      *
-     * Listing salon yg punya minimal 1 service ber-id_sub_kategori = ini.
+     * Filter pakai pivot table `salon_sub_kategori` LANGSUNG. Diisi scraper
+     * saat visit URL /treatment-{slug}/. Lebih akurat dibanding via service
+     * (yang bisa miss kalau service tidak match keyword sub_kategori).
      */
     public function showSub(string $slug, Request $request)
     {
@@ -86,16 +86,20 @@ class KategoriController extends Controller
         $sort = $request->input('sort');
 
         $salons = Salon::active()
-            ->whereHas('services', fn ($s) => $s
-                ->where('id_sub_kategori', $sub->id_sub_kategori)
-                ->where('status', 'active'))
+            // Pure pivot filter — tabel salon_sub_kategori (M:N salon ↔ sub_kategori)
+            ->whereHas('subKategoris', fn ($s) => $s
+                ->where('sub_kategori.id_sub_kategori', $sub->id_sub_kategori))
             ->with([
                 'kota',
                 'primaryImage',
+                // Service preview hanya yg match sub_kategori ini
                 'services' => fn ($q) => $q
                     ->where('id_sub_kategori', $sub->id_sub_kategori)
                     ->active()
                     ->with(['kategori', 'subKategori']),
+                'subKategoris' => fn ($q) => $q
+                    ->where('is_active', true)
+                    ->orderBy('id_sub_kategori'),
             ])
             ->withMin([
                 'services as min_harga' => fn ($q) => $q

@@ -44,18 +44,18 @@ class ReviewResource extends Resource
                     ->options(array_combine(range(1,5), range(1,5)))->label('Rating'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('toggle_visibility')
+                \Filament\Actions\EditAction::make(),
+                \Filament\Actions\Action::make('toggle_visibility')
                     ->icon(fn (Review $r) => $r->is_visible ? 'heroicon-o-eye-slash' : 'heroicon-o-eye')
                     ->label(fn (Review $r) => $r->is_visible ? 'Hide' : 'Show')
                     ->action(fn (Review $r) => $r->update(['is_visible' => !$r->is_visible])),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\BulkAction::make('hide')
+                \Filament\Actions\BulkActionGroup::make([
+                    \Filament\Actions\BulkAction::make('hide')
                         ->label('Hide Selected')->icon('heroicon-o-eye-slash')->color('danger')
                         ->action(fn ($records) => $records->each->update(['is_visible' => false])),
-                    Tables\Actions\BulkAction::make('show')
+                    \Filament\Actions\BulkAction::make('show')
                         ->label('Show Selected')->icon('heroicon-o-eye')
                         ->action(fn ($records) => $records->each->update(['is_visible' => true])),
                 ]),

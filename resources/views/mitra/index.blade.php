@@ -53,7 +53,7 @@
 
     <div class="grid md:grid-cols-3 gap-8">
         @foreach([
-            ['📝','Apply','Tell us about your salon, location, and services. We''ll review and onboard you within 24 hours.'],
+            ['📝','Apply',"Tell us about your salon, location, and services. We'll review and onboard you within 24 hours."],
             ['🛠️','Set up','Add staff, working hours, and treatment menu via the Owner dashboard. Photos in five minutes.'],
             ['📈','Get bookings','Customers find you, book directly, and pay through Midtrans. You manage everything from one place.'],
         ] as $i => [$icon, $title, $desc])
@@ -86,9 +86,9 @@
                 ['💳','Secure payments','Midtrans Snap handles cards, e-wallets, and virtual accounts. Funds settle to your bank weekly.'],
                 ['👥','Staff & schedules','Add staff, set working hours, assign services. The booking grid respects every constraint automatically.'],
                 ['⭐','Verified reviews','Only customers who actually attended can leave a review — no review-bombing from competitors.'],
-                ['📊','Live dashboard','Track today''s bookings, monthly revenue, ratings, and pending approvals at a glance.'],
+                ['📊','Live dashboard',"Track today's bookings, monthly revenue, ratings, and pending approvals at a glance."],
                 ['🎁','Gift card sales','Customers buy gift cards on VIYGO and redeem them at your salon. Extra revenue, zero friction.'],
-                ['🛡️','No-show protection','Booking-deposit option holds card details up front so cancellations don''t hurt your day.'],
+                ['🛡️','No-show protection',"Booking-deposit option holds card details up front so cancellations don't hurt your day."],
                 ['📱','Mobile-friendly','The Owner dashboard works just as well on your phone — manage bookings between clients.'],
             ] as [$icon, $title, $desc])
                 <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-[#C5E1F0] hover:shadow-lg transition-all">
@@ -154,7 +154,7 @@
             @foreach([
                 ['"We doubled weekday bookings in our first month. The dashboard alone is worth it — we used to track everything in a spiral notebook."','Sasha Williams','Bond Street Hair Co., London','+98% bookings'],
                 ['"Customers love being able to pick a specific stylist. We barely take calls anymore — my receptionist is finally free to actually receive."','Mia Tan','The Polished Studio, Manchester','+62% revenue'],
-                ['"Reviews on VIYGO are real customers. That''s what got me to switch from the older booking platform."','Léa Petit','Glow Atelier, Edinburgh','4.9★ avg rating'],
+                ['"Reviews on VIYGO are real customers. That\'s what got me to switch from the older booking platform."','Léa Petit','Glow Atelier, Edinburgh','4.9★ avg rating'],
             ] as [$quote, $name, $where, $stat])
                 <figure class="bg-white rounded-2xl p-6 border border-gray-100 flex flex-col">
                     <blockquote class="text-gray-700 leading-relaxed mb-4 flex-1 italic">
@@ -179,11 +179,11 @@
     <div class="space-y-3">
         @foreach([
             ['Is there a setup fee?','No. Listing is completely free. The only charge is 7% commission on completed bookings — and the first 90 days are free.'],
-            ['How long does onboarding take?','Usually under 24 hours. Apply via the form below, our team verifies your business, then you''re live.'],
+            ['How long does onboarding take?',"Usually under 24 hours. Apply via the form below, our team verifies your business, then you're live."],
             ['Can I keep my existing booking system?','Yes. Many salons use VIYGO alongside walk-ins or their own site. We integrate with most calendar tools.'],
-            ['When do I get paid?','Settlement runs every Monday for the previous week''s bookings. Funds land in your registered UK bank account.'],
-            ['What if a customer no-shows?','You''re not charged commission on no-shows. Optional booking deposits give you extra protection.'],
-            ['Who do I contact for support?','Email <a href="mailto:partners@viygo.com" class="text-[#1B2D6B] underline">partners@viygo.com</a> or message your dedicated account manager once you''re onboarded.'],
+            ['When do I get paid?',"Settlement runs every Monday for the previous week's bookings. Funds land in your registered UK bank account."],
+            ['What if a customer no-shows?',"You're not charged commission on no-shows. Optional booking deposits give you extra protection."],
+            ['Who do I contact for support?','Email <a href="mailto:partners@viygo.com" class="text-[#1B2D6B] underline">partners@viygo.com</a> or message your dedicated account manager once you\'re onboarded.'],
         ] as [$q, $a])
             <details class="group bg-white rounded-xl border border-gray-100 overflow-hidden">
                 <summary class="flex items-center justify-between cursor-pointer p-5 list-none">

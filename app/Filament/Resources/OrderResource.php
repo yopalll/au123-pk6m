@@ -57,13 +57,13 @@ class OrderResource extends Resource
                     ->options(['pending'=>'Pending','confirmed'=>'Confirmed','success'=>'Success','canceled'=>'Canceled']),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('mark_success')->label('Mark Success')
+                \Filament\Actions\ViewAction::make(),
+                \Filament\Actions\EditAction::make(),
+                \Filament\Actions\Action::make('mark_success')->label('Mark Success')
                     ->icon('heroicon-o-check-circle')->color('success')->requiresConfirmation()
                     ->action(fn (Order $r) => $r->update(['status' => 'success']))
                     ->visible(fn (Order $r) => $r->status !== 'success'),
-                Tables\Actions\Action::make('cancel')->label('Cancel')
+                \Filament\Actions\Action::make('cancel')->label('Cancel')
                     ->icon('heroicon-o-x-circle')->color('danger')->requiresConfirmation()
                     ->action(fn (Order $r) => $r->update(['status' => 'canceled']))
                     ->visible(fn (Order $r) => !in_array($r->status, ['canceled','success'])),

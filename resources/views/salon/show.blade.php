@@ -48,6 +48,24 @@
         </div>
     </div>
 
+    {{-- ── Kategori & Sub-kategori chips (pivot M:N) ─────────────────── --}}
+    @if ($salon->kategoris->isNotEmpty() || $salon->subKategoris->isNotEmpty())
+        <div class="flex flex-wrap gap-2 mb-6">
+            @foreach ($salon->kategoris as $kat)
+                <a href="{{ route('kategori.show', $kat->slug) }}"
+                   class="inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white bg-[#1B2D6B] hover:bg-[#4BA3CC] rounded-full transition-colors">
+                    {{ $kat->name }}
+                </a>
+            @endforeach
+            @foreach ($salon->subKategoris as $sub)
+                <a href="{{ route('sub-kategori.show', $sub->slug) }}"
+                   class="inline-flex items-center gap-1 px-3 py-1 text-xs font-medium text-[#1B2D6B] bg-[#E8F4FB] hover:bg-[#4BA3CC] hover:text-white border border-[#4BA3CC]/30 rounded-full transition-colors">
+                    {{ $sub->name }}
+                </a>
+            @endforeach
+        </div>
+    @endif
+
     {{-- ── Photo Gallery ──────────────────────────────────────────────── --}}
     <div class="grid grid-cols-3 gap-2 rounded-2xl overflow-hidden mb-8 h-64">
         <div class="col-span-2 bg-[#E8F4FB] overflow-hidden">

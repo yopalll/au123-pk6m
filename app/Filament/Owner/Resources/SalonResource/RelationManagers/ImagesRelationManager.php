@@ -40,11 +40,11 @@ class ImagesRelationManager extends RelationManager
             ])
             ->defaultSort('urutan')
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                \Filament\Actions\CreateAction::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('mark_primary')
+                \Filament\Actions\EditAction::make(),
+                \Filament\Actions\Action::make('mark_primary')
                     ->label('Make Primary')
                     ->icon('heroicon-o-star')
                     ->color('warning')
@@ -57,11 +57,11 @@ class ImagesRelationManager extends RelationManager
                             ->update(['is_primary' => false]);
                         $record->update(['is_primary' => true]);
                     }),
-                Tables\Actions\DeleteAction::make(),
+                \Filament\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                \Filament\Actions\BulkActionGroup::make([
+                    \Filament\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

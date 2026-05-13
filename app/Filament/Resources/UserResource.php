@@ -93,23 +93,23 @@ class UserResource extends Resource
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('deactivate')
+                \Filament\Actions\EditAction::make(),
+                \Filament\Actions\Action::make('deactivate')
                     ->icon('heroicon-o-no-symbol')
                     ->color('danger')
                     ->requiresConfirmation()
                     ->action(fn (User $record) => $record->update(['is_active' => false]))
                     ->visible(fn (User $record) => $record->is_active),
-                Tables\Actions\Action::make('activate')
+                \Filament\Actions\Action::make('activate')
                     ->icon('heroicon-o-check-circle')
                     ->color('success')
                     ->action(fn (User $record) => $record->update(['is_active' => true]))
                     ->visible(fn (User $record) => !$record->is_active),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                    Tables\Actions\RestoreBulkAction::make(),
+                \Filament\Actions\BulkActionGroup::make([
+                    \Filament\Actions\DeleteBulkAction::make(),
+                    \Filament\Actions\RestoreBulkAction::make(),
                 ]),
             ]);
     }

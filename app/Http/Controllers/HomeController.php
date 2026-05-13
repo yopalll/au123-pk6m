@@ -10,7 +10,12 @@ class HomeController extends Controller
     public function index()
     {
         $salons = Salon::active()
-            ->with(['kota', 'services.kategori', 'primaryImage'])
+            ->with([
+                'kota',
+                'services.kategori',
+                'primaryImage',
+                'subKategoris' => fn ($q) => $q->where('is_active', true)->orderBy('id_sub_kategori')->limit(3),
+            ])
             ->withCount('reviews')
             ->orderByDesc('rating')
             ->take(8)

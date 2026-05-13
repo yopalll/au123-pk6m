@@ -79,22 +79,22 @@ class OrderResource extends Resource
                     }),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\Action::make('confirm')
+                \Filament\Actions\ViewAction::make(),
+                \Filament\Actions\Action::make('confirm')
                     ->label('Confirm')
                     ->icon('heroicon-o-check-badge')
                     ->color('info')
                     ->requiresConfirmation()
                     ->action(fn (Order $r) => $r->update(['status' => 'confirmed']))
                     ->visible(fn (Order $r) => $r->status === 'pending'),
-                Tables\Actions\Action::make('mark_success')
+                \Filament\Actions\Action::make('mark_success')
                     ->label('Mark Success')
                     ->icon('heroicon-o-check-circle')
                     ->color('success')
                     ->requiresConfirmation()
                     ->action(fn (Order $r) => $r->update(['status' => 'success']))
                     ->visible(fn (Order $r) => in_array($r->status, ['pending', 'confirmed'])),
-                Tables\Actions\Action::make('cancel')
+                \Filament\Actions\Action::make('cancel')
                     ->label('Cancel')
                     ->icon('heroicon-o-x-circle')
                     ->color('danger')

@@ -46,6 +46,7 @@ class AdminPanelProvider extends PanelProvider
                 'Marketplace',
                 'Transactions',
                 'Users',
+                'Partnerships',
             ])
             ->middleware([
                 EncryptCookies::class,

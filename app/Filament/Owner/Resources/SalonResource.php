@@ -131,8 +131,8 @@ class SalonResource extends Resource
             ])
             ->defaultSort('id_salon', 'desc')
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                \Filament\Actions\ViewAction::make(),
+                \Filament\Actions\EditAction::make(),
             ]);
     }
 

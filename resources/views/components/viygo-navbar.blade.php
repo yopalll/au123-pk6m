@@ -11,14 +11,14 @@
 
 @php
     use App\Models\Kategori;
-    use Illuminate\Support\Facades\Cache;
 
-    $navKategori = Cache::remember('viygo:navbar:part3', now()->addMinutes(15), function () {
-        return Kategori::active()
-            ->with(['subKategori' => fn ($q) => $q->where('is_active', true)])
-            ->orderBy('urutan')
-            ->get();
-    });
+    // Query langsung tanpa Cache::remember — Eloquent Collection kadang
+    // gagal unserialize dari file cache (jadi __PHP_Incomplete_Class) di
+    // Windows. Cuma 7 row, query <5ms, gak perlu cache.
+    $navKategori = Kategori::active()
+        ->with(['subKategori' => fn ($q) => $q->where('is_active', true)])
+        ->orderBy('urutan')
+        ->get();
 
     $currentQ = strtolower((string) request('q', ''));
 @endphp

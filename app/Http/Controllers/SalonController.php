@@ -19,6 +19,8 @@ class SalonController extends Controller
                 'services' => fn ($q) => $q->where('status', 'active')->with('kategori'),
                 'reviews'  => fn ($q) => $q->where('is_visible', true)->with('user')->latest()->take(10),
                 'staff',
+                'kategoris'    => fn ($q) => $q->where('is_active', true)->orderBy('urutan'),
+                'subKategoris' => fn ($q) => $q->where('is_active', true)->orderBy('id_sub_kategori'),
             ])
             ->firstOrFail();
 
