@@ -394,3 +394,33 @@ All branches have been pushed to GitHub:
 **Project Status:** 🟢 **PRODUCTION-READY (85% Complete)**  
 **Last Updated:** May 3, 2026, 11:45 UTC  
 **Repository:** https://github.com/yopalll/VIYGO
+
+---
+
+## 💳 Konfigurasi Midtrans URL Endpoints
+
+Jika Anda mengatur endpoints di Dashboard Midtrans (Settings -> Configuration), berikut adalah nilai yang perlu Anda isi. 
+
+*(Ganti `https://domain-anda.com` dengan domain asli proyek Anda. Jika Anda sedang mengetes secara lokal, gunakan URL dari **Ngrok** seperti `https://abcd-123.ngrok-free.app` karena Midtrans membutuhkan public URL untuk mengirim webhook).*
+
+- **Payment Notification URL***
+  `https://domain-anda.com/midtrans/webhook`
+  *(Ini adalah URL paling penting agar status order di database berubah menjadi 'confirmed' otomatis).*
+
+- **Recurring Notification URL***
+  *(Kosongkan jika bisa. Jika wajib diisi, samakan saja dengan webhook utama)*:
+  `https://domain-anda.com/midtrans/webhook`
+
+- **Pay Account Notification URL***
+  *(Kosongkan jika bisa. Jika wajib diisi, samakan saja dengan webhook utama)*:
+  `https://domain-anda.com/midtrans/webhook`
+
+- **Finish Redirect URL***
+  `https://domain-anda.com/akun/bookings`
+  *(Setelah berhasil bayar, user dikembalikan ke halaman riwayat booking).*
+
+- **Unfinish Redirect URL***
+  `https://domain-anda.com/akun/bookings`
+
+- **Error Redirect URL***
+  `https://domain-anda.com/akun/bookings`

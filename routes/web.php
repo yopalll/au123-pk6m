@@ -69,6 +69,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Payment (Midtrans Snap)
     Route::get('/booking/{kode}/payment', [PaymentController::class, 'show'])->name('booking.payment');
     Route::post('/booking/{kode}/payment/token', [PaymentController::class, 'createSnapToken'])->name('booking.payment.token');
+    Route::post('/booking/{kode}/payment/finish', [PaymentController::class, 'finish'])->name('booking.payment.finish');
 
     // Customer-only account panel
     Route::middleware('role:customer')
