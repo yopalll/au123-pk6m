@@ -137,7 +137,7 @@ class User extends Authenticatable implements FilamentUser
      */
     public function hasFavourited(int $idSalon): bool
     {
-        return $this->favourites()->where('salon.id_salon', $idSalon)->exists();
+        return $this->favourites()->whereKey($idSalon)->exists();
     }
 
     // ──── Filament ──────────────────────────────────────────
@@ -161,6 +161,6 @@ class User extends Authenticatable implements FilamentUser
      */
     public function ownedSalonIds(): array
     {
-        return $this->salons()->pluck('salon.id_salon')->all();
+        return $this->salons()->pluck('id_salon')->all();
     }
 }

@@ -1,4 +1,4 @@
-# VIYGO — Beauty & Wellness Marketplace
+ ar# VIYGO — Beauty & Wellness Marketplace
 
 > A Treatwell-style salon discovery and booking platform built on **Laravel 13 + Livewire Flux**, seeded with 8,750+ real UK salons scraped from Treatwell UK.
 >

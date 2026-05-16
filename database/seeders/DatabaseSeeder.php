@@ -8,44 +8,48 @@ use Illuminate\Support\Facades\DB;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
-     *
-     * Order matters! Tables with foreign key dependencies must be
-     * seeded after their parent tables.
-     *
-     * Execution order:
-     *   1. kota       (no FK)
-     *   2. kategori   (no FK)
-     *   3. users      (no FK)
-     *   4. salon      (FK → users, kota)
-     *   5. service    (FK → salon, kategori)
-     *   6. staff      (FK → salon)
-     *   7. salon_images (FK → salon)
+     * Seed urutan Part 3:
+     *   1. kota
+     *   2. kategori (7 baris: Hair s/d Men's)
+     *   3. sub_kategori (42 baris: treatment dropdown navbar excl See all + Barbers)
+     *   4. kategori_sub_kategori (pivot 42 baris)
+     *   5. users
+     *   6. salon
+     *   7. service (FK ke kategori + sub_kategori)
+     *   8. salon_kategori (pivot derived dari service)
+     *   9. staff
+     *  10. salon_images
      */
     public function run(): void
     {
-        // Disable FK checks during seeding to avoid constraint issues
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-        $this->command->info('=== Starting VIYGO Database Seeding ===');
+        $this->command->info('=== Starting VIYGO Database Seeding (Part 3) ===');
         $this->command->newLine();
 
-        // Truncate in reverse dependency order (safe to re-run)
         $this->command->info('[TRUNCATE] Clearing existing data...');
+        DB::table('salon_sub_kategori')->truncate();
+        DB::table('salon_kategori')->truncate();
+        DB::table('kategori_sub_kategori')->truncate();
         DB::table('salon_images')->truncate();
         DB::table('staff')->truncate();
         DB::table('service')->truncate();
         DB::table('salon')->truncate();
         DB::table('users')->truncate();
+        DB::table('sub_kategori')->truncate();
         DB::table('kategori')->truncate();
         DB::table('kota')->truncate();
 
         $this->call([
             KotaSeeder::class,
             KategoriSeeder::class,
+            SubKategoriSeeder::class,
+            KategoriSubKategoriSeeder::class,
             UserSeeder::class,
             SalonSeeder::class,
             ServiceSeeder::class,
+            SalonKategoriSeeder::class,
+            SalonSubKategoriSeeder::class,
             StaffSeeder::class,
             SalonImagesSeeder::class,
         ]);
@@ -53,6 +57,6 @@ class DatabaseSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         $this->command->newLine();
-        $this->command->info('=== VIYGO Database Seeding Complete! ===');
+        $this->command->info('=== VIYGO Database Seeding (Part 3) Complete! ===');
     }
 }

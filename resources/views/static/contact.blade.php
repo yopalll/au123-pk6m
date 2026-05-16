@@ -32,16 +32,38 @@
         </div>
     </div>
 
-    {{-- Form (front-end only — submission target TBD) --}}
-    <form method="POST" action="#" class="bg-white border border-gray-200 rounded-2xl p-6 space-y-4">
+    {{-- Form --}}
+    <form method="POST" action="{{ route('static.contact.submit') }}" class="bg-white border border-gray-200 rounded-2xl p-6 space-y-4">
         @csrf
         <h3 class="font-semibold text-[#1B2D6B]">Send us a message</h3>
+
+        @if (session('success'))
+            <div class="p-3 rounded-lg bg-green-50 border border-green-100 text-sm text-green-700">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="p-3 rounded-lg bg-red-50 border border-red-100 text-sm text-red-700">
+                <ul class="list-disc list-inside">
+                    @foreach ($errors->all() as $err)
+                        <li>{{ $err }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <input name="name" required placeholder="Your name"
+               value="{{ old('name') }}"
                class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC]" />
         <input type="email" name="email" required placeholder="Your email"
+               value="{{ old('email') }}"
+               class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC]" />
+        <input name="subject" placeholder="Subject (optional)"
+               value="{{ old('subject') }}"
                class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC]" />
         <textarea name="message" rows="4" required placeholder="How can we help?"
-                  class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] resize-none"></textarea>
+                  class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] resize-none">{{ old('message') }}</textarea>
         <button type="submit"
                 class="w-full py-3 bg-[#1B2D6B] text-white font-semibold rounded-full hover:bg-[#4BA3CC] transition-colors">
             Send message

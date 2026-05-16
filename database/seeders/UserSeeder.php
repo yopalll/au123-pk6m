@@ -6,65 +6,118 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * UserSeeder — load dari users.json hasil scraper Go.
+ *
+ * Format users.json:
+ *   [
+ *     {"id_user": 1, "first_name": "Admin", ..., "password": "password", "role": "admin", ...},
+ *     {"id_user": 3, "first_name": "Owner", "last_name": "GHOST Hair", "email": "owner_1@viygo.com",
+ *      "password": "password", "role": "salon_owner", "id_salon": 1, ...}
+ *   ]
+ *
+ * Password di JSON disimpan **plain-text** (untuk debugging/visibility).
+ * Saat di-insert ke MySQL, password di-HASH dgn bcrypt agar Laravel auth jalan.
+ *
+ * Bcrypt mahal — utk efisiensi, password yg sama di-hash sekali lalu re-use.
+ *
+ * Kalau users.json kosong/tidak ada → fallback bootstrap minimal:
+ *   1 admin + 1 customer (password: 'password')
+ */
 class UserSeeder extends Seeder
 {
-    /**
-     * Create owner users for each salon, plus an admin and test customer.
-     * Each salon needs an owner user (role: salon_owner).
-     */
     public function run(): void
     {
-        $salonJson = file_get_contents(database_path('data/salon.json'));
-        $salons = json_decode($salonJson, true);
+        $path = database_path('data/users.json');
 
-        // 1. Admin user
-        DB::table('users')->insert([
-            'first_name' => 'Admin',
-            'last_name'  => 'Viygo',
-            'email'      => 'admin@viygo.com',
-            'password'   => Hash::make('password'),
-            'role'       => 'admin',
-            'is_active'  => true,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        // 2. Test customer
-        DB::table('users')->insert([
-            'first_name' => 'Test',
-            'last_name'  => 'Customer',
-            'email'      => 'customer@viygo.com',
-            'password'   => Hash::make('password'),
-            'role'       => 'customer',
-            'is_active'  => true,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        // 3. Salon owners (one per salon)
-        // Pre-hash once and reuse — bcrypt is intentionally slow, calling it
-        // 3000+ times would take minutes. All owners share the same default password.
-        $hashedPassword = Hash::make('password');
-
-        $ownerChunks = array_chunk($salons, 500);
-        foreach ($ownerChunks as $chunk) {
-            $ownerRows = [];
-            foreach ($chunk as $salon) {
-                $ownerRows[] = [
-                    'first_name' => 'Owner',
-                    'last_name'  => mb_substr($salon['nama_salon'], 0, 100),
-                    'email'      => "owner_{$salon['id_salon']}@viygo.com",
-                    'password'   => $hashedPassword,
-                    'role'       => 'salon_owner',
-                    'is_active'  => true,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ];
-            }
-            DB::table('users')->insert($ownerRows);
+        if (!file_exists($path) || filesize($path) <= 5) {
+            $this->bootstrapMinimal();
+            return;
         }
 
-        $totalUsers = 2 + count($salons);
-        $this->command->info("Seeded {$totalUsers} user records (1 admin + 1 customer + " . count($salons) . " owners).");
+        $users = json_decode(file_get_contents($path), true) ?? [];
+        if (empty($users)) {
+            $this->bootstrapMinimal();
+            return;
+        }
+
+        // Cache hash per password unik (bcrypt mahal!)
+        $hashCache = [];
+        $hashOf = function (string $plain) use (&$hashCache): string {
+            if (!isset($hashCache[$plain])) {
+                $hashCache[$plain] = Hash::make($plain);
+            }
+            return $hashCache[$plain];
+        };
+
+        $now = now();
+        $rolesCount = ['admin' => 0, 'customer' => 0, 'salon_owner' => 0];
+
+        $chunks = array_chunk($users, 500);
+        foreach ($chunks as $chunk) {
+            $rows = [];
+            foreach ($chunk as $u) {
+                $role = $u['role'] ?? 'customer';
+                $rolesCount[$role] = ($rolesCount[$role] ?? 0) + 1;
+
+                $rows[] = [
+                    'id_user'    => $u['id_user'],
+                    'first_name' => mb_substr($u['first_name'] ?? 'User', 0, 100),
+                    'last_name'  => mb_substr($u['last_name'] ?? '', 0, 100),
+                    'email'      => $u['email'],
+                    // PLAIN-TEXT di JSON → HASH bcrypt di MySQL
+                    'password'   => $hashOf($u['password'] ?? 'password'),
+                    'role'       => $role,
+                    'is_active'  => $u['is_active'] ?? true,
+                    'phone_number' => $u['phone_number'] ?? null,
+                    'profile_url'  => $u['profile_url'] ?? null,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ];
+            }
+            DB::table('users')->insert($rows);
+        }
+
+        $this->command->info(sprintf(
+            'Seeded %d users (admin: %d, customer: %d, salon_owner: %d) — passwords hashed with bcrypt.',
+            count($users),
+            $rolesCount['admin'],
+            $rolesCount['customer'],
+            $rolesCount['salon_owner']
+        ));
+    }
+
+    /**
+     * Fallback kalau users.json belum ada / kosong (mis. user belum jalankan
+     * scraper). Bikin minimal 1 admin + 1 customer agar Filament admin bisa login.
+     */
+    private function bootstrapMinimal(): void
+    {
+        $now = now();
+        DB::table('users')->insert([
+            [
+                'id_user'    => 1,
+                'first_name' => 'Admin',
+                'last_name'  => 'Viygo',
+                'email'      => 'admin@viygo.com',
+                'password'   => Hash::make('password'),
+                'role'       => 'admin',
+                'is_active'  => true,
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'id_user'    => 2,
+                'first_name' => 'Test',
+                'last_name'  => 'Customer',
+                'email'      => 'customer@viygo.com',
+                'password'   => Hash::make('password'),
+                'role'       => 'customer',
+                'is_active'  => true,
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+        ]);
+        $this->command->warn('users.json tidak ada/kosong — bootstrap minimal: admin + customer (password: "password").');
     }
 }

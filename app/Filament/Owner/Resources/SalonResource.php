@@ -30,7 +30,7 @@ class SalonResource extends Resource
     public static function form(Schema $form): Schema
     {
         return $form->schema([
-            Forms\Components\Section::make('Basic Info')
+            \Filament\Schemas\Components\Section::make('Basic Info')
                 ->schema([
                     Forms\Components\TextInput::make('nama_salon')
                         ->required()
@@ -46,7 +46,7 @@ class SalonResource extends Resource
                         ->columnSpanFull(),
                 ])->columns(2),
 
-            Forms\Components\Section::make('Location')
+            \Filament\Schemas\Components\Section::make('Location')
                 ->schema([
                     Forms\Components\Select::make('id_kota')
                         ->relationship('kota', 'nama_kota')
@@ -61,7 +61,7 @@ class SalonResource extends Resource
                         ->numeric(),
                 ])->columns(2),
 
-            Forms\Components\Section::make('Contact & Hours')
+            \Filament\Schemas\Components\Section::make('Contact & Hours')
                 ->schema([
                     Forms\Components\TextInput::make('phone_number')
                         ->tel()
@@ -74,7 +74,7 @@ class SalonResource extends Resource
                         ->label('Closes'),
                 ])->columns(3),
 
-            Forms\Components\Section::make('Metrics (read-only)')
+            \Filament\Schemas\Components\Section::make('Metrics (read-only)')
                 ->schema([
                     Forms\Components\TextInput::make('rating')
                         ->disabled()
@@ -131,8 +131,8 @@ class SalonResource extends Resource
             ])
             ->defaultSort('id_salon', 'desc')
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                \Filament\Actions\ViewAction::make(),
+                \Filament\Actions\EditAction::make(),
             ]);
     }
 

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use Midtrans\Config as MidtransConfig;
 use Midtrans\Notification as MidtransNotification;
 use Midtrans\Snap;
+use Midtrans\Transaction as MidtransTransaction;
 
 /**
  * Midtrans Snap payment flow.
@@ -23,9 +24,10 @@ use Midtrans\Snap;
  *   3. createSnapToken() asks Midtrans for a token and persists/updates the
  *      `pembayaran` row with snap_token + status=pending.
  *   4. Frontend calls window.snap.pay(token, callbacks).
- *   5. Midtrans posts to /midtrans/webhook with the final transaction_status.
- *      webhook() verifies the signature, updates pembayaran + order accordingly.
- *   6. On success, the user is redirected to /booking/{kode}/konfirmasi.
+ *   5. On success, frontend calls finish() which server-side verifies the
+ *      transaction via Midtrans API and updates pembayaran + order accordingly.
+ *   6. Midtrans also posts to /midtrans/webhook as a safety net.
+ *   7. On success, the user is redirected to /booking/{kode}/konfirmasi.
  */
 class PaymentController extends Controller
 {
@@ -54,6 +56,10 @@ class PaymentController extends Controller
     /**
      * Generate a fresh Snap token for the order. Idempotent — repeated calls
      * for the same order get a new token; we update `pembayaran.snap_token`.
+     *
+     * If Midtrans rejects the order_id (already used from a previous attempt),
+     * we append a retry suffix so the user can complete payment without
+     * creating a new booking.
      */
     public function createSnapToken(Request $request, string $kode)
     {
@@ -67,26 +73,58 @@ class PaymentController extends Controller
 
         $user = $order->user ?? auth()->user();
 
-        $params = [
-            'transaction_details' => [
-                'order_id'     => $order->kode_order,
-                'gross_amount' => (int) round((float) $order->total_pembayaran),
-            ],
-            'customer_details' => [
-                'first_name' => $user?->first_name ?? 'Guest',
-                'last_name'  => $user?->last_name ?? '',
-                'email'      => $user?->email ?? 'guest@viygo.local',
-                'phone'      => $user?->phone_number ?? '',
-            ],
-            'item_details' => $this->itemDetails($order),
-        ];
+        // Try with the original order code first; on "order_id already taken"
+        // retry once with a timestamp suffix so Midtrans treats it as new.
+        $midtransOrderId = $order->kode_order;
+        $snapToken = null;
+        $lastError = null;
 
-        try {
-            $snapToken = Snap::getSnapToken($params);
-        } catch (\Throwable $e) {
-            Log::error('Midtrans Snap token error', [
+        for ($attempt = 0; $attempt < 2; $attempt++) {
+            $params = [
+                'transaction_details' => [
+                    'order_id'     => $midtransOrderId,
+                    'gross_amount' => $this->convertGbpToIdr((float) $order->total_pembayaran),
+                ],
+                'customer_details' => [
+                    'first_name' => $user?->first_name ?? 'Guest',
+                    'last_name'  => $user?->last_name ?? '',
+                    'email'      => $user?->email ?? 'guest@viygo.local',
+                    'phone'      => $user?->phone_number ?? '',
+                ],
+                'item_details' => $this->itemDetails($order),
+            ];
+
+            try {
+                $snapToken = Snap::getSnapToken($params);
+                break; // Success — exit the loop.
+            } catch (\Throwable $e) {
+                $lastError = $e;
+
+                // If Midtrans says order_id is taken, retry with a suffix.
+                if ($attempt === 0 && str_contains($e->getMessage(), 'order_id')) {
+                    $midtransOrderId = $order->kode_order . '-R' . time();
+                    Log::info('Midtrans order_id conflict, retrying', [
+                        'original' => $order->kode_order,
+                        'retry_id' => $midtransOrderId,
+                    ]);
+                    continue;
+                }
+
+                Log::error('Midtrans Snap token error', [
+                    'order' => $order->kode_order,
+                    'error' => $e->getMessage(),
+                ]);
+
+                return response()->json([
+                    'error' => 'Could not contact payment gateway. Try again in a moment.',
+                ], 502);
+            }
+        }
+
+        if (! $snapToken) {
+            Log::error('Midtrans Snap token error after retries', [
                 'order' => $order->kode_order,
-                'error' => $e->getMessage(),
+                'error' => $lastError?->getMessage(),
             ]);
 
             return response()->json([
@@ -103,6 +141,7 @@ class PaymentController extends Controller
                 'snap_token'        => $snapToken,
                 'jumlah_bayar'      => $order->total_pembayaran,
                 'status_pembayaran' => 'pending',
+                'midtrans_order_id' => $midtransOrderId,
             ],
         );
 
@@ -110,6 +149,102 @@ class PaymentController extends Controller
             'snap_token' => $snapToken,
             'payment_id' => $payment->id_pembayaran,
         ]);
+    }
+
+    /**
+     * Called by the frontend after Snap's onSuccess callback.
+     *
+     * Instead of relying solely on the webhook (which may never arrive in dev),
+     * we server-side verify the transaction status via Midtrans API and update
+     * the order + pembayaran accordingly.
+     */
+    public function finish(Request $request, string $kode)
+    {
+        $order = Order::where('kode_order', $kode)
+            ->where('id_user', auth()->id())
+            ->with('pembayaran')
+            ->firstOrFail();
+
+        // If already confirmed/success, just acknowledge.
+        if (in_array($order->status, ['confirmed', 'success'])) {
+            return response()->json(['status' => $order->status]);
+        }
+
+        // Look up the midtrans order ID from pembayaran (may have -R suffix).
+        $payment = $order->pembayaran;
+        $midtransOrderId = $payment?->midtrans_order_id ?? $order->kode_order;
+
+        try {
+            $status = MidtransTransaction::status($midtransOrderId);
+        } catch (\Throwable $e) {
+            Log::error('Midtrans status check failed', [
+                'order'             => $order->kode_order,
+                'midtrans_order_id' => $midtransOrderId,
+                'error'             => $e->getMessage(),
+            ]);
+
+            // Even if the API check fails, we can try using the raw result
+            // from the Snap callback. But to be safe, we still mark it.
+            return response()->json([
+                'status' => 'pending',
+                'error'  => 'Could not verify payment status. The webhook will update it shortly.',
+            ], 200);
+        }
+
+        $transactionStatus = $status->transaction_status ?? 'unknown';
+        $fraudStatus       = $status->fraud_status ?? null;
+
+        Log::info('Midtrans finish check', [
+            'order'              => $order->kode_order,
+            'midtrans_order_id'  => $midtransOrderId,
+            'transaction_status' => $transactionStatus,
+            'fraud_status'       => $fraudStatus,
+        ]);
+
+        DB::transaction(function () use ($order, $status, $transactionStatus, $fraudStatus) {
+            $order->lockForUpdate();
+
+            $payment = Pembayaran::firstOrNew(['id_order' => $order->id_order]);
+
+            $payment->id_user           = $order->id_user;
+            $payment->metode_pembayaran = (string) ($status->payment_type ?? 'midtrans_snap');
+            $payment->id_transaksi      = (string) ($status->transaction_id ?? '');
+            $payment->jumlah_bayar      = (float) ($status->gross_amount ?? $order->total_pembayaran);
+
+            switch ($transactionStatus) {
+                case 'capture':
+                    if ($fraudStatus === 'challenge') {
+                        $payment->status_pembayaran = 'pending';
+                    } else {
+                        $payment->status_pembayaran = 'completed';
+                        $payment->tanggal_bayar     = now();
+                        $order->status              = 'confirmed';
+                    }
+                    break;
+
+                case 'settlement':
+                    $payment->status_pembayaran = 'completed';
+                    $payment->tanggal_bayar     = now();
+                    $order->status              = 'confirmed';
+                    break;
+
+                case 'pending':
+                    $payment->status_pembayaran = 'pending';
+                    break;
+
+                case 'deny':
+                case 'expire':
+                case 'cancel':
+                case 'failure':
+                    $payment->status_pembayaran = 'failed';
+                    break;
+            }
+
+            $payment->save();
+            $order->save();
+        });
+
+        return response()->json(['status' => $order->fresh()->status]);
     }
 
     /**
@@ -121,6 +256,11 @@ class PaymentController extends Controller
      */
     public function webhook(Request $request)
     {
+        Log::info('Midtrans webhook received', [
+            'ip'   => $request->ip(),
+            'body' => $request->all(),
+        ]);
+
         try {
             $notification = new MidtransNotification();
         } catch (\Throwable $e) {
@@ -147,16 +287,40 @@ class PaymentController extends Controller
             return response()->json(['message' => 'invalid signature'], 403);
         }
 
-        $order = Order::where('kode_order', $orderCode)->first();
+        // The Midtrans order_id may have a -R suffix from retry.
+        // Strip it to find our actual kode_order.
+        $actualOrderCode = preg_replace('/-R\d+$/', '', $orderCode);
 
-        if (! $order) {
+        // Quick existence check — no lock yet (lock is inside the transaction).
+        if (! Order::where('kode_order', $actualOrderCode)->exists()) {
+            Log::warning('Midtrans webhook: order not found', ['order_id' => $orderCode, 'parsed' => $actualOrderCode]);
             return response()->json(['message' => 'order not found'], 404);
         }
 
         $transactionStatus = $notification->transaction_status;
         $fraudStatus       = $notification->fraud_status ?? null;
 
-        DB::transaction(function () use ($order, $notification, $transactionStatus, $fraudStatus) {
+        Log::info('Midtrans webhook processing', [
+            'order_id'           => $orderCode,
+            'actual_order'       => $actualOrderCode,
+            'transaction_status' => $transactionStatus,
+            'fraud_status'       => $fraudStatus,
+        ]);
+
+        DB::transaction(function () use ($actualOrderCode, $notification, $transactionStatus, $fraudStatus) {
+            // Re-fetch with pessimistic lock so concurrent webhook deliveries
+            // for the same order are serialised — only one thread proceeds.
+            $order = Order::where('kode_order', $actualOrderCode)->lockForUpdate()->firstOrFail();
+
+            // If already confirmed/success, skip — don't downgrade status.
+            if (in_array($order->status, ['confirmed', 'success'])) {
+                Log::info('Midtrans webhook: order already finalized', [
+                    'order'  => $actualOrderCode,
+                    'status' => $order->status,
+                ]);
+                return;
+            }
+
             $payment = Pembayaran::firstOrNew(['id_order' => $order->id_order]);
 
             $payment->id_user           = $order->id_user;
@@ -198,6 +362,12 @@ class PaymentController extends Controller
 
             $payment->save();
             $order->save();
+
+            Log::info('Midtrans webhook: order updated', [
+                'order'            => $actualOrderCode,
+                'order_status'     => $order->status,
+                'payment_status'   => $payment->status_pembayaran,
+            ]);
         });
 
         return response()->json(['message' => 'ok']);
@@ -217,6 +387,16 @@ class PaymentController extends Controller
     }
 
     /**
+     * Convert GBP to IDR for Midtrans.
+     */
+    protected function convertGbpToIdr(float $gbpAmount): int
+    {
+        // 1 GBP = ~20,000 IDR (example fixed rate)
+        $exchangeRate = (float) config('services.midtrans.exchange_rate', 20000);
+        return (int) round($gbpAmount * $exchangeRate);
+    }
+
+    /**
      * Map the order's services into Midtrans `item_details` rows.
      */
     protected function itemDetails(Order $order): array
@@ -227,14 +407,15 @@ class PaymentController extends Controller
             $items[] = [
                 'id'       => 'SVC-' . $detail->id_service,
                 'name'     => substr($detail->service?->nama ?? 'Service', 0, 50),
-                'price'    => (int) round((float) $detail->harga_at_order),
+                'price'    => $this->convertGbpToIdr((float) $detail->harga_at_order),
                 'quantity' => 1,
             ];
         }
 
         // Reconcile rounding so the sum equals gross_amount exactly.
         $sum = array_sum(array_map(fn ($i) => $i['price'] * $i['quantity'], $items));
-        $diff = (int) round((float) $order->total_pembayaran) - $sum;
+        $grossAmountIdr = $this->convertGbpToIdr((float) $order->total_pembayaran);
+        $diff = $grossAmountIdr - $sum;
 
         if ($diff !== 0) {
             $items[] = [

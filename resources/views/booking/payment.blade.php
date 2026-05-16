@@ -94,6 +94,8 @@
             :  'bg-blue-50 border border-blue-100 text-blue-700');
     }
 
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
+
     btn.addEventListener('click', async function () {
         btn.disabled = true;
         btn.textContent = 'Preparing payment…';
@@ -103,7 +105,7 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
+                    'X-CSRF-TOKEN': csrfToken,
                     'Accept': 'application/json',
                 },
             });
@@ -116,8 +118,27 @@
             const { snap_token } = await res.json();
 
             window.snap.pay(snap_token, {
-                onSuccess: function () {
-                    showStatus('Payment successful! Redirecting…', 'success');
+                onSuccess: async function () {
+                    showStatus('Payment successful! Verifying…', 'success');
+                    btn.disabled = true;
+                    btn.textContent = 'Verifying payment…';
+
+                    // Server-side verify the transaction via Midtrans API
+                    // so the order status updates even if webhook never arrives.
+                    try {
+                        await fetch(@json(route('booking.payment.finish', $order->kode_order)), {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': csrfToken,
+                                'Accept': 'application/json',
+                            },
+                        });
+                    } catch (e) {
+                        console.warn('Finish endpoint error (webhook will handle):', e);
+                    }
+
+                    showStatus('Payment confirmed! Redirecting…', 'success');
                     window.location.href = @json(route('booking.konfirmasi', $order->kode_order));
                 },
                 onPending: function () {

@@ -23,11 +23,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/cari', [SearchController::class, 'index'])->name('cari');
 Route::get('/kategori/{slug}', [KategoriController::class, 'show'])->name('kategori.show');
+Route::get('/sub-kategori/{slug}', [KategoriController::class, 'showSub'])->name('sub-kategori.show');
 Route::get('/salon/{slug}', [SalonController::class, 'show'])->name('salon.show');
 Route::get('/gift-card', [GiftCardController::class, 'index'])->name('gift-card');
 Route::get('/lookbook', [LookbookController::class, 'index'])->name('lookbook');
 Route::get('/treatment-files', [TreatmentFilesController::class, 'index'])->name('treatment-files');
 Route::get('/mitra', [MitraController::class, 'index'])->name('mitra');
+Route::post('/mitra/apply', [MitraController::class, 'apply'])
+    ->middleware('throttle:5,1')
+    ->name('mitra.apply');
 
 // ── Static / informational pages (footer links) ───────────────────────────
 Route::get('/about',   [StaticController::class, 'about'])->name('static.about');
@@ -38,6 +42,12 @@ Route::get('/contact', [StaticController::class, 'contact'])->name('static.conta
 Route::get('/privacy', [StaticController::class, 'privacy'])->name('static.privacy');
 Route::get('/terms',   [StaticController::class, 'terms'])->name('static.terms');
 Route::get('/cookies', [StaticController::class, 'cookies'])->name('static.cookies');
+Route::post('/contact', [StaticController::class, 'submitContact'])
+    ->middleware('throttle:10,1')
+    ->name('static.contact.submit');
+Route::post('/newsletter', [StaticController::class, 'subscribeNewsletter'])
+    ->middleware('throttle:3,1')
+    ->name('newsletter.subscribe');
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +69,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Payment (Midtrans Snap)
     Route::get('/booking/{kode}/payment', [PaymentController::class, 'show'])->name('booking.payment');
     Route::post('/booking/{kode}/payment/token', [PaymentController::class, 'createSnapToken'])->name('booking.payment.token');
+    Route::post('/booking/{kode}/payment/finish', [PaymentController::class, 'finish'])->name('booking.payment.finish');
 
     // Customer-only account panel
     Route::middleware('role:customer')
@@ -78,8 +89,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/bookings/{kode}/review', [ReviewController::class, 'store'])->name('review.store');
         });
 
-    // Existing Livewire Flux dashboard (any role)
-    Route::view('dashboard', 'dashboard')->name('dashboard');
+    // Post-login landing — redirect berdasarkan role
+    Route::get('dashboard', function () {
+        $user = auth()->user();
+        return match ($user->role) {
+            'admin'       => redirect('/admin'),
+            'salon_owner' => redirect('/owner'),
+            default       => redirect()->route('akun.bookings'),
+        };
+    })->name('dashboard');
 });
 
 // Midtrans webhook (no auth — Midtrans posts here, signature-verified instead).

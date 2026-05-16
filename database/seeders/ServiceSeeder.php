@@ -5,43 +5,80 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * ServiceSeeder V2 — mendukung dua format JSON:
+ *
+ *   1. BARU (hasil scraper.exe v2): field `id_kategori` ∈ 1..43,
+ *      `id_sub_kategori` boleh berupa ID valid atau null.
+ *
+ *   2. LAMA (sebelum refactor kategori): id_kategori menunjuk ke kategori
+ *      lama yang sudah dihapus. Seeder akan SET NULL utk id_kategori yg
+ *      tidak ada di tabel `kategori` baru (1..43). Service tetap masuk
+ *      DB tapi tanpa kategori — bisa dimapping ulang setelah scrape ulang.
+ */
 class ServiceSeeder extends Seeder
 {
-    /**
-     * Seed the service table from JSON data.
-     * Uses chunked inserts for 1900+ records.
-     */
     public function run(): void
     {
-        $json = file_get_contents(database_path('data/service.json'));
-        $services = json_decode($json, true) ?? [];
-
-        if (empty($services)) {
-            $this->command->warn('service.json is empty, skipping ServiceSeeder.');
+        $servicePath = database_path('data/service.json');
+        if (!file_exists($servicePath)) {
+            $this->command->warn('service.json tidak ditemukan, ServiceSeeder dilewati.');
             return;
         }
 
-        $chunks = array_chunk($services, 100);
+        $services = json_decode(file_get_contents($servicePath), true) ?? [];
+        if (empty($services)) {
+            $this->command->warn('service.json kosong, ServiceSeeder dilewati.');
+            return;
+        }
+
+        // Whitelist id_kategori valid (kategori 43 baris, sudah di-seed).
+        $validKategoriIds = DB::table('kategori')->pluck('id_kategori')->all();
+        $validKategoriSet = array_flip($validKategoriIds);
+
+        $validSubIds = DB::table('sub_kategori')->pluck('id_sub_kategori')->all();
+        $validSubSet = array_flip($validSubIds);
+
+        $unmapped = 0;
+        $chunks = array_chunk($services, 500);
 
         foreach ($chunks as $chunk) {
-            $rows = array_map(function ($service) {
-                return [
-                    'id_service'  => $service['id_service'],
-                    'id_salon'    => $service['id_salon'],
-                    'id_kategori' => $service['id_kategori'],
-                    'nama'        => mb_substr($service['nama'], 0, 150),
-                    'deskripsi'   => $service['deskripsi'],
-                    'durasi'      => $service['durasi'],
-                    'harga'       => $service['harga'],
-                    'status'      => $service['status'],
-                    'created_at'  => now(),
-                    'updated_at'  => now(),
-                ];
-            }, $chunk);
+            $rows = [];
+            foreach ($chunk as $svc) {
+                $idKat = $svc['id_kategori'] ?? null;
+                if ($idKat !== null && !isset($validKategoriSet[$idKat])) {
+                    $idKat = null;
+                    $unmapped++;
+                }
 
+                $idSub = $svc['id_sub_kategori'] ?? null;
+                if ($idSub !== null && !isset($validSubSet[$idSub])) {
+                    $idSub = null;
+                }
+
+                $rows[] = [
+                    'id_service'      => $svc['id_service'],
+                    'id_salon'        => $svc['id_salon'],
+                    'id_kategori'     => $idKat,
+                    'id_sub_kategori' => $idSub,
+                    'nama'            => mb_substr($svc['nama'] ?? '', 0, 150),
+                    'deskripsi'       => $svc['deskripsi'] ?? null,
+                    'durasi'          => $svc['durasi'] ?? 60,
+                    'harga'           => $svc['harga'] ?? 0,
+                    'status'          => $svc['status'] ?? 'active',
+                    'created_at'      => now(),
+                    'updated_at'      => now(),
+                ];
+            }
             DB::table('service')->insert($rows);
         }
 
-        $this->command->info("Seeded " . count($services) . " service records.");
+        $msg = sprintf('Seeded %d service records', count($services));
+        if ($unmapped > 0) {
+            $msg .= sprintf(' (%d service: id_kategori invalid → set NULL — re-run scraper utk re-tagging).', $unmapped);
+        } else {
+            $msg .= '.';
+        }
+        $this->command->info($msg);
     }
 }

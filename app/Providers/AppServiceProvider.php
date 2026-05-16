@@ -27,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->configureDefaults();
 
+        // Paksa HTTPS jika menggunakan ngrok agar CSS tidak terblokir
+        if (str_contains(config('app.url'), 'ngrok')) {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
+
         Review::observe(ReviewObserver::class);
     }
 

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -59,6 +60,34 @@ class Salon extends Model
     public function services(): HasMany
     {
         return $this->hasMany(Service::class, 'id_salon');
+    }
+
+    /**
+     * M:N: salon ↔ kategori utama (Hair, Nails, ...).
+     * Pivot diisi oleh scraper saat visit URL /treatment-group-{slug}/.
+     */
+    public function kategoris(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Kategori::class,
+            'salon_kategori',
+            'id_salon',
+            'id_kategori'
+        )->withTimestamps();
+    }
+
+    /**
+     * M:N: salon ↔ sub_kategori (treatment spesifik: Blow Dry, Pedicure, ...).
+     * Pivot diisi oleh scraper saat visit URL /treatment-{slug}/.
+     */
+    public function subKategoris(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            SubKategori::class,
+            'salon_sub_kategori',
+            'id_salon',
+            'id_sub_kategori'
+        )->withTimestamps();
     }
 
     public function staff(): HasMany

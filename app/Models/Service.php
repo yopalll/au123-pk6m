@@ -17,6 +17,7 @@ class Service extends Model
     protected $fillable = [
         'id_salon',
         'id_kategori',
+        'id_sub_kategori',
         'nama',
         'deskripsi',
         'durasi',
@@ -42,6 +43,11 @@ class Service extends Model
     public function kategori(): BelongsTo
     {
         return $this->belongsTo(Kategori::class, 'id_kategori');
+    }
+
+    public function subKategori(): BelongsTo
+    {
+        return $this->belongsTo(SubKategori::class, 'id_sub_kategori');
     }
 
     /**

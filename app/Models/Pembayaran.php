@@ -16,6 +16,7 @@ class Pembayaran extends Model
         'metode_pembayaran',
         'id_transaksi',
         'snap_token',
+        'midtrans_order_id',
         'raw_response',
         'jumlah_bayar',
         'status_pembayaran',

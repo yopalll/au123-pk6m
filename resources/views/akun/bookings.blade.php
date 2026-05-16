@@ -46,7 +46,7 @@
                 <span class="text-xs text-gray-400">{{ \Carbon\Carbon::parse($order->date_order)->isoFormat('D MMM Y') }}</span>
             </div>
             <div class="p-5 flex items-center gap-4">
-                <div class="w-14 h-14 rounded-xl bg-[#E8F4FB] flex items-center justify-center text-2xl flex-shrink-0">✂️</div>
+                <div class="w-14 h-14 rounded-xl bg-[#E8F4FB] flex items-center justify-center text-2xl shrink-0">✂️</div>
                 <div class="flex-1 min-w-0">
                     <div class="font-semibold text-gray-900">{{ $order->salon->nama_salon }}</div>
                     <div class="text-sm text-gray-500">{{ $order->details->pluck('service.nama')->implode(', ') }}</div>
@@ -54,7 +54,7 @@
                         <div class="text-sm text-gray-400 mt-0.5">{{ $order->salon->kota->nama }}</div>
                     @endif
                 </div>
-                <div class="text-right flex-shrink-0">
+                <div class="text-right shrink-0">
                     <div class="font-bold text-[#1B2D6B]">£{{ number_format($order->total_pembayaran, 2, '.', ',') }}</div>
                     <div class="flex gap-2 mt-2 justify-end items-center">
                         @if ($order->status === 'pending')

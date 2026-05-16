@@ -36,7 +36,7 @@ class KotaResource extends Resource
                 Tables\Columns\TextColumn::make('provinsi')->label('Region')->searchable(),
                 Tables\Columns\TextColumn::make('salons_count')->counts('salons')->label('Salons')->sortable(),
             ])
-            ->actions([Tables\Actions\EditAction::make()])
+            ->actions([\Filament\Actions\EditAction::make()])
             ->bulkActions([]);
     }
 

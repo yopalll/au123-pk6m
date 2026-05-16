@@ -34,7 +34,7 @@
                        class="text-sm outline-none text-gray-800" />
             </div>
             <button type="submit"
-                    class="flex-shrink-0 w-12 h-12 bg-[#1B2D6B] text-white rounded-xl flex items-center justify-center hover:bg-[#4BA3CC] transition-colors mx-1">
+                    class="shrink-0 w-12 h-12 bg-[#1B2D6B] text-white rounded-xl flex items-center justify-center hover:bg-[#4BA3CC] transition-colors mx-1">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
                 </svg>
@@ -63,7 +63,7 @@
             'harga-terendah'    => 'Lowest Price',
         ] as $sortKey => $label)
             <a href="{{ route('cari', array_merge(request()->query(), ['sort' => $sortKey])) }}"
-               class="px-4 py-2 rounded-full border text-sm font-medium flex-shrink-0 transition-colors
+               class="px-4 py-2 rounded-full border text-sm font-medium shrink-0 transition-colors
                       {{ ($currentSort ?? '') === $sortKey ? 'bg-[#1B2D6B] text-white border-[#1B2D6B]' : 'border-gray-200 text-gray-700 hover:border-[#1B2D6B]' }}">
                 {{ $label }}
             </a>
@@ -95,7 +95,7 @@
         </div>
 
         {{-- Map --}}
-        <div class="hidden lg:block w-[420px] flex-shrink-0">
+        <div class="hidden lg:block w-[420px] shrink-0">
             <div class="sticky" style="top: calc(var(--navbar-h, 96px) + 55px);">
                 <x-leaflet-map
                     id="map-search"

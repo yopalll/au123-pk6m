@@ -28,7 +28,7 @@
                                 'bg-[#1B2D6B] text-white': step >= {{ $i+1 }},
                                 'bg-gray-100 text-gray-400': step < {{ $i+1 }}
                              }"
-                             class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 transition-colors">
+                             class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 transition-colors">
                             <span x-show="step > {{ $i+1 }}">✓</span>
                             <span x-show="step <= {{ $i+1 }}">{{ $i+1 }}</span>
                         </div>
@@ -42,26 +42,44 @@
                 @endforeach
             </div>
 
-            {{-- STEP 1: Pick a Service --}}
+            {{-- STEP 1: Pick Services (multi-select) --}}
             <div x-show="step === 1" x-transition>
-                <h2 class="text-xl font-semibold text-gray-900 mb-4">Pick a Service</h2>
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-semibold text-gray-900">Pick Services</h2>
+                    <span class="text-sm text-gray-500" x-show="selectedServiceIds.length > 0">
+                        <span x-text="selectedServiceIds.length"></span> selected · Total
+                        <span class="font-semibold text-[#1B2D6B]"
+                              x-text="'£' + totalPrice.toLocaleString('en-GB', {minimumFractionDigits: 2, maximumFractionDigits: 2})"></span>
+                        · <span x-text="totalDuration"></span> min
+                    </span>
+                </div>
+                <p class="text-xs text-gray-500 mb-3">You can choose more than one — services will be done back-to-back in one appointment.</p>
                 <div class="space-y-3 max-h-[600px] overflow-y-auto pr-2">
                     @forelse ($salon->services->where('status','active') as $svc)
-                        <div @click="selectService({{ $svc->id_service }}, @js($svc->nama), {{ (float) $svc->harga }}, {{ (int) ($svc->durasi ?? 30) }})"
-                             :class="selectedServiceId === {{ $svc->id_service }}
+                        <div @click="toggleService({{ $svc->id_service }}, @js($svc->nama), {{ (float) $svc->harga }}, {{ (int) ($svc->durasi ?? 30) }})"
+                             :class="isServiceSelected({{ $svc->id_service }})
                                      ? 'border-[#1B2D6B] bg-[#E8F4FB]'
                                      : 'border-gray-100 hover:border-[#4BA3CC] hover:bg-[#E8F4FB]/50'"
                              class="flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-all">
-                            <div>
-                                <div class="font-medium text-gray-900">{{ $svc->nama }}</div>
-                                @if ($svc->deskripsi)
-                                    <div class="text-xs text-gray-400 mt-0.5">{{ Str::limit($svc->deskripsi, 70) }}</div>
-                                @endif
-                                <div class="text-xs text-gray-400 mt-1">⏱ {{ $svc->durasi }} min</div>
+                            <div class="flex items-start gap-3">
+                                {{-- Checkbox visual --}}
+                                <div :class="isServiceSelected({{ $svc->id_service }})
+                                              ? 'bg-[#1B2D6B] border-[#1B2D6B]'
+                                              : 'border-gray-300'"
+                                     class="w-5 h-5 rounded border-2 flex items-center justify-center shrink-0 mt-0.5 transition-colors">
+                                    <svg x-show="isServiceSelected({{ $svc->id_service }})" class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <div>
+                                    <div class="font-medium text-gray-900">{{ $svc->nama }}</div>
+                                    @if ($svc->deskripsi)
+                                        <div class="text-xs text-gray-400 mt-0.5">{{ Str::limit($svc->deskripsi, 70) }}</div>
+                                    @endif
+                                    <div class="text-xs text-gray-400 mt-1">⏱ {{ $svc->durasi }} min</div>
+                                </div>
                             </div>
-                            <div class="text-right flex-shrink-0 ml-4">
+                            <div class="text-right shrink-0 ml-4">
                                 <div class="font-bold text-[#1B2D6B]">£{{ number_format($svc->harga, 2, '.', ',') }}</div>
-                                <div x-show="selectedServiceId === {{ $svc->id_service }}"
+                                <div x-show="isServiceSelected({{ $svc->id_service }})"
                                      class="text-xs text-[#4BA3CC] font-semibold mt-1">✓ Selected</div>
                             </div>
                         </div>
@@ -105,10 +123,10 @@
                                         @click="!cell.past && selectDate(cell.day)"
                                         :disabled="cell.past"
                                         :class="{
-                                            'bg-[#1B2D6B] text-white': selectedDay === cell.day && bookingDate === cell.date && !cell.past,
-                                            'text-[#4BA3CC] font-bold': cell.today && selectedDay !== cell.day,
+                                            'bg-[#1B2D6B] text-white': isSelectedCell(cell.day) && !cell.past,
+                                            'text-[#4BA3CC] font-bold': cell.today && !isSelectedCell(cell.day),
                                             'text-gray-300 cursor-not-allowed': cell.past,
-                                            'hover:bg-[#E8F4FB] hover:text-[#1B2D6B]': !cell.past && selectedDay !== cell.day
+                                            'hover:bg-[#E8F4FB] hover:text-[#1B2D6B]': !cell.past && !isSelectedCell(cell.day)
                                         }"
                                         class="w-9 h-9 rounded-full flex items-center justify-center text-sm mx-auto transition-all">
                                     <span x-text="cell.day"></span>
@@ -148,9 +166,19 @@
                 <h2 class="text-xl font-semibold text-gray-900 mb-4">Confirm Your Booking</h2>
                 <div class="bg-[#E8F4FB] rounded-2xl p-5 border border-[#C5E1F0] mb-6 space-y-3">
                     <div class="flex justify-between text-sm"><span class="text-gray-500">Salon</span><span class="font-medium">{{ $salon->nama_salon }}</span></div>
-                    <div class="flex justify-between text-sm border-t border-[#C5E1F0] pt-3">
-                        <span class="text-gray-500">Service</span>
-                        <span class="font-medium" x-text="selectedServiceName"></span>
+                    <div class="border-t border-[#C5E1F0] pt-3">
+                        <div class="text-sm text-gray-500 mb-2">Services (<span x-text="selectedServices.length"></span>)</div>
+                        <ul class="space-y-1.5">
+                            <template x-for="svc in selectedServices" :key="svc.id">
+                                <li class="flex justify-between text-sm">
+                                    <span class="text-gray-700">
+                                        <span x-text="svc.name"></span>
+                                        <span class="text-xs text-gray-400" x-text="'(' + svc.duration + ' min)'"></span>
+                                    </span>
+                                    <span class="font-medium" x-text="'£' + svc.price.toLocaleString('en-GB', {minimumFractionDigits: 2, maximumFractionDigits: 2})"></span>
+                                </li>
+                            </template>
+                        </ul>
                     </div>
                     <div class="flex justify-between text-sm border-t border-[#C5E1F0] pt-3">
                         <span class="text-gray-500">Date</span>
@@ -158,7 +186,7 @@
                     </div>
                     <div class="flex justify-between text-sm border-t border-[#C5E1F0] pt-3">
                         <span class="text-gray-500">Time</span>
-                        <span class="font-medium" x-text="selectedTime"></span>
+                        <span class="font-medium" x-text="selectedTime + ' (' + totalDuration + ' min total)'"></span>
                     </div>
                     <div class="flex justify-between text-sm border-t border-[#C5E1F0] pt-3">
                         <span class="text-gray-500">Staff</span>
@@ -166,16 +194,18 @@
                     </div>
                     <div class="flex justify-between font-semibold text-base border-t border-[#C5E1F0] pt-3">
                         <span>Total</span>
-                        <span class="text-[#1B2D6B]" x-text="'£' + selectedServicePrice.toLocaleString('en-GB', {minimumFractionDigits: 2, maximumFractionDigits: 2})"></span>
+                        <span class="text-[#1B2D6B]" x-text="'£' + totalPrice.toLocaleString('en-GB', {minimumFractionDigits: 2, maximumFractionDigits: 2})"></span>
                     </div>
                 </div>
 
                 <form action="{{ route('booking.store', $salon->slug ?? $salon->id_salon) }}" method="POST">
                     @csrf
-                    <input type="hidden" name="id_service" :value="selectedServiceId" />
-                    <input type="hidden" name="tanggal"   :value="bookingDate" />
-                    <input type="hidden" name="waktu"     :value="selectedTime" />
-                    <input type="hidden" name="id_staff"  :value="selectedStaffId" />
+                    <template x-for="sid in selectedServiceIds" :key="sid">
+                        <input type="hidden" name="id_service[]" :value="sid" />
+                    </template>
+                    <input type="hidden" name="tanggal"  :value="bookingDate" />
+                    <input type="hidden" name="waktu"    :value="selectedTime" />
+                    <input type="hidden" name="id_staff" :value="selectedStaffId" />
 
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Note (optional)</label>
@@ -211,10 +241,10 @@
         </div>
 
         {{-- ── Right: Summary ─────────────────────────────────────────── --}}
-        <div class="hidden lg:block w-64 flex-shrink-0">
+        <div class="hidden lg:block w-64 shrink-0">
             <div class="sticky top-[160px] border border-gray-200 rounded-2xl p-5">
                 <div class="flex items-center gap-3 mb-4">
-                    <div class="w-12 h-12 rounded-xl bg-[#E8F4FB] flex items-center justify-center text-xl flex-shrink-0">✂️</div>
+                    <div class="w-12 h-12 rounded-xl bg-[#E8F4FB] flex items-center justify-center text-xl shrink-0">✂️</div>
                     <div>
                         <div class="font-semibold text-sm text-gray-900">{{ $salon->nama_salon }}</div>
                         <div class="text-xs text-gray-400">{{ $salon->kota?->nama }}</div>
@@ -243,11 +273,13 @@ function bookingForm() {
 
     return {
         step: 1,
-        selectedServiceId: null,
-        selectedServiceName: '',
-        selectedServicePrice: 0,
-        selectedServiceDuration: 0,
+        // Multi-service: list of {id, name, price, duration}
+        selectedServices: [],
         selectedDay: null,
+        // Year/month the user picked the day in. Without this, day-15
+        // stays highlighted when you scroll past it to a new month.
+        selectedYear: null,
+        selectedMonth: null,
         selectedTime: null,
         selectedStaffId: 0,
         selectedStaffName: 'Any staff',
@@ -258,14 +290,24 @@ function bookingForm() {
 
         init() {},
 
+        // True only when the cell's day is the one the user actually chose,
+        // AND the calendar is still showing the month they chose it in.
+        isSelectedCell(day) {
+            return this.selectedDay === day
+                && this.selectedYear === this.calYear
+                && this.selectedMonth === this.calMonth;
+        },
+
         get monthLabel() {
             const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
             return months[this.calMonth] + ' ' + this.calYear;
         },
 
         get bookingDate() {
-            if (!this.selectedDay) return '';
-            return this.calYear + '-' + String(this.calMonth+1).padStart(2,'0') + '-' + String(this.selectedDay).padStart(2,'0');
+            if (!this.selectedDay || this.selectedYear === null) return '';
+            return this.selectedYear
+                + '-' + String(this.selectedMonth + 1).padStart(2,'0')
+                + '-' + String(this.selectedDay).padStart(2,'0');
         },
 
         get calendarCells() {
@@ -276,24 +318,40 @@ function bookingForm() {
             for (let d = 1; d <= daysInMonth; d++) {
                 const date = new Date(this.calYear, this.calMonth, d);
                 const todayMid = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-                const dateStr = this.calYear + '-' + String(this.calMonth+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
-                cells.push({ key: d, day: d, date: dateStr, past: date < todayMid, today: date.toDateString() === today.toDateString() });
+                cells.push({ key: d, day: d, past: date < todayMid, today: date.toDateString() === today.toDateString() });
             }
             return cells;
         },
 
-        selectService(id, name, price, dur) {
-            this.selectedServiceId = id;
-            this.selectedServiceName = name;
-            this.selectedServicePrice = price;
-            this.selectedServiceDuration = dur;
-            // Reset time/slots — slots depend on service duration.
+        // ─── Multi-service helpers ───────────────────────────
+        get selectedServiceIds() {
+            return this.selectedServices.map(s => s.id);
+        },
+        get totalPrice() {
+            return this.selectedServices.reduce((sum, s) => sum + Number(s.price), 0);
+        },
+        get totalDuration() {
+            return this.selectedServices.reduce((sum, s) => sum + Number(s.duration), 0);
+        },
+        isServiceSelected(id) {
+            return this.selectedServices.some(s => s.id === id);
+        },
+        toggleService(id, name, price, dur) {
+            const idx = this.selectedServices.findIndex(s => s.id === id);
+            if (idx >= 0) {
+                this.selectedServices.splice(idx, 1);
+            } else {
+                this.selectedServices.push({ id, name, price: Number(price), duration: Number(dur) });
+            }
+            // Slot/time invalidate karena total duration berubah.
             this.slots = [];
             this.selectedTime = null;
         },
 
         selectDate(day) {
             this.selectedDay = day;
+            this.selectedYear = this.calYear;
+            this.selectedMonth = this.calMonth;
             this.selectedTime = null;
             this.loadSlots();
         },
@@ -311,11 +369,11 @@ function bookingForm() {
             }
         },
 
-        prevMonth() { this.selectedDay = null; this.selectedTime = null; this.slots = []; if (this.calMonth === 0) { this.calMonth = 11; this.calYear--; } else this.calMonth--; },
-        nextMonth() { this.selectedDay = null; this.selectedTime = null; this.slots = []; if (this.calMonth === 11) { this.calMonth = 0; this.calYear++; } else this.calMonth++; },
+        prevMonth() { if (this.calMonth === 0) { this.calMonth = 11; this.calYear--; } else this.calMonth--; },
+        nextMonth() { if (this.calMonth === 11) { this.calMonth = 0; this.calYear++; } else this.calMonth++; },
 
         async loadSlots() {
-            if (!this.selectedServiceId || !this.selectedDay) {
+            if (this.selectedServiceIds.length === 0 || !this.selectedDay) {
                 this.slots = [];
                 return;
             }
@@ -325,7 +383,7 @@ function bookingForm() {
 
             try {
                 const url = new URL(slotsUrl, window.location.origin);
-                url.searchParams.set('service_id', this.selectedServiceId);
+                this.selectedServiceIds.forEach(id => url.searchParams.append('service_ids[]', id));
                 url.searchParams.set('date', this.bookingDate);
                 url.searchParams.set('staff_id', this.selectedStaffId || 0);
 
@@ -349,7 +407,7 @@ function bookingForm() {
         },
 
         canNext() {
-            if (this.step === 1) return !!this.selectedServiceId;
+            if (this.step === 1) return this.selectedServiceIds.length > 0;
             if (this.step === 2) return !!this.selectedDay && !!this.selectedTime;
             return true;
         },

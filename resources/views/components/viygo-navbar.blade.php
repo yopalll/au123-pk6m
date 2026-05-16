@@ -1,25 +1,29 @@
 {{--
-    Component: VIYGO navbar (Treatwell-style 2-row)
+    Component: VIYGO navbar Part 3 (Treatwell-style 2-row + hover dropdowns)
     Row 1: Logo · search · account
-    Row 2: top-level beauty category links (search-based, since the seeded
-           Treatwell category slugs are very granular).
+    Row 2: 7 kategori utama (Hair / Hair Removal / Massage / Nails / Face / Body / Men's)
+           dropdown isinya 6 sub_kategori per kategori dari pivot kategori_sub_kategori,
+           urutan dari pivot.urutan. Plus link "See all X treatments" + (untuk Mens) "Barbers".
+
+    Data DB:
+      Kategori::active()->with('subKategori')->orderBy('urutan')->get()
 --}}
 
 @php
-    $topCategories = [
-        ['q' => 'hair',    'label' => 'Hair'],
-        ['q' => 'facial',  'label' => 'Face'],
-        ['q' => 'massage', 'label' => 'Massage'],
-        ['q' => 'nail',    'label' => 'Nails'],
-        ['q' => 'brow',    'label' => 'Brows & Lashes'],
-        ['q' => 'body',    'label' => 'Body'],
-        ['q' => 'men',     'label' => "Men's"],
-    ];
+    use App\Models\Kategori;
 
-    $currentQ = request('q', '');
+    // Query langsung tanpa Cache::remember — Eloquent Collection kadang
+    // gagal unserialize dari file cache (jadi __PHP_Incomplete_Class) di
+    // Windows. Cuma 7 row, query <5ms, gak perlu cache.
+    $navKategori = Kategori::active()
+        ->with(['subKategori' => fn ($q) => $q->where('is_active', true)])
+        ->orderBy('urutan')
+        ->get();
+
+    $currentQ = strtolower((string) request('q', ''));
 @endphp
 
-<header class="sticky top-0 z-50 bg-white shadow-sm">
+<header class="sticky top-0 z-50 bg-white shadow-sm" x-data="{ openCat: null }">
 
     {{-- Row 1: Logo · Search · Account --}}
     <div class="flex items-center gap-4 px-6 h-14 border-b border-gray-100">
@@ -29,7 +33,7 @@
         <form action="{{ route('cari') }}" method="GET"
               class="flex-1 max-w-xl flex items-center bg-gray-50 border border-gray-200 rounded-full overflow-hidden
                      focus-within:border-[#4BA3CC] focus-within:ring-2 focus-within:ring-[#4BA3CC]/20 transition-all">
-            <svg class="w-4 h-4 ml-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 ml-4 text-gray-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
             </svg>
             <input name="q"
@@ -81,36 +85,113 @@
         </div>
     </div>
 
-    {{-- Row 2: top category nav --}}
-    <div class="px-6 flex items-center gap-1 overflow-x-auto scrollbar-hide">
-        @foreach ($topCategories as $cat)
-            <a href="{{ route('cari', ['q' => $cat['q']]) }}"
-               class="cat-nav-link flex-shrink-0 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500
-                      hover:text-[#1B2D6B] transition-colors whitespace-nowrap
-                      {{ str_contains(strtolower($currentQ), $cat['q']) ? 'active text-[#1B2D6B]' : '' }}">
-                {{ $cat['label'] }}
-            </a>
+    {{-- Row 2: top category nav with dropdowns --}}
+    <div class="px-6 flex items-center gap-1 overflow-x-auto md:overflow-visible scrollbar-hide">
+
+        @foreach ($navKategori as $kategori)
+            @php
+                $key      = $kategori->slug;
+                $isMens   = $kategori->slug === 'mens';
+                $seeLbl   = 'See all ' . strtolower($kategori->name) . ' treatments';
+            @endphp
+            <div class="relative shrink-0"
+                 @mouseenter="openCat = '{{ $key }}'"
+                 @mouseleave="openCat = null">
+
+                <a href="{{ route('kategori.show', $kategori->slug) }}"
+                   class="cat-nav-link block px-3 text-xs font-semibold uppercase tracking-wider text-gray-500
+                          hover:text-[#1B2D6B] transition-colors whitespace-nowrap
+                          {{ str_contains($currentQ, strtolower($kategori->name)) ? 'active text-[#1B2D6B]' : '' }}"
+                   :class="openCat === '{{ $key }}' ? 'text-[#1B2D6B]' : ''">
+                    {{ strtoupper($kategori->name) }}
+                </a>
+
+                {{-- Dropdown panel --}}
+                <div x-show="openCat === '{{ $key }}'"
+                     x-cloak
+                     x-transition:enter="transition ease-out duration-150"
+                     x-transition:enter-start="opacity-0 -translate-y-1"
+                     x-transition:enter-end="opacity-100 translate-y-0"
+                     x-transition:leave="transition ease-in duration-100"
+                     x-transition:leave-start="opacity-100 translate-y-0"
+                     x-transition:leave-end="opacity-0 -translate-y-1"
+                     class="absolute left-0 top-full w-115 bg-white border-t border-gray-100
+                            shadow-2xl rounded-b-xl z-40 overflow-hidden">
+
+                    <div class="grid grid-cols-5 gap-0">
+
+                        {{-- Left: 6 sub_kategori + special links --}}
+                        <div class="col-span-3 p-6">
+                            <ul class="space-y-1">
+                                @foreach ($kategori->subKategori as $sub)
+                                    <li>
+                                        <a href="{{ route('sub-kategori.show', $sub->slug) }}"
+                                           class="block py-1.5 px-2 -mx-2 rounded-md text-sm text-gray-700
+                                                  hover:bg-[#E8F4FB] hover:text-[#1B2D6B] transition-colors">
+                                            {{ $sub->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+
+                                @if ($isMens)
+                                    {{-- "Barbers" handled by query, bukan row sub_kategori --}}
+                                    <li>
+                                        <a href="{{ route('kategori.show', 'mens') }}?filter=barbers"
+                                           class="block py-1.5 px-2 -mx-2 rounded-md text-sm text-gray-700
+                                                  hover:bg-[#E8F4FB] hover:text-[#1B2D6B] transition-colors">
+                                            Barbers
+                                        </a>
+                                    </li>
+                                @endif
+                            </ul>
+
+                            @unless ($isMens)
+                                {{-- "See all X treatments" handled by route /kategori/{slug}, bukan row sub_kategori --}}
+                                <div class="mt-4 pt-3 border-t border-gray-100">
+                                    <a href="{{ route('kategori.show', $kategori->slug) }}"
+                                       class="inline-flex items-center gap-1 text-sm font-bold text-[#1B2D6B] hover:underline">
+                                        {{ $seeLbl }}
+                                        <span aria-hidden="true">→</span>
+                                    </a>
+                                </div>
+                            @endunless
+                        </div>
+
+                        {{-- Right: decorative panel --}}
+                        <div class="col-span-2 hidden md:flex items-center justify-center
+                                    bg-linear-to-br from-[#E8F4FB] to-[#C5E1F0] p-6 relative">
+                            <span class="font-serif text-7xl text-[#1B2D6B]/30 select-none leading-none">
+                                {{ mb_substr($kategori->name, 0, 1) }}
+                            </span>
+                            <span class="absolute bottom-4 right-5 text-[10px] uppercase tracking-widest text-[#1B2D6B]/60 font-semibold">
+                                {{ $kategori->name }}
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         @endforeach
 
-        <div class="mx-2 h-4 w-px bg-gray-200 flex-shrink-0"></div>
+        <div class="mx-2 h-4 w-px bg-gray-200 shrink-0"></div>
 
         <a href="{{ route('gift-card') }}"
-           class="cat-nav-link flex-shrink-0 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 hover:text-[#1B2D6B] transition-colors whitespace-nowrap
+           class="cat-nav-link shrink-0 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 hover:text-[#1B2D6B] transition-colors whitespace-nowrap
                   {{ request()->routeIs('gift-card') ? 'active text-[#1B2D6B]' : '' }}">
             Gift Card
         </a>
         <a href="{{ route('lookbook') }}"
-           class="cat-nav-link flex-shrink-0 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 hover:text-[#1B2D6B] transition-colors whitespace-nowrap
+           class="cat-nav-link shrink-0 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 hover:text-[#1B2D6B] transition-colors whitespace-nowrap
                   {{ request()->routeIs('lookbook') ? 'active text-[#1B2D6B]' : '' }}">
             Lookbook
         </a>
         <a href="{{ route('treatment-files') }}"
-           class="cat-nav-link flex-shrink-0 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 hover:text-[#1B2D6B] transition-colors whitespace-nowrap
+           class="cat-nav-link shrink-0 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 hover:text-[#1B2D6B] transition-colors whitespace-nowrap
                   {{ request()->routeIs('treatment-files') ? 'active text-[#1B2D6B]' : '' }}">
             Treatment Files
         </a>
         <a href="{{ route('mitra') }}"
-           class="cat-nav-link flex-shrink-0 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 hover:text-[#1B2D6B] transition-colors whitespace-nowrap
+           class="cat-nav-link shrink-0 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 hover:text-[#1B2D6B] transition-colors whitespace-nowrap
                   {{ request()->routeIs('mitra') ? 'active text-[#1B2D6B]' : '' }}">
             For Salons
         </a>

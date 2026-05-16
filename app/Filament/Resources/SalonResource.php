@@ -29,7 +29,7 @@ class SalonResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('Basic Info')
+                \Filament\Schemas\Components\Section::make('Basic Info')
                     ->schema([
                         Forms\Components\TextInput::make('nama_salon')
                             ->required()
@@ -50,7 +50,7 @@ class SalonResource extends Resource
                             ->required(),
                     ])->columns(2),
 
-                Forms\Components\Section::make('Location')
+                \Filament\Schemas\Components\Section::make('Location')
                     ->schema([
                         Forms\Components\Select::make('id_kota')
                             ->relationship('kota', 'nama_kota')
@@ -65,7 +65,7 @@ class SalonResource extends Resource
                             ->numeric(),
                     ])->columns(2),
 
-                Forms\Components\Section::make('Contact & Hours')
+                \Filament\Schemas\Components\Section::make('Contact & Hours')
                     ->schema([
                         Forms\Components\TextInput::make('phone_number')
                             ->tel()
@@ -76,7 +76,7 @@ class SalonResource extends Resource
                             ->label('Closes'),
                     ])->columns(3),
 
-                Forms\Components\Section::make('Metrics')
+                \Filament\Schemas\Components\Section::make('Metrics')
                     ->schema([
                         Forms\Components\TextInput::make('rating')
                             ->disabled()
@@ -143,31 +143,31 @@ class SalonResource extends Resource
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('approve')
+                \Filament\Actions\ViewAction::make(),
+                \Filament\Actions\EditAction::make(),
+                \Filament\Actions\Action::make('approve')
                     ->label('Approve')
                     ->icon('heroicon-o-check-circle')
                     ->color('success')
                     ->requiresConfirmation()
                     ->action(fn (Salon $record) => $record->update(['status' => 'active']))
                     ->visible(fn (Salon $record) => $record->status !== 'active'),
-                Tables\Actions\Action::make('reject')
+                \Filament\Actions\Action::make('reject')
                     ->label('Reject')
                     ->icon('heroicon-o-x-circle')
                     ->color('danger')
                     ->requiresConfirmation()
                     ->action(fn (Salon $record) => $record->update(['status' => 'inactive']))
                     ->visible(fn (Salon $record) => $record->status === 'active'),
-                Tables\Actions\DeleteAction::make(),
-                Tables\Actions\ForceDeleteAction::make(),
-                Tables\Actions\RestoreAction::make(),
+                \Filament\Actions\DeleteAction::make(),
+                \Filament\Actions\ForceDeleteAction::make(),
+                \Filament\Actions\RestoreAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                    Tables\Actions\ForceDeleteBulkAction::make(),
-                    Tables\Actions\RestoreBulkAction::make(),
+                \Filament\Actions\BulkActionGroup::make([
+                    \Filament\Actions\DeleteBulkAction::make(),
+                    \Filament\Actions\ForceDeleteBulkAction::make(),
+                    \Filament\Actions\RestoreBulkAction::make(),
                 ]),
             ]);
     }

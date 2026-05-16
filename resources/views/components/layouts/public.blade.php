@@ -32,6 +32,8 @@
         body { font-family: 'DM Sans', sans-serif; }
         h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; }
 
+        [x-cloak] { display: none !important; }
+
         .viygo-logo-wrap { position: relative; width: 110px; height: 38px; display: block; }
         .viygo-logo-wrap img {
             position: absolute; top: 0; left: 0;

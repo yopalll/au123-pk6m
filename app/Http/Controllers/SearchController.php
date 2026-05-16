@@ -32,6 +32,6 @@ class SearchController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        return view('cari.index', compact('salons', 'q', 'lokasi'));
+        return view('cari.index', compact('salons', 'q', 'lokasi', 'sort'));
     }
 }

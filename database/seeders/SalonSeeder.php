@@ -9,7 +9,8 @@ class SalonSeeder extends Seeder
 {
     /**
      * Seed the salon table from JSON data.
-     * Owner users start at id_user = 3 (after admin + customer).
+     * id_user diambil langsung dari salon.id_user (di-set oleh scraper Go,
+     * link ke owner user yg generated bersamaan).
      */
     public function run(): void
     {
@@ -27,7 +28,7 @@ class SalonSeeder extends Seeder
             $rows = array_map(function ($salon) {
                 return [
                     'id_salon'     => $salon['id_salon'],
-                    'id_user'      => $salon['id_salon'] + 2, // offset: admin(1) + customer(2)
+                    'id_user'      => $salon['id_user'], // owner — di-set oleh scraper
                     'id_kota'      => $salon['id_kota'],
                     'nama_salon'   => $salon['nama_salon'],
                     'alamat'       => $salon['alamat'],

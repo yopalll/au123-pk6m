@@ -4,7 +4,7 @@
 <section class="relative bg-[#1B2D6B] overflow-hidden min-h-[480px] flex items-center">
     <div class="absolute inset-0 opacity-[0.04]"
          style="background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:48px 48px"></div>
-    <div class="absolute inset-0 bg-gradient-to-br from-transparent via-[#4BA3CC]/20 to-transparent"></div>
+    <div class="absolute inset-0 bg-linear-to-br from-transparent via-[#4BA3CC]/20 to-transparent"></div>
 
     <div class="relative z-10 max-w-3xl mx-auto px-6 py-20 text-center">
         <div class="inline-block bg-[#4BA3CC]/20 text-[#4BA3CC] border border-[#4BA3CC]/30 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-widest mb-5">
@@ -28,7 +28,7 @@
                        class="w-full text-sm outline-none text-gray-800 placeholder-gray-300" />
             </div>
             <button type="submit"
-                    class="flex-shrink-0 w-12 h-12 bg-[#1B2D6B] text-white rounded-xl flex items-center justify-center hover:bg-[#4BA3CC] transition-colors mx-1">
+                    class="shrink-0 w-12 h-12 bg-[#1B2D6B] text-white rounded-xl flex items-center justify-center hover:bg-[#4BA3CC] transition-colors mx-1">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
                 </svg>
@@ -69,7 +69,7 @@
             ['body','🛁','Body'],['men','🪒',"Men's"],
         ] as [$q,$emoji,$label])
             <a href="{{ route('cari', ['q' => $q]) }}"
-               class="flex-shrink-0 flex flex-col items-center gap-2 group">
+               class="shrink-0 flex flex-col items-center gap-2 group">
                 <div class="w-16 h-16 rounded-full bg-[#E8F4FB] border-2 border-[#C5E1F0] flex items-center justify-center text-2xl
                              group-hover:bg-[#1B2D6B] group-hover:border-[#1B2D6B] group-hover:-translate-y-1 transition-all duration-200">
                     {{ $emoji }}

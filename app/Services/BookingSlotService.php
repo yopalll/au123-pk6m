@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
-use App\Constants\OrderStatus;
 use App\Models\OrderDetail;
 use App\Models\Salon;
 use App\Models\Service;
 use App\Models\Staff;
 use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -37,7 +37,29 @@ class BookingSlotService
         CarbonImmutable $date,
         ?int $preferredStaffId = null,
     ): Collection {
-        $duration = max(15, (int) ($service->durasi ?? 30));
+        return $this->availableSlotsForDuration(
+            $salon,
+            (int) ($service->durasi ?? 30),
+            $date,
+            $preferredStaffId,
+            [$service->id_service],
+        );
+    }
+
+    /**
+     * Versi multi-service: hitung slot untuk total durasi (sum semua service yang dipilih).
+     *
+     * @param  array<int>  $serviceIds  ID service yang dipilih (untuk filter staff_service pivot bila ada)
+     * @return Collection<int, array{time: string, staff: array<int, array{id:int,name:string}>}>
+     */
+    public function availableSlotsForDuration(
+        Salon $salon,
+        int $totalDurationMinutes,
+        CarbonImmutable $date,
+        ?int $preferredStaffId = null,
+        array $serviceIds = [],
+    ): Collection {
+        $duration = max(15, $totalDurationMinutes);
 
         $opening = $salon->opening_time
             ? CarbonImmutable::parse($salon->opening_time)
@@ -47,10 +69,6 @@ class BookingSlotService
             ? CarbonImmutable::parse($salon->closing_time)
             : CarbonImmutable::createFromTime(20, 0);
 
-        // Schedules for active staff working at this salon on this weekday.
-        // We accept staff that are bookable for any service (no staff_service
-        // constraint here — most salons don't pivot specific services to staff
-        // in this dataset). preferredStaffId narrows further.
         $weekday = ucfirst(strtolower($date->englishDayOfWeek));
 
         $staffQuery = Staff::query()
@@ -61,10 +79,17 @@ class BookingSlotService
                 ->where('is_available', true),
             ]);
 
-        // BUG-10: Only show staff capable of delivering this service when
-        // the salon has configured the staff_service pivot for it.
-        if (DB::table('staff_service')->where('id_service', $service->id_service)->exists()) {
-            $staffQuery->whereHas('services', fn ($q) => $q->where('service.id_service', $service->id_service));
+        // Filter staff yang bisa kerjakan SEMUA service yang dipilih (intersect).
+        // Hanya berlaku bila ada baris staff_service untuk service-service ini;
+        // selain itu semua active staff dianggap bookable.
+        $serviceIdsWithPivot = array_values(array_filter(
+            $serviceIds,
+            fn ($id) => $this->serviceHasStaffPivot((int) $id),
+        ));
+        foreach ($serviceIdsWithPivot as $sid) {
+            $staffQuery->whereHas('services', fn (Builder $q) => $q
+                ->where('service.id_service', $sid)
+            );
         }
 
         if ($preferredStaffId) {
@@ -73,7 +98,10 @@ class BookingSlotService
 
         $staffList = $staffQuery->get();
 
-        // BUG-09: Deterministically handle empty staff roster.
+        // Salon hasn't onboarded any staff (or none qualified for this
+        // service via staff_service). Returning an empty collection lets
+        // the wizard show a clean "no slots" empty-state instead of
+        // booking against id_staff = null in a confusing way.
         if ($staffList->isEmpty()) {
             return collect();
         }
@@ -113,13 +141,6 @@ class BookingSlotService
                 ];
             }
 
-            // No staff = closed slot, but a salon without staff-records seeded yet
-            // should still be usable — fall back to "any staff" if no schedules
-            // exist for the entire roster on this day.
-            if (empty($availableStaff) && $staffList->every(fn ($s) => $s->schedules->isEmpty())) {
-                $availableStaff = [['id' => 0, 'name' => 'Any staff']];
-            }
-
             if (! empty($availableStaff)) {
                 $slots->push([
                     'time'  => $cursor->format('H:i'),
@@ -151,7 +172,36 @@ class BookingSlotService
         string $time,
         ?int $staffId = null,
     ): bool {
-        $available = $this->availableSlots($salon, $service, $date, $staffId);
+        return $this->isSlotAvailableForDuration(
+            $salon,
+            (int) ($service->durasi ?? 30),
+            $date,
+            $time,
+            $staffId,
+            [$service->id_service],
+        );
+    }
+
+    /**
+     * Versi multi-service: cek slot tersedia untuk total durasi gabungan.
+     *
+     * @param  array<int>  $serviceIds
+     */
+    public function isSlotAvailableForDuration(
+        Salon $salon,
+        int $totalDurationMinutes,
+        CarbonImmutable $date,
+        string $time,
+        ?int $staffId = null,
+        array $serviceIds = [],
+    ): bool {
+        $available = $this->availableSlotsForDuration(
+            $salon,
+            $totalDurationMinutes,
+            $date,
+            $staffId,
+            $serviceIds,
+        );
 
         return $available->contains(function (array $slot) use ($time, $staffId) {
             if ($slot['time'] !== $time) {
@@ -168,7 +218,6 @@ class BookingSlotService
 
     /**
      * Pick a concrete staff id for a given slot when the user said "Any staff".
-     * Returns null if no staff is available (caller should fail validation).
      */
     public function pickStaffForSlot(
         Salon $salon,
@@ -176,7 +225,28 @@ class BookingSlotService
         CarbonImmutable $date,
         string $time,
     ): ?int {
-        $slot = $this->availableSlots($salon, $service, $date)
+        return $this->pickStaffForSlotForDuration(
+            $salon,
+            (int) ($service->durasi ?? 30),
+            $date,
+            $time,
+            [$service->id_service],
+        );
+    }
+
+    /**
+     * Versi multi-service: pilih staff untuk slot dengan total durasi gabungan.
+     *
+     * @param  array<int>  $serviceIds
+     */
+    public function pickStaffForSlotForDuration(
+        Salon $salon,
+        int $totalDurationMinutes,
+        CarbonImmutable $date,
+        string $time,
+        array $serviceIds = [],
+    ): ?int {
+        $slot = $this->availableSlotsForDuration($salon, $totalDurationMinutes, $date, null, $serviceIds)
             ->firstWhere('time', $time);
 
         if (! $slot) {
@@ -186,6 +256,24 @@ class BookingSlotService
         $first = $slot['staff'][0] ?? null;
 
         return $first && $first['id'] !== 0 ? (int) $first['id'] : null;
+    }
+
+    /**
+     * Cheap check (cached per request) for whether this service has any
+     * staff_service rows. If it does, we narrow the staff list; otherwise
+     * we treat every active staff as bookable.
+     */
+    protected function serviceHasStaffPivot(int $idService): bool
+    {
+        static $cache = [];
+
+        if (! array_key_exists($idService, $cache)) {
+            $cache[$idService] = DB::table('staff_service')
+                ->where('id_service', $idService)
+                ->exists();
+        }
+
+        return $cache[$idService];
     }
 
     /**
@@ -202,13 +290,16 @@ class BookingSlotService
             ->whereIn('id_staff', $staffIds)
             ->whereHas('order', fn ($q) => $q
                 ->whereDate('date_order', $date->toDateString())
-                ->whereNotIn('status', [OrderStatus::CANCELED]),
+                ->whereNotIn('status', ['canceled']),
             )
             ->get(['id_staff', 'start_time', 'end_time']);
 
         $by = [];
 
         foreach ($rows as $row) {
+            if (! $row->start_time || ! $row->end_time) {
+                continue;
+            }
             $by[$row->id_staff][] = [
                 'start' => CarbonImmutable::parse($row->start_time),
                 'end'   => CarbonImmutable::parse($row->end_time),

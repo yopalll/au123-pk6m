@@ -14,6 +14,10 @@
     $services     = $salon->services->where('status', 'active')->take(3);
     $location     = $salon->kota?->nama;
     $minPrice     = $services->min('harga');
+    // Tag pivot: sub_kategori yg disediakan salon (max 3 chip biar muat)
+    $subKategoris = $salon->relationLoaded('subKategoris')
+        ? $salon->subKategoris->take(3)
+        : collect();
     $isFavourite  = auth()->check()
         && (auth()->user()->role === 'customer')
         && auth()->user()->hasFavourited($salon->id_salon);
@@ -24,7 +28,7 @@
 <div class="flex gap-4 py-5 border-b border-gray-100 last:border-0 group">
 
     <a href="{{ route('salon.show', $salon->slug ?? $salon->id_salon) }}"
-       class="relative flex-shrink-0 w-48 h-36 rounded-xl overflow-hidden bg-[#E8F4FB]">
+       class="relative shrink-0 w-48 h-36 rounded-xl overflow-hidden bg-[#E8F4FB]">
         @if ($primaryImage)
             <img src="{{ $primaryImage }}" alt="{{ $salon->nama_salon }}"
                  loading="lazy"
@@ -42,7 +46,7 @@
                 {{ $salon->nama_salon }}
             </a>
             @if (auth()->check() && auth()->user()->role === 'customer')
-                <form action="{{ route('akun.favorit.toggle', $salon->slug ?? $salon->id_salon) }}" method="POST" class="flex-shrink-0">
+                <form action="{{ route('akun.favorit.toggle', $salon->slug ?? $salon->id_salon) }}" method="POST" class="shrink-0">
                     @csrf
                     <button type="submit"
                             class="text-{{ $isFavourite ? 'red-500' : 'gray-300' }} hover:text-red-500 transition-colors mt-0.5"
@@ -53,7 +57,7 @@
                     </button>
                 </form>
             @else
-                <a href="{{ route('login') }}" class="flex-shrink-0 text-gray-300 hover:text-red-400 transition-colors mt-0.5" aria-label="Sign in to save favourites">
+                <a href="{{ route('login') }}" class="shrink-0 text-gray-300 hover:text-red-400 transition-colors mt-0.5" aria-label="Sign in to save favourites">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                     </svg>
@@ -75,12 +79,23 @@
         </div>
 
         @if ($location)
-            <div class="flex items-center gap-1 text-sm text-[#4BA3CC] mb-3">
+            <div class="flex items-center gap-1 text-sm text-[#4BA3CC] mb-2">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
                     <circle cx="12" cy="9" r="2.5"/>
                 </svg>
                 {{ $location }}
+            </div>
+        @endif
+
+        @if ($subKategoris->isNotEmpty())
+            <div class="flex flex-wrap gap-1.5 mb-3">
+                @foreach ($subKategoris as $sk)
+                    <a href="{{ route('sub-kategori.show', $sk->slug) }}"
+                       class="px-2 py-0.5 text-xs font-medium text-[#1B2D6B] bg-[#E8F4FB] hover:bg-[#4BA3CC] hover:text-white rounded-full transition-colors">
+                        {{ $sk->name }}
+                    </a>
+                @endforeach
             </div>
         @endif
 
@@ -137,6 +152,16 @@
                 <span class="text-[#4BA3CC] text-xs">{{ $location }}</span>
             @endif
         </div>
+        @if ($subKategoris->isNotEmpty())
+            <div class="flex flex-wrap gap-1 mb-2">
+                @foreach ($subKategoris->take(2) as $sk)
+                    <a href="{{ route('sub-kategori.show', $sk->slug) }}"
+                       class="px-1.5 py-0.5 text-[10px] font-medium text-[#1B2D6B] bg-[#E8F4FB] hover:bg-[#4BA3CC] hover:text-white rounded-full transition-colors">
+                        {{ $sk->name }}
+                    </a>
+                @endforeach
+            </div>
+        @endif
         <div class="flex items-center justify-between mt-3">
             <span class="text-xs text-gray-500">from <strong class="text-gray-800 text-sm">£{{ number_format($minPrice ?? 0, 2, '.', ',') }}</strong></span>
             <a href="{{ route('salon.show', $salon->slug ?? $salon->id_salon) }}"

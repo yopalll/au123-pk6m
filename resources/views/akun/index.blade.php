@@ -45,7 +45,7 @@
         @foreach ($items as $item)
             <a href="{{ $item['link'] }}"
                class="flex items-start gap-4 p-5 border border-gray-100 rounded-2xl hover:border-[#4BA3CC] hover:bg-[#E8F4FB]/40 transition-all group">
-                <div class="w-10 h-10 rounded-xl bg-[#E8F4FB] flex items-center justify-center text-xl flex-shrink-0">
+                <div class="w-10 h-10 rounded-xl bg-[#E8F4FB] flex items-center justify-center text-xl shrink-0">
                     {{ $item['icon'] }}
                 </div>
                 <div class="flex-1 min-w-0">
