@@ -41,6 +41,7 @@ return [
         'is_production' => env('MIDTRANS_PRODUCTION', false),
         'is_sanitized'  => true,
         'is_3ds'        => true,
+        'exchange_rate' => env('MIDTRANS_EXCHANGE_RATE', 20000), // Default: £1 = 20,000 IDR
     ],
 
 ];

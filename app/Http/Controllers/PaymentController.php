@@ -82,7 +82,7 @@ class PaymentController extends Controller
             $params = [
                 'transaction_details' => [
                     'order_id'     => $midtransOrderId,
-                    'gross_amount' => (int) round((float) $order->total_pembayaran),
+                    'gross_amount' => $this->convertGbpToIdr((float) $order->total_pembayaran),
                 ],
                 'customer_details' => [
                     'first_name' => $user?->first_name ?? 'Guest',
@@ -386,6 +386,16 @@ class PaymentController extends Controller
     }
 
     /**
+     * Convert GBP to IDR for Midtrans.
+     */
+    protected function convertGbpToIdr(float $gbpAmount): int
+    {
+        // 1 GBP = ~20,000 IDR (example fixed rate)
+        $exchangeRate = (float) config('services.midtrans.exchange_rate', 20000);
+        return (int) round($gbpAmount * $exchangeRate);
+    }
+
+    /**
      * Map the order's services into Midtrans `item_details` rows.
      */
     protected function itemDetails(Order $order): array
@@ -396,14 +406,15 @@ class PaymentController extends Controller
             $items[] = [
                 'id'       => 'SVC-' . $detail->id_service,
                 'name'     => substr($detail->service?->nama ?? 'Service', 0, 50),
-                'price'    => (int) round((float) $detail->harga_at_order),
+                'price'    => $this->convertGbpToIdr((float) $detail->harga_at_order),
                 'quantity' => 1,
             ];
         }
 
         // Reconcile rounding so the sum equals gross_amount exactly.
         $sum = array_sum(array_map(fn ($i) => $i['price'] * $i['quantity'], $items));
-        $diff = (int) round((float) $order->total_pembayaran) - $sum;
+        $grossAmountIdr = $this->convertGbpToIdr((float) $order->total_pembayaran);
+        $diff = $grossAmountIdr - $sum;
 
         if ($diff !== 0) {
             $items[] = [
