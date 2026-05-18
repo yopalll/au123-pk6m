@@ -166,7 +166,7 @@ class PaymentController extends Controller
             ->firstOrFail();
 
         // If already confirmed/success, just acknowledge.
-        if (in_array($order->status, ['confirmed', 'success'])) {
+        if (in_array($order->status, [OrderStatus::CONFIRMED, OrderStatus::SUCCESS])) {
             return response()->json(['status' => $order->status]);
         }
 
@@ -218,14 +218,14 @@ class PaymentController extends Controller
                     } else {
                         $payment->status_pembayaran = 'completed';
                         $payment->tanggal_bayar     = now();
-                        $order->status              = 'confirmed';
+                        $order->status              = OrderStatus::CONFIRMED;  // BUG-A06
                     }
                     break;
 
                 case 'settlement':
                     $payment->status_pembayaran = 'completed';
                     $payment->tanggal_bayar     = now();
-                    $order->status              = 'confirmed';
+                    $order->status              = OrderStatus::CONFIRMED;  // BUG-A06
                     break;
 
                 case 'pending':
@@ -313,7 +313,7 @@ class PaymentController extends Controller
             $order = Order::where('kode_order', $actualOrderCode)->lockForUpdate()->firstOrFail();
 
             // If already confirmed/success, skip — don't downgrade status.
-            if (in_array($order->status, ['confirmed', 'success'])) {
+            if (in_array($order->status, [OrderStatus::CONFIRMED, OrderStatus::SUCCESS])) {
                 Log::info('Midtrans webhook: order already finalized', [
                     'order'  => $actualOrderCode,
                     'status' => $order->status,
@@ -323,9 +323,21 @@ class PaymentController extends Controller
 
             $payment = Pembayaran::firstOrNew(['id_order' => $order->id_order]);
 
+            // SEC-04: Idempotency guard — if this transaction_id is already
+            // in a completed state, skip re-processing to prevent replay issues.
+            $incomingTxnId = (string) $notification->transaction_id;
+            if ($payment->id_transaksi === $incomingTxnId
+                && $payment->status_pembayaran === 'completed') {
+                Log::info('Midtrans webhook: duplicate notification, already processed', [
+                    'order'          => $actualOrderCode,
+                    'transaction_id' => $incomingTxnId,
+                ]);
+                return;
+            }
+
             $payment->id_user           = $order->id_user;
             $payment->metode_pembayaran = (string) ($notification->payment_type ?? 'midtrans_snap');
-            $payment->id_transaksi      = (string) $notification->transaction_id;
+            $payment->id_transaksi      = $incomingTxnId;
             $payment->jumlah_bayar      = (float) $notification->gross_amount;
             $payment->raw_response      = (array) $notification->getResponse();
 
@@ -388,16 +400,28 @@ class PaymentController extends Controller
 
     /**
      * Convert GBP to IDR for Midtrans.
+     *
+     * BUG-A10: Enforce Midtrans single-transaction ceiling of 999,999,999 IDR.
+     * Orders above this limit must be split. Throws DomainException so the
+     * caller can return a user-friendly 422 instead of a cryptic gateway error.
      */
     protected function convertGbpToIdr(float $gbpAmount): int
     {
-        // 1 GBP = ~20,000 IDR (example fixed rate)
-        $exchangeRate = (float) config('services.midtrans.exchange_rate', 20000);
-        return (int) round($gbpAmount * $exchangeRate);
+        $idr = (int) round($gbpAmount * (float) config('services.midtrans.exchange_rate', 20000));
+
+        if ($idr > 999_999_999) {
+            throw new \DomainException('Order amount exceeds Midtrans single-transaction limit.');
+        }
+
+        return $idr;
     }
 
     /**
      * Map the order's services into Midtrans `item_details` rows.
+     *
+     * BUG-A11: gross_amount is derived from sum(items) AFTER rounding,
+     * not from total_pembayaran GBP independently. This ensures Midtrans
+     * does not reject with "gross_amount does not match item_details".
      */
     protected function itemDetails(Order $order): array
     {
@@ -412,10 +436,14 @@ class PaymentController extends Controller
             ];
         }
 
-        // Reconcile rounding so the sum equals gross_amount exactly.
-        $sum = array_sum(array_map(fn ($i) => $i['price'] * $i['quantity'], $items));
-        $grossAmountIdr = $this->convertGbpToIdr((float) $order->total_pembayaran);
-        $diff = $grossAmountIdr - $sum;
+        // BUG-A11: Derive gross_amount from sum of item prices (post-IDR rounding),
+        // then add an adjustment item only if there is a residual discrepancy.
+        $sumIdr         = array_sum(array_map(fn ($i) => $i['price'] * $i['quantity'], $items));
+        $grossAmountIdr = $sumIdr; // Use items sum as canonical gross_amount
+
+        // If the order has a promo/discount, reconcile here.
+        $originalIdr = $this->convertGbpToIdr((float) $order->total_pembayaran);
+        $diff        = $originalIdr - $sumIdr;
 
         if ($diff !== 0) {
             $items[] = [
@@ -424,8 +452,25 @@ class PaymentController extends Controller
                 'price'    => $diff,
                 'quantity' => 1,
             ];
+            $grossAmountIdr = $originalIdr;
         }
 
+        // Store the final gross_amount so createSnapToken can use it.
+        $this->_resolvedGrossAmount = $grossAmountIdr;
+
         return $items;
+    }
+
+    /** @var int|null Cached gross_amount resolved from itemDetails(). */
+    private ?int $_resolvedGrossAmount = null;
+
+    /**
+     * Get the resolved IDR gross amount after itemDetails() has been called.
+     * Falls back to direct conversion if itemDetails hasn't run yet.
+     */
+    protected function resolvedGrossAmount(Order $order): int
+    {
+        return $this->_resolvedGrossAmount
+            ?? $this->convertGbpToIdr((float) $order->total_pembayaran);
     }
 }

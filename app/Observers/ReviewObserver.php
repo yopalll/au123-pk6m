@@ -26,7 +26,9 @@ class ReviewObserver
 
     protected function recompute(int $idSalon): void
     {
-        $salon = Salon::find($idSalon);
+        // BUG-A13: Use withTrashed() so soft-deleted salons are still recomputed
+        // on review edit/delete; rating is preserved correctly on restore.
+        $salon = Salon::withTrashed()->find($idSalon);
 
         if (! $salon) {
             return;

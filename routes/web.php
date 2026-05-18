@@ -63,6 +63,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/salon/{slug}/booking', [BookingController::class, 'create'])->name('booking.create');
     Route::get('/salon/{slug}/booking/slots', [BookingController::class, 'getSlots'])->name('booking.slots');
     Route::post('/salon/{slug}/booking', [BookingController::class, 'store'])->name('booking.store');
+    Route::post('/promo/validate', [BookingController::class, 'validatePromo'])->name('promo.validate');
     Route::get('/booking/{kode}/konfirmasi', [BookingController::class, 'konfirmasi'])->name('booking.konfirmasi');
     Route::post('/booking/{kode}/batal', [BookingController::class, 'batal'])->name('booking.batal');
 
@@ -102,7 +103,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 // Midtrans webhook (no auth — Midtrans posts here, signature-verified instead).
 // CSRF exception lives in bootstrap/app.php.
+// SEC-05: Rate-limit to 120 req/min (generous for Midtrans retries) to prevent DoS.
 Route::post('/midtrans/webhook', [PaymentController::class, 'webhook'])
+    ->middleware('throttle:120,1')
     ->name('midtrans.webhook');
 
 require __DIR__.'/settings.php';

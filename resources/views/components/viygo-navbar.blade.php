@@ -11,14 +11,27 @@
 
 @php
     use App\Models\Kategori;
+    use Illuminate\Support\Facades\Cache;
 
-    // Query langsung tanpa Cache::remember — Eloquent Collection kadang
-    // gagal unserialize dari file cache (jadi __PHP_Incomplete_Class) di
-    // Windows. Cuma 7 row, query <5ms, gak perlu cache.
-    $navKategori = Kategori::active()
-        ->with(['subKategori' => fn ($q) => $q->where('is_active', true)])
-        ->orderBy('urutan')
-        ->get();
+    // OPT-01: Cache navbar categories for 24h to avoid repeat DB hits on every
+    // public page render. Use toArray() to serialize as plain arrays, preventing
+    // Eloquent Collection __PHP_Incomplete_Class unserialize failures on Windows.
+    // Cache is keyed 'nav_kategori'; invalidate in KategoriObserver / KategoriSeeder on save.
+    $navKategoriRaw = Cache::remember(
+        'nav_kategori',
+        now()->addHours(24),
+        fn () => Kategori::active()
+            ->with(['subKategori' => fn ($q) => $q->where('is_active', true)])
+            ->orderBy('urutan')
+            ->get()
+            ->toArray()   // Serialize as array to avoid unserialize failures
+    );
+    // Hydrate back into simple objects for template compatibility
+    $navKategori = collect($navKategoriRaw)->map(function ($k) {
+        $obj = (object) $k;
+        $obj->subKategori = collect($k['sub_kategori'] ?? [])->map(fn ($s) => (object) $s);
+        return $obj;
+    });
 
     $currentQ = strtolower((string) request('q', ''));
 @endphp

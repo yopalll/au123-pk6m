@@ -60,12 +60,40 @@ class Promo extends Model
 
     // ──── Scope ─────────────────────────────────────────────
 
-    /**
-     * Promo yang masih aktif dan belum expired.
-     */
     public function scopeActive($query)
     {
         return $query->where('status', 'active')
                      ->where('time_expired', '>=', now());
+    }
+
+    public function scopeByCode($query, string $code)
+    {
+        return $query->active()->where('kode_promo', strtoupper(trim($code)));
+    }
+
+    // ──── Business logic ────────────────────────────────────
+
+    public function calculateDiscount(float $total): float
+    {
+        if ($this->tipe_promo === 'percentage') {
+            $discount = $total * ((float) $this->diskon / 100);
+            if ($this->diskon_max && $discount > (float) $this->diskon_max) {
+                $discount = (float) $this->diskon_max;
+            }
+        } else {
+            $discount = min((float) $this->diskon, $total);
+        }
+
+        return round($discount, 2);
+    }
+
+    public function isSoldOut(): bool
+    {
+        return $this->stock > 0 && $this->used_counter >= $this->stock;
+    }
+
+    public function meetsMinimum(float $total): bool
+    {
+        return $this->min_transaksi <= 0 || $total >= (float) $this->min_transaksi;
     }
 }

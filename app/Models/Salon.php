@@ -120,9 +120,13 @@ class Salon extends Model
 
     // ──── Scope ─────────────────────────────────────────────
 
+    // BUG-A14: Exclude salons whose owner account is deactivated.
+    // An inactive owner can no longer manage bookings, so the salon should
+    // not appear in public listings.
     public function scopeActive($query)
     {
-        return $query->where('status', 'active');
+        return $query->where('status', 'active')
+            ->whereHas('owner', fn ($q) => $q->where('is_active', true));
     }
 
     /**

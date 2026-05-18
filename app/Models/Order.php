@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Constants\OrderStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -71,13 +72,24 @@ class Order extends Model
         return $query->where('status', $status);
     }
 
+    // BUG-A05: Use OrderStatus constants to eliminate hardcoded status strings.
     public function scopePending($query)
     {
-        return $query->where('status', 'pending');
+        return $query->where('status', OrderStatus::PENDING);
+    }
+
+    public function scopeConfirmed($query)
+    {
+        return $query->where('status', OrderStatus::CONFIRMED);
     }
 
     public function scopeSuccess($query)
     {
-        return $query->where('status', 'success');
+        return $query->where('status', OrderStatus::SUCCESS);
+    }
+
+    public function scopeCanceled($query)
+    {
+        return $query->where('status', OrderStatus::CANCELED);
     }
 }

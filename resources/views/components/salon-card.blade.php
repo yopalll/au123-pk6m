@@ -8,7 +8,7 @@
 @props(['salon', 'layout' => 'list'])
 
 @php
-    $primaryImage = $salon->primaryImage?->url ?? $salon->image_url;
+    $primaryImage = ($salon->primaryImage?->image_url) ?? ($salon->image_url ?? null);
     $rating       = number_format($salon->rating ?? 4.5, 1);
     $reviews      = $salon->total_review ?? 0;
     $services     = $salon->services->where('status', 'active')->take(3);

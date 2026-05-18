@@ -13,7 +13,7 @@ use Filament\Support\Colors\Color;
 use Filament\Widgets\AccountWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
-use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
+use Illuminate\Foundation\Http\Middleware\ValidateCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
@@ -28,6 +28,7 @@ class OwnerPanelProvider extends PanelProvider
             ->login()
             ->brandName('VIYGO Salon Dashboard')
             ->favicon(asset('favicon.ico'))
+            ->darkMode(false)
             ->colors([
                 'primary' => Color::hex('#1B2D6B'),
                 'info'    => Color::hex('#4BA3CC'),
@@ -52,7 +53,7 @@ class OwnerPanelProvider extends PanelProvider
                 StartSession::class,
                 AuthenticateSession::class,
                 ShareErrorsFromSession::class,
-                PreventRequestForgery::class,
+                ValidateCsrfToken::class,
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,

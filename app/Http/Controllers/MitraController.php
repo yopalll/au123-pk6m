@@ -50,9 +50,13 @@ class MitraController extends Controller
                 . "City id: " . ($application->id_kota ?? '—') . "\n\n"
                 . "Notes:\n" . ($application->catatan ?? '(none)'),
                 function ($msg) use ($application) {
+                    // SEC-09: Strip HTML and CRLF characters from subject to prevent
+                    // email header injection via user-supplied salon name.
+                    $safeSubject = 'New VIYGO salon application: '
+                        . strip_tags(preg_replace('/[\r\n]+/', ' ', $application->nama_salon));
                     $msg->to(config('viygo.help_email', 'partners@viygo.com'))
                         ->replyTo($application->email, $application->nama_pemilik)
-                        ->subject('New VIYGO salon application: ' . $application->nama_salon);
+                        ->subject($safeSubject);
                 },
             );
         } catch (\Throwable $e) {

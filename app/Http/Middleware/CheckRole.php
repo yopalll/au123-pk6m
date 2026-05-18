@@ -29,11 +29,10 @@ class CheckRole
             return redirect()->route('login');
         }
 
-        // Soft-deleted or inactive accounts are blocked from role-restricted areas.
-        if (property_exists($user, 'is_active') || isset($user->is_active)) {
-            if ($user->is_active === false) {
-                abort(403, 'Your account is currently inactive.');
-            }
+        // BUG-A16: property_exists() always returns false for Eloquent dynamic attributes.
+        // Simplified: check is_active directly.
+        if ($user->is_active === false) {
+            abort(403, 'Your account is currently inactive.');
         }
 
         if (empty($roles)) {

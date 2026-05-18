@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Constants\UserRole;
 use Database\Factories\UserFactory;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
@@ -30,9 +31,11 @@ class User extends Authenticatable implements FilamentUser
         'password',
         'phone_number',
         'profile_url',
-        'role',
-        'is_active',
     ];
+
+    // Prevent mass-assignment privilege escalation (BUG-A02 / SEC-03).
+    // Use explicit property assignment: $user->role = '...'; $user->save();
+    protected $guarded = ['role', 'is_active', 'id_user'];
 
     protected $hidden = [
         'password',
@@ -145,11 +148,11 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         if ($panel->getId() === 'admin') {
-            return $this->role === 'admin' && $this->is_active;
+            return $this->role === UserRole::ADMIN && $this->is_active;
         }
 
         if ($panel->getId() === 'owner') {
-            return $this->role === 'salon_owner' && $this->is_active;
+            return $this->role === UserRole::SALON_OWNER && $this->is_active;
         }
 
         return false;

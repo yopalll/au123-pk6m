@@ -21,3 +21,9 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+/.claude
+
+# Backup / temporary files
+composer.lock.bak
+vendor_l13_bak/
+*.exe

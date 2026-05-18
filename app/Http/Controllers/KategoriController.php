@@ -113,12 +113,10 @@ class KategoriController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        // Re-use template kategori.show: emulate $kategori dari sub_kategori utk header.
-        $kategori = (object) [
-            'name'      => $sub->name,
-            'slug'      => $sub->slug,
-            'deskripsi' => $sub->deskripsi,
-        ];
+        // BUG-A12: Pass the actual Kategori model (from the relation) so that
+        // the view can safely access $kategori->id_kategori, $kategori->subKategori, etc.
+        // $sub is also passed so the view knows it's rendering a sub-category page.
+        $kategori = $sub->kategori;
         return view('kategori.show', compact('kategori', 'salons', 'sub'));
     }
 }

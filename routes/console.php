@@ -8,6 +8,6 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-// Promote past confirmed bookings to 'success' each day at 01:00,
-// which unblocks the customer review flow.
-Schedule::command('bookings:complete')->dailyAt('01:00');
+// ANOM-14: Explicit timezone so the scheduler fires at 01:00 UK time,
+// consistent with salon business hours (Europe/London observes BST in summer).
+Schedule::command('bookings:complete')->dailyAt('01:00')->timezone('Europe/London');

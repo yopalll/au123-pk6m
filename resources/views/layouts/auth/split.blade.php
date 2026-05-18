@@ -2,6 +2,20 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         @include('partials.head')
+        {{-- Force light mode on auth pages.
+             Flux JS reads localStorage('flux.appearance') on init and re-adds 'dark' class,
+             so we intercept Storage.prototype.getItem to return 'light' for this key
+             for the entire page lifecycle without permanently changing the user's preference. --}}
+        <script>
+        (function () {
+            var _get = Storage.prototype.getItem;
+            Storage.prototype.getItem = function (key) {
+                if (key === 'flux.appearance') return 'light';
+                return _get.apply(this, arguments);
+            };
+            document.documentElement.classList.remove('dark');
+        })();
+        </script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <style>

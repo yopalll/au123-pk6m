@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Constants\OrderStatus;
 use App\Models\Order;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
@@ -22,7 +23,8 @@ class CompleteBookings extends Command
 
     public function handle(): int
     {
-        $query = Order::where('status', 'confirmed')
+        // BUG-A06: Use OrderStatus constants instead of hardcoded strings.
+        $query = Order::where('status', OrderStatus::CONFIRMED)
             ->whereDate('date_order', '<', now()->toDateString());
 
         $count = $query->count();
@@ -37,7 +39,7 @@ class CompleteBookings extends Command
             return self::SUCCESS;
         }
 
-        $query->update(['status' => 'success']);
+        $query->update(['status' => OrderStatus::SUCCESS]);
 
         Log::info('bookings:complete', ['completed' => $count]);
         $this->info("Marked {$count} booking(s) as success.");

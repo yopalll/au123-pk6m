@@ -34,9 +34,15 @@ class AkunController extends Controller
             'dibatalkan' => [OrderStatus::CANCELED],
         ];
 
+        // BUG-A09: Sanitise tab against known keys to prevent information leak
+        // (an unknown tab value previously returned ALL orders for the user).
+        $tab = in_array($request->get('tab', 'mendatang'), array_keys($statusMap), true)
+            ? $request->get('tab', 'mendatang')
+            : 'mendatang';
+
         $orders = Order::where('id_user', auth()->id())
-            ->when(isset($statusMap[$tab]), fn ($q) => $q->whereIn('status', $statusMap[$tab]))
-            ->with(['salon.kota', 'details.service', 'review'])
+            ->whereIn('status', $statusMap[$tab])
+            ->with(['salon.kota', 'details.service', 'details.staff', 'review'])  // OPT-06: add details.staff pre-emptively
             ->latest()
             ->paginate(10)
             ->withQueryString();
@@ -91,12 +97,14 @@ class AkunController extends Controller
     public function updatePengaturan(Request $request)
     {
         $request->validate([
-            'first_name' => 'required|string|max:100',
-            'last_name'  => 'nullable|string|max:100',
-            'email'      => 'required|email|unique:users,email,' . auth()->id() . ',id_user',
+            'first_name'   => 'required|string|max:100',
+            'last_name'    => 'nullable|string|max:100',
+            'email'        => 'required|email|unique:users,email,' . auth()->id() . ',id_user',
+            // BUG-A15: Include phone_number; used by Midtrans customer_details.phone.
+            'phone_number' => 'nullable|string|max:30',
         ]);
 
-        auth()->user()->update($request->only('first_name', 'last_name', 'email'));
+        auth()->user()->update($request->only('first_name', 'last_name', 'email', 'phone_number'));
 
         return back()->with('success', 'Profile updated successfully.');
     }

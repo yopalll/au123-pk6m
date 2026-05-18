@@ -82,13 +82,19 @@ class BookingSlotService
         // Filter staff yang bisa kerjakan SEMUA service yang dipilih (intersect).
         // Hanya berlaku bila ada baris staff_service untuk service-service ini;
         // selain itu semua active staff dianggap bookable.
+        // OPT-02: Instead of N separate whereHas() subqueries (one per service),
+        // use a single whereHas with a COUNT = N check. This reduces N EXISTS
+        // subqueries to 1 query with a COUNT, which is significantly faster.
         $serviceIdsWithPivot = array_values(array_filter(
             $serviceIds,
             fn ($id) => $this->serviceHasStaffPivot((int) $id),
         ));
-        foreach ($serviceIdsWithPivot as $sid) {
-            $staffQuery->whereHas('services', fn (Builder $q) => $q
-                ->where('service.id_service', $sid)
+        if (! empty($serviceIdsWithPivot)) {
+            $staffQuery->whereHas(
+                'services',
+                fn (Builder $q) => $q->whereIn('service.id_service', $serviceIdsWithPivot),
+                '=',
+                count($serviceIdsWithPivot)
             );
         }
 

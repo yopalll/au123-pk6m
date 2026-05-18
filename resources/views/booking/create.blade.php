@@ -55,7 +55,9 @@
                 </div>
                 <p class="text-xs text-gray-500 mb-3">You can choose more than one — services will be done back-to-back in one appointment.</p>
                 <div class="space-y-3 max-h-[600px] overflow-y-auto pr-2">
-                    @forelse ($salon->services->where('status','active') as $svc)
+                    {{-- ANOM-04: Exclude services with harga <= 0 (dummy/patch-test services).
+                         These would allow booking free slots without payment. --}}
+                    @forelse ($salon->services->where('status','active')->where('harga', '>', 0) as $svc)
                         <div @click="toggleService({{ $svc->id_service }}, @js($svc->nama), {{ (float) $svc->harga }}, {{ (int) ($svc->durasi ?? 30) }})"
                              :class="isServiceSelected({{ $svc->id_service }})
                                      ? 'border-[#1B2D6B] bg-[#E8F4FB]'
@@ -203,9 +205,49 @@
                     <template x-for="sid in selectedServiceIds" :key="sid">
                         <input type="hidden" name="id_service[]" :value="sid" />
                     </template>
-                    <input type="hidden" name="tanggal"  :value="bookingDate" />
-                    <input type="hidden" name="waktu"    :value="selectedTime" />
-                    <input type="hidden" name="id_staff" :value="selectedStaffId" />
+                    <input type="hidden" name="tanggal"    :value="bookingDate" />
+                    <input type="hidden" name="waktu"      :value="selectedTime" />
+                    <input type="hidden" name="id_staff"   :value="selectedStaffId" />
+                    <input type="hidden" name="kode_promo" :value="promoApplied ? promoCode : ''" />
+
+                    {{-- Promo Code --}}
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Promo Code</label>
+                        <div class="flex gap-2">
+                            <input type="text"
+                                   x-model="promoCode"
+                                   :disabled="!!promoApplied"
+                                   @keydown.enter.prevent="applyPromo()"
+                                   placeholder="Enter promo code"
+                                   class="flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BA3CC] transition-colors uppercase disabled:bg-gray-50 disabled:text-gray-400" />
+                            <button type="button"
+                                    @click="promoApplied ? removePromo() : applyPromo()"
+                                    :disabled="promoLoading || (!promoApplied && !promoCode.trim())"
+                                    :class="promoApplied ? 'bg-red-50 text-red-500 border border-red-200 hover:bg-red-100' : 'bg-[#1B2D6B] text-white hover:bg-[#4BA3CC] disabled:bg-gray-200 disabled:cursor-not-allowed'"
+                                    class="px-4 py-2.5 rounded-xl text-sm font-medium transition-colors shrink-0">
+                                <span x-show="promoLoading">…</span>
+                                <span x-show="!promoLoading" x-text="promoApplied ? 'Remove' : 'Apply'"></span>
+                            </button>
+                        </div>
+                        <p x-show="promoError" x-text="promoError" class="mt-1.5 text-xs text-red-500"></p>
+                        <p x-show="promoApplied" class="mt-1.5 text-xs text-green-600 font-medium"
+                           x-text="'✓ ' + (promoApplied?.nama_promo ?? '') + ' — ' + (promoApplied?.tipe ?? '') + ' applied'"></p>
+                        @error('kode_promo')
+                            <p class="mt-1.5 text-xs text-red-500">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    {{-- Discount row (visible when promo applied) --}}
+                    <div x-show="promoApplied" class="flex justify-between text-sm text-green-600 font-medium -mt-2 mb-4 px-1">
+                        <span>Discount</span>
+                        <span x-text="'- £' + (promoApplied?.diskon ?? 0).toLocaleString('en-GB', {minimumFractionDigits: 2, maximumFractionDigits: 2})"></span>
+                    </div>
+
+                    {{-- Updated total when promo applied --}}
+                    <div x-show="promoApplied" class="flex justify-between font-bold text-base text-[#1B2D6B] mb-4 px-1">
+                        <span>Total After Discount</span>
+                        <span x-text="'£' + finalPrice.toLocaleString('en-GB', {minimumFractionDigits: 2, maximumFractionDigits: 2})"></span>
+                    </div>
 
                     <div class="mb-4">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Note (optional)</label>
@@ -287,6 +329,10 @@ function bookingForm() {
         loadingSlots: false,
         calMonth: today.getMonth(),
         calYear: today.getFullYear(),
+        promoCode: '',
+        promoApplied: null,
+        promoError: '',
+        promoLoading: false,
 
         init() {},
 
@@ -332,6 +378,9 @@ function bookingForm() {
         },
         get totalDuration() {
             return this.selectedServices.reduce((sum, s) => sum + Number(s.duration), 0);
+        },
+        get finalPrice() {
+            return Math.max(0, this.totalPrice - (this.promoApplied ? this.promoApplied.diskon : 0));
         },
         isServiceSelected(id) {
             return this.selectedServices.some(s => s.id === id);
@@ -404,6 +453,43 @@ function bookingForm() {
             } finally {
                 this.loadingSlots = false;
             }
+        },
+
+        async applyPromo() {
+            const code = this.promoCode.trim().toUpperCase();
+            if (!code || this.promoLoading) return;
+            this.promoError = '';
+            this.promoLoading = true;
+            try {
+                const res = await fetch(@json(route('promo.validate')), {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                        'Accept': 'application/json',
+                    },
+                    body: JSON.stringify({ kode_promo: code, total: this.totalPrice }),
+                });
+                const data = await res.json();
+                if (data.valid) {
+                    this.promoApplied = data;
+                    this.promoCode = code;
+                    this.promoError = '';
+                } else {
+                    this.promoError = data.message;
+                    this.promoApplied = null;
+                }
+            } catch (e) {
+                this.promoError = 'Failed to validate promo. Please try again.';
+            } finally {
+                this.promoLoading = false;
+            }
+        },
+
+        removePromo() {
+            this.promoApplied = null;
+            this.promoCode = '';
+            this.promoError = '';
         },
 
         canNext() {

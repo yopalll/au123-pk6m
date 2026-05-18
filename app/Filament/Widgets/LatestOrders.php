@@ -38,8 +38,9 @@ class LatestOrders extends TableWidget
                         'canceled' => 'danger',
                         default => 'gray',
                     }),
-                Tables\Columns\TextColumn::make('date_order')
-                    ->date('d M Y'),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Date order')
+                    ->dateTime('d M Y, H:i:s'),
             ]);
     }
 }

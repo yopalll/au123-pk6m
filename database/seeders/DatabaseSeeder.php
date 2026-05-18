@@ -22,6 +22,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // BUG-A04: Guard against accidental production data wipe.
+        // Require explicit confirmation before truncating all tables in production.
+        if (app()->environment('production') && ! $this->command->confirm(
+            ' You are about to TRUNCATE all VIYGO tables in PRODUCTION. Continue?',
+            false
+        )) {
+            $this->command->warn('Seeding aborted by user.');
+            return;
+        }
+
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
         $this->command->info('=== Starting VIYGO Database Seeding (Part 3) ===');

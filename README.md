@@ -1,6 +1,6 @@
- ar# VIYGO — Beauty & Wellness Marketplace
+# VIYGO — Beauty & Wellness Marketplace
 
-> A Treatwell-style salon discovery and booking platform built on **Laravel 13 + Livewire Flux**, seeded with 8,750+ real UK salons scraped from Treatwell UK.
+> A Treatwell-style salon discovery and booking platform built on **Laravel 12 + Livewire Flux**, seeded with 8,750+ real UK salons scraped from Treatwell UK.
 >
 > **Status (May 1, 2026):** Public frontend integrated — homepage, search, category, salon detail (with Leaflet minimap), 3-step booking, account dashboard. UI fully in English, prices in £ GBP.
 
@@ -40,7 +40,7 @@ The catalogue is sourced from a Go-based scraper of Treatwell UK (1,000+ salons 
 
 | Layer | Technology |
 |-------|------------|
-| **Backend Framework** | Laravel 13 (PHP ^8.3) |
+| **Backend Framework** | Laravel 12 (PHP ^8.3) |
 | **Frontend / UI** | Livewire Flux v2 + TailwindCSS v4 (Vite) |
 | **Maps** | Leaflet 1.9.4 (OpenStreetMap tiles, loaded via CDN) |
 | **Auth** | Laravel Fortify (2FA support) |
@@ -146,66 +146,53 @@ order ← order_detail ← service
 ## Folder Structure
 
 ```
-VIYGO/
+TUBES-CPP/
 ├── app/
-│ ├── Http/Controllers/ # Public + Account controllers (added May 2026)
-│ ├── Livewire/ # Flux scaffolding
-│ ├── Models/ # 13 Eloquent models
-│ └── Providers/
+│   ├── Actions/Fortify/       # Fortify auth actions
+│   ├── Console/Commands/      # Artisan commands
+│   ├── Constants/             # OrderStatus, OrderDetailStatus, UserRole
+│   ├── Concerns/              # Shared traits
+│   ├── Filament/              # Admin + Owner panel resources & widgets
+│   ├── Http/Controllers/      # Public + Account + Payment controllers
+│   ├── Http/Middleware/       # CheckRole middleware
+│   ├── Livewire/              # Livewire Flux components
+│   ├── Models/                # 15 Eloquent models
+│   ├── Observers/             # ReviewObserver
+│   ├── Providers/             # AppServiceProvider, Fortify, Filament panels
+│   └── Services/              # BookingSlotService
 │
 ├── database/
-│ ├── data/ # Scraped JSON source data
-│ │ ├── salon.json
-│ │ ├── service.json
-│ │ ├── staff.json
-│ │ ├── salon_images.json
-│ │ ├── kategori.json
-│ │ └── kota.json
-│ ├── migrations/ # 22 migrations (incl. 3 added May 2026)
-│ ├── scripts/ # PHP utilities (validate_json.php, etc.)
-│ └── seeders/ # 8 seeders + SalonSlugBackfillSeeder
+│   ├── data/                  # Scraped JSON source data (~65MB)
+│   ├── migrations/            # 33 migrations
+│   ├── scripts/               # Scraper tools + audit scripts
+│   ├── factories/             # Model factories
+│   └── seeders/               # Database seeders
+│
+├── docs/                      # All documentation (consolidated)
+│   ├── audit/                 # Code audit reports + fixes
+│   ├── bugs/                  # Bug fix plans & phase reports
+│   ├── guides/                # Agent & integration guides
+│   ├── project/               # Project reports
+│   ├── scraper/               # (reserved for scraper docs)
+│   ├── archive/               # Archived: eror screenshots, old update folder
+│   ├── LARAVEL_12_DOWNGRADE.md
+│   ├── PROJECT-ANALYSIS.md
+│   ├── BRANCHING-STRATEGY.md
+│   ├── GCP_DEPLOYMENT_GUIDE.md
+│   └── eloquent-models.md
 │
 ├── resources/
-│ ├── css/ # app.css (Tailwind v4 + Flux)
-│ ├── js/ # app.js
-│ └── views/
-│ ├── layouts/
-│ │ ├── public.blade.php # Public layout w/ Leaflet CDN
-│ │ ├── app.blade.php # Flux dashboard layout
-│ │ └── auth/
-│ ├── components/
-│ │ ├── viygo-logo.blade.php
-│ │ ├── viygo-navbar.blade.php
-│ │ ├── viygo-footer.blade.php
-│ │ ├── salon-card.blade.php
-│ │ └── leaflet-map.blade.php # NEW reusable Leaflet component
-│ ├── home.blade.php
-│ ├── cari/index.blade.php # search results + Leaflet multi-marker map
-│ ├── kategori/show.blade.php # category page + Leaflet multi-marker map
-│ ├── salon/show.blade.php # detail page + Leaflet single-marker map
-│ ├── booking/
-│ │ ├── create.blade.php # 3-step Alpine.js wizard
-│ │ └── konfirmasi.blade.php
-│ ├── akun/ # account dashboard, bookings, favourites, settings, rewards
-│ ├── gift-card/index.blade.php
-│ ├── lookbook/index.blade.php
-│ ├── treatment-files/index.blade.php
-│ ├── mitra/index.blade.php # Salon partner sign-up
-│ ├── pages/auth/ # Fortify auth pages
-│ └── partials/
+│   ├── css/                   # app.css (Tailwind v4 + Flux)
+│   ├── js/                    # app.js (Alpine.js)
+│   └── views/                 # Blade templates
 │
 ├── routes/
-│ ├── web.php # Public + auth-protected routes (May 2026)
-│ └── settings.php
+│   ├── web.php                # Public + auth-protected routes
+│   ├── settings.php           # Livewire settings routes
+│   └── console.php            # Scheduler (bookings:complete)
 │
-├── update/ # ARCHIVED — original Indonesian-language frontend drop
-│ # (kept for traceability, no longer authoritative)
-│
-├── INTEGRATION_GUIDE.md # Original integration guide ( COMPLETED)
-├── PROGRESS_REPORT.md # Phase-by-phase status of the May 2026 integration
-├── LAPORAN_PROYEK.md # Work report (Indonesian + English)
-├── progress.md # Long-form progress tracker
-├── README.md # You are here
+├── scripts/                   # Utility scripts (clean_md.php)
+├── README.md
 ├── composer.json
 ├── package.json
 └── vite.config.js
@@ -315,13 +302,17 @@ php database/scripts/validate_json.php # JSON sanity-check
 
 ## Documentation Files
 
-| File | Purpose |
+| Path | Purpose |
 |------|---------|
-| [INTEGRATION_GUIDE.md](INTEGRATION_GUIDE.md) | Original integration guide ( completed May 1, 2026) |
-| [PROGRESS_REPORT.md](PROGRESS_REPORT.md) | Phase-by-phase status of the public-frontend integration |
-| [LAPORAN_PROYEK.md](LAPORAN_PROYEK.md) | Final work report (mixed Indonesian/English) |
-| [progress.md](progress.md) | Long-form progress tracker |
-| [docs/](docs/) | Additional internal docs |
+| [docs/LARAVEL_12_DOWNGRADE.md](docs/LARAVEL_12_DOWNGRADE.md) | Laravel 13→12 downgrade runbook |
+| [docs/INTEGRATION_GUIDE.md](docs/INTEGRATION_GUIDE.md) | Original frontend integration guide |
+| [docs/PROJECT-ANALYSIS.md](docs/PROJECT-ANALYSIS.md) | Full project analysis |
+| [docs/eloquent-models.md](docs/eloquent-models.md) | Eloquent model documentation |
+| [docs/audit/](docs/audit/) | Code audit reports (bugs, optimizations, security) |
+| [docs/bugs/](docs/bugs/) | Bug fix plans & phase reports |
+| [docs/guides/](docs/guides/) | Agent & integration guides |
+| [docs/project/](docs/project/) | Project reports |
+| [docs/archive/](docs/archive/) | Archived screenshots & old files |
 
 ---
 

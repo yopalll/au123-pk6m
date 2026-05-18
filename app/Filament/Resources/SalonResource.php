@@ -92,6 +92,7 @@ class SalonResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->recordUrl(fn (Salon $record): string => static::getUrl('view', ['record' => $record->id_salon]))
             ->columns([
                 Tables\Columns\TextColumn::make('id_salon')
                     ->label('ID')
@@ -143,8 +144,10 @@ class SalonResource extends Resource
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-                \Filament\Actions\ViewAction::make(),
-                \Filament\Actions\EditAction::make(),
+                \Filament\Actions\ViewAction::make()
+                    ->url(fn (Salon $record): string => static::getUrl('view', ['record' => $record->id_salon])),
+                \Filament\Actions\EditAction::make()
+                    ->url(fn (Salon $record): string => static::getUrl('edit', ['record' => $record->id_salon])),
                 \Filament\Actions\Action::make('approve')
                     ->label('Approve')
                     ->icon('heroicon-o-check-circle')
@@ -179,6 +182,11 @@ class SalonResource extends Resource
             RelationManagers\StaffRelationManager::class,
             RelationManagers\ImagesRelationManager::class,
         ];
+    }
+
+    public static function getRecordRouteKeyName(): ?string
+    {
+        return 'id_salon';
     }
 
     public static function getPages(): array
