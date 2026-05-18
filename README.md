@@ -226,7 +226,7 @@ php artisan key:generate
 
 # 4. Set DB in .env
 # DB_CONNECTION=mysql
-# DB_DATABASE=viygo-go
+# DB_DATABASE=viygo
 # DB_USERNAME=root
 # DB_PASSWORD=your_password
 
