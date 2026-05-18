@@ -13,10 +13,25 @@ class EditSalon extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\ViewAction::make(),
+            Actions\ViewAction::make()
+                ->url(fn () => SalonResource::getUrl('view', ['record' => $this->record->id_salon])),
             Actions\DeleteAction::make(),
             Actions\ForceDeleteAction::make(),
             Actions\RestoreAction::make(),
         ];
+    }
+
+    public function getBreadcrumbs(): array
+    {
+        return [
+            SalonResource::getUrl() => SalonResource::getBreadcrumb(),
+            SalonResource::getUrl('view', ['record' => $this->record->id_salon]) => $this->getRecordTitle(),
+            $this->getBreadcrumb(),
+        ];
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return SalonResource::getUrl('view', ['record' => $this->record->id_salon]);
     }
 }

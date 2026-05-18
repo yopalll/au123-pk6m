@@ -13,7 +13,16 @@ class ViewSalon extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\EditAction::make(),
+            Actions\EditAction::make()
+                ->url(fn () => SalonResource::getUrl('edit', ['record' => $this->record->id_salon])),
+        ];
+    }
+
+    public function getBreadcrumbs(): array
+    {
+        return [
+            SalonResource::getUrl() => SalonResource::getBreadcrumb(),
+            SalonResource::getUrl('view', ['record' => $this->record->id_salon]) => $this->getRecordTitle(),
         ];
     }
 }
