@@ -16,3 +16,4 @@ README.md export-ignore
 *.7z filter=lfs diff=lfs merge=lfs -text
 *.exe filter=lfs diff=lfs merge=lfs -text
 *.iso filter=lfs diff=lfs merge=lfs -text
+database/data/service.json filter=lfs diff=lfs merge=lfs -text
