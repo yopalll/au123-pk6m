@@ -113,10 +113,9 @@ class KategoriController extends Controller
             ->paginate(10)
             ->withQueryString();
 
-        // BUG-A12: Pass the actual Kategori model (from the relation) so that
-        // the view can safely access $kategori->id_kategori, $kategori->subKategori, etc.
-        // $sub is also passed so the view knows it's rendering a sub-category page.
-        $kategori = $sub->kategori;
+        // SubKategori::kategori() is belongsToMany — take the first parent
+        // so the view can access $kategori->name / ->deskripsi as a single model.
+        $kategori = $sub->kategori->first();
         return view('kategori.show', compact('kategori', 'salons', 'sub'));
     }
 }

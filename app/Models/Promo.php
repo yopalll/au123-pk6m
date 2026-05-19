@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -14,6 +15,7 @@ class Promo extends Model
     protected $primaryKey = 'id_promo';
 
     protected $fillable = [
+        'id_salon',
         'nama_promo',
         'deskripsi_promo',
         'diskon',
@@ -42,6 +44,14 @@ class Promo extends Model
     }
 
     // ──── Relasi ────────────────────────────────────────────
+
+    /**
+     * Salon yang punya promo ini. NULL = platform-wide promo dari admin.
+     */
+    public function salon(): BelongsTo
+    {
+        return $this->belongsTo(Salon::class, 'id_salon');
+    }
 
     /**
      * Many-to-Many: User yang memiliki/mengklaim promo ini.

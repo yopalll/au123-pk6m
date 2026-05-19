@@ -74,6 +74,34 @@ class SalonResource extends Resource
                         ->label('Closes'),
                 ])->columns(3),
 
+            \Filament\Schemas\Components\Section::make('Categories')
+                ->description('Pilih kategori utama (mis. Hair, Nails) dan sub-kategori (mis. Blow Dry, Pedicure) yang ditawarkan salon Anda. Customer mencari salon berdasarkan kategori ini.')
+                ->schema([
+                    Forms\Components\Select::make('kategoris')
+                        ->label('Kategori Utama')
+                        ->relationship(
+                            name: 'kategoris',
+                            titleAttribute: 'name',
+                            modifyQueryUsing: fn ($query) => $query->where('is_active', true)->orderBy('name'),
+                        )
+                        ->multiple()
+                        ->preload()
+                        ->searchable()
+                        ->helperText('Misal: Hair, Nails, Massage. Bisa pilih lebih dari satu.'),
+
+                    Forms\Components\Select::make('subKategoris')
+                        ->label('Sub-Kategori (Treatment)')
+                        ->relationship(
+                            name: 'subKategoris',
+                            titleAttribute: 'name',
+                            modifyQueryUsing: fn ($query) => $query->where('is_active', true)->orderBy('name'),
+                        )
+                        ->multiple()
+                        ->preload()
+                        ->searchable()
+                        ->helperText('Treatment spesifik. Misal: Blow Dry, Pedicure, Manicure.'),
+                ])->columns(1),
+
             \Filament\Schemas\Components\Section::make('Metrics (read-only)')
                 ->schema([
                     Forms\Components\TextInput::make('rating')

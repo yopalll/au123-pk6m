@@ -16,6 +16,7 @@ class MitraApplication extends Model
         'email',
         'phone',
         'id_kota',
+        'id_salon',
         'catatan',
         'status',
     ];
@@ -23,5 +24,10 @@ class MitraApplication extends Model
     public function kota(): BelongsTo
     {
         return $this->belongsTo(Kota::class, 'id_kota');
+    }
+
+    public function salon(): BelongsTo
+    {
+        return $this->belongsTo(Salon::class, 'id_salon');
     }
 }

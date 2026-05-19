@@ -1,4 +1,8 @@
-<x-layouts.public :title="$kategori->name ?? 'Category'">
+@php
+    $heading = ($sub ?? null)?->name ?? $kategori?->name;
+    $heroDesc = ($sub ?? null)?->deskripsi ?? $kategori?->deskripsi;
+@endphp
+<x-layouts.public :title="$heading ?? 'Category'">
 
 @php
     $mapMarkers = $salons->getCollection()
@@ -20,10 +24,10 @@
         <nav class="text-xs text-white/40 mb-4 flex items-center gap-1.5">
             <a href="{{ route('home') }}" class="hover:text-white/70">Home</a>
             <span>/</span>
-            <span class="text-white/70">{{ $kategori->name ?? 'Category' }}</span>
+            <span class="text-white/70">{{ $heading ?? 'Category' }}</span>
         </nav>
-        <h1 class="text-3xl md:text-4xl text-white mb-2">{{ $kategori->name ?? 'Treatments' }}</h1>
-        <p class="text-white/60 text-sm">{{ $kategori->deskripsi ?? '' }}</p>
+        <h1 class="text-3xl md:text-4xl text-white mb-2">{{ $heading ?? 'Treatments' }}</h1>
+        <p class="text-white/60 text-sm">{{ $heroDesc ?? '' }}</p>
     </div>
 </div>
 
@@ -76,7 +80,7 @@
         <div class="flex-1 min-w-0">
             <p class="text-sm text-gray-500 mb-4">
                 <span class="font-semibold text-gray-800">{{ $salons->total() }}</span>
-                salons offering {{ $kategori->name ?? 'this treatment' }}
+                salons offering {{ $heading ?? 'this treatment' }}
             </p>
 
             <div class="divide-y divide-gray-100">

@@ -108,18 +108,4 @@ class AkunController extends Controller
 
         return back()->with('success', 'Profile updated successfully.');
     }
-
-    /**
-     * Loyalty + claimed promos.
-     */
-    public function reward()
-    {
-        $promos = auth()->user()
-            ->promos()
-            ->orderByPivot('is_used', 'asc')
-            ->orderBy('time_expired', 'asc')
-            ->get();
-
-        return view('akun.reward', compact('promos'));
-    }
 }

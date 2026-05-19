@@ -56,7 +56,6 @@
                 <ul class="space-y-2 text-sm text-white/50">
                     <li><a href="{{ route('static.about') }}"   class="hover:text-[#4BA3CC] transition-colors">About Us</a></li>
                     <li><a href="{{ route('static.careers') }}" class="hover:text-[#4BA3CC] transition-colors">Careers</a></li>
-                    <li><a href="{{ route('treatment-files') }}" class="hover:text-[#4BA3CC] transition-colors">Blog</a></li>
                     <li><a href="{{ route('static.press') }}"   class="hover:text-[#4BA3CC] transition-colors">Press</a></li>
                     <li><a href="{{ route('mitra') }}"          class="hover:text-[#4BA3CC] transition-colors">List your salon</a></li>
                 </ul>

@@ -188,21 +188,6 @@
 
         <div class="mx-2 h-4 w-px bg-gray-200 shrink-0"></div>
 
-        <a href="{{ route('gift-card') }}"
-           class="cat-nav-link shrink-0 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 hover:text-[#1B2D6B] transition-colors whitespace-nowrap
-                  {{ request()->routeIs('gift-card') ? 'active text-[#1B2D6B]' : '' }}">
-            Gift Card
-        </a>
-        <a href="{{ route('lookbook') }}"
-           class="cat-nav-link shrink-0 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 hover:text-[#1B2D6B] transition-colors whitespace-nowrap
-                  {{ request()->routeIs('lookbook') ? 'active text-[#1B2D6B]' : '' }}">
-            Lookbook
-        </a>
-        <a href="{{ route('treatment-files') }}"
-           class="cat-nav-link shrink-0 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 hover:text-[#1B2D6B] transition-colors whitespace-nowrap
-                  {{ request()->routeIs('treatment-files') ? 'active text-[#1B2D6B]' : '' }}">
-            Treatment Files
-        </a>
         <a href="{{ route('mitra') }}"
            class="cat-nav-link shrink-0 px-3 text-xs font-semibold uppercase tracking-wider text-gray-500 hover:text-[#1B2D6B] transition-colors whitespace-nowrap
                   {{ request()->routeIs('mitra') ? 'active text-[#1B2D6B]' : '' }}">

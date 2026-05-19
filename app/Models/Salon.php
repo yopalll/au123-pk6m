@@ -111,6 +111,15 @@ class Salon extends Model
     }
 
     /**
+     * Promos owned by this salon (created by the salon owner).
+     * Does NOT include platform-wide promos (those have id_salon=NULL).
+     */
+    public function promos(): HasMany
+    {
+        return $this->hasMany(Promo::class, 'id_salon');
+    }
+
+    /**
      * Foto utama salon.
      */
     public function primaryImage(): HasOne

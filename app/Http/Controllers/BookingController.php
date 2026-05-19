@@ -88,12 +88,20 @@ class BookingController extends Controller
         $data = $request->validate([
             'kode_promo' => 'required|string|max:50',
             'total'      => 'required|numeric|min:0',
+            'id_salon'   => 'nullable|integer|exists:salon,id_salon',
         ]);
 
         $promo = Promo::byCode($data['kode_promo'])->first();
 
         if (! $promo) {
             return response()->json(['valid' => false, 'message' => 'Promo code not found or has expired.']);
+        }
+        // Salon-specific promo: hanya valid kalau di-pakai untuk salon yang punya.
+        if ($promo->id_salon && (int) ($data['id_salon'] ?? 0) !== (int) $promo->id_salon) {
+            return response()->json([
+                'valid'   => false,
+                'message' => 'This promo code is only valid at a different salon.',
+            ]);
         }
         if (! $promo->meetsMinimum((float) $data['total'])) {
             return response()->json([
@@ -156,6 +164,12 @@ class BookingController extends Controller
 
             if (! $promo) {
                 return back()->withInput()->withErrors(['kode_promo' => 'Promo code not found or has expired.']);
+            }
+            // Salon-specific promo: tolak kalau salon-nya beda.
+            if ($promo->id_salon && (int) $promo->id_salon !== (int) $salon->id_salon) {
+                return back()->withInput()->withErrors([
+                    'kode_promo' => 'This promo code is only valid at a different salon.',
+                ]);
             }
             if (! $promo->meetsMinimum($totalPrice)) {
                 return back()->withInput()->withErrors([

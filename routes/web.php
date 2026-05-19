@@ -2,17 +2,14 @@
 
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\BookingController;
-use App\Http\Controllers\GiftCardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\LookbookController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SalonController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\StaticController;
-use App\Http\Controllers\TreatmentFilesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,9 +22,6 @@ Route::get('/cari', [SearchController::class, 'index'])->name('cari');
 Route::get('/kategori/{slug}', [KategoriController::class, 'show'])->name('kategori.show');
 Route::get('/sub-kategori/{slug}', [KategoriController::class, 'showSub'])->name('sub-kategori.show');
 Route::get('/salon/{slug}', [SalonController::class, 'show'])->name('salon.show');
-Route::get('/gift-card', [GiftCardController::class, 'index'])->name('gift-card');
-Route::get('/lookbook', [LookbookController::class, 'index'])->name('lookbook');
-Route::get('/treatment-files', [TreatmentFilesController::class, 'index'])->name('treatment-files');
 Route::get('/mitra', [MitraController::class, 'index'])->name('mitra');
 Route::post('/mitra/apply', [MitraController::class, 'apply'])
     ->middleware('throttle:5,1')
@@ -83,7 +77,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/favorit/{salon:slug}', [AkunController::class, 'toggleFavorit'])->name('favorit.toggle');
             Route::get('/pengaturan', [AkunController::class, 'pengaturan'])->name('pengaturan');
             Route::put('/pengaturan', [AkunController::class, 'updatePengaturan'])->name('pengaturan.update');
-            Route::get('/reward', [AkunController::class, 'reward'])->name('reward');
 
             // Review submission for completed orders
             Route::get('/bookings/{kode}/review', [ReviewController::class, 'create'])->name('review.create');

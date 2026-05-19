@@ -14,18 +14,6 @@
                 <p class="text-sm text-gray-500">{{ auth()->user()->email }}</p>
             </div>
         </div>
-
-        {{-- VIYGO Rewards --}}
-        <div class="flex items-center gap-4 bg-[#E8F4FB] border border-[#C5E1F0] rounded-xl px-6 py-4">
-            <div>
-                <div class="text-xs font-bold text-[#4BA3CC] uppercase tracking-widest mb-0.5">VIYGO REWARDS</div>
-                <div class="text-2xl font-bold text-[#1B2D6B]">0 <span class="text-base font-normal text-gray-400">/ 1500 points</span></div>
-            </div>
-            <a href="{{ route('akun.reward') }}"
-               class="px-4 py-2 bg-[#1B2D6B] text-white text-sm font-semibold rounded-full hover:bg-[#4BA3CC] transition-colors whitespace-nowrap">
-                Earn Points
-            </a>
-        </div>
     </div>
 
     {{-- Dashboard Grid --}}
@@ -36,9 +24,6 @@
                 ['icon'=>'📅', 'title'=>'My Bookings',     'desc'=>'View and manage upcoming and past bookings',         'link'=>route('akun.bookings'),    'link_text'=>'View bookings',  'count'=> $upcomingCount ?? 0],
                 ['icon'=>'👤', 'title'=>'Personal Info',   'desc'=>'Edit your profile details',                          'link'=>route('akun.pengaturan'),  'link_text'=>'Edit profile'],
                 ['icon'=>'❤️', 'title'=>'Favourites',      'desc'=>'Salons and treatments you have saved',               'link'=>route('akun.favorit'),     'link_text'=>'View favourites'],
-                ['icon'=>'🎁', 'title'=>'VIYGO Rewards',   'desc'=>'Collect points and unlock exclusive discounts',      'link'=>route('akun.reward'),      'link_text'=>'View rewards'],
-                ['icon'=>'💳', 'title'=>'Wallet',          'desc'=>'Manage your VIYGO vouchers and credit',              'link'=>'#',                       'link_text'=>'Open wallet'],
-                ['icon'=>'👥', 'title'=>'Refer a Friend',  'desc'=>'You and your friend each get £15 off your next booking', 'link'=>'#',                'link_text'=>'Invite now'],
             ];
         @endphp
 

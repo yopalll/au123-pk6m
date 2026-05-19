@@ -19,9 +19,35 @@ class ImagesRelationManager extends RelationManager
     public function form(Schema $form): Schema
     {
         return $form->schema([
+            // Upload helper — not stored in DB directly. Fills `image_url`
+            // below with the public URL once the file is uploaded.
+            Forms\Components\FileUpload::make('upload_file')
+                ->label('Upload from your device')
+                ->image()
+                ->disk('public')
+                ->directory('salon-images')
+                ->visibility('public')
+                ->maxSize(5120) // 5 MB
+                ->helperText('Pilih file gambar (jpg/png/webp, maks 5 MB). URL akan terisi otomatis di bawah.')
+                ->columnSpanFull()
+                ->dehydrated(false)
+                ->live()
+                ->afterStateUpdated(function ($state, callable $set) {
+                    // $state during live update is a TemporaryUploadedFile (or
+                    // array of them). Store it to public disk now and set the
+                    // final public URL into the image_url field.
+                    $file = is_array($state) ? ($state[array_key_first($state)] ?? null) : $state;
+
+                    if ($file instanceof \Livewire\Features\SupportFileUploads\TemporaryUploadedFile) {
+                        $path = $file->store('salon-images', 'public');
+                        $set('image_url', \Illuminate\Support\Facades\Storage::disk('public')->url($path));
+                    }
+                }),
+
             Forms\Components\TextInput::make('image_url')
                 ->required()->url()->label('Image URL')->columnSpanFull()
-                ->helperText('Paste a public URL or upload to your CDN first.'),
+                ->helperText('Terisi otomatis jika Anda upload di atas, atau paste URL publik dari CDN.'),
+
             Forms\Components\Toggle::make('is_primary')
                 ->label('Primary Image')
                 ->helperText('The primary image is used as the cover photo on listings.'),

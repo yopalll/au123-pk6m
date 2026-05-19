@@ -23,6 +23,13 @@ class PromoResource extends Resource
     {
         return $form->schema([
             \Filament\Schemas\Components\Section::make('Promo Info')->schema([
+                Forms\Components\Select::make('id_salon')
+                    ->label('Salon (optional)')
+                    ->relationship('salon', 'nama_salon')
+                    ->searchable()
+                    ->preload()
+                    ->nullable()
+                    ->helperText('Leave empty for platform-wide promo. Set to restrict to one salon.'),
                 Forms\Components\TextInput::make('nama_promo')->required()->label('Promo Name'),
                 Forms\Components\Textarea::make('deskripsi_promo')->label('Description'),
                 Forms\Components\TextInput::make('kode_promo')->required()->unique(ignoreRecord: true)->label('Code'),
@@ -54,6 +61,7 @@ class PromoResource extends Resource
                 Tables\Columns\TextColumn::make('id_promo')->label('ID')->sortable(),
                 Tables\Columns\TextColumn::make('nama_promo')->label('Name')->searchable(),
                 Tables\Columns\TextColumn::make('kode_promo')->label('Code')->searchable()->copyable(),
+                Tables\Columns\TextColumn::make('salon.nama_salon')->label('Salon')->placeholder('Platform-wide')->limit(20)->searchable(),
                 Tables\Columns\TextColumn::make('tipe_promo')->label('Type')->badge(),
                 Tables\Columns\TextColumn::make('diskon')->suffix(fn ($record) => $record->tipe_promo === 'percentage' ? '%' : ''),
                 Tables\Columns\TextColumn::make('stock'),

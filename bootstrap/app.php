@@ -16,6 +16,11 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => CheckRole::class,
         ]);
 
+        // Trust proxies so Laravel correctly detects HTTPS when behind ngrok
+        // or other reverse proxies. Without this, Livewire generates http://
+        // URLs while the browser uses https:// → CSRF / upload mismatches.
+        $middleware->trustProxies(at: '*');
+
         // Midtrans posts to /midtrans/webhook — verified via signature_key,
         // not via Laravel CSRF.
         $middleware->validateCsrfTokens(except: [

@@ -468,7 +468,7 @@ function bookingForm() {
                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                         'Accept': 'application/json',
                     },
-                    body: JSON.stringify({ kode_promo: code, total: this.totalPrice }),
+                    body: JSON.stringify({ kode_promo: code, total: this.totalPrice, id_salon: @json($salon->id_salon) }),
                 });
                 const data = await res.json();
                 if (data.valid) {

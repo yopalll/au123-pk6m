@@ -4,7 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\MitraApplicationResource\Pages;
 use App\Models\MitraApplication;
+use App\Services\ApproveSalonApplicationService;
 use Filament\Forms;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables;
@@ -50,6 +52,8 @@ class MitraApplicationResource extends Resource
                         'approved'  => 'Approved',
                         'rejected'  => 'Rejected',
                     ])
+                    ->disabled()
+                    ->helperText('Use the "Approve & Create Salon" or "Update Status" actions on the list to change status.')
                     ->required(),
             ])->columns(2),
         ]);
@@ -104,17 +108,61 @@ class MitraApplicationResource extends Resource
                     ]),
             ])
             ->actions([
-                // Quick status-flip without leaving the list page.
+                // Approve + auto-provision: create owner user + salon (inactive)
+                // + email password reset link. Hidden once the application is
+                // already approved (id_salon set) to prevent double provisioning.
+                \Filament\Actions\Action::make('approveAndCreateSalon')
+                    ->label('Approve & Create Salon')
+                    ->icon('heroicon-o-check-badge')
+                    ->color('success')
+                    ->visible(fn (MitraApplication $record) =>
+                        $record->status !== 'approved' && $record->id_salon === null
+                    )
+                    ->requiresConfirmation()
+                    ->modalHeading(fn (MitraApplication $record) => 'Approve: ' . $record->nama_salon)
+                    ->modalDescription(
+                        'This will create the owner user account and a salon record '
+                        . '(status=inactive, hidden from public). The owner can log in '
+                        . 'at /owner with their email and the default password "password". '
+                        . 'Please instruct them to change it via Profile after first login.'
+                    )
+                    ->modalSubmitActionLabel('Yes, approve & provision')
+                    ->action(function (MitraApplication $record) {
+                        try {
+                            $salon = app(ApproveSalonApplicationService::class)->approve($record);
+
+                            Notification::make()
+                                ->title('Salon provisioned')
+                                ->body(
+                                    "Salon '{$salon->nama_salon}' created (inactive). "
+                                    . "Owner can log in with: email={$record->email}, password=password. "
+                                    . 'Tell them to change it from /owner/profile after login.'
+                                )
+                                ->success()
+                                ->persistent()
+                                ->send();
+                        } catch (\Throwable $e) {
+                            Notification::make()
+                                ->title('Approval failed')
+                                ->body($e->getMessage())
+                                ->danger()
+                                ->send();
+                        }
+                    }),
+
+                // Quick status-flip for non-approval transitions (new/contacted/rejected).
+                // Does NOT bypass the auto-provision flow for approval —
+                // setting 'approved' here is blocked.
                 \Filament\Actions\Action::make('updateStatus')
                     ->label('Update Status')
                     ->icon('heroicon-o-arrow-path')
                     ->color('warning')
+                    ->visible(fn (MitraApplication $record) => $record->status !== 'approved')
                     ->form([
                         Forms\Components\Select::make('status')
                             ->options([
                                 'new'       => 'New',
                                 'contacted' => 'Contacted',
-                                'approved'  => 'Approved',
                                 'rejected'  => 'Rejected',
                             ])
                             ->required()
@@ -124,6 +172,10 @@ class MitraApplicationResource extends Resource
                         $record->update(['status' => $data['status']])
                     )
                     ->modalHeading(fn ($record) => 'Update: ' . $record->nama_salon)
+                    ->modalDescription(
+                        'To approve this application use the "Approve & Create Salon" action — '
+                        . 'that one provisions the owner account automatically.'
+                    )
                     ->modalSubmitActionLabel('Save Status'),
 
                 \Filament\Actions\ViewAction::make(),
