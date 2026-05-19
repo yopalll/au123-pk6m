@@ -27,6 +27,8 @@ class SalonResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'nama_salon';
 
+    protected static ?string $recordRouteKeyName = 'id_salon';
+
     public static function form(Schema $form): Schema
     {
         return $form->schema([
