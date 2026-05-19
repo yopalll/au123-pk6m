@@ -16,7 +16,7 @@ class ListSalons extends ListRecords
         $salon = Salon::where('id_user', auth()->id())->first();
 
         if ($salon) {
-            $this->redirect(SalonResource::getUrl('view', ['record' => $salon->getKey()]));
+            $this->redirect(SalonResource::getUrl('view', ['record' => $salon]));
             return;
         }
 
