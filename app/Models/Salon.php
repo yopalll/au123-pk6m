@@ -138,15 +138,6 @@ class Salon extends Model
             ->whereHas('owner', fn ($q) => $q->where('is_active', true));
     }
 
-    /**
-     * Use slug for implicit route-model binding when present;
-     * controllers still allow id_salon as fallback.
-     */
-    public function getRouteKeyName(): string
-    {
-        return 'slug';
-    }
-
     public function scopeByKota($query, int $idKota)
     {
         return $query->where('id_kota', $idKota);
