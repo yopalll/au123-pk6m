@@ -1,0 +1,64 @@
+name: Deploy to GCP Compute Engine
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  GCE_INSTANCE: ${{ secrets.GCE_INSTANCE_NAME }}
+  GCE_ZONE: ${{ secrets.GCE_INSTANCE_ZONE }}
+  DOCKER_IMAGE: gcr.io/${{ secrets.GCP_PROJECT_ID }}/viygo-app:latest
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: '${{ secrets.GCP_SA_KEY }}'
+
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v2
+
+    - name: Configure Docker to use gcloud
+      run: gcloud auth configure-docker --quiet
+
+    - name: Build Docker Image
+      run: docker build -t $DOCKER_IMAGE .
+
+    - name: Push Docker Image to GCR
+      run: docker push $DOCKER_IMAGE
+
+    - name: Deploy to Compute Engine
+      run: |
+        gcloud compute ssh --zone "$GCE_ZONE" "$GCE_INSTANCE" --project "$PROJECT_ID" --command="
+          sudo docker stop viygo-app || true
+          sudo docker rm viygo-app || true
+          sudo docker pull $DOCKER_IMAGE
+          sudo docker run -d --name viygo-app -p 80:80 \
+            -e APP_NAME='VIYGO' \
+            -e APP_ENV='production' \
+            -e APP_DEBUG='false' \
+            -e APP_KEY='${{ secrets.APP_KEY }}' \
+            -e APP_URL='${{ secrets.APP_URL }}' \
+            -e DB_CONNECTION='mysql' \
+            -e DB_HOST='${{ secrets.DB_HOST }}' \
+            -e DB_PORT='3306' \
+            -e DB_DATABASE='${{ secrets.DB_DATABASE }}' \
+            -e DB_USERNAME='${{ secrets.DB_USERNAME }}' \
+            -e DB_PASSWORD='${{ secrets.DB_PASSWORD }}' \
+            -e SESSION_DRIVER='database' \
+            -e CACHE_STORE='database' \
+            -e QUEUE_CONNECTION='database' \
+            -e MIDTRANS_SERVER_KEY='${{ secrets.MIDTRANS_SERVER_KEY }}' \
+            -e MIDTRANS_CLIENT_KEY='${{ secrets.MIDTRANS_CLIENT_KEY }}' \
+            -e MIDTRANS_PRODUCTION='${{ secrets.MIDTRANS_PRODUCTION }}' \
+            $DOCKER_IMAGE
+        "
