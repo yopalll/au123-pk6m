@@ -77,6 +77,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/favorit/{salon:slug}', [AkunController::class, 'toggleFavorit'])->name('favorit.toggle');
             Route::get('/pengaturan', [AkunController::class, 'pengaturan'])->name('pengaturan');
             Route::put('/pengaturan', [AkunController::class, 'updatePengaturan'])->name('pengaturan.update');
+            Route::put('/pengaturan/password', [AkunController::class, 'updatePassword'])->name('pengaturan.password');
 
             // Review submission for completed orders
             Route::get('/bookings/{kode}/review', [ReviewController::class, 'create'])->name('review.create');

@@ -108,4 +108,18 @@ class AkunController extends Controller
 
         return back()->with('success', 'Profile updated successfully.');
     }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password'         => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        auth()->user()->update([
+            'password' => bcrypt($request->password),
+        ]);
+
+        return back()->with('password_success', 'Password changed successfully.');
+    }
 }
