@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Landing page shown after a logged-in user is force-signed-out by the
+// EnsureUserIsActive middleware because their is_active flag was flipped to false.
+Route::view('/account-deactivated', 'pages::auth.account-deactivated')
+    ->name('account.deactivated');
 Route::get('/cari', [SearchController::class, 'index'])->name('cari');
 Route::get('/kategori/{slug}', [KategoriController::class, 'show'])->name('kategori.show');
 Route::get('/sub-kategori/{slug}', [KategoriController::class, 'showSub'])->name('sub-kategori.show');

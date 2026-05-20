@@ -63,11 +63,24 @@ class User extends Authenticatable implements FilamentUser
 
     /**
      * Nama lengkap user (first_name + last_name).
+     *
+     * Defensive against legacy/test records where someone copy-pasted the same
+     * value into both fields (e.g. "yosua" / "yosua" → rendered as "yosua yosua")
+     * — case-insensitive match collapses the duplicate down to a single name.
      */
     protected function fullName(): Attribute
     {
         return Attribute::make(
-            get: fn () => trim($this->first_name . ' ' . ($this->last_name ?? '')),
+            get: function () {
+                $first = trim((string) $this->first_name);
+                $last  = trim((string) ($this->last_name ?? ''));
+
+                if ($last === '' || strcasecmp($first, $last) === 0) {
+                    return $first;
+                }
+
+                return trim($first . ' ' . $last);
+            },
         );
     }
 

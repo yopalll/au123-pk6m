@@ -30,7 +30,6 @@ class UserResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('last_name')
-                    ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
                     ->email()
@@ -98,13 +97,22 @@ class UserResource extends Resource
                     ->icon('heroicon-o-no-symbol')
                     ->color('danger')
                     ->requiresConfirmation()
-                    ->action(fn (User $record) => $record->update(['is_active' => false]))
+                    ->action(function (User $record) {
+                        // $guarded blocks mass-assignment on is_active (SEC-03),
+                        // so assign the property directly and save.
+                        $record->is_active = false;
+                        $record->save();
+                    })
                     ->visible(fn (User $record) => $record->is_active),
                 \Filament\Actions\Action::make('activate')
                     ->icon('heroicon-o-check-circle')
                     ->color('success')
-                    ->action(fn (User $record) => $record->update(['is_active' => true]))
-                    ->visible(fn (User $record) => !$record->is_active),
+                    ->requiresConfirmation()
+                    ->action(function (User $record) {
+                        $record->is_active = true;
+                        $record->save();
+                    })
+                    ->visible(fn (User $record) => ! $record->is_active),
             ])
             ->bulkActions([
                 \Filament\Actions\BulkActionGroup::make([
