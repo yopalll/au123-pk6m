@@ -1,6 +1,6 @@
 # 📋 VIYGO V2 — Product Requirements Document (PRD)
 
-> **Versi:** 2.2  
+> **Versi:** 2.3  
 > **Tanggal:** 28 Mei 2026  
 > **Status:** Draft — Menunggu Review  
 > **Platform:** Laravel 12 + Livewire Flux + TailwindCSS v4  
@@ -27,6 +27,7 @@
 15. [Non-Functional Requirements](#15-non-functional-requirements)
 16. [Roadmap Implementasi](#16-roadmap-implementasi)
 17. [Metrik Keberhasilan](#17-metrik-keberhasilan)
+18. [Urutan Pengerjaan — Work Order untuk AI Agent](#18-urutan-pengerjaan--work-order-untuk-ai-agent)
 
 ---
 
@@ -1956,12 +1957,588 @@ gantt
 
 ---
 
+## 18. Urutan Pengerjaan — Work Order untuk AI Agent
+
+> [!IMPORTANT]
+> Bagian ini adalah **panduan urutan pengerjaan** yang harus diikuti oleh AI agent saat mengimplementasikan VIYGO V2. Setiap step memiliki **prerequisite** yang harus selesai sebelum step tersebut bisa dimulai. **JANGAN melompat urutan** — kecuali step-step dalam sub-group yang sama yang ditandai "paralel".
+
+### Dependency Flow
+
+```mermaid
+flowchart TD
+    P1A["Phase 1A\nDatabase Foundation"] --> P1B["Phase 1B\nScraper & Seed Data"]
+    P1A --> P1C["Phase 1C\nAdmin Store Setup"]
+    P1A --> P1D["Phase 1D\nConfig & Package"]
+    P1B --> P2B["Phase 2B\nE-commerce Skincare"]
+    P1C --> P2B
+    P1D --> P2A["Phase 2A\nRincian Booking + Invoice"]
+    P1D --> P2B
+    P2A --> P3["Phase 3\nEnhancement Modules"]
+    P2B --> P3
+    P3 --> P4["Phase 4\nPolish & Testing"]
+
+    subgraph "Phase 3 — Bisa Paralel"
+        P3A["Lookbook"]
+        P3B["Empty Return"]
+        P3C["Community Forum"]
+    end
+    P3 --> P3A
+    P3 --> P3B
+    P3 --> P3C
+    P3A --> P4
+    P3B --> P4
+    P3C --> P4
+```
+
+---
+
+### PHASE 1 — Foundation
+
+> [!CAUTION]
+> Semua step di Phase 1 WAJIB selesai sebelum memulai Phase 2. Phase 1 adalah pondasi seluruh fitur V2.
+
+---
+
+#### Step 1.1 — ALTER Tabel `users` (Tambah Role `admin_store`)
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | — (step pertama) |
+| **Modul** | Foundation |
+| **File yang dibuat** | `database/migrations/2026_06_01_000001_add_admin_store_role_to_users.php` |
+| **Aksi** | Buat migration ALTER enum `users.role` — tambah value `admin_store`. Lihat spesifikasi di [Section 10.2](#102-akun-admin-store). |
+| **Verifikasi** | `php artisan migrate` berhasil. Query `SHOW COLUMNS FROM users LIKE 'role'` menunjukkan enum memiliki 4 value: `customer, salon_owner, admin, admin_store`. |
+
+---
+
+#### Step 1.2 — Migration 28 Tabel Baru
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Step 1.1 selesai |
+| **Modul** | Foundation |
+| **Jumlah file** | 28 migration files |
+| **Referensi schema** | Lihat detail kolom di: [Section 4.4](#44-technical-specification) (E-commerce), [Section 5.4](#54-technical-specification) (Lookbook), [Section 6.4](#64-technical-specification) (Empty Return), [Section 7.4](#74-technical-specification) (Community) |
+| **Urutan migration** | Harus mengikuti urutan dependency (tabel induk sebelum tabel anak): |
+
+**Urutan migration yang WAJIB diikuti:**
+
+```
+# --- Batch A: Tabel induk tanpa FK ke tabel V2 lain ---
+01. product_categories          (self-referencing parent_id, nullable)
+02. product_collections
+03. user_addresses               (FK → users.id_user)
+04. user_skincare_profiles       (FK → users.id_user)
+05. user_points                  (FK → users.id_user)
+06. community_points             (FK → users.id_user)
+07. forum_categories
+
+# --- Batch B: Tabel yang butuh tabel Batch A ---
+08. products                     (FK → product_categories, product_collections)
+09. lookbooks                    (standalone)
+10. exclusive_contents           (standalone)
+
+# --- Batch C: Tabel yang butuh products ---
+11. product_images               (FK → products)
+12. wishlists                    (FK → users, products)
+13. carts                        (FK → users, products)
+14. product_reviews              (FK → users, products, product_orders [deferred])
+15. lookbook_slides              (FK → lookbooks)
+
+# --- Batch D: Tabel order & payment ---
+16. product_orders               (FK → users, user_addresses, promo)
+17. product_order_items          (FK → product_orders, products)
+18. product_pembayaran           (FK → product_orders, users)
+
+# --- Batch E: Tabel Empty Return ---
+19. empty_returns                (FK → users, products[nullable], salon[nullable])
+20. empty_return_photos          (FK → empty_returns)
+21. point_transactions           (FK → users)
+
+# --- Batch F: Tabel Forum ---
+22. forum_threads                (FK → users, forum_categories)
+23. forum_replies                (FK → forum_threads, users, self-ref parent_id)
+24. forum_likes                  (FK → users, polymorphic)
+25. forum_bookmarks              (FK → users, forum_threads)
+26. forum_thread_tags            (FK → forum_threads, products)
+27. user_badges                  (FK → users)
+
+# --- Batch G: Tabel Lookbook pivot ---
+28. lookbook_items               (FK → lookbook_slides, products)
+```
+
+| Item | Detail |
+|------|--------|
+| **Konvensi PK** | Gunakan PK custom (`id_product`, `id_cart`, dll.) — BUKAN `id` default Laravel. Kecuali tabel pivot kecil (lihat [Section 12.0](#120-kompatibilitas-dengan-database-v1)). |
+| **Konvensi FK ke V1** | WAJIB gunakan `->constrained('users', 'id_user')` — lihat [Section 12.0](#120-kompatibilitas-dengan-database-v1). |
+| **Verifikasi** | `php artisan migrate` berhasil tanpa error. `php artisan migrate:status` menunjukkan semua 29 migration (1 ALTER + 28 CREATE) sudah `Ran`. |
+
+---
+
+#### Step 1.3 — Eloquent Models + Relationships
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Step 1.2 selesai |
+| **Modul** | Foundation |
+| **Jumlah file** | 24 Model files |
+| **Lokasi** | `app/Models/` |
+| **Models yang dibuat** | `ProductCategory`, `ProductCollection`, `Product`, `ProductImage`, `Wishlist`, `UserSkincareProfile`, `Cart`, `UserAddress`, `ProductOrder`, `ProductOrderItem`, `ProductPembayaran`, `ProductReview`, `Lookbook`, `LookbookSlide`, `LookbookItem`, `EmptyReturn`, `EmptyReturnPhoto`, `UserPoint`, `PointTransaction`, `ExclusiveContent`, `ForumCategory`, `ForumThread`, `ForumReply`, `ForumLike`, `ForumBookmark`, `ForumThreadTag`, `UserBadge`, `CommunityPoint` |
+| **Penting** | Setiap model WAJIB define: `$table`, `$primaryKey` (jika bukan `id`), `$fillable`, dan semua `belongsTo` / `hasMany` / `belongsToMany` relationships. Update juga model `User` V1 untuk menambah relasi baru (`hasMany` products, wishlist, carts, dll.). |
+| **Verifikasi** | `php artisan tinker` → test query sederhana per model (e.g. `Product::count()` = 0, `UserPoint::count()` = 0). Pastikan tidak ada error. |
+
+---
+
+#### Step 1.4 — Go Scraper (fresh.com) + Seed Data
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Step 1.2 selesai (tabel produk sudah ada) |
+| **Modul** | Data Source — [Section 9](#9-data-source--freshcom-scraper) |
+| **File yang dibuat** | `scripts/scraper/fresh_scraper.go`, `scripts/scraper/go.mod`, `scripts/scraper/config.json` |
+| **Output** | JSON files di `scripts/scraper/output/` + gambar di `public/images/products/fresh/` |
+| **Arsitektur** | Lihat detail di [Section 9.4](#94-go-scraper--spesifikasi-teknis). Gunakan `chromedp` + `goquery` untuk scrape DOM fresh.com. |
+| **Aksi** | 1) Buat scraper Go. 2) Jalankan `go run fresh_scraper.go`. 3) Pastikan output JSON valid. |
+| **Verifikasi** | File JSON ada di `scripts/scraper/output/`, gambar ter-download di `public/images/products/fresh/`. |
+
+---
+
+#### Step 1.5 — Laravel Seeder (FreshProductSeeder + AdminStoreSeeder)
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Step 1.3 (Models) + Step 1.4 (JSON output dari scraper) |
+| **Modul** | Data Source + Admin Store |
+| **File yang dibuat** | `database/seeders/FreshProductSeeder.php`, `database/seeders/AdminStoreSeeder.php`, `database/seeders/ForumCategorySeeder.php` |
+| **Aksi** | |
+
+**FreshProductSeeder:**
+- Baca JSON dari `scripts/scraper/output/`
+- `updateOrCreate` ProductCategory, ProductCollection, Product, ProductImage
+- Gunakan `fresh_product_id` sebagai unique key
+- Lihat [Section 9.5](#95-laravel-seeder)
+
+**AdminStoreSeeder:**
+- Buat user `admin.store@viygo.id` dengan role `admin_store`
+- Gunakan `first_name` + `last_name` (BUKAN `name`) — lihat [Section 10.2](#102-akun-admin-store)
+
+**ForumCategorySeeder:**
+- Seed 5 kategori forum: Review Produk, Tips Skincare, Routine & Lifestyle, Peduli Lingkungan, Diskusi Umum
+- Lihat [Section 7.3.1](#731-halaman-forum-utama-komunitas)
+
+| Item | Detail |
+|------|--------|
+| **Verifikasi** | `php artisan db:seed --class=FreshProductSeeder` → products count > 0. `php artisan db:seed --class=AdminStoreSeeder` → user admin_store ada. `php artisan db:seed --class=ForumCategorySeeder` → 5 kategori forum. |
+
+---
+
+#### Step 1.6 — Install Package & Config
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Step 1.1 selesai |
+| **Modul** | Foundation |
+| **Aksi** | |
+
+1. **Install `barryvdh/laravel-dompdf`** — `composer require barryvdh/laravel-dompdf`
+2. **Buat `config/ongkir.php`** — konfigurasi api.co.id (lihat [Section 11.4](#114-implementasi-di-laravel))
+3. **Tambah env vars** di `.env.example`:
+   ```
+   API_CO_ID_KEY=
+   ONGKIR_ORIGIN_CITY="Jakarta Selatan"
+   ```
+
+| Item | Detail |
+|------|--------|
+| **Verifikasi** | `php artisan tinker` → `config('ongkir.api_key')` tidak null. `Barryvdh\DomPDF\Facade\Pdf::class` tersedia. |
+
+---
+
+#### Step 1.7 — Update Navigasi
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Step 1.1 selesai |
+| **Modul** | Foundation / UI |
+| **File yang diubah** | Layout utama (navbar), sidebar akun, mobile bottom tab bar |
+| **Aksi** | Tambah link baru di navigasi: Shop, Lookbook, Komunitas, Empty Return. Tambah menu akun baru: Pesanan Produk, Wishlist, Poin & Reward, Bookmark Forum. Lihat [Section 13](#13-api-routes-tambahan-v2) dan [Section 14.3](#143-navigasi-mobile). |
+| **Verifikasi** | Buka browser → navbar menampilkan menu baru. Mobile view menampilkan bottom tab bar. |
+
+---
+
+### PHASE 2 — Core Features
+
+> [!IMPORTANT]
+> Phase 2 membangun 2 fitur inti. Modul 5 (Booking) dikerjakan lebih dulu karena lebih kecil dan tidak ada dependency ke data produk.
+
+---
+
+#### Step 2.1 — Modul 5: Halaman Rincian Booking
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Step 1.6 (DomPDF terinstall) |
+| **Modul** | [Section 8](#8-modul-5--halaman-rincian-booking--invoice-pdf) |
+| **File yang dibuat** | |
+
+**Sub-step 2.1.1 — Route & Controller:**
+- Tambah 2 route di `routes/web.php` (lihat [Section 8.4](#84-technical-specification))
+- Tambah method `bookingDetail()` dan `downloadInvoice()` di `AkunController`
+
+**Sub-step 2.1.2 — View Rincian Booking:**
+- Buat `resources/views/akun/booking-detail.blade.php`
+- Konten: header status, info salon, tabel service, ringkasan pembayaran, timeline status, tombol aksi
+- Lihat wireframe di [Section 8.3.1](#831-halaman-rincian-booking-akunbookingskode)
+
+**Sub-step 2.1.3 — Invoice PDF:**
+- Buat `resources/views/pdf/invoice-booking.blade.php`
+- Format A4, konten sesuai [Section 8.3.2](#832-invoice-pdf)
+- Generate via DomPDF, stream ke browser
+
+**Sub-step 2.1.4 — Responsive:**
+- Pastikan halaman rincian booking responsive sesuai [Section 14 tabel Rincian Booking](#rincian-booking-akunbookingskode)
+
+| Item | Detail |
+|------|--------|
+| **Verifikasi** | Buka `/akun/bookings/{kode}` → halaman detail tampil benar. Klik "Download Invoice" → PDF ter-download. Test di mobile view → layout responsive. |
+
+---
+
+#### Step 2.2 — Modul 1: E-commerce Skincare
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Step 1.3 (Models), Step 1.5 (Seed data produk), Step 1.6 (Config ongkir) |
+| **Modul** | [Section 4](#4-modul-1--e-commerce-skincare) |
+| **Scope** | Ini adalah modul terbesar — pecah jadi sub-steps berurutan |
+
+**Sub-step 2.2.1 — Controllers Setup:**
+- Buat semua controllers: `ShopController`, `SkincarefinderController`, `WishlistController`, `CartController`, `OngkirController`, `ProductCheckoutController`, `ProductOrderController`, `ProductPaymentController`, `ProductReviewController`
+- Definisikan semua route di `routes/web.php` sesuai [Section 4.4 Routes](#routes)
+
+**Sub-step 2.2.2 — Katalog Produk (Public Pages):**
+- Halaman `/shop` — hero banner, produk featured, kategori, koleksi
+- Halaman `/shop/kategori/{slug}` — grid produk + filter + sort
+- Halaman `/shop/koleksi/{slug}` — filter per koleksi
+- Halaman `/shop/produk/{slug}` — detail produk lengkap (gallery, ingredients, cara pakai, review)
+- Halaman `/shop/cari` — pencarian produk
+- Lihat detail wireframe di [Section 4.3.1](#431-katalog-produk-terinspirasi-freshcom)
+
+**Sub-step 2.2.3 — Skincare Finder:**
+- Halaman `/shop/skincare-finder` — quiz 3 step
+- Simpan hasil di `user_skincare_profiles`
+- Tampilkan rekomendasi produk
+- Lihat [Section 4.3.2](#432-skincare-finder-terinspirasi-freshcom)
+
+**Sub-step 2.2.4 — Wishlist:**
+- Toggle wishlist (tombol ♥)
+- Halaman `/shop/wishlist`
+- Pindah dari wishlist ke cart
+- Lihat [Section 4.3.3](#433-wishlist)
+
+**Sub-step 2.2.5 — Cart:**
+- Tambah/hapus/ubah qty
+- Tampilkan subtotal, free ongkir progress bar
+- Apply kode promo (reuse `Promo` V1)
+- Apply poin (dari Empty Return — **placeholder dulu**, implementasi poin di Phase 3)
+- Lihat [Section 4.3.4](#434-keranjang-belanja-cart)
+
+**Sub-step 2.2.6 — Checkout + Ongkir:**
+- Pilih/tambah alamat pengiriman
+- `OngkirController` — proxy ke api.co.id
+- Tampilkan pilihan kurir + tarif
+- Free ongkir logic
+- Ringkasan pesanan
+- Lihat [Section 4.3.5](#435-checkout--ongkir) dan [Section 11](#11-integrasi-ongkir--apicoid)
+
+**Sub-step 2.2.7 — Payment (Midtrans):**
+- Extend flow dari V1 `PaymentController`
+- Buat Snap token, handle callback
+- Update status pesanan
+- Lihat routes payment di [Section 4.4](#routes)
+
+**Sub-step 2.2.8 — Riwayat Pesanan + Tracking:**
+- Halaman `/shop/pesanan` — list pesanan
+- Halaman `/shop/order/{kode}` — detail pesanan + resi
+- Invoice PDF untuk pesanan produk (reuse DomPDF)
+- Lihat [Section 4.3.6](#436-riwayat-pesanan--tracking)
+
+**Sub-step 2.2.9 — Review Produk:**
+- Submit review setelah `delivered`/`completed`
+- Rating + teks + foto (max 3)
+- Tampilkan di halaman produk
+- Lihat [Section 4.3.7](#437-review-produk)
+
+**Sub-step 2.2.10 — Responsive E-commerce:**
+- Pastikan semua halaman shop responsive sesuai [Section 14.2 tabel E-commerce](#e-commerce-skincare-shop)
+
+| Item | Detail |
+|------|--------|
+| **Verifikasi** | 1) Browse `/shop` → produk tampil dari seed data. 2) Skincare Finder → rekomendasi sesuai. 3) Add to cart → checkout → pilih ongkir → Midtrans payment → pesanan tercatat. 4) Review produk berfungsi. 5) Semua halaman responsive. |
+
+---
+
+### PHASE 3 — Enhancement Modules
+
+> [!NOTE]
+> Modul-modul di Phase 3 bisa dikerjakan **secara paralel** karena tidak saling bergantung. Namun setiap modul harus dikerjakan secara berurutan (sub-step-nya).
+
+---
+
+#### Step 3.1 — Modul 2: Lookbook Skincare
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Step 2.2 selesai (produk e-commerce sudah ada) |
+| **Modul** | [Section 5](#5-modul-2--lookbook-skincare) |
+| **File yang dibuat** | |
+
+**Sub-step 3.1.1 — Controller + Routes:**
+- `LookbookController` (override/extend V1)
+- 3 route (lihat [Section 5.4](#54-technical-specification))
+
+**Sub-step 3.1.2 — Views:**
+- `/lookbook` — grid layout dengan cover + efek hover
+- `/lookbook/{slug}` — carousel slide, editorial layout, product tags, "Shop This Look"
+
+**Sub-step 3.1.3 — Filament Resource:**
+- `LookbookResource` di Admin Store panel — CRUD lookbook + slides + product tags
+
+**Sub-step 3.1.4 — Responsive:**
+- Sesuai [Section 14.2 tabel Lookbook](#lookbook-lookbook)
+
+| Item | Detail |
+|------|--------|
+| **Verifikasi** | Admin Store bisa buat lookbook. Public bisa lihat lookbook → klik produk → ke halaman produk. "Shop This Look" menambah semua produk ke cart. |
+
+---
+
+#### Step 3.2 — Modul 3: Skincare Empty Return + Poin + Konten Eksklusif
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Step 2.2 selesai (poin terintegrasi ke checkout) |
+| **Modul** | [Section 6](#6-modul-3--skincare-empty-return-peduli-lingkungan) |
+| **File yang dibuat** | |
+
+**Sub-step 3.2.1 — Controller + Routes:**
+- `EmptyReturnController`, `PointController`, `ExclusiveContentController`
+- 8 route (lihat [Section 6.4](#64-technical-specification))
+
+**Sub-step 3.2.2 — Landing Page + Form Pengajuan:**
+- `/empty-return` — penjelasan program, counter real-time, impact meter
+- `/empty-return/submit` — form pengajuan (produk, qty, foto, metode, estimasi poin)
+
+**Sub-step 3.2.3 — Dashboard Poin:**
+- `/akun/poin` — saldo, tier, progress bar, riwayat
+- Logika tier: Starter → Bronze → Silver → Gold
+
+**Sub-step 3.2.4 — Konten Eksklusif:**
+- `/eksklusif` — list konten berdasarkan tier user
+- `/eksklusif/{slug}` — detail konten (article/video/tip)
+
+**Sub-step 3.2.5 — Integrasi Poin ke Checkout:**
+- Update `ProductCheckoutController` — apply poin sebagai potongan harga (1 poin = Rp 1.000)
+- Update free ongkir logic — Silver: 1x/bulan, Gold: unlimited
+
+**Sub-step 3.2.6 — Filament Resources:**
+- `EmptyReturnResource` — verifikasi pengajuan (approve/reject + poin)
+- `ExclusiveContentResource` — CRUD konten eksklusif
+
+**Sub-step 3.2.7 — Responsive:**
+- Sesuai [Section 14.2 tabel Empty Return](#empty-return-empty-return)
+
+| Item | Detail |
+|------|--------|
+| **Verifikasi** | 1) Customer submit empty return → Admin approve → poin bertambah. 2) Poin bisa digunakan di checkout. 3) Tier naik → konten eksklusif terbuka. 4) Responsive di mobile. |
+
+---
+
+#### Step 3.3 — Modul 4: Digital Library Community
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Step 1.5 selesai (ForumCategorySeeder), Step 1.3 selesai (Models) |
+| **Modul** | [Section 7](#7-modul-4--digital-library-community) |
+| **File yang dibuat** | |
+
+**Sub-step 3.3.1 — Controller + Routes:**
+- `ForumController`, `ForumReplyController`, `ForumInteractionController`
+- 11 route (lihat [Section 7.4](#74-technical-specification))
+
+**Sub-step 3.3.2 — Halaman Forum:**
+- `/komunitas` — home forum, kategori, trending threads, statistik
+- `/komunitas/{kategori}` — list thread per kategori
+- `/komunitas/thread/{slug}` — detail thread + replies + like/bookmark
+
+**Sub-step 3.3.3 — Buat Thread:**
+- `/komunitas/thread/buat` — form (judul, kategori, konten rich text, tag produk)
+- Reply thread (nested max 2 level)
+
+**Sub-step 3.3.4 — Gamification:**
+- Poin komunitas (buat thread: +5, dapat reply: +1, dapat like: +2)
+- Badge system (Skincare Guru, Top Reviewer, Eco Warrior, Rising Star)
+- Leaderboard bulanan
+
+**Sub-step 3.3.5 — Filament Resource:**
+- `ForumModerationResource` — pin/hide/delete thread
+
+**Sub-step 3.3.6 — Responsive:**
+- Sesuai [Section 14.2 tabel Community Forum](#community-forum-komunitas)
+
+| Item | Detail |
+|------|--------|
+| **Verifikasi** | 1) Customer buat thread → tampil di forum. 2) Reply, like, bookmark berfungsi. 3) Poin komunitas bertambah. 4) Badge ter-assign otomatis. 5) Leaderboard tampil. 6) Admin bisa moderasi. |
+
+---
+
+### PHASE 4 — Polish & Testing
+
+> [!IMPORTANT]
+> Phase 4 baru dimulai setelah SEMUA modul Phase 3 selesai.
+
+---
+
+#### Step 4.1 — Integrasi Cross-Module
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Phase 3 selesai (semua modul) |
+| **Aksi** | |
+
+1. **Poin ↔ Checkout** — Pastikan poin dari Empty Return bisa digunakan di ProductCheckoutController
+2. **Tier ↔ Free Ongkir** — Silver: 1x free ongkir/bulan, Gold: unlimited
+3. **Tier ↔ Konten Eksklusif** — Akses berdasarkan tier user
+4. **Wishlist ↔ Lookbook** — Tombol wishlist di product tag lookbook
+5. **Forum ↔ Produk** — Tag produk di thread → link ke halaman produk
+6. **Badge ↔ Empty Return** — Eco Warrior badge setelah 5+ empty return
+7. **Review ↔ Badge** — Top Reviewer badge setelah 10+ review produk
+
+| Item | Detail |
+|------|--------|
+| **Verifikasi** | Test end-to-end: Customer submit empty return → dapat poin → gunakan poin di checkout → tier naik → konten eksklusif terbuka → free ongkir aktif. |
+
+---
+
+#### Step 4.2 — Filament Admin Store Dashboard
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Step 4.1 selesai |
+| **Aksi** | Buat/finalisasi dashboard Admin Store panel (`/admin/store`) dengan widget: total produk, pesanan hari ini, revenue, pending orders, pending empty returns, grafik penjualan 7 hari, stok menipis. Lihat [Section 10.4](#104-filament-panel--admin-store). |
+| **Verifikasi** | Login admin store → dashboard menampilkan data real. Semua menu sidebar berfungsi. |
+
+---
+
+#### Step 4.3 — UI/UX Polish + Responsive Final
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Step 4.1 selesai |
+| **Aksi** | |
+
+1. Pastikan **SEMUA halaman** responsive sesuai [Section 14](#14-responsive--mobile-design)
+2. Implementasi mobile bottom tab bar dan hamburger menu
+3. Touch & gesture (swipe, long press, pinch-to-zoom) — [Section 14.4](#144-touch--gesture)
+4. Mobile-specific UX (skeleton loading, infinite scroll, toast, sheet/modal) — [Section 14.5](#145-mobile-specific-ux)
+5. Image optimization (responsive srcset, lazy loading, WebP, LQIP) — [Section 14.6](#146-image-handling-mobile)
+6. Micro-animations dan transisi
+
+| Item | Detail |
+|------|--------|
+| **Verifikasi** | Test di Chrome DevTools → Mobile (375px), Tablet (768px), Desktop (1280px). LCP < 2.5s desktop, < 3.5s mobile. CLS < 0.1. |
+
+---
+
+#### Step 4.4 — Testing
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Step 4.3 selesai |
+| **Aksi** | |
+
+1. **Unit Tests** — Model relationships, poin calculation, tier logic, ongkir helper
+2. **Feature Tests** — Checkout flow, payment callback, empty return approval, review submission
+3. **OngkirController Test** — Mock api.co.id response, test caching, test timeout fallback
+4. **Authorization Tests** — Admin store bisa akses panel, customer tidak bisa. Role-based access.
+5. **PDF Test** — Invoice booking dan invoice pesanan produk ter-generate dengan benar
+6. **Browser Test** — End-to-end flows kritis: browse → cart → checkout → payment → pesanan
+
+| Item | Detail |
+|------|--------|
+| **Verifikasi** | `php artisan test` — semua test pass. Zero critical bugs. |
+
+---
+
+#### Step 4.5 — Performance & Security Audit
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Step 4.4 selesai |
+| **Aksi** | |
+
+1. Pastikan semua target di [Section 15](#15-non-functional-requirements) terpenuhi
+2. Rate limiting pada endpoint sensitif (submit, checkout, ongkir)
+3. HTMLPurifier untuk rich text forum
+4. Validasi file upload (tipe, ukuran)
+5. Composite index pada FK yang sering di-JOIN
+6. Redis/file cache untuk katalog, ongkir result, lookbook
+7. Laravel Queue untuk email notifikasi dan PDF generation
+
+| Item | Detail |
+|------|--------|
+| **Verifikasi** | TTFB < 500ms, DB queries per page < 15, ongkir API < 3s, upload validation benar. |
+
+---
+
+#### Step 4.6 — Dokumentasi Final
+
+| Item | Detail |
+|------|--------|
+| **Prerequisite** | Step 4.5 selesai |
+| **Aksi** | Update README.md, tambahkan setup guide untuk: `.env` vars, migration, seeder, Go scraper, Midtrans config, api.co.id config. Update PRD jika ada perubahan dari implementasi. |
+| **Verifikasi** | Developer baru bisa clone → setup → run dalam 30 menit mengikuti README. |
+
+---
+
+### Checklist Ringkasan
+
+```
+PHASE 1 — Foundation
+  [ ] 1.1  ALTER users.role → admin_store
+  [ ] 1.2  28 migration tabel baru
+  [ ] 1.3  24+ Eloquent Models + relationships
+  [ ] 1.4  Go Scraper (fresh.com)
+  [ ] 1.5  Laravel Seeders (FreshProduct + AdminStore + ForumCategory)
+  [ ] 1.6  Install DomPDF + config ongkir
+  [ ] 1.7  Update navigasi
+
+PHASE 2 — Core Features
+  [ ] 2.1  Modul 5: Rincian Booking + Invoice PDF
+  [ ] 2.2  Modul 1: E-commerce Skincare (10 sub-steps)
+
+PHASE 3 — Enhancement (paralel)
+  [ ] 3.1  Modul 2: Lookbook Skincare
+  [ ] 3.2  Modul 3: Empty Return + Poin + Konten Eksklusif
+  [ ] 3.3  Modul 4: Digital Library Community
+
+PHASE 4 — Polish & Testing
+  [ ] 4.1  Integrasi cross-module
+  [ ] 4.2  Admin Store Dashboard
+  [ ] 4.3  UI/UX polish + responsive final
+  [ ] 4.4  Testing (unit + feature + browser)
+  [ ] 4.5  Performance & security audit
+  [ ] 4.6  Dokumentasi final
+```
+
+---
+
 > [!TIP]
 > Dokumen ini adalah **living document** — akan di-update seiring development berjalan.
 
 ---
 
 **Dibuat oleh:** VIYGO Development Team  
-**Versi:** 2.2  
+**Versi:** 2.3  
 **Tanggal Dibuat:** 27 Mei 2026  
 **Terakhir Diupdate:** 28 Mei 2026
