@@ -1,6 +1,6 @@
 # 📋 VIYGO V2 — Product Requirements Document (PRD)
 
-> **Versi:** 2.1  
+> **Versi:** 2.2  
 > **Tanggal:** 28 Mei 2026  
 > **Status:** Draft — Menunggu Review  
 > **Platform:** Laravel 12 + Livewire Flux + TailwindCSS v4  
@@ -339,25 +339,33 @@ carts
 
 user_addresses
 ├── id_address (PK)
-├── id_user (FK)
+├── id_user (FK → users.id_user)
 ├── label (varchar — "Rumah", "Kantor")
 ├── nama_penerima
 ├── phone
 ├── alamat_lengkap (text)
-├── kota (varchar)
-├── kota_id (varchar — ID kota dari api.co.id regional)
-├── provinsi (varchar)
+├── kota (varchar — nama kota tujuan, diinput dari dropdown api.co.id)
+├── kota_id (varchar — ID kota dari api.co.id regional, untuk request ongkir)
+├── provinsi (varchar — nama provinsi)
 ├── provinsi_id (varchar — ID provinsi dari api.co.id regional)
 ├── kode_pos (varchar)
 ├── is_default (boolean, default false)
 ├── created_at / updated_at
+│
+│   ⚠️ CATATAN: Tabel ini TIDAK menggunakan FK ke tabel `kota` V1.
+│   Tabel `kota` V1 berisi data kota untuk lokasi salon (scrape Treatwell),
+│   sedangkan `user_addresses` menyimpan data regional Indonesia
+│   dari api.co.id untuk kalkulasi ongkir. Domain data berbeda.
 
 product_orders
 ├── id_product_order (PK)
-├── id_user (FK)
-├── id_address (FK)
-├── id_promo (FK, nullable)
-├── kode_order (varchar, unique)
+├── id_user (FK → users.id_user)
+├── id_address (FK → user_addresses.id_address)
+├── id_promo (FK → promo.id_promo, nullable — reuse tabel promo V1)
+├── kode_order (varchar, unique — format: "VYG-S-XXXXXX")
+│   ⚠️ PENTING: Menggunakan prefix "VYG-S-" (S=Shop) untuk
+│   membedakan dengan kode booking salon V1 yang menggunakan
+│   prefix "VYG-" saja. Contoh: VYG-S-240528-001
 ├── subtotal (decimal 10,2)
 ├── biaya_kirim (decimal 10,2)
 ├── total_diskon (decimal 10,2, default 0)
@@ -1189,21 +1197,55 @@ public/
 
 ### 10.2 Akun Admin Store
 
-**Dibuat via Laravel Seeder:**
+> [!CAUTION]
+> **Prerequisite Migration:** Sebelum menjalankan `AdminStoreSeeder`, tabel `users` harus di-alter dulu untuk menambah role `admin_store` ke enum `role`. V1 hanya memiliki enum `['customer', 'salon_owner', 'admin']`.
+
+**Migration Alter `users.role` (WAJIB dijalankan lebih dulu):**
+
+```php
+// database/migrations/2026_06_01_000001_add_admin_store_role_to_users.php
+return new class extends Migration
+{
+    public function up(): void
+    {
+        DB::statement(
+            "ALTER TABLE `users` MODIFY `role` "
+            . "ENUM('customer','salon_owner','admin','admin_store') "
+            . "NOT NULL DEFAULT 'customer'"
+        );
+    }
+
+    public function down(): void
+    {
+        // Pastikan tidak ada user admin_store sebelum rollback
+        DB::statement(
+            "ALTER TABLE `users` MODIFY `role` "
+            . "ENUM('customer','salon_owner','admin') "
+            . "NOT NULL DEFAULT 'customer'"
+        );
+    }
+};
+```
+
+**Dibuat via Laravel Seeder (jalankan SETELAH migration di atas):**
 
 ```php
 // database/seeders/AdminStoreSeeder.php
 User::updateOrCreate(
     ['email' => 'admin.store@viygo.id'],
     [
-        'name'     => 'Admin Store VIYGO',
-        'email'    => 'admin.store@viygo.id',
-        'password' => Hash::make('ViygoStore2026!'),
-        'role'     => 'admin_store',
+        'first_name' => 'Admin',
+        'last_name'  => 'Store VIYGO',
+        'email'      => 'admin.store@viygo.id',
+        'password'   => Hash::make('ViygoStore2026!'),
+        'role'       => 'admin_store',
         'email_verified_at' => now(),
     ]
 );
 ```
+
+> [!NOTE]
+> Perhatikan bahwa tabel `users` V1 menggunakan `first_name` dan `last_name` (bukan `name`). Seeder harus menyesuaikan.
 
 **Kredensial default:**
 
@@ -1447,7 +1489,65 @@ public function check(Request $request)
 
 ## 12. Database Schema (Tambahan V2)
 
-### Ringkasan Tabel Baru
+### 12.0 Kompatibilitas dengan Database V1
+
+> [!IMPORTANT]
+> Semua tabel V2 adalah **tabel BARU** yang tidak menimpa tabel V1. Tabel V1 yang sudah ada (`users`, `salon`, `order`, `pembayaran`, `review`, `kategori`, `kota`, dll.) **TIDAK DIUBAH strukturnya**, kecuali satu migration ALTER untuk menambah role `admin_store` ke kolom `users.role`.
+
+**Perubahan pada tabel V1 yang ada:**
+
+| Tabel V1 | Perubahan | Migration |
+|----------|-----------|----------|
+| `users` | ALTER enum `role` — tambah value `admin_store` | `2026_06_01_000001_add_admin_store_role_to_users.php` |
+
+**Pemetaan domain agar tidak bingung:**
+
+| Domain | V1 (Salon) | V2 (E-commerce) |
+|--------|------------|------------------|
+| Kategori | `kategori` (salon: Hair, Nails, Face) | `product_categories` (skincare: Moisturizer, Cleanser) |
+| Order | `order` (booking salon) | `product_orders` (pesanan produk) |
+| Pembayaran | `pembayaran` (bayar booking) | `product_pembayaran` (bayar produk) |
+| Review | `review` (review salon) | `product_reviews` (review produk) |
+| Favorit | `user_favourites` (favorit salon) | `wishlists` (wishlist produk) |
+| Kota | `kota` (lokasi salon, sumber: Treatwell) | `user_addresses.kota_id` (tujuan kirim, sumber: api.co.id) |
+| Kode Pesanan | `order.kode_order` → format `VYG-XXXXXX` | `product_orders.kode_order` → format `VYG-S-XXXXXX` |
+
+**Konvensi Primary Key:**
+
+> [!NOTE]
+> V1 menggunakan PK custom (`id_user`, `id_salon`, `id_order`, dll.). Tabel V2 **mengikuti konvensi yang sama** (`id_product`, `id_cart`, `id_product_order`, dll.) untuk konsistensi. Tabel pivot kecil (seperti `wishlists`, `user_skincare_profiles`) boleh menggunakan `id` default Laravel.
+
+**Konvensi Foreign Key:**
+
+> [!CAUTION]
+> Karena V1 menggunakan PK custom (bukan `id` default Laravel), semua FK dari tabel V2 ke tabel V1 **WAJIB menyebutkan nama kolom** di `constrained()`:
+>
+> ```php
+> // ✅ BENAR — specify kolom PK
+> $table->foreignId('id_user')
+>       ->constrained('users', 'id_user')
+>       ->cascadeOnDelete();
+>
+> // ❌ SALAH — Laravel akan cari kolom 'id' yang tidak ada
+> $table->foreignId('id_user')
+>       ->constrained('users')     // ERROR: kolom 'id' tidak ada di users
+>       ->cascadeOnDelete();
+> ```
+>
+> Tabel V1 yang sering di-FK dari V2:
+> - `users` → PK: `id_user`
+> - `promo` → PK: `id_promo`
+> - `salon` → PK: `id_salon` (untuk Empty Return drop-off)
+
+### 12.1 Ringkasan Tabel Baru
+
+**Migration yang diubah (ALTER pada tabel V1): 1 migration**
+
+| # | Migration | Tabel | Perubahan |
+|---|-----------|-------|-----------|
+| 0 | `2026_06_01_000001_add_admin_store_role_to_users.php` | `users` | ALTER enum `role` → tambah `admin_store` |
+
+**Migration tabel baru: 28 tabel**
 
 | # | Tabel | Modul | Deskripsi |
 |---|-------|-------|-----------|
@@ -1458,8 +1558,8 @@ public function check(Request $request)
 | 5 | `wishlists` | E-commerce | Wishlist produk |
 | 6 | `user_skincare_profiles` | E-commerce | Profil skin type dari Skincare Finder |
 | 7 | `carts` | E-commerce | Keranjang belanja |
-| 8 | `user_addresses` | E-commerce | Alamat pengiriman (+ kota_id untuk ongkir) |
-| 9 | `product_orders` | E-commerce | Pesanan produk (+ info kurir & layanan) |
+| 8 | `user_addresses` | E-commerce | Alamat pengiriman (kota dari api.co.id, BUKAN FK ke `kota` V1) |
+| 9 | `product_orders` | E-commerce | Pesanan produk (kode: `VYG-S-XXXXXX`) |
 | 10 | `product_order_items` | E-commerce | Detail item pesanan |
 | 11 | `product_pembayaran` | E-commerce | Pembayaran produk (Midtrans) |
 | 12 | `product_reviews` | E-commerce | Review produk (+ foto JSON) |
@@ -1480,7 +1580,7 @@ public function check(Request $request)
 | 27 | `user_badges` | Community | Badge gamification |
 | 28 | `community_points` | Community | Poin kontribusi |
 
-**Total tabel baru: 28 tabel** (naik dari 25 di V2.0, karena tambah: `product_collections`, `wishlists`, `user_skincare_profiles`)
+**Total: 1 ALTER + 28 CREATE = 29 migrations baru**
 
 ### ER Diagram V2
 
@@ -1747,7 +1847,7 @@ graph TB
 | Requirement | Implementation |
 |-------------|----------------|
 | Auth | `auth` + `verified` middleware pada route yang membutuhkan |
-| Authorization | Role-based (`customer`, `admin`, `admin_store`, `salon_owner`) |
+| Authorization | Role-based — enum `users.role`: `customer`, `salon_owner`, `admin`, `admin_store` (V2 baru) |
 | File upload | Validasi tipe (jpg, png, webp), maks 2MB/file |
 | CSRF | Token bawaan Laravel |
 | Rate limiting | Submit: 5 req/min, Browse: 30 req/min, Ongkir check: 10 req/min |
@@ -1776,7 +1876,7 @@ graph TB
 
 | Task | Estimasi |
 |------|----------|
-| Database migrations (28 tabel baru) | 2 hari |
+| Database migrations (1 ALTER `users.role` + 28 tabel baru) | 2 hari |
 | Eloquent Models baru + relationships | 2 hari |
 | Buat Go scraper + scrape fresh.com + seed data | 2 hari |
 | Buat user `admin.store@viygo.id` + Filament Store Panel | 2 hari |
@@ -1862,6 +1962,6 @@ gantt
 ---
 
 **Dibuat oleh:** VIYGO Development Team  
-**Versi:** 2.1  
+**Versi:** 2.2  
 **Tanggal Dibuat:** 27 Mei 2026  
 **Terakhir Diupdate:** 28 Mei 2026
