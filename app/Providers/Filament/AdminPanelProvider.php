@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Http\Middleware\EnsureUserIsActive;
+use App\Support\FilamentBrand;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -30,12 +31,15 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandName('VIYGO Admin')
+            ->brandName(FilamentBrand::name('Admin'))
+            ->renderHook(PanelsRenderHook::HEAD_END, fn () => FilamentBrand::fontLink())
             ->favicon(asset('favicon.ico'))
-            ->darkMode(false)
+            ->darkMode(true, isForced: true)
+            ->font('Manrope')
             ->colors([
-                'primary' => Color::hex('#1B2D6B'),
-                'info'    => Color::hex('#4BA3CC'),
+                'primary' => Color::hex('#ffb68b'),
+                'info'    => Color::hex('#a5cbea'),
+                'gray'    => Color::Zinc,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')

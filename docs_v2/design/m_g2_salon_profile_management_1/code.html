@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manage Salon Profile</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#37393d",
+                    "on-primary-fixed-variant": "#6c3a19",
+                    "surface-tint": "#ffb68b",
+                    "surface-glass": "rgba(17, 19, 22, 0.6)",
+                    "secondary-container": "#264d67",
+                    "inverse-surface": "#e2e2e6",
+                    "on-surface-variant": "#d7c2b8",
+                    "primary-fixed": "#ffdbc9",
+                    "on-error": "#690005",
+                    "surface": "#111316",
+                    "on-secondary-fixed-variant": "#234a64",
+                    "tertiary-fixed": "#c7e9e9",
+                    "inverse-on-surface": "#2f3034",
+                    "secondary-fixed-dim": "#a5cbea",
+                    "on-secondary-container": "#97bddb",
+                    "background": "#111316",
+                    "surface-container-high": "#282a2d",
+                    "on-background": "#e2e2e6",
+                    "on-tertiary-fixed": "#002020",
+                    "surface-container-low": "#1a1c1f",
+                    "outline": "#9f8d84",
+                    "surface-charcoal": "#1A1D21",
+                    "on-tertiary-fixed-variant": "#2c4c4c",
+                    "surface-container": "#1e2023",
+                    "surface-dim": "#111316",
+                    "primary-fixed-dim": "#ffb68b",
+                    "tertiary-container": "#abcdcd",
+                    "primary-container": "#ffb68b",
+                    "on-tertiary": "#143536",
+                    "on-tertiary-container": "#385858",
+                    "outline-variant": "#52443c",
+                    "on-primary": "#502405",
+                    "primary": "#ffdbc8",
+                    "on-error-container": "#ffdad6",
+                    "surface-variant": "#333538",
+                    "surface-container-lowest": "#0c0e11",
+                    "error-container": "#93000a",
+                    "on-surface": "#e2e2e6",
+                    "tertiary": "#c7e9e9",
+                    "inverse-primary": "#88512e",
+                    "secondary-fixed": "#c9e6ff",
+                    "error": "#ffb4ab",
+                    "on-secondary-fixed": "#001e2f",
+                    "on-primary-container": "#7a4523",
+                    "on-primary-fixed": "#321200",
+                    "tertiary-fixed-dim": "#abcdcd",
+                    "border-glow": "rgba(255, 255, 255, 0.2)",
+                    "on-secondary": "#04344d",
+                    "secondary": "#a5cbea",
+                    "surface-container-highest": "#333538"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "gutter": "24px",
+                    "base": "4px",
+                    "xl": "80px",
+                    "lg": "40px",
+                    "sm": "16px",
+                    "md": "24px",
+                    "margin-desktop": "80px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "label-sm": [
+                            "Manrope"
+                    ],
+                    "display-lg-mobile": [
+                            "Playfair Display"
+                    ],
+                    "body-lg": [
+                            "Manrope"
+                    ],
+                    "body-md": [
+                            "Manrope"
+                    ],
+                    "headline-md": [
+                            "Playfair Display"
+                    ],
+                    "display-lg": [
+                            "Playfair Display"
+                    ],
+                    "label-md": [
+                            "Manrope"
+                    ],
+                    "headline-lg": [
+                            "Playfair Display"
+                    ]
+            },
+            "fontSize": {
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "36px",
+                            {
+                                    "lineHeight": "44px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar hiding for horizontal scrolls */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Subtle background texture effect */
+        body {
+            background-color: #111316;
+            background-image: radial-gradient(circle at top right, rgba(255, 182, 139, 0.03), transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(165, 203, 234, 0.02), transparent 40%);
+            background-attachment: fixed;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen relative font-body-md text-body-md antialiased pb-28">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-surface-glass backdrop-blur-md border-b border-border-glow flex justify-between items-center px-margin-mobile h-16 z-50 transition-opacity">
+<div class="flex items-center gap-4">
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200 flex items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight" style="font-size: 24px; line-height: 32px;">VIYGO</h1>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-border-glow flex items-center justify-center text-primary-fixed-dim text-xs font-label-sm">
+                AP
+            </div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pt-24 px-margin-mobile flex flex-col gap-8 max-w-md mx-auto">
+<!-- Page Header -->
+<section>
+<h2 class="font-headline-md text-headline-md font-playfair text-on-surface mb-2">Salon Profile</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Update your boutique's identity and online presence.</p>
+</section>
+<!-- Basic Information Form -->
+<section class="flex flex-col gap-5">
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest pl-1">Salon Name</label>
+<input class="bg-surface-charcoal border border-outline-variant text-on-surface font-body-md text-body-md rounded-lg px-4 py-3 focus:outline-none focus:border-surface-tint focus:ring-1 focus:ring-surface-tint transition-all placeholder:text-surface-variant" type="text" value="Aura Botanica Studio"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest pl-1">Description</label>
+<textarea class="bg-surface-charcoal border border-outline-variant text-on-surface font-body-md text-body-md rounded-lg px-4 py-3 focus:outline-none focus:border-surface-tint focus:ring-1 focus:ring-surface-tint transition-all placeholder:text-surface-variant resize-none" rows="4">A sanctuary of holistic haircare and botanical styling, blending modern techniques with natural alchemy.</textarea>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest pl-1">Phone</label>
+<input class="bg-surface-charcoal border border-outline-variant text-on-surface font-body-md text-body-md rounded-lg px-4 py-3 focus:outline-none focus:border-surface-tint focus:ring-1 focus:ring-surface-tint transition-all" type="tel" value="+1 (555) 019-2834"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest pl-1">Email</label>
+<input class="bg-surface-charcoal border border-outline-variant text-on-surface font-body-md text-body-md rounded-lg px-4 py-3 focus:outline-none focus:border-surface-tint focus:ring-1 focus:ring-surface-tint transition-all" type="email" value="hello@aurabotanica.com"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest pl-1">Address</label>
+<div class="relative">
+<input class="w-full bg-surface-charcoal border border-outline-variant text-on-surface font-body-md text-body-md rounded-lg pl-10 pr-4 py-3 focus:outline-none focus:border-surface-tint focus:ring-1 focus:ring-surface-tint transition-all" type="text" value="128 Midnight Garden Ave, Suite 3"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">location_on</span>
+</div>
+</div>
+</section>
+<!-- Media Gallery -->
+<section class="flex flex-col gap-4">
+<div class="flex justify-between items-end">
+<h3 class="font-label-md text-label-md text-primary uppercase tracking-widest">Media Gallery</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">3 of 8</span>
+</div>
+<div class="flex overflow-x-auto gap-4 snap-x hide-scrollbar pb-2">
+<!-- Upload Action -->
+<button class="shrink-0 w-32 h-40 rounded-xl border border-dashed border-outline-variant bg-surface-charcoal/50 flex flex-col items-center justify-center text-on-surface-variant hover:border-surface-tint hover:text-surface-tint transition-colors snap-start group">
+<span class="material-symbols-outlined text-3xl mb-2 group-hover:scale-110 transition-transform">add_photo_alternate</span>
+<span class="font-label-sm text-label-sm">Upload</span>
+</button>
+<!-- Image Cards -->
+<div class="shrink-0 w-32 h-40 rounded-xl bg-surface-container relative overflow-hidden snap-start group border border-border-glow">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A moody, high-end salon interior. Dark charcoal walls contrast with copper fixtures and warm ambient lighting. A minimalist styling station is visible with a sleek mirror and premium botanical hair products on a dark shelf. The aesthetic is serene floral noir." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCVWBbEsMzN-fc9XcBIwo_PVY9UKCeVppQtrS6uBTtQNK4zLtlyPihdwM-4PxaL3-p9sS6HcB4mkWsTJK-Xyq3_j4zHMC9WVjixLOZm9bDYPxIAIHrg8jPlrjQTW8wEPz8nmwVsHqzL8U6o85VVw6UgspNJGxz9XNMI574N4pxfHuUINVtZUPY21eWfFVrZKEA-R3WkhdO9S2GEhHXXvgo770wt1ebf17Ek3CNqcqAQT3bIMpHRz2PQzibGXc_yKtvrABVYejYosCi_')"></div>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-surface-glass backdrop-blur-sm flex items-center justify-center text-on-surface opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<div class="shrink-0 w-32 h-40 rounded-xl bg-surface-container relative overflow-hidden snap-start group border border-border-glow">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Close up of luxury hair styling tools resting on a dark marble countertop. Copper colored scissors and a sleek black comb are arranged neatly. The lighting is dramatic and directional, creating a sophisticated and professional atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBTbCReRiyLjSr5h61YfwqjzJF61gbp5RxBhMjtWVbHzZtUbghsjIFJ2YZnz_mIoVhmMxhXQG-plbKsTulDGM96LLzHaZfza_F_ORqhBAEPNONyPPaFNe5_Pxxc2EtOHym0ScpOSbnpWDdKVGNGR4ICw_AzsaIjgfqKpykhky_YeubDTHpYyThEqknbYy3MtypgDWHFtBKuNfQgM0emwCLiR-TG1L4gZPU2xJ_cd3dSTyvDg_s2vhErlThn6Kt6YkqP9mW7fbiZ4p3B')"></div>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-surface-glass backdrop-blur-sm flex items-center justify-center text-on-surface opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<div class="shrink-0 w-32 h-40 rounded-xl bg-surface-container relative overflow-hidden snap-start group border border-border-glow">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Exterior shot of a boutique salon storefront at twilight. Deep blue and charcoal tones dominate the facade, with warm amber light spilling from the large front windows. Elegant, minimal signage reads 'Aura Botanica' in copper lettering." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBX6ChG81Z114FPZSj4D2dH6IOQbFvwsTPsii2j_-AYbqazK1Gv_S1pwF58a8Tq6AJSSNUZZEupmP0FbJHLuSzT4BRnQcmoU74p50IcpZsAuHB2AFDZr7MUyDBNsUEQblJ8M412zWjUFvtvFsyb9vowh9-m4NAipJ3XFxipu3WYwCGlFxPYNkX1lWaLtOzMlOAoDlISNCXRaM-NvkDwvy5rA96atM69luDWDyEZx7qJ-5Pe-Mr5utQ6zneKn8X1zFHiwDcyiCfFWnua')"></div>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-surface-glass backdrop-blur-sm flex items-center justify-center text-on-surface opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Stylists & Team -->
+<section class="flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<h3 class="font-label-md text-label-md text-primary uppercase tracking-widest">Stylists &amp; Team</h3>
+<button class="font-label-md text-label-md text-secondary hover:text-secondary-fixed-dim transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">add</span> Add
+                </button>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Team Member 1 -->
+<div class="flex items-center gap-4 p-3 rounded-xl bg-surface-glass backdrop-blur-md border border-border-glow active:scale-[0.98] transition-transform">
+<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden shrink-0">
+<img alt="Elena" class="w-full h-full object-cover" data-alt="Portrait of a female stylist in a dark, moody setting. Warm copper lighting highlights her features. She is looking confidently at the camera. The overall style is serene floral noir, high-end beauty photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjaXK4mUdRyglu8aIbV1jk7ZBwBsXDsJzhlDXWNt1DCbuqPRm2F4pctEkbjyrgYBtc1K9CmWXLzt4JSYQzcroIbNzpeKOGkC3i8wJWxNUx9Kcl7owQdZfKluTPBuPQxwJR8oLNkfvIT-OjkAn0iI19HIw8V7A3zkf75P1qRoxku3dJ1_TCfXq4ENpYYskbeU896AM3LuVkVOLpUcg9Mh9RgOvD0oNKbcNYcNcwLAWYRRPxtabUx7h9_WbpKeXyv0rr7B4AQZ7FRT3b"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface">Elena Rostova</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-[13px]">Master Colorist</p>
+</div>
+<button class="text-on-surface-variant hover:text-surface-tint p-2">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<!-- Team Member 2 -->
+<div class="flex items-center gap-4 p-3 rounded-xl bg-surface-glass backdrop-blur-md border border-border-glow active:scale-[0.98] transition-transform">
+<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden shrink-0">
+<img alt="Marcus" class="w-full h-full object-cover" data-alt="Portrait of a male stylist with a refined, professional demeanor. Soft ambient lighting against a charcoal background. He wears a dark minimalist apron. High contrast and elegant composition matching a luxury salon aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEUAA_j3ypZVo14but-62roe8dDT2aX3bSspWEgnslmDjMY9if-uWkqlkoJga8YeYsBzwbKKoB8CoEWX7RKHetoes0_0mMzYlKclSQs4wiw8jGecXpYfdaPzxnZVLmSdE11m5OiGIq3n3ewKZqRGFlX1V128Q_5uhlBbRZ9-Ol8UFrWVVINpoZ-ai3-bWcoNMqrCNetQ8CuibAFchM_KfcSMerHZ0qMLTatJN4SCmIg3BGMOis2cjJMk3nYMRTqCNR9KIXAg2Qto1M"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface">Marcus Vance</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-[13px]">Senior Stylist</p>
+</div>
+<button class="text-on-surface-variant hover:text-surface-tint p-2">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Footer / Save Button -->
+<div class="fixed bottom-0 left-0 w-full p-4 bg-surface-glass backdrop-blur-lg border-t border-border-glow z-40 pb-safe">
+<button class="w-full bg-[#FFB68B] text-[#111316] font-label-md text-label-md py-4 rounded-xl flex justify-center items-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[20px]">save</span>
+            Save Changes
+        </button>
+</div>
+</body></html>

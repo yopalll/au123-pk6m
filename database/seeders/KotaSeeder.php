@@ -17,6 +17,7 @@ class KotaSeeder extends Seeder
 
         if (empty($kotaList)) {
             $this->command->warn('kota.json is empty, skipping KotaSeeder.');
+
             return;
         }
 
@@ -26,9 +27,9 @@ class KotaSeeder extends Seeder
         foreach ($chunks as $chunk) {
             $rows = array_map(function ($kota) {
                 return [
-                    'id_kota'   => $kota['id_kota'],
+                    'id_kota' => $kota['id_kota'],
                     'nama_kota' => $kota['nama_kota'],
-                    'provinsi'  => $kota['provinsi'],
+                    'provinsi' => $kota['provinsi'],
                     'created_at' => now(),
                     'updated_at' => now(),
                 ];
@@ -37,6 +38,6 @@ class KotaSeeder extends Seeder
             DB::table('kota')->insert($rows);
         }
 
-        $this->command->info("Seeded " . count($kotaList) . " kota records.");
+        $this->command->info('Seeded '.count($kotaList).' kota records.');
     }
 }

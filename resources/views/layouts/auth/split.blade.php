@@ -1,87 +1,64 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>
         @include('partials.head')
-        {{-- Force light mode on auth pages.
-             Flux JS reads localStorage('flux.appearance') on init and re-adds 'dark' class,
-             so we intercept Storage.prototype.getItem to return 'light' for this key
-             for the entire page lifecycle without permanently changing the user's preference. --}}
+        {{-- Force DARK appearance on auth pages (Serene Floral Noir). --}}
         <script>
         (function () {
             var _get = Storage.prototype.getItem;
             Storage.prototype.getItem = function (key) {
-                if (key === 'flux.appearance') return 'light';
+                if (key === 'flux.appearance') return 'dark';
                 return _get.apply(this, arguments);
             };
-            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('dark');
         })();
         </script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <style>
-            :root {
-                --viygo-navy:    #1B2D6B;
-                --viygo-blue:    #4BA3CC;
-                --viygo-blue-lt: #E8F4FB;
-            }
-            body { font-family: 'DM Sans', sans-serif; }
-            .viygo-serif { font-family: 'DM Serif Display', serif; }
+            body { font-family: 'Manrope', sans-serif; background: #111316; color: #e2e2e6; }
+            .viygo-serif { font-family: 'Playfair Display', serif; }
         </style>
     </head>
-    <body class="min-h-screen bg-white antialiased">
+    <body class="min-h-screen antialiased" style="background:#111316;">
         <div class="relative grid h-dvh flex-col items-center justify-center px-8 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
 
-            {{-- Brand panel (desktop only) --}}
-            <div class="relative hidden h-full flex-col p-10 text-white lg:flex" style="background: linear-gradient(135deg, var(--viygo-navy) 0%, #142055 60%, #0F1D4A 100%);">
-                {{-- decorative grid --}}
-                <div class="absolute inset-0 opacity-[0.06]"
-                     style="background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:48px 48px"></div>
-                {{-- soft glow --}}
-                <div class="absolute -right-20 top-1/3 w-96 h-96 rounded-full"
-                     style="background: radial-gradient(circle, rgba(75,163,204,0.35) 0%, transparent 70%);"></div>
+            {{-- Brand panel (desktop) — floral noir --}}
+            <div class="relative hidden h-full flex-col p-12 text-white lg:flex overflow-hidden">
+                <div class="absolute inset-0" style="background:linear-gradient(rgba(17,19,22,0.55),rgba(17,19,22,0.85)),url('{{ asset('images/floral-noir.png') }}');background-size:cover;background-position:center;"></div>
 
-                <a href="{{ route('home') }}" class="relative z-20 flex items-center gap-3 text-lg font-medium" wire:navigate>
-                    <img src="{{ asset('icon.png') }}" alt="VIYGO" class="h-10 w-10 rounded-lg shadow-md" onerror="this.style.display='none'" />
-                    <span class="viygo-serif text-2xl">VIYGO</span>
+                <a href="{{ route('home') }}" class="relative z-20 flex items-center gap-3" wire:navigate>
+                    <span class="viygo-serif text-3xl tracking-tight text-[#ffdbc8]">VIYGO</span>
                 </a>
 
                 <div class="relative z-20 mt-auto">
-                    <div class="text-xs font-bold uppercase tracking-widest mb-3" style="color: var(--viygo-blue);">
-                        ✦ Beauty &amp; Wellness Marketplace
+                    <div class="text-[11px] font-semibold uppercase tracking-[0.2em] mb-4 text-[#ffdbc8]">
+                        ✦ Beauty &amp; Skincare Marketplace
                     </div>
-                    <h2 class="viygo-serif text-4xl leading-tight mb-4">
+                    <h2 class="viygo-serif text-4xl leading-tight mb-4 text-[#f3ece6]">
                         Your next great<br />
-                        <em style="color: var(--viygo-blue);">beauty moment</em><br />
+                        <em class="text-[#ffdbc8]">beauty moment</em><br />
                         starts here.
                     </h2>
-                    <p class="text-white/60 text-sm leading-relaxed max-w-sm">
-                        Join thousands of customers booking treatments at 8,750+ professional salons across the United Kingdom — all on VIYGO.
+                    <p class="text-white/50 text-sm leading-relaxed max-w-sm">
+                        Booking treatment salon & belanja skincare premium — semua dalam satu tempat yang tenang dan mewah.
                     </p>
-
                     <div class="mt-8 flex items-center gap-6 text-white/40 text-xs">
-                        <div class="flex items-center gap-1.5">
-                            <span class="text-amber-400">★</span>
-                            <span>4.8 average rating</span>
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <span style="color: var(--viygo-blue);">●</span>
-                            <span>1,700+ cities covered</span>
-                        </div>
+                        <div class="flex items-center gap-1.5"><span class="text-[#ffb68b]">★</span><span>4.8 rating rata-rata</span></div>
+                        <div class="flex items-center gap-1.5"><span class="text-[#a5cbea]">●</span><span>1.700+ kota</span></div>
                     </div>
                 </div>
             </div>
 
             {{-- Form panel --}}
-            <div class="w-full lg:p-8">
-                <div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[380px]">
-                    {{-- mobile-only logo --}}
-                    <a href="{{ route('home') }}" class="z-20 flex flex-col items-center gap-2 font-medium lg:hidden" wire:navigate>
-                        <img src="{{ asset('icon.png') }}" alt="VIYGO" class="h-12 w-12 rounded-lg" onerror="this.style.display='none'" />
-                        <span class="viygo-serif text-2xl" style="color: var(--viygo-navy);">VIYGO</span>
+            <div class="w-full lg:p-8" style="background:#0c0e11;">
+                <div class="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[380px] min-h-dvh lg:min-h-0">
+                    <a href="{{ route('home') }}" class="z-20 flex flex-col items-center gap-2 lg:hidden" wire:navigate>
+                        <span class="viygo-serif text-2xl text-[#ffdbc8]">VIYGO</span>
                     </a>
                     {{ $slot }}
-                    <p class="text-center text-xs text-zinc-400">
-                        © {{ date('Y') }} VIYGO. <a href="{{ route('home') }}" class="hover:text-[#1B2D6B] underline">Back to home</a>.
+                    <p class="text-center text-xs text-white/30">
+                        © {{ date('Y') }} VIYGO. <a href="{{ route('home') }}" class="hover:text-[#ffdbc8] underline">Kembali ke beranda</a>.
                     </p>
                 </div>
             </div>

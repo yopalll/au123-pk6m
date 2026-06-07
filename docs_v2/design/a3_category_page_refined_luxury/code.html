@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hair &amp; Styling - VIYGO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+/* Serene Floral Noir Background Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(17, 19, 22, 0.92), rgba(17, 19, 22, 0.92)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuB4_WK0nTGzLNzLIXbJQlb2r7RJQooD1QVprOoFKnfSFRz_wl_z4P43GnDFKA_ontwN5WCOqsbBdZQpNWOfCPvY6MaUxoKXLCsQ4xRxtioD6vJtzUnt--JTBIHibvtumcYrxBBxaWMSNzwQznSERD_s6Q6BAs1-rPm8xcf4lSic9X1EYi-56TER3u_1c1AUHyFK1HKBmubBNL0B5ELwF8bO1SUI2jqItJcS1k_ivAr0JRfaevwFive_CJ8txAtnbHjgiEtzhVP1z_6Z);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    pointer-events: none;
+    z-index: -1
+    }
+/* Hide scrollbar for horizontal scrolling */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none
+    }
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none
+    }</style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-glass": "rgba(17, 19, 22, 0.6)",
+                    "primary-fixed": "#ffdbc9",
+                    "secondary-container": "#264d67",
+                    "surface-tint": "#ffb68b",
+                    "primary": "#ffdbc8",
+                    "on-secondary-container": "#97bddb",
+                    "border-glow": "rgba(255, 255, 255, 0.2)",
+                    "surface-container-highest": "#333538",
+                    "on-tertiary-fixed": "#002020",
+                    "outline": "#9f8d84",
+                    "on-primary-container": "#7a4523",
+                    "surface-container-low": "#1a1c1f",
+                    "surface-bright": "#37393d",
+                    "tertiary-fixed-dim": "#abcdcd",
+                    "primary-container": "#ffb68b",
+                    "inverse-surface": "#e2e2e6",
+                    "surface": "#111316",
+                    "on-primary": "#502405",
+                    "on-tertiary-fixed-variant": "#2c4c4c",
+                    "tertiary-container": "#abcdcd",
+                    "surface-dim": "#111316",
+                    "surface-container-high": "#282a2d",
+                    "inverse-on-surface": "#2f3034",
+                    "on-primary-fixed": "#321200",
+                    "secondary": "#a5cbea",
+                    "tertiary-fixed": "#c7e9e9",
+                    "primary-fixed-dim": "#ffb68b",
+                    "surface-variant": "#333538",
+                    "on-secondary": "#04344d",
+                    "on-secondary-fixed": "#001e2f",
+                    "surface-container-lowest": "#0c0e11",
+                    "on-error-container": "#ffdad6",
+                    "on-background": "#e2e2e6",
+                    "on-surface": "#e2e2e6",
+                    "on-secondary-fixed-variant": "#234a64",
+                    "surface-container": "#1e2023",
+                    "inverse-primary": "#88512e",
+                    "on-surface-variant": "#d7c2b8",
+                    "error-container": "#93000a",
+                    "on-tertiary": "#143536",
+                    "secondary-fixed": "#c9e6ff",
+                    "on-error": "#690005",
+                    "background": "#111316",
+                    "error": "#ffb4ab",
+                    "secondary-fixed-dim": "#a5cbea",
+                    "outline-variant": "#52443c",
+                    "on-primary-fixed-variant": "#6c3a19",
+                    "surface-charcoal": "#1A1D21",
+                    "on-tertiary-container": "#385858",
+                    "tertiary": "#c7e9e9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "md": "24px",
+                    "margin-desktop": "80px",
+                    "sm": "16px",
+                    "margin-mobile": "20px",
+                    "base": "4px",
+                    "lg": "40px",
+                    "gutter": "24px",
+                    "xl": "80px"
+            },
+            "fontFamily": {
+                    "body-md": [
+                            "Manrope"
+                    ],
+                    "label-md": [
+                            "Manrope"
+                    ],
+                    "display-lg-mobile": [
+                            "Playfair Display"
+                    ],
+                    "display-lg": [
+                            "Playfair Display"
+                    ],
+                    "body-lg": [
+                            "Manrope"
+                    ],
+                    "headline-md": [
+                            "Playfair Display"
+                    ],
+                    "label-sm": [
+                            "Manrope"
+                    ],
+                    "headline-lg": [
+                            "Playfair Display"
+                    ]
+            },
+            "fontSize": {
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "36px",
+                            {
+                                    "lineHeight": "44px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+/* Serene Floral Noir Background Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(17, 19, 22, 0.92), rgba(17, 19, 22, 0.92)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuB4_WK0nTGzLNzLIXbJQlb2r7RJQooD1QVprOoFKnfSFRz_wl_z4P43GnDFKA_ontwN5WCOqsbBdZQpNWOfCPvY6MaUxoKXLCsQ4xRxtioD6vJtzUnt--JTBIHibvtumcYrxBBxaWMSNzwQznSERD_s6Q6BAs1-rPm8xcf4lSic9X1EYi-56TER3u_1c1AUHyFK1HKBmubBNL0B5ELwF8bO1SUI2jqItJcS1k_ivAr0JRfaevwFive_CJ8txAtnbHjgiEtzhVP1z_6Z);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    pointer-events: none;
+    z-index: -1
+    }
+/* Hide scrollbar for horizontal scrolling */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none
+    }
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none
+    }</style></head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="bg-surface-glass text-primary backdrop-blur-xl border-b border-border-glow fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-24">
+<!-- Logo -->
+<a class="font-display-lg text-display-lg text-primary-fixed hover:opacity-80 transition-opacity" href="/">VIYGO</a>
+<!-- Navigation Links (Hidden on Mobile) -->
+<div class="hidden md:flex items-center gap-lg">
+<a class="font-label-md text-label-md uppercase tracking-widest text-primary border-b border-primary-fixed pb-1 hover:text-primary-fixed transition-colors duration-300" href="/treatments">Treatments</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="/list-salon">List your salon</a>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-md">
+<button class="hidden md:block font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary-fixed transition-colors duration-300">Sign In</button>
+<button class="bg-surface-tint text-surface rounded-full px-sm py-xs font-label-md text-label-md uppercase tracking-widest hover:bg-primary-fixed transition-colors duration-300">Join</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow pt-24 w-full max-w-[1440px] mx-auto flex flex-col lg:flex-row">
+<!-- SideNavBar (Drawer Type - Visible lg+) -->
+<aside class="text-primary h-screen w-80 sticky top-24 border-r border-border-glow hidden lg:flex flex-col p-md gap-md">
+<div class="mb-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface">Filters</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Refine your selection</p>
+</div>
+<nav class="flex flex-col gap-sm flex-grow">
+<button class="flex items-center gap-sm p-sm bg-secondary-container text-on-secondary-container rounded-lg transition-transform scale-98">
+<span class="material-symbols-outlined">category</span>
+<span class="font-label-md text-label-md">Category</span>
+</button>
+<button class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Price</span>
+</button>
+<button class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined">star</span>
+<span class="font-label-md text-label-md">Rating</span>
+</button>
+<button class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined">brand_family</span>
+<span class="font-label-md text-label-md">Brand</span>
+</button>
+<button class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined">face</span>
+<span class="font-label-md text-label-md">Skin Type</span>
+</button>
+</nav>
+<button class="mt-auto bg-surface-tint text-surface w-full py-sm rounded-full font-label-md text-label-md uppercase tracking-widest hover:bg-primary-fixed transition-colors">
+                Apply Filters
+            </button>
+</aside>
+<!-- Category Canvas -->
+<div class="flex-grow flex flex-col pb-xl">
+<!-- Hero Section -->
+<section class="relative w-full h-[40vh] min-h-[300px] flex items-end p-margin-mobile md:p-margin-desktop bg-cover bg-center border-b border-border-glow" data-alt="A moody, high-end salon interior seen through a slightly frosted glass pane. Subtle dark floral arrangements frame the edges of the frame, casting deep shadows against charcoal-toned walls. Warm, copper-toned pendant lights provide a soft glow, illuminating modern styling stations. The overall aesthetic is 'Serene Floral Noir', emphasizing luxurious minimalism and sophisticated depth." style="background-image: linear-gradient(rgba(17, 19, 22, 0.4), rgba(17, 19, 22, 0.8)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuCKogJvcfF3sMexWBhbQaebyxzfpdeDsm45m09Lgone_8I4qd9rbqwA_VWj8YMwpdFg-6n-A3677YmNmXnxtyTEXSb_m-OBwVIl375nLU2Tn53pXiVRu_oT1uMAau7QWgP51EEWisWjvryvItSzzJjcuLTW389jBnREo4uIshMmpF3uyf95Ro1gTmmrH2IMZqfgLTm-CBsZxxU7sfs1VkokcXcHpYqn9bS5GSpFX_8iW2lAEFszUM9pr7z_InJPNU60g5xzpwkDv3Ve');">
+<!-- Overlay gradient to ensure text readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-background via-surface-glass to-transparent"></div>
+<div class="relative z-10">
+<p class="font-label-md text-label-md text-primary-fixed uppercase tracking-widest mb-xs">Treatments</p>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">Hair &amp; Styling</h1>
+</div>
+</section>
+<!-- Sub-Category Chips (Horizontal Scroll) -->
+<section class="w-full px-margin-mobile md:px-margin-desktop py-md mb-md">
+<div class="flex gap-sm overflow-x-auto scrollbar-hide pb-sm snap-x">
+<button class="snap-start flex-shrink-0 bg-surface-glass backdrop-blur-md border border-border-glow text-primary-fixed px-sm py-xs rounded-full font-label-md text-label-md hover:bg-surface-container-high transition-colors">All</button>
+<button class="snap-start flex-shrink-0 bg-secondary-container text-on-secondary-container border border-secondary-container px-sm py-xs rounded-full font-label-md text-label-md">Haircut</button>
+<button class="snap-start flex-shrink-0 bg-surface-glass backdrop-blur-md border border-border-glow text-on-surface px-sm py-xs rounded-full font-label-md text-label-md hover:bg-surface-container-high transition-colors">Coloring</button>
+<button class="snap-start flex-shrink-0 bg-surface-glass backdrop-blur-md border border-border-glow text-on-surface px-sm py-xs rounded-full font-label-md text-label-md hover:bg-surface-container-high transition-colors">Balayage</button>
+<button class="snap-start flex-shrink-0 bg-surface-glass backdrop-blur-md border border-border-glow text-on-surface px-sm py-xs rounded-full font-label-md text-label-md hover:bg-surface-container-high transition-colors">Extensions</button>
+<button class="snap-start flex-shrink-0 bg-surface-glass backdrop-blur-md border border-border-glow text-on-surface px-sm py-xs rounded-full font-label-md text-label-md hover:bg-surface-container-high transition-colors">Treatments</button>
+<button class="snap-start flex-shrink-0 bg-surface-glass backdrop-blur-md border border-border-glow text-on-surface px-sm py-xs rounded-full font-label-md text-label-md hover:bg-surface-container-high transition-colors">Styling</button>
+<button class="snap-start flex-shrink-0 bg-surface-glass backdrop-blur-md border border-border-glow text-on-surface px-sm py-xs rounded-full font-label-md text-label-md hover:bg-surface-container-high transition-colors">Bridal</button>
+</div>
+</section>
+<!-- Results Grid -->
+<section class="px-margin-mobile md:px-margin-desktop flex-grow">
+<div class="flex justify-between items-center mb-md">
+<p class="font-body-md text-body-md text-on-surface-variant">Showing 24 salons</p>
+<button class="lg:hidden flex items-center gap-xs text-primary-fixed font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm">tune</span> Filters
+                    </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<!-- Salon Card 1 -->
+<article class="group relative rounded-xl overflow-hidden bg-surface-charcoal border border-border-glow hover:border-surface-tint transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,182,139,0.1)]">
+<div class="aspect-[4/3] w-full overflow-hidden relative">
+<img alt="Salon interior" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A premium salon workspace focused on a sleek styling chair against a dark charcoal textured wall. The lighting is moody and cinematic, highlighting the copper accents of the mirror frame and styling tools. The atmosphere is hushed, luxurious, and deeply aligned with a 'Serene Floral Noir' aesthetic. Delicate, shadow-casting foliage softens the foreground edges." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6USnpt1yCT1TS4LyJh2-B3X7i5oLQNQnugTLaosTa5ffythmqnttNtOkY8XMdgeJHodl66C3kk3enAjZ6kNYKihucGfChJlueTRrZJZuDx6f-bLT5cLsKkVdRuda5cEZBPxBogMi5TyR9RaxEhU63UvD2xKI0Xip8-vyo_cphQQ8H9JSHgSGE4OvuXRtlsvOG_Wzv0474gVeBeVDtMI85ft2ro1dhO9r7cD3npP2Q5mng7vKj44GEd1pn_Y-_y_9SL6iAEmqkQaTo"/>
+<button class="absolute top-sm right-sm bg-surface-glass backdrop-blur-md p-xs rounded-full text-on-surface hover:text-surface-tint transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<div class="p-md relative">
+<!-- Frosted inner glow effect -->
+<div class="absolute inset-0 bg-surface-glass backdrop-blur-md border-t border-border-glow pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-xs">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-surface">Atelier Noir</h3>
+<div class="flex items-center gap-[2px] bg-surface-container-high px-xs py-[2px] rounded">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span class="font-label-sm text-label-sm">4.9</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Mayfair, London</p>
+<div class="mt-sm flex justify-between items-end">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">From</span>
+<span class="font-body-lg text-body-lg text-on-surface">£85</span>
+</div>
+<button class="font-label-md text-label-md hover:underline decoration-surface-tint underline-offset-4">Book</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Salon Card 2 -->
+<article class="group relative rounded-xl overflow-hidden bg-surface-charcoal border border-border-glow hover:border-surface-tint transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,182,139,0.1)]">
+<div class="aspect-[4/3] w-full overflow-hidden relative">
+<img alt="Salon interior" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="Close up of high-end hair styling products arranged meticulously on a dark marble surface. The products feature minimalist, amber-tinted glass bottles that reflect soft, directional lighting. Deep shadows pool around the bases, creating a moody, 'Serene Floral Noir' vibe. A faint suggestion of dark botanical elements is visible in the deeply blurred background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAQP1_-3VYUqweqM7l4f-DX1O9w0CRi9aI_QwEEqtlGaILQx1vDDq6yIG0n_8JbcIhVN3DPf_d8sL8FzbChUAdwyN8ILPskMIUuu-aWH_COqQDCpD5hzKyyIAbnYTnjkB21RAqXJMhwpHZq3d_dRjn99wKXue3MuCMG6c0gspLUqbXhvvtgVys0UcxYLAzSMdyN6j762_rS5bESKSUFQeUCi2yMeMY1MDofK7Hjyxq1tPO49YGJlk-XbyvksquBXUmR4GhAhLymMAJ"/>
+<button class="absolute top-sm right-sm bg-surface-glass backdrop-blur-md p-xs rounded-full text-on-surface hover:text-surface-tint transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<div class="p-md relative">
+<div class="absolute inset-0 bg-surface-glass backdrop-blur-md border-t border-border-glow pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-xs">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-surface">The Copper Room</h3>
+<div class="flex items-center gap-[2px] bg-surface-container-high px-xs py-[2px] rounded">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span class="font-label-sm text-label-sm">4.8</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Soho, London</p>
+<div class="mt-sm flex justify-between items-end">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">From</span>
+<span class="font-body-lg text-body-lg text-on-surface">£65</span>
+</div>
+<button class="font-label-md text-label-md hover:underline decoration-surface-tint underline-offset-4">Book</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Salon Card 3 -->
+<article class="group relative rounded-xl overflow-hidden bg-surface-charcoal border border-border-glow hover:border-surface-tint transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,182,139,0.1)]">
+<div class="aspect-[4/3] w-full overflow-hidden relative">
+<img alt="Salon interior" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A sophisticated hair washing station in a luxury salon. The sinks are sleek black ceramic, set against a backdrop of heavily textured, dark slate tiles. Warm ambient light spills from hidden LED strips beneath copper shelving. The space feels intimate, hushed, and flawlessly modern, echoing the dark, premium 'Serene Floral Noir' aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkVqy2PP7vNPqly3EdhPYRDBHgNBoQ-h5NGUrnGZac20nz86OIOfvkuTh0noCOubH5l609HVW7G4mXsFCTBnX5OdsxdmhttEObdNjZM3TYIUbHJJlMUwLA7SOqjIX2xyx2qZgdOBKKFfnSBq3u2zQgqPds3rSFRZyYrKR4pRgzKeQTB59kVZ08tJFBFJ8aHrlqwbSXZHCvRZf3LfTkC6qe8xvk-JLGYWPEsrkmTeQzCVeMdssRu5QE6mns5_bJgItqMZKKQHknlpwX"/>
+<button class="absolute top-sm right-sm bg-surface-glass backdrop-blur-md p-xs rounded-full text-on-surface hover:text-surface-tint transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-md relative">
+<div class="absolute inset-0 bg-surface-glass backdrop-blur-md border-t border-border-glow pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-xs">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-surface">Botanica Studio</h3>
+<div class="flex items-center gap-[2px] bg-surface-container-high px-xs py-[2px] rounded">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span class="font-label-sm text-label-sm">5.0</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Chelsea, London</p>
+<div class="mt-sm flex justify-between items-end">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">From</span>
+<span class="font-body-lg text-body-lg text-on-surface">£110</span>
+</div>
+<button class="font-label-md text-label-md hover:underline decoration-surface-tint underline-offset-4">Book</button>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-xl flex justify-center">
+<button class="bg-transparent border border-secondary text-secondary px-lg py-sm rounded-full font-label-md text-label-md uppercase tracking-widest hover:bg-surface-glass transition-colors">
+                        Load More
+                    </button>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest text-primary border-t border-border-glow w-full py-xl px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-5 gap-gutter mt-auto">
+<!-- Logo Col -->
+<div class="col-span-2 md:col-span-1 mb-lg md:mb-0">
+<a class="font-display-lg text-display-lg text-primary-fixed block mb-sm" href="/">VIYGO</a>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">© 2024 VIYGO. All rights reserved.</p>
+</div>
+<!-- Link Cols -->
+<div class="flex flex-col gap-sm">
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a>
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-sm col-span-2 md:col-span-2">
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">VIYGO for Business</a>
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">List your Salon</a>
+</div>
+</footer>
+</body></html>

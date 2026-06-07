@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review Booking - VIYGO LUXE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#04344d",
+                      "tertiary-container": "#abcdcd",
+                      "on-tertiary-fixed": "#002020",
+                      "surface-bright": "#37393d",
+                      "surface": "#111316",
+                      "on-primary-fixed": "#321200",
+                      "surface-container-low": "#1a1c1f",
+                      "secondary-fixed": "#c9e6ff",
+                      "error-container": "#93000a",
+                      "tertiary-fixed-dim": "#abcdcd",
+                      "surface-container": "#1e2023",
+                      "border-glow": "rgba(255, 255, 255, 0.2)",
+                      "on-primary": "#502405",
+                      "surface-variant": "#333538",
+                      "surface-glass": "rgba(17, 19, 22, 0.6)",
+                      "secondary-container": "#264d67",
+                      "on-tertiary-container": "#385858",
+                      "surface-charcoal": "#1A1D21",
+                      "surface-container-lowest": "#0c0e11",
+                      "primary-container": "#ffb68b",
+                      "surface-container-highest": "#333538",
+                      "tertiary": "#c7e9e9",
+                      "surface-tint": "#ffb68b",
+                      "outline-variant": "#52443c",
+                      "on-primary-container": "#7a4523",
+                      "outline": "#9f8d84",
+                      "secondary-fixed-dim": "#a5cbea",
+                      "on-error": "#690005",
+                      "tertiary-fixed": "#c7e9e9",
+                      "surface-dim": "#111316",
+                      "background": "#111316",
+                      "on-surface": "#e2e2e6",
+                      "primary-fixed-dim": "#ffb68b",
+                      "inverse-surface": "#e2e2e6",
+                      "surface-container-high": "#282a2d",
+                      "on-error-container": "#ffdad6",
+                      "inverse-on-surface": "#2f3034",
+                      "primary-fixed": "#ffdbc9",
+                      "on-tertiary": "#143536",
+                      "on-secondary-fixed": "#001e2f",
+                      "on-primary-fixed-variant": "#6c3a19",
+                      "secondary": "#a5cbea",
+                      "on-secondary-container": "#97bddb",
+                      "on-secondary-fixed-variant": "#234a64",
+                      "inverse-primary": "#88512e",
+                      "error": "#ffb4ab",
+                      "on-tertiary-fixed-variant": "#2c4c4c",
+                      "primary": "#ffdbc8",
+                      "on-surface-variant": "#d7c2b8",
+                      "on-background": "#e2e2e6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "xl": "80px",
+                      "margin-desktop": "80px",
+                      "gutter": "24px",
+                      "lg": "40px",
+                      "xs": "8px",
+                      "margin-mobile": "20px",
+                      "sm": "16px",
+                      "md": "24px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "label-sm": [
+                              "Manrope"
+                      ],
+                      "body-md": [
+                              "Manrope"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "Manrope"
+                      ],
+                      "label-md": [
+                              "Manrope"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>body {
+    background-color: #111316;
+    color: #e2e2e6
+    }
+/* Subdued floral background texture */
+.bg-texture {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBgjTctgOminE-U4bmuARFPNyjjrawp2iSfzuWrsGHi1wznu-q8zcjGfFWwg6LIEtFSLAPa8C3mHZOUCMXr15hHgFFiOzgyPuMg5ZZht0y-C3BNaMpDIJewZnbdN8PpNk6GcMEuEAG3OeZxGSn5AF_pZ6i-jqmFAB3_J1o5ZiwZP5EZYOjBxE3IexeaHDW0a9vQPAaub8KV4ckcvbb0TZlrvVarvsCFStphDwfCENa_qskEgKx_s_wMCasFhseB8S8g2XTbcewafapd);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05;
+    z-index: -1;
+    pointer-events: none
+    }
+.glass-panel {
+    background: rgba(17, 19, 22, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2)
+    }
+/* Custom scrollbar for deep dark theme */
+::-webkit-scrollbar {
+    width: 8px
+    }
+::-webkit-scrollbar-track {
+    background: #111316
+    }
+::-webkit-scrollbar-thumb {
+    background: #333538;
+    border-radius: 4px
+    }</style>
+</head>
+<body class="antialiased font-body-md text-body-md selection:bg-primary-container selection:text-surface">
+<div class="bg-texture"></div>
+<!-- TopNavBar: Suppressed because this is a transactional flow (Booking Wizard) -->
+<!-- Content starts immediately below -->
+<main class="min-h-screen flex flex-col items-center justify-center py-xl px-margin-mobile md:px-margin-desktop relative">
+<!-- Header / Progress Area -->
+<header class="w-full max-w-4xl flex flex-col items-center mb-xl">
+<h1 class="font-display-lg text-display-lg text-primary tracking-tighter mb-sm text-center">Review Booking</h1>
+<div class="flex items-center gap-xs font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">
+<span>Phase A</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span>Phase B</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary border-b border-primary">Review</span>
+</div>
+</header>
+<!-- Main Content Area: Bento-inspired layout -->
+<div class="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Summary -->
+<div class="lg:col-span-7 flex flex-col gap-md">
+<!-- Treatment Summary Card -->
+<article class="glass-panel rounded-xl p-md md:p-lg flex flex-col gap-md transition-all duration-300 hover:border-primary-container/50">
+<div class="flex justify-between items-start border-b border-white/10 pb-sm">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">Midnight Renewal Facial</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">90 Min • Deep Hydration &amp; Cellular Repair</p>
+</div>
+<span class="font-headline-md text-headline-md text-primary">$285</span>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<div class="flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Date</span>
+<div class="flex items-center gap-xs text-on-surface">
+<span class="material-symbols-outlined">calendar_today</span>
+<span>Nov 12, 2024</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Time</span>
+<div class="flex items-center gap-xs text-on-surface">
+<span class="material-symbols-outlined">schedule</span>
+<span>7:30 PM</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs col-span-2 mt-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Location</span>
+<div class="flex items-start gap-xs text-on-surface">
+<span class="material-symbols-outlined mt-[2px]">location_on</span>
+<span>The Obsidian Lounge<br/><span class="text-on-surface-variant font-body-md">123 Serenity Blvd, Suite 400</span></span>
+</div>
+</div>
+<div class="flex flex-col gap-xs col-span-2 mt-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Specialist</span>
+<div class="flex items-center gap-sm text-on-surface mt-xs">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border border-white/10">
+<img class="w-full h-full object-cover" data-alt="A close up portrait of a serene esthetician in a dimly lit, high-end spa environment. The lighting is soft and moody, highlighting healthy, glowing skin against a dark background. Deep charcoal tones contrast with warm copper accents. Minimalist and luxurious atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARpU7UHIV1UK0l5v8pzIIRNPMWJzxGbNerzU9M953WBN3ARZGCDHybQ9zfw3xIXu-EecwKe_tW8QQQo8dCJ9hWgVRIgWWv7Y0NXVB3W8L13uw96-Jsf_LtuLzlr843np38axk0SE-hDdsHIH9OKIREEOtHOYtFeO2Yw0dJebcS1rt2kLwifL2M5RyLnxVx3XuuJ1kCuXtzzoA1XKFcCWSBNmKDIJDs-mA_DEkl-hUR8NGTmXsorIKiQ9GqQ1aNIjZkVRT1Ij3H7U34"/>
+</div>
+<div>
+<p class="font-body-md">Elena Rostova</p>
+<p class="font-label-sm text-on-surface-variant">Master Esthetician</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Location Map Placeholder (Stylized) -->
+<div class="glass-panel rounded-xl h-48 overflow-hidden relative group">
+<img class="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500" data-alt="An abstract, stylized dark mode map view of a city block at night. The streets are represented by thin, glowing copper lines against a deep midnight blue and charcoal background. Minimalist aesthetic, luxury navigation concept. Serene and precise layout." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjgPOA7SKIo6DYqYvtMr-Zfa8C3El02oHwX9WI5llsdaNKyhcor_0qxhvXGJ83acanxeI24wGOoyx6u2ppK3iqJWuNS9k1qijzCJskh1OXcqW2BO9510lvA1PodQ7IVOERrMg8dTL0e9ZxgV2JB5HVjqPgGzNACgk5YzXqXiPa8Nxiic8VqRorhtyW45J-0kLhHYD2RHsFH4naDZoNS1XUW5-v9gWSikpQ7glfDdtsBDTV0qI-weBwyR8fgVEiKzhqDAb4ZtKMJTdZ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-charcoal/80 to-transparent"></div>
+<div class="absolute bottom-md left-md right-md flex justify-between items-end">
+<div class="flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined">directions</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Get Directions</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Contact & Payment -->
+<div class="lg:col-span-5 flex flex-col gap-md">
+<article class="bg-surface-charcoal rounded-xl p-md md:p-lg border border-white/10 relative overflow-hidden">
+<!-- Subtle glow effect inside the card -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container rounded-full blur-[80px] opacity-10 pointer-events-none"></div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Guest Details</h3>
+<form class="flex flex-col gap-sm relative z-10">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="fullName">Full Name</label>
+<input class="w-full bg-surface border border-white/10 rounded-lg px-sm py-xs font-body-md text-on-surface placeholder:text-surface-variant focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all outline-none" id="fullName" placeholder="Jane Doe" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="email">Email</label>
+<input class="w-full bg-surface border border-white/10 rounded-lg px-sm py-xs font-body-md text-on-surface placeholder:text-surface-variant focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all outline-none" id="email" placeholder="jane@example.com" type="email"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="phone">Phone</label>
+<input class="w-full bg-surface border border-white/10 rounded-lg px-sm py-xs font-body-md text-on-surface placeholder:text-surface-variant focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all outline-none" id="phone" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+<div class="mt-sm pt-sm border-t border-white/10">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-body-md text-on-surface-variant">Subtotal</span>
+<span class="font-body-md text-on-surface">$285.00</span>
+</div>
+<div class="flex justify-between items-center mb-sm">
+<span class="font-body-md text-on-surface-variant">Taxes &amp; Fees</span>
+<span class="font-body-md text-on-surface">$24.50</span>
+</div>
+<div class="flex justify-between items-center font-headline-md text-headline-md text-primary mb-md">
+<span>Total</span>
+<span>$309.50</span>
+</div>
+<button class="w-full bg-primary-container text-surface hover:bg-primary-fixed transition-colors duration-300 rounded-lg py-sm font-label-md text-label-md uppercase tracking-wider flex items-center justify-center gap-xs group" type="button">
+                                Proceed to Payment
+                                <span class="material-symbols-outlined transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
+</button>
+<button class="w-full mt-xs bg-transparent text-on-surface-variant hover:text-on-surface transition-colors duration-300 rounded-lg py-sm font-label-md text-label-md uppercase tracking-wider flex items-center justify-center gap-xs" type="button">
+                                Cancel
+                            </button>
+</div>
+</form>
+</article>
+</div>
+</div>
+</main>
+<!-- Footer: Suppressed on transactional/wizard pages to keep focus on the action -->
+</body></html>

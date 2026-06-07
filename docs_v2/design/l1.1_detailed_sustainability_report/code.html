@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sustainability - VIYGO LUXE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#143536",
+                        "surface-bright": "#37393d",
+                        "inverse-on-surface": "#2f3034",
+                        "on-background": "#e2e2e6",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "surface": "#111316",
+                        "secondary-container": "#264d67",
+                        "on-primary": "#502405",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-tertiary-container": "#385858",
+                        "primary-fixed-dim": "#ffb68b",
+                        "inverse-surface": "#e2e2e6",
+                        "on-secondary": "#04344d",
+                        "secondary": "#a5cbea",
+                        "on-secondary-container": "#97bddb",
+                        "secondary-fixed": "#c9e6ff",
+                        "surface-container-highest": "#333538",
+                        "outline-variant": "#52443c",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "surface-charcoal": "#1A1D21",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "surface-container": "#1e2023",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "primary": "#ffdbc8",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#9f8d84",
+                        "on-error": "#690005",
+                        "primary-container": "#ffb68b",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "tertiary-container": "#abcdcd",
+                        "on-tertiary-fixed": "#002020",
+                        "surface-variant": "#333538",
+                        "on-primary-fixed": "#321200",
+                        "surface-container-lowest": "#0c0e11",
+                        "tertiary-fixed": "#c7e9e9",
+                        "on-surface": "#e2e2e6",
+                        "surface-tint": "#ffb68b",
+                        "error-container": "#93000a",
+                        "primary-fixed": "#ffdbc9",
+                        "tertiary": "#c7e9e9",
+                        "surface-dim": "#111316",
+                        "on-primary-container": "#7a4523",
+                        "background": "#111316",
+                        "surface-container-low": "#1a1c1f",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "on-surface-variant": "#d7c2b8",
+                        "surface-container-high": "#282a2d",
+                        "inverse-primary": "#88512e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "xl": "80px",
+                        "sm": "16px",
+                        "md": "24px",
+                        "xs": "8px",
+                        "base": "4px",
+                        "lg": "40px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "display-lg": ["Playfair Display"],
+                        "label-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>body {
+    background-color: theme("colors.background");
+    color: theme("colors.on-surface");
+    position: relative
+    }
+/* Background Texture Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAqTSRTY7Gvcbzy_z4hdMgnn8S2WYflmfRS086-8LBgDmZb6quf95QwoYLWuOy6O2ey5rlSKZek4qWcTGSAQbWRDezblbnNMz_f7Rojch6gSe2tZC4AD0EibrK5d6JRmqTWcaq88Z5XVxj63sFlYQbDzMS9eQyx1kgC_4g8rkVh9z_ua14bGfSqIk8OhHJzRt7nSDSSXqRSMakSSZZAwKV3GbP2B6Eb2klygIS4ebS2yH7xM1yWjsFmn9lWRcFwGp1FmBm9O3a9N3Mr);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05;
+    z-index: -1;
+    pointer-events: none
+    }
+.glass-panel {
+    background-color: theme("colors.surface-glass");
+    backdrop-filter: blur(16px);
+    border: 1px solid theme("colors.border-glow")
+    }
+.copper-glow:hover {
+    box-shadow: 0 0 15px rgba(255, 182, 139, 0.2);
+    border-color: theme("colors.primary")
+    }
+.metric-circle {
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    transition: stroke-dashoffset 1.5s ease-out
+    }
+.metric-circle.animate {
+    stroke-dashoffset: 0;
+    /* Updated via JS */
+    }</style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface-glass backdrop-blur-md border-b border-white/20 flat no shadows flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 w-full">
+<div class="flex items-center gap-8">
+<a class="font-headline-md text-headline-md text-primary tracking-tighter" href="#">VIYGO</a>
+<div class="hidden md:flex gap-6 font-label-md text-label-md uppercase tracking-wider">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary transition-all duration-300" href="#">Lookbook</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary transition-all duration-300" href="#">Shop</a>
+<a class="text-primary border-b-2 border-primary pb-1" href="#">Sustainability</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary transition-all duration-300" href="#">Help</a>
+</div>
+</div>
+<div class="flex items-center gap-4 text-primary">
+<button class="hover:text-primary transition-all duration-300 Active: scale-95 opacity-80">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+<button class="hover:text-primary transition-all duration-300 Active: scale-95 opacity-80">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow pt-24 pb-xl">
+<!-- Hero Section -->
+<section class="px-margin-mobile md:px-margin-desktop py-xl">
+<div class="max-w-7xl mx-auto text-center mb-xl">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-sm">Rooted in Responsibility</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">A transparent look at our journey towards a sustainable future. Explore our commitments to the earth, our partners, and the integrity of our ingredients.</p>
+</div>
+<!-- Bento Grid -->
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Carbon Neutrality (Large Block) -->
+<div class="col-span-1 md:col-span-8 glass-panel rounded-xl overflow-hidden relative group h-[400px]">
+<img alt="Carbon Neutrality" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-50 transition-opacity duration-700" data-alt="A sweeping, aerial view of a lush, thriving botanical farm at twilight. The scene is bathed in deep, moody shadows of a midnight garden aesthetic, with subtle, warm copper lighting illuminating rows of healthy plants. The image should convey a sense of serene, high-end agricultural luxury, emphasizing dark, rich greens and earthy tones consistent with a premium skincare brand's ethical sourcing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCejIiV7sMAnyadxHNM06F9palx5D9Li_Dqm_XDi4lqJ-jQY6SAHUhGDHNFenOtcagGSR-MfxTFeRuc_VFrYrGhTdZhlv2Q8rfCouQ1S_lxGW8NAWRbPZe5qG3MQSiggbuI7JOdWytHQHZB5nWRgO26EmacgoD9bBxY7lefCvqceQ7cv1hsBOrnbeojishHTArito3xhWFBxH7uVV9u2BRNvgDwKR7QD2KZiUxEzN-3SuzTeUi7w5jYC_gfiWNh7H0Ozk58NpgzWexT"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-lg w-full">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Carbon Neutral Operations</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">As of 2024, our entire supply chain and manufacturing process has achieved net-zero emissions through rigorous internal reductions and verified botanical offsets.</p>
+</div>
+<div class="hidden md:block text-right">
+<span class="font-display-lg text-display-lg text-primary block">100%</span>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Offset Achieved</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Plastic-Free Packaging (Small Block) -->
+<div class="col-span-1 md:col-span-4 glass-panel rounded-xl p-md flex flex-col justify-between h-[400px] copper-glow transition-all duration-500">
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-sm" style="font-variation-settings: 'FILL' 1;">eco</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">Glass &amp; Aluminum</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Transitioning away from single-use plastics. Our primary vessels are now infinitely recyclable glass and post-consumer recycled aluminum.</p>
+</div>
+<div class="relative w-32 h-32 mx-auto mt-6">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="rgba(255, 255, 255, 0.1)" stroke-width="8"></circle>
+<circle class="metric-circle" cx="50" cy="50" data-percentage="85" fill="none" r="45" stroke="#FFB68B" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md text-primary">85%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Plastic Free</span>
+</div>
+</div>
+</div>
+<!-- Fair Trade Sourcing (Medium Block) -->
+<div class="col-span-1 md:col-span-6 glass-panel rounded-xl p-md flex flex-col md:flex-row gap-6 items-center">
+<img alt="Fair Trade" class="w-full md:w-1/2 h-48 object-cover rounded-lg" data-alt="Close-up macro photography of hands gently harvesting delicate botanicals in a dimly lit, atmospheric setting. The lighting focuses softly on the vibrant textures of the plants and the hands, creating a moody, premium aesthetic. Dark background tones of deep charcoal and subtle teal enhance the luminous quality of the organic elements, fitting a luxury, ethical beauty narrative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSc0RGLz97cIGfJWJeNH-yAJvExV4WpobGn1QLf0xHH5Sro4UQnLCPO1W3tO6F2v06GSo2DxPPY1SDilAlTAG9XSyHjdjbU6hNbnWk98g1uZGkQp4Vzp9MhGsqiwc1NxKq2Wr5mrf5XZwJSrwxdwdyCWxwYu3hkxj_qrB7xS-4XqbnBhZdiJjkR_xhHrn08nrPWHH6yRfKBuMO3EYVlU1zEYopUWOWbp5MyfYnd8mRk62Ej8KA8I7hbwGpc0b_WWk6KRH7vCZ7OrCu"/>
+<div class="w-full md:w-1/2">
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">Ethical Sourcing</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">We partner directly with family-owned botanical farms, ensuring fair wages and regenerative agricultural practices.</p>
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-label-md text-label-md">Fair Trade Certified</span>
+</div>
+</div>
+</div>
+<!-- Download Report Callout (Medium Block) -->
+<div class="col-span-1 md:col-span-6 bg-surface-charcoal rounded-xl p-lg border border-border-glow flex flex-col items-center justify-center text-center relative overflow-hidden">
+<!-- Subtle background texture for the dark block -->
+<div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at center, #FFB68B 0%, transparent 70%);"></div>
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md text-primary mb-sm">2024 Annual Report</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-sm">Dive deep into our metrics, our challenges, and our roadmap for the upcoming year.</p>
+<a class="inline-flex items-center gap-2 bg-primary text-surface px-6 py-3 rounded uppercase font-label-md text-label-md hover:bg-primary-fixed-dim transition-colors" href="#">
+<span>Download Full PDF</span>
+<span class="material-symbols-outlined">download</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full py-xl px-margin-mobile md:px-margin-desktop border-t border-white/10 flat no shadows">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter max-w-7xl mx-auto">
+<div class="flex flex-col gap-4">
+<span class="font-headline-sm text-headline-sm text-primary">VIYGO</span>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 VIYGO LUXE. All rights reserved.</p>
+</div>
+<div class="flex flex-col gap-2 font-body-md text-body-md">
+<a class="text-primary font-bold hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Sustainability Reports</a>
+<a class="text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple animation for the SVG circular chart
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                const circles = document.querySelectorAll('.metric-circle');
+                circles.forEach(circle => {
+                    const percentage = circle.getAttribute('data-percentage');
+                    const circumference = 283; // 2 * pi * r (r=45)
+                    const offset = circumference - (percentage / 100) * circumference;
+                    circle.style.strokeDashoffset = offset;
+                    circle.classList.add('animate');
+                });
+            }, 500);
+        });
+    </script>
+</body></html>

@@ -11,7 +11,8 @@ class Promo extends Model
 {
     use SoftDeletes;
 
-    protected $table      = 'promo';
+    protected $table = 'promo';
+
     protected $primaryKey = 'id_promo';
 
     protected $fillable = [
@@ -33,13 +34,13 @@ class Promo extends Model
     protected function casts(): array
     {
         return [
-            'time_start'    => 'datetime',
-            'time_expired'  => 'datetime',
-            'diskon'        => 'decimal:2',
-            'diskon_max'    => 'decimal:2',
+            'time_start' => 'datetime',
+            'time_expired' => 'datetime',
+            'diskon' => 'decimal:2',
+            'diskon_max' => 'decimal:2',
             'min_transaksi' => 'decimal:2',
-            'stock'         => 'integer',
-            'used_counter'  => 'integer',
+            'stock' => 'integer',
+            'used_counter' => 'integer',
         ];
     }
 
@@ -59,8 +60,8 @@ class Promo extends Model
     public function users()
     {
         return $this->belongsToMany(User::class, 'user_promo', 'id_promo', 'id_user')
-                    ->withPivot('is_used', 'used_at')
-                    ->withTimestamps();
+            ->withPivot('is_used', 'used_at')
+            ->withTimestamps();
     }
 
     public function orders(): HasMany
@@ -73,7 +74,7 @@ class Promo extends Model
     public function scopeActive($query)
     {
         return $query->where('status', 'active')
-                     ->where('time_expired', '>=', now());
+            ->where('time_expired', '>=', now());
     }
 
     public function scopeByCode($query, string $code)

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Salon Profile Management - VIYGO</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Manrope (Body/Label) & Playfair Display (Headline/Display) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-highest": "#333538",
+                        "on-error-container": "#ffdad6",
+                        "background": "#111316",
+                        "primary-fixed": "#ffdbc9",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "secondary": "#a5cbea",
+                        "on-secondary-container": "#97bddb",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "surface-dim": "#111316",
+                        "surface-container": "#1e2023",
+                        "outline": "#9f8d84",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-surface": "#e2e2e6",
+                        "primary-container": "#ffb68b",
+                        "inverse-on-surface": "#2f3034",
+                        "surface": "#111316",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "surface-tint": "#ffb68b",
+                        "inverse-primary": "#88512e",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "surface-variant": "#333538",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "on-tertiary-container": "#385858",
+                        "on-tertiary": "#143536",
+                        "on-primary": "#502405",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "on-primary-fixed": "#321200",
+                        "surface-container-high": "#282a2d",
+                        "primary-fixed-dim": "#ffb68b",
+                        "primary": "#ffdbc8",
+                        "inverse-surface": "#e2e2e6",
+                        "on-background": "#e2e2e6",
+                        "on-secondary-fixed": "#001e2f",
+                        "tertiary-container": "#abcdcd",
+                        "on-tertiary-fixed": "#002020",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "on-surface-variant": "#d7c2b8",
+                        "tertiary": "#c7e9e9",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-secondary": "#04344d",
+                        "surface-bright": "#37393d",
+                        "outline-variant": "#52443c",
+                        "surface-container-low": "#1a1c1f",
+                        "surface-charcoal": "#1A1D21",
+                        "tertiary-fixed": "#c7e9e9",
+                        "secondary-container": "#264d67",
+                        "on-primary-container": "#7a4523"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "sm": "16px",
+                        "md": "24px",
+                        "margin-desktop": "80px",
+                        "base": "4px",
+                        "xl": "80px",
+                        "xs": "8px",
+                        "lg": "40px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "safe": "env(safe-area-inset-bottom)"
+                    },
+                    fontFamily: {
+                        "label-md": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "display-lg": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"]
+                    },
+                    fontSize: {
+                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+                        "display-lg-mobile": ["36px", { lineHeight: "44px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            /* Subtle dark floral ambient texture fallback via css gradients */
+            background-image: radial-gradient(circle at 50% 0%, #1a1c1f 0%, #111316 70%);
+            background-attachment: fixed;
+        }
+        
+        /* Premium Input Styling */
+        .glass-input {
+            background-color: #1A1D21; /* surface-charcoal */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e2e2e6; /* on-surface */
+            transition: all 0.3s ease;
+        }
+        .glass-input:focus {
+            outline: none;
+            border-color: #ffb68b; /* primary-container */
+            box-shadow: 0 0 0 2px rgba(255, 182, 139, 0.2);
+        }
+        
+        /* Hide scrollbar for clean horizontal scrolling */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased md:hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar Component (from JSON) -->
+<header class="fixed top-0 w-full bg-surface-glass backdrop-blur-md text-primary font-headline-md text-headline-md font-playfair border-b border-border-glow flex justify-between items-center px-margin-mobile h-16 z-50">
+<!-- Leading Icon -->
+<button aria-label="Menu" class="text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200 p-2 -ml-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Headline / Brand -->
+<div class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight absolute left-1/2 -translate-x-1/2">
+            VIYGO
+        </div>
+<!-- Trailing Avatar -->
+<button class="hover:opacity-80 transition-opacity active:scale-95 duration-200 rounded-full border border-border-glow overflow-hidden w-8 h-8 flex items-center justify-center bg-surface-container-high">
+<img alt="Admin Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a chic beauty salon manager. Soft, luminous lighting highlighting clear skin. Deep midnight background creating a sophisticated contrast. Serene and elegant expression, reflecting a high-end luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZJvqlnGAusjzDC-W8N-OuxpS2qJWjF9SvP9XtSfuza-D2G-hMmZPe-lZjqmYVOELzS0b_PrM7rpiv3dN3m4Q7q_wQxddxEK0-JcNZWYeAprujZmk1BPLxZK421eyMwa6yV0wZOPITEMb60LMesdW5I89YtQnHfwt1e976M5HwUGPTYjFK14axH3WWH9NOBPGeKoLif2p6JSgGz2accOVpZbndFUd0wbNKaSPl7HW79nBzIbnGJRGys3glJurqCqOy2A2YVpFjpl_U"/>
+</button>
+</header>
+<!-- Main Scrollable Content -->
+<main class="pt-[88px] pb-[160px] px-margin-mobile flex flex-col gap-md">
+<!-- Page Context Header (Centered per request) -->
+<div class="text-center mb-xs">
+<h1 class="font-headline-md text-headline-md text-on-surface">Salon Profile</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage your storefront presence</p>
+</div>
+<!-- Section: General Information -->
+<section class="bg-surface-glass backdrop-blur-md rounded-xl border border-border-glow p-md relative overflow-hidden">
+<!-- Subtle ambient glow inside card -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-full blur-3xl pointer-events-none"></div>
+<h2 class="font-label-md text-label-md text-primary uppercase tracking-widest mb-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">storefront</span>
+                General Info
+            </h2>
+<form class="flex flex-col gap-sm">
+<!-- Field Group -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest" for="salonName">Salon Name</label>
+<input class="glass-input rounded-DEFAULT px-3 py-2 font-body-md text-body-md w-full" id="salonName" type="text" value="Lumière Beauty Atelier"/>
+</div>
+<!-- Field Group -->
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest" for="salonDesc">Description</label>
+<textarea class="glass-input rounded-DEFAULT px-3 py-2 font-body-md text-body-md w-full resize-none" id="salonDesc" rows="3">A serene sanctuary blending modern skincare science with botanical artistry. Experience bespoke treatments in a tranquil, twilight-inspired atmosphere.</textarea>
+</div>
+<!-- Dual Field Row -->
+<div class="grid grid-cols-2 gap-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest" for="salonEmail">Email</label>
+<input class="glass-input rounded-DEFAULT px-3 py-2 font-body-md text-body-md w-full" id="salonEmail" type="email" value="hello@lumiere.co"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest" for="salonPhone">Phone</label>
+<input class="glass-input rounded-DEFAULT px-3 py-2 font-body-md text-body-md w-full" id="salonPhone" type="tel" value="+1 (555) 019-2834"/>
+</div>
+</div>
+</form>
+</section>
+<!-- Section: Stylists & Team -->
+<section class="bg-surface-glass backdrop-blur-md rounded-xl border border-border-glow p-md">
+<div class="flex justify-between items-center mb-sm">
+<h2 class="font-label-md text-label-md text-primary uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">groups</span>
+                    Team
+                </h2>
+<!-- Secondary Button (Ghost/Transparent with border) -->
+<button class="bg-transparent border border-secondary text-secondary rounded-DEFAULT px-3 py-1 font-label-sm text-label-sm uppercase tracking-widest flex items-center gap-1 hover:bg-secondary/10 transition-colors">
+<span class="material-symbols-outlined text-[14px]">add</span>
+                    Add
+                </button>
+</div>
+<!-- Horizontal Scroll List for Team Members -->
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-2 -mx-md px-md snap-x">
+<!-- Team Member Card 1 -->
+<div class="snap-start shrink-0 w-[140px] bg-surface-charcoal border border-[rgba(255,255,255,0.05)] rounded-lg p-3 flex flex-col items-center text-center relative group">
+<div class="w-16 h-16 rounded-full overflow-hidden border border-border-glow mb-2">
+<img alt="Elena Rostova" class="w-full h-full object-cover" data-alt="A portrait of a male beauty technician with short hair. High-key soft lighting emphasizing clear skin texture against a deep charcoal background. The aesthetic is clean, clinical, yet warm and inviting, representing a luxury salon environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASYtBOeEg1AUxVN0fQatxZpzrrk4NnjBdBrRNLooL6BQ9dJFPu6cM81mb1LD_ZHaAelb4HNhZfDM74pGS5akyEynJxz73XgDOdcGrZcj89ndd3H8U48usXwjre_HzOSETLR9UpEJ54-xityfc4vZ9FHbJhHi2xU6DNC-MFfN8pWaQynlxbxCECuT5qT6kKsalp9JH6KDMFeLPasROqyCuGZqBWKsHv-VQBMgp5jH8l1MYcwuyAUPWHBvtYAYv-uuMV-s79YGc9o_aW"/>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface truncate w-full">Elena Rostova</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate w-full">Lead Esthetician</p>
+<button aria-label="Edit member" class="absolute top-2 right-2 text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+<!-- Team Member Card 2 -->
+<div class="snap-start shrink-0 w-[140px] bg-surface-charcoal border border-[rgba(255,255,255,0.05)] rounded-lg p-3 flex flex-col items-center text-center relative">
+<div class="w-16 h-16 rounded-full overflow-hidden border border-border-glow mb-2">
+<img alt="Marcus Vance" class="w-full h-full object-cover" data-alt="A portrait of a sophisticated male grooming specialist. Dramatic yet soft side-lighting illuminating his features against a midnight dark background. He wears a dark minimalist uniform. The overall mood is high-end, serene, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBufLWO-7FXcsS7Y-Ma51V3RHr50HK1ptWcQ_WwnyGLhLkv1IWA6depdaTSXpfZjYbLx_dp_VvwC_qoAs6uZQZiLpmdO7uHcZORLH1ZCwAP3Rfo1Trkbnnd-j0Rx_gMEgyQjbONS_0GYcTfu7f7nc5Um1nW_gmjpEWEPpRFZQcrHk8d3lbB4k5rVYKIIa3_ODdiaF9hg7dnMv76e740iCcXGkOfAxFoghn6qkm8N-EDbGdCUTcjG9UiN6nDLYDvJQbJW09wfJwTZlrm"/>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface truncate w-full">Marcus Vance</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate w-full">Senior Stylist</p>
+<button class="absolute top-2 right-2 text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+<!-- Team Member Card 3 -->
+<div class="snap-start shrink-0 w-[140px] bg-surface-charcoal border border-[rgba(255,255,255,0.05)] rounded-lg p-3 flex flex-col items-center text-center relative">
+<div class="w-16 h-16 rounded-full overflow-hidden border border-border-glow mb-2">
+<img alt="Sarah Chen" class="w-full h-full object-cover" data-alt="A portrait of a serene female massage therapist. Luminous glowing lighting on her face with a very dark background. She looks calm and professional. The styling reflects a luxury wellness retreat aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxggvv110HCXZ7a8PAs-BmiZyiQkUEL8US7WRLtCZ_42WHVpajUm5DMHIgpy4KN5vCZTO2Ws7ospWWd-DFn1dJvMfPyI0OMY0nfmXOYotEENfPXlaRhbvbDE5MMVR-yzllqtfsbl9Rcm2n_Vh7P1CnmWvDXqKO-Za6aArPddDvgvULwgEGVYVMKgVtXCJW1eRlkS2T-AAvjV9bOWaQYPS6bLFUPeW4DfXnpNzq3Wzp8X3g-kvVwp6qi6tMvNUWEmwnNz3T4GCHbIfM"/>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface truncate w-full">Sarah Chen</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate w-full">Massage Therapist</p>
+<button class="absolute top-2 right-2 text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Area (Easily accessible Save button) -->
+<div class="fixed bottom-[72px] left-0 w-full px-margin-mobile py-4 z-40 bg-gradient-to-t from-background via-background/90 to-transparent pointer-events-none flex justify-center">
+<!-- Primary Button Style: Solid Copper -->
+<button class="pointer-events-auto w-full max-w-sm bg-primary-container text-surface-dim font-label-md text-label-md uppercase tracking-widest py-3 px-6 rounded-DEFAULT shadow-[0_4px_20px_rgba(255,182,139,0.15)] active:scale-[0.98] transition-all flex items-center justify-center gap-2 hover:bg-primary-fixed">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+            Save Changes
+        </button>
+</div>
+<!-- BottomNavBar Component (from JSON) -->
+<!-- Active Tab: Settings (as this is Salon Profile Management) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-[max(env(safe-area-inset-bottom),12px)] bg-surface-glass backdrop-blur-lg border-t border-border-glow rounded-t-xl">
+<!-- Tab 1: Metrics (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150 w-16">
+<span class="material-symbols-outlined mb-1">monitoring</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest">Metrics</span>
+</button>
+<!-- Tab 2: Inbox (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150 w-16 relative">
+<!-- Example notification dot -->
+<span class="absolute top-0 right-2 w-2 h-2 bg-primary-container rounded-full"></span>
+<span class="material-symbols-outlined mb-1">chat_bubble</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest">Inbox</span>
+</button>
+<!-- Tab 3: Schedule (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150 w-16">
+<span class="material-symbols-outlined mb-1">calendar_today</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest">Schedule</span>
+</button>
+<!-- Tab 4: Settings (Active) -->
+<button class="flex flex-col items-center justify-center text-primary font-bold transition-all hover:text-primary-fixed-dim active:scale-90 duration-150 w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest text-primary">Settings</span>
+</button>
+</nav>
+</body></html>

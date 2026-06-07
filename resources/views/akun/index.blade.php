@@ -24,6 +24,11 @@
                 ['icon'=>'📅', 'title'=>'My Bookings',     'desc'=>'View and manage upcoming and past bookings',         'link'=>route('akun.bookings'),    'link_text'=>'View bookings',  'count'=> $upcomingCount ?? 0],
                 ['icon'=>'👤', 'title'=>'Personal Info',   'desc'=>'Edit your profile details',                          'link'=>route('akun.pengaturan'),  'link_text'=>'Edit profile'],
                 ['icon'=>'❤️', 'title'=>'Favourites',      'desc'=>'Salons and treatments you have saved',               'link'=>route('akun.favorit'),     'link_text'=>'View favourites'],
+                // V2 — E-commerce, Empty Return, Community
+                ['icon'=>'🛒', 'title'=>'Pesanan Produk',  'desc'=>'Riwayat & status pesanan skincare',                  'link'=>route('shop.pesanan.index'),'link_text'=>'Lihat pesanan'],
+                ['icon'=>'🧴', 'title'=>'Wishlist Produk', 'desc'=>'Produk skincare yang kamu simpan',                   'link'=>route('shop.wishlist'),    'link_text'=>'Lihat wishlist'],
+                ['icon'=>'💰', 'title'=>'Poin & Reward',   'desc'=>'Saldo poin, tier, dan konten eksklusif',             'link'=>route('akun.poin'),        'link_text'=>'Lihat poin'],
+                ['icon'=>'🔖', 'title'=>'Bookmark Forum',  'desc'=>'Thread komunitas yang kamu simpan',                  'link'=>route('akun.bookmarks'),   'link_text'=>'Lihat bookmark'],
             ];
         @endphp
 

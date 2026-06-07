@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO Admin - Schedule</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#333538",
+                      "on-error-container": "#ffdad6",
+                      "background": "#111316",
+                      "primary-fixed": "#ffdbc9",
+                      "on-error": "#690005",
+                      "error": "#ffb4ab",
+                      "secondary": "#a5cbea",
+                      "on-secondary-container": "#97bddb",
+                      "error-container": "#93000a",
+                      "secondary-fixed-dim": "#a5cbea",
+                      "surface-dim": "#111316",
+                      "surface-container": "#1e2023",
+                      "outline": "#9f8d84",
+                      "tertiary-fixed-dim": "#abcdcd",
+                      "surface-container-lowest": "#0c0e11",
+                      "on-surface": "#e2e2e6",
+                      "primary-container": "#ffb68b",
+                      "inverse-on-surface": "#2f3034",
+                      "surface": "#111316",
+                      "on-tertiary-fixed-variant": "#2c4c4c",
+                      "surface-tint": "#ffb68b",
+                      "inverse-primary": "#88512e",
+                      "border-glow": "rgba(255, 255, 255, 0.2)",
+                      "surface-variant": "#333538",
+                      "on-primary-fixed-variant": "#6c3a19",
+                      "on-tertiary-container": "#385858",
+                      "on-tertiary": "#143536",
+                      "on-primary": "#502405",
+                      "on-secondary-fixed-variant": "#234a64",
+                      "on-primary-fixed": "#321200",
+                      "surface-container-high": "#282a2d",
+                      "primary-fixed-dim": "#ffb68b",
+                      "primary": "#ffdbc8",
+                      "inverse-surface": "#e2e2e6",
+                      "on-background": "#e2e2e6",
+                      "on-secondary-fixed": "#001e2f",
+                      "tertiary-container": "#abcdcd",
+                      "on-tertiary-fixed": "#002020",
+                      "surface-glass": "rgba(17, 19, 22, 0.6)",
+                      "on-surface-variant": "#d7c2b8",
+                      "tertiary": "#c7e9e9",
+                      "secondary-fixed": "#c9e6ff",
+                      "on-secondary": "#04344d",
+                      "surface-bright": "#37393d",
+                      "outline-variant": "#52443c",
+                      "surface-container-low": "#1a1c1f",
+                      "surface-charcoal": "#1A1D21",
+                      "tertiary-fixed": "#c7e9e9",
+                      "secondary-container": "#264d67",
+                      "on-primary-container": "#7a4523"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sm": "16px",
+                      "md": "24px",
+                      "margin-desktop": "80px",
+                      "base": "4px",
+                      "xl": "80px",
+                      "xs": "8px",
+                      "lg": "40px",
+                      "gutter": "24px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "label-md": ["Manrope"],
+                      "headline-lg": ["Playfair Display"],
+                      "display-lg-mobile": ["Playfair Display"],
+                      "headline-md": ["Playfair Display"],
+                      "body-md": ["Manrope"],
+                      "display-lg": ["Playfair Display"],
+                      "body-lg": ["Manrope"],
+                      "label-sm": ["Manrope"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                      "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                      "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                      "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                      "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                      "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                      "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            /* Subtle floral background pattern implied by design system */
+            background-image: radial-gradient(circle at 10% 20%, rgba(26, 29, 33, 0.8) 0%, transparent 40%),
+                              radial-gradient(circle at 90% 80%, rgba(26, 29, 33, 0.8) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+        
+        /* Custom scrollbar for horizontal calendar view */
+        .scheduler-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        .scheduler-scroll::-webkit-scrollbar-track {
+            background: theme('colors.surface-container');
+        }
+        .scheduler-scroll::-webkit-scrollbar-thumb {
+            background: theme('colors.surface-variant');
+            border-radius: 4px;
+        }
+        .scheduler-scroll::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline');
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- JSON Component: SideNavBar -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface-charcoal border-r border-white/10 flex flex-col p-md gap-sm z-50 hidden md:flex">
+<!-- Header -->
+<div class="flex items-center gap-sm mb-lg px-xs">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-border-glow bg-surface-container flex items-center justify-center">
+<img alt="Salon Logo" class="w-full h-full object-cover" data-alt="A stylized, minimalist salon logo featuring abstract geometric lines in copper tones against a deep midnight black background. The design is elegant, symmetrical, and conveys a sense of high-end beauty services." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqsbVFLw96fc3VxaLn_4PvimW3QdJAddFM3T_iz7KHJ2w6-hxXnImuJEnk7L0osA7xhho_wzdJd0qdiHLjaXJQzf105jfZtc4KIab2GTtc5rUjRl3w-j50D3Xy7heXYIGm6M54ce-ayBcEnDwer8JDODgr0OES_cro0J2S6RGUI95Tp0ldVmR_6JGSyquxAnIu_p35jw_nDwnuVs5uCJkeKJDzejA5-At3njhBEucSoRaods3Qz4O8vtRuhg74CB58uroxc10Dzzzh"/>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">VIYGO Admin</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest opacity-80">Elite Management</p>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full bg-primary-container text-on-primary-container py-xs px-sm rounded font-label-md text-label-md hover:opacity-90 transition-opacity mb-md flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">add</span>
+            New Appointment
+        </button>
+<!-- Navigation Links -->
+<div class="flex-1 flex flex-col gap-xs">
+<!-- Inactive -->
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Dashboard</span>
+</a>
+<!-- Active (Bookings) -->
+<a class="flex items-center gap-sm px-sm py-xs bg-primary-container text-on-primary-container rounded-lg font-bold scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Bookings</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 rounded-lg" href="#">
+<span class="material-symbols-outlined">content_cut</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Stylists</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 rounded-lg" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Inventory</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 rounded-lg" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Analytics</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Clients</span>
+</a>
+</div>
+<!-- Footer Links -->
+<div class="mt-auto border-t border-white/10 pt-sm flex flex-col gap-xs">
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Support</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<main class="flex-1 md:ml-64 flex flex-col min-h-screen relative w-full">
+<!-- JSON Component: TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-surface-glass backdrop-blur-md border-b border-white/20 flat no shadows flex justify-between items-center px-margin-mobile md:px-margin-desktop py-md">
+<!-- Mobile Brand (Hidden on Desktop as SideNav has it) -->
+<div class="md:hidden flex items-center gap-sm">
+<span class="font-display-lg-mobile text-display-lg-mobile font-bold tracking-tight text-primary">VIYGO</span>
+</div>
+<!-- Search Bar on Left (Desktop) -->
+<div class="hidden md:flex items-center relative w-96">
+<span class="material-symbols-outlined absolute left-sm text-on-surface-variant z-10 pointer-events-none">search</span>
+<input class="w-full bg-surface-charcoal border border-white/10 text-on-surface rounded pl-lg pr-sm py-xs focus:ring-0 focus:border-primary-container focus:shadow-[0_0_8px_rgba(255,182,139,0.2)] transition-all font-body-md text-body-md placeholder:text-on-surface-variant/50" placeholder="Search clients, appointments..." type="text"/>
+</div>
+<!-- Trailing Icons -->
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-300 cursor-pointer active:opacity-80 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-primary-container rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-300 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-glow ml-sm">
+<img alt="Admin Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a mature female salon administrator. She has a confident, warm expression, wearing a minimalist black blazer. The background is softly blurred, emphasizing a modern, well-lit indoor environment with a serene, high-end vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjbnX_Yb2SC4krXgBCq2DmUSSDz2zDvPQhQdCBjO10yt1TDuvoOSH3twTxQS7de7D_c-5yU9W16OxYqZsbFpPyoVFuMjraWItZgtqLzEWa-L7jujCPI6JCtwe9RRFcIDQlC7_BuK9ZC1muEyMp24ZLY5R0PVrC6wc-7P5TynF-1H6O1qfhibFwCBNR1bctSYPMXrhvEsht5-hD3QFpykxxy2KWgOmWyFte8CDke-eqSA-e6ZKS2d_Lq2fRqv_DjH27uDmWT9HRrUBy"/>
+</div>
+</div>
+</header>
+<!-- Page Content: Scheduler -->
+<div class="flex-1 flex flex-col p-margin-mobile md:p-gutter gap-md h-[calc(100vh-80px)] overflow-hidden">
+<!-- Controls Row -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-sm shrink-0">
+<div class="flex items-center gap-sm">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Thursday, Oct 24</h2>
+<div class="flex bg-surface-container rounded border border-white/10 p-base">
+<button class="px-sm py-xs text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="px-sm py-xs text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<!-- Filters/Toggles -->
+<div class="flex bg-surface-container-highest rounded border border-white/10 p-base">
+<button class="px-sm py-xs rounded bg-surface-charcoal text-on-surface border border-border-glow shadow-sm font-label-sm text-label-sm">Day</button>
+<button class="px-sm py-xs rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm">Week</button>
+</div>
+</div>
+</div>
+<!-- Calendar Canvas (Glassmorphism Bento Container) -->
+<div class="flex-1 bg-surface-glass backdrop-blur-md border border-border-glow rounded-xl flex flex-col overflow-hidden relative">
+<!-- Inner Gradient Top Accent -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary-container/20 to-transparent"></div>
+<!-- Stylist Headers -->
+<div class="flex border-b border-white/10 bg-surface-charcoal/50 shrink-0 pr-2"> <!-- pr-2 to align with scrollbar space below if needed -->
+<!-- Empty corner for time column -->
+<div class="w-16 md:w-20 shrink-0 border-r border-white/10"></div>
+<!-- Stylist Columns Container -->
+<div class="flex-1 flex divide-x divide-white/10">
+<!-- Stylist 1 -->
+<div class="flex-1 min-w-[200px] flex items-center justify-center py-xs gap-sm">
+<img alt="Stylist 1" class="w-8 h-8 rounded-full border border-primary-container object-cover" data-alt="A stylish portrait of a young male hair stylist. He has a modern, edgy haircut and is wearing a dark, textured apron. The lighting is moody and sophisticated, highlighting his professional demeanor against a dark, out-of-focus salon background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUpCfB1Loc_2XL3zKhlGmq_7kXgncn6JERNXj08cc1h7RSJ82lQActCv1Q3UdRQ1E69h2IKk6vQ4nlI_BDgOCruRXRTM6C8AB6hWBbslYfOE2wOMI-eQjeIxgLZsWdUgYeFZRrDAbvLtMAwitx11_HGJ9_lorTYJfG1VeoNZuL9Rc2YWfJ2pQuPcsUeas5uQP3_uWkUZ70-qaxVOwxZNqk3EcWxM5_zJDtNZ4FasYR8lvFnltV21DqU-P1XTZ-aqWv9nDUrBKq84Zv"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Julian M.</p>
+<p class="font-label-sm text-label-sm text-secondary-fixed-dim font-normal">Color Specialist</p>
+</div>
+</div>
+<!-- Stylist 2 -->
+<div class="flex-1 min-w-[200px] flex items-center justify-center py-xs gap-sm">
+<img alt="Stylist 2" class="w-8 h-8 rounded-full border border-tertiary-container object-cover" data-alt="A portrait of a confident female aesthetician. She has flawless skin, subtle makeup, and dark hair pulled back. She is wearing a minimalist dark grey uniform. The environment is a serene, dimly lit spa setting with soft, ambient lighting emphasizing a clinical yet luxurious atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9h01udg4CpUiZ8Ka-nuEvmyTgCS4phf0fqwxm6qBStHoTort_E3xNQ2YoOQzD9dRPHRmgtSJ-JeV2w5rvtTtm8FlBtmhVeAQW6No4jvEZIvhjT5TiqdONDx1xw_KM_bUrJPF6nVpUlMcQB-rgKygjprUBJoExH1Vn2a0qvE53ieEPUhvdHRScfDHU6EclxgrhbQHkCbKpnSqYCY28Zqc-NXup_fdPLpgJ84g2CNYN-8of1dfHHU3vZugcPAw02HDqJR2TjuNZ96mf"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Elena R.</p>
+<p class="font-label-sm text-label-sm text-tertiary-fixed-dim font-normal">Esthetician</p>
+</div>
+</div>
+<!-- Stylist 3 -->
+<div class="flex-1 min-w-[200px] flex items-center justify-center py-xs gap-sm opacity-50">
+<img alt="Stylist 3" class="w-8 h-8 rounded-full border border-white/20 object-cover grayscale" data-alt="A black and white artistic portrait of a male barber looking slightly away from the camera. The lighting is dramatic, creating strong contrasts. He appears relaxed yet focused, fitting perfectly into a high-end, modern grooming lounge aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsc1TCPNs5YbQEujYWM7zWaXmFQZPLDSrrSNLXulugnl7QLp-5fA3jDg0-yyODEE8t06YOUVsCYMnE-HkyWVyrG34v61xEQsQJFI8N5xQPYrKz4POHJk229fnRbPc3X11OTHi5Qn3F8Ne6U6TWWoFCBytLRcZ8PCKbMCSaX1W1RVeYU1RAZDWgA6m3YlcetBzXFh338O0NaLcW2iypST8CuJJkfkjiBJjhTbaVCYU_ook2A3T7UeUnqCm6rbHzARD-E8kisbGcZ1Cl"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">Marcus T.</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-normal">Off Today</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Schedule Grid Area -->
+<div class="flex-1 flex overflow-y-auto scheduler-scroll relative">
+<!-- Background Grid Lines (Horizontal) -->
+<div class="absolute inset-0 flex flex-col pointer-events-none z-0">
+<div class="h-24 border-b border-white/5 w-full"></div>
+<div class="h-24 border-b border-white/5 w-full"></div>
+<div class="h-24 border-b border-white/5 w-full"></div>
+<div class="h-24 border-b border-white/5 w-full"></div>
+<div class="h-24 border-b border-white/5 w-full"></div>
+<div class="h-24 border-b border-white/5 w-full"></div>
+<div class="h-24 border-b border-white/5 w-full"></div>
+</div>
+<!-- Time Column -->
+<div class="w-16 md:w-20 shrink-0 border-r border-white/10 flex flex-col z-10 bg-surface-charcoal/20">
+<div class="h-24 relative"><span class="absolute top-[-10px] right-sm text-on-surface-variant font-label-sm text-label-sm">9 AM</span></div>
+<div class="h-24 relative"><span class="absolute top-[-10px] right-sm text-on-surface-variant font-label-sm text-label-sm">10 AM</span></div>
+<div class="h-24 relative"><span class="absolute top-[-10px] right-sm text-on-surface-variant font-label-sm text-label-sm">11 AM</span></div>
+<div class="h-24 relative"><span class="absolute top-[-10px] right-sm text-on-surface-variant font-label-sm text-label-sm">12 PM</span></div>
+<div class="h-24 relative"><span class="absolute top-[-10px] right-sm text-on-surface-variant font-label-sm text-label-sm">1 PM</span></div>
+<div class="h-24 relative"><span class="absolute top-[-10px] right-sm text-on-surface-variant font-label-sm text-label-sm">2 PM</span></div>
+<div class="h-24 relative"><span class="absolute top-[-10px] right-sm text-on-surface-variant font-label-sm text-label-sm">3 PM</span></div>
+</div>
+<!-- Stylist Columns Data -->
+<div class="flex-1 flex divide-x divide-white/10 z-10 relative">
+<!-- Julian's Column -->
+<div class="flex-1 min-w-[200px] relative">
+<!-- Appointment 1 (Balayage - long) -->
+<div class="absolute top-[24px] left-2 right-2 h-[180px] bg-surface-charcoal/80 backdrop-blur-md border border-white/10 rounded-lg p-sm shadow-lg flex flex-col group hover:border-primary-container/50 transition-colors border-l-4 border-l-primary-container">
+<div class="flex justify-between items-start mb-xs">
+<h4 class="font-label-md text-label-md text-on-surface">Sarah Jenkins</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">9:15 - 11:00</span>
+</div>
+<p class="font-body-md text-body-md text-primary-fixed-dim mb-auto">Full Balayage &amp; Tone</p>
+<!-- Quick Actions (Visible on hover inside the card) -->
+<div class="flex gap-xs opacity-0 group-hover:opacity-100 transition-opacity mt-sm border-t border-white/10 pt-xs">
+<button class="flex-1 bg-transparent border border-secondary text-secondary rounded py-xs font-label-sm text-label-sm hover:bg-secondary/10 transition-colors">Reschedule</button>
+<button class="flex-1 bg-transparent border border-error text-error rounded py-xs font-label-sm text-label-sm hover:bg-error/10 transition-colors">Cancel</button>
+</div>
+</div>
+<!-- Appointment 2 (Gloss - short) -->
+<div class="absolute top-[240px] left-2 right-2 h-[80px] bg-surface-charcoal/80 backdrop-blur-md border border-white/10 rounded-lg p-sm shadow-lg flex flex-col group hover:border-primary-container/50 transition-colors border-l-4 border-l-secondary-fixed-dim">
+<div class="flex justify-between items-start">
+<h4 class="font-label-md text-label-md text-on-surface">Emma V.</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">1:00 - 1:45</span>
+</div>
+<p class="font-body-md text-body-md text-secondary-fixed-dim truncate">Gloss Treatment</p>
+</div>
+</div>
+<!-- Elena's Column -->
+<div class="flex-1 min-w-[200px] relative">
+<!-- Appointment 3 (Facial) -->
+<div class="absolute top-[0px] left-2 right-2 h-[120px] bg-surface-charcoal/80 backdrop-blur-md border border-white/10 rounded-lg p-sm shadow-lg flex flex-col group hover:border-tertiary-container/50 transition-colors border-l-4 border-l-tertiary-container">
+<div class="flex justify-between items-start mb-xs">
+<h4 class="font-label-md text-label-md text-on-surface">Olivia C.</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">9:00 - 10:15</span>
+</div>
+<p class="font-body-md text-body-md text-tertiary-fixed-dim mb-auto">HydraFacial Elite</p>
+<!-- Quick Actions -->
+<div class="flex gap-xs opacity-0 group-hover:opacity-100 transition-opacity mt-auto border-t border-white/10 pt-xs">
+<button class="flex-1 text-secondary font-label-sm text-label-sm hover:text-secondary-fixed text-left">Reschedule</button>
+</div>
+</div>
+<!-- Blocked Time -->
+<div class="absolute top-[144px] left-2 right-2 h-[48px] bg-surface-container-highest/50 border border-white/5 rounded-lg p-xs flex items-center justify-center opacity-70">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px] mr-xs">restaurant</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Lunch Break</span>
+</div>
+</div>
+<!-- Marcus Column (Empty/Off) -->
+<div class="flex-1 min-w-[200px] relative bg-surface-container-lowest/30 flex items-center justify-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant/40 uppercase tracking-widest rotate-[-90deg]">Not Scheduled</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

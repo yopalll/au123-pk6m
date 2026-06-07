@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Alchemy of Orchids | VIYGO LUXE</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#143536",
+                      "surface-bright": "#37393d",
+                      "inverse-on-surface": "#2f3034",
+                      "on-background": "#e2e2e6",
+                      "error": "#ffb4ab",
+                      "on-tertiary-fixed-variant": "#2c4c4c",
+                      "surface": "#111316",
+                      "secondary-container": "#264d67",
+                      "on-primary": "#502405",
+                      "on-secondary-fixed": "#001e2f",
+                      "on-tertiary-container": "#385858",
+                      "primary-fixed-dim": "#ffb68b",
+                      "inverse-surface": "#e2e2e6",
+                      "on-secondary": "#04344d",
+                      "secondary": "#a5cbea",
+                      "on-secondary-container": "#97bddb",
+                      "secondary-fixed": "#c9e6ff",
+                      "surface-container-highest": "#333538",
+                      "outline-variant": "#52443c",
+                      "on-primary-fixed-variant": "#6c3a19",
+                      "surface-charcoal": "#1A1D21",
+                      "border-glow": "rgba(255, 255, 255, 0.2)",
+                      "surface-container": "#1e2023",
+                      "on-secondary-fixed-variant": "#234a64",
+                      "primary": "#ffdbc8",
+                      "on-error-container": "#ffdad6",
+                      "outline": "#9f8d84",
+                      "on-error": "#690005",
+                      "primary-container": "#ffb68b",
+                      "secondary-fixed-dim": "#a5cbea",
+                      "tertiary-fixed-dim": "#abcdcd",
+                      "tertiary-container": "#abcdcd",
+                      "on-tertiary-fixed": "#002020",
+                      "surface-variant": "#333538",
+                      "on-primary-fixed": "#321200",
+                      "surface-container-lowest": "#0c0e11",
+                      "tertiary-fixed": "#c7e9e9",
+                      "on-surface": "#e2e2e6",
+                      "surface-tint": "#ffb68b",
+                      "error-container": "#93000a",
+                      "primary-fixed": "#ffdbc9",
+                      "tertiary": "#c7e9e9",
+                      "surface-dim": "#111316",
+                      "on-primary-container": "#7a4523",
+                      "background": "#111316",
+                      "surface-container-low": "#1a1c1f",
+                      "surface-glass": "rgba(17, 19, 22, 0.6)",
+                      "on-surface-variant": "#d7c2b8",
+                      "surface-container-high": "#282a2d",
+                      "inverse-primary": "#88512e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "xl": "80px",
+                      "sm": "16px",
+                      "md": "24px",
+                      "xs": "8px",
+                      "base": "4px",
+                      "lg": "40px",
+                      "margin-mobile": "20px",
+                      "margin-desktop": "80px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": ["Playfair Display"],
+                      "headline-md": ["Playfair Display"],
+                      "headline-lg": ["Playfair Display"],
+                      "body-md": ["Manrope"],
+                      "body-lg": ["Manrope"],
+                      "label-sm": ["Manrope"],
+                      "display-lg": ["Playfair Display"],
+                      "label-md": ["Manrope"]
+              },
+              "fontSize": {
+                      "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                      "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                      "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                      "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                      "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                      "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                      "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>/* Custom Floral Background Texture Overlay */
+.floral-texture-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.1;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCnRAYLpTy7uXCv7j50t_TFjpkoy1ElEPgVxRzzexmjTGpDmFlGE_xqktOZ9X8GdXX6N5sGxBmMAAesuwQAF9dPbVIxfX00VjI0O7-62v9v0p5yyAmU1hnVZpq38BP_pCHoqnF5okKNMGaH_FkGtELjUw9-2-OorhGMH-uCj3-X1vEhu-vOum-tPhzKpFp_tmBxiiNqOcCOq3Xo-p1BaXXN24a5Ro021HPJFdCE5_uAxHpvoPAo9d3xlkGopB59fS3yyrc5jUjOGJ2M);
+    background-size: cover;
+    background-position: center;
+    mix-blend-mode: overlay
+    }
+.glass-panel {
+    background-color: rgba(17, 19, 22, 0.6);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2)
+    }
+.copper-highlight {
+    color: #FFB68B
+    }
+/* Dropcap for article */
+.article-body > p:first-of-type::first-letter {
+    float: left;
+    font-family: "Playfair Display", serif;
+    font-size: 5rem;
+    line-height: 4rem;
+    padding-top: 0.5rem;
+    padding-right: 0.75rem;
+    color: #FFB68B;
+    font-weight: 700
+    }</style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<div class="floral-texture-bg" data-alt="A subtle, dark background texture featuring abstract, dark floral and botanical patterns resembling a midnight garden or dark apothecary aesthetic. The tones are almost black, creating a mysterious and luxurious atmosphere, perfect as a foundational layer for a high-end skincare or lifestyle website."></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface-glass backdrop-blur-md border-b border-white/20 h-20">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-full max-w-[1600px] mx-auto">
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Brand Logo -->
+<a class="font-headline-md text-headline-md text-primary tracking-tighter" href="#">VIYGO</a>
+<!-- Desktop Navigation Links -->
+<div class="hidden md:flex items-center space-x-gutter">
+<a class="font-label-md text-label-md uppercase tracking-wider text-primary border-b-2 border-primary pb-1 Active: scale-95 opacity-80" href="#">Lookbook</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary transition-all duration-300" href="#">Shop</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary transition-all duration-300" href="#">Sustainability</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary transition-all duration-300" href="#">Help</a>
+</div>
+<!-- Trailing Icons -->
+<div class="flex items-center space-x-sm">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-20">
+<!-- Hero Section -->
+<header class="relative w-full h-[614px] md:h-[819px] flex items-end pb-lg px-margin-mobile md:px-margin-desktop overflow-hidden group">
+<img alt="Midnight Orchid" class="absolute inset-0 w-full h-full object-cover object-center transform scale-105 group-hover:scale-100 transition-transform duration-[20s] ease-out" data-alt="A cinematic, ultra-high-resolution close-up of a rare, dark purple orchid blooming in the dead of night. The lighting is moody and dramatic, reminiscent of high-end beauty editorial photography. Soft, cool moonlight highlights the delicate, velvety texture of the petals, contrasting with deep, inky black shadows in the background. The overall aesthetic is luxurious, mysterious, and serene, fitting a premium skincare brand's 'Serene Floral Noir' theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxCzy23YPrPDHhZ9uVarsOhvf0dZZV-5HRNF5mQWGdKQ71dK_4YB4Ys-jJlfZHxU_wbKRAoUxY92wvG5EE1qxuTAKZuwXzBqirPmbxH0-izaQSsj_3_tPLhxPxbyANAjIEP6-kGrx2zEoPL2Jt4K6De37r8lDzAJdIMQ5HXtRlFvR0irR-x5Xk3muRl0-n2gKMrevqqScyc9XgDEmlinPBRwzy8gaJnNE0NeuTqH8hEjMTSmk2t8gDcVrS9GP0jNaMnYlcvqNvjny9"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<div class="relative z-10 max-w-4xl">
+<div class="mb-sm">
+<span class="font-label-md text-label-md uppercase tracking-widest text-primary border-b border-primary/30 pb-1">Botanical Science</span>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-background mb-sm">
+                    The Alchemy of Orchids
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    Unlocking the nocturnal secrets of the midnight bloom for profound cellular renewal. A journey into the heart of our most potent formulation yet.
+                </p>
+</div>
+</header>
+<!-- Article Body -->
+<article class="max-w-3xl mx-auto px-margin-mobile md:px-0 py-xl relative">
+<div class="article-body space-y-md text-on-surface-variant font-body-md text-body-md leading-relaxed">
+<p>
+                    In the dense, shadowy understory of the cloud forests, a rare phenomenon occurs. The Midnight Orchid, a botanical enigma, unfurls its petals only under the silver gaze of the moon. It is a fleeting display of resilience and beauty, a masterclass in adaptation. For centuries, this elusive bloom has been whispered about in the annals of traditional apothecaries, revered for its rumored regenerative properties. Today, modern science is finally catching up to the folklore, unveiling a complex biochemical symphony occurring within its midnight heart.
+                </p>
+<p>
+                    Our latest research expedition sought not merely to harvest, but to understand. The alchemy of the orchid lies not in magic, but in a highly specialized defense mechanism. Exposed to the harsh realities of its nocturnal environment, the plant produces a unique cascade of antioxidants and cellular repair enzymes precisely when the sun sets. These compounds are designed to undo the oxidative stress of the day, ensuring the bloom survives to see another night.
+                </p>
+<!-- Pull Quote -->
+<blockquote class="my-lg py-sm px-md border-l-2 border-primary/50 relative glass-panel ml-[-1rem] md:ml-[-2rem] mr-[-1rem] md:mr-[-2rem]">
+<span class="material-symbols-outlined absolute top-sm left-sm text-surface-container-highest/20 text-6xl -z-10" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<p class="font-headline-md text-headline-md text-on-surface italic relative z-10 mb-sm">
+                        "The alchemy of the orchid lies not in magic, but in a highly specialized defense mechanism designed to undo the oxidative stress of the day."
+                    </p>
+<footer class="font-label-sm text-label-sm text-primary uppercase tracking-widest">
+                        — Dr. Aris Thorne, Lead Botanist
+                    </footer>
+</blockquote>
+<p>
+                    The translation of this botanical resilience into a format bio-available for human skin was a monumental undertaking. We had to mimic the precise conditions under which the orchid thrives. Through a proprietary cold-extraction process, we successfully isolated the 'Midnight Phyto-Complex,' a potent serum base that mirrors the plant's nocturnal repair cycle.
+                </p>
+</div>
+<!-- Integrated Shop Section (Bento Grid Style) -->
+<section class="my-xl">
+<div class="flex items-center justify-between mb-md border-b border-white/10 pb-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface">Shop the Story</h2>
+<a class="font-label-sm text-label-sm uppercase tracking-wider text-primary hover:text-on-surface transition-colors flex items-center group" href="#">
+                        Explore Collection
+                        <span class="material-symbols-outlined ml-1 group-hover:translate-x-1 transition-transform text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Main Product Highlight -->
+<div class="md:col-span-8 group relative rounded-lg overflow-hidden glass-panel flex flex-col md:flex-row min-h-[300px]">
+<div class="w-full md:w-1/2 h-48 md:h-full relative overflow-hidden">
+<img alt="Midnight Renewal Serum" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A sleek, minimalist dark glass dropper bottle containing a premium face serum, resting on a reflective black surface. The lighting is low and dramatic, highlighting the copper accents on the bottle's label. The background is a dark, blurry texture reminiscent of crushed velvet or dark floral shadows. The aesthetic is luxurious, clinical, and high-end beauty." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADi1T_480RxcSF5X-X1eTE9D-mE02og6rAJ1k_FB9FlF_1MQZUXSbMQaXvxx-F-XSRZH0WlhOw72D2r8_eCY4EeaEeYx6cvBtybg-Ks5_wXU2W1VMNd-lcdNzwUevTSnEHikeW2c7LERbPnx09VbeFeJALJuz1EW31WZlDT_dY_Dj5rCnD2IO2MyDadb9H-3T2nVRYsSpoaTIMjG_xi02VQxQ5mG4dmMfOxlnHET7CAvodh3lA2RNog2pwMvhiDyrVs4SLgzG34QTy"/>
+</div>
+<div class="w-full md:w-1/2 p-md flex flex-col justify-center relative z-10">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2">Featured Innovation</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Midnight Renewal Serum</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md flex-grow">
+                                Concentrated nocturnal repair powered by our exclusive Midnight Phyto-Complex. Wake up to restored vitality.
+                            </p>
+<div class="flex items-center justify-between mt-auto">
+<span class="font-label-md text-label-md text-on-surface">$185</span>
+<button class="bg-primary-container text-on-primary px-sm py-2 rounded font-label-sm text-label-sm uppercase tracking-wider hover:bg-primary-fixed transition-colors">
+                                    Add to Bag
+                                </button>
+</div>
+</div>
+</div>
+<!-- Secondary Product -->
+<div class="md:col-span-4 group relative rounded-lg overflow-hidden glass-panel flex flex-col">
+<div class="w-full h-48 relative overflow-hidden">
+<img alt="Orchid Essence Mist" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A tall, elegant frosted glass spray bottle containing a facial essence mist. It stands against a dark, moody background with subtle hints of botanical shadows. The lighting creates a soft, luminous glow around the bottle, emphasizing the translucent 'Serene Floral Noir' aesthetic. Copper typography is barely visible on the clean label." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-zZ1kazD92rX6lu06Au8-fLAyuxMUjmPgfwsVRzRCZrembU0G3zgMXWtWQvSWjGU2zdrBYbNP1E4igisKFKV-WYfM168gXGZP3L9AiQZCLAO3yTLjKDBBANVpaBcNdJ9QWueAPtyj2ifabopIUc7tFxdy9G6Hevx5rm0qfxtKnqrOHhUMOwKQuaHHW8G4u5McKrffhAIEDRjw5a7DnT8kLIkh3G_1V0NAqVORhAR-NVONKNt1SFPat8bI7g1pdVtMlKZY0DpvBXZ-"/>
+</div>
+<div class="p-sm flex flex-col justify-between flex-grow">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-1">Orchid Essence Mist</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-sm line-clamp-2">A refreshing botanical veil for instant hydration.</p>
+</div>
+<div class="flex items-center justify-between mt-sm">
+<span class="font-label-md text-label-md text-on-surface">$65</span>
+<button class="text-primary hover:text-on-surface transition-colors p-1 border border-border-glow rounded">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="article-body space-y-md text-on-surface-variant font-body-md text-body-md leading-relaxed">
+<p>
+                    When applied topically during the skin's natural regeneration phase—typically between midnight and 4 AM—the complex acts as a catalyst. It accelerates the clearance of cellular debris and encourages the synthesis of fresh collagen. The result is a complexion that appears not just rested, but fundamentally renewed, echoing the quiet, persistent vitality of the orchid in the dark.
+                </p>
+<p>
+                    The journey from the cloud forest to the apothecary jar is long, but it is one defined by respect. We harvest only a fraction of the blooms, ensuring the wild population thrives. In harnessing the alchemy of orchids, we aim to bring a touch of that serene, nocturnal resilience to your daily ritual.
+                </p>
+</div>
+<!-- Article Footer / Share -->
+<div class="mt-xl pt-md border-t border-white/10 flex items-center justify-between">
+<div class="flex items-center space-x-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Share</span>
+<button class="w-8 h-8 rounded-full border border-border-glow flex items-center justify-center hover:bg-surface-container transition-colors group">
+<span class="material-symbols-outlined text-sm text-on-surface-variant group-hover:text-primary transition-colors">link</span>
+</button>
+<button class="w-8 h-8 rounded-full border border-border-glow flex items-center justify-center hover:bg-surface-container transition-colors group">
+<span class="material-symbols-outlined text-sm text-on-surface-variant group-hover:text-primary transition-colors">mail</span>
+</button>
+</div>
+<button class="font-label-sm text-label-sm uppercase tracking-widest text-primary hover:text-on-surface transition-colors flex items-center group">
+                    Back to Lookbook
+                    <span class="material-symbols-outlined ml-1 group-hover:-translate-x-1 transition-transform text-sm rotate-180">arrow_forward</span>
+</button>
+</div>
+</article>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full py-xl px-margin-desktop border-t border-white/10 mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter max-w-7xl mx-auto">
+<!-- Brand Column -->
+<div class="flex flex-col space-y-md">
+<span class="font-headline-sm text-headline-sm text-primary">VIYGO</span>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">
+                    Serene botanical science for profound renewal.
+                </p>
+</div>
+<!-- Links Column 1 -->
+<div class="flex flex-col space-y-sm">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface">Explore</span>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Sustainability Reports</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Our Story</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Journal</a>
+</div>
+<!-- Links Column 2 -->
+<div class="flex flex-col space-y-sm">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface">Legal</span>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Privacy Policy</a>
+</div>
+<!-- Links Column 3 -->
+<div class="flex flex-col space-y-sm">
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface">Support</span>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Contact Us</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Shipping &amp; Returns</a>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-xl pt-sm border-t border-white/5 flex flex-col md:flex-row items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">
+                © 2024 VIYGO LUXE. All rights reserved.
+            </span>
+</div>
+</footer>
+</body></html>

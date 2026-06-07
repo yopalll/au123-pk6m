@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Client Relationship Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#52443c",
+                      "on-primary-fixed-variant": "#6c3a19",
+                      "on-secondary-fixed": "#001e2f",
+                      "on-primary-container": "#7a4523",
+                      "error": "#ffb4ab",
+                      "on-secondary-container": "#97bddb",
+                      "surface-variant": "#333538",
+                      "surface-container": "#1e2023",
+                      "inverse-primary": "#88512e",
+                      "tertiary-fixed-dim": "#abcdcd",
+                      "secondary-container": "#264d67",
+                      "outline": "#9f8d84",
+                      "on-surface-variant": "#d7c2b8",
+                      "on-tertiary-fixed": "#002020",
+                      "primary": "#ffdbc8",
+                      "on-secondary": "#04344d",
+                      "on-primary": "#502405",
+                      "tertiary-container": "#abcdcd",
+                      "surface": "#111316",
+                      "surface-container-high": "#282a2d",
+                      "on-secondary-fixed-variant": "#234a64",
+                      "on-tertiary-container": "#385858",
+                      "inverse-on-surface": "#2f3034",
+                      "secondary-fixed": "#c9e6ff",
+                      "on-tertiary": "#143536",
+                      "on-background": "#e2e2e6",
+                      "on-error-container": "#ffdad6",
+                      "surface-dim": "#111316",
+                      "tertiary": "#c7e9e9",
+                      "surface-container-highest": "#333538",
+                      "error-container": "#93000a",
+                      "on-surface": "#e2e2e6",
+                      "on-error": "#690005",
+                      "border-glow": "rgba(255, 255, 255, 0.2)",
+                      "primary-container": "#ffb68b",
+                      "surface-tint": "#ffb68b",
+                      "secondary": "#a5cbea",
+                      "on-tertiary-fixed-variant": "#2c4c4c",
+                      "on-primary-fixed": "#321200",
+                      "inverse-surface": "#e2e2e6",
+                      "background": "#111316",
+                      "tertiary-fixed": "#c7e9e9",
+                      "surface-container-lowest": "#0c0e11",
+                      "surface-charcoal": "#1A1D21",
+                      "secondary-fixed-dim": "#a5cbea",
+                      "surface-bright": "#37393d",
+                      "surface-glass": "rgba(17, 19, 22, 0.6)",
+                      "primary-fixed-dim": "#ffb68b",
+                      "surface-container-low": "#1a1c1f",
+                      "primary-fixed": "#ffdbc9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "lg": "40px",
+                      "margin-mobile": "20px",
+                      "base": "4px",
+                      "xs": "8px",
+                      "margin-desktop": "80px",
+                      "md": "24px",
+                      "sm": "16px",
+                      "xl": "80px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Playfair Display"],
+                      "display-lg-mobile": ["Playfair Display"],
+                      "body-lg": ["Manrope"],
+                      "label-md": ["Manrope"],
+                      "headline-md": ["Playfair Display"],
+                      "label-sm": ["Manrope"],
+                      "display-lg": ["Playfair Display"],
+                      "body-md": ["Manrope"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Subtle floral noise/texture overlay simulation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 50% 0%, rgba(255, 182, 139, 0.05) 0%, transparent 50%),
+                              radial-gradient(circle at 100% 100%, rgba(165, 203, 234, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Custom scrollbar for dark mode */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 182, 139, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex overflow-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar (from JSON, adapted for desktop fixed layout) -->
+<nav class="hidden md:flex flex-col py-8 px-6 gap-y-6 fixed left-0 top-0 h-full w-64 z-40 bg-surface-charcoal border-r border-white/20">
+<!-- Header -->
+<div class="mb-8 px-2 flex flex-col gap-1">
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">VIYGO</h1>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Salon Management</span>
+</div>
+<!-- CTA -->
+<button class="mb-6 w-full py-3 px-4 bg-primary-container text-[#111316] font-label-md text-label-md rounded hover:bg-primary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+            New Appointment
+        </button>
+<!-- Navigation Links -->
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-all active:scale-95 font-label-md text-label-md uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-all active:scale-95 font-label-md text-label-md uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+                Bookings
+            </a>
+<a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-all active:scale-95 font-label-md text-label-md uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined">content_cut</span>
+                Stylists
+            </a>
+<a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-all active:scale-95 font-label-md text-label-md uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                Inventory
+            </a>
+<a class="flex items-center gap-4 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-all active:scale-95 font-label-md text-label-md uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                Analytics
+            </a>
+<!-- Active Tab: Clients -->
+<a class="flex items-center gap-4 px-3 py-3 rounded-lg bg-surface-glass backdrop-blur-md border border-white/10 text-primary border-b-2 border-b-primary pb-1 transition-all active:scale-95 font-label-md text-label-md uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined fill">group</span>
+                Clients
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 ml-0 md:ml-64 flex flex-col h-screen overflow-hidden">
+<!-- Top Header Area (Canvas focused) -->
+<header class="px-margin-mobile md:px-margin-desktop py-8 md:py-10 flex flex-col gap-6 flex-shrink-0 z-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Client Relationship Management</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your high-value clientele and appointment history.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 rounded border border-secondary text-secondary font-label-md text-label-md hover:bg-secondary/10 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">download</span>
+                        Export
+                    </button>
+<button class="px-6 py-2 rounded bg-primary-container text-[#111316] font-label-md text-label-md hover:bg-primary transition-colors flex items-center gap-2 shadow-[0_0_15px_rgba(255,182,139,0.2)]">
+<span class="material-symbols-outlined" style="font-size: 18px;">person_add</span>
+                        Add Client
+                    </button>
+</div>
+</div>
+<!-- Filter Row -->
+<div class="flex flex-col md:flex-row gap-4 items-center w-full bg-surface-charcoal/50 backdrop-blur-md p-4 rounded-xl border border-white/10">
+<!-- Search -->
+<div class="relative w-full md:w-96 flex-shrink-0">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-size: 20px;">search</span>
+<input class="w-full bg-surface-container border border-white/10 rounded-lg py-2 pl-10 pr-4 text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all font-body-md text-body-md" placeholder="Search by name, email or phone..." type="text"/>
+</div>
+<div class="h-6 w-px bg-white/10 hidden md:block mx-2"></div>
+<!-- Filters -->
+<div class="flex gap-4 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
+<div class="relative min-w-[160px]">
+<select class="w-full appearance-none bg-surface-container border border-white/10 rounded-lg py-2 pl-4 pr-10 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all font-body-md text-body-md">
+<option value="">Loyalty Tier</option>
+<option value="elite">Elite Noir</option>
+<option value="gold">Gold Bloom</option>
+<option value="silver">Silver Leaf</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" style="font-size: 20px;">expand_more</span>
+</div>
+<div class="relative min-w-[160px]">
+<select class="w-full appearance-none bg-surface-container border border-white/10 rounded-lg py-2 pl-4 pr-10 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all font-body-md text-body-md">
+<option value="">Last Visit</option>
+<option value="30">Last 30 Days</option>
+<option value="90">Last 90 Days</option>
+<option value="180">6+ Months</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" style="font-size: 20px;">expand_more</span>
+</div>
+</div>
+</div>
+</header>
+<!-- 2-Column Layout for Data and Details -->
+<div class="flex-1 flex overflow-hidden px-margin-mobile md:px-margin-desktop pb-margin-mobile md:pb-margin-desktop gap-6">
+<!-- Client Grid (Left Pane) -->
+<div class="flex-1 overflow-y-auto pr-2" id="client-grid">
+<div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-md">
+<!-- Client Card 1 (Selected State Example) -->
+<div class="group relative bg-surface-glass backdrop-blur-xl border border-primary/50 rounded-xl overflow-hidden cursor-pointer transition-all hover:shadow-[0_4px_30px_rgba(255,182,139,0.05)]">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-100"></div>
+<div class="p-5 relative z-10 flex flex-col h-full justify-between gap-4">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-white/20 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A highly detailed, cinematic portrait of a sophisticated woman for a luxury beauty salon dashboard. The lighting is moody and dramatic, embodying a 'Serene Floral Noir' aesthetic with a deep midnight background. Subtle copper and warm gold highlights accent her hair and skin, creating a high-end, luminous effect. The overall mood is tranquil, exclusive, and elegant, fitting for an elite client profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRZsZIZTzc7BrNtHvyCsMheVptOJ28PoUe5KW86mRmcc6nZ8C7qMSVOe-gi7HpcoXv7Ocu7Ede-VKKhJ89PwjX2AqvJtHzmltVf3lEOswvHcnOWkVcQPSDkRo_Ep9zdQYWbPpJsNX7TLzqr8Xj7_VxgDbgaWbCQ0V6wGAcqmeDv1rwca_Y8B_tGACGFR7wvvjNcsdnY29YQbmlCnNvNJLmWkuZL1dm8dSu6f1JV37-Ud2KMs7YRJaJ8WF70C-pRyGzBRQX65GmpMYd"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-none mb-1">Eleanor Vance</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">+1 (555) 293-8472</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded bg-[#111316] border border-primary/30 text-primary font-label-sm text-label-sm uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined fill" style="font-size: 14px;">workspace_premium</span>
+                                    Elite Noir
+                                </span>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-white/10 mt-2">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Last Service</p>
+<p class="font-body-md text-body-md text-on-surface truncate">Balayage &amp; Gloss</p>
+<p class="font-body-md text-body-md text-on-surface-variant/60 text-sm mt-0.5">Oct 12, 2023</p>
+</div>
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Total Spend</p>
+<p class="font-headline-md text-headline-md text-primary">$4,250</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Client Card 2 -->
+<div class="group relative bg-surface-glass backdrop-blur-xl border border-white/20 rounded-xl overflow-hidden cursor-pointer transition-all hover:border-white/40 hover:bg-surface-charcoal/80">
+<div class="p-5 relative z-10 flex flex-col h-full justify-between gap-4">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-white/20 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A highly detailed, cinematic portrait of a sophisticated woman for a luxury beauty salon dashboard. The lighting is moody and dramatic, embodying a 'Serene Floral Noir' aesthetic with a deep midnight background. Subtle copper and warm gold highlights accent her hair and skin, creating a high-end, luminous effect. The overall mood is tranquil, exclusive, and elegant, fitting for an elite client profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd5lAJuPA240DqQk9egYnODlo72G3Omis0rWzpPZfTrPI_Obf0zLjnjuiLNNoi-V0SErMkIk00FhDAIsjOYGlQ4kjGFw9MvrELHggPf7HxtZa7lfFhc4hxF23pB4xMm7WiUuDp-Cq4-8uc_eWQ_1XMqEr6GUDOJlTj8r53Jg960a13ToRTx4N_Z6NMUjWQL9gm6HtPeh8ZNaQdC38bB8Xu-qHBZX5b50Wu5qnuazFEoaJRTgSlQ2PZHFIyvhhMM0mT0REiA1eGSb2V"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-none mb-1">Clara Bow</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">clara.b@example.com</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded bg-primary/10 border border-primary/20 text-primary font-label-sm text-label-sm uppercase tracking-wider">
+                                    Gold Bloom
+                                </span>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-white/10 mt-2">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Last Service</p>
+<p class="font-body-md text-body-md text-on-surface truncate">Keratin Treatment</p>
+<p class="font-body-md text-body-md text-on-surface-variant/60 text-sm mt-0.5">Nov 04, 2023</p>
+</div>
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Total Spend</p>
+<p class="font-headline-md text-headline-md text-on-surface">$1,850</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Client Card 3 -->
+<div class="group relative bg-surface-glass backdrop-blur-xl border border-white/20 rounded-xl overflow-hidden cursor-pointer transition-all hover:border-white/40 hover:bg-surface-charcoal/80">
+<div class="p-5 relative z-10 flex flex-col h-full justify-between gap-4">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full flex items-center justify-center bg-surface-container border border-white/20 flex-shrink-0 text-primary font-headline-md text-headline-md">
+                                        JB
+                                    </div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-none mb-1">Josephine Baker</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">+1 (555) 882-1093</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded bg-[#111316] border border-primary/30 text-primary font-label-sm text-label-sm uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined fill" style="font-size: 14px;">workspace_premium</span>
+                                    Elite Noir
+                                </span>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-white/10 mt-2">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Last Service</p>
+<p class="font-body-md text-body-md text-on-surface truncate">Color Correction</p>
+<p class="font-body-md text-body-md text-on-surface-variant/60 text-sm mt-0.5">Sep 28, 2023</p>
+</div>
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Total Spend</p>
+<p class="font-headline-md text-headline-md text-primary">$5,100</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Client Card 4 -->
+<div class="group relative bg-surface-glass backdrop-blur-xl border border-white/20 rounded-xl overflow-hidden cursor-pointer transition-all hover:border-white/40 hover:bg-surface-charcoal/80">
+<div class="p-5 relative z-10 flex flex-col h-full justify-between gap-4">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-white/20 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A highly detailed, cinematic portrait of a sophisticated woman for a luxury beauty salon dashboard. The lighting is moody and dramatic, embodying a 'Serene Floral Noir' aesthetic with a deep midnight background. Subtle copper and warm gold highlights accent her hair and skin, creating a high-end, luminous effect. The overall mood is tranquil, exclusive, and elegant, fitting for an elite client profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmMBFL7q0jJrSGWeC53bmrGo2NlawrmSkVS9wwq1x5GHa2QPNPQzG9hpMQ9MXQLzTVZsRRAyH1Jajcp9q8KphhC5opZ12g4Foy7fo_mVA1t2nxBWkqq3FjNjIIwXFJylxZjF9kZ-0iMvffemFQXTPl02ZRrhE3P1Dcp52i711QGXmUHvrrmlZnnXjnSUND3rZ8hMqTvSRg1FCgtYvJxm637FGdw2zot2SmmsUtuMpSHFYWy8sDbWB0CD5yO-yg3qmS9QkD0gfW_6Mb"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-none mb-1">Marlene Dietrich</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">m.dietrich@example.com</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded bg-secondary/10 border border-secondary/30 text-secondary font-label-sm text-label-sm uppercase tracking-wider">
+                                    Silver Leaf
+                                </span>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-white/10 mt-2">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Last Service</p>
+<p class="font-body-md text-body-md text-on-surface truncate">Signature Blowout</p>
+<p class="font-body-md text-body-md text-on-surface-variant/60 text-sm mt-0.5">Nov 15, 2023</p>
+</div>
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Total Spend</p>
+<p class="font-headline-md text-headline-md text-on-surface">$850</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Details Panel (Right Pane - Hidden on smaller screens) -->
+<aside class="hidden lg:flex w-96 flex-shrink-0 flex-col bg-surface-charcoal border border-white/10 rounded-2xl overflow-hidden shadow-2xl relative">
+<!-- Panel Header / Profile -->
+<div class="p-6 pb-0 relative">
+<div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-primary/10 to-transparent"></div>
+<div class="relative z-10 flex flex-col items-center text-center mt-4">
+<div class="w-24 h-24 rounded-full overflow-hidden border-2 border-primary/50 shadow-[0_0_20px_rgba(255,182,139,0.2)] mb-4">
+<img class="w-full h-full object-cover" data-alt="A highly detailed, cinematic portrait of a sophisticated woman for a luxury beauty salon dashboard. The lighting is moody and dramatic, embodying a 'Serene Floral Noir' aesthetic with a deep midnight background. Subtle copper and warm gold highlights accent her hair and skin, creating a high-end, luminous effect. The overall mood is tranquil, exclusive, and elegant, fitting for an elite client profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpoxbjgcpDusXm-lPXq6znzkz_CFCNEyji5oP4wNA5jHfHiurkhLiQkx0nWjaeRj540mWHKtZ_4Fm11-kEZFkc4Thyxo13wBYHmRuseGsbD9Zy7bzJ3QDvS1tHNDuGZ3AeM_Sw9_OiSwp4Ld2SA3O-ZGa_POupYP6idhamDMWRLrJ3JpSJ18F-44AcXu7Ec4e0TJ8SdjyqUMgePBHEs07u1tPJsRJX3EMv9KpAoXyBdVabQBuuCmeoW6TsGZ8D4EtKLw0j7wPcMYso"/>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-1">Eleanor Vance</h2>
+<span class="px-3 py-1 rounded-full bg-[#111316] border border-primary/30 text-primary font-label-sm text-label-sm uppercase tracking-wider inline-flex items-center gap-1 mb-4">
+<span class="material-symbols-outlined fill" style="font-size: 14px;">workspace_premium</span>
+                            Elite Noir Member
+                        </span>
+<div class="flex gap-4 w-full justify-center">
+<button class="w-10 h-10 rounded-full bg-surface-container hover:bg-primary/20 border border-white/10 hover:border-primary/50 text-on-surface hover:text-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">call</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container hover:bg-primary/20 border border-white/10 hover:border-primary/50 text-on-surface hover:text-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">mail</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container hover:bg-primary/20 border border-white/10 hover:border-primary/50 text-on-surface hover:text-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">edit</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Panel Content Tabs -->
+<div class="flex border-b border-white/10 mt-6 px-6">
+<button class="pb-3 text-primary border-b-2 border-primary font-label-md text-label-md uppercase tracking-wider mr-6">Overview</button>
+<button class="pb-3 text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md uppercase tracking-wider mr-6">History</button>
+<button class="pb-3 text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md uppercase tracking-wider">Formulas</button>
+</div>
+<!-- Panel Body (Scrollable) -->
+<div class="flex-1 overflow-y-auto p-6 flex flex-col gap-6">
+<!-- Notes Section -->
+<div class="bg-surface-container border border-white/5 rounded-xl p-4">
+<div class="flex justify-between items-center mb-3">
+<h4 class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Stylist Notes</h4>
+<button class="text-primary hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined" style="font-size: 18px;">add_circle</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm leading-relaxed">
+                            Prefers cool tones for balayage. Extremely sensitive scalp, strictly use amonia-free gloss lines. Always offer sparkling water upon arrival.
+                        </p>
+</div>
+<!-- Upcoming -->
+<div>
+<h4 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-3">Next Appointment</h4>
+<div class="flex items-center gap-4 bg-[#111316] border border-white/10 rounded-xl p-4">
+<div class="w-12 h-12 rounded bg-surface-container flex flex-col items-center justify-center text-primary">
+<span class="font-label-sm text-label-sm uppercase leading-none">Nov</span>
+<span class="font-headline-md text-headline-md leading-none">22</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface mb-0.5">Root Touch-up &amp; Tone</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">2:00 PM with Sarah</p>
+</div>
+</div>
+</div>
+<!-- Key Stats -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-[#111316] border border-white/10 rounded-xl p-4 flex flex-col justify-center items-center text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Avg Ticket</p>
+<p class="font-headline-md text-headline-md text-on-surface">$385</p>
+</div>
+<div class="bg-[#111316] border border-white/10 rounded-xl p-4 flex flex-col justify-center items-center text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">No-Shows</p>
+<p class="font-headline-md text-headline-md text-on-surface">0</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Join</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        body {
+            background-color: #111316;
+            color: #e2e2e6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Floral Noir Background */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background-image: radial-gradient(circle at 15% 50%, rgba(255, 182, 139, 0.05), transparent 40%),
+                              radial-gradient(circle at 85% 30%, rgba(165, 203, 234, 0.05), transparent 40%);
+        }
+
+        /* Glass Form Input Overrides */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"] {
+            background-color: #1A1D21;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e2e2e6;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="tel"]:focus {
+            border-color: #FFB68B;
+            box-shadow: 0 0 0 2px rgba(255, 182, 139, 0.2);
+            outline: none;
+        }
+
+        /* Checkbox styling */
+        input[type="checkbox"] {
+            background-color: #1A1D21;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            color: #FFB68B;
+        }
+        
+        input[type="checkbox"]:focus {
+            --tw-ring-color: #FFB68B;
+            --tw-ring-opacity: 0.2;
+        }
+
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "surface-variant": "#333538",
+                        "surface-container-high": "#282a2d",
+                        "on-error": "#690005",
+                        "on-surface-variant": "#d7c2b8",
+                        "surface-tint": "#ffb68b",
+                        "tertiary-fixed": "#c7e9e9",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#264d67",
+                        "on-tertiary": "#143536",
+                        "on-primary-fixed": "#321200",
+                        "tertiary": "#c7e9e9",
+                        "inverse-on-surface": "#2f3034",
+                        "surface-container-low": "#1a1c1f",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "on-background": "#e2e2e6",
+                        "surface-bright": "#37393d",
+                        "surface-container-highest": "#333538",
+                        "background": "#111316",
+                        "secondary": "#a5cbea",
+                        "on-secondary-fixed": "#001e2f",
+                        "primary": "#ffdbc8",
+                        "inverse-surface": "#e2e2e6",
+                        "primary-fixed-dim": "#ffb68b",
+                        "surface": "#111316",
+                        "on-primary": "#502405",
+                        "tertiary-container": "#abcdcd",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "on-secondary-container": "#97bddb",
+                        "outline": "#9f8d84",
+                        "on-secondary": "#04344d",
+                        "on-primary-container": "#7a4523",
+                        "on-tertiary-container": "#385858",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "on-surface": "#e2e2e6",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "surface-container": "#1e2023",
+                        "outline-variant": "#52443c",
+                        "surface-dim": "#111316",
+                        "primary-fixed": "#ffdbc9",
+                        "inverse-primary": "#88512e",
+                        "surface-charcoal": "#1A1D21",
+                        "primary-container": "#ffb68b",
+                        "on-tertiary-fixed": "#002020",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-primary-fixed-variant": "#6c3a19"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "margin-desktop": "80px",
+                        "margin-mobile": "20px",
+                        "sm": "16px",
+                        "lg": "40px",
+                        "xl": "80px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "label-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-background font-body-md">
+<div class="ambient-bg"></div>
+<!-- Registration Layout Canvas -->
+<main class="min-h-screen flex flex-col md:flex-row w-full overflow-hidden">
+<!-- Left Side: Form Canvas -->
+<div class="w-full md:w-1/2 flex flex-col justify-center px-margin-mobile md:px-margin-desktop py-xl relative z-10 bg-background/80 backdrop-blur-3xl md:border-r border-border-glow">
+<!-- Brand Logo (Floating) -->
+<div class="absolute top-margin-mobile md:top-margin-desktop left-margin-mobile md:left-margin-desktop">
+<a class="font-display-lg text-display-lg text-primary-fixed-dim hover:text-primary transition-colors block" href="#">
+                    VIYGO
+                </a>
+</div>
+<div class="w-full max-w-md mx-auto mt-20 md:mt-0">
+<div class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-background mb-xs">Join VIYGO</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Step into a world of curated beauty and bespoke treatments.</p>
+</div>
+<form class="space-y-sm">
+<!-- Form Row: Name Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<div class="flex flex-col">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-base" for="firstName">First Name</label>
+<input class="w-full h-12 px-sm rounded-DEFAULT font-body-md text-body-md placeholder-outline-variant" id="firstName" placeholder="Jane" required="" type="text"/>
+</div>
+<div class="flex flex-col">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-base" for="lastName">Last Name</label>
+<input class="w-full h-12 px-sm rounded-DEFAULT font-body-md text-body-md placeholder-outline-variant" id="lastName" placeholder="Doe" required="" type="text"/>
+</div>
+</div>
+<!-- Form Row: Email -->
+<div class="flex flex-col">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-base" for="email">Email Address</label>
+<input class="w-full h-12 px-sm rounded-DEFAULT font-body-md text-body-md placeholder-outline-variant" id="email" placeholder="jane@example.com" required="" type="email"/>
+</div>
+<!-- Form Row: Phone -->
+<div class="flex flex-col">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-base" for="phone">Phone Number (Optional)</label>
+<input class="w-full h-12 px-sm rounded-DEFAULT font-body-md text-body-md placeholder-outline-variant" id="phone" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+<!-- Form Row: Password -->
+<div class="flex flex-col">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-base" for="password">Password</label>
+<input class="w-full h-12 px-sm rounded-DEFAULT font-body-md text-body-md placeholder-outline-variant" id="password" placeholder="••••••••" required="" type="password"/>
+</div>
+<!-- Checkbox -->
+<div class="flex items-start gap-xs pt-base">
+<div class="flex items-center h-5">
+<input class="w-4 h-4 rounded-sm border-border-glow bg-surface-charcoal text-primary-fixed focus:ring-primary-fixed" id="newsletter" type="checkbox"/>
+</div>
+<label class="font-body-md text-body-md text-on-surface-variant text-sm leading-tight" for="newsletter">
+                            I wish to receive exclusive offers, insider news, and styling tips from VIYGO.
+                        </label>
+</div>
+<!-- Primary Action -->
+<div class="pt-sm">
+<button class="w-full h-14 bg-primary-container text-background font-label-md text-label-md uppercase tracking-widest hover:bg-primary transition-colors flex items-center justify-center gap-xs rounded-DEFAULT" type="submit">
+                            Create Account
+                            <span class="material-symbols-outlined" data-icon="arrow_right" data-weight="fill">arrow_right</span>
+</button>
+</div>
+</form>
+<div class="mt-lg text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Already have an account? 
+                        <a class="text-primary-fixed-dim hover:text-primary transition-colors font-semibold ml-base underline decoration-border-glow underline-offset-4" href="#">Sign in here</a>
+</p>
+</div>
+</div>
+</div>
+<!-- Right Side: Imagery Canvas -->
+<div class="hidden md:block md:w-1/2 relative bg-surface-charcoal">
+<!-- Full bleed image with subtle overlay -->
+<div class="absolute inset-0 bg-cover bg-center bg-no-repeat" data-alt="A sophisticated close-up of premium skincare bottles resting on dark, textured marble surfaces. The lighting is moody and cinematic, highlighting the amber and gold hues of the liquids inside. Minimalist botanical silhouettes cast elegant, soft shadows across the composition. The overarching style is 'Serene Floral Noir', conveying a sense of luxury, exclusivity, and advanced cosmetic science." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBxbQU4V7hetvaeFemdJYfId7CoMxr5z8xajosBUELra9xN8CSa_VVu5MNeQV4UFEPKMV02yqVYTxGBCm9lskVeiXqbBLK2YluLNqvu50WDPzND45XqNiRmBg7upX_a5SAQNeJX-x4A2jKDDLhOrHgO8ag8QqrOdIUuXJYlHVoINA31hZJrjXEPhOqLK7fuWkz-iOeGcjAFAgmXeCnfFr0XwjAJNNd5pY_FACGGyhzqHZP3lfk91FpQpxcs66Obn633rMqQGrRodzA2');">
+<div class="absolute inset-0 bg-background/20 backdrop-blur-[2px]"></div>
+<!-- Linear gradient to ensure text readability if placed here -->
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+</div>
+<!-- Optional Aesthetic Overlay text -->
+<div class="absolute bottom-margin-desktop left-margin-desktop right-margin-desktop text-right">
+<p class="font-headline-md text-headline-md text-on-background italic opacity-80">
+                    "Elevating beauty rituals into an art form."
+                </p>
+</div>
+</div>
+</main>
+<!-- Footer implementation to anchor the bottom -->
+<footer class="w-full py-xl px-margin-desktop grid grid-cols-2 md:grid-cols-5 gap-gutter bg-surface-container-lowest border-t border-border-glow z-20 relative">
+<div class="col-span-2 md:col-span-2 flex flex-col gap-sm">
+<span class="font-display-lg text-display-lg text-primary-fixed block">VIYGO</span>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mt-xs">© 2024 VIYGO. All rights reserved.</p>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-sm text-label-sm uppercase text-on-background opacity-50 mb-xs">Company</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-sm text-label-sm uppercase text-on-background opacity-50 mb-xs">Legal</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+</div>
+<div class="flex flex-col gap-sm col-span-2 md:col-span-1 mt-md md:mt-0">
+<h4 class="font-label-sm text-label-sm uppercase text-on-background opacity-50 mb-xs">Partners</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">VIYGO for Business</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">List your Salon</a>
+</div>
+</footer>
+</body></html>

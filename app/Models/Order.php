@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Order extends Model
 {
-    protected $table      = 'order';
+    protected $table = 'order';
+
     protected $primaryKey = 'id_order';
 
     protected $fillable = [
@@ -27,9 +28,9 @@ class Order extends Model
     protected function casts(): array
     {
         return [
-            'date_order'       => 'date',
+            'date_order' => 'date',
             'total_pembayaran' => 'decimal:2',
-            'total_diskon'     => 'decimal:2',
+            'total_diskon' => 'decimal:2',
         ];
     }
 

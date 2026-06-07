@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Client Database</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#c7e9e9",
+                        "surface-container-lowest": "#0c0e11",
+                        "inverse-on-surface": "#2f3034",
+                        "surface-container-high": "#282a2d",
+                        "on-primary-container": "#7a4523",
+                        "surface-variant": "#333538",
+                        "background": "#111316",
+                        "inverse-primary": "#88512e",
+                        "surface": "#111316",
+                        "inverse-surface": "#e2e2e6",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "tertiary-container": "#abcdcd",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "on-secondary-container": "#97bddb",
+                        "secondary-container": "#264d67",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-tertiary-container": "#385858",
+                        "on-error": "#690005",
+                        "on-background": "#e2e2e6",
+                        "on-tertiary": "#143536",
+                        "error-container": "#93000a",
+                        "primary-container": "#ffb68b",
+                        "secondary-fixed": "#c9e6ff",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "primary": "#ffdbc8",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "primary-fixed": "#ffdbc9",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "surface-container-highest": "#333538",
+                        "surface-container": "#1e2023",
+                        "surface-charcoal": "#1A1D21",
+                        "on-secondary": "#04344d",
+                        "primary-fixed-dim": "#ffb68b",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "tertiary": "#c7e9e9",
+                        "surface-container-low": "#1a1c1f",
+                        "on-tertiary-fixed": "#002020",
+                        "secondary": "#a5cbea",
+                        "outline": "#9f8d84",
+                        "on-surface": "#e2e2e6",
+                        "surface-tint": "#ffb68b",
+                        "on-primary": "#502405",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#d7c2b8",
+                        "surface-bright": "#37393d",
+                        "outline-variant": "#52443c",
+                        "on-primary-fixed": "#321200",
+                        "surface-dim": "#111316"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "40px",
+                        "xs": "8px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "base": "4px",
+                        "margin-desktop": "80px",
+                        "sm": "16px",
+                        "xl": "80px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "display-lg": ["Playfair Display"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        body {
+            background-color: #111316;
+            color: #e2e2e6;
+            background-image: radial-gradient(circle at 50% 0%, rgba(255, 182, 139, 0.05) 0%, transparent 50%);
+            min-height: 100vh;
+        }
+
+        .glass-panel {
+            background: rgba(26, 29, 33, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .input-field {
+            background-color: #1A1D21;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e2e2e6;
+        }
+        
+        .input-field:focus {
+            border-color: #FFB68B;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 182, 139, 0.2);
+        }
+
+        /* Hide scrollbar for clean look but keep functionality */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1); 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1); 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2); 
+        }
+    </style>
+</head>
+<body class="font-body-md antialiased flex overflow-hidden">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex bg-surface-charcoal font-label-md text-label-md uppercase tracking-widest h-screen w-64 fixed left-0 top-0 border-r border-white/10 flex-col p-md gap-sm z-40">
+<!-- Header -->
+<div class="mb-lg">
+<div class="flex items-center gap-sm mb-xs">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-white/20 shrink-0">
+<img alt="Salon Logo" class="w-full h-full object-cover" data-alt="A minimalist logo for a high-end salon featuring a stylized copper shears icon against a deep charcoal background. The aesthetic is sophisticated, moody, and sleek, aligning with the Serene Floral Noir style. Soft studio lighting highlights the metallic sheen." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw-gQtoqXEuxTe3fBMuL7A7M5CCPCGj6AYKSGdQfLAfQGqElBzrGF8A2Jv8MoHdKwELFG6LA8M0CPwVQ6O4IV3Lrrq6Ov6KcNmmUgMoh2dhgmHYpcmauKAn1EhLNIBNLSAjHMX2p0w87B6So-DXHM3C-N0zML7Kxz9Z5xLAaYRUjzN9uQDNavryJ56F9hQyF6CNqsdQN0iuYwof_h5r_fuRFvqEAZ06fXxHemtXYWbELwpOMKTvC9eohFTWF4-tx142MbZ5pWwOFvq"/>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary normal-case">VIYGO Admin</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant normal-case">Elite Management</p>
+</div>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<div class="flex flex-col gap-xs flex-grow">
+<!-- Dashboard -->
+<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Bookings -->
+<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span>Bookings</span>
+</a>
+<!-- Stylists -->
+<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">content_cut</span>
+<span>Stylists</span>
+</a>
+<!-- Inventory -->
+<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Inventory</span>
+</a>
+<!-- Analytics -->
+<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span>Analytics</span>
+</a>
+<!-- Clients (Active) -->
+<a class="flex items-center gap-sm p-sm bg-primary-container text-on-primary-container rounded-lg font-bold scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined fill">group</span>
+<span>Clients</span>
+</a>
+</div>
+<!-- CTA -->
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md py-sm px-md rounded-lg mt-auto mb-md w-full transition-transform active:scale-95">
+            New Appointment
+        </button>
+<!-- Footer Tabs -->
+<div class="flex flex-col gap-xs mt-auto border-t border-white/10 pt-sm">
+<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow md:ml-64 h-screen overflow-y-auto relative">
+<!-- Mobile TopAppBar (Suppressed on Desktop as per rules, but included for mobile fallback if needed, though instructions said responsive pivot) -->
+<header class="md:hidden bg-surface-glass backdrop-blur-md font-headline-md text-headline-md font-display-lg text-display-lg w-full sticky top-0 z-50 flex justify-between items-center px-margin-mobile py-md border-b border-white/20">
+<div class="font-display-lg text-display-lg font-bold tracking-tight text-primary">VIYGO</div>
+<div class="flex gap-sm">
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80">settings</span>
+</div>
+</header>
+<div class="p-margin-mobile md:p-margin-desktop max-w-[1600px] mx-auto">
+<!-- Page Header & Metrics -->
+<div class="mb-lg">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-md mb-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg md:font-display-lg md:text-display-lg text-on-surface mb-xs">Client Roster</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Manage relationships and appointment history.</p>
+</div>
+<!-- Search & Filter Actions -->
+<div class="flex gap-sm w-full md:w-auto">
+<div class="relative w-full md:w-64">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="input-field w-full pl-lg pr-sm py-sm rounded-lg font-body-md text-body-md transition-all" placeholder="Search clients..." type="text"/>
+</div>
+<button class="glass-panel text-on-surface px-md py-sm rounded-lg flex items-center gap-xs hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+<span class="font-label-md text-label-md hidden md:inline">Filter</span>
+</button>
+</div>
+</div>
+<!-- Metrics Bento -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="glass-panel p-md rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-sm opacity-20 group-hover:opacity-40 transition-opacity">
+<span class="material-symbols-outlined text-display-lg">groups</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">Total Clients</p>
+<p class="font-headline-lg text-headline-lg text-primary">1,248</p>
+<div class="mt-sm flex items-center gap-xs text-secondary-fixed-dim font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+12% this year</span>
+</div>
+</div>
+<div class="glass-panel p-md rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-sm opacity-20 group-hover:opacity-40 transition-opacity">
+<span class="material-symbols-outlined text-display-lg">loyalty</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">Retention Rate</p>
+<p class="font-headline-lg text-headline-lg text-primary">87%</p>
+<div class="mt-sm flex items-center gap-xs text-secondary-fixed-dim font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+2.4% vs last quarter</span>
+</div>
+</div>
+<div class="glass-panel p-md rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-sm opacity-20 group-hover:opacity-40 transition-opacity">
+<span class="material-symbols-outlined text-display-lg">fiber_new</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">New This Month</p>
+<p class="font-headline-lg text-headline-lg text-primary">42</p>
+<div class="mt-sm flex items-center gap-xs text-secondary-fixed-dim font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">trending_flat</span>
+<span>Consistent with avg</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Client Grid/Table Area -->
+<div class="glass-panel rounded-xl overflow-hidden flex flex-col">
+<!-- Table Header (Desktop only) -->
+<div class="hidden md:grid grid-cols-12 gap-sm p-md border-b border-white/10 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
+<div class="col-span-4">Client</div>
+<div class="col-span-2">Status</div>
+<div class="col-span-3">Last Visit</div>
+<div class="col-span-3 text-right">Actions</div>
+</div>
+<!-- Client Rows -->
+<div class="flex flex-col divide-y divide-white/5">
+<!-- Row 1 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md p-md items-center hover:bg-white/5 transition-colors group cursor-pointer">
+<div class="col-span-1 md:col-span-4 flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-white/20 shrink-0">
+<img alt="Client portrait" class="w-full h-full object-cover" data-alt="A sophisticated portrait of a young woman with flawless skin, reflecting a premium skincare aesthetic. She is softly lit against a dark, moody background. The overall tone aligns with the Serene Floral Noir style, emphasizing high-end beauty." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl0xmdYADrEF8F3Pbll-TlCB_yd6MTtuUwXHIqSGpzK-UMEQKo1UH2i8ayrsfwGaweKMpXk73393C3OTRH7qJKcADW3uv4Ffr57c3NDontPCmOLf7a26bmwa4Dpi0aXI6ufhf4XOb1dyR9DOTauehJ1DAvTZ1eALOF-jc3iKTbn-4mYVTCBAzMYnFuP1qM8NlwN9RcKF3A1YNpnluhHJzzMptyROoqwjLR1cf5BoSiBJX4fbYWV2J8lXaZIcfF2qyp-KC39v_xcmqM"/>
+</div>
+<div>
+<h3 class="font-headline-md text-[18px] text-on-surface group-hover:text-primary transition-colors">Elena Rostova</h3>
+<p class="font-body-md text-sm text-on-surface-variant">elena.r@example.com</p>
+</div>
+</div>
+<div class="col-span-1 md:col-span-2 flex items-center">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded bg-primary-container/20 text-primary border border-primary/30 font-label-sm text-[10px] uppercase tracking-widest">
+<span class="material-symbols-outlined fill text-[12px]">star</span> VIP
+                            </span>
+</div>
+<div class="col-span-1 md:col-span-3">
+<p class="font-body-md text-on-surface">Oct 12, 2023</p>
+<p class="font-label-sm text-on-surface-variant">Balayage &amp; Treatment</p>
+</div>
+<div class="col-span-1 md:col-span-3 flex items-center md:justify-end gap-sm opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-transparent border border-secondary-fixed-dim text-secondary-fixed-dim hover:bg-secondary-fixed-dim/10 px-sm py-xs rounded font-label-sm text-label-sm transition-colors">
+                                Notes
+                            </button>
+<button class="bg-primary-container text-on-primary-container px-sm py-xs rounded font-label-sm text-label-sm hover:bg-primary-fixed transition-colors">
+                                Book
+                            </button>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md p-md items-center hover:bg-white/5 transition-colors group cursor-pointer">
+<div class="col-span-1 md:col-span-4 flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-white/20 shrink-0 bg-surface-variant flex items-center justify-center">
+<span class="font-headline-md text-on-surface">SJ</span>
+</div>
+<div>
+<h3 class="font-headline-md text-[18px] text-on-surface group-hover:text-primary transition-colors">Sarah Jenkins</h3>
+<p class="font-body-md text-sm text-on-surface-variant">s.jenkins@example.com</p>
+</div>
+</div>
+<div class="col-span-1 md:col-span-2 flex items-center">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded bg-surface-variant/50 text-on-surface border border-white/10 font-label-sm text-[10px] uppercase tracking-widest">
+                                Regular
+                            </span>
+</div>
+<div class="col-span-1 md:col-span-3">
+<p class="font-body-md text-on-surface">Nov 04, 2023</p>
+<p class="font-label-sm text-on-surface-variant">Root Touch-up</p>
+</div>
+<div class="col-span-1 md:col-span-3 flex items-center md:justify-end gap-sm opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-transparent border border-secondary-fixed-dim text-secondary-fixed-dim hover:bg-secondary-fixed-dim/10 px-sm py-xs rounded font-label-sm text-label-sm transition-colors">
+                                Notes
+                            </button>
+<button class="bg-primary-container text-on-primary-container px-sm py-xs rounded font-label-sm text-label-sm hover:bg-primary-fixed transition-colors">
+                                Book
+                            </button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="p-md border-t border-white/10 flex justify-between items-center bg-surface-container-lowest/50">
+<p class="font-label-sm text-on-surface-variant">Showing 1-2 of 1,248</p>
+<div class="flex gap-xs">
+<button class="w-8 h-8 rounded border border-white/10 flex items-center justify-center text-on-surface-variant hover:bg-white/5 disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded border border-white/10 flex items-center justify-center text-on-surface hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

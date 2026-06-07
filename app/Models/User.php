@@ -10,6 +10,7 @@ use Filament\Panel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -19,9 +20,10 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable, TwoFactorAuthenticatable, SoftDeletes;
+    use HasFactory, Notifiable, SoftDeletes, TwoFactorAuthenticatable;
 
-    protected $table      = 'users';
+    protected $table = 'users';
+
     protected $primaryKey = 'id_user';
 
     protected $fillable = [
@@ -52,10 +54,10 @@ class User extends Authenticatable implements FilamentUser
     protected function casts(): array
     {
         return [
-            'email_verified_at'        => 'datetime',
-            'two_factor_confirmed_at'  => 'datetime',
-            'password'                 => 'hashed',
-            'is_active'                => 'boolean',
+            'email_verified_at' => 'datetime',
+            'two_factor_confirmed_at' => 'datetime',
+            'password' => 'hashed',
+            'is_active' => 'boolean',
         ];
     }
 
@@ -73,13 +75,13 @@ class User extends Authenticatable implements FilamentUser
         return Attribute::make(
             get: function () {
                 $first = trim((string) $this->first_name);
-                $last  = trim((string) ($this->last_name ?? ''));
+                $last = trim((string) ($this->last_name ?? ''));
 
                 if ($last === '' || strcasecmp($first, $last) === 0) {
                     return $first;
                 }
 
-                return trim($first . ' ' . $last);
+                return trim($first.' '.$last);
             },
         );
     }
@@ -135,8 +137,8 @@ class User extends Authenticatable implements FilamentUser
     public function promos()
     {
         return $this->belongsToMany(Promo::class, 'user_promo', 'id_user', 'id_promo')
-                    ->withPivot('is_used', 'used_at')
-                    ->withTimestamps();
+            ->withPivot('is_used', 'used_at')
+            ->withTimestamps();
     }
 
     /**
@@ -145,7 +147,7 @@ class User extends Authenticatable implements FilamentUser
     public function favourites()
     {
         return $this->belongsToMany(Salon::class, 'user_favourites', 'id_user', 'id_salon')
-                    ->withTimestamps();
+            ->withTimestamps();
     }
 
     /**
@@ -154,6 +156,58 @@ class User extends Authenticatable implements FilamentUser
     public function hasFavourited(int $idSalon): bool
     {
         return $this->favourites()->whereKey($idSalon)->exists();
+    }
+
+    // ──── Relasi V2 (E-commerce, Empty Return, Community) ────
+
+    public function cartItems(): HasMany
+    {
+        return $this->hasMany(Cart::class, 'id_user', 'id_user');
+    }
+
+    public function wishlists(): HasMany
+    {
+        return $this->hasMany(Wishlist::class, 'id_user', 'id_user');
+    }
+
+    public function productOrders(): HasMany
+    {
+        return $this->hasMany(ProductOrder::class, 'id_user', 'id_user');
+    }
+
+    public function addresses(): HasMany
+    {
+        return $this->hasMany(UserAddress::class, 'id_user', 'id_user');
+    }
+
+    public function skincareProfile(): HasOne
+    {
+        return $this->hasOne(UserSkincareProfile::class, 'id_user', 'id_user');
+    }
+
+    public function points(): HasOne
+    {
+        return $this->hasOne(UserPoint::class, 'id_user', 'id_user');
+    }
+
+    public function emptyReturns(): HasMany
+    {
+        return $this->hasMany(EmptyReturn::class, 'id_user', 'id_user');
+    }
+
+    public function forumThreads(): HasMany
+    {
+        return $this->hasMany(ForumThread::class, 'id_user', 'id_user');
+    }
+
+    public function communityPoint(): HasOne
+    {
+        return $this->hasOne(CommunityPoint::class, 'id_user', 'id_user');
+    }
+
+    public function badges(): HasMany
+    {
+        return $this->hasMany(UserBadge::class, 'id_user', 'id_user');
     }
 
     // ──── Filament ──────────────────────────────────────────
@@ -166,6 +220,11 @@ class User extends Authenticatable implements FilamentUser
 
         if ($panel->getId() === 'owner') {
             return $this->role === UserRole::SALON_OWNER && $this->is_active;
+        }
+
+        if ($panel->getId() === 'store') {
+            return in_array($this->role, [UserRole::ADMIN_STORE, UserRole::ADMIN], true)
+                && $this->is_active;
         }
 
         return false;

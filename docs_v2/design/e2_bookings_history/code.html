@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - My Bookings</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#c7e9e9",
+                    "on-secondary-fixed": "#001e2f",
+                    "tertiary-container": "#abcdcd",
+                    "surface-dim": "#111316",
+                    "secondary": "#a5cbea",
+                    "secondary-fixed-dim": "#a5cbea",
+                    "surface-container-lowest": "#0c0e11",
+                    "primary-fixed": "#ffdbc9",
+                    "on-primary-container": "#7a4523",
+                    "error-container": "#93000a",
+                    "surface-variant": "#333538",
+                    "surface-glass": "rgba(17, 19, 22, 0.6)",
+                    "surface-charcoal": "#1A1D21",
+                    "inverse-primary": "#88512e",
+                    "on-secondary-fixed-variant": "#234a64",
+                    "primary": "#ffdbc8",
+                    "on-primary": "#502405",
+                    "primary-container": "#ffb68b",
+                    "on-secondary": "#04344d",
+                    "inverse-on-surface": "#2f3034",
+                    "primary-fixed-dim": "#ffb68b",
+                    "surface": "#111316",
+                    "on-error-container": "#ffdad6",
+                    "on-surface-variant": "#d7c2b8",
+                    "surface-container-highest": "#333538",
+                    "on-background": "#e2e2e6",
+                    "outline-variant": "#52443c",
+                    "tertiary": "#c7e9e9",
+                    "surface-container-low": "#1a1c1f",
+                    "surface-container": "#1e2023",
+                    "on-tertiary-fixed": "#002020",
+                    "on-tertiary-container": "#385858",
+                    "error": "#ffb4ab",
+                    "on-tertiary": "#143536",
+                    "on-error": "#690005",
+                    "outline": "#9f8d84",
+                    "on-surface": "#e2e2e6",
+                    "on-secondary-container": "#97bddb",
+                    "surface-bright": "#37393d",
+                    "surface-tint": "#ffb68b",
+                    "background": "#111316",
+                    "tertiary-fixed-dim": "#abcdcd",
+                    "secondary-fixed": "#c9e6ff",
+                    "on-tertiary-fixed-variant": "#2c4c4c",
+                    "on-primary-fixed-variant": "#6c3a19",
+                    "on-primary-fixed": "#321200",
+                    "border-glow": "rgba(255, 255, 255, 0.2)",
+                    "surface-container-high": "#282a2d",
+                    "secondary-container": "#264d67",
+                    "inverse-surface": "#e2e2e6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "md": "24px",
+                    "margin-mobile": "20px",
+                    "xs": "8px",
+                    "sm": "16px",
+                    "lg": "40px",
+                    "margin-desktop": "80px",
+                    "xl": "80px",
+                    "gutter": "24px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "label-md": [
+                            "Manrope"
+                    ],
+                    "display-lg": [
+                            "Playfair Display"
+                    ],
+                    "label-sm": [
+                            "Manrope"
+                    ],
+                    "headline-md": [
+                            "Playfair Display"
+                    ],
+                    "display-lg-mobile": [
+                            "Playfair Display"
+                    ],
+                    "body-lg": [
+                            "Manrope"
+                    ],
+                    "body-md": [
+                            "Manrope"
+                    ],
+                    "headline-lg": [
+                            "Playfair Display"
+                    ]
+            },
+            "fontSize": {
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "36px",
+                            {
+                                    "lineHeight": "44px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #111316;
+            color: #e2e2e6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bg-floral-texture {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDWHbo8oti0B49E9eL8UZKdVXidE0G2W6jxYJhpF1J-UAtJUpZp959cC3Ni8b3tjNayfAUeLLQYZr9Fl8ZXJjfpJqVewbOfDrLx01FEIKCvuvp92LIkmzMFHWArDoyRooq2QAUMm30AuwWU3M44cG3or57fqldOGhQVt7PYiXopzRcoa8i9QGyA5hUM-TvM5xE_iIzUoVVGdHQTSdNiKo5oA9dzHdSKdi4xW0EaCK4nZJD6HmTJQyX7M-ZXz61XQxQhZYwHL0gGIc6e');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glass-panel {
+            background: rgba(26, 29, 33, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-underline {
+            position: relative;
+        }
+        .nav-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #FFB68B;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: right;
+        }
+        .nav-underline:hover::after, .nav-underline.active::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .tab-btn {
+            position: relative;
+            padding-bottom: 8px;
+            color: #d7c2b8;
+            transition: color 0.3s ease;
+        }
+        .tab-btn.active {
+            color: #ffb68b;
+        }
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ffb68b;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .tab-btn.active::after {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+<body class="font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Global Background Texture -->
+<div class="bg-floral-texture"></div>
+<!-- TopNavBar Component -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-24 bg-surface-glass backdrop-blur-xl border-b border-border-glow flat no shadows">
+<div class="flex items-center gap-lg">
+<a class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary-fixed" href="#">VIYGO</a>
+<nav class="hidden md:flex gap-md">
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary-fixed transition-colors duration-300 nav-underline" href="#">Treatments</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary-fixed transition-colors duration-300 nav-underline" href="#">List your salon</a>
+</nav>
+</div>
+<div class="flex items-center gap-sm">
+<div class="hidden md:flex items-center gap-xs text-on-surface-variant mr-md">
+<span class="material-symbols-outlined text-xl">search</span>
+<input class="bg-transparent border-none text-body-md focus:ring-0 placeholder:text-on-surface-variant/50 w-32 focus:w-48 transition-all" placeholder="Search..." type="text"/>
+</div>
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors px-xs py-base">Sign In</button>
+<button class="bg-primary-container text-surface-dim font-label-md text-label-md px-sm py-xs rounded hover:bg-primary transition-colors">Join</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow pt-32 pb-xl px-margin-mobile md:px-margin-desktop flex flex-col gap-lg max-w-7xl mx-auto w-full">
+<!-- Page Header -->
+<div class="flex flex-col gap-xs">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">My Bookings</h1>
+<p class="font-body-md text-on-surface-variant">Manage your upcoming appointments and view past history.</p>
+</div>
+<!-- Booking Navigation Tabs -->
+<div class="flex gap-md border-b border-border-glow">
+<button class="tab-btn active font-label-md text-label-md uppercase tracking-widest" onclick="switchTab('upcoming')">Upcoming</button>
+<button class="tab-btn font-label-md text-label-md uppercase tracking-widest" onclick="switchTab('completed')">Completed</button>
+<button class="tab-btn font-label-md text-label-md uppercase tracking-widest" onclick="switchTab('cancelled')">Cancelled</button>
+</div>
+<!-- Bookings Container -->
+<div class="flex flex-col gap-md" id="upcoming-bookings">
+<!-- Booking Card 1 (Upcoming) -->
+<div class="glass-panel rounded-lg p-sm md:p-md flex flex-col md:flex-row gap-md justify-between items-start md:items-center relative overflow-hidden group hover:border-primary/50 transition-colors">
+<!-- Decorative glow -->
+<div class="absolute -inset-1 bg-primary/5 opacity-0 group-hover:opacity-100 blur transition-opacity"></div>
+<div class="flex gap-md items-start w-full md:w-auto relative z-10">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded overflow-hidden flex-shrink-0 border border-border-glow">
+<img alt="Luxury salon interior" class="w-full h-full object-cover" data-alt="A high-end luxury beauty salon interior featuring plush velvet seating, brass accents, and minimalist modern decor, bathed in soft, warm twilight lighting, embodying a serene floral noir aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLNAVx9r3IvpXj9cWGM9LPCLUUqgz3-t0Hfc4XYPiChkg_MJ2QWRth7N7ynNTfPQ1ywjx0psO5m5sCIthBJsToDMF0DBT_csrh3HQK_CDRLEw-suMX_ntvgf9VrzOmDC_qAfD4GzrnqerDlvXTHvT_wyfWSQ8eHXWygLNcusPEhwFpCsu5bGuBQKRoiho2uJ_SIXtLYaHdzZyDluuG1GFALmUTb6MO0CWX0dmjaAQIdF-S4lUzz8HprREmzh9zmWLyka43fWo1MRWh"/>
+</div>
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="bg-primary/10 text-primary font-label-sm text-label-sm px-xs py-[2px] rounded border border-primary/20">Confirmed</span>
+<span class="font-label-sm text-on-surface-variant ml-auto md:ml-0">Tomorrow</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-e2e2e6">Lumina Skin &amp; Wellness</h3>
+<p class="font-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">spa</span>
+                            Signature Radiance Facial
+                        </p>
+</div>
+</div>
+<div class="flex flex-row md:flex-col justify-between w-full md:w-auto items-end gap-sm relative z-10 border-t border-border-glow md:border-t-0 pt-sm md:pt-0 mt-sm md:mt-0">
+<div class="text-left md:text-right">
+<p class="font-label-md text-label-md text-e2e2e6">Oct 24, 2024</p>
+<p class="font-body-md text-on-surface-variant">2:00 PM (90 min)</p>
+<p class="font-label-md text-primary mt-xs">$185.00</p>
+</div>
+<div class="flex gap-xs">
+<button class="px-sm py-xs border border-secondary text-secondary rounded font-label-sm text-label-sm hover:bg-secondary/10 transition-colors">Reschedule</button>
+</div>
+</div>
+</div>
+<!-- Booking Card 2 (Upcoming) -->
+<div class="glass-panel rounded-lg p-sm md:p-md flex flex-col md:flex-row gap-md justify-between items-start md:items-center relative overflow-hidden group hover:border-primary/50 transition-colors">
+<div class="absolute -inset-1 bg-primary/5 opacity-0 group-hover:opacity-100 blur transition-opacity"></div>
+<div class="flex gap-md items-start w-full md:w-auto relative z-10">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded overflow-hidden flex-shrink-0 border border-border-glow">
+<img alt="Botanical skincare products" class="w-full h-full object-cover" data-alt="A macro shot of luxurious, dark amber glass apothecary bottles and botanical skincare ingredients arranged on a midnight stone surface, illuminated by moody, high-contrast light, serene floral noir." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_6ydv_1mR3sE1Y4K2MN2FFJPyjnWIW8msNA7WpwIC0jqrbpWuqGu2HdCnayne89JwgbZjDuNii9FmO24m6A0oEBtbI59FJRfFLwx_cDcLM5se8sFRkC4U3iYSGdPe1UdrzH5PtrBX_8NGWLoC1xtHSX7ZFJy2zJFPxXGYNLiAMWIXwCAiVaSIC0mEOo_2_DZEvHNYuB8qLVHdIGLjd3_kgA2xq6UsBkJph6LDfG-YRk00E5litA4lebrU2jtpO0_1wqQR-Rg7HSaE"/>
+</div>
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs">
+<span class="bg-surface-variant text-on-surface-variant font-label-sm text-label-sm px-xs py-[2px] rounded border border-border-glow">Pending Approval</span>
+<span class="font-label-sm text-on-surface-variant ml-auto md:ml-0">In 3 days</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-e2e2e6">The Midnight Apothecary</h3>
+<p class="font-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">content_cut</span>
+                            Botanical Scalp Treatment
+                        </p>
+</div>
+</div>
+<div class="flex flex-row md:flex-col justify-between w-full md:w-auto items-end gap-sm relative z-10 border-t border-border-glow md:border-t-0 pt-sm md:pt-0 mt-sm md:mt-0">
+<div class="text-left md:text-right">
+<p class="font-label-md text-label-md text-e2e2e6">Oct 27, 2024</p>
+<p class="font-body-md text-on-surface-variant">10:30 AM (60 min)</p>
+<p class="font-label-md text-primary mt-xs">$120.00</p>
+</div>
+<div class="flex gap-xs">
+<button class="px-sm py-xs text-on-surface-variant hover:text-error rounded font-label-sm text-label-sm transition-colors">Cancel</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-xl px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-5 gap-gutter bg-surface-container-lowest border-t border-border-glow flat no shadows mt-auto">
+<div class="col-span-2 md:col-span-1 flex flex-col gap-sm mb-lg md:mb-0">
+<span class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary-fixed">VIYGO</span>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">© 2024 VIYGO. All rights reserved.</p>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-sm text-label-sm uppercase text-on-surface-variant">Platform</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-sm text-label-sm uppercase text-on-surface-variant">Help</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="col-span-2 md:col-span-2 flex flex-col gap-sm mt-lg md:mt-0">
+<h4 class="font-label-sm text-label-sm uppercase text-on-surface-variant">Partners</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">VIYGO for Business</a>
+<a class="font-body-md text-body-md text-primary font-bold hover:text-primary transition-colors" href="#">List your Salon</a>
+</div>
+</footer>
+<script>
+        function switchTab(tabId) {
+            // Very simple visual toggle for demo purposes
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // In a real app, this would filter/load content
+            console.log('Switched to tab:', tabId);
+        }
+    </script>
+</body></html>

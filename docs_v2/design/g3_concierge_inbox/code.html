@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Concierge Inbox</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        body {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDTomeX6e2dpz61aaVuHimMaN8sKDNLv_Ab_xLTiIsu2kzZx-U5DVp0lfVIH3gNyRWZGEVaUwvift1k1h_zMrdcyVTyStbZF1j4He12defEMROAqz3DBzClzT5axdTqqqGLMeG-qARyk0K5CFjWoC1AxS_OCdew3iFyzQ1O7JJEgUG74eV32PoQN6cH4ObkYaT9yd74gZI2L0n0Cn-51Eb82MZdLpZDNSOFNqEwXoSybglcuLAy6NRgCr4b5OKB4QxJJWj4pDxIecRR');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #111316; /* Fallback */
+        }
+        .glass-panel {
+            background-color: rgba(26, 29, 33, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#9f8d84",
+                        "on-primary-fixed": "#321200",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "surface-container-low": "#1a1c1f",
+                        "outline-variant": "#52443c",
+                        "secondary-container": "#264d67",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "secondary": "#a5cbea",
+                        "on-secondary-container": "#97bddb",
+                        "on-background": "#e2e2e6",
+                        "on-secondary": "#04344d",
+                        "on-surface-variant": "#d7c2b8",
+                        "on-tertiary": "#143536",
+                        "tertiary-container": "#abcdcd",
+                        "primary": "#ffdbc8",
+                        "primary-container": "#ffb68b",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#37393d",
+                        "on-error": "#690005",
+                        "inverse-surface": "#e2e2e6",
+                        "surface-charcoal": "#1A1D21",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "surface-container-highest": "#333538",
+                        "surface-variant": "#333538",
+                        "on-tertiary-fixed": "#002020",
+                        "on-surface": "#e2e2e6",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-primary-container": "#7a4523",
+                        "tertiary-fixed": "#c7e9e9",
+                        "on-tertiary-container": "#385858",
+                        "surface-dim": "#111316",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "inverse-primary": "#88512e",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "primary-fixed": "#ffdbc9",
+                        "background": "#111316",
+                        "error-container": "#93000a",
+                        "surface-tint": "#ffb68b",
+                        "inverse-on-surface": "#2f3034",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "primary-fixed-dim": "#ffb68b",
+                        "tertiary": "#c7e9e9",
+                        "on-primary": "#502405",
+                        "surface-container": "#1e2023",
+                        "surface": "#111316",
+                        "surface-container-lowest": "#0c0e11",
+                        "surface-container-high": "#282a2d",
+                        "secondary-fixed": "#c9e6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "16px",
+                        "base": "4px",
+                        "margin-desktop": "80px",
+                        "gutter": "24px",
+                        "lg": "40px",
+                        "md": "24px",
+                        "margin-mobile": "20px",
+                        "xs": "8px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-on-surface antialiased min-h-screen flex flex-col relative">
+<!-- Background Overlay for contrast -->
+<div class="fixed inset-0 bg-surface-dim/80 z-0 pointer-events-none"></div>
+<!-- TopNavBar -->
+<nav class="bg-surface-glass backdrop-blur-md fixed top-0 w-full flex justify-between items-center px-margin-desktop py-md z-50 border-b border-white/20 flat no shadows">
+<div class="flex items-center gap-lg">
+<span class="font-headline-md text-headline-md text-on-surface">VIYGO</span>
+<div class="hidden md:flex gap-lg font-label-md text-label-md uppercase tracking-[0.1em]">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Lookbook</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Shop</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Sustainability</a>
+<a class="text-primary border-b border-primary pb-1 hover:text-primary transition-colors duration-300" href="#">Help</a>
+</div>
+</div>
+<div class="flex items-center gap-sm text-primary">
+<button aria-label="person" class="active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<button aria-label="shopping_bag" class="active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Container -->
+<main class="flex-grow pt-[100px] pb-xl px-margin-mobile md:px-margin-desktop z-10 flex h-screen overflow-hidden">
+<!-- Two-Column Layout Wrapper -->
+<div class="flex w-full h-full gap-md relative">
+<!-- Left Column: Chat List -->
+<aside class="w-full md:w-[360px] flex-shrink-0 flex flex-col glass-panel rounded-xl overflow-hidden h-full">
+<!-- Search Header -->
+<div class="p-md border-b border-white/10">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm">Inbox</h2>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-charcoal border border-white/10 rounded-lg py-xs pl-[40px] pr-sm text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-on-surface-variant/50" placeholder="Search conversations..." type="text"/>
+</div>
+</div>
+<!-- Chat List Scrollable -->
+<div class="flex-grow overflow-y-auto">
+<!-- Chat Item (Active) -->
+<div class="p-md border-b border-white/10 bg-primary/10 cursor-pointer transition-colors relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex justify-between items-start mb-xs">
+<span class="font-headline-md text-body-lg text-primary">Eleanor Vance</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">10:42 AM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface truncate">I'm running about 10 minutes late for my appointment, is that okay?</p>
+<div class="mt-xs flex gap-xs">
+<span class="inline-block px-2 py-1 rounded bg-surface-charcoal border border-white/10 font-label-sm text-label-sm text-on-surface-variant">Booking: Today, 11:00 AM</span>
+</div>
+</div>
+<!-- Chat Item (Unread) -->
+<div class="p-md border-b border-white/10 hover:bg-white/5 cursor-pointer transition-colors">
+<div class="flex justify-between items-start mb-xs">
+<span class="font-headline-md text-body-lg text-on-surface font-bold">Julian Blackwood</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">Yesterday</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-bold truncate">Could you recommend a serum for dry skin?</p>
+</div>
+<!-- Chat Item (Read) -->
+<div class="p-md border-b border-white/10 hover:bg-white/5 cursor-pointer transition-colors opacity-70">
+<div class="flex justify-between items-start mb-xs">
+<span class="font-headline-md text-body-lg text-on-surface">Sophia Chen</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Tue</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant truncate">Thank you! The facial was amazing.</p>
+</div>
+</div>
+</aside>
+<!-- Right Column: Active Message Window -->
+<section class="hidden md:flex flex-grow flex-col glass-panel rounded-xl overflow-hidden h-full relative">
+<!-- Chat Header -->
+<div class="p-md border-b border-white/10 flex justify-between items-center bg-surface-charcoal/50">
+<div class="flex items-center gap-sm">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-white/20">
+<img alt="Profile of Eleanor Vance" class="w-full h-full object-cover" data-alt="A close-up portrait of a sophisticated woman with glowing skin, soft studio lighting, muted natural tones, modern high-end editorial photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu6yZBMPkgcr86iZwQ7pvhSUgNfLkE5Y_FVnbWVRkl6KYQgZK5jDP5S3SLr5e9eOB6zt8HoQmmZykEebPpoKkIoI9UWPkYX3ttcVrDZPehvGb1Yq0klSY9WD_GctAEkJH9l27Zs-eS_LB0YKousfkV0yyaymans3k066uz0uhMpCvD0i9OKGZHAAEJAT1ObtJf2FFoxLPOXDljNzcfRo_atAvSbkRi2t_1NY6HFlBIfXcFSc5JaXM9hZDE5vIvU9ohxz4tsdYNrnJE"/>
+</div>
+<div>
+<h3 class="font-headline-md text-body-lg text-on-surface">Eleanor Vance</h3>
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span> VIP Client
+                            </span>
+</div>
+</div>
+<!-- Quick Actions -->
+<div class="flex gap-sm">
+<button class="p-xs rounded border border-white/10 hover:bg-white/10 transition-colors text-on-surface-variant tooltip-trigger relative">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</button>
+<button class="p-xs rounded border border-white/10 hover:bg-white/10 transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Chat History Area -->
+<div class="flex-grow overflow-y-auto p-md flex flex-col gap-md">
+<!-- Date Separator -->
+<div class="flex justify-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-charcoal px-sm py-xs rounded-full border border-white/10">Today</span>
+</div>
+<!-- Incoming Message -->
+<div class="flex flex-col items-start max-w-[80%]">
+<div class="bg-surface-charcoal border border-white/10 rounded-2xl rounded-tl-sm px-md py-sm text-on-surface font-body-md text-body-md">
+                            Hi there! I'm running about 10 minutes late for my appointment, is that okay? Traffic on 5th is terrible.
+                        </div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 ml-1">10:42 AM</span>
+</div>
+</div>
+<!-- Input Area & Quick Replies -->
+<div class="p-md border-t border-white/10 bg-surface-charcoal/50">
+<!-- Quick Replies -->
+<div class="flex gap-sm mb-sm overflow-x-auto pb-2 scrollbar-hide">
+<button class="whitespace-nowrap px-sm py-xs rounded-full border border-secondary text-secondary font-label-sm text-label-sm hover:bg-secondary/10 transition-colors">
+                            "No problem, see you soon!"
+                        </button>
+<button class="whitespace-nowrap px-sm py-xs rounded-full border border-secondary text-secondary font-label-sm text-label-sm hover:bg-secondary/10 transition-colors">
+                            "We might need to adjust the service."
+                        </button>
+<button class="whitespace-nowrap px-sm py-xs rounded-full border border-secondary text-secondary font-label-sm text-label-sm hover:bg-secondary/10 transition-colors">
+                            "Send directions"
+                        </button>
+</div>
+<!-- Input Field -->
+<div class="flex gap-sm items-end">
+<div class="flex-grow bg-surface-charcoal border border-white/10 rounded-xl relative focus-within:border-primary focus-within:shadow-[0_0_0_2px_rgba(255,182,139,0.2)] transition-all">
+<textarea class="w-full bg-transparent border-none py-sm px-md text-body-md text-on-surface focus:ring-0 resize-none min-h-[44px] max-h-[120px]" placeholder="Type a message..." rows="1" style="field-sizing: content;"></textarea>
+<div class="absolute right-sm bottom-sm flex gap-xs text-on-surface-variant">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined" data-icon="attach_file">attach_file</span></button>
+</div>
+</div>
+<button class="w-12 h-12 rounded-xl bg-primary text-on-primary-fixed flex items-center justify-center hover:bg-primary/90 transition-colors flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

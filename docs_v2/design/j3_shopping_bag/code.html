@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO LUXE - Shopping Bag</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#04344d",
+                    "tertiary-container": "#abcdcd",
+                    "on-tertiary-fixed": "#002020",
+                    "surface-bright": "#37393d",
+                    "surface": "#111316",
+                    "on-primary-fixed": "#321200",
+                    "surface-container-low": "#1a1c1f",
+                    "secondary-fixed": "#c9e6ff",
+                    "error-container": "#93000a",
+                    "tertiary-fixed-dim": "#abcdcd",
+                    "surface-container": "#1e2023",
+                    "border-glow": "rgba(255, 255, 255, 0.2)",
+                    "on-primary": "#502405",
+                    "surface-variant": "#333538",
+                    "surface-glass": "rgba(17, 19, 22, 0.6)",
+                    "secondary-container": "#264d67",
+                    "on-tertiary-container": "#385858",
+                    "surface-charcoal": "#1A1D21",
+                    "surface-container-lowest": "#0c0e11",
+                    "primary-container": "#ffb68b",
+                    "surface-container-highest": "#333538",
+                    "tertiary": "#c7e9e9",
+                    "surface-tint": "#ffb68b",
+                    "outline-variant": "#52443c",
+                    "on-primary-container": "#7a4523",
+                    "outline": "#9f8d84",
+                    "secondary-fixed-dim": "#a5cbea",
+                    "on-error": "#690005",
+                    "tertiary-fixed": "#c7e9e9",
+                    "surface-dim": "#111316",
+                    "background": "#111316",
+                    "on-surface": "#e2e2e6",
+                    "primary-fixed-dim": "#ffb68b",
+                    "inverse-surface": "#e2e2e6",
+                    "surface-container-high": "#282a2d",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#2f3034",
+                    "primary-fixed": "#ffdbc9",
+                    "on-tertiary": "#143536",
+                    "on-secondary-fixed": "#001e2f",
+                    "on-primary-fixed-variant": "#6c3a19",
+                    "secondary": "#a5cbea",
+                    "on-secondary-container": "#97bddb",
+                    "on-secondary-fixed-variant": "#234a64",
+                    "inverse-primary": "#88512e",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed-variant": "#2c4c4c",
+                    "primary": "#ffdbc8",
+                    "on-surface-variant": "#d7c2b8",
+                    "on-background": "#e2e2e6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "xl": "80px",
+                    "margin-desktop": "80px",
+                    "gutter": "24px",
+                    "lg": "40px",
+                    "xs": "8px",
+                    "margin-mobile": "20px",
+                    "sm": "16px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"],
+                    "label-sm": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "headline-md": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "body-lg": ["Manrope"],
+                    "label-md": ["Manrope"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>body {
+    background-color: #111316;
+    color: #e2e2e6;
+    position: relative
+    }
+.bg-tapestry {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCeawhz1rXEEOh3N-VzfnqdibWJ4wHCS3cShHCTodijQwkvwkzvoL8A0malrZIdGF8kLIehP4-qM4UQUB4GkVC5_fSaGXn4C_TvN7N4f9tlqnkNIPJUTy-a6xm1ibDm1WuY0vtzDClu5SChxS54tZgVtqXO9IVy4csuqdz7XYDJ8B0MvuitTvUG6J7wykCf9jCU6qjP-rM57yY7urdJc_yYPuQ2XR8s5LQPCCGgzgFPisGQC5IkoKJTDxp7EDP7IASjwWlYuV5Z-19g);
+    /* Using a dark floral Unsplash image as placeholder */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: -1;
+    pointer-events: none
+    }
+.glass-panel {
+    background: rgba(17, 19, 22, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2)
+    }
+.inner-glow {
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2)
+    }
+/* Navigation Styles from JSON */
+.style_universal_hover:hover {
+    color: #ffdbc8;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms
+    }</style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- Background Tapestry -->
+<div class="bg-tapestry" data-alt="A dark, moody macro photograph of midnight flora. Deep black background with subtle, organic textures of wilted roses and night-blooming jasmine. The lighting is extremely low, creating a mysterious and luxurious atmosphere, perfectly suited as a backdrop for high-end skincare products."></div>
+<!-- TopNavBar -->
+<header class="bg-surface-glass backdrop-blur-md fixed top-0 w-full z-50 border-b border-white/20">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 w-full">
+<nav class="hidden md:flex gap-gutter">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md uppercase tracking-wider style_universal_hover" href="#">Lookbook</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md uppercase tracking-wider style_universal_hover" href="#">Shop</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md uppercase tracking-wider style_universal_hover" href="#">Sustainability</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md uppercase tracking-wider style_universal_hover" href="#">Help</a>
+</nav>
+<div class="font-headline-md text-headline-md text-primary tracking-tighter">
+                VIYGO
+            </div>
+<div class="flex gap-gutter items-center">
+<a class="text-primary border-b-2 border-primary pb-1 font-label-md text-label-md uppercase tracking-wider flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md uppercase tracking-wider flex items-center gap-2 style_universal_hover" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+</a>
+</div>
+</div>
+</header>
+<!-- Main Content - Shopping Bag -->
+<main class="flex-grow pt-32 pb-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto w-full">
+<div class="flex justify-between items-end mb-lg border-b border-white/20 pb-sm">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary">Your Bag</h1>
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">2 Items</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Bag Items List -->
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<!-- Item 1 -->
+<div class="glass-panel p-md flex flex-col md:flex-row gap-lg items-center relative group">
+<button class="absolute top-md right-md text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<div class="w-full md:w-32 h-32 md:h-40 bg-surface-charcoal rounded flex-shrink-0 inner-glow overflow-hidden">
+<img alt="Midnight Renewal Serum" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" data-alt="A sleek, dark glass dropper bottle of facial serum resting on a black marble surface. Subtle copper lighting accents the edge of the bottle. The overall aesthetic is dark, moody, and extremely premium, fitting a luxury skincare brand's Midnight Renewal Serum." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEktokigmaIIiX97QNp6Hk2xcNSyih2PJMFp2xkUhgvnjHGF55RvIkEEMO4HAnQ3x_ZAdNhxCP9AiCSbK8A6mEY_JiDbhV_U4zPeL8b_JwLMgNTlH0eIOxyayPnyJ92oiwzVZCyvwqfO2czS7xEiApvxEfjGLyF_mooefd4-JwMOhK-DlIEjCN3xK5JLRiRwDj5ZWE3xt8xK9CMmum1ZSw08EJvCmKu8SQtTsWOTnbHXlFlgvSoKMXSJrwzVfkUxpjAqfTA97E-RaX"/>
+</div>
+<div class="flex-grow flex flex-col w-full">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-headline-md text-on-surface">Midnight Renewal Serum</h3>
+<p class="font-body-lg text-body-lg text-primary">$185</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">30ml / 1 fl oz. • Deep hydration &amp; cellular repair</p>
+<div class="flex justify-between items-center mt-auto pt-sm border-t border-white/10">
+<div class="flex items-center gap-sm bg-surface-charcoal rounded inner-glow px-sm py-xs">
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[16px]">remove</span></button>
+<span class="font-label-md text-label-md text-on-surface w-4 text-center">1</span>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[16px]">add</span></button>
+</div>
+<button class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider hover:text-primary transition-colors border-b border-transparent hover:border-primary">Move to Wishlist</button>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="glass-panel p-md flex flex-col md:flex-row gap-lg items-center relative group">
+<button class="absolute top-md right-md text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<div class="w-full md:w-32 h-32 md:h-40 bg-surface-charcoal rounded flex-shrink-0 inner-glow overflow-hidden">
+<img alt="Moonlit Ceramide Cream" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" data-alt="A heavy, matte black jar of face cream with a subtle copper lid, positioned against a dark, velvety background. Soft, diffused lighting highlights the rich texture of the cream inside. The visual language conveys deep nourishment and high-end luxury skincare." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2tt_7GynJERWHw3ggZ5mks7IMi2wvR7zQ_ecZ7jA3o7fnuI_c9coOG5MB0rLR6TD6WBBAYo2Ouvyd3uRx_Fuw9bUURjxtoDv5wqYDPbf0cXgDKHQZtUBWnwI5poJmEJirnFu7kKPSA-NYGeUhThtgidDFU7_t-gT5dpayKUVzGTIMllDThFrd4tUvym5hu1QtghDcv--8ZHw2eFgCxPDeazgosXeh_VFNv3D_PUN_z3yxguQtsPezoONCNXi2M47rW4y66fGyi-CF"/>
+</div>
+<div class="flex-grow flex flex-col w-full">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-md text-headline-md text-on-surface">Moonlit Ceramide Cream</h3>
+<p class="font-body-lg text-body-lg text-primary">$140</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">50ml / 1.7 oz. • Overnight barrier restoration</p>
+<div class="flex justify-between items-center mt-auto pt-sm border-t border-white/10">
+<div class="flex items-center gap-sm bg-surface-charcoal rounded inner-glow px-sm py-xs">
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[16px]">remove</span></button>
+<span class="font-label-md text-label-md text-on-surface w-4 text-center">1</span>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[16px]">add</span></button>
+</div>
+<button class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider hover:text-primary transition-colors border-b border-transparent hover:border-primary">Move to Wishlist</button>
+</div>
+</div>
+</div>
+<!-- Complimentary Samples Bento Box -->
+<div class="mt-lg">
+<h4 class="font-headline-md text-headline-md text-primary mb-md">Complimentary Samples</h4>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-sm">
+<div class="bg-surface-charcoal inner-glow rounded p-sm flex flex-col items-center text-center cursor-pointer hover:border-primary border border-transparent transition-all group">
+<div class="w-16 h-16 rounded-full bg-surface mb-sm flex items-center justify-center overflow-hidden inner-glow">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">spa</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider mb-xs">Lotus Essence</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">5ml Sachet</span>
+</div>
+<div class="glass-panel rounded p-sm flex flex-col items-center text-center cursor-pointer border-primary transition-all group relative">
+<div class="absolute top-2 right-2 text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="w-16 h-16 rounded-full bg-surface mb-sm flex items-center justify-center overflow-hidden inner-glow">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">water_drop</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider mb-xs">Obsidian Oil</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Selected</span>
+</div>
+<div class="bg-surface-charcoal inner-glow rounded p-sm flex flex-col items-center text-center cursor-pointer hover:border-primary border border-transparent transition-all group">
+<div class="w-16 h-16 rounded-full bg-surface mb-sm flex items-center justify-center overflow-hidden inner-glow">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">face</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider mb-xs">Silk Cleanser</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">10ml Tube</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Summary Sticky Panel -->
+<div class="lg:col-span-4">
+<div class="glass-panel p-lg rounded sticky top-32 flex flex-col gap-md">
+<h2 class="font-headline-lg text-headline-lg text-on-surface border-b border-white/20 pb-sm mb-sm">Summary</h2>
+<div class="flex justify-between items-center font-body-md text-body-md text-on-surface-variant">
+<span>Subtotal</span>
+<span class="text-on-surface">$325.00</span>
+</div>
+<div class="flex justify-between items-center font-body-md text-body-md text-on-surface-variant">
+<span>Shipping</span>
+<span class="text-on-surface">Complimentary</span>
+</div>
+<div class="border-t border-white/20 my-sm pt-sm flex justify-between items-center font-headline-md text-headline-md text-primary">
+<span>Total</span>
+<span>$325.00</span>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider py-md px-lg rounded hover:opacity-90 transition-opacity mt-sm">
+                        Proceed to Checkout
+                    </button>
+<div class="flex items-center justify-center gap-sm mt-sm text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+<span>Secure Checkout</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full py-xl px-margin-desktop border-t border-white/10 mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter max-w-7xl mx-auto">
+<div class="flex flex-col gap-sm">
+<div class="font-headline-sm text-headline-sm text-primary mb-md">VIYGO LUXE</div>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 VIYGO LUXE. All rights reserved.</p>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Sustainability Reports</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+</body></html>

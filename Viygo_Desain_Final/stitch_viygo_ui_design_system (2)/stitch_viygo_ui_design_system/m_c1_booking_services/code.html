@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO LUXE - Booking Service Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#ffb68b",
+                        "on-primary": "#502405",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#e2e2e6",
+                        "outline": "#9f8d84",
+                        "surface-container-low": "#1a1c1f",
+                        "on-tertiary-fixed": "#002020",
+                        "secondary": "#a5cbea",
+                        "surface-dim": "#111316",
+                        "outline-variant": "#52443c",
+                        "on-primary-fixed": "#321200",
+                        "on-surface-variant": "#d7c2b8",
+                        "surface-bright": "#37393d",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#ffb68b",
+                        "surface-container-highest": "#333538",
+                        "surface-container": "#1e2023",
+                        "surface-charcoal": "#1A1D21",
+                        "on-secondary": "#04344d",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "tertiary": "#c7e9e9",
+                        "primary-container": "#ffb68b",
+                        "on-error": "#690005",
+                        "on-background": "#e2e2e6",
+                        "on-tertiary": "#143536",
+                        "error-container": "#93000a",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "primary-fixed": "#ffdbc9",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "primary": "#ffdbc8",
+                        "secondary-fixed": "#c9e6ff",
+                        "surface-variant": "#333538",
+                        "background": "#111316",
+                        "inverse-primary": "#88512e",
+                        "surface": "#111316",
+                        "inverse-surface": "#e2e2e6",
+                        "inverse-on-surface": "#2f3034",
+                        "surface-container-high": "#282a2d",
+                        "on-primary-container": "#7a4523",
+                        "tertiary-fixed": "#c7e9e9",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-secondary-container": "#97bddb",
+                        "secondary-container": "#264d67",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-tertiary-container": "#385858",
+                        "tertiary-container": "#abcdcd",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "border-glow": "rgba(255, 255, 255, 0.2)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "lg": "40px",
+                        "xs": "8px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "sm": "16px",
+                        "xl": "80px",
+                        "md": "24px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #111316;
+            background-image: radial-gradient(circle at top right, rgba(255, 182, 139, 0.05), transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(165, 203, 234, 0.03), transparent 40%);
+            background-attachment: fixed;
+        }
+        
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111316;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333538;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #52443c;
+        }
+
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        .service-card.selected {
+            border-color: #ffb68b;
+            box-shadow: 0 0 15px rgba(255, 182, 139, 0.1);
+        }
+        
+        .progress-step {
+            transition: all 0.3s ease;
+        }
+        .progress-line {
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface min-h-screen flex flex-col font-body-md antialiased md:hidden pb-[100px]">
+<!-- TopAppBar (Nav Shell Suppressed - Transactional Intent) -->
+<header class="sticky top-0 z-40 bg-surface-glass backdrop-blur-md border-b border-border-glow px-margin-mobile py-xs flex justify-between items-center w-full">
+<button aria-label="Go Back" class="text-on-surface-variant hover:text-primary transition-colors p-2 -ml-2 flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<div class="font-headline-md text-headline-md-mobile text-primary tracking-tighter">VIYGO</div>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</header>
+<!-- Canvas: Main Content Area -->
+<main class="flex-grow flex flex-col px-margin-mobile pt-sm pb-xl">
+<!-- Progress Indicator -->
+<div class="w-full mb-md">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Step 1</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">3 Steps</span>
+</div>
+<div class="w-full h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="progress-line h-full bg-primary rounded-full" style="width: 33%;"></div>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mt-sm">Select Service</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Choose your desired treatment for today's session.</p>
+</div>
+<!-- Service Selection List -->
+<div class="flex flex-col gap-sm">
+<!-- Service Card 1 -->
+<button class="service-card w-full text-left bg-surface-charcoal border border-border-glow rounded-xl overflow-hidden relative group hover:border-outline-variant flex focus:outline-none focus:border-primary">
+<div class="w-1/3 min-w-[100px] relative">
+<img alt="Midnight Rejuvenation Serum" class="absolute inset-0 w-full h-full object-cover" data-alt="A macro shot of rich, luminous skincare serum being dropped onto a dark, reflective slate surface. The lighting is moody and dramatic, typical of high-end beauty product photography. Deep midnight blacks contrast with warm, glowing copper and golden tones reflecting within the droplet. The overall aesthetic is Serene Floral Noir, emphasizing luxury and clinical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOzwpNDT3CMvJqqDOHgviBKezFijucm_XT-zkBrMhAL7PTN9Anh_V4vr6SN5dhNCKZlOuVnO9WbEvUwAcb3u-tJZygvnSvadJLIwRe5Uz_xuYomxPTQKeO8RIuZaI2EqjRNb1AMeMaE-VDqGlukLrz8aSEPkDMqtLWt5tK_lI1xj4u323lAGBNpuELkrb-WJgyYAPoUZXfPo5rKqOcSJN8ub_5FixpZuyNn3RxbZSkr9r1BHe2v4It06dxHTrbwpvjn6EdMo6_yYRS"/>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent to-surface-charcoal"></div>
+</div>
+<div class="w-2/3 p-sm flex flex-col justify-center">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-label-md text-label-md text-on-surface">Midnight Rejuvenation</h3>
+<div class="w-5 h-5 rounded-full border border-outline-variant flex items-center justify-center shrink-0 ml-2 check-indicator">
+<span class="material-symbols-outlined text-[14px] text-surface-charcoal opacity-0 transition-opacity" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-2 line-clamp-2">A deeply restorative facial treatment focusing on cellular renewal using copper peptides.</p>
+<div class="font-label-md text-label-md text-primary">$185 <span class="text-on-surface-variant text-[10px] font-normal">/ 60 MIN</span></div>
+</div>
+</button>
+<!-- Service Card 2 -->
+<button class="service-card w-full text-left bg-surface-charcoal border border-border-glow rounded-xl overflow-hidden relative group hover:border-outline-variant flex focus:outline-none focus:border-primary">
+<div class="w-1/3 min-w-[100px] relative">
+<img alt="Botanical Clarity Facial" class="absolute inset-0 w-full h-full object-cover" data-alt="A close-up view of delicate white orchid petals resting on dark, polished volcanic stones. The setting evokes a serene, premium spa environment. Soft, diffuse lighting highlights the delicate texture of the flower against the hard, dark surface. The color palette relies heavily on deep charcoals and crisp whites, aligning with the luxurious Serene Floral Noir aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZHbRXpmP_V-geVLVERiJEpwYaliBz9MlyXytjreeCeqEGf2JIBafQ4j9ce2knQMayFqi81jOfYNaZnZW5KbowihGuWZmyLlEeVdG7jASKSOn0e1i-Y8Z9rvflaiCDc2ifORp_YT7mO-Bue6pqz7Jxlih14AC_L1mFLb-3f_rFlZxI7h7qsC-HeBv8TGTYD14jf_KbDss1Ft3x5-zlyjuaaiHze3mLAqmkckRJlGH2ar9z6cBEs3s5gQW7Vi-7fFpCj13BIrFkRIdh"/>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent to-surface-charcoal"></div>
+</div>
+<div class="w-2/3 p-sm flex flex-col justify-center">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-label-md text-label-md text-on-surface">Botanical Clarity</h3>
+<div class="w-5 h-5 rounded-full border border-outline-variant flex items-center justify-center shrink-0 ml-2 check-indicator">
+<span class="material-symbols-outlined text-[14px] text-surface-charcoal opacity-0 transition-opacity" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-2 line-clamp-2">Extraction and purifying treatment utilizing organic midnight floral extracts.</p>
+<div class="font-label-md text-label-md text-primary">$145 <span class="text-on-surface-variant text-[10px] font-normal">/ 45 MIN</span></div>
+</div>
+</button>
+<!-- Service Card 3 -->
+<button class="service-card w-full text-left bg-surface-charcoal border border-border-glow rounded-xl overflow-hidden relative group hover:border-outline-variant flex focus:outline-none focus:border-primary">
+<div class="w-1/3 min-w-[100px] relative">
+<img alt="Luminous Lift Massage" class="absolute inset-0 w-full h-full object-cover" data-alt="A professional aesthetician's hands gently massaging a client's face, bathed in very dim, moody lighting. The scene is intimate and relaxing, characteristic of a high-end apothecary or boutique spa. Warm, subtle copper lighting accents the shadows, creating a sense of deep tranquility and personalized luxury care in the Serene Floral Noir style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACXwt5YOydSWVTrfXazX41aYQYuKpQxIYRLGdVDo1cFYbVho9_LSn6d4ZSxC7T1hmRJLQRc_4DrJgw1CP0rPp9_O6rtL6zrV5Cd16lKdiDbePUGUtMU8s_D-Eay5QqUiBVw-Z6VazWh9QrKnMnznEfkbrRSJE6sl7PEKrRkJvh_i-uZLzW9FOaAiSLft7_2GEo-MgCPPA6HRjv1AChU343OlFKZu_ecwnfYJbq_A9wgMzerP-6ykrJDce8V9rs-FoA-qPzoZYTobqy"/>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent to-surface-charcoal"></div>
+</div>
+<div class="w-2/3 p-sm flex flex-col justify-center">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-label-md text-label-md text-on-surface">Luminous Lift</h3>
+<div class="w-5 h-5 rounded-full border border-outline-variant flex items-center justify-center shrink-0 ml-2 check-indicator">
+<span class="material-symbols-outlined text-[14px] text-surface-charcoal opacity-0 transition-opacity" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-2 line-clamp-2">Sculpting facial massage designed to stimulate lymphatic drainage and contour.</p>
+<div class="font-label-md text-label-md text-primary">$210 <span class="text-on-surface-variant text-[10px] font-normal">/ 75 MIN</span></div>
+</div>
+</button>
+<!-- Service Card 4 -->
+<button class="service-card w-full text-left bg-surface-charcoal border border-border-glow rounded-xl overflow-hidden relative group hover:border-outline-variant flex focus:outline-none focus:border-primary">
+<div class="w-1/3 min-w-[100px] relative">
+<img alt="Custom Consultation" class="absolute inset-0 w-full h-full object-cover" data-alt="A sleek, minimalist array of premium skincare tools and dark glass bottles arranged neatly on a dark matte background. The arrangement is precise and clinical, reflecting modern skincare science. The lighting is crisp yet moody, with subtle blue and dusty blue reflections on the glass surfaces, contributing to a high-end, sophisticated aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIbexGwPp3Geuyt1lOBstOvh73MUAyUUVuOSTUBIzQtPuOM14oBbdODzZL6iMxyw42_30zIWhFiFAP--S7ISWMBVJJfBstXy6HwKTfCO0gbOt7_PobYzmkj3YbCE-MBGDFicFjg6eqZuW7goUAUC-bONWtXTdOUMJT_CEQSbLXpmHSEwbN0aBOF5X6ZFcrIKcNOuTCOjGxKbGYcvtIU42zo-xID6H_cTcNLsD7D6jDFkT2TjVWpbk156HrMJiiDNzwI6hdFmFBWrEP"/>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent to-surface-charcoal"></div>
+</div>
+<div class="w-2/3 p-sm flex flex-col justify-center">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-label-md text-label-md text-on-surface">Custom Alchemy</h3>
+<div class="w-5 h-5 rounded-full border border-outline-variant flex items-center justify-center shrink-0 ml-2 check-indicator">
+<span class="material-symbols-outlined text-[14px] text-surface-charcoal opacity-0 transition-opacity" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-2 line-clamp-2">An in-depth skin analysis followed by a fully personalized bespoke treatment.</p>
+<div class="font-label-md text-label-md text-primary">$250 <span class="text-on-surface-variant text-[10px] font-normal">/ 90 MIN</span></div>
+</div>
+</button>
+</div>
+</main>
+<!-- Sticky Action Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-glass backdrop-blur-xl border-t border-border-glow p-margin-mobile pb-[max(env(safe-area-inset-bottom),20px)] z-50">
+<button class="w-full bg-surface-container-highest text-on-surface-variant font-label-md text-label-md uppercase tracking-widest py-3 px-6 rounded-lg transition-all duration-300 flex justify-center items-center gap-2 opacity-50 cursor-not-allowed" disabled="" id="continueBtn">
+<span>Continue</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const serviceCards = document.querySelectorAll('.service-card');
+            const continueBtn = document.getElementById('continueBtn');
+            let selectedService = null;
+
+            serviceCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    // Deselect previous
+                    if (selectedService) {
+                        selectedService.classList.remove('selected', 'border-primary');
+                        selectedService.classList.add('border-border-glow');
+                        const prevIndicator = selectedService.querySelector('.check-indicator');
+                        prevIndicator.classList.remove('bg-primary', 'border-primary');
+                        prevIndicator.querySelector('span').classList.remove('opacity-100');
+                    }
+
+                    // Select new
+                    selectedService = card;
+                    card.classList.add('selected', 'border-primary');
+                    card.classList.remove('border-border-glow');
+                    
+                    const indicator = card.querySelector('.check-indicator');
+                    indicator.classList.add('bg-primary', 'border-primary');
+                    indicator.querySelector('span').classList.add('opacity-100');
+
+                    // Enable Continue Button
+                    continueBtn.disabled = false;
+                    continueBtn.classList.remove('bg-surface-container-highest', 'text-on-surface-variant', 'opacity-50', 'cursor-not-allowed');
+                    continueBtn.classList.add('bg-primary', 'text-surface-dim', 'opacity-100', 'cursor-pointer', 'hover:bg-primary-fixed', 'shadow-[0_0_20px_rgba(255,182,139,0.3)]');
+                });
+            });
+        });
+    </script>
+</body></html>

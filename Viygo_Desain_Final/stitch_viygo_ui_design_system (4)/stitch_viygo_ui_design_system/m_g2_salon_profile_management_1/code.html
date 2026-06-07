@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Salon Profile Management - VIYGO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "tertiary-container": "#abcdcd",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "on-tertiary-container": "#385858",
+                        "secondary-container": "#264d67",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-secondary-container": "#97bddb",
+                        "surface-container-lowest": "#0c0e11",
+                        "tertiary-fixed": "#c7e9e9",
+                        "surface-container-high": "#282a2d",
+                        "on-primary-container": "#7a4523",
+                        "inverse-on-surface": "#2f3034",
+                        "inverse-surface": "#e2e2e6",
+                        "surface": "#111316",
+                        "inverse-primary": "#88512e",
+                        "surface-variant": "#333538",
+                        "background": "#111316",
+                        "secondary-fixed": "#c9e6ff",
+                        "primary": "#ffdbc8",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "primary-fixed": "#ffdbc9",
+                        "on-tertiary": "#143536",
+                        "error-container": "#93000a",
+                        "on-background": "#e2e2e6",
+                        "on-error": "#690005",
+                        "primary-container": "#ffb68b",
+                        "tertiary": "#c7e9e9",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "on-secondary": "#04344d",
+                        "surface-container-highest": "#333538",
+                        "surface-container": "#1e2023",
+                        "surface-charcoal": "#1A1D21",
+                        "primary-fixed-dim": "#ffb68b",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#37393d",
+                        "on-surface-variant": "#d7c2b8",
+                        "on-primary-fixed": "#321200",
+                        "outline-variant": "#52443c",
+                        "surface-dim": "#111316",
+                        "secondary": "#a5cbea",
+                        "surface-container-low": "#1a1c1f",
+                        "on-tertiary-fixed": "#002020",
+                        "outline": "#9f8d84",
+                        "on-surface": "#e2e2e6",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#ffb68b",
+                        "on-primary": "#502405"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "lg": "40px",
+                        "gutter": "24px",
+                        "xs": "8px",
+                        "margin-mobile": "20px",
+                        "sm": "16px",
+                        "xl": "80px",
+                        "md": "24px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>.bg-midnight-floral {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDpWXtDtMP94edgaaPTpK2DBgUnEz7EKDrnJRxBY0V1BoGRFRCFKPerT37m3VxAgcv-jlh2JCr4d4c_BPApofbbO_V4lgQD4L54vv4J2wZ6MjTMs7xJZsg8DBUC039lMlIv9DevTVPNTeOiqNBVCqzCbZHcY8I3Q8pRCpc0bH6CdUB7HJ5BnrVO8vP0W2k_k8_l7m_LVoIoDSIVOQ96n-i4lhKIRVCFPWXPVzfFw9ia4gqPDhNCIJ-612HzGqtaajqpVLg9owtq0pA_);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed
+    }
+.bg-midnight-floral::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(17, 19, 22, 0.9);
+    z-index: -1
+    }
+/* Hide scrollbar for horizontal scrolling galleries */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none
+    }
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen relative overflow-x-hidden antialiased">
+<!-- Midnight Floral Background Texture -->
+<div class="fixed inset-0 bg-midnight-floral -z-10" data-alt="A subtle, dark and moody midnight floral pattern. Deep shadows and barely visible dark purple and blue flowers emerge from a nearly black background. The aesthetic is high-end, mysterious, and serene, fitting a luxury beauty platform."></div>
+<!-- TopAppBar -->
+<header class="bg-surface-glass dark:bg-surface-glass text-primary dark:text-primary font-headline-md text-headline-md-mobile docked full-width top-0 sticky backdrop-blur-md border-b border-border-glow flat no shadows z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile py-xs">
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tighter">VIYGO</h1>
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</header>
+<main class="pb-32">
+<!-- Page Title & Visibility Toggle -->
+<section class="px-margin-mobile pt-lg pb-md flex justify-between items-end">
+<div>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-1">Management</p>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Salon Profile</h2>
+</div>
+<div class="flex flex-col items-end">
+<label class="flex items-center cursor-pointer" for="visibility-toggle">
+<span class="mr-2 font-label-sm text-label-sm text-on-surface-variant">Discoverable</span>
+<div class="relative">
+<input checked="" class="sr-only" id="visibility-toggle" type="checkbox"/>
+<div class="block bg-surface-charcoal w-10 h-6 rounded-full border border-border-glow transition-colors duration-300 peer-checked:bg-primary-container"></div>
+<div class="dot absolute left-1 top-1 bg-primary w-4 h-4 rounded-full transition transform duration-300 peer-checked:translate-x-4 peer-checked:bg-surface"></div>
+</div>
+</label>
+</div>
+</section>
+<!-- Curated Gallery (Horizontal Scroll) -->
+<section class="mb-lg">
+<div class="px-margin-mobile mb-sm flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface">Curated Gallery</h3>
+<button class="text-secondary font-label-sm text-label-sm flex items-center gap-1 hover:opacity-80">
+<span class="material-symbols-outlined" style="font-size: 16px;">add</span> Add
+                </button>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar pl-margin-mobile pr-4 gap-md pb-4">
+<!-- Gallery Item 1 -->
+<div class="relative flex-none w-[240px] h-[300px] rounded-xl overflow-hidden shadow-lg group">
+<img alt="Minimalist salon interior" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A highly curated, minimalist salon interior featuring clean lines, warm ambient lighting, and subtle copper accents. The aesthetic is sophisticated and tranquil, aligning with a luxury lifestyle brand in a midnight-themed setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf3Tc4madSAOGkWz-N1VfKUGLAh0zfrOrRZpyW9l_GZmfL9XEjGkQLUmWP1UEMk9XgBjtHfj_kleaKgDXWo87bxuNPyEZUS-WhIbCNSNYDAwUciJwJf5RFkl0vnolNfTzl-gTlh5NwDxeVA_lETdyXo56TWFQ7BOSIUFH4VEfJjX8VkegLwGDwAhj5oF13Sc2f47yiCdSKnJrN2BjoyO6bRPHRHoQLohvPuOehuyvx2FvChzV91LDBTNl6EMlu_og3yWlQCvKfJ-Eb"/>
+<div class="absolute bottom-0 left-0 right-0 p-3 bg-surface-glass backdrop-blur-md border-t border-border-glow translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-primary">Cover Image</span>
+<button class="text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined" style="font-size: 18px;">delete</span></button>
+</div>
+</div>
+<!-- Gallery Item 2 -->
+<div class="relative flex-none w-[240px] h-[300px] rounded-xl overflow-hidden shadow-lg group">
+<img alt="Premium skincare products" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close up of premium skincare products arranged neatly on a dark, textured surface. Soft, glowing light highlights the sleek glass packaging and subtle botanical elements. The mood is clinical precision meets natural warmth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDakslNddvqzO9NM-WYdXbS3QbG5NT_Z5EP6UasoW-Shcr4kn48gR8nO4mzzwiDdnuPGKV-T9h7rZA225FkJlkrCojUFDV9fqoyAebnCOR9QVLML2N4947UNmFjpbE9hg1yl-pv58Bor8Y2a5KrIfstPa4tdHYh8QYSaj-n8PcI-3Y_bazqh5fhl2qvKAufg8DcFNLKiJL8alH8ouEz87GstQwFBQnRpz-HOiqkcgbmcCq5Xn_gruspPSgavFGxWkTP3wAwtmV5ERb"/>
+<div class="absolute bottom-0 left-0 right-0 p-3 bg-surface-glass backdrop-blur-md border-t border-border-glow translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-primary">Products</span>
+<button class="text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined" style="font-size: 18px;">delete</span></button>
+</div>
+</div>
+<!-- Gallery Item 3 -->
+<div class="relative flex-none w-[240px] h-[300px] rounded-xl overflow-hidden shadow-lg group">
+<img alt="Atmospheric spa detail" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Detail shot of a serene spa environment showing a beautifully folded dark towel, a lit copper-toned candle, and a single dark orchid. The lighting is low and moody, conveying an exclusive, relaxing atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2YQWa8dywF6-CUWUZHXDDv_z-4V2R9S9DWYqMdUohEKwejevoeKt8cN-024hnVQdXlV4wuCPU9eTAHjzqQiwrZNw9KIkAcU0ESCbn72nXyRivAUhNlFOhHZzPDZX1T23KYWhZ6M3UlFDZ82I9ZobvVrd0LvL5QJaH4EsOqTQPUfqCOTkvzjAtB7ukOikU2aZKECvCmFSrdNN2cLlw-RWcEtVGdKotJQwKm28mJTSStKbNbkKFdOkD6VI4iYbOj0-U8tDeK_ZjfD8g"/>
+<div class="absolute bottom-0 left-0 right-0 p-3 bg-surface-glass backdrop-blur-md border-t border-border-glow translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-primary">Atmosphere</span>
+<button class="text-on-surface-variant hover:text-error transition-colors"><span class="material-symbols-outlined" style="font-size: 18px;">delete</span></button>
+</div>
+</div>
+</div>
+</section>
+<!-- Atelier Details (Collapsible sections in a glassmorphic container) -->
+<section class="px-margin-mobile mb-lg">
+<div class="bg-surface-glass backdrop-blur-xl border border-border-glow rounded-xl overflow-hidden">
+<!-- Basic Info -->
+<div class="p-md border-b border-border-glow">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Atelier Details</h3>
+<div class="space-y-4">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Salon Name</label>
+<input class="w-full bg-surface-charcoal border border-border-glow rounded text-on-surface font-body-md p-2 focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none transition-all" type="text" value="Lumière Midnight Apothecary"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Tagline</label>
+<input class="w-full bg-surface-charcoal border border-border-glow rounded text-on-surface font-body-md p-2 focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none transition-all" type="text" value="Serene Floral Noir Experiences"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Atmosphere &amp; Bio</label>
+<textarea class="w-full bg-surface-charcoal border border-border-glow rounded text-on-surface font-body-md p-2 focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none transition-all resize-none" rows="3">An exclusive sanctuary blending clinical skincare with the tranquility of a midnight garden. Specialized in restorative treatments.</textarea>
+</div>
+</div>
+</div>
+<!-- Location (Collapsible) -->
+<details class="group border-b border-border-glow">
+<summary class="flex justify-between items-center p-md cursor-pointer list-none font-label-md text-label-md text-primary">
+                        Location &amp; Contact
+                        <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-md pt-0 space-y-4">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Address</label>
+<input class="w-full bg-surface-charcoal border border-border-glow rounded text-on-surface font-body-md p-2 focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none transition-all" type="text" value="124 Obsidian Way, Suite 4"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">City</label>
+<input class="w-full bg-surface-charcoal border border-border-glow rounded text-on-surface font-body-md p-2 focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none transition-all" type="text" value="New York"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Phone</label>
+<input class="w-full bg-surface-charcoal border border-border-glow rounded text-on-surface font-body-md p-2 focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none transition-all" type="tel" value="+1 (555) 019-8372"/>
+</div>
+</div>
+</div>
+</details>
+<!-- Services Preview (Collapsible) -->
+<details class="group">
+<summary class="flex justify-between items-center p-md cursor-pointer list-none font-label-md text-label-md text-primary">
+                        Featured Services
+                        <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-md pt-0">
+<div class="flex items-center justify-between py-2 border-b border-surface-variant">
+<span class="font-body-md text-on-surface">Midnight Botanical Facial</span>
+<span class="font-label-md text-primary">$180</span>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-surface-variant">
+<span class="font-body-md text-on-surface">Copper Peptide Infusion</span>
+<span class="font-label-md text-primary">$220</span>
+</div>
+<button class="mt-4 w-full py-2 border border-secondary text-secondary font-label-md rounded hover:bg-surface-glass transition-colors">Manage All Services</button>
+</div>
+</details>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar (Fixed Save Changes) -->
+<div class="fixed bottom-[80px] left-0 w-full px-margin-mobile pb-4 pt-4 bg-gradient-to-t from-background via-background/90 to-transparent z-40">
+<button class="w-full bg-primary-container text-surface px-6 py-4 rounded-lg font-label-md uppercase tracking-widest hover:opacity-90 active:scale-95 transition-all shadow-lg flex justify-center items-center gap-2">
+            Save Changes <span class="material-symbols-outlined" style="font-size: 20px;">check</span>
+</button>
+</div>
+<!-- BottomNavBar -->
+<nav class="bg-surface-glass dark:bg-surface-glass text-primary dark:text-primary font-label-sm text-label-sm font-display-lg text-display-lg text-primary fixed bottom-0 w-full z-50 rounded-t-full backdrop-blur-xl border-t border-border-glow flat no shadows fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 md:hidden">
+<button class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary transition-colors active:scale-90 duration-300">
+<span class="material-symbols-outlined">home_health</span>
+<span>Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary transition-colors active:scale-90 duration-300">
+<span class="material-symbols-outlined">calendar_month</span>
+<span>Booking</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary transition-colors active:scale-90 duration-300">
+<span class="material-symbols-outlined">auto_stories</span>
+<span>Shop</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary font-bold border-t-2 border-primary pt-1 hover:text-primary transition-colors active:scale-90 duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span>Profile</span>
+</button>
+</nav>
+<script>
+        // Custom toggle logic for the visibility switch to ensure UI updates smoothly
+        const toggle = document.getElementById('visibility-toggle');
+        const dot = toggle.nextElementSibling.nextElementSibling;
+        const bg = toggle.nextElementSibling;
+        
+        toggle.addEventListener('change', (e) => {
+            if(e.target.checked) {
+                dot.classList.add('translate-x-4', 'bg-surface');
+                dot.classList.remove('bg-primary');
+                bg.classList.add('bg-primary-container');
+                bg.classList.remove('bg-surface-charcoal');
+            } else {
+                dot.classList.remove('translate-x-4', 'bg-surface');
+                dot.classList.add('bg-primary');
+                bg.classList.remove('bg-primary-container');
+                bg.classList.add('bg-surface-charcoal');
+            }
+        });
+    </script>
+</body></html>

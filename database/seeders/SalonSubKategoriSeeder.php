@@ -24,19 +24,20 @@ class SalonSubKategoriSeeder extends Seeder
             ? json_decode(file_get_contents($path), true) ?? []
             : [];
 
-        if (!empty($rowsFromJson)) {
+        if (! empty($rowsFromJson)) {
             $now = now();
             $payload = array_map(fn ($r) => [
-                'id_salon'        => $r['id_salon'],
+                'id_salon' => $r['id_salon'],
                 'id_sub_kategori' => $r['id_sub_kategori'],
-                'created_at'      => $now,
-                'updated_at'      => $now,
+                'created_at' => $now,
+                'updated_at' => $now,
             ], $rowsFromJson);
 
             foreach (array_chunk($payload, 1000) as $chunk) {
                 DB::table('salon_sub_kategori')->insertOrIgnore($chunk);
             }
-            $this->command->info('Seeded ' . count($payload) . ' baris pivot salon_sub_kategori dari JSON scraper.');
+            $this->command->info('Seeded '.count($payload).' baris pivot salon_sub_kategori dari JSON scraper.');
+
             return;
         }
 
@@ -50,20 +51,21 @@ class SalonSubKategoriSeeder extends Seeder
 
         if ($rows->isEmpty()) {
             $this->command->warn('salon_sub_kategori.json kosong & service tidak punya id_sub_kategori → pivot dilewati.');
+
             return;
         }
 
         $now = now();
         $payload = $rows->map(fn ($r) => [
-            'id_salon'        => $r->id_salon,
+            'id_salon' => $r->id_salon,
             'id_sub_kategori' => $r->id_sub_kategori,
-            'created_at'      => $now,
-            'updated_at'      => $now,
+            'created_at' => $now,
+            'updated_at' => $now,
         ])->all();
 
         foreach (array_chunk($payload, 1000) as $chunk) {
             DB::table('salon_sub_kategori')->insertOrIgnore($chunk);
         }
-        $this->command->info('Derived ' . count($payload) . ' baris salon_sub_kategori dari distinct(service.id_sub_kategori).');
+        $this->command->info('Derived '.count($payload).' baris salon_sub_kategori dari distinct(service.id_sub_kategori).');
     }
 }

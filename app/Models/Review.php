@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Review extends Model
 {
-    protected $table      = 'review';
+    protected $table = 'review';
+
     protected $primaryKey = 'id_review';
 
     protected $fillable = [
@@ -22,7 +23,7 @@ class Review extends Model
     protected function casts(): array
     {
         return [
-            'rating'     => 'integer',
+            'rating' => 'integer',
             'is_visible' => 'boolean',
         ];
     }

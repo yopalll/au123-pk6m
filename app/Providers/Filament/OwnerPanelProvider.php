@@ -30,12 +30,15 @@ class OwnerPanelProvider extends PanelProvider
             ->path('owner')
             ->login()
             ->profile()
-            ->brandName('VIYGO Salon Dashboard')
+            ->brandName(\App\Support\FilamentBrand::name('Salon'))
+            ->renderHook(\Filament\View\PanelsRenderHook::HEAD_END, fn () => \App\Support\FilamentBrand::fontLink())
             ->favicon(asset('favicon.ico'))
-            ->darkMode(false)
+            ->darkMode(true, isForced: true)
+            ->font('Manrope')
             ->colors([
-                'primary' => Color::hex('#1B2D6B'),
-                'info'    => Color::hex('#4BA3CC'),
+                'primary' => Color::hex('#ffb68b'),
+                'info'    => Color::hex('#a5cbea'),
+                'gray'    => Color::Zinc,
             ])
             ->discoverResources(in: app_path('Filament/Owner/Resources'), for: 'App\\Filament\\Owner\\Resources')
             ->discoverPages(in: app_path('Filament/Owner/Pages'), for: 'App\\Filament\\Owner\\Pages')

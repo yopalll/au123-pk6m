@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Help Center - VIYGO LUXE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#143536",
+                      "surface-bright": "#37393d",
+                      "inverse-on-surface": "#2f3034",
+                      "on-background": "#e2e2e6",
+                      "error": "#ffb4ab",
+                      "on-tertiary-fixed-variant": "#2c4c4c",
+                      "surface": "#111316",
+                      "secondary-container": "#264d67",
+                      "on-primary": "#502405",
+                      "on-secondary-fixed": "#001e2f",
+                      "on-tertiary-container": "#385858",
+                      "primary-fixed-dim": "#ffb68b",
+                      "inverse-surface": "#e2e2e6",
+                      "on-secondary": "#04344d",
+                      "secondary": "#a5cbea",
+                      "on-secondary-container": "#97bddb",
+                      "secondary-fixed": "#c9e6ff",
+                      "surface-container-highest": "#333538",
+                      "outline-variant": "#52443c",
+                      "on-primary-fixed-variant": "#6c3a19",
+                      "surface-charcoal": "#1A1D21",
+                      "border-glow": "rgba(255, 255, 255, 0.2)",
+                      "surface-container": "#1e2023",
+                      "on-secondary-fixed-variant": "#234a64",
+                      "primary": "#ffdbc8",
+                      "on-error-container": "#ffdad6",
+                      "outline": "#9f8d84",
+                      "on-error": "#690005",
+                      "primary-container": "#ffb68b",
+                      "secondary-fixed-dim": "#a5cbea",
+                      "tertiary-fixed-dim": "#abcdcd",
+                      "tertiary-container": "#abcdcd",
+                      "on-tertiary-fixed": "#002020",
+                      "surface-variant": "#333538",
+                      "on-primary-fixed": "#321200",
+                      "surface-container-lowest": "#0c0e11",
+                      "tertiary-fixed": "#c7e9e9",
+                      "on-surface": "#e2e2e6",
+                      "surface-tint": "#ffb68b",
+                      "error-container": "#93000a",
+                      "primary-fixed": "#ffdbc9",
+                      "tertiary": "#c7e9e9",
+                      "surface-dim": "#111316",
+                      "on-primary-container": "#7a4523",
+                      "background": "#111316",
+                      "surface-container-low": "#1a1c1f",
+                      "surface-glass": "rgba(17, 19, 22, 0.6)",
+                      "on-surface-variant": "#d7c2b8",
+                      "surface-container-high": "#282a2d",
+                      "inverse-primary": "#88512e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "xl": "80px",
+                      "sm": "16px",
+                      "md": "24px",
+                      "xs": "8px",
+                      "base": "4px",
+                      "lg": "40px",
+                      "margin-mobile": "20px",
+                      "margin-desktop": "80px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Manrope"
+                      ],
+                      "body-lg": [
+                              "Manrope"
+                      ],
+                      "label-sm": [
+                              "Manrope"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "label-md": [
+                              "Manrope"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        /* Custom base styles for Serene Floral Noir aesthetic */
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-surface');
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .glass-panel {
+            background-color: theme('colors.surface-glass');
+            backdrop-filter: blur(16px);
+            border: 1px solid theme('colors.border-glow');
+        }
+
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0.15;
+            object-fit: cover;
+        }
+
+        /* Hide scrollbar for clean look but allow scrolling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.surface-variant');
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline');
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- Ambient Background Texture -->
+<img aria-hidden="true" class="bg-pattern" data-alt="A highly detailed, seamless texture of a midnight garden featuring intricate botanical motifs and subtle metallic floral outlines against a very dark, near-black slate background. The lighting is incredibly dim and atmospheric, intended to serve as a luxurious, moody backdrop for a premium dark-mode interface, evoking the 'Serene Floral Noir' aesthetic without overpowering foreground elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsXVpkRBdz8T8_T1YuOu3-bqgTHADz6-8ZFYP4Q8yJdbKZ-diDyfQRKs-tevczvyGmGMM5_DQ-pzu_CzFBgGUmT9zwbyDtqxm4hVjvL2-JY6ZjZxKeFp7GNE7G8lJilnDiNga1UEcjyrhy6-Cy8BTmO6A7W3SdUIAWVjG9FgwNvEIHDEnmBfHcsaU9mY-oPG_adfn9-taxBDcifLEgTtUjfXNdiyntd3QVqpMKCYskovHuD0JqXbjp5f5zs2BrRL8KILSvviO2VWbP"/>
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface-glass backdrop-blur-md fixed top-0 w-full z-50 border-b border-white/20 flat no shadows text-primary font-label-md text-label-md uppercase tracking-wider flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20">
+<div class="flex items-center gap-md">
+<!-- Navigation Links -->
+<nav class="hidden md:flex gap-gutter items-center">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary transition-all duration-300" href="#">Lookbook</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary transition-all duration-300" href="#">Shop</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary transition-all duration-300" href="#">Sustainability</a>
+<a aria-current="page" class="text-primary border-b-2 border-primary pb-1 Active: scale-95 opacity-80" href="#">Help</a>
+</nav>
+</div>
+<!-- Brand Logo -->
+<a class="font-headline-md text-headline-md text-primary tracking-tighter absolute left-1/2 transform -translate-x-1/2" href="#">
+            VIYGO
+        </a>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-sm">
+<button aria-label="Shopping Bag" class="hover:text-primary transition-all duration-300 flex items-center justify-center p-2 rounded-full hover:bg-white/5">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+</button>
+<button aria-label="Person" class="hover:text-primary transition-all duration-300 flex items-center justify-center p-2 rounded-full hover:bg-white/5">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[120px] pb-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Side Navigation (Help Categories) -->
+<aside class="lg:col-span-3 order-2 lg:order-1 hidden md:block">
+<div class="sticky top-[140px]">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-lg pb-sm border-b border-white/10">Help Topics</h3>
+<nav class="flex flex-col gap-sm">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all py-2" href="#">Shipping &amp; Delivery</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all py-2" href="#">Returns &amp; Exchanges</a>
+<a aria-current="page" class="font-body-md text-body-md text-primary font-medium flex items-center gap-2 py-2 border-l-2 border-primary pl-3 -ml-3" href="#">
+                            Sustainability FAQ
+                        </a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all py-2" href="#">Product Science</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:translate-x-1 transition-all py-2" href="#">Account &amp; Orders</a>
+</nav>
+<div class="mt-xl glass-panel p-md rounded-xl">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs">Still need help?</p>
+<a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1 group" href="#">
+                            Contact Concierge
+                            <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Article Content -->
+<article class="lg:col-span-9 order-1 lg:order-2">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" class="mb-lg">
+<ol class="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Help Center</a></li>
+<li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+<li><a class="hover:text-primary transition-colors" href="#">Sustainability FAQ</a></li>
+<li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+<li aria-current="page" class="text-primary truncate">Recycling Glass Pods</li>
+</ol>
+</nav>
+<!-- Article Header -->
+<header class="mb-xl">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-md">How to Recycle Your Empty Glass Pods</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">
+                        Our commitment to a serene, sustainable future means ensuring every beautifully crafted component finds a second life. Follow this simple guide to responsibly return your empty VIYGO glass pods and receive rewards towards your next ritual.
+                    </p>
+</header>
+<!-- Hero Image (Optional but adds Luxe feel) -->
+<figure class="w-full h-[300px] md:h-[400px] mb-xl rounded-xl overflow-hidden glass-panel relative group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic, high-end product photograph of an empty, translucent frosted glass skincare pod resting elegantly on a surface of dark, polished slate. The lighting is moody and dramatic, featuring luminous layers and subtle botanical accents in the blurred background with soft copper-toned highlights, evoking a sense of tranquil luxury, clinical precision, and sustainable beauty." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyqPiqZnxYQHBvzdteYRrztr4CEwTUTxsGdN26vnJ18eZeedmzJs8rRXCOEW1_-Mm2RAiD2BJDbxYcB4AemwwOPg2q5vfjAimGY0Hy-l1SYEEl73vJXMzxIYoc4RQsyx3SJ-TbY1ATa64loLSHE6cyJqi1XRGOY7FE5EZV1YYBx045gzOer8kQ8V92HAEOfEBRdq-_hSh4HdKa6Oou4ohdWik5_unQn49kqC6tgatADgDuDNhGy8SVvTakd_CxV7Gc1H90IRQECmES"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-charcoal to-transparent opacity-60"></div>
+</figure>
+<!-- Step-by-Step Instructions (Bento Layout) -->
+<section class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-lg">The Circular Ritual</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Step 1 -->
+<div class="glass-panel p-xl rounded-xl flex flex-col items-center text-center group hover:-translate-y-1 transition-transform duration-300">
+<div class="w-16 h-16 rounded-full bg-surface-charcoal border border-white/10 flex items-center justify-center mb-md group-hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-[32px] text-primary" style="font-variation-settings: 'FILL' 0;">keyboard_return</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">1. Return</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                Request a prepaid shipping label through your account portal. Carefully package your empty, unbroken pods in their original shipment box or any secure courier packaging.
+                            </p>
+</div>
+<!-- Step 2 -->
+<div class="glass-panel p-xl rounded-xl flex flex-col items-center text-center group hover:-translate-y-1 transition-transform duration-300">
+<div class="w-16 h-16 rounded-full bg-surface-charcoal border border-white/10 flex items-center justify-center mb-md group-hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-[32px] text-primary" style="font-variation-settings: 'FILL' 0;">cleaning_services</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">2. Sterilize</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                Once received at our laboratory, each pod undergoes a rigorous, hospital-grade sterilization process using sustainable, closed-loop sanitization methods to ensure absolute purity.
+                            </p>
+</div>
+<!-- Step 3 -->
+<div class="glass-panel p-xl rounded-xl flex flex-col items-center text-center group hover:-translate-y-1 transition-transform duration-300">
+<div class="w-16 h-16 rounded-full bg-surface-charcoal border border-white/10 flex items-center justify-center mb-md group-hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-[32px] text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">3. Reward</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                As gratitude for participating in our circular economy, 500 Luxe Points will automatically be credited to your account within 48 hours of successful processing, redeemable on future curations.
+                            </p>
+</div>
+</div>
+</section>
+<!-- Detailed Content Text -->
+<div class="prose prose-invert prose-p:font-body-md prose-p:text-body-md prose-p:text-on-surface-variant prose-a:text-secondary max-w-none">
+<h3 class="font-headline-md text-headline-md text-on-surface mt-xl mb-sm">Important Packaging Note</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">
+                        Please ensure that only glass pods are returned in this specific program. Plastic caps and applicator spatulas should be disposed of according to your local municipal recycling guidelines, as they require a different processing facility. Do not rinse the pods prior to shipping, as our facility handles all necessary preparation.
+                    </p>
+</div>
+<!-- Feedback Section -->
+<div class="mt-xl pt-lg border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-md">
+<p class="font-body-md text-body-md text-on-surface-variant">Was this article helpful?</p>
+<div class="flex gap-sm">
+<button class="px-md py-2 glass-panel rounded-lg font-label-md text-label-md text-on-surface hover:text-primary hover:border-primary/50 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">thumb_up</span> Yes
+                        </button>
+<button class="px-md py-2 glass-panel rounded-lg font-label-md text-label-md text-on-surface hover:text-error hover:border-error/50 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">thumb_down</span> No
+                        </button>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-lowest w-full py-xl px-margin-mobile md:px-margin-desktop border-t border-white/10 flat no shadows mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter max-w-7xl mx-auto">
+<div class="flex flex-col gap-sm">
+<span class="font-headline-sm text-headline-sm text-primary">VIYGO</span>
+<span class="font-body-md text-body-md text-on-surface-variant mt-auto">© 2024 VIYGO LUXE. All rights reserved.</span>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Sustainability Reports</a>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+</body></html>

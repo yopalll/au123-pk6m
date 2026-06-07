@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Platform Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#37393d",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "surface-tint": "#ffb68b",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "secondary-container": "#264d67",
+                        "inverse-surface": "#e2e2e6",
+                        "on-surface-variant": "#d7c2b8",
+                        "primary-fixed": "#ffdbc9",
+                        "on-error": "#690005",
+                        "surface": "#111316",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "tertiary-fixed": "#c7e9e9",
+                        "inverse-on-surface": "#2f3034",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "on-secondary-container": "#97bddb",
+                        "background": "#111316",
+                        "surface-container-high": "#282a2d",
+                        "on-background": "#e2e2e6",
+                        "on-tertiary-fixed": "#002020",
+                        "surface-container-low": "#1a1c1f",
+                        "outline": "#9f8d84",
+                        "surface-charcoal": "#1A1D21",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "surface-container": "#1e2023",
+                        "surface-dim": "#111316",
+                        "primary-fixed-dim": "#ffb68b",
+                        "tertiary-container": "#abcdcd",
+                        "primary-container": "#ffb68b",
+                        "on-tertiary": "#143536",
+                        "on-tertiary-container": "#385858",
+                        "outline-variant": "#52443c",
+                        "on-primary": "#502405",
+                        "primary": "#ffdbc8",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#333538",
+                        "surface-container-lowest": "#0c0e11",
+                        "error-container": "#93000a",
+                        "on-surface": "#e2e2e6",
+                        "tertiary": "#c7e9e9",
+                        "inverse-primary": "#88512e",
+                        "secondary-fixed": "#c9e6ff",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-primary-container": "#7a4523",
+                        "on-primary-fixed": "#321200",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "on-secondary": "#04344d",
+                        "secondary": "#a5cbea",
+                        "surface-container-highest": "#333538"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "gutter": "24px",
+                        "base": "4px",
+                        "xl": "80px",
+                        "lg": "40px",
+                        "sm": "16px",
+                        "md": "24px",
+                        "margin-desktop": "80px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "label-md": ["Manrope"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Ambient Background Effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(255, 182, 139, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* Custom Scrollbar for hidden horizontal scrolls if any */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+        
+        /* Range Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px; width: 16px;
+            border-radius: 50%;
+            background: #ffb68b;
+            cursor: pointer;
+            margin-top: -6px;
+            box-shadow: 0 0 10px rgba(255, 182, 139, 0.5);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%; height: 4px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+        }
+        input[type=range]:focus { outline: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased md:hidden pb-24 relative min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-surface-glass backdrop-blur-md border-b border-border-glow flex justify-between items-center px-margin-mobile h-16 z-50">
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 duration-200 p-2 -ml-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<div class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">VIYGO</div>
+<div class="w-8 h-8 rounded-full bg-surface-charcoal border border-border-glow overflow-hidden active:scale-95 duration-200">
+<!-- Placeholder for Avatar -->
+<div class="w-full h-full flex items-center justify-center text-on-surface-variant text-xs font-bold">A</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 pt-24 px-margin-mobile pb-8 flex flex-col gap-md">
+<!-- Page Title -->
+<div class="mb-2">
+<h1 class="font-headline-md text-headline-md font-playfair text-primary">Platform Settings</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Configure global parameters and state.</p>
+</div>
+<!-- General Info Section -->
+<section class="bg-surface-glass backdrop-blur-md border border-border-glow rounded-xl p-sm flex flex-col gap-sm relative overflow-hidden">
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-2 border-b border-border-glow pb-2">General</h2>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Platform Name</label>
+<input class="w-full bg-surface-charcoal border border-border-glow rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary-fixed-dim focus:ring-1 focus:ring-primary-fixed-dim/20 transition-all font-body-md" type="text" value="VIYGO Platform"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Support Email</label>
+<input class="w-full bg-surface-charcoal border border-border-glow rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-primary-fixed-dim focus:ring-1 focus:ring-primary-fixed-dim/20 transition-all font-body-md" type="email" value="support@viygo.com"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">System Timezone</label>
+<div class="relative w-full">
+<select class="w-full bg-surface-charcoal border border-border-glow rounded-lg px-4 py-3 text-on-surface appearance-none focus:outline-none focus:border-primary-fixed-dim focus:ring-1 focus:ring-primary-fixed-dim/20 transition-all font-body-md">
+<option>UTC (Coordinated Universal Time)</option>
+<option>EST (Eastern Standard Time)</option>
+<option>PST (Pacific Standard Time)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+</section>
+<!-- Theme & State Section -->
+<section class="bg-surface-glass backdrop-blur-md border border-border-glow rounded-xl p-sm flex flex-col gap-sm relative overflow-hidden">
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-2 border-b border-border-glow pb-2">Theme &amp; State</h2>
+<label class="flex items-center justify-between cursor-pointer py-2">
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface">Maintenance Mode</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Disable public access</span>
+</div>
+<div class="relative inline-flex items-center">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-charcoal border border-border-glow rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface-variant after:border-border-glow after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container peer-checked:after:bg-on-primary-fixed-variant"></div>
+</div>
+</label>
+<div class="flex flex-col gap-3 mt-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Brand Accent Color</label>
+<div class="flex gap-4">
+<button class="w-8 h-8 rounded-full bg-[#ffb68b] border-2 border-white ring-2 ring-primary/20"></button>
+<button class="w-8 h-8 rounded-full bg-[#a5cbea] border-2 border-transparent hover:border-border-glow transition-all"></button>
+<button class="w-8 h-8 rounded-full bg-[#abcdcd] border-2 border-transparent hover:border-border-glow transition-all"></button>
+</div>
+</div>
+</section>
+<!-- Commission Structure Section -->
+<section class="bg-surface-glass backdrop-blur-md border border-border-glow rounded-xl p-sm flex flex-col gap-md relative overflow-hidden">
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest border-b border-border-glow pb-2">Commission Structure</h2>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<label class="font-body-md text-on-surface">Standard Tier Fee</label>
+<span class="font-label-md text-primary">12%</span>
+</div>
+<input class="w-full" max="30" min="0" type="range" value="12"/>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<label class="font-body-md text-on-surface">Premium Tier Fee</label>
+<span class="font-label-md text-primary">8%</span>
+</div>
+<input class="w-full" max="30" min="0" type="range" value="8"/>
+</div>
+</section>
+<!-- Action Button -->
+<div class="mt-4">
+<button class="w-full bg-primary-container text-on-primary-container font-label-md text-label-md py-4 rounded-xl hover:opacity-90 transition-opacity active:scale-[0.98] duration-200">
+                Save Configurations
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface-glass backdrop-blur-lg border-t border-border-glow rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150 gap-1 w-16" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">monitoring</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest text-center truncate w-full">Metrics</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150 gap-1 w-16" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">chat_bubble</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest text-center truncate w-full">Inbox</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150 gap-1 w-16" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest text-center truncate w-full">Schedule</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold transition-all hover:text-primary-fixed-dim active:scale-90 duration-150 gap-1 w-16" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest text-center truncate w-full">Settings</span>
+</a>
+</nav>
+</body></html>

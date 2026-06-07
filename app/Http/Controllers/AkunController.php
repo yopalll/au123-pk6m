@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Constants\OrderStatus;
 use App\Models\Order;
 use App\Models\Salon;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class AkunController extends Controller
@@ -16,7 +17,7 @@ class AkunController extends Controller
             ->count();
 
         $favouriteCount = auth()->user()->favourites()->count();
-        $promoCount     = auth()->user()->promos()->wherePivot('is_used', false)->count();
+        $promoCount = auth()->user()->promos()->wherePivot('is_used', false)->count();
 
         return view('akun.index', compact('upcomingCount', 'favouriteCount', 'promoCount'));
     }
@@ -29,8 +30,8 @@ class AkunController extends Controller
         // (`confirmed`) bookings, since to the customer they're both
         // "I have an appointment coming up".
         $statusMap = [
-            'mendatang'  => [OrderStatus::PENDING, OrderStatus::CONFIRMED],
-            'selesai'    => [OrderStatus::SUCCESS],
+            'mendatang' => [OrderStatus::PENDING, OrderStatus::CONFIRMED],
+            'selesai' => [OrderStatus::SUCCESS],
             'dibatalkan' => [OrderStatus::CANCELED],
         ];
 
@@ -89,6 +90,35 @@ class AkunController extends Controller
         );
     }
 
+    /**
+     * Modul 5 — Rincian Booking: halaman detail pesanan booking.
+     */
+    public function bookingDetail(string $kode)
+    {
+        $order = Order::where('kode_order', $kode)
+            ->where('id_user', auth()->id())
+            ->with(['salon', 'pembayaran', 'details.service', 'details.staff', 'review'])
+            ->firstOrFail();
+
+        return view('akun.booking-detail', compact('order'));
+    }
+
+    /**
+     * Modul 5 — Invoice PDF: generate & stream invoice booking.
+     */
+    public function downloadInvoice(string $kode)
+    {
+        $order = Order::where('kode_order', $kode)
+            ->where('id_user', auth()->id())
+            ->with(['salon', 'pembayaran', 'details.service', 'details.staff', 'user'])
+            ->firstOrFail();
+
+        $pdf = Pdf::loadView('pdf.invoice-booking', compact('order'))
+            ->setPaper('a4', 'portrait');
+
+        return $pdf->download("VIYGO-Invoice-{$kode}.pdf");
+    }
+
     public function pengaturan()
     {
         return view('akun.pengaturan');
@@ -97,9 +127,9 @@ class AkunController extends Controller
     public function updatePengaturan(Request $request)
     {
         $request->validate([
-            'first_name'   => 'required|string|max:100',
-            'last_name'    => 'nullable|string|max:100',
-            'email'        => 'required|email|unique:users,email,' . auth()->id() . ',id_user',
+            'first_name' => 'required|string|max:100',
+            'last_name' => 'nullable|string|max:100',
+            'email' => 'required|email|unique:users,email,'.auth()->id().',id_user',
             // BUG-A15: Include phone_number; used by Midtrans customer_details.phone.
             'phone_number' => 'nullable|string|max:30',
         ]);
@@ -113,7 +143,7 @@ class AkunController extends Controller
     {
         $request->validate([
             'current_password' => ['required', 'current_password'],
-            'password'         => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
         auth()->user()->update([

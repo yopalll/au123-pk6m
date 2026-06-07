@@ -11,7 +11,8 @@ class Staff extends Model
 {
     use SoftDeletes;
 
-    protected $table      = 'staff';
+    protected $table = 'staff';
+
     protected $primaryKey = 'id_staff';
 
     protected $fillable = [
@@ -39,7 +40,7 @@ class Staff extends Model
     public function services()
     {
         return $this->belongsToMany(Service::class, 'staff_service', 'id_staff', 'id_service')
-                    ->withTimestamps();
+            ->withTimestamps();
     }
 
     public function orderDetails(): HasMany

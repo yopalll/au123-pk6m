@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class MitraApplication extends Model
 {
-    protected $table      = 'mitra_applications';
+    protected $table = 'mitra_applications';
+
     protected $primaryKey = 'id_application';
 
     protected $fillable = [

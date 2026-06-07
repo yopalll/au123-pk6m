@@ -33,16 +33,16 @@ class KategoriSubKategoriSeeder extends Seeder
             for ($pos = 1; $pos <= 6; $pos++) {
                 $subId = ($katId - 1) * 6 + $pos;
                 $payload[] = [
-                    'id_kategori'     => $katId,
+                    'id_kategori' => $katId,
                     'id_sub_kategori' => $subId,
-                    'urutan'          => $pos,
-                    'created_at'      => $now,
-                    'updated_at'      => $now,
+                    'urutan' => $pos,
+                    'created_at' => $now,
+                    'updated_at' => $now,
                 ];
             }
         }
 
         DB::table('kategori_sub_kategori')->insertOrIgnore($payload);
-        $this->command->info('Seeded ' . count($payload) . ' baris pivot kategori_sub_kategori (7 kategori × 6 sub).');
+        $this->command->info('Seeded '.count($payload).' baris pivot kategori_sub_kategori (7 kategori × 6 sub).');
     }
 }

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Art of Nightly Restoration - VIYGO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#a5cbea",
+                        "inverse-surface": "#e2e2e6",
+                        "on-primary-fixed": "#321200",
+                        "primary-container": "#ffb68b",
+                        "surface-bright": "#37393d",
+                        "on-error": "#690005",
+                        "on-primary": "#502405",
+                        "surface-container-highest": "#333538",
+                        "surface-container-high": "#282a2d",
+                        "on-surface": "#e2e2e6",
+                        "surface-container-low": "#1a1c1f",
+                        "secondary": "#a5cbea",
+                        "on-tertiary-container": "#385858",
+                        "secondary-fixed": "#c9e6ff",
+                        "surface-container": "#1e2023",
+                        "surface-charcoal": "#1A1D21",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "on-tertiary": "#143536",
+                        "on-background": "#e2e2e6",
+                        "error": "#ffb4ab",
+                        "background": "#111316",
+                        "primary-fixed": "#ffdbc9",
+                        "surface": "#111316",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "outline-variant": "#52443c",
+                        "tertiary-container": "#abcdcd",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "surface-variant": "#333538",
+                        "surface-dim": "#111316",
+                        "primary": "#ffdbc8",
+                        "on-secondary": "#04344d",
+                        "surface-container-lowest": "#0c0e11",
+                        "inverse-on-surface": "#2f3034",
+                        "tertiary": "#c7e9e9",
+                        "surface-tint": "#ffb68b",
+                        "on-tertiary-fixed": "#002020",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#ffb68b",
+                        "outline": "#9f8d84",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "secondary-container": "#264d67",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "on-surface-variant": "#d7c2b8",
+                        "inverse-primary": "#88512e",
+                        "on-secondary-fixed": "#001e2f",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "tertiary-fixed": "#c7e9e9",
+                        "on-secondary-container": "#97bddb",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#7a4523"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "base": "4px",
+                        "sm": "16px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "xs": "8px",
+                        "xl": "80px",
+                        "margin-desktop": "80px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Manrope"],
+                        "display-lg": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "label-md": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .bg-floral-texture {
+            background-image: radial-gradient(circle at center, rgba(255, 219, 200, 0.03) 0%, transparent 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen relative selection:bg-primary-container selection:text-on-primary-container">
+<div class="fixed inset-0 pointer-events-none z-0 bg-floral-texture mix-blend-screen"></div>
+<header class="bg-surface-glass dark:bg-surface-glass backdrop-blur-md border-b border-border-glow docked full-width top-0 sticky flex justify-between items-center w-full px-margin-mobile py-xs z-50">
+<button class="text-primary dark:text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tighter">VIYGO</span>
+<button class="text-primary dark:text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+</button>
+</header>
+<main class="relative z-10 pb-xl">
+<section class="relative w-full h-[618px] min-h-[500px] flex flex-col justify-end">
+<img alt="Serum bottle" class="absolute inset-0 w-full h-full object-cover z-0 opacity-80" data-alt="A macro photograph of a sleek, dark glass serum bottle resting gracefully against a backdrop of deep, shadowy midnight floral blooms. The lighting is moody and clinical, highlighting a singular, luminous drop of golden copper liquid poised at the tip of a glass dropper. The overall aesthetic embodies 'Serene Floral Noir' with profound blacks, subtle organic textures, and high-end luxury skincare precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx4Q2qE0_--s7EzSLNvU_Tt9cQunvunDqshLvIEBm3N8JrHolEtIuhukvigPhnwPoGSUhURtVCtVV_O0B5A2H240MeOKQNvOEZ44VHNXVEDp9uCg5d3psuf-PcMhCZmWYgdmesxEOJ-dfPpKRV6K-jArGHCbiQRd0V4WFmdcBldx8lGG_ixGkqqJoQCmTPnhHsxrJLbibDf-67kd1K7R5bg7Lpjz6Yn42LeqQLg2t3sOKt1YX1PIFwLIgW94cISw2DE1eVyUWSshn5"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent z-10"></div>
+<div class="relative z-20 px-margin-mobile pb-lg text-center">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-xs block">Editorial Focus</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-on-surface mb-sm leading-tight">The Art of<br/>Nightly Restoration</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto">Embrace the quiet hours. Science and botanicals converge as your skin enters its most critical phase of cellular renewal.</p>
+</div>
+</section>
+<article class="px-margin-mobile py-lg md:py-xl max-w-2xl mx-auto space-y-md md:space-y-lg">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                As twilight settles and the world quiets, the skin initiates a profound transformation. The daylight hours demand a defensive posture, warding off environmental stressors. The night, however, is a sanctuary for reparation. It is during these hours that cellular turnover peaks, and the dermal matrix becomes highly receptive to targeted intervention.
+            </p>
+<div class="p-md rounded-xl bg-surface-glass backdrop-blur-md border border-border-glow relative overflow-hidden my-lg">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<p class="font-headline-md text-headline-md-mobile text-primary italic font-light">
+                    "True luminosity is not applied; it is cultivated in the depths of the dermis during the body's natural state of rest."
+                </p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-sm uppercase tracking-widest">— Dr. Aris Thorne, Lead Formulator</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                Understanding this nocturnal rhythm is the foundation of our philosophy. By aligning active ingredients—such as micro-encapsulated copper peptides and nocturnal botanical extracts—with the skin's circadian chronobiology, we amplify the restorative process. It is a meticulous choreography of science and nature, designed to unveil a resilient, luminous complexion by dawn.
+            </p>
+</article>
+<section class="py-lg mt-md border-t border-border-glow bg-surface-charcoal/30">
+<div class="px-margin-mobile mb-md flex justify-between items-end">
+<h2 class="font-headline-lg text-headline-lg-mobile text-on-surface">Shop the Ritual</h2>
+<a class="font-label-sm text-label-sm text-primary uppercase tracking-widest hover:opacity-80 transition-opacity" href="#">View All</a>
+</div>
+<div class="flex overflow-x-auto gap-md pb-md pl-margin-mobile pr-margin-mobile snap-x hide-scrollbar">
+<div class="min-w-[260px] snap-start relative rounded-xl overflow-hidden bg-surface-charcoal border border-border-glow group cursor-pointer">
+<div class="h-72 w-full relative">
+<img alt="Cleanser" class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500" data-alt="A minimalist, frosted glass pump bottle containing a dark, translucent botanical cleanser, set against a stark, deep charcoal background. Subtle copper accents catch a highly controlled, diffused studio light. The aesthetic is extremely high-end, embodying a dark, serene laboratory environment with a focus on absolute product purity and scientific precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPJTj_nLXYwGotqclByTJLwVXkhFNSwRPSgvVPg1RWjqNq6p83tag6CjN0hmQh5Wza3ctYdUMxhzYatpGAprqzPQpawgMtkHS5GZMpk8-VG4IKYdCadCBC1NgfMpmmXmIvGMcmH4SkKFZewKCisehl7eG27z6D1Ww3WsDJFOxVshDRZOXVbbG5Geakl9rlw3t-LN6fzSHUzk6xJ71Q4G8tJQcUwBpsBH41mZcy0bIEWuROgNEbEjfE31CZk6kWAVtPPKF0aoyZvlj8"/>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-sm bg-surface-glass backdrop-blur-md border-t border-border-glow flex justify-between items-center">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface uppercase tracking-widest">Midnight Cleanser</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-base">Purifying Balm</p>
+</div>
+<span class="font-body-md text-body-md text-primary">$68</span>
+</div>
+</div>
+<div class="min-w-[260px] snap-start relative rounded-xl overflow-hidden bg-surface-charcoal border border-border-glow group cursor-pointer">
+<div class="h-72 w-full relative">
+<img alt="Serum" class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500" data-alt="An elegant dropper bottle made of dark, almost black glass with a warm copper band near the neck. It stands isolated on a reflective obsidian surface. A single, perfectly formed droplet of golden serum is captured mid-air, emphasizing the product's potent, concentrated nature within a luxurious, shadowy, and serene floral noir aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc_JYpcxtLVSlGTJ5kcUo4qGxAIazcBwKFYyHniI1iPaf3-1LshXInT9LqOHAxUTO9302DDmhT7D119kIObJe-Pe7MchM3XUH9c28z0OdTNNjrGIz1Bc7GpWaqqyoBaSIMcC8OjujkQhOSEVXEYpMKiPbQ1clYa8KFQXfE1eFy-Or56muVMC9MLDyIR5gSsNIZoGJQBDY3tr0QO8VN4wwa_mX6MwlaV4I02DTvZwct7wqj_qtkDfpnBLbKP07FygFXAhUJg-EDU2pz"/>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-sm bg-surface-glass backdrop-blur-md border-t border-border-glow flex justify-between items-center">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface uppercase tracking-widest">Cellular Serum</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-base">Copper Peptide Complex</p>
+</div>
+<span class="font-body-md text-body-md text-primary">$185</span>
+</div>
+</div>
+<div class="min-w-[260px] snap-start relative rounded-xl overflow-hidden bg-surface-charcoal border border-border-glow group cursor-pointer">
+<div class="h-72 w-full relative">
+<img alt="Cream" class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500" data-alt="A heavy, matte black jar of night cream sitting beside a single, withered, dark purple orchid. The lighting is dramatic and directional, creating deep shadows that emphasize the texture of the jar and the delicate veins of the flower. The scene conveys a sense of rich, nocturnal botanical luxury and deep restorative nourishment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfnfd-6ibMLwWgyQRqvwoHDzO8LGzWqFaTdNn9oJ6t1Y6Nuz-nycrwpzRDoicjzlUmGRp2f6wiZEZC65sXPmdJLCAlErwOq9TfNeRKJI-w83HGbgMGwRLbktzkGHkzvP7QjJJU-KQj5PAIEQ30URxpEmFFN7DIaXQfDVKlshd75yYZwKTNeR5ZLhglJxlHVoehkIIrfTmMsBOA5MniRlOVonRVUQm1Q7xzN1-IBQ2C6NeQ-W56dGSsS9M7PX3Lq7sZ98njTBcg0LjE"/>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-sm bg-surface-glass backdrop-blur-md border-t border-border-glow flex justify-between items-center">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface uppercase tracking-widest">Restoration Cream</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-base">Lipid Barrier Repair</p>
+</div>
+<span class="font-body-md text-body-md text-primary">$210</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="w-full px-margin-mobile py-lg flex flex-col items-center gap-md bg-surface-dim dark:bg-surface-dim border-t border-outline-variant relative z-10">
+<span class="font-display-lg text-display-lg text-primary">VIYGO</span>
+<div class="flex flex-wrap justify-center gap-md mt-sm">
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-70" href="#">Privacy</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-70" href="#">Terms</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-70" href="#">Contact</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-70" href="#">Our Story</a>
+</div>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mt-sm">© 2024 VIYGO LUXE. ALL RIGHTS RESERVED.</p>
+</footer>
+</body></html>

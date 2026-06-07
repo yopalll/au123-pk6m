@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review &amp; Confirm - VIYGO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "surface-dim": "#111316",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-primary-fixed": "#321200",
+                        "on-secondary-fixed": "#001e2f",
+                        "secondary-container": "#264d67",
+                        "surface": "#111316",
+                        "error-container": "#93000a",
+                        "background": "#111316",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "primary-fixed": "#ffdbc9",
+                        "on-tertiary-fixed": "#002020",
+                        "on-primary": "#502405",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "surface-container": "#1e2023",
+                        "surface-charcoal": "#1A1D21",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#04344d",
+                        "on-surface": "#e2e2e6",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "secondary": "#a5cbea",
+                        "on-error": "#690005",
+                        "surface-tint": "#ffb68b",
+                        "on-tertiary": "#143536",
+                        "on-background": "#e2e2e6",
+                        "primary": "#ffdbc8",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#333538",
+                        "on-secondary-container": "#97bddb",
+                        "inverse-primary": "#88512e",
+                        "on-primary-container": "#7a4523",
+                        "surface-variant": "#333538",
+                        "outline-variant": "#52443c",
+                        "surface-container-low": "#1a1c1f",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "primary-container": "#ffb68b",
+                        "inverse-on-surface": "#2f3034",
+                        "tertiary": "#c7e9e9",
+                        "inverse-surface": "#e2e2e6",
+                        "outline": "#9f8d84",
+                        "tertiary-fixed": "#c7e9e9",
+                        "on-surface-variant": "#d7c2b8",
+                        "tertiary-container": "#abcdcd",
+                        "surface-bright": "#37393d",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "primary-fixed-dim": "#ffb68b",
+                        "surface-container-high": "#282a2d",
+                        "on-tertiary-container": "#385858"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "80px",
+                        "lg": "40px",
+                        "base": "4px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "xs": "8px",
+                        "margin-desktop": "80px",
+                        "md": "24px",
+                        "sm": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope", "sans-serif"],
+                        "display-lg-mobile": ["Playfair Display", "serif"],
+                        "body-lg": ["Manrope", "sans-serif"],
+                        "label-md": ["Manrope", "sans-serif"],
+                        "headline-md": ["Playfair Display", "serif"],
+                        "label-sm": ["Manrope", "sans-serif"],
+                        "headline-lg": ["Playfair Display", "serif"],
+                        "display-lg": ["Playfair Display", "serif"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>body {
+    background-color: theme("colors.background");
+    color: theme("colors.on-background")
+    }
+.floral-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.1;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBY6o2mrtRtSWPhB0opSJXY7x6T5lfUfR3PxL5K2o62YWSZ2NW_QtJoCWP9WFL09SZJRXIiNqY9X30cL5PS-1Jc8VKGv3EMA65cJcsNxdNwFphlKdINJ1tiwEQe8zOX56rF4UJ7irDSmyP_xny3rp7lplO1klrEoCwpPsCCbefYQQNQ5WM9SGdHWtOrEwcSfRU23XM1MBAW9l8uC_inkxqlHrECEHWRRimgto81XJoUKBjFvQS0-QSa37sb6ssRCaxqgtWBexZBJRT8);
+    background-size: cover;
+    background-position: center
+    }
+.glass-panel {
+    background-color: theme("colors.surface-glass");
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid theme("colors.border-glow")
+    }
+.glass-panel-inner {
+    background-color: theme("colors.surface-charcoal");
+    border: 1px solid theme("colors.border-glow")
+    }
+.input-glass {
+    background-color: theme("colors.surface-charcoal");
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: theme("colors.on-surface");
+    transition: all 0.3s ease
+    }
+.input-glass:focus {
+    outline: none;
+    border-color: theme("colors.surface-tint");
+    box-shadow: 0 0 0 2px rgba(255, 182, 139, 0.2)
+    }</style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-md text-body-md">
+<!-- Ambient Background -->
+<div class="floral-bg"></div>
+<!-- Top Navigation (Suppressed for Transactional Flow, keeping only Brand) -->
+<header class="fixed top-0 w-full z-50 flex justify-center items-center px-margin-mobile md:px-margin-desktop h-24 bg-surface-glass backdrop-blur-xl border-b border-border-glow">
+<a class="font-display-lg text-display-lg text-primary-fixed tracking-tight" href="#">VIYGO</a>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center pt-32 pb-xl px-margin-mobile md:px-margin-desktop">
+<div class="w-full max-w-3xl glass-panel rounded-xl p-md md:p-lg flex flex-col gap-lg shadow-2xl">
+<!-- Header Section -->
+<div class="text-center">
+<span class="font-label-sm text-label-sm text-surface-tint uppercase tracking-widest block mb-xs">Step 3 of 3</span>
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary-fixed">Review &amp; Confirm</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Please review your appointment details before proceeding to payment.</p>
+</div>
+<!-- Booking Details Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Service & Staff Details -->
+<div class="glass-panel-inner rounded-lg p-md flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Luminous Silk Facial</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">60 min session</p>
+</div>
+<span class="font-headline-md text-headline-md text-surface-tint">$125</span>
+</div>
+<div class="h-px bg-border-glow w-full my-xs"></div>
+<div class="flex items-center gap-sm">
+<img alt="Profile picture of Sarah, Esthetician" class="w-12 h-12 rounded-full object-cover border border-border-glow" data-alt="Close up professional portrait of a female esthetician with glowing skin, smiling warmly, in a dark luxury spa setting. Soft cinematic lighting highlighting her features. She is wearing a dark charcoal uniform. High end lifestyle photography, serene and welcoming mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeJV002qPLkymJ9ZxTGnzlDte7GMRLZRhXOhQYM9BFJiDxkNSJmU1YQRVaUbMqRxs4tFgs0v9iD4wBtgexLP7sxmNfaLN4vcTp8rSOyuD7xIyO_P0cPCu9C2px5h1iQxg8pHdkPlyfuFrMmK2NEQtj6wDU5IOjCspzH-UlahTad8K6m4i9gjszZ7YEBC3HDlReL0GQMeKF7QZwHqbU8EfHy8J_6ubVY3i9ZCbKq81DTEx9BOMdywQ6Gq-Hy-2E-rgl0b5pTBYUFgiJ"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Professional</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Sarah Jenkins</p>
+</div>
+</div>
+</div>
+<!-- Date & Location Details -->
+<div class="glass-panel-inner rounded-lg p-md flex flex-col gap-sm">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-surface-tint">calendar_today</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Date &amp; Time</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Thursday, Oct 26, 2024</p>
+<p class="font-body-md text-body-md text-on-surface-variant">2:30 PM - 3:30 PM</p>
+</div>
+</div>
+<div class="h-px bg-border-glow w-full my-xs"></div>
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-surface-tint">location_on</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Location</p>
+<p class="font-body-md text-body-md text-on-surface-variant">VIYGO Flagship Studio</p>
+<p class="font-body-md text-body-md text-on-surface-variant">124 Floral Ave, NY</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Promo Code & Total -->
+<div class="flex flex-col md:flex-row gap-lg justify-between items-end mt-sm">
+<div class="w-full md:w-1/2 flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest" for="promo_code">Promo Code</label>
+<div class="flex gap-sm">
+<input class="input-glass rounded-DEFAULT px-sm py-xs w-full font-body-md text-body-md h-12" id="promo_code" placeholder="Enter code" type="text"/>
+<button class="bg-transparent border border-secondary text-secondary rounded-DEFAULT px-md font-label-md text-label-md hover:bg-secondary/10 transition-colors h-12 flex items-center justify-center whitespace-nowrap" type="button">Apply</button>
+</div>
+</div>
+<div class="w-full md:w-1/2 glass-panel-inner rounded-lg p-md">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-body-md text-body-md text-on-surface-variant">Subtotal</span>
+<span class="font-body-md text-body-md text-on-surface">$125.00</span>
+</div>
+<div class="flex justify-between items-center mb-sm">
+<span class="font-body-md text-body-md text-on-surface-variant">Taxes &amp; Fees</span>
+<span class="font-body-md text-body-md text-on-surface">$11.25</span>
+</div>
+<div class="h-px bg-border-glow w-full my-sm"></div>
+<div class="flex justify-between items-center">
+<span class="font-headline-md text-headline-md text-primary-fixed">Total</span>
+<span class="font-headline-md text-headline-md text-primary-fixed">$136.25</span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row gap-md justify-end mt-md">
+<button class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors px-md py-sm" type="button">Back to details</button>
+<button class="bg-surface-tint text-surface-dim font-label-md text-label-md uppercase tracking-widest rounded-DEFAULT px-xl py-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-xs" type="button">
+                    Confirm &amp; Pay
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mt-sm">By confirming, you agree to our <a class="underline hover:text-primary transition-colors" href="#">Cancellation Policy</a>.</p>
+</div>
+</main>
+</body></html>

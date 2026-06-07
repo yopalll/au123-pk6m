@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Booking Wizard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "surface-dim": "#111316",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-primary-fixed": "#321200",
+                        "on-secondary-fixed": "#001e2f",
+                        "secondary-container": "#264d67",
+                        "surface": "#111316",
+                        "error-container": "#93000a",
+                        "background": "#111316",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "primary-fixed": "#ffdbc9",
+                        "on-tertiary-fixed": "#002020",
+                        "on-primary": "#502405",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "surface-container": "#1e2023",
+                        "surface-charcoal": "#1A1D21",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#04344d",
+                        "on-surface": "#e2e2e6",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "secondary": "#a5cbea",
+                        "on-error": "#690005",
+                        "surface-tint": "#ffb68b",
+                        "on-tertiary": "#143536",
+                        "on-background": "#e2e2e6",
+                        "primary": "#ffdbc8",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#333538",
+                        "on-secondary-container": "#97bddb",
+                        "inverse-primary": "#88512e",
+                        "on-primary-container": "#7a4523",
+                        "surface-variant": "#333538",
+                        "outline-variant": "#52443c",
+                        "surface-container-low": "#1a1c1f",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "primary-container": "#ffb68b",
+                        "inverse-on-surface": "#2f3034",
+                        "tertiary": "#c7e9e9",
+                        "inverse-surface": "#e2e2e6",
+                        "outline": "#9f8d84",
+                        "tertiary-fixed": "#c7e9e9",
+                        "on-surface-variant": "#d7c2b8",
+                        "tertiary-container": "#abcdcd",
+                        "surface-bright": "#37393d",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "primary-fixed-dim": "#ffb68b",
+                        "surface-container-high": "#282a2d",
+                        "on-tertiary-container": "#385858"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "80px",
+                        "lg": "40px",
+                        "base": "4px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "xs": "8px",
+                        "margin-desktop": "80px",
+                        "md": "24px",
+                        "sm": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>body {
+    background-color: #111316;
+    background-image: linear-gradient(rgba(17, 19, 22, 0.9), rgba(17, 19, 22, 0.9)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuC_U8Ro6acIm5K7lJaHd_a-ELE7GShpGvswjhhSpL_-z-WAKqJayEMHNCFoEtrmdFD69AdhrPnNzlX5BSUMrZZZkHyEdJBe-QDObgEEAQfuIwmwI1IFj2DuuZ_oMhPuqVxhEmC7i8vAGCuKtnfN1rNTrINpMDTgf7defP-HwwLvrV9_j8U2jiQeRhzVb78SvcV_FzcE1_SUjecRR2uSZDwidlt-shLKxwFYKoBuHurudr2G1taXypCHPIz3-JBnmslszKJgrOE9DaGM);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center
+    }
+.glass-panel {
+    background-color: rgba(26, 29, 33, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
+    }
+.input-focus-glow:focus-within {
+    border-color: #FFB68B;
+    box-shadow: 0 0 0 2px rgba(255, 182, 139, 0.2)
+    }
+/* Custom Checkbox */
+.service-checkbox {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease
+    }
+.service-checkbox:checked {
+    background-color: #FFB68B;
+    border-color: #FFB68B
+    }
+.service-checkbox:checked::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid #111316;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg)
+    }
+/* Avatar Selection */
+.avatar-radio {
+    display: none
+    }
+.avatar-label {
+    cursor: pointer;
+    transition: all 0.3s ease
+    }
+.avatar-radio:checked + .avatar-label {
+    border-color: #FFB68B;
+    box-shadow: 0 0 0 2px rgba(255, 182, 139, 0.2);
+    transform: scale(1.05)
+    }
+.avatar-radio:checked + .avatar-label .avatar-name {
+    color: #FFB68B
+    }</style>
+</head>
+<body class="text-on-surface antialiased min-h-screen flex flex-col font-body-md">
+<!-- TopNavBar (Suppressed for transactional flow, replaced with simple wizard header) -->
+<header class="w-full fixed top-0 z-50 px-margin-mobile md:px-margin-desktop h-24 flex items-center justify-between glass-panel border-b-0 border-r-0 border-l-0 border-t-0">
+<div class="flex items-center gap-xs cursor-pointer hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+<span class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant">Cancel Booking</span>
+</div>
+<div class="font-display-lg text-headline-lg md:text-display-lg text-primary-fixed tracking-tight">VIYGO</div>
+<div class="w-24"></div> <!-- Spacer for balance -->
+</header>
+<!-- Main Wizard Content -->
+<main class="flex-grow pt-32 pb-xl px-margin-mobile md:px-margin-desktop flex justify-center items-start">
+<div class="w-full max-w-4xl relative z-10">
+<!-- Progress Stepper -->
+<div class="mb-lg flex items-center justify-between relative">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-0.5 bg-surface-container-highest z-0"></div>
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-1/3 h-0.5 bg-tertiary z-0"></div> <!-- Teal Acccent Progress -->
+<!-- Step 1: Active -->
+<div class="relative z-10 flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-tertiary flex items-center justify-center text-on-tertiary font-label-sm shadow-[0_0_15px_rgba(171,205,205,0.3)]">
+                        1
+                    </div>
+<span class="font-label-sm text-label-sm uppercase text-tertiary">Services</span>
+</div>
+<!-- Step 2: Pending -->
+<div class="relative z-10 flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-surface-variant flex items-center justify-center text-on-surface-variant font-label-sm">
+                        2
+                    </div>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Time</span>
+</div>
+<!-- Step 3: Pending -->
+<div class="relative z-10 flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-surface-variant flex items-center justify-center text-on-surface-variant font-label-sm">
+                        3
+                    </div>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Details</span>
+</div>
+<!-- Step 4: Pending -->
+<div class="relative z-10 flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-surface-variant flex items-center justify-center text-on-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Confirm</span>
+</div>
+</div>
+<!-- Booking Canvas -->
+<div class="glass-panel rounded-xl p-margin-mobile md:p-lg flex flex-col gap-lg">
+<div class="flex flex-col gap-xs">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary-fixed">Select Services</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Choose your treatments for this session. You can select multiple.</p>
+</div>
+<!-- Service Selection List -->
+<div class="flex flex-col gap-sm">
+<!-- Service Item 1 -->
+<label class="flex items-start gap-md p-md rounded-lg bg-surface-charcoal border border-border-glow hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="pt-1">
+<input checked="" class="service-checkbox" type="checkbox"/>
+</div>
+<div class="flex-grow flex flex-col sm:flex-row sm:items-center justify-between gap-sm">
+<div class="flex flex-col gap-1">
+<span class="font-headline-md text-body-lg md:text-headline-md text-primary group-hover:text-primary-fixed transition-colors">Midnight Renewal Facial</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 60 Min
+                                </span>
+</div>
+<div class="font-label-md text-label-md text-primary bg-surface-container-lowest px-3 py-1 rounded-full border border-border-glow w-fit">
+                                $120
+                            </div>
+</div>
+</label>
+<!-- Service Item 2 -->
+<label class="flex items-start gap-md p-md rounded-lg bg-surface-charcoal border border-border-glow hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="pt-1">
+<input class="service-checkbox" type="checkbox"/>
+</div>
+<div class="flex-grow flex flex-col sm:flex-row sm:items-center justify-between gap-sm">
+<div class="flex flex-col gap-1">
+<span class="font-headline-md text-body-lg md:text-headline-md text-primary group-hover:text-primary-fixed transition-colors">Botanical Restorative Treatment</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 90 Min
+                                </span>
+</div>
+<div class="font-label-md text-label-md text-on-surface-variant bg-surface-container-lowest px-3 py-1 rounded-full border border-border-glow w-fit">
+                                $185
+                            </div>
+</div>
+</label>
+<!-- Service Item 3 -->
+<label class="flex items-start gap-md p-md rounded-lg bg-surface-charcoal border border-border-glow hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="pt-1">
+<input class="service-checkbox" type="checkbox"/>
+</div>
+<div class="flex-grow flex flex-col sm:flex-row sm:items-center justify-between gap-sm">
+<div class="flex flex-col gap-1">
+<span class="font-headline-md text-body-lg md:text-headline-md text-primary group-hover:text-primary-fixed transition-colors">Copper Peptide Eye Lift</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 30 Min
+                                </span>
+</div>
+<div class="font-label-md text-label-md text-on-surface-variant bg-surface-container-lowest px-3 py-1 rounded-full border border-border-glow w-fit">
+                                $65
+                            </div>
+</div>
+</label>
+</div>
+<!-- Staff Selection Section -->
+<div class="flex flex-col gap-md pt-md border-t border-border-glow">
+<h3 class="font-headline-md text-headline-md text-primary-fixed">Select Staff</h3>
+<div class="flex gap-md overflow-x-auto pb-2 -mx-margin-mobile px-margin-mobile md:mx-0 md:px-0 scrollbar-hide">
+<!-- Staff 1: Anyone -->
+<div class="flex-shrink-0">
+<input checked="" class="avatar-radio" id="staff-anyone" name="staff" type="radio"/>
+<label class="avatar-label flex flex-col items-center gap-xs w-20 h-20 rounded-full border border-border-glow bg-surface-charcoal justify-center relative overflow-hidden group" for="staff-anyone">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">group</span>
+<span class="avatar-name font-label-sm text-[10px] text-on-surface-variant absolute bottom-2 w-full text-center tracking-widest uppercase">Anyone</span>
+</label>
+</div>
+<!-- Staff 2 -->
+<div class="flex-shrink-0">
+<input class="avatar-radio" id="staff-elena" name="staff" type="radio"/>
+<label class="avatar-label flex flex-col items-center w-20 h-20 rounded-full border border-border-glow bg-surface-charcoal justify-center relative overflow-hidden" for="staff-elena">
+<img alt="Staff Member Elena" class="absolute inset-0 w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" data-alt="A close up portrait of a professional aesthetician with glowing skin, soft studio lighting highlighting a serene expression, against a dark midnight background. High end photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgcae9MNGLwIJ-bWQemc2ZkpUBzSixz3qKcDzS4NOiibK6gK_-RrW3V6GEfRd-ukoOIuc6JXJPtTQ28eNpc3k88LBzop5JRatR0SdIiMipALkujLTX_YTBBC-Xr0_07MhPkJi9CH__beaT0fJxmZ1IQxnDk_-7Gpw86SnQMIRYbCKzjx0-LakeqK0LRO1ETCdEU2A1uEExeoU2CNEloKZmQQ5nKMsyszZ5edPZR8RPB_YjKkgYQnrnkJVlfLNhkQy-KxnKMcLjRow7"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<span class="avatar-name font-label-sm text-[10px] text-on-surface absolute bottom-2 w-full text-center tracking-widest uppercase z-10">Elena</span>
+</label>
+</div>
+<!-- Staff 3 -->
+<div class="flex-shrink-0">
+<input class="avatar-radio" id="staff-marcus" name="staff" type="radio"/>
+<label class="avatar-label flex flex-col items-center w-20 h-20 rounded-full border border-border-glow bg-surface-charcoal justify-center relative overflow-hidden" for="staff-marcus">
+<img alt="Staff Member Marcus" class="absolute inset-0 w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" data-alt="A close up portrait of a male massage therapist with a calm demeanor, soft warm lighting, against a dark background. High end salon photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLJlFGD9fmeueSQaKqi85BmCWvW2e3Cm_x-tt7c0kxWlTGwTKV-KbkpTzbOaXBuBFOmgxmYrCDS1kiEnFydL5qeJ_bPb4G_rwelKr_2A-zJSODvs474TAdL__NUy33XfSRGHAMoxBR_M-hifJmaR-hHdOhbPSfuUNcOzylMXPBHjD3zBAqSy1zTpIWpgRAdRTl3nuJdkgOWgvCdxjAZ6-iZ6odkgTNM7M12HajSDCCb-r5fUdV_Ui2ba_MIF_CKk7qb2hWQiclS004"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<span class="avatar-name font-label-sm text-[10px] text-on-surface absolute bottom-2 w-full text-center tracking-widest uppercase z-10">Marcus</span>
+</label>
+</div>
+<!-- Staff 4 -->
+<div class="flex-shrink-0">
+<input class="avatar-radio" id="staff-sophia" name="staff" type="radio"/>
+<label class="avatar-label flex flex-col items-center w-20 h-20 rounded-full border border-border-glow bg-surface-charcoal justify-center relative overflow-hidden" for="staff-sophia">
+<img alt="Staff Member Sophia" class="absolute inset-0 w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" data-alt="A close up portrait of a female skin specialist smiling softly, warm rim lighting, against a dark moody background. High end beauty platform aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA6zIF5ur1ww3dc_e_1oKUJPZVpBhKLtl-7V4tOpUufM7bd6no3iqWqHP60BlYEQBGYAXppnwwnjaK7bKTFY9tQUEtke4V8iPfoleCgr0ZuLPv5EfiidIw5P9lkTxzrE-EyBXtpZqeiW-3PAFo89C3sZmoNcTwWNlqP9eSYyczcignhDEvtax5vskoDoklpOx23CuI93hg_M1uR3EhOHnEUUBESyhC11q8cRcGCt1f56F9v7Ab-Ou9vJMrFcZ0Q650I-VX3NMtS5kP"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<span class="avatar-name font-label-sm text-[10px] text-on-surface absolute bottom-2 w-full text-center tracking-widest uppercase z-10">Sophia</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Summary Footer -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-md pt-md border-t border-border-glow mt-sm">
+<div class="flex flex-col gap-1 w-full sm:w-auto text-center sm:text-left">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Total Estimated Time</span>
+<span class="font-headline-md text-headline-md text-primary">60 Minutes</span>
+</div>
+<button class="w-full sm:w-auto bg-surface-tint text-surface-dim font-label-md text-label-md uppercase tracking-widest px-8 py-4 rounded-lg hover:bg-primary transition-colors flex items-center justify-center gap-2">
+                        Continue
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Suppressed for transactional flow as per instructions, keeping UI focused) -->
+</body></html>

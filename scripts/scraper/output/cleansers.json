@@ -1,0 +1,40 @@
+[
+  {
+    "fresh_product_id": "soy-face-cleanser",
+    "fresh_url": "https://www.fresh.com/products/soy-face-cleanser",
+    "nama": "Soy Face Cleanser",
+    "kategori": "Cleanser",
+    "koleksi": "Soy Collection",
+    "deskripsi": "Pembersih wajah gel lembut yang membersihkan makeup dan kotoran tanpa membuat kulit kering.",
+    "key_ingredients": "Soy Proteins, Cucumber Extract, Rosewater",
+    "full_ingredients": "Water, Glycine Soja Protein, Cucumis Sativus Fruit Extract, Rosa Damascena Flower Water",
+    "cara_pemakaian": "Pijat ke kulit basah, bilas dengan air hangat. Pagi dan malam.",
+    "harga_usd": 38.0,
+    "harga_idr": 615600,
+    "volume_ml": 150,
+    "berat_gram": 200,
+    "skin_type": "all",
+    "skin_concern": "dullness",
+    "badge": "bestseller",
+    "images": ["public/images/products/fresh/soy-face-cleanser-1.jpg"]
+  },
+  {
+    "fresh_product_id": "sugar-face-polish-cleanser",
+    "fresh_url": "https://www.fresh.com/products/sugar-face-polish-cleanser",
+    "nama": "Sugar Face Polish Exfoliating Cleanser",
+    "kategori": "Cleanser",
+    "koleksi": "Sugar Collection",
+    "deskripsi": "Pembersih sekaligus eksfoliator dengan butiran gula asli yang menghaluskan tekstur kulit.",
+    "key_ingredients": "Brown Sugar, Wild Strawberry, Pomegranate",
+    "full_ingredients": "Sucrose, Fragaria Vesca Fruit Extract, Punica Granatum Extract, Glycerin",
+    "cara_pemakaian": "Pijat ke kulit lembap 2-3x seminggu, bilas hingga bersih.",
+    "harga_usd": 65.0,
+    "harga_idr": 1053000,
+    "volume_ml": 125,
+    "berat_gram": 220,
+    "skin_type": "normal",
+    "skin_concern": "dullness,pores",
+    "badge": null,
+    "images": ["public/images/products/fresh/sugar-face-polish-1.jpg"]
+  }
+]

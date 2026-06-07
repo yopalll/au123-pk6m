@@ -50,7 +50,7 @@ class ApproveSalonApplicationService
         if ($existingUser && $existingUser->role !== UserRole::SALON_OWNER) {
             throw new RuntimeException(
                 "Email '{$app->email}' is already registered as a {$existingUser->role}. "
-                . 'Refusing to overwrite. Use a different email or merge accounts manually.'
+                .'Refusing to overwrite. Use a different email or merge accounts manually.'
             );
         }
 
@@ -64,18 +64,18 @@ class ApproveSalonApplicationService
                     $user->save();
                 }
             } else {
-                $user = new User();
-                $user->first_name   = Str::of($app->nama_pemilik)->before(' ')->trim()->toString() ?: $app->nama_pemilik;
-                $user->last_name    = Str::of($app->nama_pemilik)->after(' ')->trim()->toString() ?: null;
-                $user->email        = $app->email;
+                $user = new User;
+                $user->first_name = Str::of($app->nama_pemilik)->before(' ')->trim()->toString() ?: $app->nama_pemilik;
+                $user->last_name = Str::of($app->nama_pemilik)->after(' ')->trim()->toString() ?: null;
+                $user->email = $app->email;
                 $user->phone_number = $app->phone;
                 // Default password is the literal string "password".
                 // Owner is expected to change it via /owner/profile after first login.
-                $user->password     = Hash::make('password');
+                $user->password = Hash::make('password');
                 $user->save();
 
                 // Role + is_active are $guarded — set explicitly to bypass mass-assignment guard.
-                $user->role      = UserRole::SALON_OWNER;
+                $user->role = UserRole::SALON_OWNER;
                 $user->is_active = true;
                 $user->save();
             }
@@ -83,22 +83,22 @@ class ApproveSalonApplicationService
             // 2. Create the salon — status='inactive', placeholder fields the
             //    owner will fill in via the owner dashboard.
             $salon = Salon::create([
-                'id_user'      => $user->id_user,
-                'id_kota'      => $app->id_kota,
-                'nama_salon'   => $app->nama_salon,
-                'slug'         => $this->generateUniqueSlug($app->nama_salon),
-                'alamat'       => 'TBD — to be completed by owner',
-                'deskripsi'    => $app->catatan,
+                'id_user' => $user->id_user,
+                'id_kota' => $app->id_kota,
+                'nama_salon' => $app->nama_salon,
+                'slug' => $this->generateUniqueSlug($app->nama_salon),
+                'alamat' => 'TBD — to be completed by owner',
+                'deskripsi' => $app->catatan,
                 'phone_number' => $app->phone,
                 'opening_time' => '09:00:00',
                 'closing_time' => '18:00:00',
-                'status'       => 'inactive',
+                'status' => 'inactive',
             ]);
 
             // 3. Link the application to the new salon and mark approved.
             $app->update([
                 'id_salon' => $salon->id_salon,
-                'status'   => 'approved',
+                'status' => 'approved',
             ]);
 
             return $salon;
@@ -106,8 +106,8 @@ class ApproveSalonApplicationService
 
         Log::info('Salon application approved + provisioned', [
             'application_id' => $app->id_application,
-            'salon_id'       => $salon->id_salon,
-            'user_id'        => $salon->id_user,
+            'salon_id' => $salon->id_salon,
+            'user_id' => $salon->id_user,
         ]);
 
         return $salon;
@@ -123,10 +123,10 @@ class ApproveSalonApplicationService
         $i = 2;
 
         while (Salon::withTrashed()->where('slug', $slug)->exists()) {
-            $slug = $base . '-' . $i++;
+            $slug = $base.'-'.$i++;
             if ($i > 1000) {
                 // Defensive: don't loop forever.
-                $slug = $base . '-' . Str::random(6);
+                $slug = $base.'-'.Str::random(6);
                 break;
             }
         }

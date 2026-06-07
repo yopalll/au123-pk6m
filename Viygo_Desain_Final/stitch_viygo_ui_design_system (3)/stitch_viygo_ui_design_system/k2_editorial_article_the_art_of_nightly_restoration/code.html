@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Art of Nightly Restoration | VIYGO LUXE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#333538",
+                        "inverse-surface": "#e2e2e6",
+                        "tertiary": "#c7e9e9",
+                        "on-tertiary-fixed": "#002020",
+                        "surface-container-high": "#282a2d",
+                        "on-primary-fixed": "#321200",
+                        "outline": "#9f8d84",
+                        "surface-charcoal": "#1A1D21",
+                        "secondary-fixed": "#c9e6ff",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "primary": "#ffdbc8",
+                        "surface-tint": "#ffb68b",
+                        "on-primary": "#502405",
+                        "surface-variant": "#333538",
+                        "background": "#111316",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "surface-dim": "#111316",
+                        "tertiary-container": "#abcdcd",
+                        "outline-variant": "#52443c",
+                        "primary-fixed": "#ffdbc9",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "inverse-primary": "#88512e",
+                        "secondary-container": "#264d67",
+                        "primary-container": "#ffb68b",
+                        "primary-fixed-dim": "#ffb68b",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-error": "#690005",
+                        "on-secondary": "#04344d",
+                        "on-tertiary-container": "#385858",
+                        "on-primary-container": "#7a4523",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "tertiary-fixed": "#c7e9e9",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "surface-container": "#1e2023",
+                        "secondary": "#a5cbea",
+                        "on-tertiary": "#143536",
+                        "surface-container-lowest": "#0c0e11",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "surface-bright": "#37393d",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "surface-container-low": "#1a1c1f",
+                        "on-surface-variant": "#d7c2b8",
+                        "surface": "#111316",
+                        "error": "#ffb4ab",
+                        "on-surface": "#e2e2e6",
+                        "on-background": "#e2e2e6",
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#2f3034",
+                        "on-secondary-container": "#97bddb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "16px",
+                        "margin-mobile": "20px",
+                        "base": "4px",
+                        "lg": "40px",
+                        "xs": "8px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "margin-desktop": "80px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "display-lg": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>body {
+    background-color: #111316;
+    color: #e2e2e6;
+    position: relative
+    }
+/* Botanical Tapestry Background Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCQ2pFOh73UGNiCNEr3WTOhGEa8ej37OFF-C0wa4VmxHFaOSoZoEDSqRXKo-7pEmOcXaWWvW6N2diyFW4IZUGQucJCP0EVK6jVoPMH1K1Qg-imW31nNXCK6oloGzGU66h0q39qt-NnAzC9BlxyF6lCIx9M-uF8vSH2PQI1-m7xJeNC8KzZCQ5hFBwd0DGoucCI2U_eL7k61cBsGjnffKFCdZSnVOJtkKjYfxOSh_MSl9YXM6j08U4o7c_gNiZl1ntBJ5hEnpcmUW42Z);
+    /* Placeholder texture, styling ensures it's dark/moody */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05;
+    z-index: -1;
+    pointer-events: none;
+    mix-blend-mode: overlay
+    }
+.glass-panel {
+    background-color: rgba(17, 19, 22, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2)
+    }
+.text-gradient {
+    background: linear-gradient(to right, #ffb68b, #ffdbc8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent
+    }</style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- TopNavBar Component -->
+<nav class="fixed top-0 w-full z-50 bg-surface-glass backdrop-blur-md border-b border-white/20 transition-all duration-300" id="main-nav">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 w-full max-w-[1600px] mx-auto">
+<!-- Navigation Links (Web) -->
+<div class="hidden md:flex space-x-gutter items-center">
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all duration-300" href="#">Lookbook</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all duration-300" href="#">Shop</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-all duration-300" href="#">Sustainability</a>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-primary p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<!-- Brand Logo -->
+<div class="absolute left-1/2 transform -translate-x-1/2">
+<a class="font-headline-md text-headline-md text-primary tracking-tighter uppercase block" href="#">VIYGO</a>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center space-x-sm">
+<button class="text-on-surface-variant hover:text-primary transition-all duration-300 Active: scale-95 opacity-80 p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+</button>
+<button class="hidden md:block text-on-surface-variant hover:text-primary transition-all duration-300 Active: scale-95 opacity-80 p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Editorial Canvas -->
+<main class="flex-grow pt-20">
+<!-- Cinematic Hero Header -->
+<header class="relative w-full h-[716px] md:h-[870px] flex items-center justify-center overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 w-full h-full">
+<img class="w-full h-full object-cover object-center opacity-70" data-alt="A cinematic, highly detailed photograph of a luxurious skincare serum bottle sitting on a piece of dark, textured slate. The scene is illuminated by dramatic, moody midnight lighting with soft copper and bronze reflections playing across the glass. The background is a deep, near-black void hinting at a mysterious botanical garden. The overall aesthetic is 'Serene Floral Noir', emphasizing high-end, clinical precision mixed with organic elegance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDVIZwg07zethJE6zg9-K9AQE8Cu9GtLTHcozK9rafWmc1i4T63Q_heg6vPKMwLY6P6I4F9GWiRa0c6CFkZzJ4IfXuwoDqnI8Yppo8oaZKratg-9hiZX_HYiZR8hzj2jTfUmVV6lTLDm1HnjbNgr9FmzPR1v46Vk_pk8xiF0XwJKxIyLZzgpdF-RebhMq_Lw8LB-DOlaLrT2p-P9gAZxXWkUSnsn-j6CcahSv1oxU9Vx8Q0u9JI1TZY1-DzsaSeMeIIXY6maePs-OO"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<!-- Hero Content Overlay -->
+<div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto glass-panel p-lg rounded-xl">
+<p class="font-label-md text-label-md text-primary uppercase tracking-widest mb-sm">Editorial</p>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-background mb-md">The Art of Nightly Restoration</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Discover the serene science behind nocturnal skin regeneration. A journey into the midnight garden where botanical alchemy meets clinical precision.</p>
+</div>
+</header>
+<!-- Narrative Section 1 -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-5 md:col-start-2 space-y-md">
+<h2 class="font-headline-lg text-headline-lg text-primary text-gradient">The Midnight Muse</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    As dusk falls, the skin's circadian rhythm shifts from protection to profound repair. This is the golden hour of cellular renewal. Our formulations are designed not just to nourish, but to orchestrate this intricate nocturnal ballet.
+                </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    Infused with rare nocturnal blooms that only release their potent actives under the moon, the ritual becomes a sensory meditation—a moment of exquisite tranquility before sleep.
+                </p>
+</div>
+<div class="md:col-span-5 md:col-start-8 mt-lg md:mt-0 relative group">
+<div class="absolute inset-0 bg-primary-container opacity-20 blur-2xl rounded-full group-hover:opacity-30 transition-opacity duration-700"></div>
+<img class="relative z-10 w-full aspect-[4/5] object-cover rounded-DEFAULT border border-border-glow shadow-2xl" data-alt="A macro, high-end editorial photograph of a delicate, exotic night-blooming flower resting on a mirrored obsidian surface. Deep shadows surround the bloom, lit by a single, soft, warm spotlight that highlights its fragile, translucent petals. The color palette is restricted to deep midnight blues, charcoal blacks, and touches of dusty copper. The mood is tranquil, exclusive, and scientifically precise, fitting the 'Serene Floral Noir' aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmTf5jtLzxmqg9wLQtxddOgE0wp3ncCCn8kNbHO4C9ghCD5CcfFeqZYuBfwVT0pQ1I6oBdKQquTfnlr-vWp46emT0Bjmez5UGpuSGdreBtQs_fPJQRuX1CMT3sQh31EMtdhTppwCXDh58nTrMqsl664qFyjhiQ2tFHRFFY5hDZSx9ESNT1sIjpshQ0CEV9jKfvQ3BW2PMaVdfasvf34JjtaB91KnR17jVZ-1zi18coqOYijbKW6gGovfwZWuE8PVtX-LvLLtyJKQuG"/>
+</div>
+</section>
+<!-- Shop the Ritual Bento Grid -->
+<section class="py-xl bg-surface-charcoal relative border-y border-white/5">
+<div class="max-w-[1400px] mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-xl">
+<h3 class="font-headline-md text-headline-md text-on-background mb-xs">Shop the Ritual</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Elevate your evening restoration.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Product Card 1 -->
+<article class="group relative rounded-xl overflow-hidden h-[450px] bg-surface-container border border-border-glow hover:border-surface-tint transition-colors duration-500">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="A sleek, minimalist glass dropper bottle containing a viscous amber liquid, positioned elegantly against a dark, moody background. Subtle copper accents gleam on the bottle's collar. The lighting is low-key, creating deep shadows that emphasize the premium, apothecary-like nature of the product. The overall style aligns with the sophisticated 'Serene Floral Noir' aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYYwcd0aHsIrZFohQYCyv-UvhipRzTq73YfJoCV5WK3IkQzroimFcT_HmxGSqkZxYHHLD6HO3WIZURKsDclo2zPGYQXLUy8di4Q81SnHqVv6lllH7uMcYp2O1Ryl9FIUKF3dx7Lp8lNcwY_VdAgApGfn177bLBK8F8NrmX6wKHFJ9K8CaPDO_ng13Xevj01UsgSLww-93LRAlDJ9c5PYkHRnwXymoYMKLrk-SUGorv-Bc3A0oxumf_Hy9dWdsX4SxsCcMy9nGD_54M"/>
+<!-- Frosted Footer -->
+<div class="absolute bottom-0 left-0 w-full p-md glass-panel flex flex-col justify-between h-[35%] transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+<div>
+<h4 class="font-label-md text-label-md text-on-background uppercase tracking-widest">Midnight Renewal Serum</h4>
+<p class="font-body-sm text-on-surface-variant mt-1 text-sm">Cellular regeneration</p>
+</div>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-body-md text-body-md text-primary">$145</span>
+<button class="w-8 h-8 rounded-full border border-secondary-fixed-dim flex items-center justify-center text-secondary hover:bg-secondary hover:text-background transition-colors">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Product Card 2 -->
+<article class="group relative rounded-xl overflow-hidden h-[450px] bg-surface-container border border-border-glow hover:border-surface-tint transition-colors duration-500">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="A luxurious, heavy glass jar of skincare cream with a brushed copper lid, sitting on a dark, slightly reflective surface. The cream inside is pure white and looks rich and velvety. The scene is lit with a moody, cinematic light that creates a sense of depth and exclusivity. The background features subtle, out-of-focus botanical silhouettes, fitting the 'Serene Floral Noir' brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoD2hiI_9QBb5am9vKgWVdsl6cmGlLz5V8O75VyXc6uobb0TXjIfoOYpBuagA-KVS4k6U1K66NNCjiIxVshrYsPZOJSTpHY5ODYa9yZzChl7eZGztuaUNeCUEsKuImoTYNeUXxjaZDfn191DTh77KjSCsUgVsQQlN8DNr8_YPbck-mcleojFljkwozAgFluO8-q4m2ar3FHgvq2wsjqpYQNgl92Yw0wPLTI6YfwY72MIu7ki4V1v6yODe2sR3MVTZeC215lZ5z55sk"/>
+<div class="absolute bottom-0 left-0 w-full p-md glass-panel flex flex-col justify-between h-[35%] transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+<div>
+<h4 class="font-label-md text-label-md text-on-background uppercase tracking-widest">Moonlit Ceramide Cream</h4>
+<p class="font-body-sm text-on-surface-variant mt-1 text-sm">Barrier repair</p>
+</div>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-body-md text-body-md text-primary">$180</span>
+<button class="w-8 h-8 rounded-full border border-secondary-fixed-dim flex items-center justify-center text-secondary hover:bg-secondary hover:text-background transition-colors">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">add</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Editorial Feature Card -->
+<article class="relative rounded-xl overflow-hidden h-[450px] bg-background border border-border-glow flex flex-col items-center justify-center p-lg text-center lg:col-span-1 md:col-span-2">
+<span class="material-symbols-outlined text-primary text-4xl mb-sm" style="font-variation-settings: 'FILL' 0;">spa</span>
+<h4 class="font-headline-md text-headline-md text-on-background mb-sm">The Full Ritual</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Unlock the complete nighttime botanical experience.</p>
+<button class="px-6 py-3 bg-primary-container text-background font-label-md text-label-md uppercase tracking-wider rounded-DEFAULT hover:bg-primary transition-colors">
+                            Discover Sets
+                        </button>
+</article>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-xl px-margin-mobile md:px-margin-desktop bg-surface-container-lowest border-t border-white/10 mt-auto z-10 relative">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter max-w-7xl mx-auto">
+<!-- Brand Column -->
+<div class="space-y-sm">
+<h4 class="font-headline-sm text-headline-sm text-primary uppercase tracking-tighter">VIYGO</h4>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">Serene science for the modern nocturnal ritual.</p>
+</div>
+<!-- Links Column -->
+<div class="space-y-sm flex flex-col">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200 inline-block w-fit" href="#">Sustainability Reports</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200 inline-block w-fit" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200 inline-block w-fit" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200 inline-block w-fit" href="#">Contact Us</a>
+</div>
+<!-- Empty Columns for Grid Alignment based on JSON -->
+<div class="hidden lg:block"></div>
+<div class="hidden lg:block"></div>
+</div>
+<div class="mt-xl pt-sm border-t border-white/5 text-center">
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">© 2024 VIYGO LUXE. All rights reserved.</p>
+</div>
+</footer>
+<!-- Interactive Nav Script -->
+<script>
+        // Simple script to add background to nav on scroll
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+                nav.style.backgroundColor = 'rgba(17, 19, 22, 0.85)';
+            } else {
+                nav.classList.remove('shadow-lg');
+                nav.style.backgroundColor = 'rgba(17, 19, 22, 0.6)';
+            }
+        });
+    </script>
+</body></html>

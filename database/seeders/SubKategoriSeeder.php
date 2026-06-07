@@ -31,14 +31,14 @@ class SubKategoriSeeder extends Seeder
         foreach (self::dataset() as $i => $row) {
             $rows[] = [
                 'id_sub_kategori' => $i + 1,
-                'name'            => $row[0],
-                'slug'            => $row[1],
-                'treatwell_slug'  => $row[2],
-                'deskripsi'       => null,
-                'icon_url'        => null,
-                'is_active'       => true,
-                'created_at'      => $now,
-                'updated_at'      => $now,
+                'name' => $row[0],
+                'slug' => $row[1],
+                'treatwell_slug' => $row[2],
+                'deskripsi' => null,
+                'icon_url' => null,
+                'is_active' => true,
+                'created_at' => $now,
+                'updated_at' => $now,
             ];
         }
 
@@ -48,7 +48,7 @@ class SubKategoriSeeder extends Seeder
             ['name', 'treatwell_slug', 'is_active', 'updated_at']
         );
 
-        $this->command->info('Seeded ' . count($rows) . ' sub_kategori (excluding 6 "See all" links + 1 "Barbers" — handled by query).');
+        $this->command->info('Seeded '.count($rows).' sub_kategori (excluding 6 "See all" links + 1 "Barbers" — handled by query).');
     }
 
     /**

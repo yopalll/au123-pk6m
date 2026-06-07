@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Concierge Inbox</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#e2e2e6",
+                        "on-tertiary": "#143536",
+                        "surface-charcoal": "#1A1D21",
+                        "primary": "#ffdbc8",
+                        "on-error": "#690005",
+                        "surface-tint": "#ffb68b",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "on-tertiary-container": "#385858",
+                        "surface-bright": "#37393d",
+                        "on-primary": "#502405",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-primary-container": "#7a4523",
+                        "primary-fixed-dim": "#ffb68b",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "on-error-container": "#ffdad6",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "surface": "#111316",
+                        "secondary-container": "#264d67",
+                        "surface-container-high": "#282a2d",
+                        "on-primary-fixed": "#321200",
+                        "tertiary-fixed": "#c7e9e9",
+                        "primary-container": "#ffb68b",
+                        "on-secondary": "#04344d",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "on-secondary-fixed": "#001e2f",
+                        "inverse-primary": "#88512e",
+                        "inverse-on-surface": "#2f3034",
+                        "tertiary": "#c7e9e9",
+                        "outline": "#9f8d84",
+                        "on-background": "#e2e2e6",
+                        "secondary": "#a5cbea",
+                        "outline-variant": "#52443c",
+                        "surface-container-low": "#1a1c1f",
+                        "surface-container": "#1e2023",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "secondary-fixed": "#c9e6ff",
+                        "primary-fixed": "#ffdbc9",
+                        "surface-dim": "#111316",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "on-secondary-container": "#97bddb",
+                        "tertiary-container": "#abcdcd",
+                        "surface-container-highest": "#333538",
+                        "on-surface-variant": "#d7c2b8",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed": "#002020",
+                        "background": "#111316",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "error-container": "#93000a",
+                        "surface-variant": "#333538",
+                        "inverse-surface": "#e2e2e6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "80px",
+                        "margin-mobile": "20px",
+                        "xs": "8px",
+                        "sm": "16px",
+                        "base": "4px",
+                        "xl": "80px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(26, 29, 33, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .bg-pattern {
+            background-image: radial-gradient(circle at 50% 50%, rgba(255, 182, 139, 0.05) 0%, transparent 100%);
+        }
+        /* Custom Scrollbar for chat area */
+        .chat-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen relative overflow-hidden flex flex-col md:hidden">
+<!-- Ambient Background Texture -->
+<div class="fixed inset-0 z-0 bg-pattern pointer-events-none opacity-50"></div>
+<!-- TopAppBar (Shared Component) -->
+<header class="fixed top-0 w-full bg-surface-glass backdrop-blur-md text-primary font-headline-md text-headline-md font-playfair border-b border-border-glow flex justify-between items-center px-margin-mobile h-16 w-full z-50 transition-all duration-300">
+<button class="hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<div class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">VIYGO</div>
+<button class="hover:opacity-80 transition-opacity active:scale-95 duration-200 w-8 h-8 rounded-full overflow-hidden border border-border-glow">
+<img alt="Admin Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3_G_1Bze5ncypt8LqcJiqWqGnTxj-JcchnJO4k6vHSztQ-8dFmFc460opp-mYz1G91MbJzuXz1Fc_WawKtRAz967v5GEqvidC6ugHNQymUIFsk6r2UEIZeysvCwbmFlOc_u6MQ61aHBKwCuF27aiGG6FXq9wJdg9y60r2lFwOuJlnZoYMevMMTkLDoah3jDegOD92llUJLRLpUz3sykcsREAIww2nxpdSNdtUse3XNAzutzymJtWbzEHnOpV7vtJ2EK4M-YVAc9ny"/>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 mt-16 mb-[72px] z-10 relative flex flex-col h-[calc(100vh-136px)]">
+<!-- View Toggle (List vs Chat) -->
+<div class="flex-1 w-[200vw] flex transition-transform duration-300 ease-in-out transform translate-x-0" id="view-container">
+<!-- Inbox List View -->
+<section class="w-[100vw] h-full flex flex-col overflow-y-auto pb-safe">
+<div class="px-margin-mobile py-sm sticky top-0 bg-background/80 backdrop-blur-sm z-20">
+<h1 class="font-headline-md text-headline-md text-primary mb-xs">Concierge Inbox</h1>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full bg-surface-charcoal border border-white/10 rounded-lg py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all text-on-surface placeholder:text-on-surface-variant" placeholder="Search conversations..." type="text"/>
+</div>
+</div>
+<div class="px-margin-mobile flex-1 space-y-2 pb-md">
+<!-- Conversation Item 1 (Active/Unread) -->
+<button class="w-full text-left glass-panel p-sm rounded-lg flex items-center space-x-sm hover:bg-surface-bright/50 transition-colors relative" onclick="toggleView()">
+<div class="absolute w-2 h-2 rounded-full bg-primary top-4 right-4"></div>
+<div class="w-12 h-12 rounded-full overflow-hidden border border-primary/30 flex-shrink-0">
+<img alt="Eleanor Vance Profile" class="w-full h-full object-cover" data-alt="A sophisticated headshot of a woman with dark hair, soft natural lighting, set against a dark moody background matching the serene floral noir aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw4iS-foDZcKSB9qsd-wJVpJKBmsYT0EG57pmnd2PkxWC0chUKZoXKmdGEMRWIfEAmMHMpuAQCuJq7S3D8NUTIkKkZenk-86HbX4_nxqtiZ0aDxFCrFbq9Fy4iUUYlcwOPlGB01T2K4RjQ6PJNu3UUjnLpw8yItDbPx2aJQHtBHiz1t5nWxtOpg_Ni_UUNchjP9RdwnmcA4HURjMUYVpieSSBITwxIXlexmXA6OdtK_kBFUSQ7j5HhQFLFXYPvqajfR8Cmt3dhvGYS"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-label-md text-label-md text-primary truncate">Eleanor Vance</h3>
+<span class="text-[10px] text-primary/70">10:42 AM</span>
+</div>
+<p class="font-body-md text-body-md text-sm text-on-surface truncate">I'd like to adjust my evening routine regimen...</p>
+</div>
+</button>
+<!-- Conversation Item 2 -->
+<button class="w-full text-left p-sm rounded-lg flex items-center space-x-sm hover:bg-surface-bright/50 transition-colors border border-transparent border-b-white/5" onclick="toggleView()">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-white/10 flex-shrink-0">
+<img alt="Julian Blackwood Profile" class="w-full h-full object-cover" data-alt="A high-end portrait of a man with subtle copper lighting highlights on his face, exuding luxury and calm, against a midnight dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFb6UHBNGaPTqskvz-xbx2o3VZjB0eStl4EmmSneCZ7wUj-_yn5s4dqCC1EVxTjlwr5EK_pixXMm0OUmV0SKDhsBl8qH_wx_bU3Fg1s30VVK27S_0H9Iy5eU6EAMAPs_TKCQRzYvWfTr1SvaEX0kDGqQjZRoV1L34dqFsnk9UHoiDKSHbhHk0DBt61hAHjQusFC6PA_0aSzPF_jiXH4Bqw0hr-jd2vUHA0s6u920U9fKC2TKbV_GOq5I00FTzgpGdHryB03R1v5pDb"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-label-md text-label-md text-on-surface truncate">Julian Blackwood</h3>
+<span class="text-[10px] text-on-surface-variant">Yesterday</span>
+</div>
+<p class="font-body-md text-body-md text-sm text-on-surface-variant truncate">The serum arrived yesterday, the packaging is stunning.</p>
+</div>
+</button>
+<!-- Conversation Item 3 -->
+<button class="w-full text-left p-sm rounded-lg flex items-center space-x-sm hover:bg-surface-bright/50 transition-colors border border-transparent border-b-white/5" onclick="toggleView()">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-white/10 flex-shrink-0 bg-surface-charcoal flex items-center justify-center text-primary font-headline-md">
+                            C
+                        </div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="font-label-md text-label-md text-on-surface truncate">Clara Hughes</h3>
+<span class="text-[10px] text-on-surface-variant">Mon</span>
+</div>
+<p class="font-body-md text-body-md text-sm text-on-surface-variant truncate">Can we reschedule the consultation for next week?</p>
+</div>
+</button>
+</div>
+</section>
+<!-- Active Chat View -->
+<section class="w-[100vw] h-full flex flex-col bg-surface">
+<!-- Chat Header -->
+<div class="px-margin-mobile py-sm border-b border-border-glow bg-surface-glass backdrop-blur-md flex items-center justify-between z-20">
+<div class="flex items-center space-x-sm">
+<button class="text-primary hover:text-primary-fixed-dim transition-colors p-1" onclick="toggleView()">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/30">
+<img alt="Eleanor Vance" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6gld6N0BdtEmWlxr88LuSVNcgtQQ7q7oWd6qO3JwK6cb3CXTBN8BFFqnltS4Acti85ck_FvocUFq2hfXx10YPg7ftEzUVD8G-9leQfFGUoK-esbZJofrOgjXQq1abNh-clL-BOdKYmfW4eOO5FEM3yVuklt5GrPKv41ZbgqCZCt_yDZWrebomRdoY0UjIvxpmSe1aFsIkYSb53tb8nahiXy7TqbwJWrGvc-p5Cen20y5Wj8_P8m8iXku5kPsdqx9UK7G7fe2lXGEm"/>
+</div>
+<div>
+<h2 class="font-label-md text-label-md text-primary leading-tight">Eleanor Vance</h2>
+<p class="text-[10px] text-on-surface-variant leading-tight">Active now</p>
+</div>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Chat Messages Area -->
+<div class="flex-1 overflow-y-auto chat-scroll px-margin-mobile py-md space-y-md flex flex-col justify-end">
+<!-- Date Separator -->
+<div class="text-center">
+<span class="text-[10px] font-label-sm uppercase tracking-widest text-on-surface-variant bg-surface-charcoal px-3 py-1 rounded-full border border-white/5">Today</span>
+</div>
+<!-- Incoming Message -->
+<div class="flex items-end space-x-2 w-5/6">
+<div class="w-6 h-6 rounded-full overflow-hidden border border-white/10 flex-shrink-0 mb-1">
+<img alt="Eleanor" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDFkCg_8yF0HCHHs7UlzhhagD-M7vUYw6RxacRFFffiarqtqIwWoaJyD2-rTPpYQ2iP9zA1A0lUcHCqSaau9idGIWp2__4fXwuL6Ac-nyJ-E08tRegrj_o0j4gKI4voA9NIQnrlbYPtVdXawoTkjihTrwbKVm2S6kJk_M5_CmP3CZ0Xj-tlOr8oPGugGutKOjupr8l7IE6yAp1yvcJ4E6l_OdSPfMS92LXCdvISl5PxBnyCo2fp-gCCUJ3WpLREyrQ0YkJ4wfPDymC"/>
+</div>
+<div class="glass-panel p-3 rounded-2xl rounded-bl-sm">
+<p class="font-body-md text-sm text-on-surface">Hello! The new botanical night cream is wonderful, but I feel my skin might need something slightly heavier for the winter months.</p>
+<span class="text-[9px] text-on-surface-variant mt-1 block text-right">10:40 AM</span>
+</div>
+</div>
+<!-- Incoming Message Followup -->
+<div class="flex items-end space-x-2 w-5/6">
+<div class="w-6 h-6 flex-shrink-0"></div> <!-- Spacer for alignment -->
+<div class="glass-panel p-3 rounded-2xl rounded-bl-sm">
+<p class="font-body-md text-sm text-on-surface">I'd like to adjust my evening routine regimen. Do you have recommendations?</p>
+<span class="text-[9px] text-on-surface-variant mt-1 block text-right">10:42 AM</span>
+</div>
+</div>
+<!-- Outgoing Message (Placeholder for typing context) -->
+<div class="flex items-end justify-end space-x-2 w-full">
+<div class="bg-primary/10 border border-primary/20 p-3 rounded-2xl rounded-br-sm max-w-[83%]">
+<p class="font-body-md text-sm text-primary">Absolutely, Eleanor. Given the drop in humidity, shifting to our Lipid Restorative Balm might be ideal. Shall I arrange a sample to be sent with your next order?</p>
+<div class="flex items-center justify-end space-x-1 mt-1">
+<span class="text-[9px] text-primary/60">10:45 AM</span>
+<span class="material-symbols-outlined text-[12px] text-primary">done_all</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Chat Input Area -->
+<div class="p-3 bg-surface-glass backdrop-blur-lg border-t border-border-glow z-20 pb-safe">
+<div class="flex items-end space-x-2">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors rounded-full hover:bg-surface-bright flex-shrink-0">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<div class="flex-1 bg-surface-charcoal border border-white/10 rounded-xl relative focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/20 transition-all">
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-sm text-on-surface py-2.5 px-3 resize-none max-h-[100px] font-body-md placeholder:text-on-surface-variant/50 block" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'" placeholder="Type a message..." rows="1"></textarea>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-tint text-surface flex items-center justify-center flex-shrink-0 hover:bg-primary transition-colors shadow-lg shadow-surface-tint/20">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Shared Component) -->
+<!-- ACTIVE STATE LOGIC: "Inbox" is active based on the prompt "Concierge Inbox" -->
+<nav class="bg-surface-glass backdrop-blur-lg text-primary font-label-sm text-label-sm uppercase tracking-widest text-primary font-playfair fixed bottom-0 w-full rounded-t-xl flat no shadows fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe border-t-0 shadow-[0_-4px_24px_rgba(0,0,0,0.5)]">
+<!-- Inactive Tab -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150 w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">monitoring</span>
+<span class="truncate w-full text-center">Metrics</span>
+</button>
+<!-- Active Tab -->
+<button class="flex flex-col items-center justify-center text-primary font-bold transition-all active:scale-90 duration-150 w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span class="truncate w-full text-center">Inbox</span>
+<!-- Active Indicator dot -->
+<div class="w-1 h-1 rounded-full bg-primary mt-0.5"></div>
+</button>
+<!-- Inactive Tab -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150 w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+<span class="truncate w-full text-center">Schedule</span>
+</button>
+<!-- Inactive Tab -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150 w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="truncate w-full text-center">Settings</span>
+</button>
+</nav>
+<script>
+        // Simple View Toggling Logic for demonstration
+        let isChatView = false;
+        const viewContainer = document.getElementById('view-container');
+        
+        function toggleView() {
+            isChatView = !isChatView;
+            if (isChatView) {
+                viewContainer.style.transform = 'translateX(-50%)'; // Move to chat view
+            } else {
+                viewContainer.style.transform = 'translateX(0)'; // Move back to list view
+            }
+        }
+    </script>
+</body></html>

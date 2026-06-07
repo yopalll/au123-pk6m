@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Analytics Deep Dive - VIYGO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed": "#c7e9e9",
+                        "surface-container-lowest": "#0c0e11",
+                        "inverse-on-surface": "#2f3034",
+                        "surface-container-high": "#282a2d",
+                        "on-primary-container": "#7a4523",
+                        "surface-variant": "#333538",
+                        "background": "#111316",
+                        "inverse-primary": "#88512e",
+                        "surface": "#111316",
+                        "inverse-surface": "#e2e2e6",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "tertiary-container": "#abcdcd",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "on-secondary-container": "#97bddb",
+                        "secondary-container": "#264d67",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-tertiary-container": "#385858",
+                        "on-error": "#690005",
+                        "on-background": "#e2e2e6",
+                        "on-tertiary": "#143536",
+                        "error-container": "#93000a",
+                        "primary-container": "#ffb68b",
+                        "secondary-fixed": "#c9e6ff",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "primary": "#ffdbc8",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "primary-fixed": "#ffdbc9",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "surface-container-highest": "#333538",
+                        "surface-container": "#1e2023",
+                        "surface-charcoal": "#1A1D21",
+                        "on-secondary": "#04344d",
+                        "primary-fixed-dim": "#ffb68b",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "tertiary": "#c7e9e9",
+                        "surface-container-low": "#1a1c1f",
+                        "on-tertiary-fixed": "#002020",
+                        "secondary": "#a5cbea",
+                        "outline": "#9f8d84",
+                        "on-surface": "#e2e2e6",
+                        "surface-tint": "#ffb68b",
+                        "on-primary": "#502405",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#d7c2b8",
+                        "surface-bright": "#37393d",
+                        "outline-variant": "#52443c",
+                        "on-primary-fixed": "#321200",
+                        "surface-dim": "#111316"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "lg": "40px",
+                        "xs": "8px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "base": "4px",
+                        "margin-desktop": "80px",
+                        "sm": "16px",
+                        "xl": "80px",
+                        "md": "24px"
+                    },
+                    fontFamily: {
+                        "label-md": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "display-lg": ["Playfair Display"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    fontSize: {
+                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "display-lg-mobile": ["36px", { lineHeight: "44px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>body {
+    background-color: theme("colors.background");
+    color: theme("colors.on-background");
+    position: relative
+    }
+/* Midnight Floral Texture Background */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAUdhn7fSIydXFaeSN_xVsU9PZHhdQGYQB5JA6hvF-c9yyEtASIr3eFmlXYQizWRX_gZUX2Os3Ggi8GMIfV-Mb_nYDjgK23mWR4pXY2Verxno2AFUmnjejQBysxIaUreMlbOnZS-uBN2bgtg0GJcNXeJKxK1JCHiKSz8n4UNXDVcMbPZpvfC7q_KxzVevsOVyt7pdJgjqshcRvD1zGqqbcgvCkqCRSJ2z2ffVP3dsJLiUQc-GKa1TB4d3pZi5f0isOB194SnlHJBJMd);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05;
+    /* Subtle floral texture */
+    z-index: -1;
+    pointer-events: none
+    }
+.glass-panel {
+    background: theme("colors.surface-glass");
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid theme("colors.border-glow")
+    }
+.chart-grid {
+    stroke: rgba(255, 255, 255, 0.05);
+    stroke-width: 1
+    }
+/* Hide scrollbar for clean look but keep functionality */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px
+    }
+::-webkit-scrollbar-track {
+    background: theme("colors.background")
+    }
+::-webkit-scrollbar-thumb {
+    background: theme("colors.surface-variant");
+    border-radius: 4px
+    }</style>
+</head>
+<body class="antialiased min-h-screen flex flex-col md:flex-row">
+<!-- Mobile TopAppBar (from JSON) -->
+<header class="md:hidden fixed top-0 w-full bg-surface-glass backdrop-blur-md border-b border-border-glow flex justify-between items-center px-margin-mobile h-16 z-50 transition-opacity">
+<button aria-label="Menu" class="text-primary hover:opacity-80 active:scale-95 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<div class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">VIYGO</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-glow hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<img alt="Admin Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtsRjUejzDZwgvQECLmNRsp6N2v7zSDnFTCEkbSs4WpY29ysLKMYsh_ayXh5nJ-jssGLNN_zqDavKIhDOsZMU6DeSwlz6UMQZYVZMqPSgXmyWvLdGV_0qTn89BZE2IZ0qCykpwNyaXkKEzJNM4XcZEoquDJxclLAHVfvyRWRDfxTTkZEH3dp5Y5lZxz6l1tehMlWVRBfBQk63N9_IfADzygYneWrNVCf2zFOoyJ1i7B4sPbHg6UktDduLLK0epniW_ArSKtb8J-2mm"/>
+</div>
+</header>
+<!-- Desktop NavigationDrawer (from JSON) -->
+<aside class="hidden md:flex flex-col h-full py-md w-80 rounded-r-xl bg-surface-container-low shadow-2xl fixed left-0 top-0 bottom-0 z-40 border-r border-surface-container-high">
+<!-- Header -->
+<div class="px-md mb-8 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border 1px solid border-border-glow shrink-0">
+<img alt="VIYGO Admin" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwPPG2JEt3IB-bWrtHmeWNolEbiBKQ4u2P85Ep4IK0v7_kv9K-oC76Y_TpyuZ6uwM2Gtuee2ZYePzogsAOIya3WlrfOee4amVyi0xVVKDIqLHaC2KRQ7f7Ih7xdxx_mgTPYguW9LXBIJtCmVibRrSz0110NSatibbAzBm7pgZhc_WrKVaPbu0_3Ids7Um7KYndQ6v_12-dKRRjEjp1U7zn9yDQYq2UMZ--zkZH01ZlbKZEHoim6K-D9j0HmXvwJsFwrowDGVufdUN4"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg text-primary tracking-tight">Alex Sterling</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mt-1">Platform Director</span>
+<span class="font-label-sm text-label-sm text-outline mt-0.5">V-01 Admin</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 overflow-y-auto">
+<ul class="space-y-2">
+<!-- Active Item: Revenue Reports (Closest to Analytics Deep Dive) -->
+<li>
+<a class="bg-secondary-container text-on-secondary-container rounded-lg mx-2 flex items-center gap-4 px-4 py-3 hover:bg-surface-bright transition-all active:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="font-body-md text-body-md font-manrope font-semibold">Revenue Reports</span>
+</a>
+</li>
+<!-- Inactive Items -->
+<li>
+<a class="text-on-surface-variant hover:bg-surface-bright mx-2 flex items-center gap-4 px-4 py-3 rounded-lg transition-all active:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-body-md text-body-md font-manrope">Dashboard Overview</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant hover:bg-surface-bright mx-2 flex items-center gap-4 px-4 py-3 rounded-lg transition-all active:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">storefront</span>
+<span class="font-body-md text-body-md font-manrope">Salon Management</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant hover:bg-surface-bright mx-2 flex items-center gap-4 px-4 py-3 rounded-lg transition-all active:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group_add</span>
+<span class="font-body-md text-body-md font-manrope">User Permissions</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant hover:bg-surface-bright mx-2 flex items-center gap-4 px-4 py-3 rounded-lg transition-all active:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">health_and_safety</span>
+<span class="font-body-md text-body-md font-manrope">Platform Health</span>
+</a>
+</li>
+</ul>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full md:pl-80 pt-16 md:pt-0 pb-24 md:pb-0 min-h-screen flex flex-col">
+<!-- Page Header -->
+<div class="px-margin-mobile md:px-margin-desktop py-8 md:py-12 flex flex-col md:flex-row md:items-end justify-between gap-6 z-10 relative">
+<div>
+<h1 class="font-display-lg text-display-lg text-primary tracking-tight font-playfair">Analytics Deep Dive</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2 max-w-2xl font-manrope">Comprehensive platform performance metrics and geographical insights for Q3.</p>
+</div>
+<!-- Controls -->
+<div class="flex items-center gap-4">
+<!-- Date Picker -->
+<button class="glass-panel px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 0; font-size: 20px;">calendar_month</span>
+<span class="font-label-md text-label-md text-on-surface">Last 30 Days</span>
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 0; font-size: 20px;">expand_more</span>
+</button>
+<!-- Export -->
+<button class="bg-primary-container text-on-primary px-4 py-2 rounded-lg flex items-center gap-2 hover:opacity-90 transition-opacity font-label-md text-label-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0; font-size: 20px;">download</span>
+                    Export Report
+                </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="px-margin-mobile md:px-margin-desktop pb-12 flex-1 z-10 relative grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Key Metric 1 -->
+<div class="glass-panel rounded-xl p-6 md:col-span-3 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Total Revenue</span>
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 0;">account_balance_wallet</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary font-playfair">$1.24M</h2>
+</div>
+<div class="flex items-center gap-2 mt-4 text-secondary-fixed-dim">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0; font-size: 16px;">trending_up</span>
+<span class="font-label-sm text-label-sm">+12.4% vs last period</span>
+</div>
+</div>
+<!-- Key Metric 2 -->
+<div class="glass-panel rounded-xl p-6 md:col-span-3 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Active Salons</span>
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 0;">store</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary font-playfair">3,492</h2>
+</div>
+<div class="flex items-center gap-2 mt-4 text-secondary-fixed-dim">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0; font-size: 16px;">trending_up</span>
+<span class="font-label-sm text-label-sm">+5.2% vs last period</span>
+</div>
+</div>
+<!-- Main Line Chart - Revenue Trends -->
+<div class="glass-panel rounded-xl p-6 md:col-span-6 md:row-span-2 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-primary font-playfair">Revenue Trends</h3>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex-1 relative w-full h-full min-h-[250px] flex items-end">
+<!-- Faux SVG Line Chart -->
+<svg class="w-full h-full absolute inset-0" preserveaspectratio="none" viewbox="0 0 100 100">
+<!-- Grid -->
+<line class="chart-grid" x1="0" x2="100" y1="25" y2="25"></line>
+<line class="chart-grid" x1="0" x2="100" y1="50" y2="50"></line>
+<line class="chart-grid" x1="0" x2="100" y1="75" y2="75"></line>
+<!-- Area Gradient -->
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#ffb68b" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#ffb68b" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Line & Area -->
+<path d="M0,80 Q10,75 20,60 T40,50 T60,30 T80,40 T100,20 L100,100 L0,100 Z" fill="url(#chartGradient)"></path>
+<path d="M0,80 Q10,75 20,60 T40,50 T60,30 T80,40 T100,20" fill="none" stroke="#ffb68b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<!-- Data Points -->
+<circle cx="20" cy="60" fill="#111316" r="1.5" stroke="#ffb68b" stroke-width="1"></circle>
+<circle cx="60" cy="30" fill="#111316" r="1.5" stroke="#ffb68b" stroke-width="1"></circle>
+<circle cx="100" cy="20" fill="#111316" r="1.5" stroke="#ffb68b" stroke-width="1"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="w-full flex justify-between font-label-sm text-label-sm text-on-surface-variant absolute bottom-0 left-0 translate-y-6">
+<span>Jul 1</span>
+<span>Jul 15</span>
+<span>Aug 1</span>
+<span>Aug 15</span>
+<span>Sep 1</span>
+</div>
+</div>
+</div>
+<!-- Circular Progress - Booking Capacity -->
+<div class="glass-panel rounded-xl p-6 md:col-span-3 flex flex-col items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 bg-surface-charcoal opacity-50 z-0"></div>
+<div class="z-10 w-full">
+<h3 class="font-headline-md text-headline-md text-primary font-playfair mb-6 text-center">Global Capacity</h3>
+<div class="relative w-40 h-40 mx-auto flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<!-- Background Circle -->
+<circle cx="50" cy="50" fill="none" r="45" stroke="rgba(255, 255, 255, 0.05)" stroke-width="8"></circle>
+<!-- Progress Circle (Secondary color #a5cbea) -->
+<circle cx="50" cy="50" fill="none" r="45" stroke="#a5cbea" stroke-dasharray="283" stroke-dashoffset="62" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg-mobile text-display-lg-mobile text-secondary font-playfair">78%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mt-1">Booked</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Heat Map Placeholder -->
+<div class="glass-panel rounded-xl p-0 md:col-span-9 relative overflow-hidden h-[400px]">
+<div class="absolute top-6 left-6 z-20">
+<h3 class="font-headline-md text-headline-md text-primary font-playfair bg-surface-glass backdrop-blur-md px-4 py-2 rounded-lg border border-border-glow">Geographical Performance</h3>
+</div>
+<!-- Map Background Image -->
+<div class="w-full h-full bg-surface-charcoal relative">
+<img alt="Heat map" class="w-full h-full object-cover opacity-60 mix-blend-luminosity" data-alt="A stylized, high-end digital map visualization of the globe or a continent, rendered in a dark mode 'Serene Floral Noir' aesthetic. The landmasses are a deep, sophisticated charcoal grey against a near-black ocean background. There are glowing data nodes scattered across the map, representing salon performance hotspots. The data nodes use the brand's secondary colors, specifically dusty blue and muted copper, creating a luminous, glass-like effect. The overall mood is precise, data-driven, yet visually tranquil and luxurious, mimicking a premium dashboard interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOA7q9ldxgYCDroLHFBUkGEdlQ8MCXAue0fQNuyFsZh4jpX4fXPOJtqeOVAJ3AkwEbTYQ6PRv__pB-19EqZp8Qr139l9yQRo8pNG2NPstKKocN08IS8gRJmPCm-d-1la997EqT2YFM9RVv2JzRgXD1ApSgZc18PQNTIFrEf96wQ0_IIrrxkmjowLoGJTU2wKIULIQG3ZqsfbR7ZrsSNBE2qTZRQNoEFg8-6wJHI-2trtHyEzPyDnWxBwBXqd5tKwHWwiNV0bGDsasO"/>
+<!-- Overlay Gradient to blend map into UI -->
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+<!-- Faux Data Points on Map -->
+<div class="absolute top-[40%] left-[30%] w-4 h-4 bg-tertiary-fixed rounded-full shadow-[0_0_15px_rgba(199,233,233,0.8)] animate-pulse"></div>
+<div class="absolute top-[50%] left-[60%] w-6 h-6 bg-primary-container rounded-full shadow-[0_0_20px_rgba(255,182,139,0.8)] opacity-90"></div>
+<div class="absolute top-[30%] left-[70%] w-3 h-3 bg-secondary-fixed rounded-full shadow-[0_0_10px_rgba(201,230,255,0.8)] opacity-70"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile BottomNavBar (from JSON) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface-glass backdrop-blur-lg border-t border-border-glow rounded-t-xl">
+<!-- Active Tab: Metrics -->
+<a class="flex flex-col items-center justify-center text-primary font-bold transition-all active:scale-90 duration-150 group" href="#">
+<span class="material-symbols-outlined mb-1 group-hover:text-primary-fixed-dim transition-colors" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-manrope group-hover:text-primary-fixed-dim transition-colors">Metrics</span>
+</a>
+<!-- Inactive Tabs -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-all active:scale-90 duration-150 group" href="#">
+<span class="material-symbols-outlined mb-1 group-hover:text-primary-fixed-dim transition-colors" style="font-variation-settings: 'FILL' 0;">chat_bubble</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-manrope group-hover:text-primary-fixed-dim transition-colors">Inbox</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-all active:scale-90 duration-150 group" href="#">
+<span class="material-symbols-outlined mb-1 group-hover:text-primary-fixed-dim transition-colors" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-manrope group-hover:text-primary-fixed-dim transition-colors">Schedule</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-all active:scale-90 duration-150 group" href="#">
+<span class="material-symbols-outlined mb-1 group-hover:text-primary-fixed-dim transition-colors" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-manrope group-hover:text-primary-fixed-dim transition-colors">Settings</span>
+</a>
+</nav>
+</body></html>

@@ -27,13 +27,13 @@ class KategoriSeeder extends Seeder
             ['id_kategori' => 3, 'name' => 'Massage',      'slug' => 'massage',      'treatwell_slug' => 'massage',        'urutan' => 3, 'deskripsi' => 'Pijat relaksasi & terapi: deep tissue, swedish, thai, hot stone.'],
             ['id_kategori' => 4, 'name' => 'Nails',        'slug' => 'nails',        'treatwell_slug' => 'nails',          'urutan' => 4, 'deskripsi' => 'Perawatan kuku: manicure, pedicure, gel, akrilik.'],
             ['id_kategori' => 5, 'name' => 'Face',         'slug' => 'face',         'treatwell_slug' => 'face-beauty',    'urutan' => 5, 'deskripsi' => 'Perawatan wajah: facial, eyelash, eyebrow.'],
-            ['id_kategori' => 6, 'name' => 'Body',         'slug' => 'body',         'treatwell_slug' => 'body-treatments','urutan' => 6, 'deskripsi' => 'Perawatan tubuh: spray tan, body scrub, slimming.'],
+            ['id_kategori' => 6, 'name' => 'Body',         'slug' => 'body',         'treatwell_slug' => 'body-treatments', 'urutan' => 6, 'deskripsi' => 'Perawatan tubuh: spray tan, body scrub, slimming.'],
             ['id_kategori' => 7, 'name' => "Men's",        'slug' => 'mens',         'treatwell_slug' => 'mens-grooming',  'urutan' => 7, 'deskripsi' => 'Layanan khusus pria: barber, beard, men\'s grooming.'],
         ];
 
         $payload = array_map(fn ($r) => $r + [
-            'icon_url'   => null,
-            'is_active'  => true,
+            'icon_url' => null,
+            'is_active' => true,
             'created_at' => $now,
             'updated_at' => $now,
         ], $rows);

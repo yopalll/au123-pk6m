@@ -32,7 +32,7 @@ class SalonSlugBackfillSeeder extends Seeder
 
                     $candidate = $base;
                     if (isset($taken[$candidate])) {
-                        $candidate = $base . '-' . $salon->id_salon;
+                        $candidate = $base.'-'.$salon->id_salon;
                     }
 
                     $taken[$candidate] = true;
@@ -44,6 +44,6 @@ class SalonSlugBackfillSeeder extends Seeder
                 }
             }, 'id_salon');
 
-        $this->command?->info('Salon slug backfill complete. ' . count($taken) . ' unique slugs assigned.');
+        $this->command?->info('Salon slug backfill complete. '.count($taken).' unique slugs assigned.');
     }
 }

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Midnight Renewal Serum</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#a5cbea",
+                      "outline-variant": "#52443c",
+                      "tertiary": "#c7e9e9",
+                      "on-tertiary-container": "#385858",
+                      "surface-charcoal": "#1A1D21",
+                      "on-primary-fixed-variant": "#6c3a19",
+                      "secondary-fixed": "#c9e6ff",
+                      "on-tertiary": "#143536",
+                      "on-error": "#690005",
+                      "error": "#ffb4ab",
+                      "background": "#111316",
+                      "surface-container": "#1e2023",
+                      "error-container": "#93000a",
+                      "on-surface-variant": "#d7c2b8",
+                      "inverse-primary": "#88512e",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-lowest": "#0c0e11",
+                      "on-background": "#e2e2e6",
+                      "on-secondary-fixed-variant": "#234a64",
+                      "on-surface": "#e2e2e6",
+                      "on-primary-fixed": "#321200",
+                      "inverse-on-surface": "#2f3034",
+                      "primary-fixed-dim": "#ffb68b",
+                      "tertiary-fixed": "#c7e9e9",
+                      "secondary": "#a5cbea",
+                      "on-secondary-fixed": "#001e2f",
+                      "on-secondary": "#04344d",
+                      "surface-variant": "#333538",
+                      "on-primary": "#502405",
+                      "surface": "#111316",
+                      "inverse-surface": "#e2e2e6",
+                      "on-tertiary-fixed-variant": "#2c4c4c",
+                      "surface-dim": "#111316",
+                      "tertiary-container": "#abcdcd",
+                      "surface-container-high": "#282a2d",
+                      "outline": "#9f8d84",
+                      "on-primary-container": "#7a4523",
+                      "surface-container-low": "#1a1c1f",
+                      "primary-container": "#ffb68b",
+                      "tertiary-fixed-dim": "#abcdcd",
+                      "surface-bright": "#37393d",
+                      "primary-fixed": "#ffdbc9",
+                      "surface-glass": "rgba(17, 19, 22, 0.6)",
+                      "primary": "#ffdbc8",
+                      "on-secondary-container": "#97bddb",
+                      "surface-tint": "#ffb68b",
+                      "secondary-container": "#264d67",
+                      "border-glow": "rgba(255, 255, 255, 0.2)",
+                      "surface-container-highest": "#333538",
+                      "on-tertiary-fixed": "#002020"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xl": "80px",
+                      "base": "4px",
+                      "lg": "40px",
+                      "gutter": "24px",
+                      "margin-mobile": "20px",
+                      "xs": "8px",
+                      "md": "24px",
+                      "sm": "16px",
+                      "margin-desktop": "80px"
+              },
+              "fontFamily": {
+                      "label-md": [
+                              "Manrope"
+                      ],
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Manrope"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "Manrope"
+                      ],
+                      "label-sm": [
+                              "Manrope"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ]
+              },
+              "fontSize": {
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.bg-texture {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBsxxtncntM_-LBNY90eUO9o7BM38hwoK3e4LTdCPjl4I3pN4XjBA3mbCI5bvUaSzl2ZVfKNS0PRbr1w-7Tdoaqw5rOdV456JqtHOcgfjfTLZR6A7Z2BEtu0aYO2soLXsSXog-erl7LRfaxnEyE8MidUpwYepPHXvOpAL7qV-ponzOOLf4_BAYhlgQAoPtn07WrFf-jpHqOzVphPyz519nkeHl0w902BeNK3teHca-qSy5UTlgOpr6VSn-tsD1NfuQUbGsRYGmJHDWM);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center
+    }
+.bg-texture::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #111316;
+    opacity: 0.9;
+    z-index: -1
+    }
+.hide-scroll::-webkit-scrollbar {
+    display: none
+    }
+.hide-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none
+    }</style>
+</head>
+<body class="bg-background text-on-surface antialiased bg-texture min-h-screen relative">
+<!-- TopNavBar -->
+<nav class="bg-surface-glass backdrop-blur-xl border-b border-white/20 fixed top-0 w-full z-50 transition-all duration-300 ease-in-out">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-md w-full">
+<div class="flex space-x-gutter items-center hidden md:flex">
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors pb-1" href="#">Lookbook</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-primary border-b border-primary pb-1" href="#">Shop</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors pb-1" href="#">Sustainability</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors pb-1" href="#">Help</a>
+</div>
+<a class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tight font-extrabold md:mx-auto" href="#">VIYGO</a>
+<div class="flex space-x-sm items-center text-primary">
+<button class="p-2 hover:bg-white/5 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+<button class="p-2 hover:bg-white/5 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-[120px] pb-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+<!-- Hero Section -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg md:gap-xl mb-xl">
+<!-- Image Side -->
+<div class="md:col-span-7 relative h-[614px] md:h-[819px] rounded-xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+<img alt="A luxurious, dark, moody close-up of a sleek black glass dropper bottle filled with skin serum, resting on a textured dark stone surface. Surrounding the bottle are subtle, deep purple and midnight blue orchid petals, barely illuminated by a soft, directional warm copper light. The aesthetic is high-end skincare, clinical yet deeply botanical and mystical." class="w-full h-full object-cover" data-alt="A luxurious, dark, moody close-up of a sleek black glass dropper bottle filled with skin serum, resting on a textured dark stone surface. Surrounding the bottle are subtle, deep purple and midnight blue orchid petals, barely illuminated by a soft, directional warm copper light. The aesthetic is high-end skincare, clinical yet deeply botanical and mystical." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv3LcGye7SO1uG8MVIIkfr9LFa5SIWls7HIGy-EJ23WfSQMHkf5P3Yy2RpalfgHNwloW1ATBCRkfBkVaperjONkv6aC1IJDqpbJnLKFhZ9MUL5Xo8Oz9lqW7VavhM1BCBjBsQijvPyPwyf-V3-KC8h290uZkNjUKevJ49V2_zDi-Lp6P3-814vheuHgm7da64NDiVCjXGeLeA0JlLOA_2tRg5Jd7YPmQh7F-xAydfwj54slmwRRYSm9047mqQTvh-7im92HVOBKECO"/>
+</div>
+<!-- Details Side -->
+<div class="md:col-span-5 flex flex-col justify-center">
+<div class="mb-sm">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest opacity-80">Nightly Restoration</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg md:font-display-lg md:text-display-lg text-on-surface mb-md">Midnight Renewal Serum</h1>
+<div class="font-headline-md text-headline-md text-primary mb-lg">
+                    $145.00
+                </div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg leading-relaxed">
+                    A potent, twilight elixir formulated to synchronize with your skin's nocturnal repair phase. Infused with rare nocturnal orchid extracts and resilient reishi mushroom, this serum deeply restores vitality, leaving skin luminous and resilient by dawn.
+                </p>
+<div class="mb-xl">
+<button class="w-full bg-primary-container text-background font-label-md text-label-md uppercase tracking-widest py-md px-lg rounded transition-transform hover:scale-[1.02] active:scale-[0.98]">
+                        Add to Bag
+                    </button>
+</div>
+<!-- Accordions -->
+<div class="border-t border-white/10 pt-sm">
+<!-- Ingredients -->
+<div class="border-b border-white/10 py-sm">
+<button class="flex justify-between items-center w-full text-left group" onclick="this.nextElementSibling.classList.toggle('hidden')">
+<span class="font-headline-md text-body-lg text-on-surface group-hover:text-primary transition-colors">Key Ingredients</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">add</span>
+</button>
+<div class="hidden pt-md pb-sm space-y-sm">
+<div>
+<span class="font-label-md text-label-md text-primary block mb-xs">Nocturnal Orchid Stem Cells</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Stimulates cellular turnover and boosts collagen production during sleep.</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-primary block mb-xs">Botanical Hyaluronic Acid</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Draws and binds moisture to the skin for profound, lasting hydration.</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-primary block mb-xs">Reishi Mushroom Extract</span>
+<span class="font-body-md text-body-md text-on-surface-variant">An adaptogen that helps skin combat stress and inflammation.</span>
+</div>
+</div>
+</div>
+<!-- Ritual -->
+<div class="border-b border-white/10 py-sm">
+<button class="flex justify-between items-center w-full text-left group" onclick="this.nextElementSibling.classList.toggle('hidden')">
+<span class="font-headline-md text-body-lg text-on-surface group-hover:text-primary transition-colors">The Ritual</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">add</span>
+</button>
+<div class="hidden pt-md pb-sm">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                Dispense 3-4 drops into the palm of your hand. Press palms together to activate the botanical oils, then gently press onto cleansed face, neck, and décolletage. Follow with your preferred night cream. Use exclusively in the evening.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-white/10 w-full py-xl transition-opacity duration-200">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+<div class="md:col-span-4 flex flex-col justify-center items-start md:items-start text-center md:text-left mb-lg md:mb-0">
+<span class="font-display-lg text-headline-lg text-primary mb-md font-bold tracking-tight">VIYGO</span>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">© 2024 VIYGO. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="md:col-span-8 flex flex-wrap justify-center md:justify-end gap-x-lg gap-y-md">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Our Story</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">The Science</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Ethical Sourcing</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Accessibility</a>
+</div>
+</div>
+</footer>
+</body></html>

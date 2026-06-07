@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Confirmation | VIYGO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed-variant": "#6c3a19",
+                      "inverse-on-surface": "#2f3034",
+                      "on-error": "#690005",
+                      "outline": "#9f8d84",
+                      "surface-container-highest": "#333538",
+                      "on-error-container": "#ffdad6",
+                      "inverse-surface": "#e2e2e6",
+                      "border-glow": "rgba(255, 255, 255, 0.2)",
+                      "on-tertiary-fixed": "#002020",
+                      "secondary-fixed": "#c9e6ff",
+                      "tertiary-fixed-dim": "#abcdcd",
+                      "surface-tint": "#ffb68b",
+                      "on-primary": "#502405",
+                      "on-tertiary": "#143536",
+                      "on-secondary-fixed": "#001e2f",
+                      "on-secondary": "#04344d",
+                      "inverse-primary": "#88512e",
+                      "tertiary-fixed": "#c7e9e9",
+                      "on-tertiary-container": "#385858",
+                      "on-secondary-fixed-variant": "#234a64",
+                      "primary-fixed": "#ffdbc9",
+                      "on-background": "#e2e2e6",
+                      "on-surface": "#e2e2e6",
+                      "outline-variant": "#52443c",
+                      "background": "#111316",
+                      "secondary-container": "#264d67",
+                      "on-primary-container": "#7a4523",
+                      "surface-container-low": "#1a1c1f",
+                      "secondary-fixed-dim": "#a5cbea",
+                      "surface-bright": "#37393d",
+                      "secondary": "#a5cbea",
+                      "on-surface-variant": "#d7c2b8",
+                      "primary": "#ffdbc8",
+                      "primary-container": "#ffb68b",
+                      "surface-container-high": "#282a2d",
+                      "tertiary-container": "#abcdcd",
+                      "surface-dim": "#111316",
+                      "primary-fixed-dim": "#ffb68b",
+                      "surface-container": "#1e2023",
+                      "on-secondary-container": "#97bddb",
+                      "error": "#ffb4ab",
+                      "surface-container-lowest": "#0c0e11",
+                      "surface": "#111316",
+                      "on-tertiary-fixed-variant": "#2c4c4c",
+                      "surface-variant": "#333538",
+                      "surface-charcoal": "#1A1D21",
+                      "surface-glass": "rgba(17, 19, 22, 0.6)",
+                      "error-container": "#93000a",
+                      "tertiary": "#c7e9e9",
+                      "on-primary-fixed": "#321200"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "lg": "40px",
+                      "md": "24px",
+                      "base": "4px",
+                      "margin-mobile": "20px",
+                      "xs": "8px",
+                      "margin-desktop": "80px",
+                      "sm": "16px",
+                      "xl": "80px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Manrope"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "Manrope"
+                      ],
+                      "label-sm": [
+                              "Manrope"
+                      ],
+                      "label-md": [
+                              "Manrope"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            position: relative;
+        }
+        
+        .bg-texture-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBwHqADlvLJt4CD6DbLvjdg8YKP3DCI2aRcu_v6h8Fg78xYeGxyhCmxMrTIt7uMITXR946IToFqXWQRGkZOHGllAbIKg_XkPnk90R0E7tbxaHzqRHD8zzjYKcRmqNDLSSCLSEwGD_Icn_29S8h6ZV75fhfcqGGW1rkpVpl_y57yvX3E5Z0qPDuEENT6Kp5ViQo5dvklsh5Xtt7_ArTzKENG-noey5PL08dvOv6cm6nsfr2MQ8iySVC1J8mP3CXTZxA95lmLSKzATfXC');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .glass-panel {
+            background-color: theme('colors.surface-glass');
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid theme('colors.border-glow');
+        }
+      </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col pt-[80px]">
+<div class="bg-texture-layer"></div>
+<!-- TopNavBar: Suppressed because this is a transactional Success screen. -->
+<main class="flex-grow flex items-center justify-center py-margin-desktop px-margin-mobile md:px-margin-desktop">
+<div class="w-full max-w-3xl">
+<div class="glass-panel rounded-xl p-md md:p-lg flex flex-col items-center text-center shadow-2xl relative overflow-hidden">
+<!-- Decorative Glow -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="mb-sm text-primary">
+<span class="material-symbols-outlined text-[64px]" style="font-variation-settings: 'FILL' 0;">check_circle</span>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-base">Thank You for Your Purchase</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-md">Your ritual is being prepared. Order #VG-88421</p>
+<div class="w-full h-[1px] bg-white/10 mb-md"></div>
+<div class="w-full text-left flex flex-col gap-md md:gap-lg">
+<!-- Order Details -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div>
+<h3 class="font-label-md text-label-md text-primary uppercase tracking-widest mb-xs">Shipping Address</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                Eleanor Vance<br/>
+                                1992 Midnight Lane<br/>
+                                Apt 4B<br/>
+                                New York, NY 10012
+                            </p>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary uppercase tracking-widest mb-xs">Payment Method</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                Visa ending in 4242<br/>
+                                Total: $245.00
+                            </p>
+</div>
+</div>
+<!-- Itemized List -->
+<div class="bg-surface-charcoal/50 rounded-lg p-sm border border-white/5">
+<h3 class="font-label-md text-label-md text-primary uppercase tracking-widest mb-sm border-b border-white/10 pb-xs">Your Items</h3>
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-sm">
+<div class="w-16 h-16 rounded bg-surface-container overflow-hidden border border-white/10 relative">
+<img alt="Midnight Renewal Serum" class="w-full h-full object-cover opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all" data-alt="A sleek, minimalist dark glass dropper bottle containing dark facial serum, resting on a textured slate surface illuminated by a single spotlight against a very dark background. The aesthetic is luxurious, modern, and moody skincare." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtTaFTEetV0nlYDy2gjgCIYLC9os5Wq4pwEir-QV15gta4xL2bY-hq8NbJCIz0oqFi1tk7wE4cokP5AiuR0Hui5KDfEyPsFuhAelQfYGcn3JMAJI79FRRD7qc_goy6uDe5MR41HuYrGZcfGf-9Rd6j_FV80mTVzshe6Q6pC_l0m6eDe4IZxEufYAMneuz9L81QFzb6nJhOnxWyJDX9N2E6NwaHsX2rxm4546M2ELJzsDCd7O-vSi3s1nqHVT6SNKJVOhCN_bKZbgou"/>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Midnight Renewal Serum</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Qty: 1</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface">$145.00</p>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-sm">
+<div class="w-16 h-16 rounded bg-surface-container overflow-hidden border border-white/10 relative">
+<img alt="Restoration Balm" class="w-full h-full object-cover opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all" data-alt="A luxurious dark frosted glass jar of skin balm sitting on a dark marble surface, with subtle warm copper lighting reflecting off the lid. The atmosphere is serene and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKwwsMnFGYtnZWcQ3phEruKQw6fAHksf_rLHpu2b1onA8fAg_UEe3spoSq9NCveZtBMUTrzfMwf3ReznldzJnfvaL3e10_GqeWTAB3IJFByu6T25YrvoSKhj5y9StrR01qyUoF0gKR2g6zxe5Nhm4VWOxgs7D45bytaldFwxis8BTZ2fIoRw14DUPZBx87v9tTbBLI_gUtZUMwtd6I3z-e0MRMG2USOhQClDKS_ZR03UBbPaufuA7i_bR1IGK2aY9JIpUAxBMTI0r_"/>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Restoration Balm</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Qty: 1</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface">$100.00</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-lg w-full flex flex-col md:flex-row gap-sm justify-center">
+<button class="bg-primary-container text-[#111316] font-label-md text-label-md py-3 px-8 rounded uppercase tracking-widest hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+                        Track My Ritual
+                    </button>
+<button class="bg-transparent text-secondary border border-secondary font-label-md text-label-md py-3 px-8 rounded uppercase tracking-widest hover:bg-secondary/10 transition-colors focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background">
+                        Return to Shop
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer: Suppressed on transactional success screen to keep user focused on the confirmation. -->
+</body></html>

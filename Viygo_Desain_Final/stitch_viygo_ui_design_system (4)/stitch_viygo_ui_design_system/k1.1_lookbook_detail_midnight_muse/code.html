@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Midnight Muse Lookbook</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#001e2f",
+                        "surface-container-high": "#282a2d",
+                        "on-surface-variant": "#d7c2b8",
+                        "surface-container-low": "#1a1c1f",
+                        "on-secondary": "#04344d",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "surface": "#111316",
+                        "secondary-container": "#264d67",
+                        "surface-bright": "#37393d",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#111316",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-tertiary-fixed": "#002020",
+                        "on-error": "#690005",
+                        "outline-variant": "#52443c",
+                        "inverse-surface": "#e2e2e6",
+                        "on-tertiary": "#143536",
+                        "surface-container-highest": "#333538",
+                        "surface-tint": "#ffb68b",
+                        "inverse-primary": "#88512e",
+                        "on-secondary-container": "#97bddb",
+                        "tertiary": "#c7e9e9",
+                        "on-primary-container": "#7a4523",
+                        "secondary": "#a5cbea",
+                        "surface-variant": "#333538",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "primary-fixed-dim": "#ffb68b",
+                        "tertiary-fixed": "#c7e9e9",
+                        "background": "#111316",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "on-surface": "#e2e2e6",
+                        "surface-container": "#1e2023",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-primary-fixed": "#321200",
+                        "primary-container": "#ffb68b",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "primary": "#ffdbc8",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "outline": "#9f8d84",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "primary-fixed": "#ffdbc9",
+                        "inverse-on-surface": "#2f3034",
+                        "tertiary-container": "#abcdcd",
+                        "on-primary": "#502405",
+                        "on-tertiary-container": "#385858",
+                        "on-background": "#e2e2e6",
+                        "on-error-container": "#ffdad6",
+                        "surface-charcoal": "#1A1D21"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "margin-desktop": "80px",
+                        "xl": "80px",
+                        "lg": "40px",
+                        "sm": "16px",
+                        "xs": "8px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .bg-texture {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDZaDzNGRwgikFvjlsNm_HI7VRGNA4WUGPus_q47eo4au5LnlcfJQSyrDOytyTJACpDvM2R31soBhmSUNCAgdFSGd3MPpZs6LeoQNGLQoky_O7I83qYejjLmDQgnFJKbEzHcynwVfe10PulaYKvMfs09Rf3hcz8zfwEEpMlzfx7kKezrOZVXYOw7m0jNWepXTLQ3uOfjO4DkuM1OFD028vb8YNe30tqIuVfwWzG3eMMVXVRD_fYBjsue-msOntA4VPVGvgwfEAYvfDl');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .glass-panel {
+            background: rgba(17, 19, 22, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative font-body-md text-body-md">
+<!-- Background Texture -->
+<div class="bg-texture"></div>
+<!-- TopNavBar -->
+<nav class="bg-surface-glass backdrop-blur-md fixed top-0 w-full z-50 border-b border-white/20">
+<div class="flex justify-between items-center px-margin-desktop h-20 w-full hidden md:flex">
+<!-- Navigation Links (Left) -->
+<div class="flex space-x-lg items-center">
+<a class="font-label-md text-label-md uppercase tracking-wider text-primary border-b-2 border-primary pb-1 Active: scale-95 opacity-80" href="#">Lookbook</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary transition-all duration-300" href="#">Shop</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary transition-all duration-300" href="#">Sustainability</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary transition-all duration-300" href="#">Help</a>
+</div>
+<!-- Brand Logo (Center) -->
+<div class="absolute left-1/2 transform -translate-x-1/2">
+<span class="font-headline-md text-headline-md text-primary tracking-tighter">VIYGO</span>
+</div>
+<!-- Trailing Icons (Right) -->
+<div class="flex space-x-md items-center text-primary">
+<button class="hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+<button class="hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+<!-- Mobile Top Nav -->
+<div class="flex justify-between items-center px-margin-mobile h-20 w-full md:hidden">
+<span class="font-headline-md text-headline-md text-primary tracking-tighter">VIYGO</span>
+<div class="flex space-x-sm">
+<button class="text-primary"><span class="material-symbols-outlined">shopping_bag</span></button>
+<button class="text-primary"><span class="material-symbols-outlined">menu</span></button>
+</div>
+</div>
+</nav>
+<main class="pt-[100px] pb-xl px-margin-mobile md:px-margin-desktop max-w-[1600px] mx-auto">
+<!-- Hero Section -->
+<header class="relative w-full h-[60vh] md:h-[80vh] flex items-end justify-center mb-xl rounded-xl overflow-hidden glass-panel">
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent z-10"></div>
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="A moody, atmospheric high-fashion beauty portrait of a model with glowing, dewy skin. The scene is illuminated by dim, sophisticated lighting with subtle copper and deep blue hues, embodying a luxurious Serene Floral Noir aesthetic. Minimalist framing highlights the flawless complexion against a dark, textured background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDUn5Scu-orIdLLqd8f7vEzcL5nGrg4WtXDkk-C2adYhAaUjConLKP90HdWCJb09ENBH3z_Mqbm_3jaWINT1C-l6d_v-K7tU5ggflFzhfvAf9zURLSapJjsLCoFpFnKOxH6GxSubFNnuX3x9FkXNIDDvmkmpBQRZjrY2PjcMp9mUo29mRAc2VaUCr8Jl8m3CB0M75mPx9hWB_te1aeNSOI8pyIKXKxz5qpy83-FGXYngvMK4eb7bVwcXsxMlE_XtzMGonHBwv_zZ4b9');"></div>
+<div class="relative z-20 text-center pb-xl px-sm max-w-3xl">
+<span class="block font-label-md text-label-md uppercase tracking-wider text-secondary mb-sm">Collection 04</span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-md">Midnight Muse</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto">Embrace the quiet luxury of nocturnal beauty. A curated selection of deep hydration and luminous finishes designed for the sophisticated evening ritual.</p>
+</div>
+</header>
+<!-- Magazine Spread 1 -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-xl items-center">
+<div class="md:col-span-5 md:col-start-2 order-2 md:order-1 glass-panel p-lg rounded-xl h-fit">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-sm">The Velvet Hour</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">As daylight fades, the skin's needs transform. Our new serum complex utilizes nocturnal botanicals to repair and rejuvenate while you rest. The texture is a revelation—rich yet weightless, melting into the dermis like a whispered secret.</p>
+<button class="bg-primary-container text-surface px-md py-sm rounded uppercase font-label-md text-label-md tracking-wider hover:opacity-90 transition-opacity">Explore The Science</button>
+</div>
+<div class="md:col-span-5 order-1 md:order-2 h-[500px] rounded-xl overflow-hidden glass-panel relative group">
+<img alt="Lookbook Image 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A macro shot of a rich, velvety skincare cream swiped across a dark slate surface. The lighting is dramatic and moody, emphasizing the product's luxurious texture and subtle sheen. The aesthetic is minimalist and high-end, fitting the Serene Floral Noir theme with deep charcoal tones and soft, indirect light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-9JmrqPCDlDdL9s3to4ndE8SJLhRpcSpQnVGqY9f8CoL3LLGKUG7BUBOnIkbZb1b1IBue5a7nb83cZQBRX3rPrsjDp5ZlOo0sfu3uXE9y7JbN_0hdyua2GjGxn3OynkSRhQbV8qjdFcsf9uQ52QGD7eD9WgG9XzTjKD_HeRC-A3Yc6nn--WLW4lOtA1pnkC3wr1QUBPBY9GQWWqTv5KRqnG9Vy8Kfb36FWp7RsEJicCC0ahKvf4PixWmMKNsnJTr1QLcc50YgGvBT"/>
+<!-- Shop the Look Hotspot -->
+<button class="absolute top-1/2 left-1/3 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-surface-glass border border-white/20 rounded-full flex items-center justify-center text-primary hover:bg-primary-container hover:text-surface transition-colors cursor-pointer group/spot">
+<span class="w-2 h-2 bg-primary rounded-full group-hover/spot:bg-surface"></span>
+<div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 p-xs glass-panel rounded opacity-0 invisible group-hover/spot:opacity-100 group-hover/spot:visible transition-all pointer-events-none">
+<p class="font-label-sm text-label-sm text-primary mb-1">Nocturnal Repair Cream</p>
+<p class="font-body-md text-body-md text-on-surface-variant">$125</p>
+</div>
+</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full py-xl px-margin-mobile md:px-margin-desktop border-t border-white/10 font-body-md text-body-md">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter max-w-7xl mx-auto">
+<!-- Brand/Copyright -->
+<div class="flex flex-col gap-sm">
+<span class="font-headline-sm text-headline-sm text-primary">VIYGO</span>
+<p class="text-on-surface-variant">© 2024 VIYGO LUXE. All rights reserved.</p>
+</div>
+<!-- Links Column 1 -->
+<div class="flex flex-col gap-sm">
+<a class="text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Sustainability Reports</a>
+<a class="text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Terms of Service</a>
+</div>
+<!-- Links Column 2 -->
+<div class="flex flex-col gap-sm">
+<a class="text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+</body></html>

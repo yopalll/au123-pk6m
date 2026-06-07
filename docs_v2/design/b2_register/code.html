@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Register</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "inverse-on-surface": "#2f3034",
+                        "on-error": "#690005",
+                        "outline": "#9f8d84",
+                        "surface-container-highest": "#333538",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#e2e2e6",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "on-tertiary-fixed": "#002020",
+                        "secondary-fixed": "#c9e6ff",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "surface-tint": "#ffb68b",
+                        "on-primary": "#502405",
+                        "on-tertiary": "#143536",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-secondary": "#04344d",
+                        "inverse-primary": "#88512e",
+                        "tertiary-fixed": "#c7e9e9",
+                        "on-tertiary-container": "#385858",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "primary-fixed": "#ffdbc9",
+                        "on-background": "#e2e2e6",
+                        "on-surface": "#e2e2e6",
+                        "outline-variant": "#52443c",
+                        "background": "#111316",
+                        "secondary-container": "#264d67",
+                        "on-primary-container": "#111316", /* Overridden to match CTA dark text rule */
+                        "surface-container-low": "#1a1c1f",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "surface-bright": "#37393d",
+                        "secondary": "#a5cbea",
+                        "on-surface-variant": "#d7c2b8",
+                        "primary": "#ffdbc8",
+                        "primary-container": "#ffb68b",
+                        "surface-container-high": "#282a2d",
+                        "tertiary-container": "#abcdcd",
+                        "surface-dim": "#111316",
+                        "primary-fixed-dim": "#ffb68b",
+                        "surface-container": "#1e2023",
+                        "on-secondary-container": "#97bddb",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0c0e11",
+                        "surface": "#111316",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "surface-variant": "#333538",
+                        "surface-charcoal": "#1A1D21",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "error-container": "#93000a",
+                        "tertiary": "#c7e9e9",
+                        "on-primary-fixed": "#321200"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "40px",
+                        "md": "24px",
+                        "base": "4px",
+                        "margin-mobile": "20px",
+                        "xs": "8px",
+                        "margin-desktop": "80px",
+                        "sm": "16px",
+                        "xl": "80px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "label-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- Fixed Background Texture & Gradient Overlay -->
+<div class="fixed inset-0 z-0">
+<div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBwHqADlvLJt4CD6DbLvjdg8YKP3DCI2aRcu_v6h8Fg78xYeGxyhCmxMrTIt7uMITXR946IToFqXWQRGkZOHGllAbIKg_XkPnk90R0E7tbxaHzqRHD8zzjYKcRmqNDLSSCLSEwGD_Icn_29S8h6ZV75fhfcqGGW1rkpVpl_y57yvX3E5Z0qPDuEENT6Kp5ViQo5dvklsh5Xtt7_ArTzKENG-noey5PL08dvOv6cm6nsfr2MQ8iySVC1J8mP3CXTZxA95lmLSKzATfXC');"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background"></div>
+</div>
+<!-- TopNavBar Component -->
+<header class="bg-surface-glass backdrop-blur-md fixed top-0 w-full z-50 border-b border-white/20 transition-all duration-300">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-[1440px] mx-auto">
+<!-- Brand Logo -->
+<a class="font-display-lg text-headline-md text-primary tracking-tight" href="#">VIYGO</a>
+<!-- Navigation Links (Hidden on Mobile) -->
+<nav class="hidden md:flex gap-lg items-center">
+<a class="text-on-surface-variant font-body-md text-label-md uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#">Lookbook</a>
+<a class="text-on-surface-variant font-body-md text-label-md uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#">Shop</a>
+<a class="text-on-surface-variant font-body-md text-label-md uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#">Sustainability</a>
+<a class="text-on-surface-variant font-body-md text-label-md uppercase tracking-widest hover:text-primary transition-colors duration-300" href="#">Help</a>
+</nav>
+<!-- Trailing Icons -->
+<div class="flex items-center gap-md text-primary">
+<button aria-label="Shopping Bag" class="hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+</button>
+<button aria-label="Profile" class="hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow relative z-10 flex items-center justify-center pt-32 pb-24 px-margin-mobile md:px-0">
+<!-- Registration Frosted Card -->
+<div class="w-full max-w-md bg-surface-glass backdrop-blur-xl border border-border-glow rounded-xl p-md md:p-lg shadow-2xl relative overflow-hidden">
+<!-- Subtle top highlight for glass effect -->
+<div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+<div class="text-center mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Create Account</h1>
+<p class="font-body-md text-on-surface-variant">Begin your journey to serenity.</p>
+</div>
+<form class="space-y-sm">
+<!-- Full Name Field -->
+<div>
+<label class="block font-label-sm text-on-surface-variant mb-xs" for="fullName">Full Name</label>
+<div class="relative">
+<input class="w-full bg-surface-charcoal border border-white/10 rounded-DEFAULT px-4 py-3 text-on-surface font-body-md focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container/20 transition-all duration-300 placeholder:text-on-surface-variant/40" id="fullName" name="fullName" placeholder="Jane Doe" type="text"/>
+</div>
+</div>
+<!-- Email Field -->
+<div>
+<label class="block font-label-sm text-on-surface-variant mb-xs" for="email">Email Address</label>
+<div class="relative">
+<input class="w-full bg-surface-charcoal border border-white/10 rounded-DEFAULT px-4 py-3 text-on-surface font-body-md focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container/20 transition-all duration-300 placeholder:text-on-surface-variant/40" id="email" name="email" placeholder="jane@example.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div>
+<label class="block font-label-sm text-on-surface-variant mb-xs" for="password">Password</label>
+<div class="relative">
+<input class="w-full bg-surface-charcoal border border-white/10 rounded-DEFAULT px-4 py-3 text-on-surface font-body-md focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container/20 transition-all duration-300 placeholder:text-on-surface-variant/40" id="password" name="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Primary CTA -->
+<button class="w-full bg-primary-container text-on-primary-container font-label-md uppercase tracking-widest py-4 rounded-DEFAULT mt-md hover:bg-primary transition-colors duration-300 flex justify-center items-center gap-2" type="submit">
+                    Create Account
+                    <span class="material-symbols-outlined text-sm">arrow_right_alt</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="flex items-center my-md">
+<div class="flex-grow border-t border-white/10"></div>
+<span class="px-3 text-on-surface-variant font-label-sm uppercase tracking-widest">Or</span>
+<div class="flex-grow border-t border-white/10"></div>
+</div>
+<!-- Secondary Action (Google Sign In) -->
+<button class="w-full bg-transparent border border-secondary text-secondary font-label-md py-3 rounded-DEFAULT hover:bg-secondary/10 transition-colors duration-300 flex justify-center items-center gap-3" type="button">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                Sign in with Google
+            </button>
+<!-- Bottom Link -->
+<p class="text-center mt-md font-body-md text-on-surface-variant text-sm">
+                Already have an account? <a class="text-primary-container hover:underline transition-all" href="#">Sign In</a>
+</p>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="bg-surface-container-lowest w-full border-t border-white/10 relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter px-margin-mobile md:px-margin-desktop py-xl max-w-[1440px] mx-auto">
+<!-- Brand Column -->
+<div class="md:col-span-4 flex flex-col gap-4">
+<a class="font-display-lg text-headline-lg text-primary" href="#">VIYGO</a>
+<p class="font-body-md text-on-surface-variant">© 2024 VIYGO. All rights reserved. Crafted for tranquility.</p>
+</div>
+<!-- Links Columns -->
+<div class="md:col-span-8 flex flex-wrap gap-xl md:justify-end mt-8 md:mt-0">
+<div class="flex flex-col gap-3">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Shipping &amp; Returns</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Contact Us</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

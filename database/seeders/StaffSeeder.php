@@ -17,6 +17,7 @@ class StaffSeeder extends Seeder
 
         if (empty($staffList)) {
             $this->command->warn('staff.json is empty, skipping StaffSeeder.');
+
             return;
         }
 
@@ -25,19 +26,19 @@ class StaffSeeder extends Seeder
         foreach ($chunks as $chunk) {
             $rows = array_map(function ($staff) {
                 return [
-                    'id_staff'    => $staff['id_staff'],
-                    'id_salon'    => $staff['id_salon'],
-                    'name'        => mb_substr($staff['name'], 0, 150),
+                    'id_staff' => $staff['id_staff'],
+                    'id_salon' => $staff['id_salon'],
+                    'name' => mb_substr($staff['name'], 0, 150),
                     'profile_url' => $staff['profile_url'],
-                    'status'      => $staff['status'],
-                    'created_at'  => now(),
-                    'updated_at'  => now(),
+                    'status' => $staff['status'],
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ];
             }, $chunk);
 
             DB::table('staff')->insert($rows);
         }
 
-        $this->command->info("Seeded " . count($staffList) . " staff records.");
+        $this->command->info('Seeded '.count($staffList).' staff records.');
     }
 }

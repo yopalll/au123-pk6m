@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO Admin - Salon Profile</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#abcdcd",
+                    "surface-container-high": "#282a2d",
+                    "primary-container": "#ffb68b",
+                    "surface-glass": "rgba(17, 19, 22, 0.6)",
+                    "error-container": "#93000a",
+                    "tertiary": "#c7e9e9",
+                    "on-primary-fixed": "#321200",
+                    "surface-container-lowest": "#0c0e11",
+                    "surface": "#111316",
+                    "on-tertiary-fixed-variant": "#2c4c4c",
+                    "surface-variant": "#333538",
+                    "surface-charcoal": "#1A1D21",
+                    "on-secondary-container": "#97bddb",
+                    "error": "#ffb4ab",
+                    "surface-dim": "#111316",
+                    "primary-fixed-dim": "#ffb68b",
+                    "surface-container": "#1e2023",
+                    "background": "#111316",
+                    "secondary-container": "#264d67",
+                    "on-background": "#e2e2e6",
+                    "on-surface": "#e2e2e6",
+                    "outline-variant": "#52443c",
+                    "primary-fixed": "#ffdbc9",
+                    "on-tertiary-container": "#385858",
+                    "on-secondary-fixed-variant": "#234a64",
+                    "secondary": "#a5cbea",
+                    "on-surface-variant": "#d7c2b8",
+                    "primary": "#ffdbc8",
+                    "surface-bright": "#37393d",
+                    "secondary-fixed-dim": "#a5cbea",
+                    "on-primary-container": "#7a4523",
+                    "surface-container-low": "#1a1c1f",
+                    "on-primary": "#502405",
+                    "secondary-fixed": "#c9e6ff",
+                    "tertiary-fixed-dim": "#abcdcd",
+                    "surface-tint": "#ffb68b",
+                    "inverse-surface": "#e2e2e6",
+                    "border-glow": "rgba(255, 255, 255, 0.2)",
+                    "on-tertiary-fixed": "#002020",
+                    "on-secondary": "#04344d",
+                    "inverse-primary": "#88512e",
+                    "tertiary-fixed": "#c7e9e9",
+                    "on-tertiary": "#143536",
+                    "on-secondary-fixed": "#001e2f",
+                    "inverse-on-surface": "#2f3034",
+                    "on-error": "#690005",
+                    "on-primary-fixed-variant": "#6c3a19",
+                    "surface-container-highest": "#333538",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#9f8d84"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "margin-desktop": "80px",
+                    "sm": "16px",
+                    "xl": "80px",
+                    "gutter": "24px",
+                    "lg": "40px",
+                    "margin-mobile": "20px",
+                    "md": "24px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Playfair Display"],
+                    "label-sm": ["Manrope"],
+                    "label-md": ["Manrope"],
+                    "headline-md": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"],
+                    "body-lg": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "display-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Subtle Floral Night Background Effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(255, 182, 139, 0.03), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(165, 203, 234, 0.03), transparent 40%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Glass Panel Reusable Utility */
+        .glass-panel {
+            background-color: theme('colors.surface-glass');
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid theme('colors.border-glow');
+        }
+
+        /* Form Input Reusable Utility */
+        .form-input-premium {
+            background-color: theme('colors.surface-charcoal');
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: theme('colors.on-surface');
+            transition: all 0.3s ease;
+        }
+        .form-input-premium:focus {
+            border-color: theme('colors.primary');
+            box-shadow: 0 0 0 2px rgba(255, 182, 139, 0.2);
+            outline: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex">
+<!-- SideNavBar Component -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-charcoal border-r border-white/10 p-md gap-sm z-40">
+<!-- Header -->
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden border border-border-glow">
+<img alt="Salon Logo" class="w-full h-full object-cover" data-alt="A sophisticated, minimalist salon logo featuring abstract geometric lines in copper against a deep black background, evoking a sense of high-end luxury and modern apothecary design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB-9R3Q_42UBfIuCI8ZL6Rww7S7W7j-4jJxjml6OaPS2mnfB4nWCUP548iq1T-LTTZoTCc14YMZY_jUqWXQSwNlyCkbCXD6R6-QjCgW38bQZnrSPc6CDKVCrXEmgdQGn3vwDvE05NqNQR6hb6X-zhIitBS8nRFb0SLXmhU60JtSr-AMMJLpVgBLhZqNlogxCKQH6n8RXnoWx3XhW7B6LpfMUrz4-esEqkuKeqiVyLALX3jDGlyk9Jvr3nGsuCjMS5L6SQk3G4KrQT7"/>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">VIYGO Admin</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Elite Management</p>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-sm rounded hover:bg-primary-container transition-colors mb-sm">
+            New Appointment
+        </button>
+<!-- Navigation Tabs -->
+<nav class="flex-1 flex flex-col gap-xs">
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 rounded" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 rounded" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Bookings</span>
+</a>
+<!-- Active State on Stylists (Assume managing profile implies managing the team here, or it's a general section) -->
+<a class="flex items-center gap-sm p-sm bg-primary-container text-on-primary-container rounded-lg font-bold scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined fill" data-weight="fill">content_cut</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Stylists</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 rounded" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Inventory</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 rounded" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Analytics</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all scale-95 active:scale-90 rounded" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Clients</span>
+</a>
+</nav>
+<!-- Footer Tabs -->
+<div class="mt-auto flex flex-col gap-xs pt-sm border-t border-white/10">
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all rounded scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Support</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all rounded scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md uppercase tracking-widest">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-0 md:ml-64 p-margin-mobile md:p-margin-desktop min-h-screen">
+<!-- Page Header -->
+<header class="flex justify-between items-end mb-lg pb-md border-b border-border-glow">
+<div>
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface tracking-tight mb-2">Profile Management</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Configure your salon's identity, team, and services.</p>
+</div>
+<button class="bg-primary text-on-primary px-lg py-sm rounded font-label-md text-label-md hover:opacity-90 transition-opacity">
+                Save Changes
+            </button>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Section: General Info (Spans 8 cols on desktop) -->
+<section class="col-span-1 md:col-span-8 glass-panel rounded-xl p-md md:p-lg flex flex-col gap-md">
+<div class="flex items-center gap-sm mb-sm border-b border-white/10 pb-sm">
+<span class="material-symbols-outlined text-primary">info</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">General Information</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Salon Name</label>
+<input class="form-input-premium rounded p-sm font-body-md text-body-md w-full" type="text" value="Aura Botanica"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Contact Phone</label>
+<input class="form-input-premium rounded p-sm font-body-md text-body-md w-full" type="tel" value="+1 (555) 019-8234"/>
+</div>
+<div class="flex flex-col gap-xs md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Description</label>
+<textarea class="form-input-premium rounded p-sm font-body-md text-body-md w-full resize-none" rows="3">A serene, high-end botanical sanctuary offering bespoke styling and holistic skincare treatments in the heart of the city.</textarea>
+</div>
+<div class="flex flex-col gap-xs md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Address</label>
+<div class="flex gap-sm">
+<input class="form-input-premium rounded p-sm font-body-md text-body-md w-full flex-1" type="text" value="124 Midnight Garden Blvd, Suite 400"/>
+<button class="bg-surface-variant text-on-surface px-sm rounded hover:bg-surface-bright transition-colors border border-white/10">
+<span class="material-symbols-outlined">location_on</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Media Gallery (Spans 4 cols on desktop) -->
+<section class="col-span-1 md:col-span-4 glass-panel rounded-xl p-md flex flex-col gap-md">
+<div class="flex items-center justify-between border-b border-white/10 pb-sm mb-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">photo_library</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Media</h3>
+</div>
+<button class="text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<div class="aspect-square rounded overflow-hidden border border-border-glow relative group cursor-pointer">
+<img alt="Interior" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A dimly lit, luxurious salon interior featuring dark stone walls, sleek copper mirrors, and lush, oversized botanical plants. Soft, warm amber lighting emanates from hidden fixtures, reflecting off polished glass surfaces, creating a serene, moody, high-end atmosphere typical of a premium skincare boutique." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxuJKEat6ecBh6oynBemBsqdx4Sff1NibBdoi9WmezRrDAl3z_5QnC7PtwpyoEOvHOmKK-ySmWwEw9p5eWFNhmlxHSC6pJsSgDI8WKJt8NijHrEM0x90Dqdz4zFRqkOr2SMLVJ9e1yYuf0JxqS_WWKhNrjyxbE6wp1lISDUyQEi_EeQnt3ICNMQW4ZmD3LD4w6JtPl3xqmvvbpE2JT_MBR3Jxel9C21FO6imhl5TFCvPp_UizkkmWYiowTb5yjEtS8nX6efgF56VEJ"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">edit</span>
+</div>
+</div>
+<div class="aspect-square rounded overflow-hidden border border-border-glow relative group cursor-pointer">
+<img alt="Products" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A close-up shot of premium skincare bottles elegantly arranged on a dark charcoal marble counter. The bottles feature frosted glass and minimalist typography, subtly illuminated by a spotlight against a deep, shadowed background, evoking exclusivity and clinical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFQT-MOd2OS4PP82rXY1rQVZ1MhZHItG4lLAZ0P4QIpMVzYcoIT-OVssEZuecxZf8z3srb53bHJF0qZ-AR0g5-pA_daiXskzsKgQyPS7TqNvQDRsnjf9EyNITZbvNRirA0TsdElWfLMsCvjIB_QslQO1ghptXRhjVmF3V6UOZrR44X1ehgUuTFn4_Dl8Q3Ecfusb9QNozJCygfiCoQjxx_jNBK3K2iwR7XDOgVcs3QXMA6JcUjEucdqSxBGq0k-hQ2mIQYuYwNcGC7"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">edit</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-auto py-sm border border-secondary text-secondary rounded font-label-md text-label-md uppercase tracking-widest hover:bg-secondary/10 transition-colors">
+                    Manage Gallery
+                </button>
+</section>
+<!-- Section: Stylists / Team (Spans full width) -->
+<section class="col-span-1 md:col-span-12 glass-panel rounded-xl p-md md:p-lg mt-md">
+<div class="flex items-center justify-between border-b border-white/10 pb-sm mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">groups</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Stylists &amp; Team</h3>
+</div>
+<button class="flex items-center gap-xs text-primary hover:text-primary-fixed transition-colors font-label-md text-label-md uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">add</span> Add Member
+                    </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Stylist Card 1 -->
+<div class="bg-surface-charcoal border border-border-glow rounded-lg p-md flex items-center gap-md hover:border-primary/50 transition-colors cursor-pointer">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="Stylist 1" class="w-full h-full object-cover" data-alt="A portrait of a sophisticated male stylist in a high-end salon, wearing a dark, minimalist apron. He is standing against a deep charcoal background with subtle warm lighting illuminating his face, projecting a professional, calm, and expert aura fitting a luxury brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1QfnbMxcax2fWCvaTJYCL6P0CHfs1ABuPzZdNN08xG4Hm54IsLXfhkA8v_ZPV6J9HyLv7EqIekIpNX4ioTUtAOWlByRkpucp9gK3Vceso1ZSfZaIgjWwaOqF2wAKUep5Qol8w09p0VijKfad5FZZsfWn16WycFwLrBiv1ab4V1tfT5wLa7Gi1M_C1PGl5mKr_bPKg5fRLTLihS8tH47rZLup0-SWIWHgjHfrf5lH9mMYla8_TU0zhas_u0XIu_dQG7W1YSerN7423"/>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-md text-body-lg text-on-surface font-semibold">Julian Thorne</h4>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-1">Master Colorist</p>
+<p class="font-body-md text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">event_available</span> Tue - Sat
+                            </p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary">more_vert</span>
+</div>
+<!-- Stylist Card 2 -->
+<div class="bg-surface-charcoal border border-border-glow rounded-lg p-md flex items-center gap-md hover:border-primary/50 transition-colors cursor-pointer">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="Stylist 2" class="w-full h-full object-cover" data-alt="A portrait of a confident female skincare specialist in a dark, moody salon environment. She has a glowing, natural complexion and wears an elegant, simple black top. The lighting is soft and ethereal, highlighting her features against a shadowy, floral-patterned background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYkKuh-xWIFZ8mehl4AFFs2NfyafsQqR46PfgrO-Cxit5PTeOvElR1UFtrfA9vC6_c57ZvZxGGWs9pWnlZmrx9-YanIS7V_y8KnRLRNCT75uE1KBmobxrjmJbAcut4ZubxgS5WxSN7DdEW-mN6fone9LM0LFPoxxO6QZ5_HMvyZuV80_hV8TQhOE1EPOuho4zeNO954eXd8kLAUtPulKAu3UwW89sbg7jSduwJ7sS5ARyR8rEm9ow9pnnDYKiyFssXOBc_F292mAnC"/>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-md text-body-lg text-on-surface font-semibold">Elara Vance</h4>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-1">Skincare Specialist</p>
+<p class="font-body-md text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">event_available</span> Mon - Fri
+                            </p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary">more_vert</span>
+</div>
+<!-- Add New Stylist Placeholder -->
+<div class="bg-surface-charcoal border border-dashed border-white/20 rounded-lg p-md flex flex-col items-center justify-center gap-sm hover:bg-surface-variant/30 transition-colors cursor-pointer opacity-70 hover:opacity-100">
+<span class="material-symbols-outlined text-secondary text-3xl">person_add</span>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest">Register Stylist</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

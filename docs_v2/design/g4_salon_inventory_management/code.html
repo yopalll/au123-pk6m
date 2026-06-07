@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Inventory Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#52443c",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-primary-container": "#7a4523",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#97bddb",
+                        "surface-variant": "#333538",
+                        "surface-container": "#1e2023",
+                        "inverse-primary": "#88512e",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "secondary-container": "#264d67",
+                        "outline": "#9f8d84",
+                        "on-surface-variant": "#d7c2b8",
+                        "on-tertiary-fixed": "#002020",
+                        "primary": "#ffdbc8",
+                        "on-secondary": "#04344d",
+                        "on-primary": "#502405",
+                        "tertiary-container": "#abcdcd",
+                        "surface": "#111316",
+                        "surface-container-high": "#282a2d",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "on-tertiary-container": "#385858",
+                        "inverse-on-surface": "#2f3034",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-tertiary": "#143536",
+                        "on-background": "#e2e2e6",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#111316",
+                        "tertiary": "#c7e9e9",
+                        "surface-container-highest": "#333538",
+                        "error-container": "#93000a",
+                        "on-surface": "#e2e2e6",
+                        "on-error": "#690005",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "primary-container": "#ffb68b",
+                        "surface-tint": "#ffb68b",
+                        "secondary": "#a5cbea",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "on-primary-fixed": "#321200",
+                        "inverse-surface": "#e2e2e6",
+                        "background": "#111316",
+                        "tertiary-fixed": "#c7e9e9",
+                        "surface-container-lowest": "#0c0e11",
+                        "surface-charcoal": "#1A1D21",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "surface-bright": "#37393d",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "primary-fixed-dim": "#ffb68b",
+                        "surface-container-low": "#1a1c1f",
+                        "primary-fixed": "#ffdbc9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "40px",
+                        "margin-mobile": "20px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "margin-desktop": "80px",
+                        "md": "24px",
+                        "sm": "16px",
+                        "xl": "80px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "label-sm": ["Manrope"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Hide scrollbar for clean aesthetic */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+        
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen relative overflow-x-hidden selection:bg-primary-container selection:text-surface">
+<!-- Atmospheric Background Texture -->
+<div class="fixed inset-0 pointer-events-none z-0 opacity-10 mix-blend-overlay" data-alt="A macro photograph of dark, midnight-toned botanical leaves and subtle floral textures. The lighting is low and moody, creating a serene, apothecary-like atmosphere. Deep shadows contrast with faint, ethereal highlights, perfect for a high-end luxury dark mode aesthetic background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRtTZsL6K_oTuZqLSlZ4wZ6_2MVzDr4FPe44mDVXH7aCFPi1bDlmMa-RcgtNAky2dTCy14BLir1UAKB6KoDuSQvS9YT2xiQDGB4d_l1fnhJg3eMf9OX9Kv29RiQVz4J529_y6Rcld6PD1YJY_7k3QsSjG_NZOsIaDSP8rNtlI75vaQKDq7PMyzGzH6ZOtEvgz-_wnaDHykYrZKQr9bT6qbZCifw6HMxsCVOzCFHZEOq9JLeARPMXdEFzeZ8PEGy1C8v6VU9XoIwNjr'); background-size: cover; background-position: center;">
+</div>
+<!-- Layout Wrapper -->
+<div class="flex relative z-10 w-full min-h-screen">
+<!-- SideNavBar (Shared Component) -->
+<aside class="hidden md:flex flex-col py-8 px-6 gap-y-6 bg-surface-charcoal fixed left-0 top-0 h-full w-64 z-40 border-r border-white/20">
+<!-- Header Anchor -->
+<div class="mb-8">
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">VIYGO</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mt-1">Salon Management</p>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-y-2 flex-1">
+<a class="flex items-center gap-x-4 px-3 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-all active:scale-95 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">dashboard</span>
+<span class="font-label-md text-label-md uppercase tracking-[0.1em]">Dashboard</span>
+</a>
+<a class="flex items-center gap-x-4 px-3 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-all active:scale-95 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">calendar_today</span>
+<span class="font-label-md text-label-md uppercase tracking-[0.1em]">Bookings</span>
+</a>
+<a class="flex items-center gap-x-4 px-3 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-all active:scale-95 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">content_cut</span>
+<span class="font-label-md text-label-md uppercase tracking-[0.1em]">Stylists</span>
+</a>
+<!-- ACTIVE TAB -->
+<a class="flex items-center gap-x-4 px-3 py-3 rounded-DEFAULT bg-surface-variant/20 transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-md text-label-md uppercase tracking-[0.1em] text-primary border-b border-primary pb-1">Inventory</span>
+</a>
+<a class="flex items-center gap-x-4 px-3 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-all active:scale-95 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">analytics</span>
+<span class="font-label-md text-label-md uppercase tracking-[0.1em]">Analytics</span>
+</a>
+<a class="flex items-center gap-x-4 px-3 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-all active:scale-95 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">group</span>
+<span class="font-label-md text-label-md uppercase tracking-[0.1em]">Clients</span>
+</a>
+</nav>
+<!-- CTA -->
+<button class="mt-auto w-full py-3 border border-secondary text-secondary font-label-md text-label-md uppercase tracking-[0.1em] rounded-DEFAULT hover:bg-secondary/10 transition-colors">
+                New Appointment
+            </button>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-0 md:ml-64 p-margin-mobile md:p-margin-desktop w-full max-w-7xl mx-auto flex flex-col gap-y-lg">
+<!-- Page Header -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-y-6 z-20">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">Inventory Management</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Monitor stock levels and manage salon apothecary supplies.</p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-4">
+<!-- Search Input -->
+<div class="relative w-full sm:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[20px]">search</span>
+<input class="w-full bg-surface-charcoal border border-white/10 rounded-DEFAULT py-2 pl-10 pr-4 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/50 focus:border-primary-container focus:ring-1 focus:ring-primary-container/50 focus:outline-none transition-all shadow-[0_0_10px_rgba(255,182,139,0)] focus:shadow-[0_0_10px_rgba(255,182,139,0.1)]" placeholder="Search products..." type="text"/>
+</div>
+<!-- Add Button -->
+<button class="w-full sm:w-auto bg-primary-container text-surface px-6 py-2 rounded-DEFAULT font-label-md text-label-md uppercase tracking-[0.05em] hover:opacity-90 transition-opacity flex items-center justify-center gap-x-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        Add New Product
+                    </button>
+</div>
+</header>
+<!-- Summary Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 z-20">
+<!-- Card 1 -->
+<div class="bg-surface-glass backdrop-blur-xl border border-border-glow p-md rounded-lg relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary-container/5 rounded-full blur-2xl group-hover:bg-primary-container/10 transition-colors"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Total Inventory Value</h3>
+<span class="material-symbols-outlined text-primary/70">account_balance_wallet</span>
+</div>
+<p class="font-headline-lg text-headline-lg text-primary relative z-10">$14,250.00</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-glass backdrop-blur-xl border border-border-glow p-md rounded-lg relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-error/5 rounded-full blur-2xl group-hover:bg-error/10 transition-colors"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Low Stock Alerts</h3>
+<span class="material-symbols-outlined text-error/70">warning</span>
+</div>
+<div class="flex items-baseline gap-x-3 relative z-10">
+<p class="font-headline-lg text-headline-lg text-error">8</p>
+<span class="font-body-md text-body-md text-on-surface-variant">Items require attention</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-glass backdrop-blur-xl border border-border-glow p-md rounded-lg relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-surface-variant/20 rounded-full blur-2xl group-hover:bg-surface-variant/30 transition-colors"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Out of Stock</h3>
+<span class="material-symbols-outlined text-on-surface-variant">remove_shopping_cart</span>
+</div>
+<p class="font-headline-lg text-headline-lg text-on-surface">2</p>
+</div>
+</section>
+<!-- Inventory Table Container -->
+<section class="bg-surface-charcoal rounded-xl border border-white/10 overflow-hidden z-20 flex flex-col">
+<!-- Table Header (Hidden on small mobile, flex on sm+) -->
+<div class="hidden sm:grid grid-cols-12 gap-4 px-6 py-4 border-b border-white/10 bg-surface-container-low/50">
+<div class="col-span-4 lg:col-span-5 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Product</div>
+<div class="col-span-2 lg:col-span-2 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Category</div>
+<div class="col-span-2 lg:col-span-2 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest text-center">Status</div>
+<div class="col-span-2 lg:col-span-1 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest text-right">Price</div>
+<div class="col-span-2 lg:col-span-2 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest text-right">Actions</div>
+</div>
+<!-- Table Body -->
+<div class="flex flex-col divide-y divide-white/5">
+<!-- Row 1 -->
+<div class="group grid grid-cols-1 sm:grid-cols-12 gap-4 items-center px-6 py-4 hover:bg-white/[0.02] transition-colors">
+<div class="col-span-1 sm:col-span-4 lg:col-span-5 flex items-center gap-x-4">
+<div class="w-12 h-12 rounded-DEFAULT bg-surface-container overflow-hidden border border-white/10 flex-shrink-0">
+<img alt="Midnight Silk Conditioner" class="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:mix-blend-normal group-hover:opacity-100 transition-all" data-alt="A sleek, minimalist amber glass pump bottle of high-end salon conditioner, resting on a dark slate surface. The lighting is moody and sophisticated, highlighting the metallic copper pump dispenser. The aesthetic is clean, luxurious, and perfectly aligned with a dark modern apothecary style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuAE2zS_yHb4IdPqTd2-NrNljBqWfpSQ8vCTIyygXCEUFeJsY30FkT5acMlhjoHD_VHfwAKgCLm8iF59OcwAw5JcS8fVQRObhJUc1z18X-a2HLkW_kPZY189FU7q66SPHoCvv2tGLUt4xb-RBMJyc7aK2pz9gHlDhzvLZWcRHOdOqLu_Xz-lAtrCxgzf9pKd3kKE0ShSZmAmbh7qlEGU6peAZNt87i3rWoXR8gpMjyGUt_SVK99krZOrfaQqAi43x1AlXGd2_RMTDG"/>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-0.5">Midnight Silk Conditioner</h4>
+<p class="font-body-md text-[13px] text-on-surface-variant/70">1L Professional Backbar</p>
+</div>
+</div>
+<div class="col-span-1 sm:col-span-2 lg:col-span-2 font-body-md text-body-md text-on-surface-variant">Haircare</div>
+<div class="col-span-1 sm:col-span-2 lg:col-span-2 flex sm:justify-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full border border-tertiary-container/30 bg-tertiary-container/10 text-tertiary-fixed font-label-sm text-[11px] tracking-wider uppercase">Optimal</span>
+</div>
+<div class="col-span-1 sm:col-span-2 lg:col-span-1 font-body-md text-body-md text-primary sm:text-right">$48.00</div>
+<div class="col-span-1 sm:col-span-2 lg:col-span-2 flex items-center sm:justify-end gap-x-2 mt-2 sm:mt-0">
+<button class="text-on-surface-variant hover:text-primary p-2 transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="text-xs font-label-sm uppercase tracking-widest text-surface bg-primary-container/90 hover:bg-primary-container px-3 py-1.5 rounded-DEFAULT transition-colors">
+                                Restock
+                            </button>
+</div>
+</div>
+<!-- Row 2 (Low Stock) -->
+<div class="group grid grid-cols-1 sm:grid-cols-12 gap-4 items-center px-6 py-4 hover:bg-white/[0.02] transition-colors">
+<div class="col-span-1 sm:col-span-4 lg:col-span-5 flex items-center gap-x-4">
+<div class="w-12 h-12 rounded-DEFAULT bg-surface-container overflow-hidden border border-error/20 flex-shrink-0 relative">
+<div class="absolute inset-0 border border-error/50 rounded-DEFAULT z-10 pointer-events-none"></div>
+<img alt="Botanical Scalp Serum" class="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:mix-blend-normal group-hover:opacity-100 transition-all" data-alt="A frosted black glass dropper bottle containing a premium scalp serum, sitting against a dark charcoal background. Soft, directional light catches the elegant white typography on the label. The mood is clinical yet organic, emphasizing the product's high-quality ingredients and sleek packaging." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0bFK1Q5IJssAnJj0ay8yzFX2n7Ov6jc3gjWv9Tlb5ZJHLf-4wJaIa-A0VIdTHpQVpd8DLCT4hSmZ3mhMonexHR3IYbTMvvwVDhql2rXpEzJkW9lCZizO3SB2-_6KGI5pS2ItbY0i7gLPEmPZdSmuCtkuGKWQQuUWj4ts9BW6o2KWkVjSzagX-yjvchAeXRyfMVjFY1IALJ9GaOZ2cBrV0mlx8FNkAbko18kl55pPQQXNq8bGbHl61D3dJ8dvWya1Rsm4FfsELWQXf"/>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-0.5">Botanical Scalp Serum</h4>
+<p class="font-body-md text-[13px] text-on-surface-variant/70">50ml Retail</p>
+</div>
+</div>
+<div class="col-span-1 sm:col-span-2 lg:col-span-2 font-body-md text-body-md text-on-surface-variant">Treatments</div>
+<div class="col-span-1 sm:col-span-2 lg:col-span-2 flex sm:justify-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full border border-error/30 bg-error/10 text-error font-label-sm text-[11px] tracking-wider uppercase">Low Stock (3)</span>
+</div>
+<div class="col-span-1 sm:col-span-2 lg:col-span-1 font-body-md text-body-md text-primary sm:text-right">$65.00</div>
+<div class="col-span-1 sm:col-span-2 lg:col-span-2 flex items-center sm:justify-end gap-x-2 mt-2 sm:mt-0">
+<button class="text-on-surface-variant hover:text-primary p-2 transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="text-xs font-label-sm uppercase tracking-widest text-surface bg-error border border-error hover:bg-error/90 px-3 py-1.5 rounded-DEFAULT transition-colors shadow-[0_0_8px_rgba(255,180,171,0.3)]">
+                                Order Now
+                            </button>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="group grid grid-cols-1 sm:grid-cols-12 gap-4 items-center px-6 py-4 hover:bg-white/[0.02] transition-colors opacity-60">
+<div class="col-span-1 sm:col-span-4 lg:col-span-5 flex items-center gap-x-4">
+<div class="w-12 h-12 rounded-DEFAULT bg-surface-container overflow-hidden border border-white/10 flex-shrink-0 grayscale">
+<img alt="Noir Texture Spray" class="w-full h-full object-cover mix-blend-luminosity opacity-50" data-alt="A matte black cylindrical aerosol can of hair texturizing spray, positioned dynamically on a dark metallic surface. The lighting is very low-key, creating deep shadows that emphasize the cylindrical shape. The overall vibe is edgy, professional, and strictly monochrome except for a tiny copper logo detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCY0krQ_CrAY71bMS4BPh4N6vBtVzvBkDuwD7OAQ6yQ4yM_1BoLx4J5nhPT2msJqmw11r4WpJvIFlpZTPz2VBZP33iUlRBpaT3zpa5kehRGue2X9xN_yOU2gvR1hAVKzC4VHxBxMrpkOPi9P4tZZVQxqm3RYon6yDEWRP95vbjyNxtgQdMWuZ0DI-vNOwKZ5xOjU3rktwWFfQongJ_kDTn7XL9d6k7ge6fShh5_9xwhZ_OhG1Ah5Ie0A-C3h1TynArDG0ApD_NaAfoG"/>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-0.5">Noir Texture Spray</h4>
+<p class="font-body-md text-[13px] text-on-surface-variant/70">250ml Retail</p>
+</div>
+</div>
+<div class="col-span-1 sm:col-span-2 lg:col-span-2 font-body-md text-body-md text-on-surface-variant">Styling</div>
+<div class="col-span-1 sm:col-span-2 lg:col-span-2 flex sm:justify-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full border border-white/20 bg-surface-variant/50 text-on-surface-variant font-label-sm text-[11px] tracking-wider uppercase">Out of Stock</span>
+</div>
+<div class="col-span-1 sm:col-span-2 lg:col-span-1 font-body-md text-body-md text-on-surface-variant sm:text-right">$32.00</div>
+<div class="col-span-1 sm:col-span-2 lg:col-span-2 flex items-center sm:justify-end gap-x-2 mt-2 sm:mt-0">
+<button class="text-on-surface-variant hover:text-primary p-2 transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="text-xs font-label-sm uppercase tracking-widest text-secondary border border-secondary hover:bg-secondary/10 px-3 py-1.5 rounded-DEFAULT transition-colors">
+                                Restock
+                            </button>
+</div>
+</div>
+</div>
+<!-- Pagination / Footer -->
+<div class="px-6 py-4 border-t border-white/10 flex items-center justify-between bg-surface-container-lowest/50">
+<p class="font-body-md text-[13px] text-on-surface-variant">Showing 1-3 of 142 items</p>
+<div class="flex items-center gap-x-2">
+<button class="p-1 text-on-surface-variant hover:text-primary disabled:opacity-30 disabled:hover:text-on-surface-variant transition-colors" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

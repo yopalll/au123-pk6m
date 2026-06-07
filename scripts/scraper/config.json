@@ -1,0 +1,27 @@
+{
+  "base_url": "https://www.fresh.com",
+  "collections": [
+    "/collections/black-tea-collection",
+    "/collections/rose-collection",
+    "/collections/soy-collection",
+    "/collections/kombucha-collection",
+    "/collections/sugar-collection",
+    "/collections/moisturizers",
+    "/collections/cleansers",
+    "/collections/serums-essences",
+    "/collections/toners",
+    "/collections/eye-care",
+    "/collections/masks",
+    "/collections/exfoliants",
+    "/collections/facial-mists",
+    "/collections/lip-care",
+    "/collections/body-care",
+    "/collections/gift-sets"
+  ],
+  "usd_to_idr_rate": 16200,
+  "output_dir": "output/",
+  "image_dir": "../../public/images/products/fresh/",
+  "delay_ms": 1500,
+  "headless": true,
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+}

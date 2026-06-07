@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class SubKategori extends Model
 {
-    protected $table      = 'sub_kategori';
+    protected $table = 'sub_kategori';
+
     protected $primaryKey = 'id_sub_kategori';
 
     protected $fillable = [

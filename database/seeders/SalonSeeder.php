@@ -19,6 +19,7 @@ class SalonSeeder extends Seeder
 
         if (empty($salons)) {
             $this->command->warn('salon.json is empty, skipping SalonSeeder.');
+
             return;
         }
 
@@ -27,30 +28,30 @@ class SalonSeeder extends Seeder
         foreach ($chunks as $chunk) {
             $rows = array_map(function ($salon) {
                 return [
-                    'id_salon'     => $salon['id_salon'],
-                    'id_user'      => $salon['id_user'], // owner — di-set oleh scraper
-                    'id_kota'      => $salon['id_kota'],
-                    'nama_salon'   => $salon['nama_salon'],
-                    'alamat'       => $salon['alamat'],
-                    'deskripsi'    => $salon['deskripsi'],
+                    'id_salon' => $salon['id_salon'],
+                    'id_user' => $salon['id_user'], // owner — di-set oleh scraper
+                    'id_kota' => $salon['id_kota'],
+                    'nama_salon' => $salon['nama_salon'],
+                    'alamat' => $salon['alamat'],
+                    'deskripsi' => $salon['deskripsi'],
                     'phone_number' => $salon['phone_number'],
                     'opening_time' => $salon['opening_time'],
                     'closing_time' => $salon['closing_time'],
-                    'image_url'    => $salon['image_url'],
-                    'maps_url'     => $salon['maps_url'],
-                    'latitude'     => $salon['latitude'],
-                    'longitude'    => $salon['longitude'],
-                    'rating'       => $salon['rating'],
+                    'image_url' => $salon['image_url'],
+                    'maps_url' => $salon['maps_url'],
+                    'latitude' => $salon['latitude'],
+                    'longitude' => $salon['longitude'],
+                    'rating' => $salon['rating'],
                     'total_review' => $salon['total_review'],
-                    'status'       => $salon['status'],
-                    'created_at'   => now(),
-                    'updated_at'   => now(),
+                    'status' => $salon['status'],
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ];
             }, $chunk);
 
             DB::table('salon')->insert($rows);
         }
 
-        $this->command->info("Seeded " . count($salons) . " salon records.");
+        $this->command->info('Seeded '.count($salons).' salon records.');
     }
 }

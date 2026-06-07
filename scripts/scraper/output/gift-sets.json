@@ -1,0 +1,41 @@
+[
+  {
+    "fresh_product_id": "skincare-discovery-gift-set",
+    "fresh_url": "https://www.fresh.com/products/skincare-discovery-gift-set",
+    "nama": "Skincare Discovery Gift Set",
+    "kategori": "Gift Set",
+    "koleksi": "Various Collections",
+    "deskripsi": "Set hadiah berisi cleanser, toner, essence, dan moisturizer ukuran travel — sempurna untuk mencoba ritual lengkap.",
+    "key_ingredients": "Soy, Rose, Black Tea, Lotus",
+    "full_ingredients": "Lihat masing-masing produk di dalam set.",
+    "cara_pemakaian": "Gunakan berurutan: cleanser → toner → essence → moisturizer.",
+    "harga_usd": 95.0,
+    "harga_idr": 1539000,
+    "volume_ml": 0,
+    "berat_gram": 400,
+    "skin_type": "all",
+    "skin_concern": "dehydration,dullness",
+    "badge": "bestseller",
+    "kategori_lain": ["Travel Size"],
+    "images": ["public/images/products/fresh/discovery-gift-set-1.jpg"]
+  },
+  {
+    "fresh_product_id": "rose-ritual-gift-set",
+    "fresh_url": "https://www.fresh.com/products/rose-ritual-gift-set",
+    "nama": "Rose Hydration Ritual Gift Set",
+    "kategori": "Gift Set",
+    "koleksi": "Rose Collection",
+    "deskripsi": "Set hadiah bertema mawar: toner, face cream, dan face mask untuk hidrasi maksimal.",
+    "key_ingredients": "Real Rose Petals, Rosewater, Hyaluronic Acid",
+    "full_ingredients": "Lihat masing-masing produk di dalam set.",
+    "cara_pemakaian": "Toner → mask (2x/minggu) → face cream.",
+    "harga_usd": 120.0,
+    "harga_idr": 1944000,
+    "volume_ml": 0,
+    "berat_gram": 500,
+    "skin_type": "dry",
+    "skin_concern": "dehydration",
+    "badge": "new",
+    "images": ["public/images/products/fresh/rose-ritual-set-1.jpg"]
+  }
+]

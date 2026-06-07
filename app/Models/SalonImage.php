@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SalonImage extends Model
 {
-    protected $table      = 'salon_images';
+    protected $table = 'salon_images';
+
     protected $primaryKey = 'id_salon_image';
 
     protected $fillable = [
@@ -22,7 +23,7 @@ class SalonImage extends Model
     {
         return [
             'is_primary' => 'boolean',
-            'urutan'     => 'integer',
+            'urutan' => 'integer',
         ];
     }
 

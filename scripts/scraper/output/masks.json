@@ -1,0 +1,40 @@
+[
+  {
+    "fresh_product_id": "umbrian-clay-purifying-mask",
+    "fresh_url": "https://www.fresh.com/products/umbrian-clay-purifying-mask",
+    "nama": "Umbrian Clay Pore Purifying Face Mask",
+    "kategori": "Mask",
+    "koleksi": "Umbrian Clay",
+    "deskripsi": "Masker tanah liat Umbria yang membersihkan pori dan mengontrol minyak berlebih.",
+    "key_ingredients": "Umbrian Clay, Chamomile, Lecithin",
+    "full_ingredients": "Kaolin, Water, Glycerin, Anthemis Nobilis Flower Extract, Lecithin",
+    "cara_pemakaian": "Aplikasikan lapisan tipis, diamkan 10 menit, bilas. 1-2x seminggu.",
+    "harga_usd": 62.0,
+    "harga_idr": 1004400,
+    "volume_ml": 100,
+    "berat_gram": 200,
+    "skin_type": "oily",
+    "skin_concern": "pores,acne",
+    "badge": "eco",
+    "images": ["public/images/products/fresh/umbrian-clay-mask-1.jpg"]
+  },
+  {
+    "fresh_product_id": "rose-face-mask",
+    "fresh_url": "https://www.fresh.com/products/rose-face-mask",
+    "nama": "Rose Face Mask",
+    "kategori": "Mask",
+    "koleksi": "Rose Collection",
+    "deskripsi": "Masker gel dengan kelopak mawar asli yang menyegarkan dan menghidrasi instan.",
+    "key_ingredients": "Real Rose Petals, Rosewater, Aloe",
+    "full_ingredients": "Rosa Damascena Flower Water, Glycerin, Aloe Barbadensis Leaf Juice, Rosa Damascena Flower",
+    "cara_pemakaian": "Oleskan lapisan tebal, diamkan 5-10 menit, bilas atau usap dengan kapas.",
+    "harga_usd": 62.0,
+    "harga_idr": 1004400,
+    "volume_ml": 100,
+    "berat_gram": 200,
+    "skin_type": "normal",
+    "skin_concern": "dehydration,dullness",
+    "badge": null,
+    "images": ["public/images/products/fresh/rose-face-mask-1.jpg"]
+  }
+]

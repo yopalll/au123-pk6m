@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Inventory Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#333538",
+                        "on-error-container": "#ffdad6",
+                        "background": "#111316",
+                        "primary-fixed": "#ffdbc9",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "secondary": "#a5cbea",
+                        "on-secondary-container": "#97bddb",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "surface-dim": "#111316",
+                        "surface-container": "#1e2023",
+                        "outline": "#9f8d84",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-surface": "#e2e2e6",
+                        "primary-container": "#ffb68b",
+                        "inverse-on-surface": "#2f3034",
+                        "surface": "#111316",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "surface-tint": "#ffb68b",
+                        "inverse-primary": "#88512e",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "surface-variant": "#333538",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "on-tertiary-container": "#385858",
+                        "on-tertiary": "#143536",
+                        "on-primary": "#502405",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "on-primary-fixed": "#321200",
+                        "surface-container-high": "#282a2d",
+                        "primary-fixed-dim": "#ffb68b",
+                        "primary": "#ffdbc8",
+                        "inverse-surface": "#e2e2e6",
+                        "on-background": "#e2e2e6",
+                        "on-secondary-fixed": "#001e2f",
+                        "tertiary-container": "#abcdcd",
+                        "on-tertiary-fixed": "#002020",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "on-surface-variant": "#d7c2b8",
+                        "tertiary": "#c7e9e9",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-secondary": "#04344d",
+                        "surface-bright": "#37393d",
+                        "outline-variant": "#52443c",
+                        "surface-container-low": "#1a1c1f",
+                        "surface-charcoal": "#1A1D21",
+                        "tertiary-fixed": "#c7e9e9",
+                        "secondary-container": "#264d67",
+                        "on-primary-container": "#7a4523"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "16px",
+                        "md": "24px",
+                        "margin-desktop": "80px",
+                        "base": "4px",
+                        "xl": "80px",
+                        "xs": "8px",
+                        "lg": "40px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "display-lg": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>body {
+    background-color: #111316;
+    color: #e2e2e6
+    }
+.bg-floral-pattern {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDB2QA7UC_piXs1Bb0MXzrweiix9qY5OfL4f3Ka-BL9KMsszGFH3e9bWuD6gswSpYE2ShYJsSi-11kNNEKwOZO5ewrGNK4ArxtbRGzlUbZFCDcWEOv-7OjY9TmVV33uavDjFva4XEVvoDcUThhXmg3dhlVbxJD_MjVVVYq_1zgXWhzj7Q6gK1Nx4uAWCO-SV_lnuWyvHOjVbjSrRdIjw4HRACbBbLHMMXVyCFJh6k1SJnpHjqjxoo-74J492hOpuYykSALQAl2BZ_uD);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none
+    }
+.glass-panel {
+    background-color: rgba(17, 19, 22, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2)
+    }</style>
+</head>
+<body class="antialiased min-h-screen flex flex-col md:flex-row">
+<div class="bg-floral-pattern" data-alt="A dark, moody macro photograph of lush midnight flora, featuring deep emerald green leaves and subtle copper-toned highlights in the shadows. The image has a cinematic, soft-focus quality, acting as a serene and luxurious background texture for a premium beauty app. The lighting is ethereal, mimicking moonlight filtering through a dense, botanical garden."></div>
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-charcoal border-r border-white/10 p-md gap-sm z-40">
+<div class="mb-lg flex flex-col gap-xs">
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">VIYGO Admin</h1>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Elite Management</span>
+</div>
+<button class="w-full py-sm bg-primary-container text-on-primary-container rounded-DEFAULT font-label-md text-label-md mb-md transition-transform hover:scale-[1.02] active:scale-95">
+            New Appointment
+        </button>
+<div class="flex-1 flex flex-col gap-base">
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all font-label-md text-label-md uppercase tracking-widest rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all font-label-md text-label-md uppercase tracking-widest rounded-lg" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span>Bookings</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all font-label-md text-label-md uppercase tracking-widest rounded-lg" href="#">
+<span class="material-symbols-outlined">content_cut</span>
+<span>Stylists</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs bg-primary-container text-on-primary-container rounded-lg font-bold font-label-md text-label-md uppercase tracking-widest transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all font-label-md text-label-md uppercase tracking-widest rounded-lg" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all font-label-md text-label-md uppercase tracking-widest rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Clients</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col gap-base pt-sm border-t border-white/10">
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all font-label-md text-label-md uppercase tracking-widest rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all font-label-md text-label-md uppercase tracking-widest rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-64 w-full min-h-screen">
+<!-- TopAppBar (Mobile) -->
+<header class="md:hidden flex justify-between items-center px-margin-mobile py-sm w-full sticky top-0 z-50 bg-surface-glass backdrop-blur-md border-b border-white/20">
+<div class="font-display-lg-mobile text-display-lg-mobile font-bold tracking-tight text-primary">VIYGO</div>
+<div class="flex gap-sm">
+<button class="text-primary hover:text-primary transition-colors duration-300 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-primary hover:text-primary transition-colors duration-300 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- TopAppBar (Desktop - Minimal version for when side nav is present) -->
+<header class="hidden md:flex justify-end items-center px-margin-desktop py-md w-full sticky top-0 z-30 bg-surface/80 backdrop-blur-sm">
+<div class="flex items-center gap-md">
+<div class="relative">
+<input class="bg-surface-charcoal border border-white/10 rounded-DEFAULT py-xs px-sm pl-10 text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 w-64 transition-all placeholder:text-on-surface-variant" placeholder="Search inventory..." type="text"/>
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="Admin Profile" class="w-10 h-10 rounded-full border border-white/20 object-cover" data-alt="A sophisticated close-up portrait of a salon manager with flawless skin, subtle copper-toned makeup, and a serene expression. The lighting is soft and studio-quality against a dark background, reflecting the premium Serene Floral Noir aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFAde839O928xFsvXMCiO6pwu5YLBfgI79qqEdz5MvjJbF8rQ4Zqxf5RlhGYjTxzYC0H9aS6fyLJOHKWZQ0rRUuFJaS8SkhuzGAF_Ftkqhv9mpxKXKuneJKiUZQe2BexwYcKToVuVNPH9CMKHeBiVzxGVEsxOG3F00_6WKkSGZpuBlqNRPzj3bWB2-AovGpBpb7TOFRxXcLTkwj7COlrdXCuql0JmFGidnb2j9tGwvRvvFidnq6qt19lxn4Z_e50qj9F9qWZUlfOei"/>
+</div>
+</header>
+<div class="p-margin-mobile md:p-margin-desktop pt-md md:pt-0 flex-1 flex flex-col gap-lg max-w-7xl mx-auto w-full">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Inventory Overview</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage professional products, retail stock, and tools.</p>
+</div>
+<div class="flex gap-sm w-full md:w-auto">
+<button class="flex-1 md:flex-none py-xs px-md border border-secondary text-secondary rounded-DEFAULT font-label-md text-label-md hover:bg-secondary/10 transition-colors">
+                        Export List
+                    </button>
+<button class="flex-1 md:flex-none py-xs px-md bg-primary-container text-on-primary-container rounded-DEFAULT font-label-md text-label-md flex items-center justify-center gap-xs hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span> Add Product
+                    </button>
+</div>
+</div>
+<!-- Quick Stats Bento -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-sm md:gap-md">
+<div class="glass-panel p-md rounded-lg flex flex-col gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant mb-xs">category</span>
+<span class="font-display-lg text-display-lg text-on-surface">142</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Total Items</span>
+</div>
+<div class="glass-panel p-md rounded-lg flex flex-col gap-xs">
+<span class="material-symbols-outlined text-primary mb-xs">warning</span>
+<span class="font-display-lg text-display-lg text-primary">12</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Low Stock</span>
+</div>
+<div class="glass-panel p-md rounded-lg flex flex-col gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant mb-xs">local_shipping</span>
+<span class="font-display-lg text-display-lg text-on-surface">5</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Incoming Orders</span>
+</div>
+<div class="glass-panel p-md rounded-lg flex flex-col gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant mb-xs">payments</span>
+<span class="font-display-lg text-display-lg text-on-surface">$8.4k</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Inventory Value</span>
+</div>
+</div>
+<!-- Inventory Grid -->
+<div class="flex flex-col gap-md">
+<div class="flex justify-between items-center border-b border-white/10 pb-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">Current Stock</h3>
+<div class="flex gap-xs">
+<button class="p-xs text-primary border-b-2 border-primary"><span class="material-symbols-outlined">grid_view</span></button>
+<button class="p-xs text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined">view_list</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-md">
+<!-- Product Card 1 (Low Stock) -->
+<div class="relative group rounded-lg overflow-hidden bg-surface-charcoal border border-white/5 hover:border-primary/50 transition-colors aspect-[3/4] flex flex-col justify-end">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A sleek, minimalist amber glass dropper bottle of luxury facial serum sitting on a dark stone surface. The lighting is dramatic and moody, with a sharp spotlight highlighting the copper-toned liquid inside. The aesthetic is highly clinical yet luxurious, fitting a premium Serene Floral Noir beauty brand." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0vJrU3m81dj5Q_LItjqJFAf5OXaiElalm8d2Wc9hYHbwBXtvpgdLQdy0oQBPbMNS_aFZkB37FEc61FhLMyuK6lSVGIQc9qt8_MjhraYahGDw9dnBwhHNeJD8g1hBA1ID8EK93XnmnWE7ynSyZe4FK_fshCm5-K2dfLv13cmx5elS9AjDmVCkCLqu56Eaa877SJCIfvB_E0t7xylpvwAX6o6wtNkoOdXTUOHlAAPvy7-PA6TnXisa5pLLeyVfR-0X8eM-liV95qDc6');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+<div class="absolute top-sm right-sm bg-primary/20 backdrop-blur-md border border-primary/50 text-primary px-xs py-base rounded-DEFAULT font-label-sm text-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">warning</span> Low: 2
+                        </div>
+<div class="relative z-10 p-md glass-panel border-x-0 border-b-0 border-t border-white/20">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest block mb-xs">Professional Serum</span>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-xs leading-tight">Midnight Radiance Elixir</h4>
+<div class="flex justify-between items-center mt-sm">
+<span class="font-body-md text-body-md text-on-surface-variant">SKU: MR-001</span>
+<button class="text-primary hover:text-white transition-colors"><span class="material-symbols-outlined">edit</span></button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="relative group rounded-lg overflow-hidden bg-surface-charcoal border border-white/5 hover:border-primary/50 transition-colors aspect-[3/4] flex flex-col justify-end">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A minimalist frosted white pump bottle of luxury salon shampoo positioned against a deep charcoal grey background. A soft, diffuse light gently illuminates the matte texture of the bottle. A single, dark green monstera leaf shadow sweeps across the corner, adding to the high-end botanical Serene Floral Noir aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBnFURdOZVpfHpwLA16aa_Q_59hCIFfoVQBPQmvhYl3hUDEfM9GBwiSnDKql4VecAXwYJCShWp0W6YaCrlTTaxZvLbrSVee4XqkH7m477VRkdMcW5MiPHm71fi9cIz-n27rVtHtt9aDDMIgukm_RIT4hUVkseOegKosf1ZsASKQkdViDRztg2HlmjtP442XSOYotjvDju1GEQz7B1Elbty0pFWU4F_I_QbW-L37CKPPC5libMrt2DjgCYG2zgtUeDgCmVxfazjp6xkd');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+<div class="absolute top-sm right-sm bg-surface-glass backdrop-blur-md border border-white/20 text-on-surface px-xs py-base rounded-DEFAULT font-label-sm text-label-sm">
+                            Stock: 24
+                        </div>
+<div class="relative z-10 p-md glass-panel border-x-0 border-b-0 border-t border-white/20">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest block mb-xs">Retail Haircare</span>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-xs leading-tight">Botanical Volume Cleanser</h4>
+<div class="flex justify-between items-center mt-sm">
+<span class="font-body-md text-body-md text-on-surface-variant">SKU: HC-042</span>
+<button class="text-primary hover:text-white transition-colors"><span class="material-symbols-outlined">edit</span></button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="relative group rounded-lg overflow-hidden bg-surface-charcoal border border-white/5 hover:border-primary/50 transition-colors aspect-[3/4] flex flex-col justify-end">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A collection of professional black salon shears and a carbon fiber comb resting on a dark slate surface. The lighting is sharp, catching the metallic edges of the shears and creating subtle copper reflections. The composition is sleek, dark, and highly professional, fitting the Serene Floral Noir style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDXiQnULObq101gzsjw1uTc4QhyjesMncO5ZpeQFq5NYa80-Q0Hut5-PGej37tyZCxCKn41rzvvhNZyto9PSqjDF0P4LzWRF0lqmXT6njtEYCngqObzOqUZr_rIBgv-dZQns62fgOL7_2oZI3vSby5IeNgC6IdQrtp3mwwqJ-IRnP2ZlrO3s8qmR8tQR-DQldPUcws0raokyN2My81ux5LmcQ-QD2z7Ir2R6pPZmjc1nGjIGR9lWcTR1V0IfVChwN28fBy8CHS3rSBO');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+<div class="absolute top-sm right-sm bg-surface-glass backdrop-blur-md border border-white/20 text-on-surface px-xs py-base rounded-DEFAULT font-label-sm text-label-sm">
+                            Stock: 8
+                        </div>
+<div class="relative z-10 p-md glass-panel border-x-0 border-b-0 border-t border-white/20">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest block mb-xs">Professional Tools</span>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-xs leading-tight">Precision Carbon Shears</h4>
+<div class="flex justify-between items-center mt-sm">
+<span class="font-body-md text-body-md text-on-surface-variant">SKU: TL-011</span>
+<button class="text-primary hover:text-white transition-colors"><span class="material-symbols-outlined">edit</span></button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="relative group rounded-lg overflow-hidden bg-surface-charcoal border border-white/5 hover:border-primary/50 transition-colors aspect-[3/4] flex flex-col justify-end">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A small, elegant matte black jar of luxury face cream with a subtle copper rim, set against a midnight blue background. Subtle, moody lighting creates a frosted edge on the jar, emphasizing a clinical yet organic aesthetic consistent with the high-end Serene Floral Noir design language." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC_fIBQ5jed5rTMFHO9QdzGAt6_I6DAv5wtreYdARJ_UU0Kn2tWISPv3OLEz7OM2WnV85JEKIlFodHPEwF5_KfKij3J47eXv_jKpFAqLhrr4O3KB0kspvn_ndXsLjianlNtIoCpknlAU7Y9rx_TJpw8v2g_OK0qJhMwaaGBvcBNY-e9y62843Op3nM_AoErnTRbUKi__My5q9h2e8tAudFu2xr6WmUa3VfdQ3UvVpb5ir7ceJqxRROJTTjbSEyRqjITuifazDkWFMOV');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+<div class="absolute top-sm right-sm bg-surface-glass backdrop-blur-md border border-white/20 text-on-surface px-xs py-base rounded-DEFAULT font-label-sm text-label-sm">
+                            Stock: 45
+                        </div>
+<div class="relative z-10 p-md glass-panel border-x-0 border-b-0 border-t border-white/20">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest block mb-xs">Retail Skincare</span>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-xs leading-tight">Charcoal Detox Mask</h4>
+<div class="flex justify-between items-center mt-sm">
+<span class="font-body-md text-body-md text-on-surface-variant">SKU: SC-089</span>
+<button class="text-primary hover:text-white transition-colors"><span class="material-symbols-outlined">edit</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

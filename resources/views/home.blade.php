@@ -1,137 +1,129 @@
 <x-layouts.public title="Home">
+@php
+    $venueImg = fn ($s) => $s->image_url
+        ? (\Illuminate\Support\Str::startsWith($s->image_url, ['http','//']) ? $s->image_url : asset($s->image_url))
+        : 'https://placehold.co/600x400/1a1c1f/ffb68b?text=' . urlencode($s->nama_salon);
+    $treatments = [
+        ['hair','content_cut','Hair'], ['nail','back_hand','Nails'], ['facial','face_retouching_natural','Face'], ['massage','spa','Massage'],
+        ['brow','visibility','Brows'], ['body','accessibility_new','Body'], ['waxing','water_drop','Waxing'], ['men','face','Men\'s'],
+    ];
+@endphp
 
-{{-- ───── HERO ───────────────────────────────────────────────────────────── --}}
-<section class="relative bg-[#1B2D6B] overflow-hidden min-h-[480px] flex items-center">
-    <div class="absolute inset-0 opacity-[0.04]"
-         style="background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:48px 48px"></div>
-    <div class="absolute inset-0 bg-linear-to-br from-transparent via-[#4BA3CC]/20 to-transparent"></div>
+{{-- ───── HERO ─────────────────────────────────────────────────────────────── --}}
+<section class="relative min-h-[68vh] flex flex-col justify-center items-center px-5 md:px-20 py-24 text-center">
+    <div class="absolute inset-0 z-0 pointer-events-none bg-gradient-to-b from-[#111316]/10 via-[#111316]/40 to-[#111316]"></div>
 
-    <div class="relative z-10 max-w-3xl mx-auto px-6 py-20 text-center">
-        <div class="inline-block bg-[#4BA3CC]/20 text-[#4BA3CC] border border-[#4BA3CC]/30 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-widest mb-5">
-            ✦ UK Beauty Marketplace
+    <h1 class="relative z-10 text-5xl md:text-6xl text-[#e2e2e6] mb-10 max-w-4xl leading-[1.1]" style="font-family:'Playfair Display',serif">
+        Book beauty &amp; wellness near you
+    </h1>
+
+    <form action="{{ route('cari') }}" method="GET"
+          class="relative z-10 w-full max-w-4xl glass-surface rounded-2xl p-2 flex flex-col md:flex-row gap-2 shadow-2xl">
+        <div class="flex-1 flex items-center bg-[#1a1c1f] rounded-xl px-4 py-3">
+            <span class="material-symbols-outlined text-white/40 mr-3">search</span>
+            <input name="q" class="w-full bg-transparent border-none outline-none text-[#e2e2e6] placeholder-white/35" placeholder="Treatment, salon, atau produk" />
         </div>
-        <h1 class="text-5xl md:text-6xl text-white mb-4 leading-tight">
-            Find Your Next<br /><em class="text-[#4BA3CC]">Beauty</em> Appointment
-        </h1>
-        <p class="text-white/60 text-lg mb-10 font-light">5,700+ professional salons across the United Kingdom</p>
-
-        <form action="{{ route('cari') }}" method="GET"
-              class="bg-white rounded-2xl p-2 flex items-center gap-0 shadow-2xl max-w-2xl mx-auto">
-            <div class="flex-1 px-4 py-2 border-r border-gray-100 text-left">
-                <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Treatment</div>
-                <input name="q" placeholder="e.g. Haircut, Manicure, Massage…"
-                       class="w-full text-sm outline-none text-gray-800 placeholder-gray-300" />
-            </div>
-            <div class="flex-1 px-4 py-2 text-left">
-                <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Location</div>
-                <input name="lokasi" placeholder="e.g. London, Manchester…"
-                       class="w-full text-sm outline-none text-gray-800 placeholder-gray-300" />
-            </div>
-            <button type="submit"
-                    class="shrink-0 w-12 h-12 bg-[#1B2D6B] text-white rounded-xl flex items-center justify-center hover:bg-[#4BA3CC] transition-colors mx-1">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-                </svg>
-            </button>
-        </form>
-
-        <div class="flex flex-wrap gap-2 justify-center mt-5">
-            @foreach(['Haircut','Manicure','Facial','Massage','Brows','Makeup'] as $chip)
-                <a href="{{ route('cari', ['q' => $chip]) }}"
-                   class="bg-white/10 hover:bg-[#4BA3CC]/20 border border-white/15 text-white/80 hover:text-white text-xs rounded-full px-4 py-1.5 transition-all">
-                    {{ $chip }}
-                </a>
-            @endforeach
+        <div class="flex-1 flex items-center bg-[#1a1c1f] rounded-xl px-4 py-3">
+            <span class="material-symbols-outlined text-white/40 mr-3">location_on</span>
+            <input name="lokasi" class="w-full bg-transparent border-none outline-none text-[#e2e2e6] placeholder-white/35" placeholder="Lokasi kamu" />
         </div>
-    </div>
+        <button type="submit" class="bg-[#ffb68b] hover:bg-[#ffdbc8] text-[#3a1d08] font-semibold px-10 py-4 rounded-xl transition-all">
+            Search
+        </button>
+    </form>
 </section>
 
-{{-- ───── STATS BAR ───────────────────────────────────────────────────────── --}}
-<div class="bg-[#E8F4FB] border-b border-[#C5E1F0]">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex flex-wrap justify-center gap-10">
-        @foreach([['5,700+','Salons listed'],['190K+','Treatments available'],['4.8★','Average rating'],['1,700+','Cities covered']] as [$n,$l])
-            <div class="text-center">
-                <div class="text-2xl font-bold text-[#1B2D6B]" style="font-family:'DM Serif Display',serif">{{ $n }}</div>
-                <div class="text-xs text-gray-500 mt-0.5">{{ $l }}</div>
-            </div>
-        @endforeach
-    </div>
-</div>
-
-{{-- ───── CATEGORIES ─────────────────────────────────────────────────────── --}}
-<section class="max-w-7xl mx-auto px-6 py-12">
-    <h2 class="text-2xl text-[#1B2D6B] mb-6">Explore Categories</h2>
-    <div class="flex gap-5 overflow-x-auto pb-2 scrollbar-hide">
-        @foreach([
-            ['hair','💇','Hair'],['facial','🧖','Face'],
-            ['massage','💆','Massage'],['nail','💅','Nails'],
-            ['brow','🤨','Brows'],['makeup','💄','Makeup'],
-            ['body','🛁','Body'],['men','🪒',"Men's"],
-        ] as [$q,$emoji,$label])
+{{-- ───── POPULAR TREATMENTS ───────────────────────────────────────────────── --}}
+<section class="relative z-10 max-w-6xl mx-auto px-5 md:px-20 py-16">
+    <h2 class="text-3xl md:text-4xl text-[#e2e2e6] mb-12 text-center" style="font-family:'Playfair Display',serif">Popular Treatments</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
+        @foreach ($treatments as [$q, $icon, $label])
             <a href="{{ route('cari', ['q' => $q]) }}"
-               class="shrink-0 flex flex-col items-center gap-2 group">
-                <div class="w-16 h-16 rounded-full bg-[#E8F4FB] border-2 border-[#C5E1F0] flex items-center justify-center text-2xl
-                             group-hover:bg-[#1B2D6B] group-hover:border-[#1B2D6B] group-hover:-translate-y-1 transition-all duration-200">
-                    {{ $emoji }}
+               class="glass-surface rounded-2xl aspect-square p-6 flex flex-col items-center justify-center gap-4 hover:border-[#ffb68b]/30 transition-all group">
+                <div class="w-16 h-16 rounded-full bg-[#1e2023]/60 flex items-center justify-center group-hover:bg-[#ffb68b]/10 transition-colors">
+                    <span class="material-symbols-outlined text-[#a5cbea] group-hover:text-[#ffb68b] transition-colors" style="font-size:30px">{{ $icon }}</span>
                 </div>
-                <span class="text-xs font-medium text-gray-600 group-hover:text-[#1B2D6B]">{{ $label }}</span>
+                <span class="text-sm font-medium text-[#e2e2e6] tracking-wide">{{ $label }}</span>
             </a>
         @endforeach
     </div>
 </section>
 
-{{-- ───── POPULAR SALONS ────────────────────────────────────────────────── --}}
-<section class="max-w-7xl mx-auto px-6 pb-12">
-    <div class="flex items-baseline justify-between mb-6">
-        <h2 class="text-2xl text-[#1B2D6B]">Popular Salons</h2>
-        <a href="{{ route('cari') }}" class="text-sm text-[#4BA3CC] font-medium hover:underline">View all →</a>
+{{-- ───── FEATURED VENUES ─────────────────────────────────────────────────── --}}
+<section class="relative z-10 max-w-6xl mx-auto px-5 md:px-20 py-16">
+    <div class="flex justify-between items-end mb-10">
+        <h2 class="text-3xl md:text-4xl text-[#e2e2e6]" style="font-family:'Playfair Display',serif">Featured Venues</h2>
+        <a href="{{ route('cari') }}" class="flex items-center gap-1 text-sm text-white/50 hover:text-[#ffb68b] transition-colors">
+            View all <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>
+        </a>
     </div>
-    <div class="divide-y divide-gray-100">
-        @forelse ($salons ?? [] as $salon)
-            <x-salon-card :salon="$salon" layout="list" />
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        @forelse (($salons ?? collect())->take(3) as $salon)
+            <a href="{{ route('salon.show', $salon->slug ?? $salon->id_salon) }}"
+               class="group glass-surface p-4 rounded-3xl border-transparent hover:border-[#ffb68b]/30 transition-colors">
+                <div class="relative w-full h-60 rounded-2xl overflow-hidden mb-5">
+                    <img src="{{ $venueImg($salon) }}" alt="{{ $salon->nama_salon }}"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    @if ($salon->rating > 0)
+                        <div class="absolute top-3 right-3 bg-[#111316]/80 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[#ffb68b]" style="font-size:14px;font-variation-settings:'FILL' 1">star</span>
+                            <span class="text-xs text-[#e2e2e6]">{{ number_format($salon->rating, 1) }}</span>
+                        </div>
+                    @endif
+                </div>
+                <div class="text-center px-2 pb-2">
+                    <h3 class="text-2xl text-[#e2e2e6] mb-1" style="font-family:'Playfair Display',serif">{{ $salon->nama_salon }}</h3>
+                    <p class="flex items-center justify-center text-white/50 text-sm mb-4">
+                        <span class="material-symbols-outlined mr-1" style="font-size:18px">location_on</span>
+                        {{ $salon->kota->nama ?? 'Indonesia' }}
+                    </p>
+                    <div class="flex justify-between items-end border-t border-white/10 pt-4">
+                        <p class="text-white/45 text-xs">{{ $salon->total_review ?? 0 }} ulasan</p>
+                        <p class="text-sm text-[#ffdbc8]">Lihat salon →</p>
+                    </div>
+                </div>
+            </a>
         @empty
-            <p class="text-gray-400 py-8 text-center">No salons available yet.</p>
+            <p class="text-white/40 py-8 text-center col-span-3">Belum ada salon.</p>
         @endforelse
     </div>
 </section>
 
-{{-- ───── HOW IT WORKS ──────────────────────────────────────────────────── --}}
-<section class="bg-gray-50 py-16">
-    <div class="max-w-5xl mx-auto px-6 text-center">
-        <div class="text-xs font-bold text-[#4BA3CC] uppercase tracking-widest mb-2">How It Works</div>
-        <h2 class="text-3xl text-[#1B2D6B] mb-10">Book in 3 Simple Steps</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-            @foreach([
-                ['🔍','01','Find a Salon','Search by treatment, location or rating. Filter to match exactly what you need.'],
-                ['📅','02','Pick a Time','Browse availability and pick the slot that works best for your schedule.'],
-                ['✨','03','Enjoy Your Treatment','Walk in, get treated. Pay directly at the salon — no surprises.'],
-            ] as [$icon,$n,$title,$desc])
-                <div class="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-md transition-shadow">
-                    <div class="w-14 h-14 rounded-full bg-[#E8F4FB] border-2 border-[#C5E1F0] flex items-center justify-center text-2xl mx-auto mb-4">
-                        {{ $icon }}
-                    </div>
-                    <div class="text-xs font-bold text-[#4BA3CC] uppercase tracking-wider mb-2">Step {{ $n }}</div>
-                    <h3 class="text-xl text-[#1B2D6B] mb-2">{{ $title }}</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">{{ $desc }}</p>
-                </div>
-            @endforeach
-        </div>
-    </div>
+{{-- ───── DUAL CTA (Salon vs Shop) ────────────────────────────────────────── --}}
+<section class="relative z-10 max-w-6xl mx-auto px-5 md:px-20 py-4 grid md:grid-cols-2 gap-6">
+    <a href="{{ route('cari') }}" class="group glass-surface rounded-2xl p-7 min-h-44 flex flex-col justify-end hover:border-[#a5cbea]/30 transition-colors">
+        <p class="text-[11px] uppercase tracking-[0.2em] text-[#a5cbea] mb-2">Beauty Salon</p>
+        <h3 class="text-2xl text-[#e2e2e6] mb-1" style="font-family:'Playfair Display',serif">Booking treatment</h3>
+        <p class="text-sm text-white/50">Cari & pesan salon terbaik · <span class="text-[#ffdbc8] group-hover:underline">Jelajahi →</span></p>
+    </a>
+    <a href="{{ route('shop.index') }}" class="group glass-surface rounded-2xl p-7 min-h-44 flex flex-col justify-end hover:border-[#ffb68b]/30 transition-colors">
+        <p class="text-[11px] uppercase tracking-[0.2em] text-[#ffdbc8] mb-2">Skincare Shop</p>
+        <h3 class="text-2xl text-[#e2e2e6] mb-1" style="font-family:'Playfair Display',serif">Produk skincare premium</h3>
+        <p class="text-sm text-white/50">Serum, moisturizer, & lainnya · <span class="text-[#ffdbc8] group-hover:underline">Belanja →</span></p>
+    </a>
 </section>
 
-{{-- ───── CTA ───────────────────────────────────────────────────────────── --}}
-<section class="bg-[#1B2D6B] pt-20 pb-24 text-center">
-    <h2 class="text-4xl text-white mb-4">Ready to Look Your Best?</h2>
-    <p class="text-white/60 text-lg mb-8">Join thousands of customers booking treatments on VIYGO every day</p>
-    <div class="flex gap-3 justify-center flex-wrap">
-        <a href="{{ route('cari') }}"
-           class="px-8 py-3 bg-white text-[#1B2D6B] font-semibold rounded-full hover:bg-[#E8F4FB] transition-colors">
-            Book Now
-        </a>
-        <a href="{{ route('mitra') }}"
-           class="px-8 py-3 border-2 border-white/30 text-white font-medium rounded-full hover:border-white hover:bg-white/5 transition-all">
-            List Your Salon
-        </a>
+{{-- ───── HOW IT WORKS ──────────────────────────────────────────────────────── --}}
+<section class="relative z-10 px-5 md:px-20 py-20 text-center">
+    <h2 class="text-3xl md:text-4xl text-[#e2e2e6] mb-3" style="font-family:'Playfair Display',serif">How it works</h2>
+    <p class="text-white/50 max-w-xl mx-auto mb-16">Temukan & pesan perawatan kecantikan berikutnya dalam tiga langkah sederhana.</p>
+
+    <div class="relative grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 max-w-5xl mx-auto">
+        <div class="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-px bg-white/10 -z-0"></div>
+        @foreach ([
+            ['search','1. Search','Cari salon & produk skincare berdasarkan treatment atau lokasi.','text-[#a5cbea]', ''],
+            ['calendar_month','2. Book','Pilih waktu & pesan instan online, atau checkout produk 24/7.','text-[#ffb68b]','border border-[#ffb68b]/20'],
+            ['mood','3. Enjoy','Datang & nikmati perawatan premium, atau terima produkmu di rumah.','text-[#abcdcd]',''],
+        ] as [$icon,$title,$desc,$iconColor,$ring])
+            <div class="relative flex flex-col items-center">
+                <div class="w-24 h-24 rounded-full glass-surface flex items-center justify-center mb-7 {{ $ring }}">
+                    <span class="material-symbols-outlined {{ $iconColor }}" style="font-size:38px">{{ $icon }}</span>
+                </div>
+                <h3 class="text-2xl text-[#e2e2e6] mb-3" style="font-family:'Playfair Display',serif">{{ $title }}</h3>
+                <p class="text-sm text-white/50 px-4 max-w-xs">{{ $desc }}</p>
+            </div>
+        @endforeach
     </div>
 </section>
 

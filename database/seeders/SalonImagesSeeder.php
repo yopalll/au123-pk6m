@@ -17,6 +17,7 @@ class SalonImagesSeeder extends Seeder
 
         if (empty($imagesList)) {
             $this->command->warn('salon_images.json is empty, skipping SalonImagesSeeder.');
+
             return;
         }
 
@@ -26,18 +27,18 @@ class SalonImagesSeeder extends Seeder
             $rows = array_map(function ($img) {
                 return [
                     'id_salon_image' => $img['id_salon_image'],
-                    'id_salon'       => $img['id_salon'],
-                    'image_url'      => $img['image_url'],
-                    'is_primary'     => $img['is_primary'],
-                    'urutan'         => $img['urutan'],
-                    'created_at'     => now(),
-                    'updated_at'     => now(),
+                    'id_salon' => $img['id_salon'],
+                    'image_url' => $img['image_url'],
+                    'is_primary' => $img['is_primary'],
+                    'urutan' => $img['urutan'],
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ];
             }, $chunk);
 
             DB::table('salon_images')->insert($rows);
         }
 
-        $this->command->info("Seeded " . count($imagesList) . " salon_images records.");
+        $this->command->info('Seeded '.count($imagesList).' salon_images records.');
     }
 }

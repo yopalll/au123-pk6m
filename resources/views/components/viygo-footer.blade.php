@@ -1,5 +1,5 @@
 {{-- Component: VIYGO footer --}}
-<footer class="bg-[#0F1D4A] text-white">
+<footer class="bg-[#0c0e11] text-[#e2e2e6] border-t border-white/10">
 
     <div class="max-w-7xl mx-auto px-6 py-12">
 

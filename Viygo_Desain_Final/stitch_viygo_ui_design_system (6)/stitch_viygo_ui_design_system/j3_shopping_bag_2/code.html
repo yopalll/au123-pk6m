@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Shopping Bag</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#a5cbea",
+                        "outline-variant": "#52443c",
+                        "tertiary": "#c7e9e9",
+                        "on-tertiary-container": "#385858",
+                        "surface-charcoal": "#1A1D21",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-tertiary": "#143536",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "background": "#111316",
+                        "surface-container": "#1e2023",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#d7c2b8",
+                        "inverse-primary": "#88512e",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-background": "#e2e2e6",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "on-surface": "#e2e2e6",
+                        "on-primary-fixed": "#321200",
+                        "inverse-on-surface": "#2f3034",
+                        "primary-fixed-dim": "#ffb68b",
+                        "tertiary-fixed": "#c7e9e9",
+                        "secondary": "#a5cbea",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-secondary": "#04344d",
+                        "surface-variant": "#333538",
+                        "on-primary": "#502405",
+                        "surface": "#111316",
+                        "inverse-surface": "#e2e2e6",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "surface-dim": "#111316",
+                        "tertiary-container": "#abcdcd",
+                        "surface-container-high": "#282a2d",
+                        "outline": "#9f8d84",
+                        "on-primary-container": "#7a4523",
+                        "surface-container-low": "#1a1c1f",
+                        "primary-container": "#ffb68b",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "surface-bright": "#37393d",
+                        "primary-fixed": "#ffdbc9",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "primary": "#ffdbc8",
+                        "on-secondary-container": "#97bddb",
+                        "surface-tint": "#ffb68b",
+                        "secondary-container": "#264d67",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "surface-container-highest": "#333538",
+                        "on-tertiary-fixed": "#002020"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "80px",
+                        "base": "4px",
+                        "lg": "40px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "xs": "8px",
+                        "md": "24px",
+                        "sm": "16px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-md": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>.glass-panel {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(26, 29, 33, 0.4)
+    }
+.bg-floral-texture {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDIt0eMUzcje1S8JMFBDduE_648bfw14wrJc_uiFBmwqBD1cQQTZgATTNu0v8ZK5kLW3HNgGKBGZC759GMlAww1bGh3zonkeTDLBxvsgmNFz7xgwF4Ah66D6MPWXr84Xz8XKAnTf9cGxLki4PNYNR7ymOqxZdznDMId-Ekiakf0XAR-afOXUPCfG4XqmQVMfKaVlzCVJhZF8FfVNx17aQFijAjJxz6VsDpVxtCEZSZsRL-aaXPPSmpgLQg01JVlNEnFoc_Si-MQ-cg5);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed
+    }
+.bg-floral-overlay {
+    background: linear-gradient(to bottom, rgba(17, 19, 22, 0.85), rgba(17, 19, 22, 0.95))
+    }
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0
+    }</style>
+</head>
+<body class="bg-background text-on-surface min-h-screen relative font-body-md text-body-md antialiased overflow-x-hidden">
+<!-- Global Background Texture -->
+<div class="fixed inset-0 z-[-2] bg-floral-texture opacity-20" data-alt="A moody, high-end close-up photograph of dark midnight floral textures, like deeply shaded orchids and dark leaves. The aesthetic is Serene Floral Noir, primarily near-black charcoal tones with subtle hints of midnight blue and dusty copper. The lighting is low and mysterious, reminiscent of a luxury boutique's display backdrop. The overall vibe is sophisticated, hushed, and tactile."></div>
+<div class="fixed inset-0 z-[-1] bg-floral-overlay"></div>
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-surface-glass backdrop-blur-xl border-b border-white/20 transition-all duration-300 ease-in-out">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-md w-full">
+<div class="flex gap-gutter hidden md:flex">
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:bg-white/5 px-2 py-1 rounded" href="#">Lookbook</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-primary border-b border-primary pb-1 hover:bg-white/5 px-2 py-1 rounded" href="#">Shop</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:bg-white/5 px-2 py-1 rounded" href="#">Sustainability</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors hover:bg-white/5 px-2 py-1 rounded" href="#">Help</a>
+</div>
+<a class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tight" href="#">VIYGO</a>
+<div class="flex gap-sm items-center text-primary">
+<a aria-label="shopping_bag" class="hover:bg-white/5 p-2 rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</a>
+<a aria-label="person" class="hover:bg-white/5 p-2 rounded-full transition-colors hidden md:block" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-[120px] pb-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto min-h-[819px]">
+<header class="mb-lg md:mb-xl flex items-center justify-between">
+<h1 class="font-headline-lg text-headline-lg md:font-display-lg md:text-display-lg text-primary tracking-tight">Your Bag</h1>
+<a class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest border-b border-transparent hover:border-on-surface-variant transition-colors flex items-center gap-xs" href="#">
+                Continue Shopping
+            </a>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-md md:gap-xl">
+<!-- Cart Items List (Left Column) -->
+<div class="lg:col-span-8 flex flex-col gap-md">
+<!-- Item 1 -->
+<article class="glass-panel rounded-xl p-md flex flex-col sm:flex-row gap-md relative group transition-all duration-300 hover:bg-surface-charcoal/60">
+<button aria-label="Remove item" class="absolute top-md right-md text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="close">close</span>
+</button>
+<div class="w-full sm:w-[160px] aspect-square rounded-lg overflow-hidden flex-shrink-0 bg-surface-charcoal border border-white/10 relative">
+<img alt="Midnight Renewal Serum product shot" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500" data-alt="A minimalist, high-end product photography shot of a sleek, dark glass skincare serum bottle labeled 'Midnight Renewal Serum'. The bottle is set against a dark charcoal background with subtle reflective surfaces. Lighting is dramatic and precise, highlighting the metallic copper pump and creating a luxurious, clinical aesthetic. Serene Floral Noir style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd4cgMveR3wMHaBku1h1cOLG_EjJZmhRfMVMciLtH8k5b0WikURIOTSawunKNeCtrmc62SEcFddWPKQ4NhGI5UI27OCa7B-V3P18iLIddE2obEcCExJ52WmzAfomns6zc_j5R0B0iGylFc_Se5fBVCdmIkX9UE_U4g0H6xF9xVPez9X344Cy4uGjVK3_2sPx2M0AAI328BuYmUujjVt-bVF_J5Nh0YjXtu9YThBn0f6AfiMdoKTNY7MZ__5-gChouHi0cfNzLrChSf"/>
+</div>
+<div class="flex flex-col flex-grow justify-between py-xs">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-xs pr-lg">Midnight Renewal Serum</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-sm">30ml / 1.0 fl oz</p>
+</div>
+<div class="flex items-end justify-between mt-auto">
+<div class="flex items-center gap-sm bg-surface-charcoal border border-white/10 rounded-lg p-1">
+<button aria-label="Decrease quantity" class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<input aria-label="Quantity" class="w-8 text-center bg-transparent border-none text-on-surface font-label-md p-0 focus:ring-0 focus:outline-none" max="10" min="1" type="number" value="1"/>
+<button aria-label="Increase quantity" class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+<span class="font-body-lg text-body-lg text-primary">$185.00</span>
+</div>
+</div>
+</article>
+<!-- Item 2 -->
+<article class="glass-panel rounded-xl p-md flex flex-col sm:flex-row gap-md relative group transition-all duration-300 hover:bg-surface-charcoal/60">
+<button aria-label="Remove item" class="absolute top-md right-md text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="close">close</span>
+</button>
+<div class="w-full sm:w-[160px] aspect-square rounded-lg overflow-hidden flex-shrink-0 bg-surface-charcoal border border-white/10 relative">
+<img alt="Lunar Glow Mask product shot" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500" data-alt="A luxurious product shot of a frosted glass jar containing a skincare mask, labeled 'Lunar Glow Mask'. The jar rests on a dark slate surface surrounded by subtle botanical shadows. The lighting creates a gentle, luminous gleam on the jar's metallic copper lid. The scene embodies a Serene Floral Noir aesthetic with deep shadows and refined textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5OitkmyGPxIPoT4GMysNwGZXs1AVpC-NSNCDyPsxtJg2JHTYTg3ON8YgGNY_t3iQ2jALDo_62E4DgE7bCU7EdvHc4Yu1yyl-FIhzYsSwx7z3Gj8XwPKHiE96z6ZsvPSA7dYFzGai4Hu4j9j3F5g8zH04zdXLz8rDRw0lAKq6pFRT-3gQgG7pG5RhkY0sOjXMwom33n6F6mYrCVfcK2h90X4TEssosnX6VtHaTlCpWln1n3HKfSXWNEuzqphAkxzSt0xhXOEzkGGe9"/>
+</div>
+<div class="flex flex-col flex-grow justify-between py-xs">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-xs pr-lg">Lunar Glow Mask</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-sm">50ml / 1.7 fl oz</p>
+</div>
+<div class="flex items-end justify-between mt-auto">
+<div class="flex items-center gap-sm bg-surface-charcoal border border-white/10 rounded-lg p-1">
+<button aria-label="Decrease quantity" class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<input aria-label="Quantity" class="w-8 text-center bg-transparent border-none text-on-surface font-label-md p-0 focus:ring-0 focus:outline-none" max="10" min="1" type="number" value="2"/>
+<button aria-label="Increase quantity" class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+</div>
+<span class="font-body-lg text-body-lg text-primary">$240.00</span>
+</div>
+</div>
+</article>
+<!-- Gift Note Option -->
+<div class="mt-sm glass-panel rounded-xl p-md border-dashed border-white/20 hover:border-primary/50 transition-colors cursor-pointer group">
+<div class="flex items-center gap-sm text-primary mb-xs">
+<span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform" data-icon="redeem">redeem</span>
+<h3 class="font-label-md text-label-md uppercase tracking-widest">Add a Gift Note</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant pl-8">Include a complimentary handwritten note with your order.</p>
+</div>
+</div>
+<!-- Order Summary Sidebar (Right Column) -->
+<div class="lg:col-span-4">
+<aside class="glass-panel rounded-xl p-md md:p-lg sticky top-[140px]">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-md pb-sm border-b border-white/10">Order Summary</h2>
+<div class="flex flex-col gap-sm mb-lg">
+<div class="flex justify-between items-center text-on-surface">
+<span class="font-body-md text-body-md text-on-surface-variant">Subtotal</span>
+<span class="font-body-md text-body-md">$425.00</span>
+</div>
+<div class="flex justify-between items-center text-on-surface">
+<span class="font-body-md text-body-md text-on-surface-variant">Shipping</span>
+<span class="font-body-md text-body-md text-primary tracking-wide">Complimentary</span>
+</div>
+<div class="flex justify-between items-center text-on-surface">
+<span class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+                                Taxes
+                                <span class="material-symbols-outlined text-sm cursor-help opacity-50" data-icon="info" title="Calculated at checkout">info</span>
+</span>
+<span class="font-body-md text-body-md text-on-surface-variant italic">Calculated at checkout</span>
+</div>
+</div>
+<div class="flex justify-between items-end mb-lg pt-sm border-t border-white/10">
+<span class="font-headline-md text-headline-md text-primary">Total</span>
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">$425.00</span>
+</div>
+<button class="w-full bg-primary-fixed-dim text-background font-label-md text-label-md uppercase tracking-widest py-4 px-6 rounded hover:bg-white transition-colors duration-300 flex items-center justify-center gap-sm group">
+                        Proceed to Checkout
+                        <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<div class="mt-md text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest opacity-60 flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+                            Secure Encrypted Checkout
+                        </p>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl bg-surface-container-lowest border-t border-white/10 transition-opacity duration-200 mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<div class="md:col-span-4">
+<div class="font-display-lg text-headline-lg text-primary mb-md tracking-tight">VIYGO</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md max-w-xs">Elevating botanical science to an art form. Discover the serene power of midnight flora.</p>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-50 text-sm">© 2024 VIYGO. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="md:col-span-8 flex flex-wrap gap-x-lg gap-y-md md:justify-end">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors hover:text-primary" href="#">Our Story</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors hover:text-primary" href="#">The Science</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors hover:text-primary" href="#">Ethical Sourcing</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors hover:text-primary" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors hover:text-primary" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors hover:text-primary" href="#">Accessibility</a>
+</div>
+</div>
+</footer>
+</body></html>

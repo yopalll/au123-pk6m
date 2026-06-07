@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Order History &amp; Bookings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "background": "#111316",
+                        "surface-dim": "#111316",
+                        "inverse-primary": "#88512e",
+                        "surface-variant": "#333538",
+                        "on-tertiary-fixed": "#002020",
+                        "on-primary-fixed": "#321200",
+                        "on-surface-variant": "#d7c2b8",
+                        "surface-bright": "#37393d",
+                        "surface-tint": "#ffb68b",
+                        "inverse-on-surface": "#2f3034",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "primary-fixed": "#ffdbc9",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "secondary": "#a5cbea",
+                        "on-primary-container": "#7a4523",
+                        "tertiary": "#c7e9e9",
+                        "secondary-container": "#264d67",
+                        "on-secondary": "#04344d",
+                        "on-tertiary": "#143536",
+                        "on-secondary-fixed": "#001e2f",
+                        "error": "#ffb4ab",
+                        "outline": "#9f8d84",
+                        "surface-charcoal": "#1A1D21",
+                        "primary": "#ffdbc8",
+                        "primary-fixed-dim": "#ffb68b",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "on-surface": "#e2e2e6",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "on-secondary-container": "#97bddb",
+                        "tertiary-fixed": "#c7e9e9",
+                        "surface-container": "#1e2023",
+                        "surface": "#111316",
+                        "inverse-surface": "#e2e2e6",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "primary-container": "#ffb68b",
+                        "on-primary": "#502405",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "surface-container-lowest": "#0c0e11",
+                        "surface-container-highest": "#333538",
+                        "surface-container-high": "#282a2d",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "outline-variant": "#52443c",
+                        "tertiary-container": "#abcdcd",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-tertiary-container": "#385858",
+                        "surface-container-low": "#1a1c1f",
+                        "on-background": "#e2e2e6"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "gutter": "24px",
+                        "xl": "80px",
+                        "base": "4px",
+                        "margin-desktop": "80px",
+                        "xs": "8px",
+                        "margin-mobile": "20px",
+                        "sm": "16px",
+                        "md": "24px",
+                        "lg": "40px"
+                    },
+                    fontFamily: {
+                        "body-md": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "label-sm": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "label-md": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"]
+                    },
+                    fontSize: {
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "display-lg-mobile": ["36px", { lineHeight: "44px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>.floral-bg {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCM7VUZeao19o4hVzda9F3hG4KVj3HBsXU6D5jQIB6pEmnoz5do2dx2Ed-PaOU4L4I9QVhSC3UrwNjDzof3NS1WAly80y6HyZaGcBmb_3PrU5fxVZDhfcV7guO4yiR3Wvs7T_prscGWUvLzfwL1cMkqnrwIYKj1o6tuttknn2POjFRJJ4VVngB_9PEs6mBqoW03bhkrd5RqDO7X_eBWSX-Vca6pUcgIqdYknWjyeRvBIbl5ZAq7aUZ707iNX12Q407vsSpsVDYBkWUX);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed
+    }
+.floral-overlay {
+    background-color: rgba(17, 19, 22, 0.9)
+    }</style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col relative">
+<!-- Global Background Texture -->
+<div class="fixed inset-0 floral-bg z-[-2]"></div>
+<div class="fixed inset-0 floral-overlay z-[-1]"></div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-glass backdrop-blur-md border-b border-white/20">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-[1440px] mx-auto md:px-margin-desktop px-margin-mobile">
+<!-- Brand -->
+<a class="font-display-lg text-headline-md text-primary" href="#">VIYGO</a>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex gap-gutter items-center">
+<a class="font-body-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Lookbook</a>
+<a class="font-body-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Shop</a>
+<a class="font-body-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Sustainability</a>
+<a class="font-body-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Help</a>
+</nav>
+<!-- Trailing Icons -->
+<div class="flex gap-sm items-center text-primary">
+<button aria-label="shopping_bag" class="hover:text-primary transition-colors duration-300 active:opacity-80 transition-all p-2 rounded-full hover:bg-white/5">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+<button aria-label="person" class="text-primary border-b-2 border-primary pb-1 p-2 rounded-full hover:bg-white/5 active:opacity-80 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-32 pb-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto w-full">
+<!-- Header Section -->
+<div class="mb-lg flex flex-col md:flex-row md:items-end justify-between gap-sm">
+<div>
+<h1 class="font-display-lg text-display-lg md:text-display-lg text-display-lg-mobile text-primary mb-xs">Your Journey</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Review your past skincare rituals and upcoming salon experiences.</p>
+</div>
+<!-- Filters -->
+<div class="flex gap-sm mt-sm md:mt-0">
+<button class="px-sm py-xs rounded-full border border-primary-fixed-dim text-primary-fixed-dim font-label-md text-label-md bg-white/5 backdrop-blur-sm transition-all hover:bg-white/10">All History</button>
+<button class="px-sm py-xs rounded-full border border-white/20 text-on-surface-variant font-label-md text-label-md bg-transparent transition-all hover:text-primary-fixed-dim hover:border-primary-fixed-dim">Orders</button>
+<button class="px-sm py-xs rounded-full border border-white/20 text-on-surface-variant font-label-md text-label-md bg-transparent transition-all hover:text-primary-fixed-dim hover:border-primary-fixed-dim">Bookings</button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Featured / Upcoming Booking (Spans 8 cols on desktop) -->
+<div class="md:col-span-8 bg-surface-glass backdrop-blur-xl border border-white/20 rounded-xl overflow-hidden relative group transition-all duration-300 hover:border-white/30">
+<div class="absolute inset-0 z-0">
+<img alt="Upcoming Spa Booking" class="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500" data-alt="A serene, high-end spa treatment room dimly lit with warm, ambient lighting. A pristine massage table dressed in crisp white linens sits in the center. Subtle copper accents and botanical elements in the background evoke a luxurious, relaxing atmosphere. The scene relies on a sophisticated palette of deep shadows and soft highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhl2-eaJQlwg5Ok3CrxRHIyKuanT1QcrRJA_abhutcrAm3GNYm9-zpO_8ONK8Lps98a4YP_VNkKrzMeM9SiyEQ-IzJjf48Tk_a8_8zCxHiEMqgaUrYqlYNCoiJpwJM-uYdTXLdsn7v7boGAOYusFkEiGQXZZn-lRRNoWmV9Vc9uMI-ZF1ktEqotjTcjxVLNofnifPD4ZAkV1X0pllsvySz6rAbGBHRcmi8L8UMRrZmEInTaFLaQEdNNRPw4X8VPbg3kklX0fR5SU-x"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-charcoal via-surface-charcoal/80 to-transparent"></div>
+</div>
+<div class="relative z-10 p-md h-full flex flex-col justify-end min-h-[300px]">
+<div class="flex justify-between items-start mb-auto">
+<span class="inline-flex items-center gap-xs px-xs py-1 rounded bg-secondary-container/50 text-secondary border border-secondary/30 font-label-sm text-label-sm uppercase tracking-wider backdrop-blur-sm">
+<span class="material-symbols-outlined text-[14px]">event</span> Upcoming Booking
+                        </span>
+<button aria-label="More options" class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Midnight Renewal Facial</h2>
+<div class="flex flex-wrap items-center gap-md text-on-surface-variant font-body-md text-body-md mb-sm">
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">calendar_today</span> Oct 24, 2024</span>
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">schedule</span> 6:30 PM - 8:00 PM</span>
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">location_on</span> The Apothecary Lounge</span>
+</div>
+<div class="flex gap-sm">
+<button class="bg-primary-fixed-dim text-background font-label-md text-label-md uppercase tracking-widest px-sm py-xs rounded hover:bg-primary-fixed transition-colors">Manage Booking</button>
+<button class="bg-transparent border border-secondary text-secondary font-label-md text-label-md uppercase tracking-widest px-sm py-xs rounded hover:bg-secondary/10 transition-colors">Add to Calendar</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Order Summary (Spans 4 cols on desktop) -->
+<div class="md:col-span-4 bg-surface-charcoal border border-white/10 rounded-xl p-md flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-center mb-md border-b border-white/5 pb-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">Recent Order</h3>
+<span class="text-tertiary-fixed-dim font-label-sm text-label-sm uppercase tracking-widest">Delivered</span>
+</div>
+<div class="flex items-center gap-sm mb-sm">
+<div class="w-16 h-16 rounded bg-surface-variant flex-shrink-0 overflow-hidden border border-white/10">
+<img alt="Product Image" class="w-full h-full object-cover" data-alt="A sleek, minimalist dark glass bottle of skincare serum resting on a dark slate surface. Soft, directional light highlights the metallic copper dropper cap. The aesthetic is highly clinical yet luxurious, emphasizing deep shadows and sharp, precise highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcJxO-gp4kZAEktOb3Ue-rs_NfOIuydUCnjQVSvnUwcNAdh_su78blwE9tdrYEqDL_jb2tvhrkNEOBqWTgkdqKQ3Se59VEqDNiZcYLD7g90LBPRAwVUGz_41coQnmRpzkMozb8ZO7loe-lxgQu_vWgLJUrrO9FPkblONaQBh-LduVr3uo6fmW1IJPn7Hi2iReVVZPKGzsmnSUVHzq12wIOG35gPdoKfJB2zRf3e3EPdgKThMYRjswrhXZvU1AUzDxPtWSBPM4r36d2"/>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Luminous Night Serum</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Qty: 1 • $125.00</p>
+</div>
+</div>
+<div class="flex items-center gap-sm mb-md">
+<div class="w-16 h-16 rounded bg-surface-variant flex-shrink-0 overflow-hidden border border-white/10">
+<img alt="Product Image" class="w-full h-full object-cover" data-alt="A small, frosted dark glass jar containing a thick, luxurious face cream. The jar sits on a bed of subtle dark botanical leaves. Lighting is moody and atmospheric, with a hint of warm ambient light catching the edge of the glass, conveying a premium skincare aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGPyYwe8y5ittODrsMDauvIIMrtSENdB6U3Kt99qtMz1ldsUm7BPu0DuG-j7KdERrgrgl3AgJfAf8K5UzlG_KyrqE9dwhd1u1Xsb5sP3268tPomTo1LSNwFiFpTsn82j8JGwYSeHTyTVp-l0393EK8NN_Y_pmJLrx7YGHrM_3xBhzYvFv9XLPtuBBmtL2BFGBkF1CK6Hk_skp5bi0FWytUyd8XSzRjyUAf-tc_4l5v5Ap9bJoBwYgfXrasucEMxvRgmIY8ObV__BGV"/>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Botanical Barrier Cream</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Qty: 1 • $85.00</p>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-sm border-t border-white/5">
+<div class="flex justify-between items-center mb-sm">
+<span class="font-body-md text-body-md text-on-surface-variant">Order #VIY-8842</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">$210.00</span>
+</div>
+<button class="w-full bg-transparent border border-white/20 text-on-surface font-label-md text-label-md uppercase tracking-widest py-xs rounded hover:border-primary-fixed-dim hover:text-primary-fixed-dim transition-colors flex items-center justify-center gap-xs">
+                        View Details <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- List of Past Orders & Bookings -->
+<div class="md:col-span-12 mt-md">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md">Previous History</h3>
+<div class="flex flex-col gap-sm">
+<!-- History Item 1: Booking -->
+<div class="bg-surface-charcoal/50 backdrop-blur-md border border-white/10 rounded-xl p-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-md hover:bg-surface-charcoal/80 transition-colors">
+<div class="flex items-center gap-md w-full md:w-auto">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary-fixed-dim border border-white/5 flex-shrink-0">
+<span class="material-symbols-outlined">spa</span>
+</div>
+<div>
+<h4 class="font-body-md text-body-md text-on-surface font-medium">Deep Hydration Therapy</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Sep 12, 2024 • Completed</p>
+</div>
+</div>
+<div class="flex items-center justify-between w-full md:w-auto gap-md pl-16 md:pl-0">
+<span class="inline-flex items-center gap-xs px-xs py-1 rounded bg-surface-variant text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+                                Booking
+                            </span>
+<button class="text-primary-fixed-dim font-label-md text-label-md uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-xs">
+                                Details <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- History Item 2: Order -->
+<div class="bg-surface-charcoal/50 backdrop-blur-md border border-white/10 rounded-xl p-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-md hover:bg-surface-charcoal/80 transition-colors">
+<div class="flex items-center gap-md w-full md:w-auto">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-secondary border border-white/5 flex-shrink-0">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<div>
+<h4 class="font-body-md text-body-md text-on-surface font-medium">Order #VIY-7731</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Aug 28, 2024 • 3 Items</p>
+</div>
+</div>
+<div class="flex items-center justify-between w-full md:w-auto gap-md pl-16 md:pl-0">
+<span class="inline-flex items-center gap-xs px-xs py-1 rounded bg-surface-variant text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+                                Order
+                            </span>
+<button class="text-primary-fixed-dim font-label-md text-label-md uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-xs">
+                                Details <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- History Item 3: Order -->
+<div class="bg-surface-charcoal/50 backdrop-blur-md border border-white/10 rounded-xl p-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-md hover:bg-surface-charcoal/80 transition-colors">
+<div class="flex items-center gap-md w-full md:w-auto">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-secondary border border-white/5 flex-shrink-0">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<div>
+<h4 class="font-body-md text-body-md text-on-surface font-medium">Order #VIY-6520</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Jul 05, 2024 • 1 Item</p>
+</div>
+</div>
+<div class="flex items-center justify-between w-full md:w-auto gap-md pl-16 md:pl-0">
+<span class="inline-flex items-center gap-xs px-xs py-1 rounded bg-surface-variant text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+                                Order
+                            </span>
+<button class="text-primary-fixed-dim font-label-md text-label-md uppercase tracking-widest hover:text-primary transition-colors flex items-center gap-xs">
+                                Details <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-md text-center">
+<button class="bg-transparent border-none text-on-surface-variant font-label-md text-label-md uppercase tracking-widest hover:text-primary-fixed-dim transition-colors">Load More History</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-white/10">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter px-margin-desktop py-xl max-w-[1440px] mx-auto md:px-margin-desktop px-margin-mobile">
+<div class="md:col-span-4 flex flex-col gap-sm">
+<span class="font-display-lg text-headline-lg text-primary">VIYGO</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Crafted for tranquility.</p>
+</div>
+<div class="md:col-span-8 flex flex-col md:flex-row justify-end gap-md md:gap-xl">
+<nav class="flex flex-col gap-sm">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Terms of Service</a>
+</nav>
+<nav class="flex flex-col gap-sm">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Shipping &amp; Returns</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Contact Us</a>
+</nav>
+</div>
+<div class="md:col-span-12 mt-md pt-md border-t border-white/5">
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">© 2024 VIYGO. All rights reserved. Crafted for tranquility.</p>
+</div>
+</div>
+</footer>
+</body></html>

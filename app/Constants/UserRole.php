@@ -10,9 +10,13 @@ namespace App\Constants;
  */
 class UserRole
 {
-    public const CUSTOMER    = 'customer';
+    public const CUSTOMER = 'customer';
+
     public const SALON_OWNER = 'salon_owner';
-    public const ADMIN       = 'admin';
+
+    public const ADMIN = 'admin';
+
+    public const ADMIN_STORE = 'admin_store';
 
     /**
      * All valid roles, useful for validation rules and enum checks.
@@ -25,6 +29,7 @@ class UserRole
             self::CUSTOMER,
             self::SALON_OWNER,
             self::ADMIN,
+            self::ADMIN_STORE,
         ];
     }
 }

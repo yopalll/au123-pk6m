@@ -316,6 +316,50 @@ php database/scripts/validate_json.php # JSON sanity-check
 
 ---
 
+## VIYGO V2 — Beauty, Skincare & Lifestyle Platform
+
+V2 menambah 5 modul di atas marketplace salon V1: **E-commerce Skincare**, **Lookbook**,
+**Empty Return + Poin**, **Community Forum**, dan **Rincian Booking + Invoice PDF**.
+Plan & dokumentasi lengkap: [docs_v2/](docs_v2/) (mulai dari [docs_v2/00-INDEX.md](docs_v2/00-INDEX.md)).
+
+### Stack tambahan V2
+- **Filament v5** — panel Admin Store di `/admin/store` (9 resource + dashboard widget)
+- **barryvdh/laravel-dompdf** (invoice PDF) · **mews/purifier** (`clean()` anti-XSS forum)
+- **Midtrans** (payment produk) · **api.co.id** ongkir (mock fallback bila tanpa API key)
+
+### Environment tambahan (lihat `.env.example`)
+```
+API_CO_ID_KEY=                       # opsional; tanpa ini ongkir pakai mock
+ONGKIR_ORIGIN_CITY="Jakarta Selatan"
+MIDTRANS_SERVER_KEY=
+MIDTRANS_CLIENT_KEY=
+```
+
+### Setup V2
+```bash
+php artisan migrate          # V1 + 30 migrasi V2 (1 ALTER + 28 tabel + pivot + index)
+php artisan db:seed          # termasuk seeder V2 (produk, admin store, forum, lookbook, dll.)
+# Scraper fresh.com opsional (Go+Chrome) — lihat docs_v2/jalankan-scraper-cmd.md
+```
+
+### Admin Store
+`/admin/store` · `admin.store@viygo.id` / `ViygoStore2026!` — ⚠️ **ganti password setelah deploy.**
+
+### Entry point modul V2
+| Modul | URL | Controller |
+|-------|-----|------------|
+| E-commerce | `/shop` | `app/Http/Controllers/Shop/` |
+| Lookbook | `/lookbook` | `LookbookController` |
+| Empty Return + Poin | `/empty-return`, `/akun/poin` | `EmptyReturnController`, `PointController` |
+| Konten Eksklusif | `/eksklusif` | `ExclusiveContentController` |
+| Community | `/komunitas` | `app/Http/Controllers/Forum/` |
+| Rincian Booking | `/akun/bookings/{kode}` | `AkunController` |
+
+> Scraper fresh.com diblok Akamai → VIYGO memakai data dummy terkurasi.
+> Detail: [docs_v2/penjelasanscraper.md](docs_v2/penjelasanscraper.md).
+
+---
+
 ## Team
 
 VIYGO is developed as an academic project replicating Treatwell.co.uk.

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Facial Treatments - VIYGO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-glass": "rgba(17, 19, 22, 0.6)",
+                      "surface-variant": "#333538",
+                      "surface-container-high": "#282a2d",
+                      "on-error": "#690005",
+                      "on-surface-variant": "#d7c2b8",
+                      "surface-tint": "#ffb68b",
+                      "tertiary-fixed": "#c7e9e9",
+                      "on-error-container": "#ffdad6",
+                      "error": "#ffb4ab",
+                      "secondary-container": "#264d67",
+                      "on-tertiary": "#143536",
+                      "on-primary-fixed": "#321200",
+                      "tertiary": "#c7e9e9",
+                      "inverse-on-surface": "#2f3034",
+                      "surface-container-low": "#1a1c1f",
+                      "secondary-fixed": "#c9e6ff",
+                      "on-secondary-fixed-variant": "#234a64",
+                      "on-background": "#e2e2e6",
+                      "surface-bright": "#37393d",
+                      "surface-container-highest": "#333538",
+                      "background": "#111316",
+                      "secondary": "#a5cbea",
+                      "on-secondary-fixed": "#001e2f",
+                      "primary": "#ffdbc8",
+                      "inverse-surface": "#e2e2e6",
+                      "primary-fixed-dim": "#ffb68b",
+                      "surface": "#111316",
+                      "on-primary": "#502405",
+                      "tertiary-container": "#abcdcd",
+                      "tertiary-fixed-dim": "#abcdcd",
+                      "border-glow": "rgba(255, 255, 255, 0.2)",
+                      "on-secondary-container": "#97bddb",
+                      "outline": "#9f8d84",
+                      "on-secondary": "#04344d",
+                      "on-primary-container": "#7a4523",
+                      "on-tertiary-container": "#385858",
+                      "error-container": "#93000a",
+                      "secondary-fixed-dim": "#a5cbea",
+                      "on-surface": "#e2e2e6",
+                      "on-tertiary-fixed-variant": "#2c4c4c",
+                      "surface-container": "#1e2023",
+                      "outline-variant": "#52443c",
+                      "surface-dim": "#111316",
+                      "primary-fixed": "#ffdbc9",
+                      "inverse-primary": "#88512e",
+                      "surface-charcoal": "#1A1D21",
+                      "primary-container": "#ffb68b",
+                      "on-tertiary-fixed": "#002020",
+                      "surface-container-lowest": "#0c0e11",
+                      "on-primary-fixed-variant": "#6c3a19"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xs": "8px",
+                      "md": "24px",
+                      "gutter": "24px",
+                      "margin-desktop": "80px",
+                      "margin-mobile": "20px",
+                      "sm": "16px",
+                      "lg": "40px",
+                      "xl": "80px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Playfair Display"],
+                      "display-lg": ["Playfair Display"],
+                      "body-md": ["Manrope"],
+                      "display-lg-mobile": ["Playfair Display"],
+                      "label-md": ["Manrope"],
+                      "body-lg": ["Manrope"],
+                      "label-sm": ["Manrope"],
+                      "headline-lg": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>.glass-panel {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2)
+    }
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDdNO3Mi6XmkG1bbklcCv_6CI8Sm3lhTECgf5OG_RfO8NvEWT9vUDpGsRmuAaT6MzdAtNGjNSgneKIactgp1qQ9A0UI-8uNuz5_fg_T4JOqe03SAUQnrdifV-EABO4XPOozMKgcQhg9uOWnvMx3tT0JmgcucdE-sD4jHU17kR4sJOww7VAq_yYHlwB6ZoNE19tECsfTeEuQvN_lZBgg5FLZjJiilMVYVrTavzSfVUMC6_6Aw7QGbN6Qin_8dhzCjYtSiG6u3xG-VudP);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05;
+    z-index: -1;
+    pointer-events: none
+    }</style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md antialiased selection:bg-surface-tint selection:text-background">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-24 bg-surface-glass backdrop-blur-xl border-b border-border-glow">
+<div class="flex items-center gap-md">
+<a class="font-display-lg text-display-lg text-primary-fixed hover:opacity-80 transition-opacity" href="#">VIYGO</a>
+<div class="hidden md:flex gap-md ml-lg">
+<a class="font-label-md text-label-md uppercase tracking-widest text-primary border-b border-primary-fixed pb-1" href="#">Treatments</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary-fixed transition-colors duration-300 pb-1" href="#">List your salon</a>
+</div>
+</div>
+<div class="flex items-center gap-sm md:gap-md">
+<div class="hidden md:flex items-center glass-panel bg-surface-container-low rounded-full px-sm py-xs group">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md text-on-surface w-48 placeholder:text-on-surface-variant ml-xs" placeholder="Search treatments..." type="text"/>
+</div>
+<a class="hidden md:block font-label-md text-label-md text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#">Sign In</a>
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-md py-xs rounded-full hover:opacity-90 transition-opacity">Join</button>
+<button class="md:hidden text-on-surface-variant">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</div>
+</nav>
+<!-- Header / Hero Section -->
+<header class="relative pt-32 pb-xl px-margin-mobile md:px-margin-desktop min-h-[512px] flex items-center border-b border-border-glow overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Atmospheric dark spa setting" class="w-full h-full object-cover opacity-40" data-alt="A luxurious, high-end spa environment shot in a Serene Floral Noir style. The lighting is extremely moody and atmospheric, focusing on deep charcoal and midnight tones. A sleek massage table rests in the center, surrounded by lush, dark tropical foliage and delicate, glowing white orchids. Subtle warm copper lighting highlights the textures of the stone walls and the pristine white towels. The overall aesthetic is mysterious, calming, and deeply luxurious, reminiscent of a midnight apothecary." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ7QOJYr_7tpQIvJcj3Xix7ae1gDti7Vv4y8JO7LgJjDh6eTZRVVCn0Oi8yYscsZbMqHXOvmF8wAPAGE_jU43vBfHA7rtWXZvS40EtLumJY66rV_-mtil6JRfvhHHWjjMy2IWep9msOSBmSNKwBB7sQG4npEMGPaVuL3uUoXRkzDuU4BzuxqZI2BS7SgoIjStey_Ex5D2rPpRJ1HUjAH7Vul06dY_1j2-2inNpAGfV2fg10w8bD1GKID-hll7spEeo5cS7gfHRGYci"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-3xl">
+<nav class="flex items-center gap-xs mb-md text-on-surface-variant font-label-sm text-label-sm uppercase">
+<a class="hover:text-primary-fixed transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary-fixed transition-colors" href="#">Categories</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-primary-fixed">Facial Treatments</span>
+</nav>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary-fixed mb-sm">Facial Treatments</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Discover unparalleled radiance. Our curated selection of high-end facial therapies combines cutting-edge clinical science with ancient botanical wisdom, designed to rejuvenate and restore your skin's natural luminosity.</p>
+</div>
+</header>
+<!-- Main Content Layout -->
+<div class="px-margin-mobile md:px-margin-desktop py-xl flex flex-col lg:flex-row gap-gutter">
+<!-- SideNavBar (Filters) -->
+<aside class="hidden lg:flex flex-col p-md gap-md h-screen w-80 sticky top-24 border-r border-border-glow bg-surface-charcoal">
+<div class="mb-sm">
+<h2 class="font-headline-md text-headline-md text-primary mb-xs">Filters</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Refine your selection</p>
+</div>
+<nav class="flex flex-col gap-xs">
+<a class="flex items-center gap-sm p-sm bg-secondary-container text-on-secondary-container rounded-lg font-label-md text-label-md transition-all scale-98" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">category</span>
+                    Category
+                </a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+                    Price
+                </a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">star</span>
+                    Rating
+                </a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">brand_family</span>
+                    Brand
+                </a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">face</span>
+                    Skin Type
+                </a>
+</nav>
+<div class="mt-auto pt-md border-t border-border-glow">
+<button class="w-full bg-transparent border border-secondary text-secondary font-label-md text-label-md py-sm rounded-full hover:bg-secondary/10 transition-colors">Apply Filters</button>
+</div>
+</aside>
+<!-- Product/Service List -->
+<main class="flex-1 flex flex-col gap-lg">
+<!-- Mobile Filter Toggle -->
+<div class="lg:hidden flex justify-between items-center mb-md">
+<span class="font-label-md text-label-md text-on-surface-variant">Showing 24 treatments</span>
+<button class="flex items-center gap-xs text-primary font-label-md text-label-md glass-panel px-sm py-xs rounded-full">
+<span class="material-symbols-outlined text-sm">tune</span>
+                    Filters
+                </button>
+</div>
+<!-- List Item 1 -->
+<article class="flex flex-col md:flex-row bg-surface-charcoal border border-border-glow rounded-xl overflow-hidden hover:border-primary/30 transition-colors group">
+<div class="md:w-2/5 relative h-64 md:h-auto overflow-hidden">
+<img alt="Woman receiving facial treatment" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A close-up, serene image of a woman receiving a luxurious facial treatment. The scene is styled in Serene Floral Noir, featuring deep shadowy backgrounds that make the subject's skin appear glowing and luminous. The aesthetic is minimal and clinical yet warm, with subtle copper lighting highlights reflecting off sleek glass skincare bottles in the blurred foreground. The mood is tranquil, exclusive, and high-end." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1tF_JJF3pP64SJ3I7iY6Q98UBA5oYmhdFtOkse2Lly9_fsL67NeottZ_FzUHaq2gTdpEXavQoWnnW_agxXc2z77Frx-kN8N4H23YsBx1fIvFmTG4AYx1FR35wucTstJUhkIRvGFinzqzCL_RFnLxQ5uJ50sk3lHuiDTTIpUHI31HMO8E9gMBUQt-4BQUd_B6k5c98zqFmSb8n2LHYGsSfDX_UGC8bPSj-rHUbxFGNyQVpdCbDfQWLlDOusCFvukc6Nvh_421fYaB3"/>
+<div class="absolute top-sm left-sm glass-panel px-xs py-1 rounded bg-surface/80 flex items-center gap-1">
+<span class="material-symbols-outlined text-surface-tint text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-primary">4.9</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">(128)</span>
+</div>
+</div>
+<div class="md:w-3/5 p-md flex flex-col">
+<div class="flex justify-between items-start mb-xs">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary mb-1 block">The Midnight Apothecary</span>
+<h3 class="font-headline-lg text-headline-lg text-primary-fixed">Luminous Botanical Peel</h3>
+</div>
+<button class="text-on-surface-variant hover:text-surface-tint transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md line-clamp-2">A deeply restorative treatment utilizing rare night-blooming botanicals and mild fruit acids to gently resurface the skin. Perfect for achieving an ethereal, glass-like complexion.</p>
+<div class="mt-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-sm pt-md border-t border-border-glow">
+<div class="flex items-center gap-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Price</span>
+<span class="font-headline-md text-headline-md text-primary">$185</span>
+</div>
+<div class="w-px h-8 bg-border-glow"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Duration</span>
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                    75 min
+                                </span>
+</div>
+</div>
+<button class="w-full sm:w-auto bg-primary-container text-on-primary-container font-label-md text-label-md px-lg py-sm rounded-full hover:opacity-90 transition-opacity">Book Now</button>
+</div>
+</div>
+</article>
+<!-- List Item 2 -->
+<article class="flex flex-col md:flex-row bg-surface-charcoal border border-border-glow rounded-xl overflow-hidden hover:border-primary/30 transition-colors group">
+<div class="md:w-2/5 relative h-64 md:h-auto overflow-hidden">
+<img alt="Skincare products" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A curated arrangement of high-end skincare serums and dark glass apothecary bottles on a black slate surface. The styling follows the Serene Floral Noir aesthetic. The lighting is low and moody, with a singular soft spotlight illuminating the translucent amber and crystal liquids inside the bottles. In the background, out of focus, are dark, velvety orchid petals. The overall feel is scientific precision mixed with dark, natural luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSeZx_BSZuYn-6llxmlFhFwOfZQh9bPSeRBr8Oyk-56ky11nwcSqah3HTSBRJe7p1DRUFPYRrcuFJcQP56gDpzR_QFTZymg7lIBInon8CZvKiD8C0TYyGQPj90EVEAs1Sv8Pc2D3SoT32INYzRyvN7kWuvpQM5Z2125l-Tw3lgWhp3Xd0ELpAzoLXQccLnAfhNrQ-c63fsVSBKvaXcLVztrCfTBYedecWOPQ4KGYF-XUrnnpviwTdIo_KUiQGHWClEw_9HM9UulXN9"/>
+<div class="absolute top-sm left-sm glass-panel px-xs py-1 rounded bg-surface/80 flex items-center gap-1">
+<span class="material-symbols-outlined text-surface-tint text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-primary">4.8</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">(94)</span>
+</div>
+</div>
+<div class="md:w-3/5 p-md flex flex-col">
+<div class="flex justify-between items-start mb-xs">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary mb-1 block">Aura Skincare Institute</span>
+<h3 class="font-headline-lg text-headline-lg text-primary-fixed">Cellular Hydration Facial</h3>
+</div>
+<button class="text-on-surface-variant hover:text-surface-tint transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md line-clamp-2">An intensive moisture-binding therapy using hyaluronic complexes and copper peptides. Plumps fine lines and restores the skin's barrier in a deeply relaxing, hushed environment.</p>
+<div class="mt-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-sm pt-md border-t border-border-glow">
+<div class="flex items-center gap-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Price</span>
+<span class="font-headline-md text-headline-md text-primary">$150</span>
+</div>
+<div class="w-px h-8 bg-border-glow"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Duration</span>
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                                    60 min
+                                </span>
+</div>
+</div>
+<button class="w-full sm:w-auto bg-primary-container text-on-primary-container font-label-md text-label-md px-lg py-sm rounded-full hover:opacity-90 transition-opacity">Book Now</button>
+</div>
+</div>
+</article>
+<!-- Load More -->
+<div class="flex justify-center mt-md">
+<button class="font-label-md text-label-md text-primary-fixed hover:text-primary transition-colors flex items-center gap-xs">
+                    Load More Treatments
+                    <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-xl px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-5 gap-gutter bg-surface-container-lowest border-t border-border-glow">
+<div class="col-span-2 md:col-span-1 flex flex-col gap-sm">
+<span class="font-display-lg text-display-lg text-primary-fixed">VIYGO</span>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">© 2024 VIYGO.<br/>All rights reserved.</p>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-sm text-label-sm uppercase text-on-surface-variant mb-xs">Company</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-sm text-label-sm uppercase text-on-surface-variant mb-xs">Legal</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+</div>
+<div class="col-span-2 flex flex-col gap-sm">
+<h4 class="font-label-sm text-label-sm uppercase text-on-surface-variant mb-xs">Partners</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">VIYGO for Business</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">List your Salon</a>
+</div>
+</footer>
+</body></html>

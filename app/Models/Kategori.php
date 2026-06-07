@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Cache;
 
 class Kategori extends Model
 {
-    protected $table      = 'kategori';
+    protected $table = 'kategori';
+
     protected $primaryKey = 'id_kategori';
 
     protected $fillable = [
@@ -26,7 +27,7 @@ class Kategori extends Model
     {
         return [
             'is_active' => 'boolean',
-            'urutan'    => 'integer',
+            'urutan' => 'integer',
         ];
     }
 
@@ -42,9 +43,9 @@ class Kategori extends Model
             'id_kategori',
             'id_sub_kategori'
         )
-        ->withPivot('urutan')
-        ->withTimestamps()
-        ->orderByPivot('urutan');
+            ->withPivot('urutan')
+            ->withTimestamps()
+            ->orderByPivot('urutan');
     }
 
     /**

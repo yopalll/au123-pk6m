@@ -1,0 +1,40 @@
+[
+  {
+    "fresh_product_id": "rose-floral-toner",
+    "fresh_url": "https://www.fresh.com/products/rose-floral-toner",
+    "nama": "Rose Deep Hydration Facial Toner",
+    "kategori": "Toner",
+    "koleksi": "Rose Collection",
+    "deskripsi": "Toner penyegar dengan kelopak mawar asli yang menghidrasi dan menyeimbangkan kulit.",
+    "key_ingredients": "Real Rose Petals, Rosewater, Hyaluronic Acid",
+    "full_ingredients": "Rosa Damascena Flower Water, Glycerin, Sodium Hyaluronate, Rosa Damascena Flower",
+    "cara_pemakaian": "Tepuk ke wajah dengan kapas setelah membersihkan wajah.",
+    "harga_usd": 48.0,
+    "harga_idr": 777600,
+    "volume_ml": 250,
+    "berat_gram": 320,
+    "skin_type": "dry",
+    "skin_concern": "dehydration",
+    "badge": "bestseller",
+    "images": ["public/images/products/fresh/rose-toner-1.jpg"]
+  },
+  {
+    "fresh_product_id": "kombucha-antioxidant-toner",
+    "fresh_url": "https://www.fresh.com/products/kombucha-antioxidant-toner",
+    "nama": "Kombucha Antioxidant Facial Treatment Toner",
+    "kategori": "Toner",
+    "koleksi": "Kombucha Collection",
+    "deskripsi": "Toner antioksidan dengan kombucha yang mencerahkan dan memperhalus tekstur.",
+    "key_ingredients": "Kombucha, Green Tea, Lemon Balm",
+    "full_ingredients": "Water, Saccharomyces Ferment Filtrate, Camellia Sinensis Leaf Extract, Melissa Officinalis Extract",
+    "cara_pemakaian": "Gunakan setelah cleansing, sebelum serum.",
+    "harga_usd": 50.0,
+    "harga_idr": 810000,
+    "volume_ml": 250,
+    "berat_gram": 320,
+    "skin_type": "combination",
+    "skin_concern": "dullness,uneven_skin_tone",
+    "badge": null,
+    "images": ["public/images/products/fresh/kombucha-toner-1.jpg"]
+  }
+]

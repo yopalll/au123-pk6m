@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Midnight Renewal Serum - VIYGO</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+          font-family: 'Material Symbols Outlined';
+          font-weight: normal;
+          font-style: normal;
+          font-size: 24px;
+          line-height: 1;
+          letter-spacing: normal;
+          text-transform: none;
+          display: inline-block;
+          white-space: nowrap;
+          word-wrap: normal;
+          direction: ltr;
+          -webkit-font-feature-settings: 'liga';
+          -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed-variant": "#6c3a19",
+                      "border-glow": "rgba(255, 255, 255, 0.2)",
+                      "on-secondary-container": "#97bddb",
+                      "secondary-container": "#264d67",
+                      "on-secondary-fixed": "#001e2f",
+                      "on-tertiary-container": "#385858",
+                      "tertiary-container": "#abcdcd",
+                      "on-tertiary-fixed-variant": "#2c4c4c",
+                      "tertiary-fixed": "#c7e9e9",
+                      "surface-container-lowest": "#0c0e11",
+                      "surface-variant": "#333538",
+                      "background": "#111316",
+                      "inverse-primary": "#88512e",
+                      "surface": "#111316",
+                      "inverse-surface": "#e2e2e6",
+                      "inverse-on-surface": "#2f3034",
+                      "surface-container-high": "#282a2d",
+                      "on-primary-container": "#7a4523",
+                      "secondary-fixed-dim": "#a5cbea",
+                      "primary": "#ffdbc8",
+                      "secondary-fixed": "#c9e6ff",
+                      "surface-glass": "rgba(17, 19, 22, 0.6)",
+                      "primary-fixed": "#ffdbc9",
+                      "on-error": "#690005",
+                      "on-background": "#e2e2e6",
+                      "on-tertiary": "#143536",
+                      "error-container": "#93000a",
+                      "primary-container": "#ffb68b",
+                      "tertiary-fixed-dim": "#abcdcd",
+                      "tertiary": "#c7e9e9",
+                      "surface-container-highest": "#333538",
+                      "surface-container": "#1e2023",
+                      "surface-charcoal": "#1A1D21",
+                      "on-secondary": "#04344d",
+                      "on-secondary-fixed-variant": "#234a64",
+                      "primary-fixed-dim": "#ffb68b",
+                      "on-surface-variant": "#d7c2b8",
+                      "surface-bright": "#37393d",
+                      "error": "#ffb4ab",
+                      "surface-dim": "#111316",
+                      "outline-variant": "#52443c",
+                      "on-primary-fixed": "#321200",
+                      "outline": "#9f8d84",
+                      "surface-container-low": "#1a1c1f",
+                      "on-tertiary-fixed": "#002020",
+                      "secondary": "#a5cbea",
+                      "surface-tint": "#ffb68b",
+                      "on-primary": "#502405",
+                      "on-error-container": "#ffdad6",
+                      "on-surface": "#e2e2e6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "80px",
+                      "xl": "80px",
+                      "md": "24px",
+                      "sm": "16px",
+                      "xs": "8px",
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "lg": "40px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "label-md": ["Manrope"],
+                      "display-lg-mobile": ["Playfair Display"],
+                      "body-lg": ["Manrope"],
+                      "display-lg": ["Playfair Display"],
+                      "headline-md": ["Playfair Display"],
+                      "body-md": ["Manrope"],
+                      "label-sm": ["Manrope"],
+                      "headline-lg": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                      "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                      "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                      "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                      "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                      "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                      "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen relative font-body-md text-body-md overflow-x-hidden selection:bg-primary-container selection:text-background">
+<!-- Atmospheric Background Texture (Serene Floral Noir) -->
+<div class="fixed inset-0 pointer-events-none z-[-1] opacity-10" style="background-image: radial-gradient(circle at 50% 50%, rgba(255, 182, 139, 0.1) 0%, transparent 70%);"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-xl border-b border-white/20 bg-surface-glass hidden md:flex justify-between items-center h-20 px-80 max-md:px-20">
+<div class="font-display-lg text-display-lg font-bold text-primary">
+            VIYGO
+        </div>
+<div class="flex gap-lg items-center">
+<a class="font-label-md text-label-md uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors duration-300 cursor-pointer active:opacity-70" href="#">Lookbook</a>
+<a class="font-label-md text-label-md uppercase tracking-[0.1em] text-primary border-b border-primary pb-1 hover:text-primary transition-colors duration-300 cursor-pointer active:opacity-70" href="#">Shop</a>
+<a class="font-label-md text-label-md uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors duration-300 cursor-pointer active:opacity-70" href="#">Sustainability</a>
+<a class="font-label-md text-label-md uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors duration-300 cursor-pointer active:opacity-70" href="#">Help</a>
+</div>
+<div class="flex gap-md text-primary items-center">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary-container transition-colors" data-icon="person">person</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary-container transition-colors" data-icon="shopping_bag">shopping_bag</span>
+</div>
+</nav>
+<!-- Mobile Nav Header -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-xl border-b border-white/20 bg-surface-glass md:hidden flex justify-between items-center h-20 px-20">
+<div class="font-display-lg-mobile text-display-lg-mobile font-bold text-primary">
+            VIYGO
+        </div>
+<div class="flex gap-md text-primary items-center">
+<span class="material-symbols-outlined cursor-pointer" data-icon="shopping_bag">shopping_bag</span>
+</div>
+</nav>
+<main class="pt-32 pb-xl px-80 max-md:px-20 max-md:pt-28 flex flex-col gap-24">
+<!-- Hero Editorial Section -->
+<section class="grid grid-cols-12 gap-gutter max-md:flex max-md:flex-col items-center">
+<!-- Large Image Container -->
+<div class="col-span-7 w-full h-[819px] max-md:h-[614px] relative rounded-DEFAULT overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A massive, high-fashion editorial close-up of a sleek, dark glass serum bottle resting on a bed of midnight-blue velvet and subtle dark floral elements. The lighting is moody and dramatic, focusing a soft spotlight on the copper-toned cap and the glowing, translucent amber liquid inside. The overall aesthetic is 'Serene Floral Noir', deeply atmospheric, luxurious, and mysterious." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE9NO5dsbB11gXnp0R7VWO3s6CSoUbs1ihxNSZ5qW2y8Nqiu6KNPIt1rlkJisCBuqKBn-QFtmDufo_eXJuntbtapBqHwu7Ogq4kUZvc5KABXv92JpaSetw0GZd-_GivsJgsX-gOmk6TwevskOkE8uIhmovh2EQ57Aagc0FnlIxhFK99CN03JIRpB-EZ3e6pnC9V8Xp6iIAPgAi9yLM7vRnUASn6H0_-KkQHU9_m2AK7IMhbCJOVf7OZjdPCw1io0M0TCWtVNeEWMtU"/>
+<!-- Glassmorphic floating label -->
+<div class="absolute bottom-md left-md bg-surface-glass backdrop-blur-md border border-border-glow px-sm py-xs rounded-DEFAULT flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase tracking-widest">In Stock</span>
+</div>
+</div>
+<!-- Product Details -->
+<div class="col-span-5 flex flex-col gap-lg pl-lg max-md:pl-0">
+<div class="flex flex-col gap-sm">
+<h1 class="font-display-lg text-display-lg max-md:font-display-lg-mobile max-md:text-display-lg-mobile text-primary">
+                        Midnight Renewal Serum
+                    </h1>
+<p class="font-headline-md text-headline-md text-on-surface-variant font-light">
+                        $185
+                    </p>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface opacity-90 leading-relaxed">
+                    A nocturnal alchemy designed to harness your skin's peak repair cycle. Suspended in a botanical matrix, this potent elixir transforms visible fatigue into an ethereal, rested luminosity by dawn.
+                </p>
+<div class="flex flex-col gap-sm border-t border-white/10 pt-md">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Key Ingredients</h3>
+<ul class="flex flex-wrap gap-sm">
+<li class="bg-surface-charcoal border border-border-glow px-sm py-xs rounded-DEFAULT font-label-sm text-label-sm text-primary">Orchid Phyto-Complex</li>
+<li class="bg-surface-charcoal border border-border-glow px-sm py-xs rounded-DEFAULT font-label-sm text-label-sm text-primary">Multi-Weight Hyaluronic Acid</li>
+<li class="bg-surface-charcoal border border-border-glow px-sm py-xs rounded-DEFAULT font-label-sm text-label-sm text-primary">Blue Tansy Extract</li>
+</ul>
+</div>
+<div class="pt-md mt-auto">
+<button class="w-full bg-primary-container text-background font-label-md text-label-md uppercase tracking-[0.1em] py-4 rounded-DEFAULT hover:bg-primary transition-colors flex justify-center items-center gap-2">
+<span>Add to Bag</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mt-sm">Complimentary overnight shipping.</p>
+</div>
+</div>
+</section>
+<!-- The Ritual Section -->
+<section class="flex flex-col gap-lg">
+<div class="text-center flex flex-col gap-sm items-center">
+<h2 class="font-headline-lg text-headline-lg text-primary">The Ritual</h2>
+<div class="w-12 h-px bg-primary/30"></div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Embrace the quiet of the night. Follow these three steps to maximize the elixir's restorative potential.</p>
+</div>
+<div class="grid grid-cols-3 max-md:grid-cols-1 gap-gutter">
+<!-- Step 1 -->
+<div class="bg-surface-charcoal relative p-lg rounded-DEFAULT border border-border-glow flex flex-col items-center text-center gap-md group overflow-hidden">
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/5 transition-colors duration-500 pointer-events-none"></div>
+<div class="w-16 h-16 rounded-full border border-primary/30 flex items-center justify-center text-primary mb-sm">
+<span class="material-symbols-outlined text-[32px] font-light" data-icon="water_drop">water_drop</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">1. Cleanse</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Prepare a pristine canvas. Gently remove the day's impurities, leaving skin slightly damp.</p>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-charcoal relative p-lg rounded-DEFAULT border border-border-glow flex flex-col items-center text-center gap-md group overflow-hidden">
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/5 transition-colors duration-500 pointer-events-none"></div>
+<div class="w-16 h-16 rounded-full border border-primary/30 flex items-center justify-center text-primary mb-sm">
+<span class="material-symbols-outlined text-[32px] font-light" data-icon="touch_app">touch_app</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">2. Apply</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Warm three to four drops between palms. Press firmly onto the face and neck, focusing on areas of tension.</p>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-charcoal relative p-lg rounded-DEFAULT border border-border-glow flex flex-col items-center text-center gap-md group overflow-hidden">
+<div class="absolute inset-0 bg-primary-container/0 group-hover:bg-primary-container/5 transition-colors duration-500 pointer-events-none"></div>
+<div class="w-16 h-16 rounded-full border border-primary/30 flex items-center justify-center text-primary mb-sm">
+<span class="material-symbols-outlined text-[32px] font-light" data-icon="bedtime">bedtime</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">3. Rest</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Allow the botanical matrix to synchronize with your sleep cycle. Wake to a visibly renewed complexion.</p>
+</div>
+</div>
+</section>
+<!-- Scientific Results Section (Glassmorphic Panel) -->
+<section class="relative bg-surface-glass backdrop-blur-xl border border-border-glow rounded-DEFAULT p-xl max-md:p-lg overflow-hidden">
+<!-- Subtle background accent inside the panel -->
+<div class="absolute right-0 top-0 w-64 h-64 bg-primary-container/5 blur-[100px] rounded-full pointer-events-none"></div>
+<div class="relative z-10 grid grid-cols-12 gap-gutter items-center">
+<div class="col-span-5 max-md:col-span-12 flex flex-col gap-sm">
+<h2 class="font-headline-lg text-headline-lg text-primary">Scientific Efficacy</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Based on a 4-week clinical study of 50 participants, applying the Midnight Renewal Serum nightly.</p>
+</div>
+<div class="col-span-7 max-md:col-span-12 grid grid-cols-2 gap-md pl-lg max-md:pl-0 border-l max-md:border-l-0 max-md:border-t border-white/10 max-md:pt-md">
+<div class="flex flex-col gap-xs">
+<span class="font-display-lg text-display-lg text-primary">94%</span>
+<span class="font-body-md text-body-md text-on-surface">Noticed visibly firmer, plumper skin by morning.</span>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-display-lg text-display-lg text-primary">88%</span>
+<span class="font-body-md text-body-md text-on-surface">Reported a significant reduction in fine lines.</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-white/10 bg-surface-charcoal flex flex-col gap-lg py-xl px-80 max-md:px-20 mt-20">
+<div class="flex justify-between items-start max-md:flex-col gap-lg">
+<div class="font-display-lg text-display-lg text-primary">
+                VIYGO
+            </div>
+<div class="flex flex-col gap-md text-right max-md:text-left">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all duration-200 underline decoration-primary/30" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all duration-200 underline decoration-primary/30" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all duration-200 underline decoration-primary/30" href="#">Sustainability Report</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all duration-200 underline decoration-primary/30" href="#">Our Story</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all duration-200 underline decoration-primary/30" href="#">Careers</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all duration-200 underline decoration-primary/30" href="#">Press</a>
+</div>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant opacity-70 mt-lg">
+            © 2024 VIYGO. ALL RIGHTS RESERVED.
+        </div>
+</footer>
+</body></html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO LUXE - Shop</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#ffb68b",
+                        "on-primary": "#502405",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#e2e2e6",
+                        "outline": "#9f8d84",
+                        "surface-container-low": "#1a1c1f",
+                        "on-tertiary-fixed": "#002020",
+                        "secondary": "#a5cbea",
+                        "surface-dim": "#111316",
+                        "outline-variant": "#52443c",
+                        "on-primary-fixed": "#321200",
+                        "on-surface-variant": "#d7c2b8",
+                        "surface-bright": "#37393d",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#ffb68b",
+                        "surface-container-highest": "#333538",
+                        "surface-container": "#1e2023",
+                        "surface-charcoal": "#1A1D21",
+                        "on-secondary": "#04344d",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "tertiary": "#c7e9e9",
+                        "primary-container": "#ffb68b",
+                        "on-error": "#690005",
+                        "on-background": "#e2e2e6",
+                        "on-tertiary": "#143536",
+                        "error-container": "#93000a",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "primary-fixed": "#ffdbc9",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "primary": "#ffdbc8",
+                        "secondary-fixed": "#c9e6ff",
+                        "surface-variant": "#333538",
+                        "background": "#111316",
+                        "inverse-primary": "#88512e",
+                        "surface": "#111316",
+                        "inverse-surface": "#e2e2e6",
+                        "inverse-on-surface": "#2f3034",
+                        "surface-container-high": "#282a2d",
+                        "on-primary-container": "#7a4523",
+                        "tertiary-fixed": "#c7e9e9",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-secondary-container": "#97bddb",
+                        "secondary-container": "#264d67",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-tertiary-container": "#385858",
+                        "tertiary-container": "#abcdcd",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "border-glow": "rgba(255, 255, 255, 0.2)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "lg": "40px",
+                        "xs": "8px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "sm": "16px",
+                        "xl": "80px",
+                        "md": "24px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-surface');
+            position: relative;
+        }
+        
+        /* Subtle Midnight Floral Texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at 50% 50%, rgba(26, 29, 33, 0.4) 0%, rgba(17, 19, 22, 1) 100%);
+            opacity: 0.8;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glass-panel {
+            background-color: theme('colors.surface-glass');
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid theme('colors.border-glow');
+        }
+
+        .input-glow:focus-within {
+            border-color: theme('colors.primary');
+            box-shadow: 0 0 0 2px rgba(255, 182, 139, 0.2);
+        }
+
+        /* Hide scrollbar for horizontal carousels */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="antialiased font-body-md pb-24 md:pb-0">
+<!-- TopAppBar (Mobile) -->
+<header class="md:hidden bg-surface-glass dark:bg-surface-glass font-headline-md text-headline-md-mobile docked full-width top-0 sticky backdrop-blur-md border-b border-border-glow flat no shadows flex justify-between items-center w-full px-margin-mobile py-xs z-40">
+<button class="text-primary dark:text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tighter">VIYGO</span>
+<button class="text-primary dark:text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</header>
+<main>
+<!-- Cinematic Hero -->
+<section class="relative w-full h-[60vh] min-h-[400px] flex items-end justify-center pb-12 px-margin-mobile">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img alt="Product hero image" class="w-full h-full object-cover opacity-80" data-alt="A high-end cinematic product shot of a minimalist botanical skincare bottle against a mysterious midnight floral background. The lighting is moody and ethereal, with soft copper and warm highlights reflecting off the glass bottle. The overall aesthetic is 'Serene Floral Noir', deeply atmospheric, luxurious, and sophisticated, evoking a premium nighttime apothecary feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV_TjubjNqfOku37--AfekTqogEOSyNkXgbMd3at9l5nbJXoRE_X53_qasJaYLSuEL-2-FwHY5xZtJzEFx_dn6KMNMHrQ_Py50n_eg0fwoh9HyJBnHc6nWAJOJRsmECiezzpz9x_IpJwAJHPznUHufNuYg4537eQE6rdfipf5rSqSa5jiOySNBj2dS-4yrJYip6hbhio1SG2_roFrIUIfBrFBbP6zr1yWv-cDmfSjJaxSJn_IDsTl9mHSvdPFklpIjinDH1Gh1FjOU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent"></div>
+</div>
+<!-- Hero Content -->
+<div class="relative z-10 w-full text-center glass-panel rounded-xl p-md flex flex-col items-center gap-sm">
+<span class="font-label-md text-label-md text-primary tracking-[0.1em] uppercase">New Arrival</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-on-surface">Midnight Elixir</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mx-auto">Potent botanical serums designed to rejuvenate and restore your skin's natural luminosity while you sleep.</p>
+<button class="mt-sm bg-primary text-on-primary font-label-md text-label-md uppercase px-8 py-3 rounded hover:opacity-90 transition-opacity active:scale-95">
+                    Shop The Collection
+                </button>
+</div>
+</section>
+<!-- Search & Filter (Mobile optimized) -->
+<section class="px-margin-mobile py-lg sticky top-[72px] z-30 bg-background/90 backdrop-blur-md">
+<div class="flex flex-col gap-sm">
+<!-- Search Bar -->
+<div class="w-full bg-surface-charcoal rounded-DEFAULT border border-border-glow flex items-center px-sm py-xs input-glow transition-all">
+<span class="material-symbols-outlined text-on-surface-variant mr-xs">search</span>
+<input class="bg-transparent border-none outline-none text-on-surface font-body-md text-body-md w-full placeholder:text-on-surface-variant/50 focus:ring-0 px-0" placeholder="Search serums, cleansers..." type="text"/>
+</div>
+<!-- Category Chips -->
+<div class="flex overflow-x-auto hide-scrollbar gap-xs pb-xs">
+<button class="flex-shrink-0 px-4 py-2 rounded-full bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest">All</button>
+<button class="flex-shrink-0 px-4 py-2 rounded-full border border-secondary text-secondary font-label-sm text-label-sm uppercase tracking-widest hover:bg-secondary/10 transition-colors">Serums</button>
+<button class="flex-shrink-0 px-4 py-2 rounded-full border border-secondary text-secondary font-label-sm text-label-sm uppercase tracking-widest hover:bg-secondary/10 transition-colors">Moisturizers</button>
+<button class="flex-shrink-0 px-4 py-2 rounded-full border border-secondary text-secondary font-label-sm text-label-sm uppercase tracking-widest hover:bg-secondary/10 transition-colors">Cleansers</button>
+</div>
+</div>
+</section>
+<!-- Product Grid (Responsive) -->
+<section class="px-margin-mobile pb-xl">
+<div class="grid grid-cols-2 gap-sm">
+<!-- Product Card 1 -->
+<div class="relative rounded-lg overflow-hidden group flex flex-col h-full bg-surface-container-low border border-border-glow">
+<div class="relative h-48 w-full bg-surface-container-highest">
+<img alt="Luminous Drops" class="w-full h-full object-cover" data-alt="A minimalist amber glass dropper bottle of facial serum resting on a dark, textured slate surface. Subtle warm lighting casts a soft glow on the amber glass, highlighting its rich color against the deep, mysterious background. Serene Floral Noir style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWsi9qD-aPaATOe-sddnTIoYEND9dQctlH60YL-0CuiVIuN4RTf8McgIRXZhj80dYWRlGlj7n9wzIAQhU8Ra8WumvduXlQjRbrlAACAa4ZksGDdGarA72WR-erbHSsfsJvHCup-mHx2uu9WEFyqZKdcoMzxam3JiGrCd7mIRg1CKlipEGdxn7PRSQUM-Jsad3pjDmUy79_VUPl4_1li9_94zOFUf8dorle5JUVewZI9cBnWgYqMlgMOM1LLXa0qPfnzIvpsykF4W2B"/>
+<button class="absolute top-2 right-2 text-on-surface-variant hover:text-primary p-1 bg-surface-glass rounded-full backdrop-blur-sm">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="p-sm flex-grow flex flex-col justify-between glass-panel border-0 border-t">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-1 block">Serum</span>
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">Luminous Drops</h3>
+</div>
+<div class="flex items-center justify-between mt-xs">
+<span class="font-label-md text-label-md text-primary">$85</span>
+<button class="text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="relative rounded-lg overflow-hidden group flex flex-col h-full bg-surface-container-low border border-border-glow">
+<div class="relative h-48 w-full bg-surface-container-highest">
+<img alt="Botanical Cleanser" class="w-full h-full object-cover" data-alt="A sleek, matte black pump bottle of facial cleanser standing next to a single, dark, velvety midnight orchid flower. The lighting is subdued, creating a moody and sophisticated 'Serene Floral Noir' aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRih6ZMf6uLRLKMipCtP2CDMzO07FQZ10P1XHwZtv8m1_W-V1bdh1mgJuI88WXAIdgpCr632XeNAnNUu1go4FUYIRiNIIUtavC7fzo7Oo9uFeGyzOb1FMMGOVTTZoXg2gRpsDR9dWCOsIwzWzWiOQyh41Tz7x5bnaFKB0PAQuv3-eRxGUeOqtpWhIux6_4dMRNobszGP1LADs20idAxXGIyCThWJYX_L3icFMmYCv7Kvc_VALrXfl4s9ce1ttYxK4zlS775Maa93Zu"/>
+<button class="absolute top-2 right-2 text-on-surface-variant hover:text-primary p-1 bg-surface-glass rounded-full backdrop-blur-sm">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="p-sm flex-grow flex flex-col justify-between glass-panel border-0 border-t">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-1 block">Cleanser</span>
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">Botanical Purify</h3>
+</div>
+<div class="flex items-center justify-between mt-xs">
+<span class="font-label-md text-label-md text-primary">$45</span>
+<button class="text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="relative rounded-lg overflow-hidden group flex flex-col h-full bg-surface-container-low border border-border-glow">
+<div class="relative h-48 w-full bg-surface-container-highest">
+<img alt="Night Cream" class="w-full h-full object-cover" data-alt="A frosted glass jar of rich night cream open to reveal its velvety texture, sitting on a dark marble plinth. Deep shadows and a touch of warm, copper-toned light create a luxurious, premium skincare setting in the Serene Floral Noir style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvIqCsxXpEtGsebTi6t9t4pcGZoGoGKDHFGecM8jFEPdXxZpQOxOH2trUtL9kYcbS26ajoaZWiR-fOesVW8lHHonj2fmYTXbX5U_wlyaTSy-Y6hVGe1Tnn8tVylEnRXr4kocfC09jfXuuJXpJfUk9TmIs15PnkzFF4a6BSc90sNyAGS0L6Y0YquuOVlk3tdt_eKXC2Ef3Eyl__9kMle5GNA4XTkCfgmXyOMYh5eALYpCdgsB9srmz-bn_XfUjY7EkoG3dygTwU050o"/>
+<button class="absolute top-2 right-2 text-on-surface-variant hover:text-primary p-1 bg-surface-glass rounded-full backdrop-blur-sm">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="p-sm flex-grow flex flex-col justify-between glass-panel border-0 border-t">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-1 block">Moisturizer</span>
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">Velvet Night</h3>
+</div>
+<div class="flex items-center justify-between mt-xs">
+<span class="font-label-md text-label-md text-primary">$110</span>
+<button class="text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="relative rounded-lg overflow-hidden group flex flex-col h-full bg-surface-container-low border border-border-glow">
+<div class="relative h-48 w-full bg-surface-container-highest">
+<img alt="Eye Serum" class="w-full h-full object-cover" data-alt="A delicate, tall glass vial of eye serum with a metallic copper applicator, standing elegantly against a backdrop of blurred, dark green foliage. The scene captures the essence of scientific precision meeting natural botanicals in a moody, high-end atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvcGBOLvZOXGX8a0Y85zNEetWb5bKa2iCj2mo7eV2oRDLpPni-fnkj4HVb_lnTzXKXmz4PluyShYrHwJjVqXo_2zPW6uaFMiSYgaKw85viPpYScKEaD69cQT4UXtFODkG--QAd08R23uKpX45vIfxeYayDdTaZRMBtVGqu7gHVqLPBwWX0viPKS36AV_geFhfWP-lT7vHeogMQRV2OxI4nCwYvLoPI6e2S_pElabfRThgU99u2dAPVFVp23Y6lTU8qULzaYbm88A3U"/>
+<button class="absolute top-2 right-2 text-on-surface-variant hover:text-primary p-1 bg-surface-glass rounded-full backdrop-blur-sm">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+<div class="p-sm flex-grow flex flex-col justify-between glass-panel border-0 border-t">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-1 block">Eye Care</span>
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">Awaken Contour</h3>
+</div>
+<div class="flex items-center justify-between mt-xs">
+<span class="font-label-md text-label-md text-primary">$65</span>
+<button class="text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden bg-surface-glass dark:bg-surface-glass text-primary dark:text-primary font-label-sm text-label-sm font-display-lg text-display-lg text-primary fixed bottom-0 w-full z-50 rounded-t-full backdrop-blur-xl border-t border-border-glow flat no shadows fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary transition-colors active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined mb-1">home_health</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary transition-colors active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined mb-1">calendar_month</span>
+<span>Booking</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold border-t-2 border-primary pt-1 hover:text-primary transition-colors active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span>Shop</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary transition-colors active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span>Profile</span>
+</a>
+</nav>
+<!-- Footer (Will be hidden on mobile by bottom nav, but semantic) -->
+<footer class="hidden md:flex bg-surface-dim dark:bg-surface-dim text-on-surface dark:text-on-surface font-label-sm text-label-sm uppercase tracking-widest font-display-lg text-display-lg text-primary full-width border-t border-outline-variant flat w-full px-margin-mobile py-lg flex flex-col items-center gap-md">
+<div class="flex gap-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-70" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-70" href="#">Terms</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-70" href="#">Contact</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-70" href="#">Our Story</a>
+</div>
+<p class="text-on-surface-variant mt-sm">© 2024 VIYGO LUXE. ALL RIGHTS RESERVED.</p>
+</footer>
+</body></html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO LUXE - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#ffb68b",
+                        "on-primary": "#502405",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#e2e2e6",
+                        "outline": "#9f8d84",
+                        "surface-container-low": "#1a1c1f",
+                        "on-tertiary-fixed": "#002020",
+                        "secondary": "#a5cbea",
+                        "surface-dim": "#111316",
+                        "outline-variant": "#52443c",
+                        "on-primary-fixed": "#321200",
+                        "on-surface-variant": "#d7c2b8",
+                        "surface-bright": "#37393d",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#ffb68b",
+                        "surface-container-highest": "#333538",
+                        "surface-container": "#1e2023",
+                        "surface-charcoal": "#1A1D21",
+                        "on-secondary": "#04344d",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "tertiary": "#c7e9e9",
+                        "primary-container": "#ffb68b",
+                        "on-error": "#690005",
+                        "on-background": "#e2e2e6",
+                        "on-tertiary": "#143536",
+                        "error-container": "#93000a",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "primary-fixed": "#ffdbc9",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "primary": "#ffdbc8",
+                        "secondary-fixed": "#c9e6ff",
+                        "surface-variant": "#333538",
+                        "background": "#111316",
+                        "inverse-primary": "#88512e",
+                        "surface": "#111316",
+                        "inverse-surface": "#e2e2e6",
+                        "inverse-on-surface": "#2f3034",
+                        "surface-container-high": "#282a2d",
+                        "on-primary-container": "#7a4523",
+                        "tertiary-fixed": "#c7e9e9",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-secondary-container": "#97bddb",
+                        "secondary-container": "#264d67",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-tertiary-container": "#385858",
+                        "tertiary-container": "#abcdcd",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "border-glow": "rgba(255, 255, 255, 0.2)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "lg": "40px",
+                        "xs": "8px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "sm": "16px",
+                        "xl": "80px",
+                        "md": "24px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel {
+                @apply bg-surface-glass backdrop-blur-md border border-border-glow;
+            }
+            .input-field {
+                @apply w-full bg-surface-charcoal border border-[rgba(255,255,255,0.1)] rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-surface-tint focus:ring-2 focus:ring-surface-tint/20 transition-all font-body-md text-body-md placeholder:text-on-surface-variant/50;
+            }
+            .btn-primary {
+                @apply w-full bg-surface-tint text-[#111316] font-label-md text-label-md py-3 px-6 rounded-full hover:opacity-90 transition-opacity active:scale-[0.98] duration-200 flex justify-center items-center gap-2;
+            }
+            .btn-secondary {
+                @apply w-full bg-transparent border border-secondary text-secondary font-label-md text-label-md py-3 px-6 rounded-full hover:bg-secondary/10 transition-colors active:scale-[0.98] duration-200 flex justify-center items-center gap-2;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col items-center justify-center relative overflow-hidden font-body-md text-body-md">
+<!-- Background Image Overlay -->
+<div class="absolute inset-0 z-0">
+<img alt="Midnight floral tapestry background" class="w-full h-full object-cover opacity-30 object-center mix-blend-luminosity blur-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV_TjubjNqfOku37--AfekTqogEOSyNkXgbMd3at9l5nbJXoRE_X53_qasJaYLSuEL-2-FwHY5xZtJzEFx_dn6KMNMHrQ_Py50n_eg0fwoh9HyJBnHc6nWAJOJRsmECiezzpz9x_IpJwAJHPznUHufNuYg4537eQE6rdfipf5rSqSa5jiOySNBj2dS-4yrJYip6hbhio1SG2_roFrIUIfBrFBbP6zr1yWv-cDmfSjJaxSJn_IDsTl9mHSvdPFklpIjinDH1Gh1FjOU"/>
+<div class="absolute inset-0 bg-gradient-to-b from-background/40 to-background/90 mix-blend-multiply"></div>
+</div>
+<!-- Login Container -->
+<main class="w-full max-w-md px-margin-mobile z-10 flex flex-col gap-8">
+<!-- Header -->
+<header class="text-center space-y-2">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tighter">VIYGO</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Sign in to your serene sanctuary.</p>
+</header>
+<!-- Glassmorphism Card -->
+<div class="glass-panel rounded-xl p-6 sm:p-8 space-y-6 shadow-2xl shadow-black/50">
+<form class="space-y-5" onsubmit="event.preventDefault();">
+<!-- Email Field -->
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant block uppercase tracking-widest text-[10px]" for="email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 pointer-events-none text-[20px]" data-icon="mail">mail</span>
+<input class="input-field pl-11" id="email" placeholder="enter@email.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface-variant block uppercase tracking-widest text-[10px]" for="password">Password</label>
+<a class="font-label-sm text-label-sm text-secondary hover:text-surface-tint transition-colors" href="#">Forgot?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 pointer-events-none text-[20px]" data-icon="lock">lock</span>
+<input class="input-field pl-11 pr-11" id="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility_off">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Sign In Button -->
+<div class="pt-2">
+<button class="btn-primary uppercase tracking-widest" type="submit">
+                        Sign In
+                    </button>
+</div>
+</form>
+<div class="relative flex items-center py-2">
+<div class="flex-grow border-t border-border-glow"></div>
+<span class="flex-shrink-0 mx-4 font-label-sm text-label-sm text-on-surface-variant/70 uppercase tracking-widest">Or</span>
+<div class="flex-grow border-t border-border-glow"></div>
+</div>
+<!-- Alternative Login -->
+<div class="space-y-3">
+<button class="btn-secondary uppercase tracking-widest" type="button">
+                    Continue as Guest
+                </button>
+</div>
+</div>
+<!-- Footer Links -->
+<div class="text-center font-label-sm text-label-sm text-on-surface-variant">
+            Don't have an account? <a class="text-primary hover:text-surface-tint transition-colors underline underline-offset-4" href="#">Create one</a>
+</div>
+</main>
+</body></html>

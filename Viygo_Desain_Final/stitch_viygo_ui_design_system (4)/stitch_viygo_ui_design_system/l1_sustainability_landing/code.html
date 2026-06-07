@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Sustainability Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#001e2f",
+                        "surface-container-high": "#282a2d",
+                        "on-surface-variant": "#d7c2b8",
+                        "surface-container-low": "#1a1c1f",
+                        "on-secondary": "#04344d",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "surface": "#111316",
+                        "secondary-container": "#264d67",
+                        "surface-bright": "#37393d",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#111316",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-tertiary-fixed": "#002020",
+                        "on-error": "#690005",
+                        "outline-variant": "#52443c",
+                        "inverse-surface": "#e2e2e6",
+                        "on-tertiary": "#143536",
+                        "surface-container-highest": "#333538",
+                        "surface-tint": "#ffb68b",
+                        "inverse-primary": "#88512e",
+                        "on-secondary-container": "#97bddb",
+                        "tertiary": "#c7e9e9",
+                        "on-primary-container": "#7a4523",
+                        "secondary": "#a5cbea",
+                        "surface-variant": "#333538",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "primary-fixed-dim": "#ffb68b",
+                        "tertiary-fixed": "#c7e9e9",
+                        "background": "#111316",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "on-surface": "#e2e2e6",
+                        "surface-container": "#1e2023",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-primary-fixed": "#321200",
+                        "primary-container": "#ffb68b",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "primary": "#ffdbc8",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "outline": "#9f8d84",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "primary-fixed": "#ffdbc9",
+                        "inverse-on-surface": "#2f3034",
+                        "tertiary-container": "#abcdcd",
+                        "on-primary": "#502405",
+                        "on-tertiary-container": "#385858",
+                        "on-background": "#e2e2e6",
+                        "on-error-container": "#ffdad6",
+                        "surface-charcoal": "#1A1D21"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "margin-desktop": "80px",
+                        "xl": "80px",
+                        "lg": "40px",
+                        "sm": "16px",
+                        "xs": "8px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .floral-texture-bg {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDZaDzNGRwgikFvjlsNm_HI7VRGNA4WUGPus_q47eo4au5LnlcfJQSyrDOytyTJACpDvM2R31soBhmSUNCAgdFSGd3MPpZs6LeoQNGLQoky_O7I83qYejjLmDQgnFJKbEzHcynwVfe10PulaYKvMfs09Rf3hcz8zfwEEpMlzfx7kKezrOZVXYOw7m0jNWepXTLQ3uOfjO4DkuM1OFD028vb8YNe30tqIuVfwWzG3eMMVXVRD_fYBjsue-msOntA4VPVGvgwfEAYvfDl');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+        
+        /* Glassmorphism utility */
+        .glass-panel {
+            background-color: rgba(26, 29, 33, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-panel-heavy {
+            background-color: rgba(17, 19, 22, 0.8);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Inner Glow */
+        .inner-glow {
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Custom Scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111316;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333538;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFB68B;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen relative overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Global Background Texture Overlay -->
+<div class="fixed inset-0 pointer-events-none z-[-1] opacity-10 bg-surface">
+<!-- Optional global subtle texture could go here if separate from hero -->
+</div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-glass backdrop-blur-md border-b border-white/20 transition-all duration-300" id="main-header">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 w-full">
+<!-- Brand Logo -->
+<a class="font-headline-md text-headline-md text-primary tracking-tighter" href="#">VIYGO</a>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex space-x-gutter">
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary transition-all duration-300" href="#">Lookbook</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary transition-all duration-300" href="#">Shop</a>
+<!-- Active Navigation Item -->
+<a class="font-label-md text-label-md uppercase tracking-wider text-primary border-b-2 border-primary pb-1 hover:text-primary transition-all duration-300" href="#">Sustainability</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary transition-all duration-300" href="#">Help</a>
+</nav>
+<!-- Trailing Icons -->
+<div class="flex items-center space-x-sm">
+<button class="text-primary hover:text-primary transition-all duration-300 active:scale-95 active:opacity-80 p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+</button>
+<button class="text-primary hover:text-primary transition-all duration-300 active:scale-95 active:opacity-80 p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+</button>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-primary p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-20">
+<!-- Hero Section with Floral Texture -->
+<section class="relative w-full min-h-[70vh] flex items-center justify-center overflow-hidden floral-texture-bg bg-surface/80">
+<!-- Gradient Overlay for readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
+<div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto py-xl">
+<span class="font-label-md text-label-md text-primary tracking-[0.2em] uppercase mb-sm block">Our Commitment</span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-md">
+                    Beauty rooted in <br/>
+<span class="text-primary">Conscious Science.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-lg">
+                    Discover how VIYGO balances the mysterious depth of nature with clinical precision, ensuring every product honors the earth that provides it.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-sm">
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-lg py-sm rounded-DEFAULT hover:opacity-90 transition-opacity">
+                        Explore Our Impact
+                    </button>
+<button class="bg-transparent border border-secondary text-secondary font-label-md text-label-md px-lg py-sm rounded-DEFAULT hover:bg-secondary/10 transition-colors">
+                        Download 2024 Report
+                    </button>
+</div>
+</div>
+</section>
+<!-- Key Metrics Bento Grid -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+<div class="mb-lg">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Measurable Impact.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Real numbers, real change across our global footprint.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Metric 1: Carbon Offset -->
+<div class="glass-panel p-lg rounded-xl flex flex-col justify-between min-h-[240px] relative group overflow-hidden">
+<div class="absolute top-0 right-0 p-md opacity-20 group-hover:opacity-100 transition-opacity duration-500 text-primary">
+<span class="material-symbols-outlined text-[64px]" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block mb-xs">Carbon Offset</span>
+<div class="font-display-lg text-display-lg text-on-surface">12.5k<span class="text-primary text-headline-md font-headline-md">T</span></div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-md">Tonnes of CO2 offset through verified reforestation projects in 2024.</p>
+</div>
+<!-- Metric 2: Plastic Saved -->
+<div class="glass-panel p-lg rounded-xl flex flex-col justify-between min-h-[240px] relative group overflow-hidden bg-surface-charcoal">
+<div class="absolute top-0 right-0 p-md opacity-20 group-hover:opacity-100 transition-opacity duration-500 text-primary">
+<span class="material-symbols-outlined text-[64px]" style="font-variation-settings: 'FILL' 1;">recycling</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block mb-xs">Ocean Bound Plastic</span>
+<div class="font-display-lg text-display-lg text-on-surface">450<span class="text-primary text-headline-md font-headline-md">kg</span></div>
+</div>
+<div class="mt-md">
+<p class="font-body-md text-body-md text-on-surface-variant mb-xs">Recovered from coastal communities.</p>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[75%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Metric 3: Refillable Progress -->
+<div class="glass-panel p-lg rounded-xl flex flex-col justify-between min-h-[240px] relative group overflow-hidden md:col-span-1">
+<div class="absolute top-0 right-0 p-md opacity-20 group-hover:opacity-100 transition-opacity duration-500 text-primary">
+<span class="material-symbols-outlined text-[64px]" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block mb-xs">Refillable Portfolio</span>
+<div class="font-display-lg text-display-lg text-on-surface">82<span class="text-primary text-headline-md font-headline-md">%</span></div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-md">Of our core skincare line is now available in glass refill pods.</p>
+</div>
+</div>
+</section>
+<!-- Circular Beauty Program -->
+<section class="py-xl bg-surface-container-low border-y border-white/5">
+<div class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
+<!-- Content -->
+<div>
+<span class="material-symbols-outlined text-primary text-[48px] mb-md block" style="font-variation-settings: 'FILL' 0;">all_inclusive</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-sm">The Circular Beauty Initiative.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg">
+                        Luxury shouldn't end up in a landfill. Our closed-loop system ensures your empty glass vessels are sterilized, refilled, and returned to the cycle. 
+                    </p>
+<ul class="space-y-md mb-lg">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-secondary mr-sm mt-1">check_circle</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface uppercase">Return Empties</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Send back 3 or more full-size glass containers using our prepaid mailer.</p>
+</div>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-secondary mr-sm mt-1">check_circle</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface uppercase">Earn Rewards</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Receive $15 credit towards your next refill purchase.</p>
+</div>
+</li>
+</ul>
+<button class="bg-transparent border border-secondary text-secondary font-label-md text-label-md px-lg py-sm rounded-DEFAULT hover:bg-secondary/10 transition-colors">
+                        Join the Cycle
+                    </button>
+</div>
+<!-- Image / Visual Graphic -->
+<div class="relative h-[500px] rounded-xl overflow-hidden glass-panel flex items-center justify-center inner-glow bg-surface-charcoal">
+<!-- Abstract representation since we don't have a specific image for this, using styling to create a premium feel -->
+<div class="absolute inset-0 bg-gradient-to-br from-surface-charcoal to-surface-container-lowest"></div>
+<!-- Decorative circles representing the cycle -->
+<div class="relative z-10 w-64 h-64 rounded-full border border-primary/30 flex items-center justify-center">
+<div class="w-48 h-48 rounded-full border border-secondary/40 flex items-center justify-center animate-[spin_20s_linear_infinite]">
+<div class="w-32 h-32 rounded-full border border-white/10 backdrop-blur-md flex items-center justify-center bg-surface-glass">
+<span class="material-symbols-outlined text-primary text-[48px]" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Ethical Sourcing Featured Area -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+<div class="mb-lg text-center max-w-2xl mx-auto">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Ethical Roots.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">From soil to serum, we trace every botanical active to ensure fair wages and regenerative farming practices.</p>
+</div>
+<!-- Full width card with background image representing sourcing -->
+<div class="relative w-full h-[60vh] rounded-xl overflow-hidden flex items-end inner-glow group">
+<!-- Using a placeholder for the sourcing image -->
+<div class="absolute inset-0 bg-surface-charcoal">
+<img alt="Ethical sourcing landscape" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" data-alt="A sweeping, cinematic landscape view of a lush, mist-covered botanical farm at twilight. The scene is illuminated by soft, moody lighting that highlights the deep, mysterious greens of the foliage and the rich, dark soil. Copper-toned farm tools or subtle architectural elements are visible in the background, reinforcing a premium, organic aesthetic. The atmosphere is serene, high-end, and deeply connected to nature, reflecting a sophisticated 'Midnight Botanical' style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvSVh9RBxOkkyO7Tnobk17kIh35YtnYUfAxmEWbnMY2tRbTV6L9Y1vzpauYAYU_gkQz8pTwCRXXGjYDFlio8ivTJyUWnD0k_yiYEd5ednBOeQJOhMrw-GWinzLc6g96-xk-ge1utKUbk79CCenbvPcoQ6WewyyH6lkUO_3EmGsopDsT-tV2a6ChD28RMf30HGwnAi9_jDWXAvIAKUMhpwqSZQTwW6CFuGESPqTXSzuK9p6zii7KEc5Wif8gmNzE2_bgWLyxrTm8_FZ"/>
+</div>
+<!-- Gradient to ensure text readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<!-- Content overlay -->
+<div class="relative z-10 p-lg w-full md:w-2/3 lg:w-1/2">
+<div class="glass-panel-heavy p-md rounded-lg">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block mb-xs">Featured Origin</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">The Midnight Orchid Cooperative.</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">
+                            Partnering directly with female-led cooperatives in Southeast Asia to harvest our signature Midnight Orchid extract sustainably.
+                        </p>
+<a class="inline-flex items-center text-primary font-label-md text-label-md hover:underline" href="#">
+                            Watch the Documentary <span class="material-symbols-outlined ml-xs text-sm">play_circle</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full py-xl px-margin-mobile md:px-margin-desktop border-t border-white/10">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter max-w-7xl mx-auto">
+<!-- Brand Column -->
+<div class="mb-lg md:mb-0">
+<a class="font-headline-sm text-headline-sm text-primary block mb-sm" href="#">VIYGO</a>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Serene Floral Noir. Clinical precision meets midnight botanicals.</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 VIYGO LUXE. All rights reserved.</p>
+</div>
+<!-- Links Column -->
+<div class="flex flex-col space-y-sm">
+<a class="font-body-md text-body-md text-primary font-bold hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Sustainability Reports</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary underline transition-all hover:translate-x-1 duration-200" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple scroll effect for header
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-lg', 'bg-surface-glass/90');
+                header.classList.remove('bg-surface-glass');
+            } else {
+                header.classList.remove('shadow-lg', 'bg-surface-glass/90');
+                header.classList.add('bg-surface-glass');
+            }
+        });
+    </script>
+</body></html>

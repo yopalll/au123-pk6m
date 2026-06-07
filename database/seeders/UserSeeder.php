@@ -30,23 +30,26 @@ class UserSeeder extends Seeder
     {
         $path = database_path('data/users.json');
 
-        if (!file_exists($path) || filesize($path) <= 5) {
+        if (! file_exists($path) || filesize($path) <= 5) {
             $this->bootstrapMinimal();
+
             return;
         }
 
         $users = json_decode(file_get_contents($path), true) ?? [];
         if (empty($users)) {
             $this->bootstrapMinimal();
+
             return;
         }
 
         // Cache hash per password unik (bcrypt mahal!)
         $hashCache = [];
         $hashOf = function (string $plain) use (&$hashCache): string {
-            if (!isset($hashCache[$plain])) {
+            if (! isset($hashCache[$plain])) {
                 $hashCache[$plain] = Hash::make($plain);
             }
+
             return $hashCache[$plain];
         };
 
@@ -61,16 +64,16 @@ class UserSeeder extends Seeder
                 $rolesCount[$role] = ($rolesCount[$role] ?? 0) + 1;
 
                 $rows[] = [
-                    'id_user'    => $u['id_user'],
+                    'id_user' => $u['id_user'],
                     'first_name' => mb_substr($u['first_name'] ?? 'User', 0, 100),
-                    'last_name'  => mb_substr($u['last_name'] ?? '', 0, 100),
-                    'email'      => $u['email'],
+                    'last_name' => mb_substr($u['last_name'] ?? '', 0, 100),
+                    'email' => $u['email'],
                     // PLAIN-TEXT di JSON → HASH bcrypt di MySQL
-                    'password'   => $hashOf($u['password'] ?? 'password'),
-                    'role'       => $role,
-                    'is_active'  => $u['is_active'] ?? true,
+                    'password' => $hashOf($u['password'] ?? 'password'),
+                    'role' => $role,
+                    'is_active' => $u['is_active'] ?? true,
                     'phone_number' => $u['phone_number'] ?? null,
-                    'profile_url'  => $u['profile_url'] ?? null,
+                    'profile_url' => $u['profile_url'] ?? null,
                     'created_at' => $now,
                     'updated_at' => $now,
                 ];
@@ -96,24 +99,24 @@ class UserSeeder extends Seeder
         $now = now();
         DB::table('users')->insert([
             [
-                'id_user'    => 1,
+                'id_user' => 1,
                 'first_name' => 'Admin',
-                'last_name'  => 'Viygo',
-                'email'      => 'admin@viygo.com',
-                'password'   => Hash::make('password'),
-                'role'       => 'admin',
-                'is_active'  => true,
+                'last_name' => 'Viygo',
+                'email' => 'admin@viygo.com',
+                'password' => Hash::make('password'),
+                'role' => 'admin',
+                'is_active' => true,
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
             [
-                'id_user'    => 2,
+                'id_user' => 2,
                 'first_name' => 'Test',
-                'last_name'  => 'Customer',
-                'email'      => 'customer@viygo.com',
-                'password'   => Hash::make('password'),
-                'role'       => 'customer',
-                'is_active'  => true,
+                'last_name' => 'Customer',
+                'email' => 'customer@viygo.com',
+                'password' => Hash::make('password'),
+                'role' => 'customer',
+                'is_active' => true,
                 'created_at' => $now,
                 'updated_at' => $now,
             ],

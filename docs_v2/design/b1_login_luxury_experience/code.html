@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Sign In</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "surface-variant": "#333538",
+                        "surface-container-high": "#282a2d",
+                        "on-error": "#690005",
+                        "on-surface-variant": "#d7c2b8",
+                        "surface-tint": "#ffb68b",
+                        "tertiary-fixed": "#c7e9e9",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#264d67",
+                        "on-tertiary": "#143536",
+                        "on-primary-fixed": "#321200",
+                        "tertiary": "#c7e9e9",
+                        "inverse-on-surface": "#2f3034",
+                        "surface-container-low": "#1a1c1f",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "on-background": "#e2e2e6",
+                        "surface-bright": "#37393d",
+                        "surface-container-highest": "#333538",
+                        "background": "#111316",
+                        "secondary": "#a5cbea",
+                        "on-secondary-fixed": "#001e2f",
+                        "primary": "#ffdbc8",
+                        "inverse-surface": "#e2e2e6",
+                        "primary-fixed-dim": "#ffb68b",
+                        "surface": "#111316",
+                        "on-primary": "#502405",
+                        "tertiary-container": "#abcdcd",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "on-secondary-container": "#97bddb",
+                        "outline": "#9f8d84",
+                        "on-secondary": "#04344d",
+                        "on-primary-container": "#7a4523",
+                        "on-tertiary-container": "#385858",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "on-surface": "#e2e2e6",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "surface-container": "#1e2023",
+                        "outline-variant": "#52443c",
+                        "surface-dim": "#111316",
+                        "primary-fixed": "#ffdbc9",
+                        "inverse-primary": "#88512e",
+                        "surface-charcoal": "#1A1D21",
+                        "primary-container": "#ffb68b",
+                        "on-tertiary-fixed": "#002020",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-primary-fixed-variant": "#6c3a19"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "margin-desktop": "80px",
+                        "margin-mobile": "20px",
+                        "sm": "16px",
+                        "lg": "40px",
+                        "xl": "80px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "label-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #111316;
+            color: #e2e2e6;
+        }
+        
+        .glass-panel {
+            background: rgba(17, 19, 22, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .input-focus-glow:focus {
+            border-color: #ffb68b;
+            box-shadow: 0 0 0 2px rgba(255, 182, 139, 0.2);
+            outline: none;
+        }
+        
+        /* Botanical background texture overlay */
+        .bg-texture {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex antialiased bg-background text-on-background relative font-body-md">
+<div class="bg-texture"></div>
+<div class="w-full flex flex-col md:flex-row min-h-screen">
+<!-- Left Side: Image Canvas -->
+<div class="hidden md:block w-1/2 lg:w-3/5 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent to-background z-10"></div>
+<img alt="Cinematic macro shot of a dark midnight orchid blooming in low light." class="absolute inset-0 w-full h-full object-cover" data-alt="A highly detailed, cinematic macro photograph of a dark, almost black orchid blossoming. The lighting is extremely dramatic and moody, employing a 'Serene Floral Noir' aesthetic. Subtle, warm copper and gold highlights gently caress the edges of the petals, emerging from a deep, velvety charcoal background. The composition is asymmetrical, sophisticated, and evocative of a high-end luxury lifestyle or premium skincare brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7Drpyr09MMBBw8iMiJ4ulPQIZ-vK8aSsaChwjv-sivWtyTPGAZPm-rm6DYRuUtMFgHi-mt8IFHpuWXZpFoH36evbtuadC7QcOGgKKIP6tMdcSp4aGsGicqzpNZF3ZvsijmPOJf_e5MHmwpZ3F7dVBsEDf8ohY4qNG4Zfs9jMxx3Aee-H7Y0c1rwNCYaJlNMTWafJEFjgZ7FVuWTPzNsMG9cG7MhZvS-Lm1vDHFxbIIBXyA_arfK0VHgwfuujo2imqkHzhqhk3BROW"/>
+<!-- Brand Overlay -->
+<div class="absolute top-margin-desktop left-margin-desktop z-20">
+<h1 class="font-display-lg text-display-lg text-primary-fixed tracking-tight">VIYGO</h1>
+</div>
+</div>
+<!-- Right Side: Login Form Canvas -->
+<div class="w-full md:w-1/2 lg:w-2/5 flex items-center justify-center p-margin-mobile md:p-margin-desktop relative z-10 bg-surface-charcoal md:bg-transparent">
+<!-- Mobile Brand Header -->
+<div class="absolute top-margin-mobile left-margin-mobile md:hidden z-20 w-full text-center pr-margin-mobile">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary-fixed tracking-tight">VIYGO</h1>
+</div>
+<div class="w-full max-w-md glass-panel p-lg rounded-xl flex flex-col gap-lg mt-16 md:mt-0 shadow-2xl relative overflow-hidden">
+<!-- Subtle Top Highlight -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-surface-tint to-transparent opacity-50"></div>
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Welcome Back</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Enter your details to access your sanctuary.</p>
+</div>
+<form action="#" class="flex flex-col gap-md" method="POST">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant" for="email">Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">mail</span>
+<input class="w-full bg-surface-container-low border border-border-glow rounded text-on-surface py-3 pl-10 pr-4 font-body-md text-body-md transition-all duration-300 input-focus-glow placeholder:text-surface-variant" id="email" name="email" placeholder="name@example.com" required="" type="email"/>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant" for="password">Password</label>
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors" href="#">Forgot Password?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">lock</span>
+<input class="w-full bg-surface-container-low border border-border-glow rounded text-on-surface py-3 pl-10 pr-4 font-body-md text-body-md transition-all duration-300 input-focus-glow placeholder:text-surface-variant" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-widest py-4 rounded hover:bg-primary-fixed transition-colors duration-300 mt-2 flex justify-center items-center gap-2" type="submit">
+                        Sign In
+                        <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+</button>
+</form>
+<div class="relative flex items-center py-2">
+<div class="flex-grow border-t border-border-glow"></div>
+<span class="flex-shrink-0 mx-4 font-label-sm text-label-sm text-on-surface-variant uppercase">or</span>
+<div class="flex-grow border-t border-border-glow"></div>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="w-full flex justify-center items-center py-3 border border-border-glow rounded font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-colors duration-300" href="#">
+                        Continue as guest
+                    </a>
+<p class="text-center font-body-md text-body-md text-on-surface-variant mt-4">
+                        Don't have an account? <a class="text-surface-tint hover:text-primary-fixed transition-colors font-label-md text-label-md ml-1" href="#">Sign up</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Secure Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#04344d",
+                      "tertiary-container": "#abcdcd",
+                      "on-tertiary-fixed": "#002020",
+                      "surface-bright": "#37393d",
+                      "surface": "#111316",
+                      "on-primary-fixed": "#321200",
+                      "surface-container-low": "#1a1c1f",
+                      "secondary-fixed": "#c9e6ff",
+                      "error-container": "#93000a",
+                      "tertiary-fixed-dim": "#abcdcd",
+                      "surface-container": "#1e2023",
+                      "border-glow": "rgba(255, 255, 255, 0.2)",
+                      "on-primary": "#502405",
+                      "surface-variant": "#333538",
+                      "surface-glass": "rgba(17, 19, 22, 0.6)",
+                      "secondary-container": "#264d67",
+                      "on-tertiary-container": "#385858",
+                      "surface-charcoal": "#1A1D21",
+                      "surface-container-lowest": "#0c0e11",
+                      "primary-container": "#ffb68b",
+                      "surface-container-highest": "#333538",
+                      "tertiary": "#c7e9e9",
+                      "surface-tint": "#ffb68b",
+                      "outline-variant": "#52443c",
+                      "on-primary-container": "#7a4523",
+                      "outline": "#9f8d84",
+                      "secondary-fixed-dim": "#a5cbea",
+                      "on-error": "#690005",
+                      "tertiary-fixed": "#c7e9e9",
+                      "surface-dim": "#111316",
+                      "background": "#111316",
+                      "on-surface": "#e2e2e6",
+                      "primary-fixed-dim": "#ffb68b",
+                      "inverse-surface": "#e2e2e6",
+                      "surface-container-high": "#282a2d",
+                      "on-error-container": "#ffdad6",
+                      "inverse-on-surface": "#2f3034",
+                      "primary-fixed": "#ffdbc9",
+                      "on-tertiary": "#143536",
+                      "on-secondary-fixed": "#001e2f",
+                      "on-primary-fixed-variant": "#6c3a19",
+                      "secondary": "#a5cbea",
+                      "on-secondary-container": "#97bddb",
+                      "on-secondary-fixed-variant": "#234a64",
+                      "inverse-primary": "#88512e",
+                      "error": "#ffb4ab",
+                      "on-tertiary-fixed-variant": "#2c4c4c",
+                      "primary": "#ffdbc8",
+                      "on-surface-variant": "#d7c2b8",
+                      "on-background": "#e2e2e6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "xl": "80px",
+                      "margin-desktop": "80px",
+                      "gutter": "24px",
+                      "lg": "40px",
+                      "xs": "8px",
+                      "margin-mobile": "20px",
+                      "sm": "16px",
+                      "md": "24px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "label-sm": [
+                              "Manrope"
+                      ],
+                      "body-md": [
+                              "Manrope"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "Manrope"
+                      ],
+                      "label-md": [
+                              "Manrope"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #111316;
+            background-image: radial-gradient(circle at 50% 0%, rgba(255, 182, 139, 0.05) 0%, transparent 70%);
+            color: #e2e2e6;
+        }
+        .glass-panel {
+            background-color: rgba(17, 19, 22, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .form-input {
+            background-color: #1A1D21;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e2e2e6;
+        }
+        .form-input:focus {
+            border-color: #FFB68B;
+            box-shadow: 0 0 0 2px rgba(255, 182, 139, 0.2);
+            outline: none;
+        }
+        /* Hide TopNavBar and Footer based on rules for Transactional/Checkout pages */
+    </style>
+</head>
+<body class="min-h-screen font-body-md text-body-md antialiased relative">
+<!-- Background Texture -->
+<div class="fixed inset-0 pointer-events-none opacity-10 z-0 bg-[url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&amp;w=2000&amp;auto=format&amp;fit=crop')] bg-cover bg-center mix-blend-overlay" data-alt="A subtle midnight floral tapestry with dark shadowy leaves and faint botanical textures. The image is mostly deep blacks and dark charcoals, creating a mysterious and luxurious mood. Soft, out-of-focus floral elements blend seamlessly into the dark background, providing a serene and sophisticated atmosphere suitable for a high-end beauty brand."></div>
+<main class="relative z-10 pt-lg pb-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<!-- Minimal Header for Checkout -->
+<header class="mb-lg flex justify-center items-center">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter uppercase">VIYGO</h1>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Left Column: Forms -->
+<div class="lg:col-span-7 space-y-lg">
+<!-- Express Checkout -->
+<section class="glass-panel rounded-xl p-md">
+<h2 class="font-headline-md text-headline-md text-primary mb-md">Express Checkout</h2>
+<div class="flex gap-sm">
+<button class="flex-1 py-sm rounded-DEFAULT bg-white text-black font-label-md text-label-md flex justify-center items-center gap-xs hover:bg-gray-200 transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">ios</span>
+                            Pay
+                        </button>
+</div>
+<div class="relative flex py-md items-center">
+<div class="flex-grow border-t border-white/10"></div>
+<span class="flex-shrink-0 mx-sm text-on-surface-variant font-label-sm text-label-sm uppercase">Or continue with</span>
+<div class="flex-grow border-t border-white/10"></div>
+</div>
+</section>
+<!-- Shipping Details -->
+<section class="glass-panel rounded-xl p-md">
+<h2 class="font-headline-md text-headline-md text-primary mb-md">Shipping Information</h2>
+<form class="space-y-sm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">First Name</label>
+<input class="form-input w-full rounded-DEFAULT p-xs font-body-md text-body-md" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">Last Name</label>
+<input class="form-input w-full rounded-DEFAULT p-xs font-body-md text-body-md" type="text"/>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">Address</label>
+<input class="form-input w-full rounded-DEFAULT p-xs font-body-md text-body-md" type="text"/>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-sm">
+<div class="md:col-span-1">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">City</label>
+<input class="form-input w-full rounded-DEFAULT p-xs font-body-md text-body-md" type="text"/>
+</div>
+<div class="md:col-span-1">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">State</label>
+<input class="form-input w-full rounded-DEFAULT p-xs font-body-md text-body-md" type="text"/>
+</div>
+<div class="col-span-2 md:col-span-1">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">ZIP Code</label>
+<input class="form-input w-full rounded-DEFAULT p-xs font-body-md text-body-md" type="text"/>
+</div>
+</div>
+</form>
+</section>
+<!-- Payment Details -->
+<section class="glass-panel rounded-xl p-md">
+<h2 class="font-headline-md text-headline-md text-primary mb-md">Secure Payment</h2>
+<form class="space-y-sm">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">Card Number</label>
+<div class="relative">
+<input class="form-input w-full rounded-DEFAULT p-xs pl-10 font-body-md text-body-md" placeholder="0000 0000 0000 0000" type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">credit_card</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">Expiration Date</label>
+<input class="form-input w-full rounded-DEFAULT p-xs font-body-md text-body-md" placeholder="MM/YY" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">CVC</label>
+<input class="form-input w-full rounded-DEFAULT p-xs font-body-md text-body-md" placeholder="123" type="text"/>
+</div>
+</div>
+<div class="pt-sm">
+<label class="flex items-center gap-xs cursor-pointer">
+<input class="w-4 h-4 rounded-DEFAULT border-white/10 bg-surface-charcoal text-primary focus:ring-primary focus:ring-offset-surface" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface-variant">Billing address matches shipping</span>
+</label>
+</div>
+</form>
+</section>
+</div>
+<!-- Right Column: Order Summary -->
+<div class="lg:col-span-5">
+<div class="glass-panel rounded-xl p-md sticky top-md">
+<h2 class="font-headline-md text-headline-md text-primary mb-md pb-xs border-b border-white/10">Order Summary</h2>
+<!-- Items -->
+<div class="space-y-sm mb-md">
+<!-- Item 1 -->
+<div class="flex items-center gap-sm">
+<div class="w-16 h-16 rounded-DEFAULT overflow-hidden bg-surface-charcoal shrink-0 border border-white/10">
+<img alt="Product" class="w-full h-full object-cover" data-alt="A small, elegant frosted glass jar of skincare cream resting on a dark slate surface. Subtle ambient lighting highlights the copper-toned cap, reflecting the serene floral noir aesthetic. The overall mood is luxurious and clinical." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-XKjFBr1KVCQ5naEiGA2bzIu_7p0I0WfFRecoSeLyMYZha7wutA3iuibMJso4bb4fE65y576Dzxon9OHLVyL-vTIToomR6D1Wobg5CaKmoFIyQdpRJ3Mgtot80b6JPQqs8jwqV2vk-0BMZMz7s-GfEPufF984QhIz4y-DqBKvQnFh0TtVN9D-hwiQxLwnhQN6Y9dVoN0xxmkMJjzimFJ8LExVPphBgZq2AoR0wC_C6hSydqQIRQgSkrlDuPLsLjkwZBK0V8AE7Dv7"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-label-md text-label-md text-on-surface">Midnight Elixir Serum</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Qty: 1</p>
+</div>
+<div class="font-body-md text-body-md text-primary">$125.00</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-sm">
+<div class="w-16 h-16 rounded-DEFAULT overflow-hidden bg-surface-charcoal shrink-0 border border-white/10">
+<img alt="Product" class="w-full h-full object-cover" data-alt="A sleek, tall dark glass bottle with a minimalist label and a dropper, standing against a deep charcoal background. A soft, warm copper-hued light gently illuminates one side of the bottle, emphasizing its premium, apothecary feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK5ZDUKVDhqHBEE1c6OpIMMZMgORnXttqZz6GtpcyaCYdB2Te1dM8vulkE4GKbpARkAT_ND_EIZsEG6hvmO7VIhor2pSWrPaJqFp4kFnbOUDi568WjmCIDffONNhQdtOY-hYMgNf7wDq_wNz3nNW1MI8JlF26ipR-Jnl3EU5TiekcXSYNDcbA2Iw7zWakVVePATSlEosO-Cc7ci_1CQgZjpgvsyGxAZzY7_uC0h0BZc_ciTzh5xhbjUFbiJaVoomdAbv1GL5IRYKKK"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-label-md text-label-md text-on-surface">Botanical Cleansing Oil</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Qty: 1</p>
+</div>
+<div class="font-body-md text-body-md text-primary">$68.00</div>
+</div>
+</div>
+<!-- Totals -->
+<div class="border-t border-white/10 pt-sm space-y-xs font-body-md text-body-md">
+<div class="flex justify-between text-on-surface-variant">
+<span>Subtotal</span>
+<span>$193.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Shipping</span>
+<span>Complimentary</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Taxes</span>
+<span>$15.44</span>
+</div>
+</div>
+<div class="border-t border-white/10 mt-sm pt-sm flex justify-between items-end">
+<span class="font-headline-md text-headline-md text-on-surface">Total</span>
+<span class="font-headline-lg text-headline-lg text-primary">$208.44</span>
+</div>
+<!-- Action -->
+<button class="w-full mt-lg py-sm px-md bg-primary-container text-[#111316] font-label-md text-label-md rounded-DEFAULT hover:opacity-90 transition-opacity flex justify-center items-center gap-xs uppercase tracking-wider">
+                        Complete Ritual
+                        <span class="material-symbols-outlined text-[18px]">lock</span>
+</button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mt-sm flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+                        Secure Encrypted Checkout
+                    </p>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Circular Beauty Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "background": "#111316",
+                        "surface-dim": "#111316",
+                        "inverse-primary": "#88512e",
+                        "surface-variant": "#333538",
+                        "on-tertiary-fixed": "#002020",
+                        "on-primary-fixed": "#321200",
+                        "on-surface-variant": "#d7c2b8",
+                        "surface-bright": "#37393d",
+                        "surface-tint": "#ffb68b",
+                        "inverse-on-surface": "#2f3034",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "primary-fixed": "#ffdbc9",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "secondary": "#a5cbea",
+                        "on-primary-container": "#7a4523",
+                        "tertiary": "#c7e9e9",
+                        "secondary-container": "#264d67",
+                        "on-secondary": "#04344d",
+                        "on-tertiary": "#143536",
+                        "on-secondary-fixed": "#001e2f",
+                        "error": "#ffb4ab",
+                        "outline": "#9f8d84",
+                        "surface-charcoal": "#1A1D21",
+                        "primary": "#ffdbc8",
+                        "primary-fixed-dim": "#ffb68b",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "on-surface": "#e2e2e6",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "on-secondary-container": "#97bddb",
+                        "tertiary-fixed": "#c7e9e9",
+                        "surface-container": "#1e2023",
+                        "surface": "#111316",
+                        "inverse-surface": "#e2e2e6",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "primary-container": "#ffb68b",
+                        "on-primary": "#502405",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "surface-container-lowest": "#0c0e11",
+                        "surface-container-highest": "#333538",
+                        "surface-container-high": "#282a2d",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "outline-variant": "#52443c",
+                        "tertiary-container": "#abcdcd",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-tertiary-container": "#385858",
+                        "surface-container-low": "#1a1c1f",
+                        "on-background": "#e2e2e6"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "gutter": "24px",
+                        "xl": "80px",
+                        "base": "4px",
+                        "margin-desktop": "80px",
+                        "xs": "8px",
+                        "margin-mobile": "20px",
+                        "sm": "16px",
+                        "md": "24px",
+                        "lg": "40px"
+                    },
+                    fontFamily: {
+                        "body-md": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "label-sm": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "label-md": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"]
+                    },
+                    fontSize: {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>body {
+    background-color: #111316;
+    color: #e2e2e6;
+    position: relative
+    }
+/* Serene Floral Noir Background Texture */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCMLiUQpc4bUX--vDuiMceCAa0HB7LMBoKFWfpOTeMkxWRtSt6FZTAvUduOp733jliX2tPM1nFKZWXj9q6d1ZkDX2pzooFWSi_3KObbOKlZUbZ2NPL0PuhWlaxB7R5S74KgLoWnOzuU-jhlYHwYpjG_xdWgSnFYwL6ZaVxfYGramnIfuYUJ6uGOf82prhp4MTwZeXgLd5AANMOvGyybx_GMLRXDy5BDT7wLtXQmPJKyoWPrLToGXa5wUdZFv8jfmUprw9pI4L2yTQdl);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: -1;
+    pointer-events: none
+    }
+.glass-panel {
+    background-color: rgba(17, 19, 22, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2)
+    }</style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface-glass backdrop-blur-md fixed top-0 w-full z-50 border-b border-white/20">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-gutter">
+<a class="font-display-lg text-headline-md text-primary" href="#">VIYGO</a>
+<div class="hidden md:flex gap-md font-body-md text-label-md uppercase tracking-widest">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Lookbook</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Shop</a>
+<a class="text-primary border-b-2 border-primary pb-1 active:opacity-80 transition-all hover:text-primary transition-colors duration-300" href="#">Sustainability</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Help</a>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="text-primary hover:text-primary-fixed-dim transition-colors">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+<button class="text-primary hover:text-primary-fixed-dim transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[100px] pb-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto w-full">
+<!-- Header Section -->
+<header class="mb-xl text-center md:text-left pt-lg">
+<h1 class="font-display-lg-mobile md:font-display-lg text-primary mb-base">Circular Beauty</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl">Your personal impact dashboard. Track your journey towards a more sustainable future through our bottle return and carbon offset program.</p>
+</header>
+<!-- Metrics Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-xl">
+<!-- Bottles Returned -->
+<div class="glass-panel rounded-xl p-md flex flex-col items-center justify-center text-center h-[200px] relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+<span class="material-symbols-outlined text-4xl text-surface-tint mb-sm">recycling</span>
+<span class="font-display-lg text-surface-tint mb-xs">42</span>
+<span class="font-label-sm text-on-surface-variant uppercase tracking-widest">Bottles Returned</span>
+</div>
+<!-- CO2 Offset -->
+<div class="glass-panel rounded-xl p-md flex flex-col items-center justify-center text-center h-[200px] relative overflow-hidden group">
+<div class="absolute inset-0 bg-secondary opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+<span class="material-symbols-outlined text-4xl text-secondary mb-sm">cloud</span>
+<span class="font-display-lg text-secondary mb-xs">15kg</span>
+<span class="font-label-sm text-on-surface-variant uppercase tracking-widest">CO2 Offset</span>
+</div>
+<!-- Trees Planted -->
+<div class="glass-panel rounded-xl p-md flex flex-col items-center justify-center text-center h-[200px] relative overflow-hidden group">
+<div class="absolute inset-0 bg-tertiary-fixed-dim opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+<span class="material-symbols-outlined text-4xl text-tertiary-fixed-dim mb-sm">park</span>
+<span class="font-display-lg text-tertiary-fixed-dim mb-xs">3</span>
+<span class="font-label-sm text-on-surface-variant uppercase tracking-widest">Trees Planted</span>
+</div>
+</div>
+<!-- Progress Section -->
+<div class="glass-panel rounded-xl p-lg mb-xl">
+<div class="flex justify-between items-end mb-sm">
+<div>
+<h2 class="font-headline-md text-primary">Next Milestone: Artisan Apothecary Set</h2>
+<p class="font-body-md text-on-surface-variant">8 more returns needed to unlock your exclusive reward.</p>
+</div>
+<div class="hidden md:block font-headline-md text-primary">42 / 50</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden mt-md">
+<div class="h-full bg-surface-tint rounded-full" style="width: 84%;"></div>
+</div>
+<div class="mt-md flex gap-sm">
+<button class="bg-primary-fixed-dim text-[#111316] font-label-md px-lg py-sm rounded-DEFAULT uppercase tracking-widest hover:opacity-90 transition-opacity">Request Return Kit</button>
+<button class="bg-transparent border border-secondary text-secondary font-label-md px-lg py-sm rounded-DEFAULT uppercase tracking-widest hover:bg-secondary/10 transition-colors">View Rewards</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full border-t border-white/10 mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter px-margin-mobile md:px-margin-desktop py-xl max-w-[1440px] mx-auto">
+<div class="md:col-span-4 flex flex-col gap-sm">
+<span class="font-display-lg text-headline-lg text-primary">VIYGO</span>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 VIYGO. All rights reserved. Crafted for tranquility.</p>
+</div>
+<div class="md:col-span-8 flex flex-col md:flex-row justify-end gap-lg md:gap-xl">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors transition-opacity duration-200" href="#">Shipping &amp; Returns</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors transition-opacity duration-200" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+</body></html>

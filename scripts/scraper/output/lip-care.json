@@ -1,0 +1,41 @@
+[
+  {
+    "fresh_product_id": "sugar-lip-treatment-advanced-therapy",
+    "fresh_url": "https://www.fresh.com/products/sugar-lip-treatment-advanced-therapy",
+    "nama": "Sugar Lip Treatment Advanced Therapy",
+    "kategori": "Lip Care",
+    "kategori_lain": ["Travel Size"],
+    "koleksi": "Sugar Collection",
+    "deskripsi": "Perawatan bibir intensif yang melembapkan dan menghaluskan bibir kering.",
+    "key_ingredients": "Sugar, Meadowfoam Seed Oil, Hyaluronic Filling Spheres",
+    "full_ingredients": "Sucrose, Limnanthes Alba Seed Oil, Sodium Hyaluronate, Tocopherol",
+    "cara_pemakaian": "Oleskan ke bibir kapan saja dibutuhkan, terutama sebelum tidur.",
+    "harga_usd": 32.0,
+    "harga_idr": 518400,
+    "volume_ml": 10,
+    "berat_gram": 80,
+    "skin_type": "all",
+    "skin_concern": "dehydration",
+    "badge": "travel_size",
+    "images": ["public/images/products/fresh/sugar-lip-advanced-1.jpg"]
+  },
+  {
+    "fresh_product_id": "sugar-lip-balm-rose",
+    "fresh_url": "https://www.fresh.com/products/sugar-lip-balm-rose",
+    "nama": "Sugar Rosé Tinted Lip Treatment",
+    "kategori": "Lip Care",
+    "koleksi": "Sugar Collection",
+    "deskripsi": "Lip balm dengan sentuhan warna rosé alami plus SPF perlindungan ringan.",
+    "key_ingredients": "Sugar, Blackcurrant, Grapeseed Oil",
+    "full_ingredients": "Sucrose, Ribes Nigrum Fruit Extract, Vitis Vinifera Seed Oil, Tocopherol",
+    "cara_pemakaian": "Aplikasikan ke bibir sepanjang hari untuk hidrasi berwarna.",
+    "harga_usd": 26.0,
+    "harga_idr": 421200,
+    "volume_ml": 4,
+    "berat_gram": 60,
+    "skin_type": "all",
+    "skin_concern": "dehydration",
+    "badge": "bestseller",
+    "images": ["public/images/products/fresh/sugar-lip-rose-1.jpg"]
+  }
+]

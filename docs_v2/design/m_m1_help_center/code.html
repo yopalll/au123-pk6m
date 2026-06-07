@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Help Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#ffb68b",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "on-secondary-fixed": "#001e2f",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "outline": "#9f8d84",
+                        "surface-bright": "#37393d",
+                        "primary-fixed": "#ffdbc9",
+                        "error": "#ffb4ab",
+                        "on-primary-container": "#7a4523",
+                        "inverse-surface": "#e2e2e6",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "surface-container-highest": "#333538",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "tertiary": "#c7e9e9",
+                        "on-background": "#e2e2e6",
+                        "surface-container-lowest": "#0c0e11",
+                        "inverse-primary": "#88512e",
+                        "secondary-container": "#264d67",
+                        "surface": "#111316",
+                        "primary": "#ffdbc8",
+                        "primary-container": "#ffb68b",
+                        "background": "#111316",
+                        "primary-fixed-dim": "#ffb68b",
+                        "inverse-on-surface": "#2f3034",
+                        "on-primary-fixed": "#321200",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "tertiary-container": "#abcdcd",
+                        "surface-variant": "#333538",
+                        "surface-container-low": "#1a1c1f",
+                        "on-surface-variant": "#d7c2b8",
+                        "surface-dim": "#111316",
+                        "surface-charcoal": "#1A1D21",
+                        "secondary": "#a5cbea",
+                        "on-error": "#690005",
+                        "surface-container-high": "#282a2d",
+                        "on-secondary": "#04344d",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "tertiary-fixed": "#c7e9e9",
+                        "surface-container": "#1e2023",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-primary": "#502405",
+                        "on-tertiary": "#143536",
+                        "on-secondary-container": "#97bddb",
+                        "on-tertiary-container": "#385858",
+                        "on-tertiary-fixed": "#002020",
+                        "on-surface": "#e2e2e6",
+                        "outline-variant": "#52443c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "80px",
+                        "xs": "8px",
+                        "sm": "16px",
+                        "md": "24px",
+                        "xl": "80px",
+                        "margin-mobile": "20px",
+                        "lg": "40px",
+                        "gutter": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "label-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "label-sm": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>body {
+    background-color: theme("colors.background");
+    color: theme("colors.on-background");
+    position: relative
+    }
+/* Subtle Floral Background Texture */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBAO2huC1I_ZlqHQzAqxtEWNeuvYj7HDHLDX6-11lrbfFmdV27s_IpORe2Pok7btRSrDymnr_PfcGWhwkLwUk0UIl0LujzIYwolfBMXIKAJeKDLA978nP-MZ3IvT9YHJgZhAL7AOO5qG6GlNbCbXq3AuCziyh7ekk_1Fzl7v-fIUn8JboKWqQLOVkUpR3m3eAGw-3_CXm1wpePS205uAL2Bue15rc5Fc6gyNGohSqr0eD4yJZe6ela5m1eZHVtDuieSO0vgy0Ply2ga);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: -1;
+    pointer-events: none;
+    mix-blend-mode: overlay
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col relative pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-surface-glass dark:bg-surface-glass text-primary dark:text-primary font-headline-md text-headline-md-mobile docked full-width top-0 sticky backdrop-blur-md border-b border-border-glow flat no shadows flex justify-between items-center w-full px-margin-mobile py-xs z-50">
+<button aria-label="Menu" class="hover:opacity-80 transition-opacity active:scale-95 duration-200 p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<div class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tighter">VIYGO</div>
+<button aria-label="Cart" class="hover:opacity-80 transition-opacity active:scale-95 duration-200 p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow flex flex-col w-full px-margin-mobile pt-lg pb-xl gap-lg max-w-[500px] mx-auto md:hidden">
+<!-- Header / Search Section -->
+<section class="flex flex-col gap-sm items-center text-center">
+<h1 class="font-headline-lg text-headline-lg-mobile text-on-surface">How can we assist you today?</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Find answers, manage bookings, or reach out to our concierge.</p>
+<div class="w-full relative mt-sm">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant z-10" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="w-full bg-surface-charcoal border border-border-glow rounded text-on-surface font-body-md text-body-md py-sm pl-[48px] pr-sm focus:outline-none focus:border-surface-tint focus:ring-2 focus:ring-surface-tint/20 transition-all placeholder:text-on-surface-variant" placeholder="Search for guidance..." type="text"/>
+</div>
+</section>
+<!-- Categories Grid (Bento style) -->
+<section class="grid grid-cols-2 gap-sm">
+<!-- Category Card 1: Booking -->
+<button class="bg-surface-glass backdrop-blur-md border border-border-glow rounded-xl p-md flex flex-col gap-sm items-start hover:bg-surface-charcoal transition-colors group text-left">
+<div class="w-10 h-10 rounded-full bg-surface-charcoal flex items-center justify-center border border-border-glow group-hover:border-surface-tint transition-colors">
+<span class="material-symbols-outlined text-surface-tint" style="font-variation-settings: 'FILL' 0;">calendar_month</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-1">Booking</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Appointments &amp; prep</p>
+</div>
+</button>
+<!-- Category Card 2: Orders -->
+<button class="bg-surface-glass backdrop-blur-md border border-border-glow rounded-xl p-md flex flex-col gap-sm items-start hover:bg-surface-charcoal transition-colors group text-left">
+<div class="w-10 h-10 rounded-full bg-surface-charcoal flex items-center justify-center border border-border-glow group-hover:border-surface-tint transition-colors">
+<span class="material-symbols-outlined text-surface-tint" style="font-variation-settings: 'FILL' 0;">local_mall</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-1">Orders</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Tracking &amp; returns</p>
+</div>
+</button>
+<!-- Category Card 3: Sustainability -->
+<button class="bg-surface-glass backdrop-blur-md border border-border-glow rounded-xl p-md flex flex-col gap-sm items-start hover:bg-surface-charcoal transition-colors group text-left">
+<div class="w-10 h-10 rounded-full bg-surface-charcoal flex items-center justify-center border border-border-glow group-hover:border-surface-tint transition-colors">
+<span class="material-symbols-outlined text-surface-tint" style="font-variation-settings: 'FILL' 0;">eco</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-1">Rituals</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Product usage &amp; sourcing</p>
+</div>
+</button>
+<!-- Category Card 4: Account -->
+<button class="bg-surface-glass backdrop-blur-md border border-border-glow rounded-xl p-md flex flex-col gap-sm items-start hover:bg-surface-charcoal transition-colors group text-left">
+<div class="w-10 h-10 rounded-full bg-surface-charcoal flex items-center justify-center border border-border-glow group-hover:border-surface-tint transition-colors">
+<span class="material-symbols-outlined text-surface-tint" style="font-variation-settings: 'FILL' 0;">person</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-1">Account</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Profiles &amp; security</p>
+</div>
+</button>
+</section>
+<!-- Common Questions Carousel -->
+<section class="flex flex-col gap-sm mt-md">
+<h2 class="font-headline-md text-headline-md-mobile text-on-surface">Frequent Inquiries</h2>
+<div class="flex flex-col gap-xs">
+<button class="bg-surface-charcoal border border-border-glow rounded-lg p-sm flex justify-between items-center hover:border-surface-tint transition-colors text-left">
+<span class="font-body-md text-body-md text-on-surface">How do I modify my treatment reservation?</span>
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">chevron_right</span>
+</button>
+<button class="bg-surface-charcoal border border-border-glow rounded-lg p-sm flex justify-between items-center hover:border-surface-tint transition-colors text-left">
+<span class="font-body-md text-body-md text-on-surface">What is your return policy for open products?</span>
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">chevron_right</span>
+</button>
+<button class="bg-surface-charcoal border border-border-glow rounded-lg p-sm flex justify-between items-center hover:border-surface-tint transition-colors text-left">
+<span class="font-body-md text-body-md text-on-surface">Are your botanical ingredients certified organic?</span>
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Still Seeking Clarity (Contact) -->
+<section class="bg-surface-glass backdrop-blur-xl border border-border-glow rounded-xl p-md flex flex-col gap-md items-center text-center mt-md">
+<div class="w-12 h-12 rounded-full bg-surface-charcoal flex items-center justify-center border border-surface-tint mb-1">
+<span class="material-symbols-outlined text-surface-tint" style="font-variation-settings: 'FILL' 0;">support_agent</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md-mobile text-on-surface mb-1">Still Seeking Clarity?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Our concierges are available to assist you directly.</p>
+</div>
+<div class="flex flex-col w-full gap-sm">
+<button class="w-full bg-surface-tint text-background font-label-md text-label-md uppercase tracking-widest py-sm rounded transition-colors flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">chat_bubble</span>
+                    Live Chat
+                </button>
+<button class="w-full bg-transparent border border-secondary text-secondary font-label-md text-label-md uppercase tracking-widest py-sm rounded hover:bg-secondary/10 transition-colors flex justify-center items-center gap-xs">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">mail</span>
+                    Email Us
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface-glass dark:bg-surface-glass text-primary dark:text-primary font-label-sm text-label-sm fixed bottom-0 w-full z-50 rounded-t-full backdrop-blur-xl border-t border-border-glow flat no shadows flex justify-around items-center px-4 pb-4 pt-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary transition-colors active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">home_health</span>
+<span class="mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary transition-colors active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">calendar_month</span>
+<span class="mt-1">Booking</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-1 hover:text-primary transition-colors active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">auto_stories</span>
+<span class="mt-1">Shop</span>
+</a>
+<!-- "Profile" is conceptually closest to a support/account section -->
+<a class="flex flex-col items-center justify-center text-primary font-bold border-t-2 border-primary pt-1 hover:text-primary transition-colors active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="mt-1">Profile</span>
+</a>
+</nav>
+<!-- Footer (Hidden on mobile to prioritize bottom nav, visible on larger screens) -->
+<footer class="hidden md:flex bg-surface-dim dark:bg-surface-dim text-on-surface dark:text-on-surface font-label-sm text-label-sm uppercase tracking-widest full-width border-t border-outline-variant flat w-full px-margin-mobile py-lg flex-col items-center gap-md">
+<div class="font-display-lg text-display-lg text-primary">VIYGO</div>
+<div class="flex gap-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-70" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-70" href="#">Terms</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-70" href="#">Contact</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-100 hover:opacity-70" href="#">Our Story</a>
+</div>
+<p class="text-on-surface-variant">© 2024 VIYGO LUXE. ALL RIGHTS RESERVED.</p>
+</footer>
+</body></html>

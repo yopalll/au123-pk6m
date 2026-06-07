@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Search Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "surface-variant": "#333538",
+                        "surface-container-high": "#282a2d",
+                        "on-error": "#690005",
+                        "on-surface-variant": "#d7c2b8",
+                        "surface-tint": "#ffb68b",
+                        "tertiary-fixed": "#c7e9e9",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#264d67",
+                        "on-tertiary": "#143536",
+                        "on-primary-fixed": "#321200",
+                        "tertiary": "#c7e9e9",
+                        "inverse-on-surface": "#2f3034",
+                        "surface-container-low": "#1a1c1f",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "on-background": "#e2e2e6",
+                        "surface-bright": "#37393d",
+                        "surface-container-highest": "#333538",
+                        "background": "#111316",
+                        "secondary": "#a5cbea",
+                        "on-secondary-fixed": "#001e2f",
+                        "primary": "#ffdbc8",
+                        "inverse-surface": "#e2e2e6",
+                        "primary-fixed-dim": "#ffb68b",
+                        "surface": "#111316",
+                        "on-primary": "#502405",
+                        "tertiary-container": "#abcdcd",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "on-secondary-container": "#97bddb",
+                        "outline": "#9f8d84",
+                        "on-secondary": "#04344d",
+                        "on-primary-container": "#7a4523",
+                        "on-tertiary-container": "#385858",
+                        "error-container": "#93000a",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "on-surface": "#e2e2e6",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "surface-container": "#1e2023",
+                        "outline-variant": "#52443c",
+                        "surface-dim": "#111316",
+                        "primary-fixed": "#ffdbc9",
+                        "inverse-primary": "#88512e",
+                        "surface-charcoal": "#1A1D21",
+                        "primary-container": "#ffb68b",
+                        "on-tertiary-fixed": "#002020",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-primary-fixed-variant": "#6c3a19"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "margin-desktop": "80px",
+                        "margin-mobile": "20px",
+                        "sm": "16px",
+                        "lg": "40px",
+                        "xl": "80px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "label-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #111316;
+            color: #e2e2e6;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 100%);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased min-h-screen flex flex-col relative bg-pattern">
+<!-- TopNavBar -->
+<header class="bg-surface-glass text-primary fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-24 backdrop-blur-xl border-b border-border-glow">
+<div class="flex items-center gap-md">
+<a class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary-fixed" href="#">VIYGO</a>
+<nav class="hidden md:flex items-center gap-sm ml-lg">
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#">Treatments</a>
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#">List your salon</a>
+</nav>
+</div>
+<div class="flex items-center gap-sm">
+<button class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary-fixed transition-colors duration-300">Sign In</button>
+<button class="bg-primary-container text-on-primary-container px-sm py-xs rounded hover:bg-primary-fixed transition-colors font-label-md text-label-md uppercase">Join</button>
+</div>
+</header>
+<main class="flex-grow pt-[120px] px-margin-mobile md:px-margin-desktop pb-xl flex flex-col lg:flex-row gap-lg">
+<!-- SideNavBar / Filters -->
+<aside class="hidden lg:flex flex-col p-md gap-md bg-surface-charcoal h-[calc(100vh-140px)] w-80 sticky top-[120px] border-r border-border-glow">
+<div class="mb-sm">
+<h2 class="font-headline-md text-headline-md text-primary">Filters</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Refine your selection</p>
+</div>
+<nav class="flex flex-col gap-xs flex-grow overflow-y-auto">
+<a class="flex items-center gap-sm p-sm bg-secondary-container text-on-secondary-container rounded-lg transition-colors scale-98" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">category</span>
+<span class="font-label-md text-label-md">Category</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Price</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">star</span>
+<span class="font-label-md text-label-md">Rating</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">brand_family</span>
+<span class="font-label-md text-label-md">Brand</span>
+</a>
+<a class="flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">face</span>
+<span class="font-label-md text-label-md">Skin Type</span>
+</a>
+</nav>
+<button class="w-full bg-surface-container-high text-primary border border-outline px-sm py-sm rounded hover:bg-surface-variant transition-colors font-label-md text-label-md">
+                Apply Filters
+            </button>
+</aside>
+<!-- Main Content Canvas -->
+<div class="flex-grow flex flex-col gap-lg w-full">
+<!-- Search Bar -->
+<div class="w-full relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-charcoal border border-border-glow rounded-xl py-sm pl-lg pr-sm text-on-surface focus:outline-none focus:border-surface-tint focus:ring-1 focus:ring-surface-tint transition-all font-body-md text-body-md placeholder-on-surface-variant" placeholder="Search for treatments, salons, or products..." type="text"/>
+</div>
+<!-- Results Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<!-- Salon Card 1 -->
+<article class="relative group rounded-xl overflow-hidden bg-surface-charcoal border border-border-glow transition-transform hover:scale-[1.02]">
+<div class="aspect-[4/3] w-full bg-surface-container-low relative">
+<img alt="Salon Interior" class="w-full h-full object-cover" data-alt="A luxurious high-end beauty salon interior with plush velvet seating in deep midnight tones. Soft, warm copper lighting highlights the sleek, minimalist styling stations. The overall aesthetic is Serene Floral Noir, emphasizing deep shadows and elegant contrasts. High definition photography, architectural framing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCV45VKlS3EfqZf1YANlV8uaMTTyyhCC9aXrC7dz3iK2XTt9Ti71a615_WXVWfgv5cnKeC2XT521G-YUoglMbZCzzlatMpPcFDoXNc7WQlzU1lexQfvKBxoA6CB1Rz6-51QVKWWAiEvZlDJPT1wjFDztMeStkIoPMd8zxIUh-8TbT8ZTBKNTFBZAEWqTDFqFDHHS3HFG_YGjOj_nw5PGLCNLtHw6emFXG1QkGS-nSmNZPdw4Xr9oTDnqMtVSz7iuT2Mjl1yrvraS2n"/>
+<div class="absolute top-sm right-sm bg-surface-glass backdrop-blur px-xs py-base rounded flex items-center gap-xs border border-border-glow">
+<span class="material-symbols-outlined text-[16px] text-surface-tint" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-primary">4.9</span>
+</div>
+</div>
+<div class="absolute bottom-0 w-full p-sm bg-surface-glass backdrop-blur-md border-t border-border-glow">
+<h3 class="font-headline-md text-headline-md text-primary truncate">Lumina Studio</h3>
+<div class="flex items-center gap-xs mt-base text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="font-label-sm text-label-sm">West End, London</span>
+</div>
+</div>
+</article>
+<!-- Product Card 1 -->
+<article class="relative group rounded-xl overflow-hidden bg-surface-charcoal border border-border-glow transition-transform hover:scale-[1.02]">
+<div class="aspect-[4/3] w-full bg-surface-container-low flex items-center justify-center p-md">
+<img alt="Skincare Product" class="w-full h-full object-contain" data-alt="A premium skincare serum bottle resting on a dark slate surface. The bottle features frosted glass and subtle copper typography. Dramatic, low-key lighting creates deep shadows and highlights the ethereal Serene Floral Noir aesthetic. Minimalist product photography, studio setup." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-no5RwEr_en1k4sWEt3A04_4ZXfSSIaSfjFZIx8ts4Z-AkfAFX9FMfK8mIvvP_ZmsRvq0l616Blb5gZWI7U4Vv9XBA2cUn1rbZcW3gCr8n9tT94vGAbivHn8-siErH9-ecH4yIiqF1PSkw87SydJyjltYFmgHQ2_Ybsq2gas-j7EitqIo7E0xrZYPOvwJz-K0i173DQm6l_tfW21JwGfY8DbqQaa0wnmlilRuUw1rlzaR6-K5oEavyu2UH3fagLKFRkFs5Yjn0rCZ"/>
+</div>
+<div class="absolute bottom-0 w-full p-sm bg-surface-glass backdrop-blur-md border-t border-border-glow flex justify-between items-end">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-base">Serum</span>
+<h3 class="font-headline-md text-headline-md text-primary text-[18px] leading-tight">Midnight Restore</h3>
+</div>
+<span class="font-label-md text-label-md text-surface-tint">$120</span>
+</div>
+</article>
+<!-- Salon Card 2 -->
+<article class="relative group rounded-xl overflow-hidden bg-surface-charcoal border border-border-glow transition-transform hover:scale-[1.02]">
+<div class="aspect-[4/3] w-full bg-surface-container-low relative">
+<img alt="Spa Treatment Room" class="w-full h-full object-cover" data-alt="A tranquil spa treatment room bathed in low, moody light. A massage bed with crisp dark linens sits centrally, surrounded by subtle botanical shadows. The atmosphere is Serene Floral Noir, emphasizing calm, luxury, and deep tonality. Professional architectural photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQSjgbLEfMooQMZ3u1af0P1ocvPvP9hUPUePhneoLwO9Ju2unCVmSNhia3HcJlBkai2VpqtB5tKyMEO4y5GnH1uizjZDA-itZQWWcFVZzuyiKHK3Q4n30cXrnzd1dlREzHAP0Vgo6xCnMC5_BNt1AiA6elyEGwUC49dYp9FRl_24oiu2gA7oqs2cU3kDhQ8uqqVCxBEwizjKxCug6alc7bohJyMWgAa6ZoAc_BxQ44MQEPTH4NiTtfahMciO0tl_WOZNvHZmOPqpNb"/>
+<div class="absolute top-sm right-sm bg-surface-glass backdrop-blur px-xs py-base rounded flex items-center gap-xs border border-border-glow">
+<span class="material-symbols-outlined text-[16px] text-surface-tint" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-primary">4.8</span>
+</div>
+</div>
+<div class="absolute bottom-0 w-full p-sm bg-surface-glass backdrop-blur-md border-t border-border-glow">
+<h3 class="font-headline-md text-headline-md text-primary truncate">Botanica Spa</h3>
+<div class="flex items-center gap-xs mt-base text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="font-label-sm text-label-sm">Soho, New York</span>
+</div>
+</div>
+</article>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-5 gap-gutter bg-surface-container-lowest border-t border-border-glow mt-auto text-primary">
+<div class="col-span-2 md:col-span-1 flex flex-col gap-sm">
+<span class="font-display-lg text-display-lg text-primary-fixed">VIYGO</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-auto uppercase">© 2024 VIYGO. All rights reserved.</p>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-sm md:col-span-2">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">VIYGO for Business</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">List your Salon</a>
+</div>
+</footer>
+</body></html>

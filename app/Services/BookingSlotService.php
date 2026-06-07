@@ -142,14 +142,14 @@ class BookingSlotService
                 }
 
                 $availableStaff[] = [
-                    'id'   => (int) $staff->id_staff,
+                    'id' => (int) $staff->id_staff,
                     'name' => $staff->name,
                 ];
             }
 
             if (! empty($availableStaff)) {
                 $slots->push([
-                    'time'  => $cursor->format('H:i'),
+                    'time' => $cursor->format('H:i'),
                     'staff' => $availableStaff,
                 ]);
             }
@@ -308,7 +308,7 @@ class BookingSlotService
             }
             $by[$row->id_staff][] = [
                 'start' => CarbonImmutable::parse($row->start_time),
-                'end'   => CarbonImmutable::parse($row->end_time),
+                'end' => CarbonImmutable::parse($row->end_time),
             ];
         }
 
@@ -330,7 +330,7 @@ class BookingSlotService
 
         return $schedules->contains(function ($sched) use ($proposedStart, $proposedEnd) {
             $schedStart = CarbonImmutable::parse($sched->start_time);
-            $schedEnd   = CarbonImmutable::parse($sched->end_time);
+            $schedEnd = CarbonImmutable::parse($sched->end_time);
 
             return $schedStart->lessThanOrEqualTo($proposedStart)
                 && $schedEnd->greaterThanOrEqualTo($proposedEnd);

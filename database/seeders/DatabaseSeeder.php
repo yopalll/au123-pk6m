@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             false
         )) {
             $this->command->warn('Seeding aborted by user.');
+
             return;
         }
 
@@ -62,6 +63,14 @@ class DatabaseSeeder extends Seeder
             SalonSubKategoriSeeder::class,
             StaffSeeder::class,
             SalonImagesSeeder::class,
+
+            // ── V2 ──────────────────────────────────────────────
+            AdminStoreSeeder::class,       // user admin_store (butuh users)
+            ForumCategorySeeder::class,    // 5 kategori forum
+            FreshProductSeeder::class,     // produk skincare (dari JSON dummy)
+            ExclusiveContentSeeder::class, // konten eksklusif per tier
+            LookbookSeeder::class,         // lookbook (butuh products)
+            ForumThreadSeeder::class,      // thread contoh (butuh users + kategori)
         ]);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');

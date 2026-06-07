@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Platform Metrics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "border-glow": "rgba(255, 255, 255, 0.2)",
+                            "on-primary-fixed-variant": "#6c3a19",
+                            "tertiary-container": "#abcdcd",
+                            "on-tertiary-fixed-variant": "#2c4c4c",
+                            "on-tertiary-container": "#385858",
+                            "secondary-container": "#264d67",
+                            "on-secondary-fixed": "#001e2f",
+                            "on-secondary-container": "#97bddb",
+                            "surface-container-lowest": "#0c0e11",
+                            "tertiary-fixed": "#c7e9e9",
+                            "surface-container-high": "#282a2d",
+                            "on-primary-container": "#7a4523",
+                            "inverse-on-surface": "#2f3034",
+                            "inverse-surface": "#e2e2e6",
+                            "surface": "#111316",
+                            "inverse-primary": "#88512e",
+                            "surface-variant": "#333538",
+                            "background": "#111316",
+                            "secondary-fixed": "#c9e6ff",
+                            "primary": "#ffdbc8",
+                            "secondary-fixed-dim": "#a5cbea",
+                            "surface-glass": "rgba(17, 19, 22, 0.6)",
+                            "primary-fixed": "#ffdbc9",
+                            "on-tertiary": "#143536",
+                            "error-container": "#93000a",
+                            "on-background": "#e2e2e6",
+                            "on-error": "#690005",
+                            "primary-container": "#ffb68b",
+                            "tertiary": "#c7e9e9",
+                            "tertiary-fixed-dim": "#abcdcd",
+                            "on-secondary-fixed-variant": "#234a64",
+                            "on-secondary": "#04344d",
+                            "surface-container-highest": "#333538",
+                            "surface-container": "#1e2023",
+                            "surface-charcoal": "#1A1D21",
+                            "primary-fixed-dim": "#ffb68b",
+                            "error": "#ffb4ab",
+                            "surface-bright": "#37393d",
+                            "on-surface-variant": "#d7c2b8",
+                            "on-primary-fixed": "#321200",
+                            "outline-variant": "#52443c",
+                            "surface-dim": "#111316",
+                            "secondary": "#a5cbea",
+                            "surface-container-low": "#1a1c1f",
+                            "on-tertiary-fixed": "#002020",
+                            "outline": "#9f8d84",
+                            "on-surface": "#e2e2e6",
+                            "on-error-container": "#ffdad6",
+                            "surface-tint": "#ffb68b",
+                            "on-primary": "#502405"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.125rem",
+                            "lg": "0.25rem",
+                            "xl": "0.5rem",
+                            "full": "0.75rem"
+                    },
+                    "spacing": {
+                            "base": "4px",
+                            "lg": "40px",
+                            "gutter": "24px",
+                            "xs": "8px",
+                            "margin-mobile": "20px",
+                            "sm": "16px",
+                            "xl": "80px",
+                            "md": "24px",
+                            "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                            "label-md": [
+                                    "Manrope"
+                            ],
+                            "display-lg-mobile": [
+                                    "Playfair Display"
+                            ],
+                            "body-lg": [
+                                    "Manrope"
+                            ],
+                            "display-lg": [
+                                    "Playfair Display"
+                            ],
+                            "headline-md": [
+                                    "Playfair Display"
+                            ],
+                            "body-md": [
+                                    "Manrope"
+                            ],
+                            "label-sm": [
+                                    "Manrope"
+                            ],
+                            "headline-lg": [
+                                    "Playfair Display"
+                            ]
+                    },
+                    "fontSize": {
+                            "label-md": [
+                                    "14px",
+                                    {
+                                            "lineHeight": "20px",
+                                            "letterSpacing": "0.05em",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "display-lg-mobile": [
+                                    "36px",
+                                    {
+                                            "lineHeight": "44px",
+                                            "letterSpacing": "-0.01em",
+                                            "fontWeight": "700"
+                                    }
+                            ],
+                            "body-lg": [
+                                    "18px",
+                                    {
+                                            "lineHeight": "28px",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "display-lg": [
+                                    "48px",
+                                    {
+                                            "lineHeight": "56px",
+                                            "letterSpacing": "-0.02em",
+                                            "fontWeight": "700"
+                                    }
+                            ],
+                            "headline-md": [
+                                    "24px",
+                                    {
+                                            "lineHeight": "32px",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "body-md": [
+                                    "16px",
+                                    {
+                                            "lineHeight": "24px",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "label-sm": [
+                                    "12px",
+                                    {
+                                            "lineHeight": "16px",
+                                            "fontWeight": "500"
+                                    }
+                            ],
+                            "headline-lg": [
+                                    "32px",
+                                    {
+                                            "lineHeight": "40px",
+                                            "fontWeight": "600"
+                                    }
+                            ]
+                    }
+            },
+                },
+        }
+    </script>
+<style>
+        body {
+            background-color: #111316;
+            background-image: radial-gradient(circle at 50% 0%, rgba(26, 29, 33, 0.8) 0%, rgba(17, 19, 22, 1) 100%);
+            background-attachment: fixed;
+        }
+        
+        /* Subtle floral noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glass-panel {
+            background: rgba(26, 29, 33, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .chart-grid {
+            stroke: rgba(255, 255, 255, 0.05);
+            stroke-width: 1;
+            stroke-dasharray: 4 4;
+        }
+        
+        .chart-line {
+            fill: none;
+            stroke: #FFB68B;
+            stroke-width: 3;
+            stroke-linecap: round;
+        }
+        
+        .chart-area {
+            fill: url(#copperGradient);
+            opacity: 0.2;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background min-h-screen pb-24 relative overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface-glass backdrop-blur-md fixed top-0 w-full flex justify-between items-center px-margin-mobile h-16 z-50 border-b border-border-glow md:hidden">
+<button aria-label="Menu" class="text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200 p-2 -ml-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight font-playfair">VIYGO</h1>
+<div class="h-8 w-8 rounded-full bg-surface-charcoal border border-border-glow flex items-center justify-center overflow-hidden active:scale-95 duration-200 transition-transform">
+<img alt="Admin Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1dOBsEqN_o4dUwfeGlAVc2I3UMhnDXJefctOFMCXHtXvGobxrD5PjgVn7aRspWjtp1P9IjowFSyeBYQlDmq1lc5qmt4tfLvC4BjKnh1y7QLCl22uHluHkxDudHG0gh4dAjTmMQ68Z6AgGyaFeF4cjf7QgoZx6JqCW6iwFsN__rcG9msZxBoX3l5beO9q7hugCqItqeK_beBSgqfn7O-6mVGHM63iFNhOmAEBWqNo-WVF_SDFReb_LUQPddb4Ba9hvyY4ukuI0nqvf"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative z-10 pt-24 px-margin-mobile md:hidden flex flex-col gap-sm">
+<!-- Page Title -->
+<div class="mb-sm">
+<h2 class="font-headline-md text-headline-md font-playfair text-on-surface mb-1">Platform Metrics</h2>
+<p class="font-body-md text-body-md font-manrope text-on-surface-variant">Real-time overview</p>
+</div>
+<!-- Metric Summary Cards (Vertically Stacked) -->
+<section class="flex flex-col gap-sm">
+<!-- Total Revenue -->
+<div class="glass-panel rounded-xl p-md flex flex-col relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined" style="font-size: 64px;">payments</span>
+</div>
+<div class="flex justify-between items-start mb-2 relative z-10">
+<span class="font-label-md text-label-md font-manrope text-on-surface-variant uppercase tracking-widest">Total Revenue</span>
+<div class="flex items-center text-primary-container bg-surface-charcoal px-2 py-1 rounded border border-border-glow">
+<span class="material-symbols-outlined text-sm mr-1" style="font-size: 16px;">trending_up</span>
+<span class="font-label-sm text-label-sm font-manrope">+12.5%</span>
+</div>
+</div>
+<div class="font-display-lg-mobile text-display-lg-mobile font-playfair text-primary relative z-10">$124,500</div>
+</div>
+<!-- Active Salons -->
+<div class="glass-panel rounded-xl p-md flex flex-col relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined" style="font-size: 64px;">storefront</span>
+</div>
+<div class="flex justify-between items-start mb-2 relative z-10">
+<span class="font-label-md text-label-md font-manrope text-on-surface-variant uppercase tracking-widest">Active Salons</span>
+<div class="flex items-center text-primary-container bg-surface-charcoal px-2 py-1 rounded border border-border-glow">
+<span class="material-symbols-outlined text-sm mr-1" style="font-size: 16px;">trending_up</span>
+<span class="font-label-sm text-label-sm font-manrope">+4.2%</span>
+</div>
+</div>
+<div class="font-display-lg-mobile text-display-lg-mobile font-playfair text-primary relative z-10">342</div>
+</div>
+<!-- Bottles Returned -->
+<div class="glass-panel rounded-xl p-md flex flex-col relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined" style="font-size: 64px;">recycling</span>
+</div>
+<div class="flex justify-between items-start mb-2 relative z-10">
+<span class="font-label-md text-label-md font-manrope text-on-surface-variant uppercase tracking-widest">Bottles Returned</span>
+<div class="flex items-center text-secondary-fixed-dim bg-surface-charcoal px-2 py-1 rounded border border-border-glow">
+<span class="material-symbols-outlined text-sm mr-1" style="font-size: 16px;">trending_flat</span>
+<span class="font-label-sm text-label-sm font-manrope">0.0%</span>
+</div>
+</div>
+<div class="font-display-lg-mobile text-display-lg-mobile font-playfair text-primary relative z-10">1,204</div>
+</div>
+</section>
+<!-- Revenue Growth Chart -->
+<section class="glass-panel rounded-xl p-md mt-sm">
+<h3 class="font-label-md text-label-md font-manrope text-on-surface-variant uppercase tracking-widest mb-4">Revenue Growth (30 Days)</h3>
+<div class="w-full h-48 relative">
+<svg height="100%" preserveaspectratio="none" viewbox="0 0 300 150" width="100%">
+<defs>
+<lineargradient id="copperGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#FFB68B" stop-opacity="1"></stop>
+<stop offset="100%" stop-color="#FFB68B" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid -->
+<line class="chart-grid" x1="0" x2="300" y1="37.5" y2="37.5"></line>
+<line class="chart-grid" x1="0" x2="300" y1="75" y2="75"></line>
+<line class="chart-grid" x1="0" x2="300" y1="112.5" y2="112.5"></line>
+<!-- Area & Line -->
+<path class="chart-area" d="M0,150 L0,120 Q30,130 60,100 T120,80 T180,60 T240,40 T300,20 L300,150 Z"></path>
+<path class="chart-line" d="M0,120 Q30,130 60,100 T120,80 T180,60 T240,40 T300,20"></path>
+<!-- Data Points -->
+<circle cx="60" cy="100" fill="#1A1D21" r="4" stroke="#FFB68B" stroke-width="2"></circle>
+<circle cx="120" cy="80" fill="#1A1D21" r="4" stroke="#FFB68B" stroke-width="2"></circle>
+<circle cx="180" cy="60" fill="#1A1D21" r="4" stroke="#FFB68B" stroke-width="2"></circle>
+<circle cx="240" cy="40" fill="#1A1D21" r="4" stroke="#FFB68B" stroke-width="2"></circle>
+<circle cx="300" cy="20" fill="#1A1D21" r="4" stroke="#FFB68B" stroke-width="2"></circle>
+</svg>
+</div>
+<div class="flex justify-between mt-2 font-label-sm text-label-sm font-manrope text-on-surface-variant">
+<span>Oct 1</span>
+<span>Oct 15</span>
+<span>Oct 30</span>
+</div>
+</section>
+<!-- Recent Activity Feed -->
+<section class="mt-sm mb-lg">
+<h3 class="font-headline-md text-headline-md font-playfair text-on-surface mb-sm">Recent Activity</h3>
+<div class="flex flex-col gap-3">
+<!-- Activity Item 1 -->
+<div class="glass-panel p-4 rounded-lg flex items-center justify-between border-l-2 border-l-primary-container">
+<div class="flex items-center gap-3">
+<div class="bg-surface-charcoal p-2 rounded-full border border-border-glow">
+<span class="material-symbols-outlined text-primary-container" style="font-size: 20px;">store</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-manrope text-on-surface">Lumière Salon</p>
+<p class="font-label-sm text-label-sm font-manrope text-on-surface-variant">Onboarded</p>
+</div>
+</div>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded text-xs font-label-md font-manrope tracking-wider">ACTIVE</span>
+</div>
+<!-- Activity Item 2 -->
+<div class="glass-panel p-4 rounded-lg flex items-center justify-between border-l-2 border-l-secondary-fixed-dim">
+<div class="flex items-center gap-3">
+<div class="bg-surface-charcoal p-2 rounded-full border border-border-glow">
+<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-size: 20px;">inventory_2</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-manrope text-on-surface">Return Batch #402</p>
+<p class="font-label-sm text-label-sm font-manrope text-on-surface-variant">50 Bottles</p>
+</div>
+</div>
+<span class="bg-surface-charcoal text-on-surface-variant border border-border-glow px-2 py-1 rounded text-xs font-label-md font-manrope tracking-wider">PROCESSING</span>
+</div>
+<!-- Activity Item 3 -->
+<div class="glass-panel p-4 rounded-lg flex items-center justify-between border-l-2 border-l-tertiary-container">
+<div class="flex items-center gap-3">
+<div class="bg-surface-charcoal p-2 rounded-full border border-border-glow">
+<span class="material-symbols-outlined text-tertiary-container" style="font-size: 20px;">verified</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-manrope text-on-surface">Payout: Belle Spa</p>
+<p class="font-label-sm text-label-sm font-manrope text-on-surface-variant">$1,200.00</p>
+</div>
+</div>
+<span class="bg-tertiary-container text-on-tertiary-container px-2 py-1 rounded text-xs font-label-md font-manrope tracking-wider">VERIFIED</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-glass backdrop-blur-lg fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe border-t border-border-glow rounded-t-xl md:hidden">
+<button class="flex flex-col items-center justify-center text-primary font-bold transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-manrope">Metrics</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined mb-1">chat_bubble</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-manrope">Inbox</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined mb-1">calendar_today</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-manrope">Schedule</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined mb-1">settings</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-manrope">Settings</span>
+</button>
+</nav>
+</body></html>

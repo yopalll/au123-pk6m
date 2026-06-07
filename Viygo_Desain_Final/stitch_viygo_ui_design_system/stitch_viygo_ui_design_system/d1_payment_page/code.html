@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Secure Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "surface-dim": "#111316",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-primary-fixed": "#321200",
+                        "on-secondary-fixed": "#001e2f",
+                        "secondary-container": "#264d67",
+                        "surface": "#111316",
+                        "error-container": "#93000a",
+                        "background": "#111316",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "primary-fixed": "#ffdbc9",
+                        "on-tertiary-fixed": "#002020",
+                        "on-primary": "#502405",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "surface-container": "#1e2023",
+                        "surface-charcoal": "#1A1D21",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#04344d",
+                        "on-surface": "#e2e2e6",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "secondary": "#a5cbea",
+                        "on-error": "#690005",
+                        "surface-tint": "#ffb68b",
+                        "on-tertiary": "#143536",
+                        "on-background": "#e2e2e6",
+                        "primary": "#ffdbc8",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#333538",
+                        "on-secondary-container": "#97bddb",
+                        "inverse-primary": "#88512e",
+                        "on-primary-container": "#7a4523",
+                        "surface-variant": "#333538",
+                        "outline-variant": "#52443c",
+                        "surface-container-low": "#1a1c1f",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "primary-container": "#ffb68b",
+                        "inverse-on-surface": "#2f3034",
+                        "tertiary": "#c7e9e9",
+                        "inverse-surface": "#e2e2e6",
+                        "outline": "#9f8d84",
+                        "tertiary-fixed": "#c7e9e9",
+                        "on-surface-variant": "#d7c2b8",
+                        "tertiary-container": "#abcdcd",
+                        "surface-bright": "#37393d",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "primary-fixed-dim": "#ffb68b",
+                        "surface-container-high": "#282a2d",
+                        "on-tertiary-container": "#385858"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "80px",
+                        "lg": "40px",
+                        "base": "4px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "xs": "8px",
+                        "margin-desktop": "80px",
+                        "md": "24px",
+                        "sm": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>body {
+    background-color: #111316;
+    color: #e2e2e6;
+    position: relative
+    }
+.bg-floral-texture {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDp2oNJL6SbiE4ZjS7w9tCFQRO95yXbTH7NwYQgSra_HqlP58cZ7vTlKyb1uH4IYq9elsGfyat3yrJqT6VixlvbbMHf7ylIkwnEVjVUUZhdgVFWhRTrvtYyArAdZk8Y_6XWklppwdCgaqWSf8BrbNfIRED00cwci6UPxlRexW8ObiDKvP7RcDxqPzFWbRckrTMEsYhJNnM-xiwLe1qWsFXb_kkuH7z62nU3W02jB1fYY7YAzRzhduL7aug7CVIZRecbDiBLzTi8m-bG);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none
+    }
+.glass-panel {
+    background-color: rgba(26, 29, 33, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2)
+    }
+.input-glass {
+    background-color: #1A1D21;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e2e2e6;
+    transition: all 0.3s ease
+    }
+.input-glass:focus {
+    border-color: #FFB68B;
+    box-shadow: 0 0 0 2px rgba(255, 182, 139, 0.2);
+    outline: none
+    }
+.payment-method-active {
+    border-color: #FFB68B;
+    background-color: rgba(255, 182, 139, 0.05)
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }</style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- Background Texture -->
+<div class="bg-floral-texture"></div>
+<!-- Top Navigation Placeholder (Simplified for checkout) -->
+<header class="fixed top-0 w-full z-50 px-margin-mobile md:px-margin-desktop h-24 flex items-center justify-between glass-panel border-b-0 border-t-0 shadow-none">
+<a class="font-display-lg text-display-lg text-primary-fixed no-underline" href="#">VIYGO</a>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">lock</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Secure Checkout</span>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-[120px] pb-xl px-margin-mobile md:px-margin-desktop">
+<div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Order Summary -->
+<div class="lg:col-span-5 flex flex-col gap-md">
+<div class="glass-panel rounded-xl p-md">
+<h2 class="font-headline-md text-headline-md text-primary mb-md">Order Summary</h2>
+<!-- Item -->
+<div class="flex gap-sm mb-md pb-md border-b border-border-glow">
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 relative">
+<img alt="Premium skincare product" class="w-full h-full object-cover" data-alt="A close-up shot of a luxurious, frosted glass skincare serum bottle resting on a dark slate surface. The lighting is moody and cinematic, highlighting the copper accents on the bottle cap. The background features subtle, out-of-focus botanical elements like dark green leaves, contributing to a serene, high-end apothecary vibe. The overall color palette is dominated by deep charcoal, soft amber glows, and natural textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv-7KMQaDi0sgH1Wja0xVBWvQ63Obr_AjGSlJ6NeSz9Uhm07s1Yer2Ou09mjTAXuW2FGpByVLLbBDWjxiJ3BmiEQvG6acOUt-bgEytBCWiobghMDXgF-RF7pAX8T6NBUjvcReTouH5PCHVxf8zyAom1qABWxySVTu8LdJeRe8cGgRNHnXJmVHLMobLg4Pj7-L3gG5h7ojlbLpWndV9xgIfa7o4uIs9RSSoG8wEgtK3upM0MLeq9vc4uJj8F4bF3Z53Zx3zgVFD4KfL"/>
+</div>
+<div class="flex flex-col justify-between flex-grow">
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface">Midnight Renewal Serum</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">30ml • Signature Blend</p>
+</div>
+<div class="font-headline-md text-body-lg text-primary-fixed mt-auto">$120.00</div>
+</div>
+</div>
+<!-- Totals -->
+<div class="space-y-xs font-body-md text-body-md">
+<div class="flex justify-between text-on-surface-variant">
+<span>Subtotal</span>
+<span>$120.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Shipping</span>
+<span>Calculated at next step</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Taxes</span>
+<span>$10.20</span>
+</div>
+<div class="flex justify-between font-headline-md text-headline-md text-primary pt-sm mt-sm border-t border-border-glow">
+<span>Total</span>
+<span>$130.20</span>
+</div>
+</div>
+</div>
+<!-- Trust Badges -->
+<div class="flex items-center justify-center gap-md text-on-surface-variant py-sm">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+<span class="font-label-sm text-label-sm">256-bit SSL Secure</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+<span class="font-label-sm text-label-sm">Free Global Returns</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Payment Details -->
+<div class="lg:col-span-7">
+<div class="glass-panel rounded-xl p-md lg:p-lg">
+<h2 class="font-headline-md text-headline-md text-primary mb-lg">Payment Method</h2>
+<form class="space-y-md">
+<!-- Payment Method Selector -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-sm mb-lg">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="payment_method" type="radio" value="card"/>
+<div class="glass-panel rounded-lg p-sm border transition-all duration-300 peer-checked:border-primary-container peer-checked:bg-[rgba(255,182,139,0.05)] flex flex-col items-center justify-center gap-xs text-center h-24 hover:border-primary-fixed-dim">
+<span class="material-symbols-outlined text-[28px] text-primary-fixed">credit_card</span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Credit Card</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="payment_method" type="radio" value="wallet"/>
+<div class="glass-panel rounded-lg p-sm border transition-all duration-300 peer-checked:border-primary-container peer-checked:bg-[rgba(255,182,139,0.05)] flex flex-col items-center justify-center gap-xs text-center h-24 hover:border-primary-fixed-dim">
+<span class="material-symbols-outlined text-[28px] text-primary-fixed">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Digital Wallet</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="payment_method" type="radio" value="bank"/>
+<div class="glass-panel rounded-lg p-sm border transition-all duration-300 peer-checked:border-primary-container peer-checked:bg-[rgba(255,182,139,0.05)] flex flex-col items-center justify-center gap-xs text-center h-24 hover:border-primary-fixed-dim">
+<span class="material-symbols-outlined text-[28px] text-primary-fixed">account_balance</span>
+<span class="font-label-sm text-label-sm text-on-surface uppercase">Bank Transfer</span>
+</div>
+</label>
+</div>
+<!-- Card Details Form (visible by default based on radio) -->
+<div class="space-y-sm" id="card-form">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="cardName">Name on Card</label>
+<input class="w-full h-12 rounded-lg input-glass px-sm font-body-md text-body-md" id="cardName" placeholder="J. Doe" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="cardNumber">Card Number</label>
+<div class="relative">
+<input class="w-full h-12 rounded-lg input-glass pl-sm pr-12 font-body-md text-body-md tracking-wider" id="cardNumber" placeholder="0000 0000 0000 0000" type="text"/>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-on-surface-variant">credit_score</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="expiry">Expiry Date</label>
+<input class="w-full h-12 rounded-lg input-glass px-sm font-body-md text-body-md" id="expiry" placeholder="MM/YY" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="cvv">CVV</label>
+<div class="relative">
+<input class="w-full h-12 rounded-lg input-glass px-sm font-body-md text-body-md" id="cvv" placeholder="123" type="text"/>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-on-surface-variant cursor-help" title="3 digits on back of card">info</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-md mt-md border-t border-border-glow">
+<button class="w-full h-14 bg-primary-container text-[#111316] font-label-md text-label-md uppercase tracking-widest rounded-lg flex items-center justify-center gap-xs hover:bg-primary-fixed-dim transition-colors duration-300" type="button">
+<span class="material-symbols-outlined">lock</span>
+                                Pay $130.20
+                            </button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mt-sm">Your payment information is encrypted and secure.</p>
+</div>
+</form>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Placeholder (Simplified for checkout to reduce distractions) -->
+<footer class="w-full py-lg px-margin-mobile md:px-margin-desktop border-t border-border-glow flex flex-col md:flex-row items-center justify-between gap-sm text-on-surface-variant font-label-sm text-label-sm">
+<p>© 2024 VIYGO. All rights reserved.</p>
+<div class="flex gap-md">
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms</a>
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</footer>
+<script>
+        // Simple script to toggle form visibility based on selected payment method (simulated)
+        const paymentRadios = document.querySelectorAll('input[name="payment_method"]');
+        const cardForm = document.getElementById('card-form');
+
+        paymentRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                // In a real app, this would swap out form sections
+                if(e.target.value !== 'card') {
+                    cardForm.style.opacity = '0.5';
+                    cardForm.style.pointerEvents = 'none';
+                } else {
+                    cardForm.style.opacity = '1';
+                    cardForm.style.pointerEvents = 'auto';
+                }
+            });
+        });
+    </script>
+</body></html>

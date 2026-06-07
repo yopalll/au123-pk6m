@@ -1,0 +1,40 @@
+[
+  {
+    "fresh_product_id": "black-tea-kombucha-facial-treatment-essence",
+    "fresh_url": "https://www.fresh.com/products/black-tea-kombucha-facial-treatment-essence",
+    "nama": "Black Tea Kombucha Facial Treatment Essence",
+    "kategori": "Serum & Essence",
+    "koleksi": "Black Tea Collection",
+    "deskripsi": "Essence fermentasi yang menghaluskan, menghidrasi, dan mencerahkan kulit kusam.",
+    "key_ingredients": "Black Tea Ferment, Kombucha, Hyaluronic Acid",
+    "full_ingredients": "Water, Lactobacillus/Black Tea Ferment, Saccharomyces Ferment Filtrate, Sodium Hyaluronate",
+    "cara_pemakaian": "Setelah cleansing, tepuk lembut ke kapas dan usapkan ke seluruh wajah.",
+    "harga_usd": 52.0,
+    "harga_idr": 842400,
+    "volume_ml": 150,
+    "berat_gram": 200,
+    "skin_type": "all",
+    "skin_concern": "dehydration,dullness",
+    "badge": "bestseller",
+    "images": ["public/images/products/fresh/black-tea-kombucha-essence-1.jpg", "public/images/products/fresh/black-tea-kombucha-essence-2.jpg"]
+  },
+  {
+    "fresh_product_id": "lotus-youth-preserve-serum",
+    "fresh_url": "https://www.fresh.com/products/lotus-youth-preserve-serum",
+    "nama": "Lotus Youth Preserve Radiance Serum",
+    "kategori": "Serum & Essence",
+    "koleksi": "Lotus Collection",
+    "deskripsi": "Serum antioksidan dengan ekstrak teratai yang mengembalikan kilau muda kulit.",
+    "key_ingredients": "Lotus Extract, Super Fruits Complex, Peptides",
+    "full_ingredients": "Water, Nelumbo Nucifera Extract, Glycerin, Palmitoyl Tripeptide-1",
+    "cara_pemakaian": "Aplikasikan beberapa tetes ke wajah pagi dan malam sebelum pelembap.",
+    "harga_usd": 98.0,
+    "harga_idr": 1587600,
+    "volume_ml": 30,
+    "berat_gram": 120,
+    "skin_type": "combination",
+    "skin_concern": "fine_lines,dullness,firmness",
+    "badge": "new",
+    "images": ["public/images/products/fresh/lotus-youth-serum-1.jpg"]
+  }
+]

@@ -13,7 +13,8 @@ class Salon extends Model
 {
     use SoftDeletes;
 
-    protected $table      = 'salon';
+    protected $table = 'salon';
+
     protected $primaryKey = 'id_salon';
 
     protected $fillable = [
@@ -38,9 +39,9 @@ class Salon extends Model
     protected function casts(): array
     {
         return [
-            'latitude'     => 'decimal:8',
-            'longitude'    => 'decimal:8',
-            'rating'       => 'decimal:2',
+            'latitude' => 'decimal:8',
+            'longitude' => 'decimal:8',
+            'rating' => 'decimal:2',
             'total_review' => 'integer',
         ];
     }

@@ -24,19 +24,20 @@ class SalonKategoriSeeder extends Seeder
             ? json_decode(file_get_contents($path), true) ?? []
             : [];
 
-        if (!empty($rowsFromJson)) {
+        if (! empty($rowsFromJson)) {
             $now = now();
             $payload = array_map(fn ($r) => [
-                'id_salon'    => $r['id_salon'],
+                'id_salon' => $r['id_salon'],
                 'id_kategori' => $r['id_kategori'],
-                'created_at'  => $now,
-                'updated_at'  => $now,
+                'created_at' => $now,
+                'updated_at' => $now,
             ], $rowsFromJson);
 
             foreach (array_chunk($payload, 1000) as $chunk) {
                 DB::table('salon_kategori')->insertOrIgnore($chunk);
             }
-            $this->command->info('Seeded ' . count($payload) . ' baris pivot salon_kategori dari JSON scraper.');
+            $this->command->info('Seeded '.count($payload).' baris pivot salon_kategori dari JSON scraper.');
+
             return;
         }
 
@@ -50,20 +51,21 @@ class SalonKategoriSeeder extends Seeder
 
         if ($rows->isEmpty()) {
             $this->command->warn('salon_kategori.json kosong & service tidak punya id_kategori → pivot dilewati.');
+
             return;
         }
 
         $now = now();
         $payload = $rows->map(fn ($r) => [
-            'id_salon'    => $r->id_salon,
+            'id_salon' => $r->id_salon,
             'id_kategori' => $r->id_kategori,
-            'created_at'  => $now,
-            'updated_at'  => $now,
+            'created_at' => $now,
+            'updated_at' => $now,
         ])->all();
 
         foreach (array_chunk($payload, 1000) as $chunk) {
             DB::table('salon_kategori')->insertOrIgnore($chunk);
         }
-        $this->command->info('Derived ' . count($payload) . ' baris salon_kategori dari distinct(service.id_kategori).');
+        $this->command->info('Derived '.count($payload).' baris salon_kategori dari distinct(service.id_kategori).');
     }
 }

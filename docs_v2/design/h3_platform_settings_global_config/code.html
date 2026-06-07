@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="dark text-on-surface bg-background antialiased selection:bg-primary-container selection:text-on-primary-container" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Platform Settings - VIYGO Admin</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#abcdcd",
+                        "surface-container-high": "#282a2d",
+                        "primary-container": "#ffb68b",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "error-container": "#93000a",
+                        "tertiary": "#c7e9e9",
+                        "on-primary-fixed": "#321200",
+                        "surface-container-lowest": "#0c0e11",
+                        "surface": "#111316",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "surface-variant": "#333538",
+                        "surface-charcoal": "#1A1D21",
+                        "on-secondary-container": "#97bddb",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#111316",
+                        "primary-fixed-dim": "#ffb68b",
+                        "surface-container": "#1e2023",
+                        "background": "#111316",
+                        "secondary-container": "#264d67",
+                        "on-background": "#e2e2e6",
+                        "on-surface": "#e2e2e6",
+                        "outline-variant": "#52443c",
+                        "primary-fixed": "#ffdbc9",
+                        "on-tertiary-container": "#385858",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "secondary": "#a5cbea",
+                        "on-surface-variant": "#d7c2b8",
+                        "primary": "#ffdbc8",
+                        "surface-bright": "#37393d",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "on-primary-container": "#7a4523",
+                        "surface-container-low": "#1a1c1f",
+                        "on-primary": "#502405",
+                        "secondary-fixed": "#c9e6ff",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "surface-tint": "#ffb68b",
+                        "inverse-surface": "#e2e2e6",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "on-tertiary-fixed": "#002020",
+                        "on-secondary": "#04344d",
+                        "inverse-primary": "#88512e",
+                        "tertiary-fixed": "#c7e9e9",
+                        "on-tertiary": "#143536",
+                        "on-secondary-fixed": "#001e2f",
+                        "inverse-on-surface": "#2f3034",
+                        "on-error": "#690005",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "surface-container-highest": "#333538",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#9f8d84"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "margin-desktop": "80px",
+                        "sm": "16px",
+                        "xl": "80px",
+                        "gutter": "24px",
+                        "lg": "40px",
+                        "margin-mobile": "20px",
+                        "md": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Playfair Display"],
+                        "label-sm": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "display-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>/* Serene Floral Noir Atmosphere */
+.bg-botanical-noir {
+    background-color: theme("colors.background");
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuA8q5D0onWWTBl94zaiDqcB0cXoAzPw3Xahf7KE9qvmhHK9rHOovjrgGZQkJcgZ3lFC8m9eorrS9SyK8TySkFKsF3a_OkEDv9rJE-Q0hs-11KliO6VmqNEZBbBRQQMXjchaxN8yjF1Zn6XfgKMLCAdPq3L7WEtKSLstzJnQHf5niW55TZ31tVl7ViWN1eWDYjlTQ28SioHjSOT4s-Yq1RBesf-IDu9PfE0gulLInupYX3Ls8qGeYfUa8_eSTtwhr9IMK8z3n8NXkiRd);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed
+    }
+.bg-botanical-noir::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(17, 19, 22, 0.92);
+    /* 92% opacity base background over texture */
+    z-index: 0;
+    pointer-events: none
+    }
+/* Glassmorphism Panels */
+.glass-panel {
+    background-color: theme("colors.surface-glass");
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid theme("colors.border-glow")
+    }
+/* Custom Input Styling based on Style Guidance */
+.input-midnight {
+    background-color: theme("colors.surface-charcoal");
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: theme("colors.on-surface");
+    transition: all 0.3s ease
+    }
+.input-midnight:focus {
+    outline: none;
+    border-color: theme("colors.primary");
+    box-shadow: 0 0 0 2px rgba(255, 182, 139, 0.2);
+    /* Copper glow */
+    }
+/* Custom Toggle */
+.toggle-checkbox:checked {
+    right: 0;
+    border-color: theme("colors.primary")
+    }
+.toggle-checkbox:checked + .toggle-label {
+    background-color: theme("colors.primary")
+    }</style>
+</head>
+<body class="bg-botanical-noir h-screen w-full flex overflow-hidden relative" data-alt="A sophisticated digital platform interface background featuring a subtle, deep midnight floral pattern. The texture is almost imperceptible, covered by a heavy dark translucent layer that creates a profound sense of depth. The aesthetic is luxurious, moody, and clinical, illuminated by faint, warm copper-toned light leaks at the edges, establishing a serene yet professional atmosphere.">
+<!-- JSON Component: SideNavBar -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface-charcoal flex flex-col p-md gap-sm border-r border-white/10 z-20">
+<!-- Header -->
+<div class="flex items-center gap-sm mb-lg px-xs">
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden border border-border-glow shrink-0">
+<img alt="Salon Logo" class="w-full h-full object-cover" data-alt="A minimalist logo mark for a high-end salon, featuring delicate organic lines embossed in copper against a matte black circular background. The lighting is soft and studio-quality, highlighting the metallic sheen of the emblem within a moody, luxurious setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDG0wmmz8p9f_N3vIsqu1BbuOBJH5Rfe3b40unPWiQtOWOOitKIQcREyKrA879bR5EZLMBPmpFJ0kiBGHR-YhrdbCcuaXnOWGkh5epftmT4UFrUtJqWQyPKOnpdnUr5szT4z_MREErZS3KGdvzD2zxKy_6OHMz-b8KBfzOmWlkpE0I-H4nQd8GB0gzus17am76M_2XdVPKseMiIR1RAWhMaPslt2p9l8oTHwG-url2yRsslpkyijtpzfuVzC_b57t4hpGCg-eYRXpO"/>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">VIYGO Admin</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mt-1">Elite Management</p>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-widest py-sm rounded-lg mb-md hover:opacity-90 transition-opacity">
+            New Appointment
+        </button>
+<!-- Main Navigation (Settings is not a primary tab, so all are inactive based on strict adherence to intent) -->
+<div class="flex-1 flex flex-col gap-xs overflow-y-auto pr-xs">
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all font-label-md text-label-md uppercase tracking-widest scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all font-label-md text-label-md uppercase tracking-widest scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">calendar_month</span>
+<span>Bookings</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all font-label-md text-label-md uppercase tracking-widest scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">content_cut</span>
+<span>Stylists</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all font-label-md text-label-md uppercase tracking-widest scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all font-label-md text-label-md uppercase tracking-widest scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">monitoring</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all font-label-md text-label-md uppercase tracking-widest scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group</span>
+<span>Clients</span>
+</a>
+</div>
+<!-- Footer Navigation -->
+<div class="mt-auto pt-sm border-t border-white/10 flex flex-col gap-xs">
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all font-label-md text-label-md uppercase tracking-widest scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all font-label-md text-label-md uppercase tracking-widest scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-64 h-full overflow-y-auto relative z-10 px-margin-desktop py-xl">
+<!-- Header Section -->
+<header class="flex justify-between items-end mb-lg border-b border-border-glow pb-md">
+<div>
+<h1 class="font-display-lg text-display-lg text-primary tracking-tight">Platform Settings</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-xs max-w-2xl">Configure global application parameters, administrative access controls, and core financial structures for the VIYGO network.</p>
+</div>
+<div class="flex gap-sm">
+<button class="bg-transparent border border-secondary text-secondary px-md py-sm rounded hover:bg-secondary/10 transition-colors font-label-md text-label-md uppercase tracking-widest">
+                    Discard
+                </button>
+<button class="bg-primary-container text-on-primary-container px-lg py-sm rounded hover:opacity-90 transition-opacity font-label-md text-label-md uppercase tracking-widest">
+                    Save Config
+                </button>
+</div>
+</header>
+<!-- Configuration Bento Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- General Settings (Col span 7) -->
+<section class="col-span-12 md:col-span-7 glass-panel rounded-xl p-lg flex flex-col gap-md">
+<div class="flex items-center gap-sm mb-sm">
+<span class="material-symbols-outlined text-primary">settings_applications</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">General Settings</h2>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Platform Name</label>
+<input class="input-midnight rounded w-full px-sm py-sm font-body-md text-body-md" type="text" value="VIYGO Elite"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Support Contact Email</label>
+<input class="input-midnight rounded w-full px-sm py-sm font-body-md text-body-md" type="email" value="concierge@viygo.com"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Default Timezone</label>
+<select class="input-midnight rounded w-full px-sm py-sm font-body-md text-body-md appearance-none">
+<option>America/New_York (EST)</option>
+<option>America/Los_Angeles (PST)</option>
+<option>Europe/London (GMT)</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Global Theme & State (Col span 5) -->
+<section class="col-span-12 md:col-span-5 glass-panel rounded-xl p-lg flex flex-col gap-md relative overflow-hidden">
+<div class="flex items-center gap-sm mb-sm relative z-10">
+<span class="material-symbols-outlined text-primary">palette</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Theme &amp; State</h2>
+</div>
+<div class="flex flex-col gap-lg relative z-10">
+<!-- Maintenance Mode Toggle -->
+<div class="flex items-center justify-between bg-surface-charcoal p-sm rounded border border-border-glow">
+<div>
+<p class="font-label-md text-label-md text-on-surface uppercase tracking-widest">Maintenance Mode</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">Suspend client bookings globally.</p>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-surface-variant border-4 border-surface-charcoal appearance-none cursor-pointer transition-all duration-300 z-10" id="toggle1" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container-high cursor-pointer transition-colors duration-300" for="toggle1"></label>
+</div>
+</div>
+<!-- Brand Color Selection (Visual abstraction) -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-2">Primary Brand Accent</label>
+<div class="flex gap-sm">
+<button aria-label="Select Copper" class="w-10 h-10 rounded-full bg-primary flex items-center justify-center ring-2 ring-primary ring-offset-2 ring-offset-surface-charcoal">
+<span class="material-symbols-outlined text-on-primary text-sm">check</span>
+</button>
+<button aria-label="Select Dusty Blue" class="w-10 h-10 rounded-full bg-[#A5CBEA] hover:scale-110 transition-transform"></button>
+<button aria-label="Select Sage" class="w-10 h-10 rounded-full bg-[#abcdcd] hover:scale-110 transition-transform"></button>
+</div>
+</div>
+</div>
+<!-- Decorative background element for this card -->
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl pointer-events-none"></div>
+</section>
+<!-- Commission & Fees (Col span 6) -->
+<section class="col-span-12 md:col-span-6 glass-panel rounded-xl p-lg flex flex-col gap-md">
+<div class="flex items-center gap-sm mb-sm">
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Commission Structure</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-sm">Set global baseline rates. Individual stylist overrides can be managed in their specific profiles.</p>
+<div class="flex flex-col gap-lg">
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-end mb-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Platform Processing Fee</label>
+<span class="font-headline-md text-headline-md text-primary">2.5%</span>
+</div>
+<input class="w-full h-1 bg-surface-charcoal rounded-lg appearance-none cursor-pointer accent-primary" max="10" min="1" step="0.1" type="range" value="2.5"/>
+</div>
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-end mb-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Default Stylist Payout</label>
+<span class="font-headline-md text-headline-md text-primary">60%</span>
+</div>
+<input class="w-full h-1 bg-surface-charcoal rounded-lg appearance-none cursor-pointer accent-primary" max="90" min="40" step="1" type="range" value="60"/>
+</div>
+</div>
+</section>
+<!-- User Roles & Permissions (Col span 6) -->
+<section class="col-span-12 md:col-span-6 glass-panel rounded-xl p-lg flex flex-col gap-md">
+<div class="flex items-center justify-between mb-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">security</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Roles &amp; Permissions</h2>
+</div>
+<button class="text-secondary hover:text-primary transition-colors font-label-sm text-label-sm uppercase tracking-widest">Manage Roles</button>
+</div>
+<div class="flex flex-col gap-sm">
+<!-- Role Row -->
+<div class="flex items-center justify-between p-sm border-b border-border-glow hover:bg-surface-charcoal/50 transition-colors rounded">
+<div>
+<p class="font-label-md text-label-md text-on-surface uppercase tracking-widest">Super Administrator</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Full access to all platform configurations.</p>
+</div>
+<span class="px-2 py-1 bg-primary/20 text-primary rounded font-label-sm text-label-sm uppercase tracking-widest text-[10px]">System</span>
+</div>
+<!-- Role Row -->
+<div class="flex items-center justify-between p-sm border-b border-border-glow hover:bg-surface-charcoal/50 transition-colors rounded">
+<div>
+<p class="font-label-md text-label-md text-on-surface uppercase tracking-widest">Salon Manager</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Can manage stylists, bookings, and inventory.</p>
+</div>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" title="Edit">edit</span>
+</div>
+</div>
+<!-- Role Row -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-charcoal/50 transition-colors rounded">
+<div>
+<p class="font-label-md text-label-md text-on-surface uppercase tracking-widest">Senior Stylist</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Can view analytics and modify personal schedule.</p>
+</div>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" title="Edit">edit</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

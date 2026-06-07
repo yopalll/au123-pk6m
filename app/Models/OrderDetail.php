@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OrderDetail extends Model
 {
-    protected $table      = 'order_detail';
+    protected $table = 'order_detail';
+
     protected $primaryKey = 'id_order_detail';
 
     protected $fillable = [
@@ -26,7 +27,7 @@ class OrderDetail extends Model
     {
         return [
             'harga_at_order' => 'decimal:2',
-            'subtotal'       => 'decimal:2',
+            'subtotal' => 'decimal:2',
         ];
     }
 

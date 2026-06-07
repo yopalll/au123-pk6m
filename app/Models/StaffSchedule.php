@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class StaffSchedule extends Model
 {
-    protected $table      = 'staff_schedule';
+    protected $table = 'staff_schedule';
+
     protected $primaryKey = 'id_schedule';
 
     protected $fillable = [

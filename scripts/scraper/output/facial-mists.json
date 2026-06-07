@@ -1,0 +1,41 @@
+[
+  {
+    "fresh_product_id": "rose-floral-mist",
+    "fresh_url": "https://www.fresh.com/products/rose-floral-mist",
+    "nama": "Rose Floral Refreshing Mist",
+    "kategori": "Facial Mist",
+    "koleksi": "Rose Collection",
+    "deskripsi": "Kabut wajah penyegar dengan kelopak mawar asli untuk hidrasi instan kapan saja.",
+    "key_ingredients": "Real Rose Petals, Rosewater, Hyaluronic Acid",
+    "full_ingredients": "Rosa Damascena Flower Water, Glycerin, Sodium Hyaluronate, Rosa Damascena Flower",
+    "cara_pemakaian": "Semprotkan ke wajah kapan pun butuh kesegaran, bisa di atas makeup.",
+    "harga_usd": 40.0,
+    "harga_idr": 648000,
+    "volume_ml": 100,
+    "berat_gram": 160,
+    "skin_type": "all",
+    "skin_concern": "dehydration",
+    "badge": "bestseller",
+    "kategori_lain": ["Travel Size"],
+    "images": ["public/images/products/fresh/rose-floral-mist-1.jpg"]
+  },
+  {
+    "fresh_product_id": "kombucha-facial-mist",
+    "fresh_url": "https://www.fresh.com/products/kombucha-facial-mist",
+    "nama": "Kombucha Antioxidant Facial Mist",
+    "kategori": "Facial Mist",
+    "koleksi": "Kombucha Collection",
+    "deskripsi": "Kabut antioksidan dengan kombucha yang mencerahkan dan melindungi kulit dari polusi.",
+    "key_ingredients": "Kombucha, Green Tea, Lemon Balm",
+    "full_ingredients": "Water, Saccharomyces Ferment Filtrate, Camellia Sinensis Leaf Extract, Glycerin",
+    "cara_pemakaian": "Semprotkan ke wajah pagi/siang untuk menyegarkan.",
+    "harga_usd": 42.0,
+    "harga_idr": 680400,
+    "volume_ml": 100,
+    "berat_gram": 160,
+    "skin_type": "combination",
+    "skin_concern": "dullness,uneven_skin_tone",
+    "badge": "new",
+    "images": ["public/images/products/fresh/kombucha-mist-1.jpg"]
+  }
+]

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Salon Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#e2e2e6",
+                        "on-tertiary": "#143536",
+                        "surface-charcoal": "#1A1D21",
+                        "primary": "#ffdbc8",
+                        "on-error": "#690005",
+                        "surface-tint": "#ffb68b",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "on-tertiary-container": "#385858",
+                        "surface-bright": "#37393d",
+                        "on-primary": "#502405",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-primary-container": "#7a4523",
+                        "primary-fixed-dim": "#ffb68b",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "on-error-container": "#ffdad6",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "surface": "#111316",
+                        "secondary-container": "#264d67",
+                        "surface-container-high": "#282a2d",
+                        "on-primary-fixed": "#321200",
+                        "tertiary-fixed": "#c7e9e9",
+                        "primary-container": "#ffb68b",
+                        "on-secondary": "#04344d",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "on-secondary-fixed": "#001e2f",
+                        "inverse-primary": "#88512e",
+                        "inverse-on-surface": "#2f3034",
+                        "tertiary": "#c7e9e9",
+                        "outline": "#9f8d84",
+                        "on-background": "#e2e2e6",
+                        "secondary": "#a5cbea",
+                        "outline-variant": "#52443c",
+                        "surface-container-low": "#1a1c1f",
+                        "surface-container": "#1e2023",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "secondary-fixed": "#c9e6ff",
+                        "primary-fixed": "#ffdbc9",
+                        "surface-dim": "#111316",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "on-secondary-container": "#97bddb",
+                        "tertiary-container": "#abcdcd",
+                        "surface-container-highest": "#333538",
+                        "on-surface-variant": "#d7c2b8",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed": "#002020",
+                        "background": "#111316",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "error-container": "#93000a",
+                        "surface-variant": "#333538",
+                        "inverse-surface": "#e2e2e6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "80px",
+                        "margin-mobile": "20px",
+                        "xs": "8px",
+                        "sm": "16px",
+                        "base": "4px",
+                        "xl": "80px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>.floral-bg {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDk1qoB5U71DcO7P8de3BAuLPTaPVoUBXW5kbKkDGr_sl1A3DfR3nk0sfxvCsj1jRLcATO7Y6-7Y8jSI-NAni9Au-v-IoMuJycVvbHaVPRDS2vyqNI2PyPZmdemc2A5t5fyqm7nnfzXh8UweJ_Xf1yUKdSwyCbYrEu5LQZNEqQ-KeMOi8m6efwu18OnhbNqZxEYlZoxj-2laRhq7Bswqqchh4tqooyRRDrQn4raaG_MnTo12S1Hnnt0JO1mMJtPREmd5M3FIK6IhtfI);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed
+    }
+.glass-panel {
+    background-color: rgba(26, 29, 33, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2)
+    }
+.pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 20px)
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased floral-bg relative min-h-screen pb-[80px]">
+<!-- Dark overlay for better contrast -->
+<div class="absolute inset-0 bg-background/90 z-0 pointer-events-none"></div>
+<div class="relative z-10">
+<!-- TopAppBar -->
+<header class="bg-surface-glass backdrop-blur-md fixed top-0 w-full flex justify-between items-center px-margin-mobile h-16 z-50">
+<button class="text-on-surface hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">VIYGO</h1>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-glow hover:opacity-80 transition-opacity cursor-pointer">
+<img alt="Admin Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWylvW2Emfdg6zjKgR2W5guWKmxtuHkIHzZBFfRLzWmI1UgvgBChySq5OJO-kdXkhIZFn-e9ljy3qMvYKHMZ6iCE5dNc8zvUgC2SijtBmLkeanOsqf-fb9z6yTrboKlRj_iVKqx1BcNyE8nlLAuTl5q2xkEbRBuxrSjgKQsWySkpK1Fk6C5rkIc3fmZHC425Cv8URmYlPVShWqsHne4mmszy2aAvhrIgQ2mbgrpcH3ZjDaafKokOaWNyxcKF2HDkYar8t57H3CgtuE"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[80px] px-margin-mobile">
+<!-- Greeting Section -->
+<section class="mb-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">Good morning, Celeste</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Here's your salon overview for today.</p>
+</section>
+<!-- Quick Metrics - Horizontal Scroll on Mobile -->
+<section class="mb-lg -mx-margin-mobile px-margin-mobile overflow-x-auto pb-4 snap-x">
+<div class="flex gap-sm w-max">
+<!-- Metric 1: Appointments -->
+<div class="glass-panel rounded-xl p-md min-w-[160px] snap-center">
+<div class="flex items-center justify-between mb-sm">
+<span class="material-symbols-outlined text-primary" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary/10 px-2 py-1 rounded-DEFAULT">+2%</span>
+</div>
+<p class="font-headline-lg text-headline-lg text-on-surface mb-1">24</p>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Appointments</p>
+</div>
+<!-- Metric 2: Revenue -->
+<div class="glass-panel rounded-xl p-md min-w-[160px] snap-center">
+<div class="flex items-center justify-between mb-sm">
+<span class="material-symbols-outlined text-primary" data-icon="payments">payments</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary/10 px-2 py-1 rounded-DEFAULT">+5%</span>
+</div>
+<p class="font-headline-lg text-headline-lg text-on-surface mb-1">$1,450</p>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Revenue</p>
+</div>
+<!-- Metric 3: New Clients -->
+<div class="glass-panel rounded-xl p-md min-w-[160px] snap-center">
+<div class="flex items-center justify-between mb-sm">
+<span class="material-symbols-outlined text-primary" data-icon="person_add">person_add</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container/50 px-2 py-1 rounded-DEFAULT">Steady</span>
+</div>
+<p class="font-headline-lg text-headline-lg text-on-surface mb-1">6</p>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">New Clients</p>
+</div>
+</div>
+</section>
+<!-- Quick Actions -->
+<section class="mb-lg">
+<div class="glass-panel rounded-xl p-sm flex items-center justify-between">
+<p class="font-body-md text-body-md text-on-surface ml-xs">Need to block time?</p>
+<button class="bg-primary text-on-primary px-sm py-xs rounded-lg font-label-md text-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                        New Booking
+                    </button>
+</div>
+</section>
+<!-- Today's Schedule -->
+<section class="mb-xl">
+<div class="flex justify-between items-end mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Today's Schedule</h3>
+<button class="font-label-md text-label-md text-secondary hover:opacity-80">View All</button>
+</div>
+<div class="flex flex-col gap-sm">
+<!-- Schedule Item 1: In Progress -->
+<div class="glass-panel rounded-xl p-md flex gap-md items-start relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-surface-tint"></div>
+<div class="flex flex-col items-center min-w-[50px]">
+<span class="font-label-md text-label-md text-on-surface">09:00</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">AM</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-body-lg text-body-lg text-on-surface">Elena R.</h4>
+<span class="font-label-sm text-label-sm text-surface-tint border border-surface-tint/30 bg-surface-tint/10 px-2 py-1 rounded-DEFAULT uppercase">In Progress</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-2">Balayage &amp; Styling</p>
+<div class="flex items-center gap-xs">
+<img alt="Stylist" class="w-6 h-6 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7LFl0P1kSq_112lZZMWvXs36NnbJdk3cjybvR5evQU_YuELWeWFEV0pH7XQ-ScjjM8UMFYtYiD34_96tZMIzqoEHB7qopDIrEe7vTyOeJz_mKGmU17O0jE2UEpbqj57bU3vjkqucNBA7IfkY67ZyhbPka-JUonZfHPRtyI91YD0rWc3F9cCNL_pW9vTMhWSXyMjimajN8AOdDLeld4AKVKrk_Q9wl0COwWuGlq-HqCUQ7mQKv5Fe5k_AzYlIKEbBm3u403SiX7X95"/>
+<span class="font-label-sm text-label-sm text-on-surface-variant">with Sarah</span>
+</div>
+</div>
+</div>
+<!-- Schedule Item 2: Confirmed -->
+<div class="glass-panel rounded-xl p-md flex gap-md items-start relative overflow-hidden opacity-80">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div>
+<div class="flex flex-col items-center min-w-[50px]">
+<span class="font-label-md text-label-md text-on-surface">11:30</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">AM</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-body-lg text-body-lg text-on-surface">Michael T.</h4>
+<span class="font-label-sm text-label-sm text-secondary border border-secondary/30 bg-secondary/10 px-2 py-1 rounded-DEFAULT uppercase">Confirmed</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-2">Men's Cut &amp; Beard Trim</p>
+<div class="flex items-center gap-xs">
+<img alt="Stylist" class="w-6 h-6 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVhFyNrAf_ayCcQNk9Uzegmxcch9crVRt_4GmU3SJNf6lU59ka-253lzzsazZ00AGSL9wtlbxliJRpUf__r8mSXNpuL_xk2a5dDOEzbYd-33cfMrMfbBmrkPuDgc2M0keGWE92UxNH7lnWgt7757kWhnrQO1xfvQJZbrEuN4TyylprAt1-5aI20SGv8A6HTxdkEUEtbd8hlOwI3Y_LfSdBNz4tvoH2e8O8Hx149XrUUp_anF8w30sTyxL6NXIi4vrG92Mev4Z8V6nj"/>
+<span class="font-label-sm text-label-sm text-on-surface-variant">with David</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- BottomNavBar -->
+<nav class="bg-surface-glass backdrop-blur-lg fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="monitoring">monitoring</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Metrics</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Inbox</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="calendar_today" data-weight="fill" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-playfair">Schedule</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Settings</span>
+</a>
+</nav>
+</body></html>

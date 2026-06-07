@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Platform Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#e2e2e6",
+                        "on-tertiary": "#143536",
+                        "surface-charcoal": "#1A1D21",
+                        "primary": "#ffdbc8",
+                        "on-error": "#690005",
+                        "surface-tint": "#ffb68b",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "on-tertiary-container": "#385858",
+                        "surface-bright": "#37393d",
+                        "on-primary": "#502405",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-primary-container": "#7a4523",
+                        "primary-fixed-dim": "#ffb68b",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "on-error-container": "#ffdad6",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "surface": "#111316",
+                        "secondary-container": "#264d67",
+                        "surface-container-high": "#282a2d",
+                        "on-primary-fixed": "#321200",
+                        "tertiary-fixed": "#c7e9e9",
+                        "primary-container": "#ffb68b",
+                        "on-secondary": "#04344d",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "on-secondary-fixed": "#001e2f",
+                        "inverse-primary": "#88512e",
+                        "inverse-on-surface": "#2f3034",
+                        "tertiary": "#c7e9e9",
+                        "outline": "#9f8d84",
+                        "on-background": "#e2e2e6",
+                        "secondary": "#a5cbea",
+                        "outline-variant": "#52443c",
+                        "surface-container-low": "#1a1c1f",
+                        "surface-container": "#1e2023",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "secondary-fixed": "#c9e6ff",
+                        "primary-fixed": "#ffdbc9",
+                        "surface-dim": "#111316",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "on-secondary-container": "#97bddb",
+                        "tertiary-container": "#abcdcd",
+                        "surface-container-highest": "#333538",
+                        "on-surface-variant": "#d7c2b8",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed": "#002020",
+                        "background": "#111316",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "error-container": "#93000a",
+                        "surface-variant": "#333538",
+                        "inverse-surface": "#e2e2e6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "80px",
+                        "margin-mobile": "20px",
+                        "xs": "8px",
+                        "sm": "16px",
+                        "base": "4px",
+                        "xl": "80px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "lg": "40px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .bg-pattern {
+            background-color: #111316;
+            background-image: radial-gradient(rgba(255, 182, 139, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .glass-panel {
+            background: rgba(26, 29, 33, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-pattern text-on-surface min-h-screen font-body-md relative overflow-x-hidden pt-16 pb-24 md:pb-0">
+<!-- Floral Background Overlay (Semantic) -->
+<div class="fixed inset-0 pointer-events-none opacity-10 z-[-1]" data-alt="A moody, high-end botanical backdrop featuring deep midnight silhouettes of delicate flora against an almost black void. The lighting is extremely subtle, highlighting the textures of petals and leaves with a soft, ethereal luminescence that complements the Serene Floral Noir aesthetic. The composition implies depth without distracting from foreground elements." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA3eQz66_-tAJ6gmNCY7uY3n1AI69JSitW0wDyp0fryAsA044xShezz_jfHTZHaQ0sS-9DUXggwPgWd7OauD7sC_nZMdS4fvPwzKGDPXghau9PJ7eIFNtMP9o14UQ0-B30TqR0RkLIOrtOUFdbcNSkCBOiAW47ZvBiMrWWIcituCiSFpPux1lokcgp47av02MYrCZS6ddeQWrKaZPVTTRakEaRqS1TQsnEV8ywXLaatqD001GDaQT13LCxUeLDuwkL4mi6hvoiVL8aL'); background-size: cover; background-position: center;"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-surface-glass backdrop-blur-md border-b border-border-glow flex justify-between items-center px-margin-mobile h-16 z-50 transition-opacity">
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">VIYGO</h1>
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<div class="w-8 h-8 rounded-full bg-surface-charcoal border border-border-glow overflow-hidden">
+<img alt="Admin Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMgHnF0v9aI0utzybareHDGEQqGZeMzsewiBivnRxrLXkdi6nbyw6VgyEiBGv4XHzxXR1wN_z2GgriAW-kthnH46RnZmOmEAUGno1Nc_9iBdmDrBncYi0nyg5VHbNjbAVGUB6DheH1P0EprjmPauzDhbg29STw2_r9kLf2vR4N8yzcF3C8ALd5rT7D5BM0hOy7w5vCxPgmPX2a47aLeMVCFFLXrc6si6eVA8MlYbCGTz5gPRQTsXycBuC7o9oOxNRY-0p94gtX8YBF"/>
+</div>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="px-margin-mobile py-sm max-w-7xl mx-auto space-y-md md:hidden">
+<!-- Header -->
+<div class="pt-sm pb-xs">
+<h2 class="font-headline-md text-headline-md font-playfair text-on-surface">Dashboard Overview</h2>
+<p class="text-on-surface-variant font-body-md mt-1">Platform performance metrics</p>
+</div>
+<!-- Global Metrics (Horizontal Scroll) -->
+<div class="flex overflow-x-auto no-scrollbar space-x-sm pb-sm -mx-margin-mobile px-margin-mobile">
+<!-- Metric 1 -->
+<div class="glass-panel rounded-xl p-sm min-w-[200px] flex-shrink-0 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex justify-between items-start mb-sm relative z-10">
+<span class="text-on-surface-variant font-label-md">Active Salons</span>
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="storefront" style="font-variation-settings: 'FILL' 1;">storefront</span>
+</div>
+<div class="font-headline-md text-headline-md font-playfair text-on-surface relative z-10">1,248</div>
+<div class="text-secondary font-label-sm mt-1 flex items-center relative z-10">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="trending_up">trending_up</span> +12% vs last month
+                </div>
+</div>
+<!-- Metric 2 -->
+<div class="glass-panel rounded-xl p-sm min-w-[200px] flex-shrink-0 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex justify-between items-start mb-sm relative z-10">
+<span class="text-on-surface-variant font-label-md">Platform Revenue</span>
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<div class="font-headline-md text-headline-md font-playfair text-on-surface relative z-10">$84.2k</div>
+<div class="text-secondary font-label-sm mt-1 flex items-center relative z-10">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="trending_up">trending_up</span> +8.4% vs last month
+                </div>
+</div>
+<!-- Metric 3 -->
+<div class="glass-panel rounded-xl p-sm min-w-[200px] flex-shrink-0 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex justify-between items-start mb-sm relative z-10">
+<span class="text-on-surface-variant font-label-md">Active Subs</span>
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+</div>
+<div class="font-headline-md text-headline-md font-playfair text-on-surface relative z-10">45k</div>
+<div class="text-error font-label-sm mt-1 flex items-center relative z-10">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="trending_down">trending_down</span> -2.1% vs last month
+                </div>
+</div>
+</div>
+<!-- Top Performing Salons Bento -->
+<div>
+<div class="flex justify-between items-end mb-sm">
+<h3 class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant">Top Salons</h3>
+<button class="text-primary font-label-sm hover:opacity-80 transition-opacity flex items-center">
+                    View All <span class="material-symbols-outlined text-[16px] ml-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 gap-xs">
+<!-- Salon Item 1 -->
+<div class="glass-panel rounded-lg p-sm flex items-center gap-sm">
+<div class="w-12 h-12 rounded bg-surface-charcoal border border-border-glow overflow-hidden flex-shrink-0">
+<img alt="Salon interior" class="w-full h-full object-cover" data-alt="A detailed close-up of a luxurious modern salon interior space. The setting features polished dark surfaces and warm copper lighting fixtures that cast an inviting glow. The mood is sophisticated and tranquil, aligning perfectly with the Serene Floral Noir aesthetic. The composition highlights textures of fine materials and glass reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBHPe--zAzPi0Yg9zGHDhFOoISPxD29wqHuu6ZcrjrJmdPT7KVP_O3QWao9O11ZSwtapKgDYNxIALHx2sSnunighDq9hMFtO0BQOiAXBE1vOUn8Xk5vwq8ZVTIl51sSgZ9yUOqnba19HhWjPXFv-wctKUGqEmZMXQ4iZDHC73_RdYeuHsZUre6wpuL0MvlabDMYvtWbKDUvHlvkYmF80Wvy7xM_MLEX6RBGgwJzxUhyDBzfHjMYm7uY1OA8XAmYUHZ6yqE1o94OhX0"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-md text-on-surface font-semibold">Lumiere Botanica</h4>
+<div class="text-on-surface-variant font-label-sm mt-1 flex items-center gap-xs">
+<span class="flex items-center text-primary"><span class="material-symbols-outlined text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span> 4.9</span>
+<span>•</span>
+<span>$12.4k Rev</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full border border-secondary text-secondary flex items-center justify-center hover:bg-secondary/10 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- Salon Item 2 -->
+<div class="glass-panel rounded-lg p-sm flex items-center gap-sm">
+<div class="w-12 h-12 rounded bg-surface-charcoal border border-border-glow overflow-hidden flex-shrink-0">
+<div class="w-full h-full bg-surface-bright flex items-center justify-center text-on-surface-variant font-playfair font-bold">EA</div>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-md text-on-surface font-semibold">Ethereal Apothecary</h4>
+<div class="text-on-surface-variant font-label-sm mt-1 flex items-center gap-xs">
+<span class="flex items-center text-primary"><span class="material-symbols-outlined text-[14px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span> 4.8</span>
+<span>•</span>
+<span>$9.8k Rev</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full border border-secondary text-secondary flex items-center justify-center hover:bg-secondary/10 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Recent Activity Feed -->
+<div class="pt-sm">
+<h3 class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant mb-sm">Recent Activity</h3>
+<div class="glass-panel rounded-xl p-sm">
+<div class="space-y-sm relative">
+<!-- Vertical Line connecting feed -->
+<div class="absolute left-[15px] top-4 bottom-4 w-px bg-border-glow"></div>
+<!-- Activity 1 -->
+<div class="flex gap-sm relative z-10">
+<div class="w-8 h-8 rounded-full bg-primary/20 border border-primary text-primary flex items-center justify-center flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="add_circle" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</div>
+<div>
+<p class="font-body-md text-on-surface">New Salon Registered</p>
+<p class="font-label-sm text-on-surface-variant">Midnight Oasis Spa completed onboarding.</p>
+<p class="font-label-sm text-surface-variant mt-1">10 mins ago</p>
+</div>
+</div>
+<!-- Activity 2 -->
+<div class="flex gap-sm relative z-10">
+<div class="w-8 h-8 rounded-full bg-secondary/20 border border-secondary text-secondary flex items-center justify-center flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="font-body-md text-on-surface">Payout Processed</p>
+<p class="font-label-sm text-on-surface-variant">$45,200 distributed to 84 partners.</p>
+<p class="font-label-sm text-surface-variant mt-1">1 hour ago</p>
+</div>
+</div>
+<!-- Activity 3 -->
+<div class="flex gap-sm relative z-10">
+<div class="w-8 h-8 rounded-full bg-error/20 border border-error text-error flex items-center justify-center flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div>
+<p class="font-body-md text-on-surface">API Sync Warning</p>
+<p class="font-label-sm text-on-surface-variant">Inventory sync delayed for 3 locations.</p>
+<p class="font-label-sm text-surface-variant mt-1">2 hours ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-sm pb-md">
+<button class="w-full bg-surface-tint text-surface-charcoal font-label-md py-sm rounded-lg hover:bg-primary transition-colors flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
+                Generate Full Report
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface-glass backdrop-blur-lg border-t border-border-glow rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-primary font-bold transition-all hover:text-primary-fixed-dim active:scale-90 duration-150">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-playfair">Metrics</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined mb-1" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-playfair">Inbox</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined mb-1" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-playfair">Schedule</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors active:scale-90 duration-150">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest font-playfair">Settings</span>
+</button>
+</nav>
+</body></html>

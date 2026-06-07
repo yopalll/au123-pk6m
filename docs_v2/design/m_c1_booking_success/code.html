@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking Confirmed - VIYGO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "tertiary-container": "#abcdcd",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "on-tertiary-container": "#385858",
+                        "secondary-container": "#264d67",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-secondary-container": "#97bddb",
+                        "surface-container-lowest": "#0c0e11",
+                        "tertiary-fixed": "#c7e9e9",
+                        "surface-container-high": "#282a2d",
+                        "on-primary-container": "#7a4523",
+                        "inverse-on-surface": "#2f3034",
+                        "inverse-surface": "#e2e2e6",
+                        "surface": "#111316",
+                        "inverse-primary": "#88512e",
+                        "surface-variant": "#333538",
+                        "background": "#111316",
+                        "secondary-fixed": "#c9e6ff",
+                        "primary": "#ffdbc8",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "primary-fixed": "#ffdbc9",
+                        "on-tertiary": "#143536",
+                        "error-container": "#93000a",
+                        "on-background": "#e2e2e6",
+                        "on-error": "#690005",
+                        "primary-container": "#ffb68b",
+                        "tertiary": "#c7e9e9",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "on-secondary": "#04344d",
+                        "surface-container-highest": "#333538",
+                        "surface-container": "#1e2023",
+                        "surface-charcoal": "#1A1D21",
+                        "primary-fixed-dim": "#ffb68b",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#37393d",
+                        "on-surface-variant": "#d7c2b8",
+                        "on-primary-fixed": "#321200",
+                        "outline-variant": "#52443c",
+                        "surface-dim": "#111316",
+                        "secondary": "#a5cbea",
+                        "surface-container-low": "#1a1c1f",
+                        "on-tertiary-fixed": "#002020",
+                        "outline": "#9f8d84",
+                        "on-surface": "#e2e2e6",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#ffb68b",
+                        "on-primary": "#502405"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "lg": "40px",
+                        "gutter": "24px",
+                        "xs": "8px",
+                        "margin-mobile": "20px",
+                        "sm": "16px",
+                        "xl": "80px",
+                        "md": "24px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md h-screen w-screen overflow-hidden relative flex flex-col selection:bg-primary selection:text-on-primary">
+<!-- Atmospheric Background Image -->
+<div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-20 mix-blend-screen" data-alt="A dark, sophisticated floral background texture in midnight charcoal and deep black hues. Subtle, ethereal impressions of botanical shapes and leaves emerge slightly from the darkness. Delicate, warm copper highlights catch the edges of the abstract flora, creating a serene, luminous, and luxurious mood perfect for a high-end beauty aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA9DpLHB6sKvM2IGoffgRysLq6Ur1wgksWqJcl8edEbkaJL3OYeGLRZB9Cmn7qDELQOKgYaZLircXb70bML7yLHgkJ3j2Kzfjvw-ODHLlqiK5jdB7EOzWWMhUwpqIMXf6w_kmiYZM8Lu1Gx_j5pEnM-QMpU55GlM9zY6i5M5Cf4lGeatSLtNuAVkyUYX28M78tsC2BoOsZIZFl_vRS8PS6x6ht2pckrEbmUY21wYOMjys2rCC_sJTg0xTxf4VrVLgfzbFQ-vwXP8wV1');">
+</div>
+<!-- Main Content Canvas (Transactional/Success Screen - Nav Suppressed) -->
+<main class="relative z-10 flex-1 flex flex-col items-center justify-center px-margin-mobile w-full max-w-md mx-auto">
+<!-- Success Icon & Headlines -->
+<div class="flex flex-col items-center text-center mb-lg animate-fade-in-up">
+<div class="w-20 h-20 rounded-full bg-primary-container/10 flex items-center justify-center mb-md border border-primary/20 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[40px] text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary mb-xs tracking-tight">Booking Confirmed</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[280px]">Your journey to serenity awaits. Thank you for choosing VIYGO.</p>
+</div>
+<!-- Glassmorphic Details Card -->
+<div class="w-full bg-surface-glass backdrop-blur-xl border border-border-glow rounded-xl p-md mb-lg shadow-2xl flex flex-col gap-sm animate-fade-in-up" style="animation-delay: 100ms;">
+<!-- Detail Row: Treatment -->
+<div class="flex flex-col gap-1 pb-sm border-b border-border-glow/50">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest opacity-80">Treatment</span>
+<span class="font-headline-md text-headline-md text-on-surface">Midnight Renewal Facial</span>
+</div>
+<!-- Detail Row: Date & Time -->
+<div class="flex justify-between items-center pb-sm border-b border-border-glow/50 pt-xs">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest opacity-80">Date</span>
+<span class="font-body-md text-body-md text-on-surface">Oct 24, 2024</span>
+</div>
+<div class="flex flex-col gap-1 text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest opacity-80">Time</span>
+<span class="font-body-md text-body-md text-on-surface">7:00 PM</span>
+</div>
+</div>
+<!-- Detail Row: Location -->
+<div class="flex flex-col gap-1 pt-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest opacity-80">Location</span>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary mt-1" data-icon="location_on">location_on</span>
+<span class="font-body-md text-body-md text-on-surface">The Glasshouse Atelier<br/><span class="text-on-surface-variant text-sm">14 Serenity Lane, NY 10012</span></span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="w-full flex flex-col gap-sm animate-fade-in-up" style="animation-delay: 200ms;">
+<button class="w-full bg-primary text-on-primary py-sm rounded-lg font-label-md text-label-md transition-transform active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_add_on">calendar_add_on</span>
+                Add to Calendar
+            </button>
+<button class="w-full bg-transparent border border-secondary text-secondary py-sm rounded-lg font-label-md text-label-md transition-all active:scale-95 hover:bg-secondary/10 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="directions">directions</span>
+                View Directions
+            </button>
+<button class="w-full mt-xs py-sm text-on-surface-variant font-label-md text-label-md transition-colors hover:text-primary active:scale-95">
+                Back to Home
+            </button>
+</div>
+</main>
+<style>
+        /* Lightweight entrance animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+    </style>
+</body></html>

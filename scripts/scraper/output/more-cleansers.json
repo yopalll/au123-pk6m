@@ -1,0 +1,40 @@
+[
+  {
+    "fresh_product_id": "black-tea-cleansing-balm",
+    "fresh_url": "https://www.fresh.com/products/black-tea-cleansing-balm",
+    "nama": "Black Tea Age-Delay Cleansing Balm",
+    "kategori": "Cleanser",
+    "koleksi": "Black Tea Collection",
+    "deskripsi": "Balm pembersih yang melarutkan makeup dan kotoran sekaligus merawat kulit dengan teh hitam.",
+    "key_ingredients": "Black Tea Extract, Camellia Oil, Blackberry Leaf",
+    "full_ingredients": "Camellia Oleifera Seed Oil, Camellia Sinensis Leaf Extract, Rubus Fruticosus Leaf Extract",
+    "cara_pemakaian": "Pijat ke kulit kering, tambahkan air untuk emulsi, bilas.",
+    "harga_usd": 58.0,
+    "harga_idr": 939600,
+    "volume_ml": 100,
+    "berat_gram": 180,
+    "skin_type": "all",
+    "skin_concern": "dullness,fine_lines",
+    "badge": "new",
+    "images": ["public/images/products/fresh/black-tea-cleansing-balm-1.jpg"]
+  },
+  {
+    "fresh_product_id": "rose-cleansing-milk",
+    "fresh_url": "https://www.fresh.com/products/rose-cleansing-milk",
+    "nama": "Rose Gentle Cleansing Milk",
+    "kategori": "Cleanser",
+    "koleksi": "Rose Collection",
+    "deskripsi": "Susu pembersih lembut dengan air mawar untuk kulit kering dan sensitif.",
+    "key_ingredients": "Rosewater, Real Rose Petals, Glycerin",
+    "full_ingredients": "Rosa Damascena Flower Water, Glycerin, Rosa Damascena Flower, Coco-Glucoside",
+    "cara_pemakaian": "Pijat ke kulit, bilas atau usap dengan kapas lembap.",
+    "harga_usd": 40.0,
+    "harga_idr": 648000,
+    "volume_ml": 150,
+    "berat_gram": 200,
+    "skin_type": "sensitive",
+    "skin_concern": "dehydration",
+    "badge": null,
+    "images": ["public/images/products/fresh/rose-cleansing-milk-1.jpg"]
+  }
+]

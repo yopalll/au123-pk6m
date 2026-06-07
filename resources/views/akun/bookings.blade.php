@@ -55,6 +55,8 @@
                 <div class="text-right shrink-0">
                     <div class="font-bold text-[#1B2D6B]">£{{ number_format($order->total_pembayaran, 2, '.', ',') }}</div>
                     <div class="flex gap-2 mt-2 justify-end items-center">
+                        <a href="{{ route('akun.booking.detail', $order->kode_order) }}"
+                           class="text-xs text-[#4BA3CC] hover:underline">Rincian</a>
                         @if ($order->status === 'pending')
                             <a href="{{ route('booking.payment', $order->kode_order) }}"
                                class="text-xs px-3 py-1 rounded-full bg-[#1B2D6B] text-white hover:bg-[#4BA3CC] transition-colors">

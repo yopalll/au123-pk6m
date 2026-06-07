@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VIYGO - Booking Step 2</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#6c3a19",
+                        "surface-dim": "#111316",
+                        "surface-container-lowest": "#0c0e11",
+                        "on-primary-fixed": "#321200",
+                        "on-secondary-fixed": "#001e2f",
+                        "secondary-container": "#264d67",
+                        "surface": "#111316",
+                        "error-container": "#93000a",
+                        "background": "#111316",
+                        "tertiary-fixed-dim": "#abcdcd",
+                        "primary-fixed": "#ffdbc9",
+                        "on-tertiary-fixed": "#002020",
+                        "on-primary": "#502405",
+                        "on-secondary-fixed-variant": "#234a64",
+                        "surface-container": "#1e2023",
+                        "surface-charcoal": "#1A1D21",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#04344d",
+                        "on-surface": "#e2e2e6",
+                        "border-glow": "rgba(255, 255, 255, 0.2)",
+                        "secondary": "#a5cbea",
+                        "on-error": "#690005",
+                        "surface-tint": "#ffb68b",
+                        "on-tertiary": "#143536",
+                        "on-background": "#e2e2e6",
+                        "primary": "#ffdbc8",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#333538",
+                        "on-secondary-container": "#97bddb",
+                        "inverse-primary": "#88512e",
+                        "on-primary-container": "#7a4523",
+                        "surface-variant": "#333538",
+                        "outline-variant": "#52443c",
+                        "surface-container-low": "#1a1c1f",
+                        "surface-glass": "rgba(17, 19, 22, 0.6)",
+                        "primary-container": "#ffb68b",
+                        "inverse-on-surface": "#2f3034",
+                        "tertiary": "#c7e9e9",
+                        "inverse-surface": "#e2e2e6",
+                        "outline": "#9f8d84",
+                        "tertiary-fixed": "#c7e9e9",
+                        "on-surface-variant": "#d7c2b8",
+                        "tertiary-container": "#abcdcd",
+                        "surface-bright": "#37393d",
+                        "secondary-fixed-dim": "#a5cbea",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-tertiary-fixed-variant": "#2c4c4c",
+                        "primary-fixed-dim": "#ffb68b",
+                        "surface-container-high": "#282a2d",
+                        "on-tertiary-container": "#385858"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "80px",
+                        "lg": "40px",
+                        "base": "4px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "xs": "8px",
+                        "margin-desktop": "80px",
+                        "md": "24px",
+                        "sm": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>/* Shared Styles from Guidance */
+.glass-panel {
+    background-color: theme("colors.surface-glass");
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid theme("colors.border-glow")
+    }
+body {
+    /* Background Texture */
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBNPCz_2FcMsa2wl-t66JphfGJHlwURqXHrjlR9sfWivvdMfjC7KORRZ28X2FFIxb6K6r8O8_G7zld4X0my5fgEjGhLgYGqlTvDJs4yfppa_M87JINJF6HdqyiWMjewfeTWHpJucNySR8IG4BJ55VY86TmEBOs4IsKBwWuD5VOVd0Sn6IieqnvNpzvXmSaYqd5Ce7Y84K-skhWuOjKNeJVgw6GFuZRBKY1nW7OUtD6lMa0pIJt8pqwGubQrKgDPfvH22QTxhuLGpY3E);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative
+    }
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(17, 19, 22, 0.9);
+    /* Deep midnight overlay */
+    z-index: -1
+    }
+/* Custom Scrollbar for time slots */
+.time-slot-scroll::-webkit-scrollbar {
+    width: 4px
+    }
+.time-slot-scroll::-webkit-scrollbar-track {
+    background: transparent
+    }
+.time-slot-scroll::-webkit-scrollbar-thumb {
+    background: theme("colors.surface-variant");
+    border-radius: 4px
+    }</style>
+</head>
+<body class="text-on-background bg-background min-h-screen flex flex-col font-body-md antialiased pt-24">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-24 bg-surface-glass backdrop-blur-xl border-b border-border-glow">
+<div class="font-display-lg text-display-lg text-primary-fixed">
+            VIYGO
+        </div>
+<nav class="hidden md:flex gap-gutter items-center">
+<!-- Not a top-level destination, but keeping shell as requested if forced, though instructions suggest suppressing. 
+                 However, "Booking Flow" is transactional, so technically shouldn't have full nav. 
+                 I will render a simplified header just with brand and a 'Back' or 'Cancel' to respect the "Linear/Transactional" rule. -->
+<a class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant hover:text-primary-fixed transition-colors duration-300" href="#">
+                Cancel Booking
+            </a>
+</nav>
+<div class="flex items-center gap-sm md:hidden">
+<span class="material-symbols-outlined text-primary-fixed">close</span>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow flex items-center justify-center p-margin-mobile md:p-margin-desktop">
+<div class="w-full max-w-3xl glass-panel rounded-xl overflow-hidden flex flex-col">
+<!-- Progress Bar -->
+<div class="w-full h-1 bg-surface-container flex">
+<div class="w-1/3 bg-primary-container h-full"></div>
+<div class="w-1/3 bg-primary-container h-full relative">
+<!-- Glow effect on active segment -->
+<div class="absolute inset-0 bg-primary-container shadow-[0_0_10px_rgba(255,182,139,0.5)]"></div>
+</div>
+<div class="w-1/3 bg-surface-variant h-full"></div>
+</div>
+<div class="p-md md:p-xl flex flex-col gap-xl">
+<!-- Header -->
+<div class="text-center flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Step 2 of 3</span>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background">Date &amp; Time</h1>
+<p class="text-on-surface-variant">Select a suitable time for your Rejuvenating Facial.</p>
+</div>
+<!-- Booking Interface -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg items-start">
+<!-- Calendar Column -->
+<div class="flex flex-col gap-md">
+<div class="flex items-center justify-between px-xs">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<h3 class="font-headline-md text-headline-md">October 2024</h3>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-7 gap-base text-center">
+<!-- Days -->
+<div class="font-label-sm text-label-sm text-on-surface-variant py-xs">Mo</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant py-xs">Tu</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant py-xs">We</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant py-xs">Th</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant py-xs">Fr</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant py-xs">Sa</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant py-xs">Su</div>
+<!-- Dates (Simplified for visual) -->
+<div class="py-sm text-surface-variant">28</div>
+<div class="py-sm text-surface-variant">29</div>
+<div class="py-sm text-surface-variant">30</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">1</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">2</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">3</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">4</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">5</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">6</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">7</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">8</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">9</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">10</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">11</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">12</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">13</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">14</div>
+<!-- Selected Date -->
+<div class="py-sm bg-primary-container text-on-primary-container rounded font-bold shadow-[0_0_8px_rgba(255,182,139,0.3)] cursor-pointer">15</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">16</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">17</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">18</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">19</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">20</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">21</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">22</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">23</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">24</div>
+<div class="py-sm hover:bg-surface-charcoal rounded cursor-pointer transition-colors">25</div>
+</div>
+</div>
+<!-- Time Slots & Notes Column -->
+<div class="flex flex-col gap-md h-full">
+<h4 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest border-b border-border-glow pb-xs">Available Slots</h4>
+<div class="grid grid-cols-2 gap-sm max-h-48 overflow-y-auto time-slot-scroll pr-xs">
+<button class="py-sm px-md rounded border border-border-glow text-center hover:border-primary hover:text-primary transition-all">09:00 AM</button>
+<button class="py-sm px-md rounded border border-border-glow text-center hover:border-primary hover:text-primary transition-all">09:30 AM</button>
+<button class="py-sm px-md rounded border border-border-glow text-center hover:border-primary hover:text-primary transition-all">10:00 AM</button>
+<button class="py-sm px-md rounded border border-primary bg-primary text-on-primary font-bold text-center shadow-[0_0_10px_rgba(255,182,139,0.2)]">10:30 AM</button>
+<button class="py-sm px-md rounded border border-border-glow text-center hover:border-primary hover:text-primary transition-all">11:00 AM</button>
+<button class="py-sm px-md rounded border border-border-glow text-center opacity-50 cursor-not-allowed">11:30 AM</button>
+<button class="py-sm px-md rounded border border-border-glow text-center hover:border-primary hover:text-primary transition-all">01:00 PM</button>
+<button class="py-sm px-md rounded border border-border-glow text-center hover:border-primary hover:text-primary transition-all">01:30 PM</button>
+</div>
+<div class="mt-auto pt-md flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="notes">Notes for the therapist (Optional)</label>
+<textarea class="bg-surface-charcoal border border-border-glow rounded-md p-sm text-body-md text-on-background focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none placeholder:text-surface-variant" id="notes" placeholder="E.g., I have sensitive skin..." rows="2"></textarea>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="flex justify-between items-center pt-md border-t border-border-glow mt-md">
+<button class="px-md py-sm font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                        Back
+                    </button>
+<button class="bg-primary-container text-on-primary px-lg py-sm rounded font-label-md text-label-md hover:bg-primary transition-colors shadow-[0_0_15px_rgba(255,182,139,0.15)] flex items-center gap-xs">
+                        Continue
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component) - Rendered simply as per JSON but kept minimal for transactional flow -->
+<footer class="w-full py-xl px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-5 gap-gutter bg-surface-container-lowest border-t border-border-glow mt-auto">
+<div class="col-span-2 md:col-span-1 flex flex-col gap-md">
+<div class="font-display-lg text-display-lg text-primary-fixed">
+                VIYGO
+            </div>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 VIYGO. All rights reserved.</p>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">VIYGO for Business</a>
+<a class="font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">List your Salon</a>
+</div>
+</footer>
+</body></html>
