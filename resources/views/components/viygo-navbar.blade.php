@@ -183,13 +183,13 @@
                             @endunless
                         </div>
 
-                        {{-- Right: decorative panel --}}
-                        <div class="col-span-2 hidden md:flex items-center justify-center
-                                    bg-linear-to-br from-[#E8F4FB] to-[#C5E1F0] p-6 relative">
-                            <span class="font-serif text-7xl text-[#1B2D6B]/30 select-none leading-none">
+                        {{-- Right: decorative panel — foto background floral noir (ganti gradient biru V1) --}}
+                        <div class="col-span-2 hidden md:flex items-center justify-center p-6 relative overflow-hidden"
+                             style="background-image: linear-gradient(135deg, rgba(17,19,22,0.45), rgba(17,19,22,0.78)), url('{{ asset('images/floral-noir.png') }}'); background-size: cover; background-position: center;">
+                            <span class="font-serif text-7xl select-none leading-none" style="color: rgba(255,182,139,0.40);">
                                 {{ mb_substr($kategori->name, 0, 1) }}
                             </span>
-                            <span class="absolute bottom-4 right-5 text-[10px] uppercase tracking-widest text-[#1B2D6B]/60 font-semibold">
+                            <span class="absolute bottom-4 right-5 text-[10px] uppercase tracking-widest font-semibold" style="color: rgba(255,219,200,0.65);">
                                 {{ $kategori->name }}
                             </span>
                         </div>

@@ -109,6 +109,9 @@
             box-shadow: inset 0 0 0 1px rgba(255,255,255,0.07);
         }
         [class*="bg-white/"] { background-color: rgba(40,42,45,.6) !important; backdrop-filter: blur(12px); }
+        /* body kebetulan punya class bg-white → backdrop-filter di root bikin containing-block
+           sehingga elemen position:fixed (mis. #auth-modal) nempel ke tinggi dokumen, bukan viewport. */
+        body.bg-white { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; box-shadow: none !important; }
         .bg-gray-50, [class*="bg-[#F7FAFC]"] { background-color: rgba(26,28,31,0.7) !important; }
         .bg-gray-100 { background-color: var(--sfn-surface-2) !important; }
         .bg-gray-200 { background-color: var(--sfn-surface-3) !important; }
@@ -217,10 +220,34 @@
     })();
     </script>
 
+    {{-- Modal "Daftarkan akun dulu" untuk guest (inline-styled agar tak bisa di-override) --}}
+    <div id="auth-modal" aria-modal="true" role="dialog"
+         style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,0.78);"
+         data-auth-close>
+        <div style="background:#1a1c1f;border:1px solid rgba(255,255,255,0.12);border-radius:24px;padding:34px 30px;max-width:380px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.65);"
+             onclick="event.stopPropagation()">
+            <div style="width:56px;height:56px;border-radius:9999px;background:rgba(255,182,139,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+                <span class="material-symbols-outlined" style="font-size:28px;color:#ffb68b;">lock</span>
+            </div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:26px;color:#e2e2e6;margin-bottom:8px;">Daftarkan akun dulu</h3>
+            <p style="font-size:14px;color:rgba(255,255,255,0.55);margin-bottom:24px;">Masuk atau buat akun untuk menambahkan produk ke keranjang &amp; wishlist.</p>
+            <a href="{{ route('login') }}" style="display:block;padding:12px;background:#ffb68b;color:#3a1d08;font-size:14px;font-weight:600;border-radius:9999px;margin-bottom:10px;">Masuk</a>
+            <a href="{{ route('register') }}" style="display:block;padding:12px;border:1px solid rgba(165,203,234,0.4);color:#a5cbea;font-size:14px;font-weight:600;border-radius:9999px;">Daftar Akun Baru</a>
+        </div>
+    </div>
+
     {{-- VIYGO Shop: wishlist toggle + add-to-cart + toast (global, guarded) --}}
     <script>
     (function () {
         const csrf = document.querySelector('meta[name="csrf-token"]')?.content;
+        const IS_AUTH = {{ auth()->check() ? 'true' : 'false' }};
+        const authModal = document.getElementById('auth-modal');
+
+        function showAuthModal() { if (authModal) authModal.style.display = 'flex'; }
+        function hideAuthModal() { if (authModal) authModal.style.display = 'none'; }
+        authModal?.addEventListener('click', e => { if (e.target.hasAttribute('data-auth-close')) hideAuthModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') hideAuthModal(); });
+
         function toast(msg) {
             const t = document.createElement('div');
             t.textContent = msg;
@@ -233,6 +260,7 @@
             const btn = e.target.closest('.wishlist-btn');
             if (!btn) return;
             e.preventDefault();
+            if (!IS_AUTH) { showAuthModal(); return; }
             fetch('{{ route('shop.wishlist.toggle') }}', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrf, 'Accept': 'application/json' },
@@ -241,13 +269,14 @@
                 const h = btn.querySelector('.heart');
                 if (h) { h.textContent = d.wishlisted ? '♥' : '♡'; h.classList.toggle('text-red-500', d.wishlisted); h.classList.toggle('text-gray-300', !d.wishlisted); }
                 toast(d.wishlisted ? 'Ditambahkan ke wishlist ♥' : 'Dihapus dari wishlist');
-            }).catch(() => toast('Silakan login dulu'));
+            }).catch(showAuthModal);
         });
         // Add to cart
         document.addEventListener('click', function (e) {
             const btn = e.target.closest('.add-to-cart');
             if (!btn) return;
             e.preventDefault();
+            if (!IS_AUTH) { showAuthModal(); return; }
             fetch('{{ route('shop.cart.add') }}', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrf, 'Accept': 'application/json' },
@@ -256,7 +285,7 @@
                 const badge = document.getElementById('nav-cart-count');
                 if (badge && d.cart_count != null) { badge.textContent = d.cart_count > 99 ? '99+' : d.cart_count; badge.classList.remove('hidden'); }
                 toast('Ditambahkan ke keranjang 🛒');
-            }).catch(() => toast('Silakan login dulu'));
+            }).catch(showAuthModal);
         });
 
         // Cegah double-submit: nonaktifkan tombol submit pada form non-GET
