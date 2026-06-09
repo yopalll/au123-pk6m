@@ -15,7 +15,7 @@ class CartController extends Controller
             ->filter(fn ($i) => $i->product !== null);
 
         $subtotal = $items->sum(fn ($i) => $i->product->harga * $i->qty);
-        $threshold = (int) config('ongkir.free_ongkir_threshold', 500000);
+        $threshold = (int) config('ongkir.free_ongkir_threshold', 100000);
 
         return view('shop.cart', compact('items', 'subtotal', 'threshold'));
     }

@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Constants\OrderStatus;
+use App\Mail\BookingConfirmedMail;
 use App\Models\Order;
 use App\Models\Pembayaran;
+use App\Models\ProductOrder;
+use App\Services\ProductPaymentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Midtrans\Config as MidtransConfig;
 use Midtrans\Notification as MidtransNotification;
 use Midtrans\Snap;
@@ -244,7 +248,14 @@ class PaymentController extends Controller
             $order->save();
         });
 
-        return response()->json(['status' => $order->fresh()->status]);
+        $fresh = $order->fresh();
+
+        if (\in_array($fresh->status, [OrderStatus::CONFIRMED, OrderStatus::SUCCESS], true)) {
+            $fresh->load(['user', 'salon', 'details.service', 'pembayaran']);
+            Mail::to($fresh->user->email)->queue(new BookingConfirmedMail($fresh));
+        }
+
+        return response()->json(['status' => $fresh->status]);
     }
 
     /**
@@ -290,6 +301,38 @@ class PaymentController extends Controller
         // The Midtrans order_id may have a -R suffix from retry.
         // Strip it to find our actual kode_order.
         $actualOrderCode = preg_replace('/-R\d+$/', '', $orderCode);
+
+        // Shop payments use an order_id prefixed with "SHOP-" and live in a
+        // separate table (product_orders). Route them to the shared settlement
+        // service so the webhook and the browser finish() can't diverge.
+        if (str_starts_with($actualOrderCode, 'SHOP-')) {
+            $shopKode = substr($actualOrderCode, 5);
+            $productOrder = ProductOrder::where('kode_order', $shopKode)->first();
+
+            if (! $productOrder) {
+                Log::warning('Midtrans webhook: product order not found', ['order_id' => $orderCode, 'parsed' => $shopKode]);
+
+                return response()->json(['message' => 'order not found'], 404);
+            }
+
+            app(ProductPaymentService::class)->settle(
+                $productOrder,
+                (string) $notification->transaction_status,
+                $notification->fraud_status ?? null,
+                [
+                    'payment_type' => $notification->payment_type ?? null,
+                    'transaction_id' => $notification->transaction_id ?? null,
+                    'gross_amount' => $notification->gross_amount ?? null,
+                ]
+            );
+
+            Log::info('Midtrans webhook: product order settled', [
+                'order' => $shopKode,
+                'transaction_status' => $notification->transaction_status,
+            ]);
+
+            return response()->json(['message' => 'ok']);
+        }
 
         // Quick existence check — no lock yet (lock is inside the transaction).
         if (! Order::where('kode_order', $actualOrderCode)->exists()) {
@@ -381,6 +424,16 @@ class PaymentController extends Controller
                 'payment_status'   => $payment->status_pembayaran,
             ]);
         });
+
+        // Send confirmation email outside the transaction so a mail failure
+        // never rolls back an already-settled payment.
+        $settled = Order::where('kode_order', $actualOrderCode)
+            ->with(['user', 'salon', 'details.service', 'pembayaran'])
+            ->first();
+
+        if ($settled && \in_array($settled->status, [OrderStatus::CONFIRMED, OrderStatus::SUCCESS], true)) {
+            Mail::to($settled->user->email)->queue(new BookingConfirmedMail($settled));
+        }
 
         return response()->json(['message' => 'ok']);
     }

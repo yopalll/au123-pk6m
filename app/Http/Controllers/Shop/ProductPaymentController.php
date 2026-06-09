@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
 use App\Models\ProductOrder;
+use App\Services\ProductPaymentService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Midtrans\Config as MidtransConfig;
 use Midtrans\Snap;
+use Midtrans\Transaction as MidtransTransaction;
 
 class ProductPaymentController extends Controller
 {
+    public function __construct(private ProductPaymentService $payments) {}
+
     public function index(string $kode)
     {
         $order = ProductOrder::where('kode_order', $kode)
@@ -41,10 +43,7 @@ class ProductPaymentController extends Controller
             return response()->json(['error' => 'Midtrans belum dikonfigurasi (set MIDTRANS_SERVER_KEY di .env).'], 422);
         }
 
-        MidtransConfig::$serverKey = (string) config('services.midtrans.server_key');
-        MidtransConfig::$isProduction = (bool) config('services.midtrans.is_production');
-        MidtransConfig::$isSanitized = (bool) config('services.midtrans.is_sanitized', true);
-        MidtransConfig::$is3ds = (bool) config('services.midtrans.is_3ds', true);
+        $this->configureMidtrans();
 
         $midOrderId = 'SHOP-'.$order->kode_order;
 
@@ -91,33 +90,71 @@ class ProductPaymentController extends Controller
         }
     }
 
+    /**
+     * Called by the browser after Snap's onSuccess/onPending callback.
+     *
+     * SECURITY: the client-supplied transaction_status is IGNORED. We fetch the
+     * authoritative status from Midtrans server-side (mirroring the salon flow)
+     * before touching the order. Settlement is delegated to a shared service so
+     * this path and the webhook can never drift apart.
+     */
     public function finish(Request $request, string $kode)
     {
         $order = ProductOrder::where('kode_order', $kode)
             ->where('id_user', auth()->id())
-            ->with('items')
+            ->with('pembayaran')
             ->firstOrFail();
 
-        $status = $request->input('transaction_status');
+        // Already settled — just show the order.
+        if ($order->status !== 'pending') {
+            return redirect()->route('shop.order.show', $order->kode_order);
+        }
 
-        if (in_array($status, ['settlement', 'capture'], true) && $order->status === 'pending') {
-            DB::transaction(function () use ($order, $request) {
-                $order->update(['status' => 'paid']);
-                $order->pembayaran()->update([
-                    'midtrans_transaction_id' => $request->input('transaction_id'),
-                    'metode' => $request->input('payment_type'),
-                    'status' => 'success',
-                    'paid_at' => now(),
-                ]);
+        if (! config('services.midtrans.server_key')) {
+            return redirect()->route('shop.order.show', $order->kode_order)
+                ->with('info', 'Pembayaran sedang diverifikasi.');
+        }
 
-                foreach ($order->items as $item) {
-                    Product::where('id_product', $item->id_product)->decrement('stok', $item->qty);
-                    Product::where('id_product', $item->id_product)->increment('total_sold', $item->qty);
-                }
-            });
+        $this->configureMidtrans();
+
+        $midOrderId = $order->pembayaran?->midtrans_order_id ?? ('SHOP-'.$order->kode_order);
+
+        try {
+            $status = MidtransTransaction::status($midOrderId);
+        } catch (\Throwable $e) {
+            // Do NOT trust the client. Leave as pending — the webhook will settle.
+            Log::error('Shop Midtrans status check failed', ['kode' => $kode, 'msg' => $e->getMessage()]);
+
+            return redirect()->route('shop.order.show', $order->kode_order)
+                ->with('info', 'Pembayaran sedang diverifikasi. Status akan diperbarui otomatis.');
+        }
+
+        $this->payments->settle(
+            $order,
+            (string) ($status->transaction_status ?? 'pending'),
+            $status->fraud_status ?? null,
+            [
+                'payment_type' => $status->payment_type ?? null,
+                'transaction_id' => $status->transaction_id ?? null,
+                'gross_amount' => $status->gross_amount ?? null,
+            ]
+        );
+
+        $fresh = $order->fresh();
+        if ($fresh->status === 'paid') {
+            return redirect()->route('shop.order.show', $order->kode_order)
+                ->with('success', 'Terima kasih! Pesanan kamu sedang diproses.');
         }
 
         return redirect()->route('shop.order.show', $order->kode_order)
-            ->with('success', 'Terima kasih! Pesanan kamu sedang diproses.');
+            ->with('info', 'Menunggu konfirmasi pembayaran.');
+    }
+
+    private function configureMidtrans(): void
+    {
+        MidtransConfig::$serverKey = (string) config('services.midtrans.server_key');
+        MidtransConfig::$isProduction = (bool) config('services.midtrans.is_production');
+        MidtransConfig::$isSanitized = (bool) config('services.midtrans.is_sanitized', true);
+        MidtransConfig::$is3ds = (bool) config('services.midtrans.is_3ds', true);
     }
 }

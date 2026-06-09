@@ -8,6 +8,7 @@
     <h1 class="text-2xl font-semibold mb-6" style="font-family:'DM Serif Display',serif">Keranjang</h1>
 
     @if (session('success'))<div class="mb-4 text-sm text-emerald-600 bg-emerald-50 rounded-xl px-4 py-2">{{ session('success') }}</div>@endif
+    @if (session('error'))<div class="mb-4 text-sm text-red-600 bg-red-50 rounded-xl px-4 py-2">{{ session('error') }}</div>@endif
 
     @if ($items->count())
         {{-- Free ongkir progress --}}

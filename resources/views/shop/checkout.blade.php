@@ -1,9 +1,10 @@
 <x-layouts.public title="Checkout">
-<div class="max-w-5xl mx-auto px-4 sm:px-6 py-8"
-     x-data="checkout()">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
     <h1 class="text-2xl font-semibold mb-6" style="font-family:'DM Serif Display',serif">Checkout</h1>
 
     @if (session('success'))<div class="mb-4 text-sm text-emerald-600 bg-emerald-50 rounded-xl px-4 py-2">{{ session('success') }}</div>@endif
+    @if (session('error'))<div class="mb-4 text-sm text-red-600 bg-red-50 rounded-xl px-4 py-2">{{ session('error') }}</div>@endif
+    @if (session('info'))<div class="mb-4 text-sm text-sky-700 bg-sky-50 rounded-xl px-4 py-2">{{ session('info') }}</div>@endif
     @if ($errors->any())<div class="mb-4 text-sm text-red-600 bg-red-50 rounded-xl px-4 py-2">{{ $errors->first() }}</div>@endif
 
     <div class="lg:grid lg:grid-cols-3 lg:gap-8">
@@ -43,32 +44,27 @@
                 </details>
             </div>
 
-            {{-- Ongkir --}}
+            {{-- Pengiriman (ongkir flat — tanpa pilih kurir) --}}
             <div class="bg-white border border-gray-100 rounded-2xl p-5">
                 <h2 class="font-semibold mb-3">📦 Pengiriman</h2>
-                <div class="flex gap-2 mb-3">
-                    <input x-model="destination" placeholder="Kota tujuan (mis. Surabaya)"
-                           class="flex-1 text-sm border rounded-lg px-3 py-2 outline-none focus:border-[#4BA3CC]">
-                    <button type="button" @click="cekOngkir()" :disabled="loading"
-                            class="px-4 py-2 bg-[#1B2D6B] text-white text-sm rounded-lg" x-text="loading ? '...' : 'Cek'"></button>
-                </div>
-                <template x-if="freeOngkir">
-                    <p class="text-sm text-emerald-600 mb-2">🎉 Belanja ≥ Rp {{ number_format($threshold,0,',','.') }} — gratis ongkir!</p>
-                </template>
-                <div class="space-y-2">
-                    <template x-for="svc in services" :key="svc.key">
-                        <label class="flex items-center justify-between p-3 rounded-xl border cursor-pointer"
-                               :class="selected===svc.key ? 'border-[#1B2D6B] bg-[#E8F4FB]/40' : 'border-gray-200'">
-                            <span class="flex items-center gap-2 text-sm">
-                                <input type="radio" name="svc" :value="svc.key" x-model="selected" @change="pick(svc)">
-                                <span x-text="svc.label"></span>
-                                <span class="text-gray-400 text-xs" x-text="svc.etd"></span>
-                            </span>
-                            <span class="text-sm font-semibold" x-text="freeOngkir ? 'GRATIS' : ('Rp ' + svc.cost.toLocaleString('id-ID'))"></span>
-                        </label>
-                    </template>
-                </div>
-                <p x-show="services.length===0 && checked" class="text-sm text-gray-400">Masukkan kota lalu klik Cek.</p>
+                @if ($freeOngkir)
+                    <div class="flex items-center justify-between p-3 rounded-xl border border-emerald-200 bg-emerald-50">
+                        <span class="text-sm">
+                            <span class="font-medium text-emerald-700">🎉 Gratis Ongkir</span>
+                            <span class="text-gray-500 text-xs block">Belanja ≥ Rp {{ number_format($threshold,0,',','.') }} · estimasi {{ config('ongkir.etd','2-4 hari') }}</span>
+                        </span>
+                        <span class="text-sm font-semibold text-emerald-700">GRATIS</span>
+                    </div>
+                @else
+                    <div class="flex items-center justify-between p-3 rounded-xl border border-gray-200">
+                        <span class="text-sm">
+                            <span class="font-medium">Ongkir Flat</span>
+                            <span class="text-gray-500 text-xs block">Ke seluruh Indonesia · estimasi {{ config('ongkir.etd','2-4 hari') }}</span>
+                        </span>
+                        <span class="text-sm font-semibold">Rp {{ number_format($biayaKirim,0,',','.') }}</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">Belanja lagi Rp {{ number_format(max(0,$threshold - $subtotal),0,',','.') }} untuk gratis ongkir.</p>
+                @endif
             </div>
         </div>
 
@@ -77,10 +73,6 @@
             <form id="checkout-form" method="POST" action="{{ route('shop.checkout.store') }}"
                   class="bg-white border border-gray-100 rounded-2xl p-5 lg:sticky lg:top-24">
                 @csrf
-                <input type="hidden" name="kurir" :value="kurir">
-                <input type="hidden" name="layanan_kirim" :value="layanan">
-                <input type="hidden" name="biaya_kirim" :value="freeOngkir ? 0 : biaya">
-                <input type="hidden" name="estimasi_tiba" :value="etd">
 
                 <h2 class="font-semibold mb-4">Ringkasan</h2>
 
@@ -107,51 +99,23 @@
 
                 <div class="space-y-1 text-sm">
                     <div class="flex justify-between"><span class="text-gray-500">Subtotal</span><span>Rp {{ number_format($subtotal, 0, ',', '.') }}</span></div>
-                    <div class="flex justify-between"><span class="text-gray-500">Ongkir</span><span x-text="freeOngkir ? 'GRATIS' : ('Rp ' + biaya.toLocaleString('id-ID'))"></span></div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-500">Ongkir</span>
+                        <span>{{ $freeOngkir ? 'GRATIS' : 'Rp '.number_format($biayaKirim, 0, ',', '.') }}</span>
+                    </div>
                     <div class="flex justify-between font-semibold text-base border-t border-gray-100 pt-2 mt-2">
                         <span>Total</span>
-                        <span x-text="'Rp ' + ({{ $subtotal }} + (freeOngkir?0:biaya)).toLocaleString('id-ID')"></span>
+                        <span>Rp {{ number_format($subtotal + $biayaKirim, 0, ',', '.') }}</span>
                     </div>
                 </div>
 
-                <button type="submit" :disabled="!selected && !freeOngkir"
-                        class="w-full mt-4 py-3 bg-[#1B2D6B] text-white text-sm font-semibold rounded-full hover:bg-[#4BA3CC] transition-colors disabled:opacity-50">
+                <button type="submit"
+                        class="w-full mt-4 py-3 bg-[#1B2D6B] text-white text-sm font-semibold rounded-full hover:bg-[#4BA3CC] transition-colors">
                     Buat Pesanan & Bayar
                 </button>
-                <p class="text-xs text-gray-400 text-center mt-2" x-show="!selected && !freeOngkir">Pilih layanan pengiriman dulu</p>
+                <p class="text-xs text-gray-400 text-center mt-2">Promo & poin dihitung saat pesanan dibuat.</p>
             </form>
         </div>
     </div>
 </div>
-
-<x-slot:scripts>
-<script>
-function checkout() {
-    return {
-        destination: '', loading: false, checked: false,
-        services: [], selected: '', biaya: 0, kurir: '', layanan: '', etd: '',
-        freeOngkir: {{ $subtotal >= $threshold ? 'true' : 'false' }},
-        weight: {{ $totalBerat }},
-        async cekOngkir() {
-            if (!this.destination) return;
-            this.loading = true; this.checked = true;
-            try {
-                const res = await fetch('{{ route('shop.ongkir.check') }}', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}', 'Accept': 'application/json' },
-                    body: JSON.stringify({ destination: this.destination, weight: this.weight })
-                });
-                const data = await res.json();
-                this.services = [];
-                (data.data || []).forEach(c => (c.services || []).forEach(s => {
-                    this.services.push({ key: c.courier + '-' + s.service, label: (c.courier_name||c.courier).toUpperCase() + ' ' + s.service, cost: s.cost, etd: s.etd, courier: c.courier, service: s.service });
-                }));
-            } catch (e) { alert('Gagal cek ongkir'); }
-            this.loading = false;
-        },
-        pick(s) { this.biaya = s.cost; this.kurir = s.courier; this.layanan = s.service; this.etd = s.etd; }
-    };
-}
-</script>
-</x-slot:scripts>
 </x-layouts.public>

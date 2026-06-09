@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Product;
 use App\Models\ProductOrder;
 use App\Models\ProductOrderItem;
 use App\Models\ProductPembayaran;
@@ -28,11 +29,12 @@ class ProductCheckoutController extends Controller
 
         $addresses = UserAddress::where('id_user', auth()->id())->orderByDesc('is_default')->get();
         $subtotal = $cartItems->sum(fn ($i) => $i->product->harga * $i->qty);
-        $totalBerat = max(100, $cartItems->sum(fn ($i) => ($i->product->berat_gram ?? 200) * $i->qty));
-        $threshold = (int) config('ongkir.free_ongkir_threshold', 500000);
+        $threshold = (int) config('ongkir.free_ongkir_threshold', 100000);
         $userPoint = auth()->user()->points;
 
-        return view('shop.checkout', compact('cartItems', 'addresses', 'subtotal', 'totalBerat', 'threshold', 'userPoint'));
+        [$biayaKirim, $freeOngkir] = $this->resolveOngkir(auth()->user(), $subtotal);
+
+        return view('shop.checkout', compact('cartItems', 'addresses', 'subtotal', 'threshold', 'userPoint', 'biayaKirim', 'freeOngkir'));
     }
 
     public function storeAddress(Request $request)
@@ -65,10 +67,6 @@ class ProductCheckoutController extends Controller
     {
         $request->validate([
             'id_address' => 'required|exists:user_addresses,id_address',
-            'kurir' => 'required|string|max:30',
-            'layanan_kirim' => 'required|string|max:30',
-            'biaya_kirim' => 'required|numeric|min:0',
-            'estimasi_tiba' => 'nullable|string|max:30',
             'promo_code' => 'nullable|string|max:50',
             'poin_digunakan' => 'nullable|integer|min:0',
             'catatan' => 'nullable|string|max:500',
@@ -87,12 +85,10 @@ class ProductCheckoutController extends Controller
             ->where('id_user', $user->id_user)->firstOrFail();
 
         $subtotal = $cartItems->sum(fn ($i) => $i->product->harga * $i->qty);
-        $biayaKirim = (float) $request->biaya_kirim;
 
-        // Free ongkir: (a) subtotal >= threshold, atau (b) benefit tier
-        if ($subtotal >= config('ongkir.free_ongkir_threshold', 500000) || $this->tierFreeOngkir($user)) {
-            $biayaKirim = 0;
-        }
+        // Ongkir flat dihitung di server (tanpa API). Gratis bila subtotal >= threshold
+        // atau lewat benefit tier poin. Nilai dari client diabaikan demi keamanan.
+        [$biayaKirim] = $this->resolveOngkir($user, $subtotal);
 
         // Promo (reuse tabel promo V1)
         [$idPromo, $totalDiskon] = $this->applyPromo($request->promo_code, $subtotal);
@@ -107,62 +103,110 @@ class ProductCheckoutController extends Controller
 
         $grandTotal = max(0, $subtotal + $biayaKirim - $totalDiskon - $potonganPoin);
 
-        $order = DB::transaction(function () use (
-            $user, $address, $idPromo, $subtotal, $biayaKirim, $totalDiskon,
-            $poinDigunakan, $potonganPoin, $grandTotal, $request, $cartItems
-        ) {
-            do {
-                $kode = 'VYG-S-'.now()->format('ymd').'-'.strtoupper(Str::random(4));
-            } while (ProductOrder::where('kode_order', $kode)->exists());
+        try {
+            $order = DB::transaction(function () use (
+                $user, $address, $idPromo, $subtotal, $biayaKirim, $totalDiskon,
+                $poinDigunakan, $potonganPoin, $grandTotal, $request, $cartItems
+            ) {
+                // Validasi ketersediaan stok & status produk (lock untuk cegah race).
+                foreach ($cartItems as $item) {
+                    $product = Product::where('id_product', $item->id_product)->lockForUpdate()->first();
+                    if (! $product || $product->status !== 'active') {
+                        throw new \RuntimeException('UNAVAILABLE:'.$item->product->nama);
+                    }
+                    if ($product->stok < $item->qty) {
+                        throw new \RuntimeException('STOCK:'.$product->nama);
+                    }
+                }
 
-            $order = ProductOrder::create([
-                'id_user' => $user->id_user,
-                'id_address' => $address->id_address,
-                'id_promo' => $idPromo,
-                'kode_order' => $kode,
-                'subtotal' => $subtotal,
-                'biaya_kirim' => $biayaKirim,
-                'total_diskon' => $totalDiskon,
-                'poin_digunakan' => $poinDigunakan,
-                'potongan_poin' => $potonganPoin,
-                'grand_total' => $grandTotal,
-                'kurir' => $request->kurir,
-                'layanan_kirim' => $request->layanan_kirim,
-                'estimasi_tiba' => $request->estimasi_tiba,
-                'status' => 'pending',
-                'catatan' => $request->catatan,
-            ]);
+                // Konsumsi kuota promo (re-check di dalam transaksi, mirip booking).
+                if ($idPromo) {
+                    $promo = Promo::where('id_promo', $idPromo)->lockForUpdate()->first();
+                    if (! $promo || $promo->isSoldOut()) {
+                        throw new \RuntimeException('PROMO_EXHAUSTED:');
+                    }
+                    $promo->increment('used_counter');
+                }
 
-            foreach ($cartItems as $item) {
-                ProductOrderItem::create([
-                    'id_product_order' => $order->id_product_order,
-                    'id_product' => $item->id_product,
-                    'nama_produk' => $item->product->nama,
-                    'qty' => $item->qty,
-                    'harga_satuan' => $item->product->harga,
-                    'berat_gram' => $item->product->berat_gram ?? 200,
-                    'subtotal' => $item->product->harga * $item->qty,
+                do {
+                    $kode = 'VYG-S-'.now()->format('ymd').'-'.strtoupper(Str::random(4));
+                } while (ProductOrder::where('kode_order', $kode)->exists());
+
+                $order = ProductOrder::create([
+                    'id_user' => $user->id_user,
+                    'id_address' => $address->id_address,
+                    'id_promo' => $idPromo,
+                    'kode_order' => $kode,
+                    'subtotal' => $subtotal,
+                    'biaya_kirim' => $biayaKirim,
+                    'total_diskon' => $totalDiskon,
+                    'poin_digunakan' => $poinDigunakan,
+                    'potongan_poin' => $potonganPoin,
+                    'grand_total' => $grandTotal,
+                    'kurir' => config('ongkir.courier', 'VIYGO'),
+                    'layanan_kirim' => config('ongkir.service', 'Reguler'),
+                    'estimasi_tiba' => config('ongkir.etd', '2-4 hari'),
+                    'status' => 'pending',
+                    'catatan' => $request->catatan,
                 ]);
-            }
 
-            ProductPembayaran::create([
-                'id_product_order' => $order->id_product_order,
-                'id_user' => $user->id_user,
-                'jumlah' => $grandTotal,
-                'status' => 'pending',
-            ]);
+                foreach ($cartItems as $item) {
+                    ProductOrderItem::create([
+                        'id_product_order' => $order->id_product_order,
+                        'id_product' => $item->id_product,
+                        'nama_produk' => $item->product->nama,
+                        'qty' => $item->qty,
+                        'harga_satuan' => $item->product->harga,
+                        'berat_gram' => $item->product->berat_gram ?? 200,
+                        'subtotal' => $item->product->harga * $item->qty,
+                    ]);
+                }
 
-            // Potong saldo poin + catat transaksi (Modul 3 — Empty Return reward)
-            if ($poinDigunakan > 0) {
-                PointService::spend($user->id_user, $poinDigunakan, $order->id_product_order);
-            }
+                ProductPembayaran::create([
+                    'id_product_order' => $order->id_product_order,
+                    'id_user' => $user->id_user,
+                    'jumlah' => $grandTotal,
+                    'status' => 'pending',
+                ]);
 
-            Cart::where('id_user', $user->id_user)->delete();
+                // Potong saldo poin + catat transaksi (Modul 3 — Empty Return reward)
+                if ($poinDigunakan > 0) {
+                    PointService::spend($user->id_user, $poinDigunakan, $order->id_product_order);
+                }
 
-            return $order;
-        });
+                Cart::where('id_user', $user->id_user)->delete();
+
+                return $order;
+            });
+        } catch (\RuntimeException $e) {
+            [$code, $detail] = array_pad(explode(':', $e->getMessage(), 2), 2, '');
+            $message = match ($code) {
+                'STOCK' => "Stok \"{$detail}\" tidak mencukupi.",
+                'UNAVAILABLE' => "Produk \"{$detail}\" sudah tidak tersedia.",
+                'PROMO_EXHAUSTED' => 'Kode promo sudah habis terpakai.',
+                default => 'Gagal membuat pesanan. Silakan coba lagi.',
+            };
+
+            return redirect()->route('shop.checkout')->with('error', $message);
+        }
 
         return redirect()->route('shop.order.payment', $order->kode_order);
+    }
+
+    /**
+     * Hitung ongkir flat (tanpa API).
+     * Gratis bila subtotal >= threshold ATAU lewat benefit tier poin.
+     *
+     * @return array{0: float, 1: bool} [biaya_kirim, is_free]
+     */
+    private function resolveOngkir(User $user, float $subtotal): array
+    {
+        $threshold = (int) config('ongkir.free_ongkir_threshold', 100000);
+        $flat = (int) config('ongkir.flat_cost', 10000);
+
+        $isFree = $subtotal >= $threshold || $this->tierFreeOngkir($user);
+
+        return [$isFree ? 0.0 : (float) $flat, $isFree];
     }
 
     /**
@@ -199,29 +243,24 @@ class ProductCheckoutController extends Controller
             return [null, 0.0];
         }
 
-        $promo = Promo::where('kode_promo', $code)->where('status', 'active')->first();
+        // Scope byCode() = status active + belum kadaluwarsa + uppercase/trim.
+        $promo = Promo::byCode($code)->first();
 
-        if (! $promo) {
+        // Shop hanya menerima promo platform-wide (id_salon = null);
+        // promo milik salon tertentu adalah ranah booking V1.
+        if (! $promo || $promo->id_salon) {
             return [null, 0.0];
         }
         if ($promo->time_start && now()->lt($promo->time_start)) {
             return [null, 0.0];
         }
-        if ($promo->time_expired && now()->gt($promo->time_expired)) {
+        if (! $promo->meetsMinimum($subtotal)) {
             return [null, 0.0];
         }
-        if ($promo->min_transaksi && $subtotal < $promo->min_transaksi) {
+        if ($promo->isSoldOut()) {
             return [null, 0.0];
         }
 
-        $diskon = $promo->tipe_promo === 'percentage'
-            ? $subtotal * ((float) $promo->diskon / 100)
-            : (float) $promo->diskon;
-
-        if ($promo->diskon_max && $diskon > $promo->diskon_max) {
-            $diskon = (float) $promo->diskon_max;
-        }
-
-        return [$promo->id_promo, round($diskon, 2)];
+        return [$promo->id_promo, $promo->calculateDiscount($subtotal)];
     }
 }

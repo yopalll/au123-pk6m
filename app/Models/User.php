@@ -33,6 +33,8 @@ class User extends Authenticatable implements FilamentUser
         'password',
         'phone_number',
         'profile_url',
+        'google_id',
+        'avatar',
     ];
 
     // Prevent mass-assignment privilege escalation (BUG-A02 / SEC-03).

@@ -12,6 +12,8 @@
     <a href="{{ route('shop.pesanan.index') }}" class="text-sm text-gray-400 hover:text-[#1B2D6B]">← Semua Pesanan</a>
 
     @if (session('success'))<div class="my-4 text-sm text-emerald-600 bg-emerald-50 rounded-xl px-4 py-2">{{ session('success') }}</div>@endif
+    @if (session('info'))<div class="my-4 text-sm text-sky-700 bg-sky-50 rounded-xl px-4 py-2">{{ session('info') }}</div>@endif
+    @if (session('error'))<div class="my-4 text-sm text-red-600 bg-red-50 rounded-xl px-4 py-2">{{ session('error') }}</div>@endif
 
     <div class="flex items-center justify-between mt-4 mb-6">
         <div>

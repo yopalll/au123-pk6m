@@ -12,7 +12,7 @@
 |----------|-------|-----------------|
 | PHP | `^8.3` | Pakai fitur 8.3 (typed const, readonly, dll. boleh). |
 | Laravel Framework | `^12.0` | Struktur Laravel 12 (skeleton ramping: `bootstrap/app.php`, tidak ada `Http/Kernel.php`). |
-| **Filament** | **`5.6`** | ⚠️ **Filament v5**, BUKAN v3 seperti tertulis di PRD §10.1. Syntax Resource/Schema/Table mengikuti v5. |
+| **Filament** | **`5.6`**  | ⚠️ **Filament v5**, BUKAN v3 seperti tertulis di PRD §10.1. Syntax Resource/Schema/Table mengikuti v5. |
 | **Livewire** | **`^4.1`** | Livewire v4. |
 | Livewire Flux | `^2.13.1` | Komponen UI Flux. |
 | Laravel Fortify | `^1.34` | Auth backend (login, register, reset, **2FA**). Tidak ada Breeze/Jetstream UI. |

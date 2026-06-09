@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\Auth\GoogleAuthController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EmptyReturnController;
 use App\Http\Controllers\ExclusiveContentController;
@@ -17,7 +18,6 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SalonController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Shop\CartController;
-use App\Http\Controllers\Shop\OngkirController;
 use App\Http\Controllers\Shop\ProductCheckoutController;
 use App\Http\Controllers\Shop\ProductOrderController;
 use App\Http\Controllers\Shop\ProductPaymentController;
@@ -47,6 +47,10 @@ Route::get('/mitra', [MitraController::class, 'index'])->name('mitra');
 Route::post('/mitra/apply', [MitraController::class, 'apply'])
     ->middleware('throttle:5,1')
     ->name('mitra.apply');
+
+// ── Google OAuth (Login / Daftar dengan Google) ───────────────────────────
+Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])->name('google.redirect');
+Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('google.callback');
 
 // ── Static / informational pages (footer links) ───────────────────────────
 Route::get('/about', [StaticController::class, 'about'])->name('static.about');
@@ -151,9 +155,6 @@ Route::prefix('shop')->name('shop.')->group(function () {
         Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
         Route::put('/cart/update', [CartController::class, 'update'])->name('cart.update');
         Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
-
-        Route::post('/ongkir/check', [OngkirController::class, 'check'])->middleware('throttle:20,1')->name('ongkir.check');
-        Route::get('/regional/cities', [OngkirController::class, 'cities'])->name('regional.cities');
 
         Route::post('/alamat', [ProductCheckoutController::class, 'storeAddress'])->name('address.store');
         Route::get('/checkout', [ProductCheckoutController::class, 'index'])->name('checkout');
