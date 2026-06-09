@@ -70,7 +70,7 @@
                             <td class="py-3">{{ $detail->service->nama ?? '—' }}</td>
                             <td class="py-3 text-gray-600">{{ $detail->staff->name ?? '—' }}</td>
                             <td class="py-3 text-gray-600">{{ $detail->service->durasi ?? '—' }} min</td>
-                            <td class="py-3 text-right">Rp {{ number_format($detail->harga_at_order, 0, ',', '.') }}</td>
+                            <td class="py-3 text-right">{{ \App\Support\Money::rupiah($detail->harga_at_order) }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -84,7 +84,7 @@
                     <p class="font-medium">{{ $detail->service->nama ?? '—' }}</p>
                     <div class="flex justify-between text-sm text-gray-500 mt-1">
                         <span>{{ $detail->staff->name ?? '—' }} · {{ $detail->service->durasi ?? '—' }} min</span>
-                        <span>Rp {{ number_format($detail->harga_at_order, 0, ',', '.') }}</span>
+                        <span>{{ \App\Support\Money::rupiah($detail->harga_at_order) }}</span>
                     </div>
                 </div>
             @endforeach
@@ -97,17 +97,17 @@
         <div class="space-y-2 text-sm">
             <div class="flex justify-between text-gray-600">
                 <span>Subtotal</span>
-                <span>Rp {{ number_format($order->details->sum('subtotal'), 0, ',', '.') }}</span>
+                <span>{{ \App\Support\Money::rupiah($order->details->sum('subtotal')) }}</span>
             </div>
             @if ($order->total_diskon > 0)
                 <div class="flex justify-between text-emerald-600">
                     <span>Diskon</span>
-                    <span>- Rp {{ number_format($order->total_diskon, 0, ',', '.') }}</span>
+                    <span>- {{ \App\Support\Money::rupiah($order->total_diskon) }}</span>
                 </div>
             @endif
             <div class="flex justify-between font-semibold text-base border-t border-gray-100 pt-2 mt-2">
                 <span>Total Pembayaran</span>
-                <span>Rp {{ number_format($order->total_pembayaran, 0, ',', '.') }}</span>
+                <span>{{ \App\Support\Money::rupiah($order->total_pembayaran) }}</span>
             </div>
         </div>
         @if ($order->pembayaran)

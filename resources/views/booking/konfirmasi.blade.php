@@ -25,7 +25,7 @@
                             {{ $detail->service?->nama ?? '—' }}
                             <span class="text-xs text-gray-400">({{ $detail->start_time }}–{{ $detail->end_time }})</span>
                         </span>
-                        <span class="font-medium text-gray-900">£{{ number_format($detail->subtotal, 2, '.', ',') }}</span>
+                        <span class="font-medium text-gray-900">{{ \App\Support\Money::rupiah($detail->subtotal) }}</span>
                     </li>
                 @endforeach
             </ul>
@@ -48,7 +48,7 @@
 
         <div class="flex justify-between font-semibold text-base pt-1">
             <span class="text-gray-500">Total</span>
-            <span class="text-gray-900">£{{ number_format($order->total_pembayaran, 2, '.', ',') }}</span>
+            <span class="text-gray-900">{{ \App\Support\Money::rupiah($order->total_pembayaran) }}</span>
         </div>
     </div>
 

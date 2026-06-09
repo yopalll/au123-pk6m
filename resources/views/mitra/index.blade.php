@@ -115,7 +115,7 @@
     <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-white border border-gray-200 rounded-2xl p-7">
             <div class="text-xs font-bold text-[#4BA3CC] uppercase tracking-wider">Onboarding</div>
-            <div class="text-4xl font-bold text-[#1B2D6B] mt-2" style="font-family:'DM Serif Display',serif">£0</div>
+            <div class="text-4xl font-bold text-[#1B2D6B] mt-2" style="font-family:'DM Serif Display',serif">Rp 0</div>
             <p class="text-sm text-gray-500 mt-1">Free to apply, free to list. No credit card required.</p>
         </div>
         <div class="bg-[#1B2D6B] text-white border-2 border-[#1B2D6B] rounded-2xl p-7 transform md:scale-105 shadow-2xl relative">

@@ -169,7 +169,7 @@
                                     </div>
                                     <div class="flex items-center gap-4 shrink-0">
                                         <div class="text-right">
-                                            <div class="text-sm font-semibold text-gray-900">£{{ number_format($svc->harga, 2, '.', ',') }}</div>
+                                            <div class="text-sm font-semibold text-gray-900">{{ \App\Support\Money::rupiah($svc->harga) }}</div>
                                         </div>
                                         <a href="{{ route('booking.create', ['slug' => $salon->slug ?? $salon->id_salon, 'service' => $svc->id_service]) }}"
                                            class="px-4 py-1.5 border-2 border-[#1B2D6B] text-[#1B2D6B] text-xs font-semibold rounded-full hover:bg-[#1B2D6B] hover:text-white transition-colors">
@@ -278,7 +278,7 @@
                                 <div class="text-sm font-medium text-gray-800">{{ $svc->nama }}</div>
                                 <div class="text-xs text-gray-400">{{ $svc->durasi }} min</div>
                             </div>
-                            <div class="text-sm font-semibold text-[#1B2D6B]">£{{ number_format($svc->harga, 2, '.', ',') }}</div>
+                            <div class="text-sm font-semibold text-[#1B2D6B]">{{ \App\Support\Money::rupiah($svc->harga) }}</div>
                         </div>
                     @endforeach
                 </div>

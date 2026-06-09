@@ -106,7 +106,7 @@ class BookingController extends Controller
         if (! $promo->meetsMinimum((float) $data['total'])) {
             return response()->json([
                 'valid'   => false,
-                'message' => 'Minimum transaction of £' . number_format($promo->min_transaksi, 2) . ' required for this promo.',
+                'message' => 'Minimum transaction of ' . \App\Support\Money::rupiah($promo->min_transaksi) . ' required for this promo.',
             ]);
         }
         if ($promo->isSoldOut()) {
@@ -122,7 +122,7 @@ class BookingController extends Controller
             'diskon'     => $discount,
             'tipe'       => $promo->tipe_promo === 'percentage'
                 ? number_format($promo->diskon, 0) . '% off'
-                : '£' . number_format($promo->diskon, 2) . ' off',
+                : \App\Support\Money::rupiah($promo->diskon) . ' off',
         ]);
     }
 
@@ -173,7 +173,7 @@ class BookingController extends Controller
             }
             if (! $promo->meetsMinimum($totalPrice)) {
                 return back()->withInput()->withErrors([
-                    'kode_promo' => 'Minimum transaction of £' . number_format($promo->min_transaksi, 2) . ' required.',
+                    'kode_promo' => 'Minimum transaction of ' . \App\Support\Money::rupiah($promo->min_transaksi) . ' required.',
                 ]);
             }
             if ($promo->isSoldOut()) {

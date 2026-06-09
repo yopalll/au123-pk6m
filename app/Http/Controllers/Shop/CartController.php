@@ -14,7 +14,9 @@ class CartController extends Controller
             ->with('product.primaryImage')->get()
             ->filter(fn ($i) => $i->product !== null);
 
-        $subtotal = $items->sum(fn ($i) => $i->product->harga * $i->qty);
+        // Subtotal & progress gratis ongkir hanya menghitung item yang dicentang.
+        $selected = $items->filter(fn ($i) => $i->selected);
+        $subtotal = $selected->sum(fn ($i) => $i->product->harga * $i->qty);
         $threshold = (int) config('ongkir.free_ongkir_threshold', 100000);
 
         return view('shop.cart', compact('items', 'subtotal', 'threshold'));
@@ -49,12 +51,66 @@ class CartController extends Controller
     {
         $request->validate([
             'id_cart' => 'required|integer',
-            'qty' => 'required|integer|min:1|max:99',
+            'qty' => 'required|integer|min:0|max:99',
         ]);
 
-        Cart::where('id_cart', $request->id_cart)
+        $cart = Cart::where('id_cart', $request->id_cart)
             ->where('id_user', auth()->id())
-            ->update(['qty' => $request->qty]);
+            ->first();
+
+        if (! $cart) {
+            return $request->wantsJson() ? response()->json(['success' => false], 404) : back();
+        }
+
+        // Qty turun sampai 0 = produk dihapus dari keranjang.
+        if ($request->qty < 1) {
+            $cart->delete();
+
+            if ($request->wantsJson()) {
+                return response()->json(['success' => true, 'removed' => true]);
+            }
+
+            return back()->with('success', 'Produk dihapus dari keranjang.');
+        }
+
+        $cart->update(['qty' => $request->qty]);
+
+        if ($request->wantsJson()) {
+            return response()->json(['success' => true]);
+        }
+
+        return back();
+    }
+
+    public function toggle(Request $request)
+    {
+        $request->validate([
+            'id_cart' => 'required|integer',
+        ]);
+
+        $cart = Cart::where('id_cart', $request->id_cart)
+            ->where('id_user', auth()->id())
+            ->first();
+
+        if ($cart) {
+            $cart->update(['selected' => ! $cart->selected]);
+        }
+
+        if ($request->wantsJson()) {
+            return response()->json(['success' => true, 'selected' => $cart?->selected]);
+        }
+
+        return back();
+    }
+
+    public function selectAll(Request $request)
+    {
+        $request->validate([
+            'selected' => 'required|boolean',
+        ]);
+
+        Cart::where('id_user', auth()->id())
+            ->update(['selected' => (bool) $request->selected]);
 
         if ($request->wantsJson()) {
             return response()->json(['success' => true]);

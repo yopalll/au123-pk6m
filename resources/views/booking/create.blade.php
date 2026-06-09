@@ -49,7 +49,7 @@
                     <span class="text-sm text-gray-500" x-show="selectedServiceIds.length > 0">
                         <span x-text="selectedServiceIds.length"></span> selected · Total
                         <span class="font-semibold text-[#1B2D6B]"
-                              x-text="'£' + totalPrice.toLocaleString('en-GB', {minimumFractionDigits: 2, maximumFractionDigits: 2})"></span>
+                              x-text="rupiah(totalPrice)"></span>
                         · <span x-text="totalDuration"></span> min
                     </span>
                 </div>
@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                             <div class="text-right shrink-0 ml-4">
-                                <div class="font-bold text-[#1B2D6B]">£{{ number_format($svc->harga, 2, '.', ',') }}</div>
+                                <div class="font-bold text-[#1B2D6B]">{{ \App\Support\Money::rupiah($svc->harga) }}</div>
                                 <div x-show="isServiceSelected({{ $svc->id_service }})"
                                      class="text-xs text-[#4BA3CC] font-semibold mt-1">✓ Selected</div>
                             </div>
@@ -177,7 +177,7 @@
                                         <span x-text="svc.name"></span>
                                         <span class="text-xs text-gray-400" x-text="'(' + svc.duration + ' min)'"></span>
                                     </span>
-                                    <span class="font-medium" x-text="'£' + svc.price.toLocaleString('en-GB', {minimumFractionDigits: 2, maximumFractionDigits: 2})"></span>
+                                    <span class="font-medium" x-text="rupiah(svc.price)"></span>
                                 </li>
                             </template>
                         </ul>
@@ -196,7 +196,7 @@
                     </div>
                     <div class="flex justify-between font-semibold text-base border-t border-[#C5E1F0] pt-3">
                         <span>Total</span>
-                        <span class="text-[#1B2D6B]" x-text="'£' + totalPrice.toLocaleString('en-GB', {minimumFractionDigits: 2, maximumFractionDigits: 2})"></span>
+                        <span class="text-[#1B2D6B]" x-text="rupiah(totalPrice)"></span>
                     </div>
                 </div>
 
@@ -240,13 +240,13 @@
                     {{-- Discount row (visible when promo applied) --}}
                     <div x-show="promoApplied" class="flex justify-between text-sm text-green-600 font-medium -mt-2 mb-4 px-1">
                         <span>Discount</span>
-                        <span x-text="'- £' + (promoApplied?.diskon ?? 0).toLocaleString('en-GB', {minimumFractionDigits: 2, maximumFractionDigits: 2})"></span>
+                        <span x-text="'- ' + rupiah(promoApplied?.diskon ?? 0)"></span>
                     </div>
 
                     {{-- Updated total when promo applied --}}
                     <div x-show="promoApplied" class="flex justify-between font-bold text-base text-[#1B2D6B] mb-4 px-1">
                         <span>Total After Discount</span>
-                        <span x-text="'£' + finalPrice.toLocaleString('en-GB', {minimumFractionDigits: 2, maximumFractionDigits: 2})"></span>
+                        <span x-text="rupiah(finalPrice)"></span>
                     </div>
 
                     <div class="mb-4">
@@ -335,6 +335,14 @@ function bookingForm() {
         promoLoading: false,
 
         init() {},
+
+        // Salon prices are stored in GBP; payment is charged in IDR via Midtrans.
+        // Format a GBP value as the Rupiah amount the user will actually pay.
+        exchangeRate: @js((float) config('services.midtrans.exchange_rate', 20000)),
+        rupiah(gbp) {
+            const idr = Math.round(Number(gbp) * this.exchangeRate);
+            return 'Rp ' + idr.toLocaleString('id-ID');
+        },
 
         // True only when the cell's day is the one the user actually chose,
         // AND the calendar is still showing the month they chose it in.

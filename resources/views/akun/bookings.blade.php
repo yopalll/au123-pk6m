@@ -53,7 +53,7 @@
                     @endif
                 </div>
                 <div class="text-right shrink-0">
-                    <div class="font-bold text-[#1B2D6B]">£{{ number_format($order->total_pembayaran, 2, '.', ',') }}</div>
+                    <div class="font-bold text-[#1B2D6B]">{{ \App\Support\Money::rupiah($order->total_pembayaran) }}</div>
                     <div class="flex gap-2 mt-2 justify-end items-center">
                         <a href="{{ route('akun.booking.detail', $order->kode_order) }}"
                            class="text-xs text-[#4BA3CC] hover:underline">Rincian</a>

@@ -107,7 +107,7 @@
                         <span class="text-gray-400 ml-2">{{ $svc->durasi }} min</span>
                     </div>
                     <div class="text-right">
-                        <span class="text-gray-800 font-medium">from £{{ number_format($svc->harga, 2, '.', ',') }}</span>
+                        <span class="text-gray-800 font-medium">from {{ \App\Support\Money::rupiah($svc->harga) }}</span>
                     </div>
                 </div>
             @empty
@@ -163,7 +163,7 @@
             </div>
         @endif
         <div class="flex items-center justify-between mt-3">
-            <span class="text-xs text-gray-500">from <strong class="text-gray-800 text-sm">£{{ number_format($minPrice ?? 0, 2, '.', ',') }}</strong></span>
+            <span class="text-xs text-gray-500">from <strong class="text-gray-800 text-sm">{{ \App\Support\Money::rupiah($minPrice ?? 0) }}</strong></span>
             <a href="{{ route('salon.show', $salon->slug ?? $salon->id_salon) }}"
                class="px-3 py-1.5 bg-[#1B2D6B] text-white text-xs font-semibold rounded-full hover:bg-[#4BA3CC] transition-colors">
                 Book

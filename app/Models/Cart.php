@@ -11,7 +11,11 @@ class Cart extends Model
 
     protected $primaryKey = 'id_cart';
 
-    protected $fillable = ['id_user', 'id_product', 'qty'];
+    protected $fillable = ['id_user', 'id_product', 'qty', 'selected'];
+
+    protected $casts = [
+        'selected' => 'boolean',
+    ];
 
     public function product(): BelongsTo
     {

@@ -76,7 +76,7 @@
                     <td>{{ $detail->service->nama ?? '—' }}</td>
                     <td>{{ $detail->staff->name ?? '—' }}</td>
                     <td>{{ $detail->service->durasi ?? '—' }} min</td>
-                    <td class="ta-r">Rp {{ number_format($detail->harga_at_order, 0, ',', '.') }}</td>
+                    <td class="ta-r">{{ \App\Support\Money::rupiah($detail->harga_at_order) }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -85,17 +85,17 @@
     <table class="sum">
         <tr>
             <td>Subtotal</td>
-            <td class="ta-r">Rp {{ number_format($order->details->sum('subtotal'), 0, ',', '.') }}</td>
+            <td class="ta-r">{{ \App\Support\Money::rupiah($order->details->sum('subtotal')) }}</td>
         </tr>
         @if ($order->total_diskon > 0)
             <tr>
                 <td>Diskon</td>
-                <td class="ta-r">- Rp {{ number_format($order->total_diskon, 0, ',', '.') }}</td>
+                <td class="ta-r">- {{ \App\Support\Money::rupiah($order->total_diskon) }}</td>
             </tr>
         @endif
         <tr class="sum-total">
             <td>TOTAL</td>
-            <td class="ta-r">Rp {{ number_format($order->total_pembayaran, 0, ',', '.') }}</td>
+            <td class="ta-r">{{ \App\Support\Money::rupiah($order->total_pembayaran) }}</td>
         </tr>
     </table>
 </div>

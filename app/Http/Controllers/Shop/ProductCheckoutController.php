@@ -20,11 +20,11 @@ class ProductCheckoutController extends Controller
 {
     public function index()
     {
-        $cartItems = Cart::where('id_user', auth()->id())->with('product')->get()
+        $cartItems = Cart::where('id_user', auth()->id())->where('selected', true)->with('product')->get()
             ->filter(fn ($i) => $i->product !== null);
 
         if ($cartItems->isEmpty()) {
-            return redirect()->route('shop.cart')->with('error', 'Keranjang kosong.');
+            return redirect()->route('shop.cart')->with('error', 'Pilih produk yang ingin dibayar terlebih dahulu.');
         }
 
         $addresses = UserAddress::where('id_user', auth()->id())->orderByDesc('is_default')->get();
@@ -73,11 +73,11 @@ class ProductCheckoutController extends Controller
         ]);
 
         $user = auth()->user();
-        $cartItems = Cart::where('id_user', $user->id_user)->with('product')->get()
+        $cartItems = Cart::where('id_user', $user->id_user)->where('selected', true)->with('product')->get()
             ->filter(fn ($i) => $i->product !== null);
 
         if ($cartItems->isEmpty()) {
-            return redirect()->route('shop.cart')->with('error', 'Keranjang kosong.');
+            return redirect()->route('shop.cart')->with('error', 'Pilih produk yang ingin dibayar terlebih dahulu.');
         }
 
         // Pastikan alamat milik user
@@ -174,7 +174,10 @@ class ProductCheckoutController extends Controller
                     PointService::spend($user->id_user, $poinDigunakan, $order->id_product_order);
                 }
 
-                Cart::where('id_user', $user->id_user)->delete();
+                // Hanya hapus item yang di-checkout; item tak tercentang tetap di keranjang.
+                Cart::where('id_user', $user->id_user)
+                    ->whereIn('id_cart', $cartItems->pluck('id_cart'))
+                    ->delete();
 
                 return $order;
             });

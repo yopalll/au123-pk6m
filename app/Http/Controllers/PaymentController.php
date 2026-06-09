@@ -460,7 +460,7 @@ class PaymentController extends Controller
      */
     protected function convertGbpToIdr(float $gbpAmount): int
     {
-        $idr = (int) round($gbpAmount * (float) config('services.midtrans.exchange_rate', 20000));
+        $idr = \App\Support\Money::gbpToIdr($gbpAmount);
 
         if ($idr > 999_999_999) {
             throw new \DomainException('Order amount exceeds Midtrans single-transaction limit.');

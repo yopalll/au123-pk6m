@@ -154,6 +154,8 @@ Route::prefix('shop')->name('shop.')->group(function () {
         Route::get('/cart', [CartController::class, 'index'])->name('cart');
         Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
         Route::put('/cart/update', [CartController::class, 'update'])->name('cart.update');
+        Route::put('/cart/toggle', [CartController::class, 'toggle'])->name('cart.toggle');
+        Route::put('/cart/select-all', [CartController::class, 'selectAll'])->name('cart.select-all');
         Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 
         Route::post('/alamat', [ProductCheckoutController::class, 'storeAddress'])->name('address.store');

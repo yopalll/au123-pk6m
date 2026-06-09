@@ -43,7 +43,7 @@
         <div class="flex justify-between border-t border-gray-200 pt-3 text-base font-semibold">
             <span>Total</span>
             <span class="text-[#1B2D6B]">
-                £{{ number_format($order->total_pembayaran, 2) }}
+                {{ \App\Support\Money::rupiah($order->total_pembayaran) }}
             </span>
         </div>
     </div>
@@ -67,7 +67,7 @@
             class="w-full py-3.5 bg-[#1B2D6B] text-white font-semibold rounded-full
                    hover:bg-[#4BA3CC] transition-colors disabled:bg-gray-300
                    disabled:cursor-not-allowed">
-        Pay £{{ number_format($order->total_pembayaran, 2) }}
+        Pay {{ \App\Support\Money::rupiah($order->total_pembayaran) }}
     </button>
 
     <p class="text-xs text-gray-400 text-center mt-4">
@@ -155,7 +155,7 @@
                 onClose: function () {
                     showStatus('Pop-up closed before payment finished.', 'info');
                     btn.disabled = false;
-                    btn.textContent = 'Pay £{{ number_format($order->total_pembayaran, 2) }}';
+                    btn.textContent = @json('Pay ' . \App\Support\Money::rupiah($order->total_pembayaran));
                 },
             });
         } catch (err) {
