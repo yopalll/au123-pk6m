@@ -17,6 +17,8 @@ class Review extends Model
         'id_order',
         'rating',
         'komentar',
+        'owner_reply',
+        'owner_reply_at',
         'is_visible',
     ];
 
@@ -25,6 +27,7 @@ class Review extends Model
         return [
             'rating' => 'integer',
             'is_visible' => 'boolean',
+            'owner_reply_at' => 'datetime',
         ];
     }
 

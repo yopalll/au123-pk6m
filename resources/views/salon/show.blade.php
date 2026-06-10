@@ -259,6 +259,18 @@
                                 </div>
                             </div>
                             <p class="text-sm text-gray-600 leading-relaxed">{{ $review->komentar }}</p>
+
+                            @if ($review->owner_reply)
+                                <div class="mt-3 ml-11 rounded-xl border-l-2 border-[#1B2D6B] bg-[#E8F4FB]/60 px-4 py-3">
+                                    <div class="flex items-center gap-1.5 mb-1">
+                                        <span class="text-xs font-semibold text-[#1B2D6B]">Balasan dari {{ $salon->nama_salon }}</span>
+                                        @if ($review->owner_reply_at)
+                                            <span class="text-[11px] text-gray-400">· {{ $review->owner_reply_at->diffForHumans() }}</span>
+                                        @endif
+                                    </div>
+                                    <p class="text-sm text-gray-600 leading-relaxed">{{ $review->owner_reply }}</p>
+                                </div>
+                            @endif
                         </div>
                     @empty
                         <p class="text-sm text-gray-400 py-4">No reviews for this salon yet.</p>
