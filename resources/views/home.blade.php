@@ -49,6 +49,50 @@
     </div>
 </section>
 
+{{-- ───── PARTNERS (marquee) ──────────────────────────────────────────────── --}}
+@php
+    // [file, nama, warna-fallback]. File logo: public/images/partners/<file>
+    // Jika file hilang, otomatis tampil wordmark berwarna (tidak rusak).
+    $partners = [
+        ['shopee.png',     'Shopee',     '#ee4d2d'],
+        ['tokopedia.png',  'Tokopedia',  '#42b549'],
+        ['ovo.png',        'OVO',        '#4c2a86'],
+        ['dana.png',       'DANA',       '#118eea'],
+        ['midtrans.jpg',   'Midtrans',   '#16314f'],
+        ['blibli.svg',     'Blibli',     '#0095da'],
+        ['lazada.svg',     'Lazada',     '#1a0dab'],
+        ['belajarkuy.png', 'BelajarKUY', '#3d1a78'],
+    ];
+@endphp
+<section class="relative z-10 py-16">
+    <p class="text-center text-xs uppercase tracking-[0.25em] text-white/40 mb-8">Partner &amp; Pembayaran Terpercaya</p>
+
+    <style>
+        .partner-marquee { overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent); }
+        .partner-track { display: flex; width: max-content; gap: 18px; animation: partner-scroll 32s linear infinite; }
+        .partner-marquee:hover .partner-track { animation-play-state: paused; }
+        @keyframes partner-scroll { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 9px)); } }
+        @media (prefers-reduced-motion: reduce) { .partner-track { animation: none; } }
+        .partner-chip { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; height: 72px; min-width: 180px; padding: 0 30px; border-radius: 16px; background: #ffffff; border: 1px solid rgba(255,255,255,0.08); transition: transform .25s, box-shadow .25s; }
+        .partner-chip:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
+        .partner-chip img { max-height: 36px; max-width: 130px; width: auto; object-fit: contain; }
+        .partner-chip span { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.01em; }
+    </style>
+
+    <div class="partner-marquee">
+        <div class="partner-track">
+            {{-- Daftar digandakan 2x agar loop mulus --}}
+            @foreach (array_merge($partners, $partners) as [$file, $name, $color])
+                <div class="partner-chip" aria-hidden="{{ $loop->index >= count($partners) ? 'true' : 'false' }}">
+                    <img src="{{ asset('images/partners/'.$file) }}" alt="{{ $name }}"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
+                    <span style="color: {{ $color }}; display:none;">{{ $name }}</span>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
 {{-- ───── FEATURED VENUES ─────────────────────────────────────────────────── --}}
 <section class="relative z-10 max-w-6xl mx-auto px-5 md:px-20 py-16">
     <div class="flex justify-between items-end mb-10">
