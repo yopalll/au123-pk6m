@@ -43,25 +43,64 @@
 
         <x-viygo-logo />
 
-        <form action="{{ route('cari') }}" method="GET"
-              class="flex-1 max-w-xl flex items-center bg-gray-50 border border-gray-200 rounded-full overflow-hidden
-                     focus-within:border-[#4BA3CC] focus-within:ring-2 focus-within:ring-[#4BA3CC]/20 transition-all">
-            <svg class="w-4 h-4 ml-4 text-gray-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-            </svg>
-            <input name="q"
-                   value="{{ request('q') }}"
-                   placeholder="Search treatments, salons or locations…"
-                   class="flex-1 bg-transparent px-3 py-2 text-sm outline-none text-gray-800 placeholder-gray-400" />
-            <input name="lokasi"
-                   value="{{ request('lokasi') }}"
-                   placeholder="Location"
-                   class="w-32 bg-transparent border-l border-gray-200 px-3 py-2 text-sm outline-none text-gray-800 placeholder-gray-400" />
-            <button type="submit"
-                    class="m-1 px-4 py-1.5 bg-[#1B2D6B] text-white text-sm font-semibold rounded-full hover:bg-[#4BA3CC] transition-colors">
-                Search
-            </button>
-        </form>
+        <div class="relative flex-1 max-w-xl"
+             x-data="{
+                q: @js(request('q')),
+                results: [],
+                open: false,
+                loading: false,
+                async search() {
+                    const term = this.q.trim();
+                    if (term.length < 2) { this.results = []; this.open = false; return; }
+                    this.loading = true;
+                    try {
+                        const res = await fetch(`{{ route('cari.suggest') }}?q=` + encodeURIComponent(term));
+                        this.results = await res.json();
+                        this.open = true;
+                    } catch (e) { this.results = []; }
+                    this.loading = false;
+                }
+             }"
+             @click.outside="open = false">
+            <form action="{{ route('cari') }}" method="GET"
+                  class="flex items-center bg-gray-50 border border-gray-200 rounded-full overflow-hidden
+                         focus-within:border-[#4BA3CC] focus-within:ring-2 focus-within:ring-[#4BA3CC]/20 transition-all">
+                <svg class="w-4 h-4 ml-4 text-gray-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                </svg>
+                <input name="q"
+                       x-model="q"
+                       @input.debounce.300ms="search()"
+                       @focus="q.trim().length >= 2 && (open = true)"
+                       autocomplete="off"
+                       placeholder="Search treatments, salons or locations…"
+                       class="flex-1 bg-transparent px-3 py-2 text-sm outline-none text-gray-800 placeholder-gray-400" />
+                <input name="lokasi"
+                       value="{{ request('lokasi') }}"
+                       placeholder="Location"
+                       class="w-32 bg-transparent border-l border-gray-200 px-3 py-2 text-sm outline-none text-gray-800 placeholder-gray-400" />
+                <button type="submit"
+                        class="m-1 px-4 py-1.5 bg-[#1B2D6B] text-white text-sm font-semibold rounded-full hover:bg-[#4BA3CC] transition-colors">
+                    Search
+                </button>
+            </form>
+
+            {{-- Dropdown saran nama salon --}}
+            <div x-show="open && results.length" x-cloak x-transition.opacity
+                 class="absolute left-0 right-0 mt-2 bg-white border border-gray-100 rounded-2xl shadow-xl overflow-hidden z-50">
+                <template x-for="r in results" :key="r.url">
+                    <a :href="r.url"
+                       class="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-0">
+                        <span class="w-8 h-8 rounded-full bg-[#E8F4FB] flex items-center justify-center text-sm shrink-0">✂️</span>
+                        <span class="flex-1 min-w-0">
+                            <span class="block text-sm font-medium text-gray-800 truncate" x-text="r.nama"></span>
+                            <span class="block text-xs text-gray-400 truncate" x-text="r.kota || ''"></span>
+                        </span>
+                        <span class="text-xs text-amber-500 shrink-0" x-show="r.rating" x-text="'★ ' + r.rating"></span>
+                    </a>
+                </template>
+            </div>
+        </div>
 
         <div class="flex items-center gap-3 ml-auto">
             @guest

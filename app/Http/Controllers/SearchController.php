@@ -34,4 +34,32 @@ class SearchController extends Controller
 
         return view('cari.index', compact('salons', 'q', 'lokasi', 'sort'));
     }
+
+    /**
+     * Autocomplete saran nama salon (JSON) untuk search bar navbar.
+     */
+    public function suggest(Request $request)
+    {
+        $q = trim((string) $request->input('q', ''));
+
+        if (mb_strlen($q) < 2) {
+            return response()->json([]);
+        }
+
+        $salons = Salon::active()
+            ->where('nama_salon', 'like', "%{$q}%")
+            ->with('kota')
+            ->orderByDesc('total_review')
+            ->limit(8)
+            ->get();
+
+        return response()->json(
+            $salons->map(fn ($s) => [
+                'nama'   => $s->nama_salon,
+                'kota'   => $s->kota?->nama_kota,
+                'rating' => $s->rating ? number_format($s->rating, 1) : null,
+                'url'    => route('salon.show', $s->slug ?? $s->id_salon),
+            ])
+        );
+    }
 }

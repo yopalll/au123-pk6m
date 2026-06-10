@@ -41,6 +41,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::view('/account-deactivated', 'pages::auth.account-deactivated')
     ->name('account.deactivated');
 Route::get('/cari', [SearchController::class, 'index'])->name('cari');
+Route::get('/cari/suggest', [SearchController::class, 'suggest'])->name('cari.suggest');
 Route::get('/kategori/{slug}', [KategoriController::class, 'show'])->name('kategori.show');
 Route::get('/sub-kategori/{slug}', [KategoriController::class, 'showSub'])->name('sub-kategori.show');
 Route::get('/salon/{slug}', [SalonController::class, 'show'])->name('salon.show');
