@@ -10,6 +10,9 @@ class CartController extends Controller
 {
     public function index()
     {
+        // Membuka keranjang = keluar dari mode "Beli Langsung".
+        session()->forget('shop.buy_now');
+
         $items = Cart::where('id_user', auth()->id())
             ->with('product.primaryImage')->get()
             ->filter(fn ($i) => $i->product !== null);

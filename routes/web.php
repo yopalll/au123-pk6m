@@ -169,6 +169,7 @@ Route::prefix('shop')->name('shop.')->group(function () {
         Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 
         Route::post('/alamat', [ProductCheckoutController::class, 'storeAddress'])->name('address.store');
+        Route::post('/buy-now', [ProductCheckoutController::class, 'buyNow'])->name('buynow');
         Route::get('/checkout', [ProductCheckoutController::class, 'index'])->name('checkout');
         Route::post('/checkout', [ProductCheckoutController::class, 'store'])->middleware('throttle:10,1')->name('checkout.store');
 

@@ -71,22 +71,61 @@
             <p class="text-sm text-gray-600 leading-relaxed mt-4">{{ $product->deskripsi }}</p>
 
             {{-- Stok + actions --}}
-            <div class="mt-6 flex items-center gap-3">
-                @if ($product->stok > 0)
-                    <button type="button" class="add-to-cart flex-1 py-3 bg-[#1B2D6B] text-white text-sm font-semibold rounded-full hover:bg-[#4BA3CC] transition-colors"
-                            data-product="{{ $product->id_product }}" data-qty="1">
-                        Tambah ke Keranjang
-                    </button>
-                @else
-                    <button disabled class="flex-1 py-3 bg-gray-200 text-gray-400 text-sm font-semibold rounded-full cursor-not-allowed">Stok Habis</button>
-                @endif
-                @auth
-                    <button type="button" class="wishlist-btn w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-red-300 transition-colors"
-                            data-product="{{ $product->id_product }}">
-                        <span class="heart text-lg {{ $isWishlisted ? 'text-red-500' : 'text-gray-300' }}">{{ $isWishlisted ? '♥' : '♡' }}</span>
-                    </button>
-                @endauth
-            </div>
+            @if ($product->stok > 0)
+                <div class="mt-6 flex flex-col gap-3" x-data="{ qty: 1, max: {{ (int) min($product->stok, 99) }} }">
+
+                    {{-- Stepper jumlah --}}
+                    <div class="flex items-center gap-4">
+                        <span class="text-sm text-gray-400">Jumlah</span>
+                        <div class="flex items-center border border-gray-200 rounded-full overflow-hidden">
+                            <button type="button" @click="qty = Math.max(1, qty - 1)"
+                                    :disabled="qty <= 1"
+                                    class="w-10 h-10 flex items-center justify-center text-lg text-gray-600 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors">−</button>
+                            <span class="w-12 text-center text-sm font-semibold tabular-nums" x-text="qty"></span>
+                            <button type="button" @click="qty = Math.min(max, qty + 1)"
+                                    :disabled="qty >= max"
+                                    class="w-10 h-10 flex items-center justify-center text-lg text-gray-600 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors">+</button>
+                        </div>
+                        <span class="text-xs text-gray-400" x-show="qty >= max">Stok maksimal</span>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <button type="button" class="add-to-cart flex-1 py-3 bg-[#1B2D6B] text-white text-sm font-semibold rounded-full hover:bg-[#4BA3CC] transition-colors"
+                                data-product="{{ $product->id_product }}" :data-qty="qty">
+                            Tambah ke Keranjang
+                        </button>
+                        @auth
+                            <button type="button" class="wishlist-btn w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-red-300 transition-colors"
+                                    data-product="{{ $product->id_product }}">
+                                <span class="heart text-lg {{ $isWishlisted ? 'text-red-500' : 'text-gray-300' }}">{{ $isWishlisted ? '♥' : '♡' }}</span>
+                            </button>
+                        @endauth
+                    </div>
+
+                    {{-- Beli Langsung → lewati keranjang, ke checkout --}}
+                    @auth
+                        <form method="POST" action="{{ route('shop.buynow') }}" class="w-full">
+                            @csrf
+                            <input type="hidden" name="id_product" value="{{ $product->id_product }}">
+                            <input type="hidden" name="qty" :value="qty">
+                            <button type="submit"
+                                    class="w-full py-3 border-2 border-[#ffb68b] text-[#ffb68b] text-sm font-semibold rounded-full hover:bg-[#ffb68b] hover:text-[#3a1d08] transition-colors">
+                                Beli Langsung
+                            </button>
+                        </form>
+                    @else
+                        <button type="button"
+                                onclick="document.getElementById('auth-modal').style.display='flex'"
+                                class="w-full py-3 border-2 border-[#ffb68b] text-[#ffb68b] text-sm font-semibold rounded-full hover:bg-[#ffb68b] hover:text-[#3a1d08] transition-colors">
+                            Beli Langsung
+                        </button>
+                    @endauth
+                </div>
+            @else
+                <div class="mt-6">
+                    <button disabled class="w-full py-3 bg-gray-200 text-gray-400 text-sm font-semibold rounded-full cursor-not-allowed">Stok Habis</button>
+                </div>
+            @endif
 
             {{-- Skin type/concern --}}
             <div class="mt-6 grid grid-cols-2 gap-4 text-sm">

@@ -20,11 +20,21 @@ class ProductCheckoutController extends Controller
 {
     public function index()
     {
-        $cartItems = Cart::where('id_user', auth()->id())->where('selected', true)->with('product')->get()
-            ->filter(fn ($i) => $i->product !== null);
+        $buyNow = session(self::BUY_NOW_KEY) !== null;
 
-        if ($cartItems->isEmpty()) {
-            return redirect()->route('shop.cart')->with('error', 'Pilih produk yang ingin dibayar terlebih dahulu.');
+        if ($buyNow) {
+            $cartItems = $this->buyNowItems();
+
+            if (! $cartItems) {
+                return redirect()->route('shop.index')->with('error', 'Produk sedang tidak tersedia.');
+            }
+        } else {
+            $cartItems = Cart::where('id_user', auth()->id())->where('selected', true)->with('product')->get()
+                ->filter(fn ($i) => $i->product !== null);
+
+            if ($cartItems->isEmpty()) {
+                return redirect()->route('shop.cart')->with('error', 'Pilih produk yang ingin dibayar terlebih dahulu.');
+            }
         }
 
         $addresses = UserAddress::where('id_user', auth()->id())->orderByDesc('is_default')->get();
@@ -35,6 +45,62 @@ class ProductCheckoutController extends Controller
         [$biayaKirim, $freeOngkir] = $this->resolveOngkir(auth()->user(), $subtotal);
 
         return view('shop.checkout', compact('cartItems', 'addresses', 'subtotal', 'threshold', 'userPoint', 'biayaKirim', 'freeOngkir'));
+    }
+
+    /** Kunci session untuk item "Beli Langsung" (tidak masuk keranjang). */
+    private const BUY_NOW_KEY = 'shop.buy_now';
+
+    /**
+     * Beli Langsung — checkout sekali jalan TANPA menyentuh keranjang.
+     * Item disimpan sementara di session lalu diproses di index()/store().
+     */
+    public function buyNow(Request $request)
+    {
+        $request->validate([
+            'id_product' => 'required|exists:products,id_product',
+            'qty'        => 'nullable|integer|min:1|max:99',
+        ]);
+
+        $product = Product::find($request->id_product);
+
+        if (! $product || $product->status !== 'active' || $product->stok < 1) {
+            return back()->with('error', 'Produk sedang tidak tersedia.');
+        }
+
+        $qty = min((int) ($request->qty ?? 1), $product->stok);
+
+        session([self::BUY_NOW_KEY => [
+            'id_product' => $product->id_product,
+            'qty'        => $qty,
+        ]]);
+
+        return redirect()->route('shop.checkout');
+    }
+
+    /**
+     * Item "Beli Langsung" dari session sebagai koleksi Cart transient
+     * (tidak tersimpan di DB). Null bila tidak sedang beli langsung.
+     */
+    private function buyNowItems(): ?\Illuminate\Support\Collection
+    {
+        $bn = session(self::BUY_NOW_KEY);
+
+        if (! $bn) {
+            return null;
+        }
+
+        $product = Product::find($bn['id_product']);
+
+        if (! $product) {
+            session()->forget(self::BUY_NOW_KEY);
+
+            return null;
+        }
+
+        $item = new Cart(['id_product' => $product->id_product, 'qty' => (int) $bn['qty']]);
+        $item->setRelation('product', $product);
+
+        return collect([$item]);
     }
 
     public function storeAddress(Request $request)
@@ -73,11 +139,21 @@ class ProductCheckoutController extends Controller
         ]);
 
         $user = auth()->user();
-        $cartItems = Cart::where('id_user', $user->id_user)->where('selected', true)->with('product')->get()
-            ->filter(fn ($i) => $i->product !== null);
+        $isBuyNow = session(self::BUY_NOW_KEY) !== null;
 
-        if ($cartItems->isEmpty()) {
-            return redirect()->route('shop.cart')->with('error', 'Pilih produk yang ingin dibayar terlebih dahulu.');
+        if ($isBuyNow) {
+            $cartItems = $this->buyNowItems();
+
+            if (! $cartItems) {
+                return redirect()->route('shop.index')->with('error', 'Produk sedang tidak tersedia.');
+            }
+        } else {
+            $cartItems = Cart::where('id_user', $user->id_user)->where('selected', true)->with('product')->get()
+                ->filter(fn ($i) => $i->product !== null);
+
+            if ($cartItems->isEmpty()) {
+                return redirect()->route('shop.cart')->with('error', 'Pilih produk yang ingin dibayar terlebih dahulu.');
+            }
         }
 
         // Pastikan alamat milik user
@@ -106,7 +182,7 @@ class ProductCheckoutController extends Controller
         try {
             $order = DB::transaction(function () use (
                 $user, $address, $idPromo, $subtotal, $biayaKirim, $totalDiskon,
-                $poinDigunakan, $potonganPoin, $grandTotal, $request, $cartItems
+                $poinDigunakan, $potonganPoin, $grandTotal, $request, $cartItems, $isBuyNow
             ) {
                 // Validasi ketersediaan stok & status produk (lock untuk cegah race).
                 foreach ($cartItems as $item) {
@@ -174,10 +250,13 @@ class ProductCheckoutController extends Controller
                     PointService::spend($user->id_user, $poinDigunakan, $order->id_product_order);
                 }
 
-                // Hanya hapus item yang di-checkout; item tak tercentang tetap di keranjang.
-                Cart::where('id_user', $user->id_user)
-                    ->whereIn('id_cart', $cartItems->pluck('id_cart'))
-                    ->delete();
+                // Beli Langsung tidak menyentuh keranjang. Untuk checkout normal,
+                // hanya hapus item yang di-checkout; item tak tercentang tetap ada.
+                if (! $isBuyNow) {
+                    Cart::where('id_user', $user->id_user)
+                        ->whereIn('id_cart', $cartItems->pluck('id_cart'))
+                        ->delete();
+                }
 
                 return $order;
             });
@@ -192,6 +271,9 @@ class ProductCheckoutController extends Controller
 
             return redirect()->route('shop.checkout')->with('error', $message);
         }
+
+        // Selesai: bersihkan item beli-langsung dari session.
+        session()->forget(self::BUY_NOW_KEY);
 
         return redirect()->route('shop.order.payment', $order->kode_order);
     }
