@@ -41,12 +41,17 @@ class AkunController extends Controller
             ? $request->get('tab', 'mendatang')
             : 'mendatang';
 
-        $orders = Order::where('id_user', auth()->id())
+        $query = Order::where('id_user', auth()->id())
             ->whereIn('status', $statusMap[$tab])
-            ->with(['salon.kota', 'details.service', 'details.staff', 'review'])  // OPT-06: add details.staff pre-emptively
-            ->latest()
-            ->paginate(10)
-            ->withQueryString();
+            ->with(['salon.kota', 'details.service', 'details.staff', 'review']);  // OPT-06: add details.staff pre-emptively
+
+        // Booking selesai tetap tampil agar pelanggan bisa menulis ulasan.
+        // Setelah ulasan dikirim, booking-nya hilang dari daftar "Selesai".
+        if ($tab === 'selesai') {
+            $query->whereDoesntHave('review');
+        }
+
+        $orders = $query->latest()->paginate(10)->withQueryString();
 
         return view('akun.bookings', compact('orders', 'tab'));
     }

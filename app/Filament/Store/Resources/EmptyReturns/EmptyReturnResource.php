@@ -51,10 +51,10 @@ class EmptyReturnResource extends Resource
                 ImageColumn::make('foto')
                     ->label('Foto')
                     ->square()
-                    // URL penuh berbasis host request (bukan APP_URL) agar tidak salah
-                    // port saat `php artisan serve`. ImageColumn meneruskan URL valid apa adanya.
+                    // Stream lewat route (bukan /storage langsung) supaya tetap muncul
+                    // di produksi Docker meski symlink/Nginx static tidak tersedia.
                     ->getStateUsing(fn (EmptyReturn $r) => ($p = $r->photos->first())
-                        ? url('/storage/'.ltrim($p->photo_url, '/'))
+                        ? route('emptyReturn.photo', $p)
                         : null)
                     ->extraImgAttributes(['class' => 'object-cover'])
                     ->tooltip(fn (EmptyReturn $r) => $r->photos->count() > 1 ? $r->photos->count().' foto — klik "Lihat Foto"' : null),

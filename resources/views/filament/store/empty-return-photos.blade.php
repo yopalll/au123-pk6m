@@ -1,8 +1,8 @@
 <div class="space-y-4">
     @forelse ($record->photos as $photo)
-        {{-- URL root-relatif agar cocok dengan host:port yang sedang dipakai
-             (hindari APP_URL absolut yang bisa salah port saat `php artisan serve`). --}}
-        @php $url = '/storage/'.ltrim($photo->photo_url, '/'); @endphp
+        {{-- Stream lewat route, bukan /storage langsung — agar tetap terbuka di
+             produksi Docker meski symlink public/storage atau Nginx static tidak ada. --}}
+        @php $url = route('emptyReturn.photo', $photo); @endphp
         <a href="{{ $url }}" target="_blank" rel="noopener"
            class="block overflow-hidden rounded-lg border border-white/10 hover:border-primary-500 transition">
             <img src="{{ $url }}"

@@ -225,6 +225,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/empty-return/submit', [EmptyReturnController::class, 'create'])->name('emptyReturn.create');
     Route::post('/empty-return/submit', [EmptyReturnController::class, 'store'])->middleware('throttle:5,1')->name('emptyReturn.store');
     Route::get('/empty-return/riwayat', [EmptyReturnController::class, 'history'])->name('emptyReturn.history');
+    // Foto bukti empty-return di-stream lewat PHP (anti masalah symlink/Nginx di Docker).
+    Route::get('/empty-return/photo/{photo}', [\App\Http\Controllers\EmptyReturnPhotoController::class, 'show'])->name('emptyReturn.photo');
 
     Route::get('/akun/poin', [PointController::class, 'index'])->name('akun.poin');
     Route::get('/akun/poin/riwayat', [PointController::class, 'history'])->name('akun.poin.history');
