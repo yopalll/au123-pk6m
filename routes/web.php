@@ -112,7 +112,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/bookings/{kode}', [AkunController::class, 'bookingDetail'])->name('booking.detail');
             Route::get('/bookings/{kode}/invoice', [AkunController::class, 'downloadInvoice'])->name('booking.invoice');
             Route::get('/favorit', [AkunController::class, 'favorit'])->name('favorit');
-            Route::post('/favorit/{salon:slug}', [AkunController::class, 'toggleFavorit'])->name('favorit.toggle');
+            Route::post('/favorit/{salon}', [AkunController::class, 'toggleFavorit'])->name('favorit.toggle');
             Route::get('/pengaturan', [AkunController::class, 'pengaturan'])->name('pengaturan');
             Route::put('/pengaturan', [AkunController::class, 'updatePengaturan'])->name('pengaturan.update');
             Route::put('/pengaturan/password', [AkunController::class, 'updatePassword'])->name('pengaturan.password');

@@ -46,7 +46,7 @@
                 {{ $salon->nama_salon }}
             </a>
             @if (auth()->check() && auth()->user()->role === 'customer')
-                <form action="{{ route('akun.favorit.toggle', $salon->slug ?? $salon->id_salon) }}" method="POST" class="shrink-0">
+                <form action="{{ route('akun.favorit.toggle', $salon->id_salon) }}" method="POST" class="shrink-0">
                     @csrf
                     <button type="submit"
                             class="text-{{ $isFavourite ? 'red-500' : 'gray-300' }} hover:text-red-500 transition-colors mt-0.5"
