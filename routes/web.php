@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\Auth\GoogleAuthController;
+use App\Http\Controllers\Auth\OtpController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EmptyReturnController;
 use App\Http\Controllers\ExclusiveContentController;
@@ -51,6 +52,15 @@ Route::post('/mitra/apply', [MitraController::class, 'apply'])
 // ── Google OAuth (Login / Daftar dengan Google) ───────────────────────────
 Route::get('/auth/google/redirect', [GoogleAuthController::class, 'redirect'])->name('google.redirect');
 Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name('google.callback');
+
+// ── Verifikasi Email via OTP ───────────────────────────────────────────────
+// Dipakai setelah registrasi: user diarahkan ke /otp untuk memasukkan kode 6 digit.
+// throttle:10,1 = lapisan rate-limit per IP di atas cooldown 60 detik di OtpService.
+Route::middleware(['auth', 'throttle:10,1'])->group(function () {
+    Route::get('/otp', [OtpController::class, 'show'])->name('otp.show');
+    Route::post('/otp/verify', [OtpController::class, 'verify'])->name('otp.verify');
+    Route::post('/otp/resend', [OtpController::class, 'resend'])->name('otp.resend');
+});
 
 // ── Static / informational pages (footer links) ───────────────────────────
 Route::get('/about', [StaticController::class, 'about'])->name('static.about');

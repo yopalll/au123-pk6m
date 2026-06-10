@@ -4,13 +4,15 @@ namespace App\Mail;
 
 use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class OtpMail extends Mailable implements ShouldQueue
+// Catatan: OTP sengaja TIDAK implements ShouldQueue agar terkirim sinkron
+// (server hanya `php artisan serve`, tanpa queue worker) sehingga kode
+// langsung sampai ke email begitu user mendaftar / klik "kirim ulang".
+class OtpMail extends Mailable
 {
     use Queueable, SerializesModels;
 
